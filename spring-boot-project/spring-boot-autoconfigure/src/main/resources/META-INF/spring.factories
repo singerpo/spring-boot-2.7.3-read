@@ -4,6 +4,7 @@ org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitial
 org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener
 
 # Application Listeners
+ # 另外单独启动一个线程实例化并调用run方法，包括验证器、消息转换器等
 org.springframework.context.ApplicationListener=\
 org.springframework.boot.autoconfigure.BackgroundPreinitializer
 

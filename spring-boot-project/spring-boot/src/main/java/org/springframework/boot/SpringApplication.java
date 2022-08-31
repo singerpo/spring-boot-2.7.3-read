@@ -267,9 +267,9 @@ public class SpringApplication {
 		this.webApplicationType = WebApplicationType.deduceFromClasspath();
 		this.bootstrapRegistryInitializers = new ArrayList<>(
 				getSpringFactoriesInstances(BootstrapRegistryInitializer.class));
-		// 设置应用上下文初始化器，从"META-INF/spring.factories"读取ApplicationContextInitializer类的实例名称集合并去重（一共5个）
+		// 设置应用上下文初始化器，从"META-INF/spring.factories"读取ApplicationContextInitializer类的实例名称集合并去重（一共7个）
 		setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
-		// 设置监听器，从"META-INF/spring.factories"读取ApplicationListener类的实例名称集合并去重（一共7个）
+		// 设置监听器，从"META-INF/spring.factories"读取ApplicationListener类的实例名称集合并去重（一共8个）
 		setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 		// 推断主入口应用类，通过当前调用栈，获取Main方法所在类，并赋值给mainApplicationClass
 		this.mainApplicationClass = deduceMainApplicationClass();
@@ -483,8 +483,10 @@ public class SpringApplication {
 		List<T> instances = new ArrayList<>(names.size());
 		for (String name : names) {
 			try {
+				// 装载class文件到内存
 				Class<?> instanceClass = ClassUtils.forName(name, classLoader);
 				Assert.isAssignable(type, instanceClass);
+				// 通过反射创建实例
 				Constructor<?> constructor = instanceClass.getDeclaredConstructor(parameterTypes);
 				T instance = (T) BeanUtils.instantiateClass(constructor, args);
 				instances.add(instance);

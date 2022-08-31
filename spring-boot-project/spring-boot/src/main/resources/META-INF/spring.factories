@@ -4,7 +4,7 @@ org.springframework.boot.logging.logback.LogbackLoggingSystem.Factory,\
 org.springframework.boot.logging.log4j2.Log4J2LoggingSystem.Factory,\
 org.springframework.boot.logging.java.JavaLoggingSystem.Factory
 
-# PropertySource Loaders
+# PropertySource Loaders 属性文件加载器
 org.springframework.boot.env.PropertySourceLoader=\
 org.springframework.boot.env.PropertiesPropertySourceLoader,\
 org.springframework.boot.env.YamlPropertySourceLoader
@@ -24,15 +24,20 @@ org.springframework.boot.ApplicationContextFactory=\
 org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext.Factory,\
 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext.Factory
 
-# Run Listeners
+# Run Listeners 运行时的监听器
+  # 程序运行过程中所有监听通知都是通过此类进行回调
 org.springframework.boot.SpringApplicationRunListener=\
 org.springframework.boot.context.event.EventPublishingRunListener
 
-# Error Reporters
+# Error Reporters 错误报告器
 org.springframework.boot.SpringBootExceptionReporter=\
 org.springframework.boot.diagnostics.FailureAnalyzers
 
 # Application Context Initializers
+  # 报告Spring容器的一些常见的错误配置
+  # 设置Spring应用上下文的ID
+  # 使用环境属性context.initializer.classes指定初始化器进行初始化规则
+  # 将内置servlet容器实际使用的监听端口写入到environment环境属性中
 org.springframework.context.ApplicationContextInitializer=\
 org.springframework.boot.context.ConfigurationWarningsApplicationContextInitializer,\
 org.springframework.boot.context.ContextIdApplicationContextInitializer,\
@@ -41,6 +46,12 @@ org.springframework.boot.rsocket.context.RSocketPortInfoApplicationContextInitia
 org.springframework.boot.web.context.ServerPortInfoApplicationContextInitializer
 
 # Application Listeners
+# 应用上下文加载完成后对缓存做清除工作，响应事件ContextRefreshEvent
+# 监听双亲应用上下文的关闭事件并往自己的孩子应用上下文中传播，相关事件ParentContextAvailableEvent/ContextClosedEvent
+# 如果系统文件编码和环境变量中指定的不同则终止应用启动。（比较系统属性file.encoding和环境变量spring.mandatory-file-encoding是否相等）
+#根据spring.output.ansi.enabled参数配置AnsiOutput
+# 监听事件后转发给环境变量context.listener.classes指定的那些事件监听器
+# 检测正在使用的日志系统，默认是logback,此时日志系统还没有初始化
 org.springframework.context.ApplicationListener=\
 org.springframework.boot.ClearCachesApplicationListener,\
 org.springframework.boot.builder.ParentContextCloserApplicationListener,\
