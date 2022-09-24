@@ -20,8 +20,8 @@ package org.springframework.boot.buildpack.platform.docker;
  * Base class for update events published by Docker.
  *
  * @author Phillip Webb
- * @since 2.3.0
  * @see UpdateListener
+ * @since 2.3.0
  */
 public abstract class UpdateEvent {
 

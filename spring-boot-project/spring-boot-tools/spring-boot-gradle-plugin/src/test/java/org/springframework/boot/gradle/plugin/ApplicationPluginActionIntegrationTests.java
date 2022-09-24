@@ -153,8 +153,7 @@ class ApplicationPluginActionIntegrationTests {
 			int filePermissions = entry.getMode() & 0777;
 			if (entry.isFile() && !entry.getName().startsWith(name + "-boot/bin/")) {
 				assertThat(filePermissions).isEqualTo(0644);
-			}
-			else {
+			} else {
 				assertThat(filePermissions).isEqualTo(0755);
 			}
 		});
@@ -174,8 +173,7 @@ class ApplicationPluginActionIntegrationTests {
 		}
 		if (GradleVersion.version(this.gradleBuild.getGradleVersion()).compareTo(GradleVersion.version("7.3.3")) < 0) {
 			assertThat(configured).containsExactly("help");
-		}
-		else {
+		} else {
 			assertThat(configured).containsExactlyInAnyOrder("help", "clean");
 		}
 	}

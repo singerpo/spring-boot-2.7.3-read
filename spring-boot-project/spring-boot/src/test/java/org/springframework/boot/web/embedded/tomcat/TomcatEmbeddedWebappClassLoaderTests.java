@@ -65,7 +65,7 @@ class TomcatEmbeddedWebappClassLoaderTests {
 	}
 
 	private void withWebappClassLoader(File war, ClassLoaderConsumer consumer) throws Exception {
-		URLClassLoader parent = new URLClassLoader(new URL[] { new URL(webInfClassesUrlString(war)) }, null);
+		URLClassLoader parent = new URLClassLoader(new URL[]{new URL(webInfClassesUrlString(war))}, null);
 		try (ParallelWebappClassLoader classLoader = new TomcatEmbeddedWebappClassLoader(parent)) {
 			StandardContext context = new StandardContext();
 			context.setName("test");
@@ -77,8 +77,7 @@ class TomcatEmbeddedWebappClassLoaderTests {
 			classLoader.start();
 			try {
 				consumer.accept(classLoader);
-			}
-			finally {
+			} finally {
 				classLoader.stop();
 				classLoader.close();
 				resources.stop();

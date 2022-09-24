@@ -49,6 +49,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 	 * metadata repository holds items that were loaded previously, these are ignored.
 	 * <p>
 	 * Leaves the stream open when done.
+	 *
 	 * @param inputStream the source input stream
 	 * @return this builder
 	 * @throws IOException in case of I/O errors
@@ -64,8 +65,9 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 	 * ignored.
 	 * <p>
 	 * Leaves the stream open when done.
+	 *
 	 * @param inputStream the source input stream
-	 * @param charset the charset of the input
+	 * @param charset     the charset of the input
 	 * @return this builder
 	 * @throws IOException in case of I/O errors
 	 */
@@ -81,6 +83,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 	/**
 	 * Build a {@link ConfigurationMetadataRepository} with the current state of this
 	 * builder.
+	 *
 	 * @return this builder
 	 */
 	public ConfigurationMetadataRepository build() {
@@ -95,8 +98,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 		try {
 			RawConfigurationMetadata metadata = this.reader.read(in, charset);
 			return create(metadata);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Failed to read configuration metadata", ex);
 		}
 	}
@@ -113,15 +115,13 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 			ConfigurationMetadataProperty property = allProperties.get(hint.getId());
 			if (property != null) {
 				addValueHints(property, hint);
-			}
-			else {
+			} else {
 				String id = hint.resolveId();
 				property = allProperties.get(id);
 				if (property != null) {
 					if (hint.isMapKeyHints()) {
 						addMapHints(property, hint);
-					}
-					else {
+					} else {
 						addValueHints(property, hint);
 					}
 				}
@@ -143,6 +143,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 	/**
 	 * Create a new builder instance using {@link StandardCharsets#UTF_8} as the default
 	 * charset and the specified json resource.
+	 *
 	 * @param inputStreams the source input streams
 	 * @return a new {@link ConfigurationMetadataRepositoryJsonBuilder} instance.
 	 * @throws IOException on error
@@ -158,6 +159,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 	/**
 	 * Create a new builder instance using {@link StandardCharsets#UTF_8} as the default
 	 * charset.
+	 *
 	 * @return a new {@link ConfigurationMetadataRepositoryJsonBuilder} instance.
 	 */
 	public static ConfigurationMetadataRepositoryJsonBuilder create() {
@@ -166,6 +168,7 @@ public final class ConfigurationMetadataRepositoryJsonBuilder {
 
 	/**
 	 * Create a new builder instance using the specified default {@link Charset}.
+	 *
 	 * @param defaultCharset the default charset to use
 	 * @return a new {@link ConfigurationMetadataRepositoryJsonBuilder} instance.
 	 */

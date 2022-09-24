@@ -179,7 +179,7 @@ class NoSuchBeanDefinitionFailureAnalyzerTests {
 	}
 
 	private void assertDescriptionConstructorMissingType(FailureAnalysis analysis, Class<?> component, int index,
-			Class<?> type) {
+														 Class<?> type) {
 		String expected = String.format(
 				"Parameter %s of constructor in %s required a bean of type '%s' that could not be found.", index,
 				component.getName(), type.getName());
@@ -199,7 +199,7 @@ class NoSuchBeanDefinitionFailureAnalyzerTests {
 	}
 
 	private void assertBeanMethodDisabled(FailureAnalysis analysis, String description, Class<?> target,
-			String methodName) {
+										  String methodName) {
 		String expected = String.format("Bean method '%s' in '%s' not loaded because", methodName,
 				ClassUtils.getShortName(target));
 		assertThat(analysis.getDescription()).contains(expected);
@@ -207,14 +207,14 @@ class NoSuchBeanDefinitionFailureAnalyzerTests {
 	}
 
 	private void assertClassDisabled(FailureAnalysis analysis, String description, String methodName,
-			String className) {
+									 String className) {
 		String expected = String.format("Bean method '%s' in '%s' not loaded because", methodName, className);
 		assertThat(analysis.getDescription()).contains(expected);
 		assertThat(analysis.getDescription()).contains(description);
 	}
 
 	private void assertUserDefinedBean(FailureAnalysis analysis, String description, Class<?> target,
-			String methodName) {
+									   String methodName) {
 		String expected = String.format("User-defined bean method '%s' in '%s' ignored", methodName,
 				ClassUtils.getShortName(target));
 		assertThat(analysis.getDescription()).contains(expected);
@@ -236,8 +236,7 @@ class NoSuchBeanDefinitionFailureAnalyzerTests {
 			this.context.register(config);
 			this.context.refresh();
 			return null;
-		}
-		catch (FatalBeanException ex) {
+		} catch (FatalBeanException ex) {
 			return ex;
 		}
 	}
@@ -272,7 +271,7 @@ class NoSuchBeanDefinitionFailureAnalyzerTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ TestPropertyAutoConfiguration.class, TestTypeClassAutoConfiguration.class })
+	@ImportAutoConfiguration({TestPropertyAutoConfiguration.class, TestTypeClassAutoConfiguration.class})
 	@Import(StringHandler.class)
 	static class SeveralAutoConfigurationTypeConfiguration {
 

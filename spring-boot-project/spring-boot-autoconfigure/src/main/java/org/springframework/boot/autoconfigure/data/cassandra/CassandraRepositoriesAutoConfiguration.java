@@ -34,11 +34,11 @@ import org.springframework.data.cassandra.repository.support.CassandraRepository
  * Repositories.
  *
  * @author Eddú Meléndez
- * @since 1.3.0
  * @see EnableCassandraRepositories
+ * @since 1.3.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ CqlSession.class, CassandraRepository.class })
+@ConditionalOnClass({CqlSession.class, CassandraRepository.class})
 @ConditionalOnRepositoryType(store = "cassandra", type = RepositoryType.IMPERATIVE)
 @ConditionalOnMissingBean(CassandraRepositoryFactoryBean.class)
 @Import(CassandraRepositoriesRegistrar.class)

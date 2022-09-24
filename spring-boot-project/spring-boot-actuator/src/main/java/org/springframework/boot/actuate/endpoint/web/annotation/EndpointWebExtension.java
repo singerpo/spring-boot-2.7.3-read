@@ -31,8 +31,8 @@ import org.springframework.core.annotation.AliasFor;
  *
  * @author Andy Wilkinson
  * @author Stephane Nicoll
- * @since 2.0.0
  * @see Endpoint
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -42,6 +42,7 @@ public @interface EndpointWebExtension {
 
 	/**
 	 * The {@link Endpoint endpoint} class to which this Web extension relates.
+	 *
 	 * @return the endpoint class
 	 */
 	@AliasFor(annotation = EndpointExtension.class)

@@ -91,10 +91,10 @@ class DataSourceHealthContributorAutoConfigurationTests {
 	void runWithRoutingAndEmbeddedDataSourceShouldNotIncludeRoutingDataSourceWhenIgnored() {
 		this.contextRunner.withUserConfiguration(EmbeddedDataSourceConfiguration.class, RoutingDataSourceConfig.class)
 				.withPropertyValues("management.health.db.ignore-routing-datasources:true").run((context) -> {
-					assertThat(context).doesNotHaveBean(CompositeHealthContributor.class);
-					assertThat(context).hasSingleBean(DataSourceHealthIndicator.class);
-					assertThat(context).doesNotHaveBean(RoutingDataSourceHealthContributor.class);
-				});
+			assertThat(context).doesNotHaveBean(CompositeHealthContributor.class);
+			assertThat(context).hasSingleBean(DataSourceHealthIndicator.class);
+			assertThat(context).doesNotHaveBean(RoutingDataSourceHealthContributor.class);
+		});
 	}
 
 	@Test
@@ -123,10 +123,10 @@ class DataSourceHealthContributorAutoConfigurationTests {
 		this.contextRunner
 				.withUserConfiguration(DataSourceConfig.class, DataSourcePoolMetadataProvidersConfiguration.class)
 				.withPropertyValues("spring.datasource.test.validation-query:SELECT from FOOBAR").run((context) -> {
-					assertThat(context).hasSingleBean(DataSourceHealthIndicator.class);
-					DataSourceHealthIndicator indicator = context.getBean(DataSourceHealthIndicator.class);
-					assertThat(indicator.getQuery()).isEqualTo("SELECT from FOOBAR");
-				});
+			assertThat(context).hasSingleBean(DataSourceHealthIndicator.class);
+			DataSourceHealthIndicator indicator = context.getBean(DataSourceHealthIndicator.class);
+			assertThat(indicator.getQuery()).isEqualTo("SELECT from FOOBAR");
+		});
 	}
 
 	@Test

@@ -33,8 +33,8 @@ import org.springframework.util.Assert;
  * be used regardless of any web framework.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see HandlerMapper
+ * @since 1.3.0
  */
 public class Dispatcher {
 
@@ -52,7 +52,8 @@ public class Dispatcher {
 
 	/**
 	 * Dispatch the specified request to an appropriate {@link Handler}.
-	 * @param request the request
+	 *
+	 * @param request  the request
 	 * @param response the response
 	 * @return {@code true} if the request was dispatched
 	 * @throws IOException in case of I/O errors

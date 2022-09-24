@@ -60,7 +60,7 @@ import org.springframework.graphql.execution.SubscriptionExceptionResolver;
  * @since 2.7.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ GraphQL.class, GraphQlSource.class })
+@ConditionalOnClass({GraphQL.class, GraphQlSource.class})
 @ConditionalOnGraphQlSchema
 @EnableConfigurationProperties(GraphQlProperties.class)
 public class GraphQlAutoConfiguration {
@@ -76,10 +76,10 @@ public class GraphQlAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public GraphQlSource graphQlSource(ResourcePatternResolver resourcePatternResolver, GraphQlProperties properties,
-			ObjectProvider<DataFetcherExceptionResolver> exceptionResolvers,
-			ObjectProvider<SubscriptionExceptionResolver> subscriptionExceptionResolvers,
-			ObjectProvider<Instrumentation> instrumentations, ObjectProvider<RuntimeWiringConfigurer> wiringConfigurers,
-			ObjectProvider<GraphQlSourceBuilderCustomizer> sourceCustomizers) {
+									   ObjectProvider<DataFetcherExceptionResolver> exceptionResolvers,
+									   ObjectProvider<SubscriptionExceptionResolver> subscriptionExceptionResolvers,
+									   ObjectProvider<Instrumentation> instrumentations, ObjectProvider<RuntimeWiringConfigurer> wiringConfigurers,
+									   ObjectProvider<GraphQlSourceBuilderCustomizer> sourceCustomizers) {
 		String[] schemaLocations = properties.getSchema().getLocations();
 		Resource[] schemaResources = resolveSchemaResources(resourcePatternResolver, schemaLocations,
 				properties.getSchema().getFileExtensions());
@@ -100,7 +100,7 @@ public class GraphQlAutoConfiguration {
 	}
 
 	private Resource[] resolveSchemaResources(ResourcePatternResolver resolver, String[] locations,
-			String[] extensions) {
+											  String[] extensions) {
 		List<Resource> resources = new ArrayList<>();
 		for (String location : locations) {
 			for (String extension : extensions) {
@@ -113,8 +113,7 @@ public class GraphQlAutoConfiguration {
 	private List<Resource> resolveSchemaResources(ResourcePatternResolver resolver, String pattern) {
 		try {
 			return Arrays.asList(resolver.getResources(pattern));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			logger.debug(LogMessage.format("Could not resolve schema location: '%s'", pattern), ex);
 			return Collections.emptyList();
 		}
@@ -129,7 +128,7 @@ public class GraphQlAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public ExecutionGraphQlService executionGraphQlService(GraphQlSource graphQlSource,
-			BatchLoaderRegistry batchLoaderRegistry) {
+														   BatchLoaderRegistry batchLoaderRegistry) {
 		DefaultExecutionGraphQlService service = new DefaultExecutionGraphQlService(graphQlSource);
 		service.addDataLoaderRegistrar(batchLoaderRegistry);
 		return service;

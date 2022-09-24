@@ -53,7 +53,7 @@ class LogbackConfigurator {
 		return this.context.getConfigurationLock();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void conversionRule(String conversionWord, Class<? extends Converter> converterClass) {
 		Assert.hasLength(conversionWord, "Conversion word must not be empty");
 		Assert.notNull(converterClass, "Converter class must not be null");

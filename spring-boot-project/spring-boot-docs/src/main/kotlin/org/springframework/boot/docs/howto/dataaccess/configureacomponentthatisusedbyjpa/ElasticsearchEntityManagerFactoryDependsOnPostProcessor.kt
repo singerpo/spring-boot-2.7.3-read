@@ -21,4 +21,4 @@ import org.springframework.stereotype.Component
 
 @Component
 class ElasticsearchEntityManagerFactoryDependsOnPostProcessor :
-	EntityManagerFactoryDependsOnPostProcessor("elasticsearchClient")
+		EntityManagerFactoryDependsOnPostProcessor("elasticsearchClient")

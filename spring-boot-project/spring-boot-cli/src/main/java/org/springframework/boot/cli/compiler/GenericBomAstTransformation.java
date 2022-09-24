@@ -67,6 +67,7 @@ public abstract class GenericBomAstTransformation implements SpringBootAstTransf
 	/**
 	 * The bom to be added to dependency management in compact form:
 	 * {@code "<groupId>:<artifactId>:<version>"} (like in a {@code @Grab}).
+	 *
 	 * @return the maven co-ordinates of the BOM to add
 	 */
 	protected abstract String getBomModule();

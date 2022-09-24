@@ -43,6 +43,7 @@ public class QuartzDataSourceScriptDatabaseInitializer extends DataSourceScriptD
 
 	/**
 	 * Create a new {@link QuartzDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Quartz Scheduler data source
 	 * @param properties the Quartz properties
 	 * @see #getSettings
@@ -53,8 +54,9 @@ public class QuartzDataSourceScriptDatabaseInitializer extends DataSourceScriptD
 
 	/**
 	 * Create a new {@link QuartzDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Quartz Scheduler data source
-	 * @param settings the database initialization settings
+	 * @param settings   the database initialization settings
 	 * @see #getSettings
 	 */
 	public QuartzDataSourceScriptDatabaseInitializer(DataSource dataSource, DatabaseInitializationSettings settings) {
@@ -62,7 +64,7 @@ public class QuartzDataSourceScriptDatabaseInitializer extends DataSourceScriptD
 	}
 
 	private QuartzDataSourceScriptDatabaseInitializer(DataSource dataSource, DatabaseInitializationSettings settings,
-			List<String> commentPrefixes) {
+													  List<String> commentPrefixes) {
 		super(dataSource, settings);
 		this.commentPrefixes = commentPrefixes;
 	}
@@ -78,6 +80,7 @@ public class QuartzDataSourceScriptDatabaseInitializer extends DataSourceScriptD
 	 * Adapts {@link QuartzProperties Quartz properties} to
 	 * {@link DatabaseInitializationSettings} replacing any {@literal @@platform@@}
 	 * placeholders.
+	 *
 	 * @param dataSource the Quartz Scheduler data source
 	 * @param properties the Quartz properties
 	 * @return a new {@link DatabaseInitializationSettings} instance

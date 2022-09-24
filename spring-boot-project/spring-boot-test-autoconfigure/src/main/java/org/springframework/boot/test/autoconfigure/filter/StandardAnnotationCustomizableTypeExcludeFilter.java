@@ -41,6 +41,7 @@ public abstract class StandardAnnotationCustomizableTypeExcludeFilter<A extends 
 	private static final Filter[] NO_FILTERS = {};
 
 	private static final String[] FILTER_TYPE_ATTRIBUTES;
+
 	static {
 		FilterType[] filterValues = FilterType.values();
 		FILTER_TYPE_ATTRIBUTES = new String[filterValues.length];

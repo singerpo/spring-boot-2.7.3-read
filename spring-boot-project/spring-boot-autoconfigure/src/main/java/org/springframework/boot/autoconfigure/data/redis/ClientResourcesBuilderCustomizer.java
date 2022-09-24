@@ -31,6 +31,7 @@ public interface ClientResourcesBuilderCustomizer {
 
 	/**
 	 * Customize the {@link Builder}.
+	 *
 	 * @param clientResourcesBuilder the builder to customize
 	 */
 	void customize(Builder clientResourcesBuilder);

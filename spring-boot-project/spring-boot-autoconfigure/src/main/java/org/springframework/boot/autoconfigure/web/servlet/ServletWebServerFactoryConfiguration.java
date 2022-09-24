@@ -64,7 +64,7 @@ import org.springframework.context.annotation.Configuration;
 class ServletWebServerFactoryConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Servlet.class, Tomcat.class, UpgradeProtocol.class })
+	@ConditionalOnClass({Servlet.class, Tomcat.class, UpgradeProtocol.class})
 	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
 	static class EmbeddedTomcat {
 
@@ -89,7 +89,7 @@ class ServletWebServerFactoryConfiguration {
 	 * Nested configuration if Jetty is being used.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Servlet.class, Server.class, Loader.class, WebAppContext.class })
+	@ConditionalOnClass({Servlet.class, Server.class, Loader.class, WebAppContext.class})
 	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
 	static class EmbeddedJetty {
 
@@ -107,7 +107,7 @@ class ServletWebServerFactoryConfiguration {
 	 * Nested configuration if Undertow is being used.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Servlet.class, Undertow.class, SslClientAuthMode.class })
+	@ConditionalOnClass({Servlet.class, Undertow.class, SslClientAuthMode.class})
 	@ConditionalOnMissingBean(value = ServletWebServerFactory.class, search = SearchStrategy.CURRENT)
 	static class EmbeddedUndertow {
 

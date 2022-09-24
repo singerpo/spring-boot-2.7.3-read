@@ -43,6 +43,7 @@ final class SqlDialectLookup {
 
 	/**
 	 * Return the most suitable {@link SQLDialect} for the given {@link DataSource}.
+	 *
 	 * @param dataSource the source {@link DataSource}
 	 * @return the most suitable {@link SQLDialect}
 	 */
@@ -56,8 +57,7 @@ final class SqlDialectLookup {
 			if (sqlDialect != null) {
 				return sqlDialect;
 			}
-		}
-		catch (MetaDataAccessException ex) {
+		} catch (MetaDataAccessException ex) {
 			logger.warn("Unable to determine jdbc url from datasource", ex);
 		}
 		return SQLDialect.DEFAULT;

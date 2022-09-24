@@ -42,11 +42,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Artsiom Yudovin
  */
 @DataCassandraTest(includeFilters = @Filter(Service.class),
-		properties = { "spring.data.cassandra.local-datacenter=datacenter1",
+		properties = {"spring.data.cassandra.local-datacenter=datacenter1",
 				"spring.data.cassandra.schema-action=create-if-not-exists",
 				"spring.data.cassandra.connection.connect-timeout=60s",
 				"spring.data.cassandra.connection.init-query-timeout=60s",
-				"spring.data.cassandra.request.timeout=60s" })
+				"spring.data.cassandra.request.timeout=60s"})
 @Testcontainers(disabledWithoutDocker = true)
 class DataCassandraTestWithIncludeFilterIntegrationTests {
 

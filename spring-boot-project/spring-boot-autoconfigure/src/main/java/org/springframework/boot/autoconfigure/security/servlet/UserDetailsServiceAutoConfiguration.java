@@ -57,12 +57,12 @@ import org.springframework.util.StringUtils;
 @ConditionalOnClass(AuthenticationManager.class)
 @ConditionalOnBean(ObjectPostProcessor.class)
 @ConditionalOnMissingBean(
-		value = { AuthenticationManager.class, AuthenticationProvider.class, UserDetailsService.class,
-				AuthenticationManagerResolver.class },
-		type = { "org.springframework.security.oauth2.jwt.JwtDecoder",
+		value = {AuthenticationManager.class, AuthenticationProvider.class, UserDetailsService.class,
+				AuthenticationManagerResolver.class},
+		type = {"org.springframework.security.oauth2.jwt.JwtDecoder",
 				"org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector",
 				"org.springframework.security.oauth2.client.registration.ClientRegistrationRepository",
-				"org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository" })
+				"org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository"})
 public class UserDetailsServiceAutoConfiguration {
 
 	private static final String NOOP_PASSWORD_PREFIX = "{noop}";
@@ -74,7 +74,7 @@ public class UserDetailsServiceAutoConfiguration {
 	@Bean
 	@Lazy
 	public InMemoryUserDetailsManager inMemoryUserDetailsManager(SecurityProperties properties,
-			ObjectProvider<PasswordEncoder> passwordEncoder) {
+																 ObjectProvider<PasswordEncoder> passwordEncoder) {
 		SecurityProperties.User user = properties.getUser();
 		List<String> roles = user.getRoles();
 		return new InMemoryUserDetailsManager(

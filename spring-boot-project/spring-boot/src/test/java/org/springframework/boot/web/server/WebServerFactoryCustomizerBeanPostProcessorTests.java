@@ -150,7 +150,7 @@ class WebServerFactoryCustomizerBeanPostProcessorTests {
 		addMockBeans(beans);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private void addMockBeans(Map<String, ?> beans) {
 		given(this.beanFactory.getBeansOfType(WebServerFactoryCustomizer.class, false, false))
 				.willReturn((Map<String, WebServerFactoryCustomizer>) beans);

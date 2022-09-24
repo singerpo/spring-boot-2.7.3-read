@@ -92,7 +92,8 @@ public class SonatypeService {
 	 * Publishes the release by creating a staging repository and deploying to it the
 	 * artifacts at the given {@code artifactsRoot}. The repository is then closed and,
 	 * upon successfully closure, it is released.
-	 * @param releaseInfo the release information
+	 *
+	 * @param releaseInfo   the release information
 	 * @param artifactsRoot the root directory of the artifacts to stage
 	 */
 	public void publish(ReleaseInfo releaseInfo, Path artifactsRoot) {
@@ -121,8 +122,7 @@ public class SonatypeService {
 				logger.info("Already published to Sonatype.");
 				return true;
 			}
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 
 		}
 		return false;
@@ -144,18 +144,14 @@ public class SonatypeService {
 			CompletableFuture.allOf(artifacts.stream()
 					.map((artifact) -> CompletableFuture.runAsync(() -> deploy(artifact, repositoryId), executor))
 					.toArray(CompletableFuture[]::new)).get(60, TimeUnit.MINUTES);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 			throw new RuntimeException("Interrupted during artifact deploy");
-		}
-		catch (ExecutionException ex) {
+		} catch (ExecutionException ex) {
 			throw new RuntimeException("Deploy failed", ex);
-		}
-		catch (TimeoutException ex) {
+		} catch (TimeoutException ex) {
 			throw new RuntimeException("Deploy timed out", ex);
-		}
-		finally {
+		} finally {
 			executor.shutdown();
 		}
 	}
@@ -166,8 +162,7 @@ public class SonatypeService {
 					NEXUS_STAGING_PATH + "deployByRepositoryId/" + repositoryId + "/" + deployableArtifact.getPath(),
 					deployableArtifact.getResource());
 			logger.info("Deloyed {}", deployableArtifact.getPath());
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 			logger.error("Failed to deploy {}. Error response: {}", deployableArtifact.getPath(),
 					ex.getResponseBodyAsString());
 			throw ex;
@@ -192,8 +187,7 @@ public class SonatypeService {
 			}
 			try {
 				Thread.sleep(this.pollingInterval.toMillis());
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 				throw new RuntimeException("Interrupted while waiting for staging repository to close", ex);
 			}
@@ -213,8 +207,7 @@ public class SonatypeService {
 				logger.error("Close failed for unknown reasons");
 			}
 			logger.error("Close failed:\n{}", Strings.join(failureMessages, '\n'));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.error("Failed to determine causes of close failure", ex);
 		}
 	}
@@ -280,7 +273,7 @@ public class SonatypeService {
 
 			@JsonCreator
 			public Event(@JsonProperty("name") String name, @JsonProperty("properties") List<Property> properties,
-					@JsonProperty("severity") int severity) {
+						 @JsonProperty("severity") int severity) {
 				this.properties = properties;
 				this.severity = severity;
 			}

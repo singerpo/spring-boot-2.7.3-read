@@ -104,6 +104,7 @@ public class ApplicationPidFileWriter implements ApplicationListener<SpringAppli
 
 	/**
 	 * Create a new {@link ApplicationPidFileWriter} instance with a specified filename.
+	 *
 	 * @param filename the name of file containing pid
 	 */
 	public ApplicationPidFileWriter(String filename) {
@@ -112,6 +113,7 @@ public class ApplicationPidFileWriter implements ApplicationListener<SpringAppli
 
 	/**
 	 * Create a new {@link ApplicationPidFileWriter} instance with a specified file.
+	 *
 	 * @param file the file containing pid
 	 */
 	public ApplicationPidFileWriter(File file) {
@@ -125,6 +127,7 @@ public class ApplicationPidFileWriter implements ApplicationListener<SpringAppli
 	 * {@link org.springframework.boot.context.event.ApplicationStartingEvent} to trigger
 	 * the write, you will not be able to specify the PID filename in the Spring
 	 * {@link Environment}.
+	 *
 	 * @param triggerEventType the trigger event type
 	 */
 	public void setTriggerEventType(Class<? extends SpringApplicationEvent> triggerEventType) {
@@ -137,8 +140,7 @@ public class ApplicationPidFileWriter implements ApplicationListener<SpringAppli
 		if (this.triggerEventType.isInstance(event) && created.compareAndSet(false, true)) {
 			try {
 				writePidFile(event);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				String message = String.format("Cannot create pid file %s", this.file);
 				if (failOnWriteError(event)) {
 					throw new IllegalStateException(message, ex);
@@ -244,7 +246,7 @@ public class ApplicationPidFileWriter implements ApplicationListener<SpringAppli
 		private final String[] properties;
 
 		SystemProperty(String name) {
-			this.properties = new String[] { name.toUpperCase(Locale.ENGLISH), name.toLowerCase(Locale.ENGLISH) };
+			this.properties = new String[]{name.toUpperCase(Locale.ENGLISH), name.toLowerCase(Locale.ENGLISH)};
 		}
 
 		@Override

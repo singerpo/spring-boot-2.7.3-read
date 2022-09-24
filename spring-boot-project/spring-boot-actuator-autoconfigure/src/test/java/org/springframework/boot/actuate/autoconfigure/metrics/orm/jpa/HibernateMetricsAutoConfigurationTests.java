@@ -90,45 +90,45 @@ class HibernateMetricsAutoConfigurationTests {
 	void entityManagerFactoryInstrumentationCanBeDisabled() {
 		this.contextRunner.withPropertyValues("management.metrics.enable.hibernate=false",
 				"spring.jpa.properties.hibernate.generate_statistics:true").run((context) -> {
-					context.getBean(EntityManagerFactory.class).unwrap(SessionFactory.class);
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("hibernate.statements").meter()).isNull();
-				});
+			context.getBean(EntityManagerFactory.class).unwrap(SessionFactory.class);
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("hibernate.statements").meter()).isNull();
+		});
 	}
 
 	@Test
 	void allEntityManagerFactoriesCanBeInstrumented() {
 		this.contextRunner.withPropertyValues("spring.jpa.properties.hibernate.generate_statistics:true")
 				.withUserConfiguration(TwoEntityManagerFactoriesConfiguration.class).run((context) -> {
-					context.getBean("firstEntityManagerFactory", EntityManagerFactory.class)
-							.unwrap(SessionFactory.class);
-					context.getBean("secondOne", EntityManagerFactory.class).unwrap(SessionFactory.class);
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					registry.get("hibernate.statements").tags("entityManagerFactory", "first").meter();
-					registry.get("hibernate.statements").tags("entityManagerFactory", "secondOne").meter();
-				});
+			context.getBean("firstEntityManagerFactory", EntityManagerFactory.class)
+					.unwrap(SessionFactory.class);
+			context.getBean("secondOne", EntityManagerFactory.class).unwrap(SessionFactory.class);
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			registry.get("hibernate.statements").tags("entityManagerFactory", "first").meter();
+			registry.get("hibernate.statements").tags("entityManagerFactory", "secondOne").meter();
+		});
 	}
 
 	@Test
 	void entityManagerFactoryInstrumentationIsDisabledIfNotHibernateSessionFactory() {
 		this.contextRunner.withPropertyValues("spring.jpa.properties.hibernate.generate_statistics:true")
 				.withUserConfiguration(NonHibernateEntityManagerFactoryConfiguration.class).run((context) -> {
-					// ensure EntityManagerFactory is not a Hibernate SessionFactory
-					assertThatThrownBy(() -> context.getBean(EntityManagerFactory.class).unwrap(SessionFactory.class))
-							.isInstanceOf(PersistenceException.class);
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("hibernate.statements").meter()).isNull();
-				});
+			// ensure EntityManagerFactory is not a Hibernate SessionFactory
+			assertThatThrownBy(() -> context.getBean(EntityManagerFactory.class).unwrap(SessionFactory.class))
+					.isInstanceOf(PersistenceException.class);
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("hibernate.statements").meter()).isNull();
+		});
 	}
 
 	@Test
 	void entityManagerFactoryInstrumentationIsDisabledIfHibernateIsNotAvailable() {
 		this.contextRunner.withClassLoader(new FilteredClassLoader(SessionFactory.class))
 				.withUserConfiguration(NonHibernateEntityManagerFactoryConfiguration.class).run((context) -> {
-					assertThat(context).doesNotHaveBean(HibernateMetricsAutoConfiguration.class);
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("hibernate.statements").meter()).isNull();
-				});
+			assertThat(context).doesNotHaveBean(HibernateMetricsAutoConfiguration.class);
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("hibernate.statements").meter()).isNull();
+		});
 	}
 
 	@Test
@@ -168,7 +168,7 @@ class HibernateMetricsAutoConfigurationTests {
 	@Configuration(proxyBeanMethods = false)
 	static class TwoEntityManagerFactoriesConfiguration {
 
-		private static final Class<?>[] PACKAGE_CLASSES = new Class<?>[] { MyEntity.class };
+		private static final Class<?>[] PACKAGE_CLASSES = new Class<?>[]{MyEntity.class};
 
 		@Primary
 		@Bean

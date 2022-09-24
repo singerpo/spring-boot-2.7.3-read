@@ -102,14 +102,14 @@ class SettingsXmlRepositorySystemSessionAutoConfigurationTests {
 	}
 
 	private void assertMirrorSelectorConfiguration(DefaultRepositorySystemSession session,
-			RemoteRepository repository) {
+												   RemoteRepository repository) {
 		RemoteRepository mirror = session.getMirrorSelector().getMirror(repository);
 		assertThat(mirror).as("Mirror configured for repository " + repository.getId()).isNotNull();
 		assertThat(mirror.getHost()).isEqualTo("maven.example.com");
 	}
 
 	private void assertAuthenticationSelectorConfiguration(DefaultRepositorySystemSession session,
-			RemoteRepository repository) {
+														   RemoteRepository repository) {
 		Authentication authentication = session.getAuthenticationSelector().getAuthentication(repository);
 		repository = new RemoteRepository.Builder(repository).setAuthentication(authentication).build();
 		AuthenticationContext authenticationContext = AuthenticationContext.forRepository(session, repository);

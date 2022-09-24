@@ -57,12 +57,10 @@ public class InspectedContent implements Content {
 	public void writeTo(OutputStream outputStream) throws IOException {
 		if (this.content instanceof byte[]) {
 			FileCopyUtils.copy((byte[]) this.content, outputStream);
-		}
-		else if (this.content instanceof File) {
+		} else if (this.content instanceof File) {
 			InputStream inputStream = new FileInputStream((File) this.content);
 			FileCopyUtils.copy(inputStream, outputStream);
-		}
-		else {
+		} else {
 			throw new IllegalStateException("Unknown content type");
 		}
 	}
@@ -70,8 +68,9 @@ public class InspectedContent implements Content {
 	/**
 	 * Factory method to create an {@link InspectedContent} instance from a source input
 	 * stream.
+	 *
 	 * @param inputStream the content input stream
-	 * @param inspectors any inspectors to apply
+	 * @param inspectors  any inspectors to apply
 	 * @return a new inspected content instance
 	 * @throws IOException on IO error
 	 */
@@ -82,7 +81,8 @@ public class InspectedContent implements Content {
 
 	/**
 	 * Factory method to create an {@link InspectedContent} instance from source content.
-	 * @param content the content
+	 *
+	 * @param content    the content
 	 * @param inspectors any inspectors to apply
 	 * @return a new inspected content instance
 	 * @throws IOException on IO error
@@ -95,7 +95,8 @@ public class InspectedContent implements Content {
 	/**
 	 * Factory method to create an {@link InspectedContent} instance from a source write
 	 * method.
-	 * @param writer a consumer representing the write method
+	 *
+	 * @param writer     a consumer representing the write method
 	 * @param inspectors any inspectors to apply
 	 * @return a new inspected content instance
 	 * @throws IOException on IO error
@@ -105,8 +106,7 @@ public class InspectedContent implements Content {
 		InspectingOutputStream outputStream = new InspectingOutputStream(inspectors);
 		try {
 			writer.accept(outputStream);
-		}
-		finally {
+		} finally {
 			outputStream.close();
 		}
 		return new InspectedContent(outputStream.getSize(), outputStream.getContent());
@@ -119,9 +119,10 @@ public class InspectedContent implements Content {
 
 		/**
 		 * Update inspected information based on the provided bytes.
-		 * @param input the array of bytes.
+		 *
+		 * @param input  the array of bytes.
 		 * @param offset the offset to start from in the array of bytes.
-		 * @param len the number of bytes to use, starting at {@code offset}.
+		 * @param len    the number of bytes to use, starting at {@code offset}.
 		 * @throws IOException on IO error
 		 */
 		void update(byte[] input, int offset, int len) throws IOException;

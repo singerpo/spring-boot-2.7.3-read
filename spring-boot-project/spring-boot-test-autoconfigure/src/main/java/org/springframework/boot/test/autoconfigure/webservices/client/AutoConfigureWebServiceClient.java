@@ -47,6 +47,7 @@ public @interface AutoConfigureWebServiceClient {
 	 * If a {@link WebServiceTemplate} bean should be registered. Defaults to
 	 * {@code false} with the assumption that the {@link WebServiceTemplateBuilder} will
 	 * be used.
+	 *
 	 * @return if a {@link WebServiceTemplate} bean should be added.
 	 */
 	boolean registerWebServiceTemplate() default false;

@@ -130,7 +130,7 @@ class RedisReactiveHealthIndicatorTests {
 	}
 
 	private RedisReactiveHealthIndicator createHealthIndicator(ReactiveRedisConnection redisConnection,
-			ReactiveServerCommands serverCommands) {
+															   ReactiveServerCommands serverCommands) {
 		ReactiveRedisConnectionFactory redisConnectionFactory = mock(ReactiveRedisConnectionFactory.class);
 		given(redisConnectionFactory.getReactiveConnection()).willReturn(redisConnection);
 		given(redisConnection.serverCommands()).willReturn(serverCommands);

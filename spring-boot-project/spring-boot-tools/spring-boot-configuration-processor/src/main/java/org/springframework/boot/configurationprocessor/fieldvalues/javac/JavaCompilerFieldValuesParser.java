@@ -217,7 +217,7 @@ public class JavaCompilerFieldValuesParser implements FieldValuesParser {
 		}
 
 		private Object getFactoryValue(ExpressionTree expression, Object factoryValue, String prefix,
-				Map<String, String> suffixMapping) {
+									   Map<String, String> suffixMapping) {
 			Object instance = expression.getInstance();
 			if (instance != null && instance.toString().startsWith(prefix)) {
 				String type = instance.toString();

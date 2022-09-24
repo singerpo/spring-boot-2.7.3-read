@@ -49,6 +49,7 @@ class OriginTrackedPropertiesLoader {
 
 	/**
 	 * Create a new {@link OriginTrackedPropertiesLoader} instance.
+	 *
 	 * @param resource the resource of the {@code .properties} data
 	 */
 	OriginTrackedPropertiesLoader(Resource resource) {
@@ -58,6 +59,7 @@ class OriginTrackedPropertiesLoader {
 
 	/**
 	 * Load {@code .properties} data and return a list of documents.
+	 *
 	 * @return the loaded properties
 	 * @throws IOException on read error
 	 */
@@ -68,6 +70,7 @@ class OriginTrackedPropertiesLoader {
 	/**
 	 * Load {@code .properties} data and return a map of {@code String} ->
 	 * {@link OriginTrackedValue}.
+	 *
 	 * @param expandLists if list {@code name[]=a,b,c} shortcuts should be expanded
 	 * @return the loaded properties
 	 * @throws IOException on read error
@@ -84,16 +87,14 @@ class OriginTrackedPropertiesLoader {
 							documents.add(document);
 						}
 						document = new Document();
-					}
-					else {
+					} else {
 						if (document.isEmpty() && !documents.isEmpty()) {
 							document = documents.remove(documents.size() - 1);
 						}
 						reader.setLastLineComment(true);
 						reader.skipComment();
 					}
-				}
-				else {
+				} else {
 					reader.setLastLineComment(false);
 					loadKeyAndValue(expandLists, document, reader, buffer);
 				}
@@ -120,8 +121,7 @@ class OriginTrackedPropertiesLoader {
 				}
 			}
 			while (!reader.isEndOfLine());
-		}
-		else {
+		} else {
 			OriginTrackedValue value = loadValue(buffer, reader, false);
 			document.put(key, value);
 		}
@@ -186,7 +186,7 @@ class OriginTrackedPropertiesLoader {
 	 */
 	private static class CharacterReader implements Closeable {
 
-		private static final String[] ESCAPES = { "trnf", "\t\r\n\f" };
+		private static final String[] ESCAPES = {"trnf", "\t\r\n\f"};
 
 		private final LineNumberReader reader;
 
@@ -227,8 +227,7 @@ class OriginTrackedPropertiesLoader {
 			if (this.character == '\\') {
 				this.escaped = true;
 				readEscaped();
-			}
-			else if (this.character == '\n') {
+			} else if (this.character == '\n') {
 				this.columnNumber = -1;
 			}
 			return !isEndOfFile();
@@ -261,12 +260,10 @@ class OriginTrackedPropertiesLoader {
 			int escapeIndex = ESCAPES[0].indexOf(this.character);
 			if (escapeIndex != -1) {
 				this.character = ESCAPES[1].charAt(escapeIndex);
-			}
-			else if (this.character == '\n') {
+			} else if (this.character == '\n') {
 				this.columnNumber = -1;
 				read(true);
-			}
-			else if (this.character == 'u') {
+			} else if (this.character == 'u') {
 				readUnicode();
 			}
 		}
@@ -277,14 +274,11 @@ class OriginTrackedPropertiesLoader {
 				int digit = this.reader.read();
 				if (digit >= '0' && digit <= '9') {
 					this.character = (this.character << 4) + digit - '0';
-				}
-				else if (digit >= 'a' && digit <= 'f') {
+				} else if (digit >= 'a' && digit <= 'f') {
 					this.character = (this.character << 4) + digit - 'a' + 10;
-				}
-				else if (digit >= 'A' && digit <= 'F') {
+				} else if (digit >= 'A' && digit <= 'F') {
 					this.character = (this.character << 4) + digit - 'A' + 10;
-				}
-				else {
+				} else {
 					throw new IllegalStateException("Malformed \\uxxxx encoding.");
 				}
 			}

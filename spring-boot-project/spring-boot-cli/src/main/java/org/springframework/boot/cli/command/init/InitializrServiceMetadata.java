@@ -57,6 +57,7 @@ class InitializrServiceMetadata {
 
 	/**
 	 * Creates a new instance using the specified root {@link JSONObject}.
+	 *
 	 * @param root the root JSONObject
 	 * @throws JSONException on JSON parsing failure
 	 */
@@ -76,6 +77,7 @@ class InitializrServiceMetadata {
 
 	/**
 	 * Return the dependencies supported by the service.
+	 *
 	 * @return the supported dependencies
 	 */
 	Collection<Dependency> getDependencies() {
@@ -85,6 +87,7 @@ class InitializrServiceMetadata {
 	/**
 	 * Return the dependency with the specified id or {@code null} if no such dependency
 	 * exists.
+	 *
 	 * @param id the id
 	 * @return the dependency or {@code null}
 	 */
@@ -94,6 +97,7 @@ class InitializrServiceMetadata {
 
 	/**
 	 * Return the project types supported by the service.
+	 *
 	 * @return the supported project types
 	 */
 	Map<String, ProjectType> getProjectTypes() {
@@ -103,6 +107,7 @@ class InitializrServiceMetadata {
 	/**
 	 * Return the default type to use or {@code null} if the metadata does not define any
 	 * default.
+	 *
 	 * @return the default project type or {@code null}
 	 */
 	ProjectType getDefaultType() {
@@ -118,6 +123,7 @@ class InitializrServiceMetadata {
 
 	/**
 	 * Returns the defaults applicable to the service.
+	 *
 	 * @return the defaults of the service
 	 */
 	Map<String, String> getDefaults() {
@@ -209,7 +215,7 @@ class InitializrServiceMetadata {
 
 	private Map<String, String> parseStringItems(JSONObject json) throws JSONException {
 		Map<String, String> result = new HashMap<>();
-		for (Iterator<?> iterator = json.keys(); iterator.hasNext();) {
+		for (Iterator<?> iterator = json.keys(); iterator.hasNext(); ) {
 			String key = (String) iterator.next();
 			Object value = json.get(key);
 			if (value instanceof String) {

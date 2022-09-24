@@ -33,8 +33,8 @@ import org.springframework.data.redis.repository.support.RedisRepositoryFactoryB
  *
  * @author Eddú Meléndez
  * @author Stephane Nicoll
- * @since 1.4.0
  * @see EnableRedisRepositories
+ * @since 1.4.0
  */
 @AutoConfiguration(after = RedisAutoConfiguration.class)
 @ConditionalOnClass(EnableRedisRepositories.class)

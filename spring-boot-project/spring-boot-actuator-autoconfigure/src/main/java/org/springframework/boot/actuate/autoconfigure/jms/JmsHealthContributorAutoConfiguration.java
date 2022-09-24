@@ -39,7 +39,7 @@ import org.springframework.context.annotation.Bean;
  * @author Stephane Nicoll
  * @since 2.0.0
  */
-@AutoConfiguration(after = { ActiveMQAutoConfiguration.class, ArtemisAutoConfiguration.class })
+@AutoConfiguration(after = {ActiveMQAutoConfiguration.class, ArtemisAutoConfiguration.class})
 @ConditionalOnClass(ConnectionFactory.class)
 @ConditionalOnBean(ConnectionFactory.class)
 @ConditionalOnEnabledHealthIndicator("jms")
@@ -47,7 +47,7 @@ public class JmsHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<JmsHealthIndicator, ConnectionFactory> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "jmsHealthIndicator", "jmsHealthContributor" })
+	@ConditionalOnMissingBean(name = {"jmsHealthIndicator", "jmsHealthContributor"})
 	public HealthContributor jmsHealthContributor(Map<String, ConnectionFactory> connectionFactories) {
 		return createContributor(connectionFactories);
 	}

@@ -31,7 +31,7 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 public @interface Delimiter {
 
 	/**
@@ -43,6 +43,7 @@ public @interface Delimiter {
 	/**
 	 * The delimiter to use or {@code NONE} if the entire contents should be treated as a
 	 * single element.
+	 *
 	 * @return the delimiter
 	 */
 	String value();

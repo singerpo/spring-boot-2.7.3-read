@@ -179,8 +179,7 @@ class WebTestClientContextCustomizer implements ContextCustomizer {
 			WebApplicationType webApplicationType = deduceFromApplicationContext(this.applicationContext.getClass());
 			if (webApplicationType == WebApplicationType.REACTIVE) {
 				return this.applicationContext.getEnvironment().getProperty("spring.webflux.base-path");
-			}
-			else if (webApplicationType == WebApplicationType.SERVLET) {
+			} else if (webApplicationType == WebApplicationType.SERVLET) {
 				return ((WebApplicationContext) this.applicationContext).getServletContext().getContextPath();
 			}
 			return null;
@@ -199,8 +198,7 @@ class WebTestClientContextCustomizer implements ContextCustomizer {
 		private static boolean isAssignable(String target, Class<?> type) {
 			try {
 				return ClassUtils.resolveClassName(target, null).isAssignableFrom(type);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				return false;
 			}
 		}
@@ -210,8 +208,7 @@ class WebTestClientContextCustomizer implements ContextCustomizer {
 				AbstractReactiveWebServerFactory webServerFactory = context
 						.getBean(AbstractReactiveWebServerFactory.class);
 				return webServerFactory.getSsl() != null && webServerFactory.getSsl().isEnabled();
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return false;
 			}
 		}

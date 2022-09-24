@@ -121,7 +121,7 @@ class JarFileTests {
 		assertThat(entries.nextElement().getName()).isEqualTo("multi-release.jar");
 		assertThat(entries.hasMoreElements()).isFalse();
 		URL jarUrl = new URL("jar:" + this.rootJarFile.toURI() + "!/");
-		URLClassLoader urlClassLoader = new URLClassLoader(new URL[] { jarUrl });
+		URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{jarUrl});
 		assertThat(urlClassLoader.getResource("special/\u00EB.dat")).isNotNull();
 		assertThat(urlClassLoader.getResource("d/9.dat")).isNotNull();
 		urlClassLoader.close();
@@ -167,7 +167,7 @@ class JarFileTests {
 
 	@Test
 	void getSpecialResourceViaClassLoader() throws Exception {
-		URLClassLoader urlClassLoader = new URLClassLoader(new URL[] { this.jarFile.getUrl() });
+		URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{this.jarFile.getUrl()});
 		assertThat(urlClassLoader.getResource("special/\u00EB.dat")).isNotNull();
 		urlClassLoader.close();
 	}
@@ -495,12 +495,10 @@ class JarFileTests {
 			JarFile.registerUrlProtocolHandler();
 			String protocolHandler = System.getProperty(PROTOCOL_HANDLER);
 			assertThat(protocolHandler).isEqualTo(HANDLERS_PACKAGE);
-		}
-		finally {
+		} finally {
 			if (original == null) {
 				System.clearProperty(PROTOCOL_HANDLER);
-			}
-			else {
+			} else {
 				System.setProperty(PROTOCOL_HANDLER, original);
 			}
 		}
@@ -514,12 +512,10 @@ class JarFileTests {
 			JarFile.registerUrlProtocolHandler();
 			String protocolHandler = System.getProperty(PROTOCOL_HANDLER);
 			assertThat(protocolHandler).isEqualTo("com.example|" + HANDLERS_PACKAGE);
-		}
-		finally {
+		} finally {
 			if (original == null) {
 				System.clearProperty(PROTOCOL_HANDLER);
-			}
-			else {
+			} else {
 				System.setProperty(PROTOCOL_HANDLER, original);
 			}
 		}
@@ -547,8 +543,7 @@ class JarFileTests {
 						.isThrownBy(new URL(context, "jar:" + this.rootJarFile.toURI() + "!/no.dat")
 								.openConnection()::getInputStream);
 			}
-		}
-		finally {
+		} finally {
 			JarURLConnection.setUseFastExceptions(false);
 		}
 	}
@@ -674,7 +669,7 @@ class JarFileTests {
 			JarEntry entry = new JarEntry("1.dat");
 			entry.setLastModifiedTime(FileTime.from(Instant.EPOCH));
 			jarOutputStream.putNextEntry(entry);
-			jarOutputStream.write(new byte[] { (byte) 1 });
+			jarOutputStream.write(new byte[]{(byte) 1});
 			jarOutputStream.closeEntry();
 		}
 
@@ -736,8 +731,7 @@ class JarFileTests {
 		try {
 			Object runtimeVersion = Runtime.class.getMethod("version").invoke(null);
 			return (int) runtimeVersion.getClass().getMethod("major").invoke(runtimeVersion);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return 8;
 		}
 	}

@@ -7,7 +7,7 @@
 <body>
 <form action="" method="post">
     <label th:text="#{login.username}">Username</label>
-    <input type="text"  name="username"  placeholder="Username" th:placeholder="#{login.username}" th:value="${userName}">
+    <input type="text" name="username" placeholder="Username" th:placeholder="#{login.username}" th:value="${userName}">
     <label th:text="#{login.password}">Password</label>
     <input type="password" name="password" placeholder="Password" th:placeholder="#{login.password}">
     <br> <br>
@@ -17,7 +17,7 @@
         </label>
     </div>
     <br>
-    <button  type="submit" th:text="#{login.sign}">Sign in</button>
+    <button type="submit" th:text="#{login.sign}">Sign in</button>
     <br> <br>
     <a th:href="@{/locale(language='zh_CN')}">中文</a>
     <a th:href="@{/locale(language='en_US')}">English</a>

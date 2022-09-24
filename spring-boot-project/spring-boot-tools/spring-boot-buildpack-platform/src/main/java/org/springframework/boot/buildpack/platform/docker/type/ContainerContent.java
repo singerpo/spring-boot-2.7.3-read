@@ -29,12 +29,14 @@ public interface ContainerContent {
 
 	/**
 	 * Return the actual content to be added.
+	 *
 	 * @return the content
 	 */
 	TarArchive getArchive();
 
 	/**
 	 * Return the destination path where the content should be added.
+	 *
 	 * @return the destination path
 	 */
 	String getDestinationPath();
@@ -42,6 +44,7 @@ public interface ContainerContent {
 	/**
 	 * Factory method to create a new {@link ContainerContent} instance written to the
 	 * root of the container.
+	 *
 	 * @param archive the archive to add
 	 * @return a new {@link ContainerContent} instance
 	 */
@@ -51,7 +54,8 @@ public interface ContainerContent {
 
 	/**
 	 * Factory method to create a new {@link ContainerContent} instance.
-	 * @param archive the archive to add
+	 *
+	 * @param archive         the archive to add
 	 * @param destinationPath the destination path within the container
 	 * @return a new {@link ContainerContent} instance
 	 */

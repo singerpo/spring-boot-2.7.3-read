@@ -49,7 +49,7 @@ public class LocalApplicationLauncher extends AbstractApplicationLauncher {
 		List<String> args = new ArrayList<>(Arrays.asList("com.example.DevToolsTestApplication",
 				serverPortFile.getAbsolutePath(), "--server.port=0"));
 		args.addAll(Arrays.asList(additionalArgs));
-		LaunchedJvm jvm = jvmLauncher.launch("local", createApplicationClassPath(), args.toArray(new String[] {}));
+		LaunchedJvm jvm = jvmLauncher.launch("local", createApplicationClassPath(), args.toArray(new String[]{}));
 		return new LaunchedApplication(getDirectories().getAppDirectory(), jvm.getStandardOut(), jvm.getStandardError(),
 				jvm.getProcess(), null, null);
 	}

@@ -115,8 +115,7 @@ public class JarFileArchive implements Archive {
 		try {
 			JarFile jarFile = this.jarFile.getNestedJarFile(jarEntry);
 			return new JarFileArchive(jarFile);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Failed to get nested archive for entry " + entry.getName(), ex);
 		}
 	}
@@ -149,8 +148,7 @@ public class JarFileArchive implements Archive {
 			try {
 				createDirectory(unpackDirectory);
 				return unpackDirectory;
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		}
 		throw new IllegalStateException("Failed to create unpack directory in directory '" + parent + "'");
@@ -160,8 +158,8 @@ public class JarFileArchive implements Archive {
 		createFile(path);
 		path.toFile().deleteOnExit();
 		try (InputStream inputStream = this.jarFile.getInputStream(entry);
-				OutputStream outputStream = Files.newOutputStream(path, StandardOpenOption.WRITE,
-						StandardOpenOption.TRUNCATE_EXISTING)) {
+			 OutputStream outputStream = Files.newOutputStream(path, StandardOpenOption.WRITE,
+					 StandardOpenOption.TRUNCATE_EXISTING)) {
 			byte[] buffer = new byte[BUFFER_SIZE];
 			int bytesRead;
 			while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -183,15 +181,14 @@ public class JarFileArchive implements Archive {
 		if (!fileSystem.supportedFileAttributeViews().contains("posix")) {
 			return NO_FILE_ATTRIBUTES;
 		}
-		return new FileAttribute<?>[] { PosixFilePermissions.asFileAttribute(ownerReadWrite) };
+		return new FileAttribute<?>[]{PosixFilePermissions.asFileAttribute(ownerReadWrite)};
 	}
 
 	@Override
 	public String toString() {
 		try {
 			return getUrl().toString();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return "jar archive";
 		}
 	}
@@ -272,8 +269,7 @@ public class JarFileArchive implements Archive {
 		protected Archive adapt(Entry entry) {
 			try {
 				return getNestedArchive(entry);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

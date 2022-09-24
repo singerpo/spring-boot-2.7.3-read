@@ -33,6 +33,7 @@ public interface GraphQlSourceBuilderCustomizer {
 	 * Customize the
 	 * {@link org.springframework.graphql.execution.GraphQlSource.SchemaResourceBuilder
 	 * Builder} instance.
+	 *
 	 * @param builder builder the builder to customize
 	 */
 	void customize(GraphQlSource.SchemaResourceBuilder builder);

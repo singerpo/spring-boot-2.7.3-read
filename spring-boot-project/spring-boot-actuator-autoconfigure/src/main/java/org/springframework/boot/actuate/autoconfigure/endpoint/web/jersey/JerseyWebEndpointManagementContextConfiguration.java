@@ -79,8 +79,8 @@ class JerseyWebEndpointManagementContextConfiguration {
 
 	@Bean
 	JerseyWebEndpointsResourcesRegistrar jerseyWebEndpointsResourcesRegistrar(Environment environment,
-			WebEndpointsSupplier webEndpointsSupplier, ServletEndpointsSupplier servletEndpointsSupplier,
-			EndpointMediaTypes endpointMediaTypes, WebEndpointProperties webEndpointProperties) {
+																			  WebEndpointsSupplier webEndpointsSupplier, ServletEndpointsSupplier servletEndpointsSupplier,
+																			  EndpointMediaTypes endpointMediaTypes, WebEndpointProperties webEndpointProperties) {
 		String basePath = webEndpointProperties.getBasePath();
 		boolean shouldRegisterLinks = shouldRegisterLinksMapping(webEndpointProperties, environment, basePath);
 		return new JerseyWebEndpointsResourcesRegistrar(webEndpointsSupplier, servletEndpointsSupplier,
@@ -100,7 +100,7 @@ class JerseyWebEndpointManagementContextConfiguration {
 	}
 
 	private boolean shouldRegisterLinksMapping(WebEndpointProperties properties, Environment environment,
-			String basePath) {
+											   String basePath) {
 		return properties.getDiscovery().isEnabled() && (StringUtils.hasText(basePath)
 				|| ManagementPortType.get(environment).equals(ManagementPortType.DIFFERENT));
 	}
@@ -121,8 +121,8 @@ class JerseyWebEndpointManagementContextConfiguration {
 		private final boolean shouldRegisterLinks;
 
 		JerseyWebEndpointsResourcesRegistrar(WebEndpointsSupplier webEndpointsSupplier,
-				ServletEndpointsSupplier servletEndpointsSupplier, EndpointMediaTypes endpointMediaTypes,
-				String basePath, boolean shouldRegisterLinks) {
+											 ServletEndpointsSupplier servletEndpointsSupplier, EndpointMediaTypes endpointMediaTypes,
+											 String basePath, boolean shouldRegisterLinks) {
 			this.webEndpointsSupplier = webEndpointsSupplier;
 			this.servletEndpointsSupplier = servletEndpointsSupplier;
 			this.mediaTypes = endpointMediaTypes;
@@ -146,7 +146,7 @@ class JerseyWebEndpointManagementContextConfiguration {
 		}
 
 		private EndpointLinksResolver getLinksResolver(Collection<ExposableWebEndpoint> webEndpoints,
-				Collection<ExposableServletEndpoint> servletEndpoints) {
+													   Collection<ExposableServletEndpoint> servletEndpoints) {
 			List<ExposableEndpoint<?>> endpoints = new ArrayList<>(webEndpoints.size() + servletEndpoints.size());
 			endpoints.addAll(webEndpoints);
 			endpoints.addAll(servletEndpoints);
@@ -167,7 +167,7 @@ class JerseyWebEndpointManagementContextConfiguration {
 		private final HealthEndpointGroups groups;
 
 		JerseyAdditionalHealthEndpointPathsManagementResourcesRegistrar(ExposableWebEndpoint endpoint,
-				HealthEndpointGroups groups) {
+																		HealthEndpointGroups groups) {
 			this.endpoint = endpoint;
 			this.groups = groups;
 		}

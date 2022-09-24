@@ -24,8 +24,8 @@ import java.util.stream.Stream;
  *
  * @author Madhura Bhave
  * @author Phillip Webb
- * @since 2.3.0
  * @see Layer
+ * @since 2.3.0
  */
 public interface Layers extends Iterable<Layer> {
 
@@ -37,6 +37,7 @@ public interface Layers extends Iterable<Layer> {
 	/**
 	 * Return the jar layers in the order that they should be added (starting with the
 	 * least frequently changed layer).
+	 *
 	 * @return the layers iterator
 	 */
 	@Override
@@ -45,20 +46,23 @@ public interface Layers extends Iterable<Layer> {
 	/**
 	 * Return a stream of the jar layers in the order that they should be added (starting
 	 * with the least frequently changed layer).
+	 *
 	 * @return the layers stream
 	 */
 	Stream<Layer> stream();
 
 	/**
 	 * Return the layer that contains the given resource name.
+	 *
 	 * @param applicationResource the name of an application resource (for example a
-	 * {@code .class} file).
+	 *                            {@code .class} file).
 	 * @return the layer that contains the resource (must never be {@code null})
 	 */
 	Layer getLayer(String applicationResource);
 
 	/**
 	 * Return the layer that contains the given library.
+	 *
 	 * @param library the library to consider
 	 * @return the layer that contains the resource (must never be {@code null})
 	 */

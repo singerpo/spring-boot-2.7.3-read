@@ -28,7 +28,7 @@ import java.util.function.Function;
  */
 public class HealthContributorNameFactory implements Function<String, String> {
 
-	private static final String[] SUFFIXES = { "healthindicator", "healthcontributor" };
+	private static final String[] SUFFIXES = {"healthindicator", "healthcontributor"};
 
 	/**
 	 * A shared singleton {@link HealthContributorNameFactory} instance.

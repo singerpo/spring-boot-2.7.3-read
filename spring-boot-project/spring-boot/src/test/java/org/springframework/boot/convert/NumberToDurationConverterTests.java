@@ -56,7 +56,7 @@ class NumberToDurationConverterTests {
 		return conversionService.convert(source, Duration.class);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private Duration convert(ConversionService conversionService, Integer source, ChronoUnit defaultUnit) {
 		TypeDescriptor targetType = mock(TypeDescriptor.class);
 		if (defaultUnit != null) {

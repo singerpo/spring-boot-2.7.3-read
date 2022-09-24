@@ -58,6 +58,7 @@ public class MessageInterpolatorFactory implements ObjectFactory<MessageInterpol
 	 * Creates a new {@link MessageInterpolatorFactory} that will produce a
 	 * {@link MessageInterpolator} that uses the given {@code messageSource} to resolve
 	 * any message parameters before final interpolation.
+	 *
 	 * @param messageSource message source to be used by the interpolator
 	 * @since 2.6.0
 	 */
@@ -77,8 +78,7 @@ public class MessageInterpolatorFactory implements ObjectFactory<MessageInterpol
 	private MessageInterpolator getMessageInterpolator() {
 		try {
 			return Validation.byDefaultProvider().configure().getDefaultMessageInterpolator();
-		}
-		catch (ValidationException ex) {
+		} catch (ValidationException ex) {
 			MessageInterpolator fallback = getFallback();
 			if (fallback != null) {
 				return fallback;
@@ -91,8 +91,7 @@ public class MessageInterpolatorFactory implements ObjectFactory<MessageInterpol
 		for (String fallback : FALLBACKS) {
 			try {
 				return getFallback(fallback);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Swallow and continue
 			}
 		}

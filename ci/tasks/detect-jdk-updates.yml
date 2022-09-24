@@ -1,7 +1,7 @@
 ---
 platform: linux
 inputs:
-- name: git-repo
+  - name: git-repo
 params:
   GITHUB_REPO:
   GITHUB_ORGANIZATION:

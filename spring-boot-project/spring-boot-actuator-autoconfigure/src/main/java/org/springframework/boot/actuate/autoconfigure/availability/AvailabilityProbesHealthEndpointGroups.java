@@ -64,7 +64,7 @@ class AvailabilityProbesHealthEndpointGroups implements HealthEndpointGroups {
 	}
 
 	private HealthEndpointGroup getOrCreateProbeGroup(boolean addAdditionalPath, String name, String path,
-			String members) {
+													  String members) {
 		HealthEndpointGroup group = this.groups.get(name);
 		if (group != null) {
 			return determineAdditionalPathForExistingGroup(addAdditionalPath, path, group);
@@ -75,7 +75,7 @@ class AvailabilityProbesHealthEndpointGroups implements HealthEndpointGroups {
 	}
 
 	private HealthEndpointGroup determineAdditionalPathForExistingGroup(boolean addAdditionalPath, String path,
-			HealthEndpointGroup group) {
+																		HealthEndpointGroup group) {
 		if (addAdditionalPath && group.getAdditionalPath() == null) {
 			AdditionalHealthEndpointPath additionalPath = AdditionalHealthEndpointPath.of(WebServerNamespace.SERVER,
 					path);

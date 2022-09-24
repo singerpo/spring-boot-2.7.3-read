@@ -32,8 +32,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  *
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 1.4.0
  * @see DataJpaTest
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

@@ -49,7 +49,7 @@ public class LdapAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public LdapContextSource ldapContextSource(LdapProperties properties, Environment environment,
-			ObjectProvider<DirContextAuthenticationStrategy> dirContextAuthenticationStrategy) {
+											   ObjectProvider<DirContextAuthenticationStrategy> dirContextAuthenticationStrategy) {
 		LdapContextSource source = new LdapContextSource();
 		dirContextAuthenticationStrategy.ifUnique(source::setAuthenticationStrategy);
 		PropertyMapper propertyMapper = PropertyMapper.get().alwaysApplyingWhenNonNull();

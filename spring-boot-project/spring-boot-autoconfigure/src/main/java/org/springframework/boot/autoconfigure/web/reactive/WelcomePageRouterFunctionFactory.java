@@ -46,7 +46,7 @@ final class WelcomePageRouterFunctionFactory {
 	private final boolean welcomePageTemplateExists;
 
 	WelcomePageRouterFunctionFactory(TemplateAvailabilityProviders templateAvailabilityProviders,
-			ApplicationContext applicationContext, String[] staticLocations, String staticPathPattern) {
+									 ApplicationContext applicationContext, String[] staticLocations, String staticPathPattern) {
 		this.staticPathPattern = staticPathPattern;
 		this.welcomePage = getWelcomePage(applicationContext, staticLocations);
 		this.welcomePageTemplateExists = welcomeTemplateExists(templateAvailabilityProviders, applicationContext);
@@ -64,14 +64,13 @@ final class WelcomePageRouterFunctionFactory {
 	private boolean isReadable(Resource resource) {
 		try {
 			return resource.exists() && (resource.getURL() != null);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}
 
 	private boolean welcomeTemplateExists(TemplateAvailabilityProviders templateAvailabilityProviders,
-			ApplicationContext applicationContext) {
+										  ApplicationContext applicationContext) {
 		return templateAvailabilityProviders.getProvider("index", applicationContext) != null;
 	}
 
@@ -79,8 +78,7 @@ final class WelcomePageRouterFunctionFactory {
 		if (this.welcomePage != null && "/**".equals(this.staticPathPattern)) {
 			return RouterFunctions.route(GET("/").and(accept(MediaType.TEXT_HTML)),
 					(req) -> ServerResponse.ok().contentType(MediaType.TEXT_HTML).bodyValue(this.welcomePage));
-		}
-		else if (this.welcomePageTemplateExists) {
+		} else if (this.welcomePageTemplateExists) {
 			return RouterFunctions.route(GET("/").and(accept(MediaType.TEXT_HTML)),
 					(req) -> ServerResponse.ok().render("index"));
 		}

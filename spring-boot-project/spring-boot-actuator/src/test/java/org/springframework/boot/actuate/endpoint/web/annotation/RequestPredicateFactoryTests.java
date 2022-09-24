@@ -78,7 +78,7 @@ class RequestPredicateFactoryTests {
 	static class MoreThanOneMatchAll {
 
 		void test(@Selector(match = Match.ALL_REMAINING) String[] one,
-				@Selector(match = Match.ALL_REMAINING) String[] two) {
+				  @Selector(match = Match.ALL_REMAINING) String[] two) {
 		}
 
 	}

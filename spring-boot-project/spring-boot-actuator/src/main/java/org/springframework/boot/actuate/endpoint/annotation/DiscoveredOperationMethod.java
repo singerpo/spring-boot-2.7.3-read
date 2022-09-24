@@ -39,7 +39,7 @@ public class DiscoveredOperationMethod extends OperationMethod {
 	private final List<String> producesMediaTypes;
 
 	public DiscoveredOperationMethod(Method method, OperationType operationType,
-			AnnotationAttributes annotationAttributes) {
+									 AnnotationAttributes annotationAttributes) {
 		super(method, operationType);
 		Assert.notNull(annotationAttributes, "AnnotationAttributes must not be null");
 		List<String> producesMediaTypes = new ArrayList<>();
@@ -64,8 +64,7 @@ public class DiscoveredOperationMethod extends OperationMethod {
 	private Class<?> getProducesFrom(AnnotationAttributes annotationAttributes) {
 		try {
 			return annotationAttributes.getClass("producesFrom");
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			return Producible.class;
 		}
 	}

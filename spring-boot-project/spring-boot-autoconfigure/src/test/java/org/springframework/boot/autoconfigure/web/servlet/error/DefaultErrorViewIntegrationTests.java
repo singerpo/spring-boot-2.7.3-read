@@ -52,7 +52,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Dave Syer
  * @author Scott Frederick
  */
-@SpringBootTest(properties = { "server.error.include-message=always" })
+@SpringBootTest(properties = {"server.error.include-message=always"})
 @DirtiesContext
 class DefaultErrorViewIntegrationTests {
 
@@ -106,9 +106,9 @@ class DefaultErrorViewIntegrationTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+	@Import({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

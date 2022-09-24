@@ -35,6 +35,7 @@ public class RSocketServerInitializedEvent extends ApplicationEvent {
 
 	/**
 	 * Access the {@link RSocketServer}.
+	 *
 	 * @return the embedded RSocket server
 	 */
 	public RSocketServer getServer() {
@@ -43,6 +44,7 @@ public class RSocketServerInitializedEvent extends ApplicationEvent {
 
 	/**
 	 * Access the source of the event (an {@link RSocketServer}).
+	 *
 	 * @return the embedded web server
 	 */
 	@Override

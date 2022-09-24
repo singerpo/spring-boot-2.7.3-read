@@ -256,7 +256,7 @@ class ConfigurationPropertiesTests {
 	@Test
 	void loadWhenBindingWithDefaultsInXmlShouldBind() {
 		removeSystemProperties();
-		load(new Class<?>[] { BasicConfiguration.class, DefaultsInXmlConfiguration.class });
+		load(new Class<?>[]{BasicConfiguration.class, DefaultsInXmlConfiguration.class});
 		BasicProperties bean = this.context.getBean(BasicProperties.class);
 		assertThat(bean.name).isEqualTo("bar");
 	}
@@ -270,7 +270,7 @@ class ConfigurationPropertiesTests {
 
 	@Test
 	void loadWhenBindingTwoBeansShouldBind() {
-		load(new Class<?>[] { WithoutAnnotationValueConfiguration.class, BasicConfiguration.class });
+		load(new Class<?>[]{WithoutAnnotationValueConfiguration.class, BasicConfiguration.class});
 		assertThat(this.context.getBean(BasicProperties.class)).isNotNull();
 		assertThat(this.context.getBean(WithoutAnnotationValueProperties.class)).isNotNull();
 	}
@@ -280,7 +280,7 @@ class ConfigurationPropertiesTests {
 		AnnotationConfigApplicationContext parent = load(BasicConfiguration.class, "name=parent");
 		this.context = new AnnotationConfigApplicationContext();
 		this.context.setParent(parent);
-		load(new Class<?>[] { BasicConfiguration.class, BasicPropertiesConsumer.class }, "name=child");
+		load(new Class<?>[]{BasicConfiguration.class, BasicPropertiesConsumer.class}, "name=child");
 		assertThat(this.context.getBean(BasicProperties.class)).isNotNull();
 		assertThat(parent.getBean(BasicProperties.class)).isNotNull();
 		assertThat(this.context.getBean(BasicPropertiesConsumer.class).getName()).isEqualTo("parent");
@@ -652,7 +652,7 @@ class ConfigurationPropertiesTests {
 		DefaultConversionService conversionService = new DefaultConversionService();
 		conversionService.addConverter(new AlienConverter());
 		this.context.getBeanFactory().setConversionService(conversionService);
-		load(new Class<?>[] { ConverterConfiguration.class, PersonAndAlienProperties.class }, "test.person=John Smith",
+		load(new Class<?>[]{ConverterConfiguration.class, PersonAndAlienProperties.class}, "test.person=John Smith",
 				"test.alien=Alf Tanner");
 		PersonAndAlienProperties properties = this.context.getBean(PersonAndAlienProperties.class);
 		assertThat(properties.getPerson().firstName).isEqualTo("John");
@@ -912,9 +912,9 @@ class ConfigurationPropertiesTests {
 	void loadWhenBindingToConstructorParametersShouldValidate() {
 		assertThatExceptionOfType(Exception.class)
 				.isThrownBy(() -> load(ConstructorParameterValidationConfiguration.class)).satisfies((ex) -> {
-					assertThat(ex).hasCauseInstanceOf(BindException.class);
-					assertThat(ex.getCause()).hasCauseExactlyInstanceOf(BindValidationException.class);
-				});
+			assertThat(ex).hasCauseInstanceOf(BindException.class);
+			assertThat(ex.getCause()).hasCauseExactlyInstanceOf(BindValidationException.class);
+		});
 	}
 
 	@Test
@@ -941,7 +941,8 @@ class ConfigurationPropertiesTests {
 		assertThat(bean.getNested().getAge()).isEqualTo(5);
 	}
 
-	@Test // gh-18485
+	@Test
+		// gh-18485
 	void loadWhenBindingToMultiConstructorConfigurationProperties() {
 		MutablePropertySources sources = this.context.getEnvironment().getPropertySources();
 		Map<String, Object> source = new HashMap<>();
@@ -956,7 +957,8 @@ class ConfigurationPropertiesTests {
 		assertThat(nested.getAge()).isEqualTo(5);
 	}
 
-	@Test // gh-18485
+	@Test
+		// gh-18485
 	void loadWhenBindingToMultiConstructorConfigurationPropertiesUsingShortcutSyntax() {
 		MutablePropertySources sources = this.context.getEnvironment().getPropertySources();
 		Map<String, Object> source = new HashMap<>();
@@ -970,7 +972,8 @@ class ConfigurationPropertiesTests {
 		assertThat(nested.getAge()).isEqualTo(0);
 	}
 
-	@Test // gh-18481
+	@Test
+		// gh-18481
 	void loadWhenBindingToNestedConstructorPropertiesWithDeducedNestedShouldBind() {
 		MutablePropertySources sources = this.context.getEnvironment().getPropertySources();
 		Map<String, Object> source = new HashMap<>();
@@ -1029,7 +1032,8 @@ class ConfigurationPropertiesTests {
 		assertThat(bean.getNested().getAge()).isEqualTo(10);
 	}
 
-	@Test // gh-18652
+	@Test
+		// gh-18652
 	void loadWhenBeanFactoryContainsSingletonForConstructorBindingTypeShouldNotFail() {
 		ConfigurableListableBeanFactory beanFactory = this.context.getBeanFactory();
 		((BeanDefinitionRegistry) beanFactory).registerBeanDefinition("test",
@@ -1062,7 +1066,8 @@ class ConfigurationPropertiesTests {
 		assertThat(bean.getA()).isEqualTo("baz");
 	}
 
-	@Test // gh-26201
+	@Test
+		// gh-26201
 	void loadWhenBoundToRandomPropertyPlaceholder() {
 		MutablePropertySources sources = this.context.getEnvironment().getPropertySources();
 		sources.addFirst(new RandomValuePropertySource());
@@ -1082,7 +1087,8 @@ class ConfigurationPropertiesTests {
 		assertThat(keys.stream().map(ConfigurationPropertyName::toString)).contains("name", "nested.name");
 	}
 
-	@Test // gh-28592
+	@Test
+		// gh-28592
 	void loadWhenBindingWithCustomConverterAndObjectToObjectMethod() {
 		this.context.getBeanFactory().setConversionService(ApplicationConversionService.getSharedInstance());
 		load(WithCustomConverterAndObjectToObjectMethodConfiguration.class, "test.item=foo");
@@ -1092,7 +1098,7 @@ class ConfigurationPropertiesTests {
 	}
 
 	private AnnotationConfigApplicationContext load(Class<?> configuration, String... inlinedProperties) {
-		return load(new Class<?>[] { configuration }, inlinedProperties);
+		return load(new Class<?>[]{configuration}, inlinedProperties);
 	}
 
 	private AnnotationConfigApplicationContext load(Class<?>[] configuration, String... inlinedProperties) {
@@ -1231,7 +1237,7 @@ class ConfigurationPropertiesTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@EnableConfigurationProperties({ PrefixProperties.class, AnotherPrefixProperties.class })
+	@EnableConfigurationProperties({PrefixProperties.class, AnotherPrefixProperties.class})
 	static class MultiplePrefixPropertiesDeclaredAsAnnotationValueConfiguration {
 
 	}
@@ -2156,8 +2162,8 @@ class ConfigurationPropertiesTests {
 		private final Period period;
 
 		ConstructorParameterWithUnitProperties(@DefaultValue("2") @DurationUnit(ChronoUnit.DAYS) Duration duration,
-				@DefaultValue("3") @DataSizeUnit(DataUnit.MEGABYTES) DataSize size,
-				@DefaultValue("4") @PeriodUnit(ChronoUnit.YEARS) Period period) {
+											   @DefaultValue("3") @DataSizeUnit(DataUnit.MEGABYTES) DataSize size,
+											   @DefaultValue("4") @PeriodUnit(ChronoUnit.YEARS) Period period) {
 			this.size = size;
 			this.duration = duration;
 			this.period = period;

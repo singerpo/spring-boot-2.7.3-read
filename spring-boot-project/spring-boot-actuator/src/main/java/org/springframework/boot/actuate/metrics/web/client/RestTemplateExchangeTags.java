@@ -48,6 +48,7 @@ public final class RestTemplateExchangeTags {
 	/**
 	 * Creates a {@code method} {@code Tag} for the {@link HttpRequest#getMethod() method}
 	 * of the given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the method tag
 	 */
@@ -57,6 +58,7 @@ public final class RestTemplateExchangeTags {
 
 	/**
 	 * Creates a {@code uri} {@code Tag} for the URI of the given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the uri tag
 	 */
@@ -66,6 +68,7 @@ public final class RestTemplateExchangeTags {
 
 	/**
 	 * Creates a {@code uri} {@code Tag} from the given {@code uriTemplate}.
+	 *
 	 * @param uriTemplate the template
 	 * @return the uri tag
 	 */
@@ -85,6 +88,7 @@ public final class RestTemplateExchangeTags {
 	/**
 	 * Creates a {@code status} {@code Tag} derived from the
 	 * {@link ClientHttpResponse#getRawStatusCode() status} of the given {@code response}.
+	 *
 	 * @param response the response
 	 * @return the status tag
 	 */
@@ -98,8 +102,7 @@ public final class RestTemplateExchangeTags {
 				return "CLIENT_ERROR";
 			}
 			return String.valueOf(response.getRawStatusCode());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return "IO_ERROR";
 		}
 	}
@@ -107,6 +110,7 @@ public final class RestTemplateExchangeTags {
 	/**
 	 * Create a {@code client.name} {@code Tag} derived from the {@link URI#getHost host}
 	 * of the {@link HttpRequest#getURI() URI} of the given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the client.name tag
 	 */
@@ -121,6 +125,7 @@ public final class RestTemplateExchangeTags {
 	/**
 	 * Creates an {@code outcome} {@code Tag} derived from the
 	 * {@link ClientHttpResponse#getRawStatusCode() status} of the given {@code response}.
+	 *
 	 * @param response the response
 	 * @return the outcome tag
 	 * @since 2.2.0
@@ -130,8 +135,7 @@ public final class RestTemplateExchangeTags {
 			if (response != null) {
 				return Outcome.forStatus(response.getRawStatusCode()).asTag();
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// Continue
 		}
 		return Outcome.UNKNOWN.asTag();

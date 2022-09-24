@@ -182,8 +182,7 @@ class PropertiesMigrationReporterTests {
 				builder.withJsonResource(resource.getInputStream());
 			}
 			return builder.build();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to load metadata", ex);
 		}
 	}

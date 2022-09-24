@@ -39,7 +39,7 @@ class FaultyWebMvcTagsProvider extends DefaultWebMvcTagsProvider {
 
 	@Override
 	public Iterable<Tag> getTags(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Throwable exception) {
+								 Throwable exception) {
 		if (this.fail.compareAndSet(true, false)) {
 			throw new RuntimeException();
 		}

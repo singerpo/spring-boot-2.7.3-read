@@ -84,7 +84,7 @@ class ArtemisConnectionFactoryConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ JmsPoolConnectionFactory.class, PooledObject.class })
+	@ConditionalOnClass({JmsPoolConnectionFactory.class, PooledObject.class})
 	@ConditionalOnProperty(prefix = "spring.artemis.pool", name = "enabled", havingValue = "true")
 	static class PooledConnectionFactoryConfiguration {
 

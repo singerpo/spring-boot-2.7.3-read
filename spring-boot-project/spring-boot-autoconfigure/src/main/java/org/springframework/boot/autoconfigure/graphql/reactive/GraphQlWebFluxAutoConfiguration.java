@@ -77,7 +77,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
  */
 @AutoConfiguration(after = GraphQlAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnClass({ GraphQL.class, GraphQlHttpHandler.class })
+@ConditionalOnClass({GraphQL.class, GraphQlHttpHandler.class})
 @ConditionalOnBean(ExecutionGraphQlService.class)
 @EnableConfigurationProperties(GraphQlCorsProperties.class)
 public class GraphQlWebFluxAutoConfiguration {
@@ -96,7 +96,7 @@ public class GraphQlWebFluxAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public WebGraphQlHandler webGraphQlHandler(ExecutionGraphQlService service,
-			ObjectProvider<WebGraphQlInterceptor> interceptorsProvider) {
+											   ObjectProvider<WebGraphQlInterceptor> interceptorsProvider) {
 		return WebGraphQlHandler.builder(service)
 				.interceptors(interceptorsProvider.orderedStream().collect(Collectors.toList())).build();
 	}
@@ -104,7 +104,7 @@ public class GraphQlWebFluxAutoConfiguration {
 	@Bean
 	@Order(0)
 	public RouterFunction<ServerResponse> graphQlRouterFunction(GraphQlHttpHandler httpHandler,
-			GraphQlSource graphQlSource, GraphQlProperties properties) {
+																GraphQlSource graphQlSource, GraphQlProperties properties) {
 		String path = properties.getPath();
 		logger.info(LogMessage.format("GraphQL endpoint HTTP POST %s", path));
 		RouterFunctions.Builder builder = RouterFunctions.route();
@@ -158,14 +158,14 @@ public class GraphQlWebFluxAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		public GraphQlWebSocketHandler graphQlWebSocketHandler(WebGraphQlHandler webGraphQlHandler,
-				GraphQlProperties properties, ServerCodecConfigurer configurer) {
+															   GraphQlProperties properties, ServerCodecConfigurer configurer) {
 			return new GraphQlWebSocketHandler(webGraphQlHandler, configurer,
 					properties.getWebsocket().getConnectionInitTimeout());
 		}
 
 		@Bean
 		public HandlerMapping graphQlWebSocketEndpoint(GraphQlWebSocketHandler graphQlWebSocketHandler,
-				GraphQlProperties properties) {
+													   GraphQlProperties properties) {
 			String path = properties.getWebsocket().getPath();
 			logger.info(LogMessage.format("GraphQL endpoint WebSocket %s", path));
 			SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();

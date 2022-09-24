@@ -57,13 +57,11 @@ public class HintCommand extends AbstractCommand {
 			}
 			if (index == 0) {
 				showCommandHints(starting);
-			}
-			else if (!arguments.isEmpty() && !starting.isEmpty()) {
+			} else if (!arguments.isEmpty() && !starting.isEmpty()) {
 				String command = arguments.remove(0);
 				showCommandOptionHints(command, Collections.unmodifiableList(arguments), starting);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Swallow and provide no hints
 			return ExitStatus.ERROR;
 		}

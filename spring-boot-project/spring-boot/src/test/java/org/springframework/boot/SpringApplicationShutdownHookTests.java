@@ -231,8 +231,7 @@ class SpringApplicationShutdownHookTests {
 			if (this.proceedWithClose != null) {
 				try {
 					this.proceedWithClose.await();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}
 			}

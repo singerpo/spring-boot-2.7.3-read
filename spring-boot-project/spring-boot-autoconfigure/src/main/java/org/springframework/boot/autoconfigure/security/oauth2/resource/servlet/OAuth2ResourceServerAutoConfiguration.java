@@ -33,12 +33,12 @@ import org.springframework.security.oauth2.server.resource.BearerTokenAuthentica
  * @author Madhura Bhave
  * @since 2.1.0
  */
-@AutoConfiguration(before = { SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class })
+@AutoConfiguration(before = {SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class})
 @EnableConfigurationProperties(OAuth2ResourceServerProperties.class)
 @ConditionalOnClass(BearerTokenAuthenticationToken.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@Import({ Oauth2ResourceServerConfiguration.JwtConfiguration.class,
-		Oauth2ResourceServerConfiguration.OpaqueTokenConfiguration.class })
+@Import({Oauth2ResourceServerConfiguration.JwtConfiguration.class,
+		Oauth2ResourceServerConfiguration.OpaqueTokenConfiguration.class})
 public class OAuth2ResourceServerAutoConfiguration {
 
 }

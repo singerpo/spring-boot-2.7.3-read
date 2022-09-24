@@ -90,11 +90,10 @@ class DefaultRestartInitializerTests {
 		Thread thread = Thread.currentThread();
 		ClassLoader classLoader = thread.getContextClassLoader();
 		try (URLClassLoader contextClassLoader = new URLClassLoader(
-				new URL[] { new URL("file:test-app/build/classes/main/") }, classLoader)) {
+				new URL[]{new URL("file:test-app/build/classes/main/")}, classLoader)) {
 			thread.setContextClassLoader(contextClassLoader);
 			assertThat(new DefaultRestartInitializer().getUrls(thread)).isNotEmpty();
-		}
-		finally {
+		} finally {
 			thread.setContextClassLoader(classLoader);
 		}
 	}
@@ -105,7 +104,7 @@ class DefaultRestartInitializerTests {
 		Thread thread = mock(Thread.class);
 		thread.setName("main");
 		StackTraceElement element = new StackTraceElement(s, "someMethod", "someFile", 123);
-		given(thread.getStackTrace()).willReturn(new StackTraceElement[] { element });
+		given(thread.getStackTrace()).willReturn(new StackTraceElement[]{element});
 		given(thread.getContextClassLoader()).willReturn(classLoader);
 		assertThat(initializer.getInitialUrls(thread)).isEqualTo(null);
 	}

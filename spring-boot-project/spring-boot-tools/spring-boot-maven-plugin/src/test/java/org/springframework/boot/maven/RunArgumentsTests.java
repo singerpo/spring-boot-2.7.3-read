@@ -43,14 +43,14 @@ class RunArgumentsTests {
 
 	@Test
 	void parseArrayContainingNullValue() {
-		String[] args = new RunArguments(new String[] { "foo", null, "bar" }).asArray();
+		String[] args = new RunArguments(new String[]{"foo", null, "bar"}).asArray();
 		assertThat(args).isNotNull();
 		assertThat(args).containsOnly("foo", "bar");
 	}
 
 	@Test
 	void parseArrayContainingEmptyValue() {
-		String[] args = new RunArguments(new String[] { "foo", "", "bar" }).asArray();
+		String[] args = new RunArguments(new String[]{"foo", "", "bar"}).asArray();
 		assertThat(args).isNotNull();
 		assertThat(args).containsOnly("foo", "", "bar");
 	}

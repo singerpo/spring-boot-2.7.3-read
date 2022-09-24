@@ -361,7 +361,8 @@ class ConfigDataEnvironmentContributorTests {
 				() -> createBoundContributor(null, new ConfigData(Collections.singleton(propertySource)), 0));
 	}
 
-	@Test // gh-25029
+	@Test
+		// gh-25029
 	void withBoundPropertiesWhenIgnoringImportsAndNothingBound() {
 		TestResource resource = new TestResource("a");
 		ConfigData configData = new ConfigData(Collections.singleton(new MockPropertySource()), Option.IGNORE_IMPORTS);
@@ -378,7 +379,7 @@ class ConfigDataEnvironmentContributorTests {
 	}
 
 	private ConfigDataEnvironmentContributor createBoundContributor(ConfigDataResource resource, ConfigData configData,
-			int propertySourceIndex) {
+																	int propertySourceIndex) {
 		ConfigDataEnvironmentContributor contributor = ConfigDataEnvironmentContributor.ofUnboundImport(TEST_LOCATION,
 				resource, false, configData, propertySourceIndex);
 		return contributor.withBoundProperties(Collections.singleton(contributor), null);

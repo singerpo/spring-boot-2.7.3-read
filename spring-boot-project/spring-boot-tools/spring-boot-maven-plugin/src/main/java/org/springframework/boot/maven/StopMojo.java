@@ -43,6 +43,7 @@ public class StopMojo extends AbstractMojo {
 
 	/**
 	 * The Maven project.
+	 *
 	 * @since 1.4.1
 	 */
 	@Parameter(defaultValue = "${project}", readonly = true, required = true)
@@ -53,6 +54,7 @@ public class StopMojo extends AbstractMojo {
 	 * inherited from the {@link MavenProject} with a fallback on the default fork value
 	 * ({@code true}). If it is set, it must match the value used to {@link StartMojo
 	 * start} the process.
+	 *
 	 * @since 1.3.0
 	 * @deprecated since 2.7.0 for removal in 3.0.0 with no replacement
 	 */
@@ -76,6 +78,7 @@ public class StopMojo extends AbstractMojo {
 
 	/**
 	 * Skip the execution.
+	 *
 	 * @since 1.3.2
 	 */
 	@Parameter(property = "spring-boot.stop.skip", defaultValue = "false")
@@ -91,12 +94,10 @@ public class StopMojo extends AbstractMojo {
 		try {
 			if (isForked()) {
 				stopForkedProcess();
-			}
-			else {
+			} else {
 				stop();
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// The response won't be received as the server has died - ignoring
 			getLog().debug("Service is not reachable anymore (" + ex.getMessage() + ")");
 		}
@@ -128,8 +129,7 @@ public class StopMojo extends AbstractMojo {
 	private void doStop(MBeanServerConnection connection) throws IOException, MojoExecutionException {
 		try {
 			new SpringApplicationAdminClient(connection, this.jmxName).stop();
-		}
-		catch (InstanceNotFoundException ex) {
+		} catch (InstanceNotFoundException ex) {
 			throw new MojoExecutionException("Spring application lifecycle JMX bean not found (fork is " + this.fork
 					+ "). Could not stop application gracefully", ex);
 		}

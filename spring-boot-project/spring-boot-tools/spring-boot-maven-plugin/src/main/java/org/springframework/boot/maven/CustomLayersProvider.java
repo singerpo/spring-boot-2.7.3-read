@@ -66,8 +66,7 @@ class CustomLayersProvider {
 		try {
 			Validator validator = schema.newValidator();
 			validator.validate(new DOMSource(document));
-		}
-		catch (SAXException | IOException ex) {
+		} catch (SAXException | IOException ex) {
 			throw new IllegalStateException("Invalid layers.xml configuration", ex);
 		}
 	}
@@ -76,8 +75,7 @@ class CustomLayersProvider {
 		try {
 			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			return factory.newSchema(getClass().getResource("layers.xsd"));
-		}
-		catch (SAXException ex) {
+		} catch (SAXException ex) {
 			throw new IllegalStateException("Unable to load layers XSD");
 		}
 	}
@@ -99,7 +97,7 @@ class CustomLayersProvider {
 	}
 
 	private <T> List<ContentSelector<T>> getSelectors(Element root, String elementName,
-			Function<Element, ContentSelector<T>> selectorFactory) {
+													  Function<Element, ContentSelector<T>> selectorFactory) {
 		Element element = getChildElement(root, elementName);
 		if (element == null) {
 			return Collections.emptyList();
@@ -124,7 +122,7 @@ class CustomLayersProvider {
 	}
 
 	private <T> ContentSelector<Library> getLibrarySelector(Element element,
-			Function<String, ContentFilter<Library>> filterFactory) {
+															Function<String, ContentFilter<Library>> filterFactory) {
 		Layer layer = new Layer(element.getAttribute("layer"));
 		List<String> includes = getChildNodeTextContent(element, "include");
 		List<String> excludes = getChildNodeTextContent(element, "exclude");

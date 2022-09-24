@@ -60,8 +60,7 @@ public class ExampleServlet extends GenericServlet {
 			ServletOutputStream outputStream = response.getOutputStream();
 			StreamUtils.copy(content.getBytes(), outputStream);
 			outputStream.flush();
-		}
-		else {
+		} else {
 			response.getWriter().write(content);
 		}
 	}

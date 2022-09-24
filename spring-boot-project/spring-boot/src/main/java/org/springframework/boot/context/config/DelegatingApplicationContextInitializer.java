@@ -73,8 +73,7 @@ public class DelegatingApplicationContextInitializer
 			Class<?> initializerClass = ClassUtils.forName(className, ClassUtils.getDefaultClassLoader());
 			Assert.isAssignable(ApplicationContextInitializer.class, initializerClass);
 			return initializerClass;
-		}
-		catch (ClassNotFoundException ex) {
+		} catch (ClassNotFoundException ex) {
 			throw new ApplicationContextException("Failed to load context initializer class [" + className + "]", ex);
 		}
 	}
@@ -99,9 +98,9 @@ public class DelegatingApplicationContextInitializer
 		return (ApplicationContextInitializer<?>) BeanUtils.instantiateClass(initializerClass);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private void applyInitializers(ConfigurableApplicationContext context,
-			List<ApplicationContextInitializer<?>> initializers) {
+								   List<ApplicationContextInitializer<?>> initializers) {
 		initializers.sort(new AnnotationAwareOrderComparator());
 		for (ApplicationContextInitializer initializer : initializers) {
 			initializer.initialize(context);

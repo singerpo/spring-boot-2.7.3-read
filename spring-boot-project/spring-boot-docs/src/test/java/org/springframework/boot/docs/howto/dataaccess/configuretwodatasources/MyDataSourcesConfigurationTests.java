@@ -38,8 +38,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Stephane Nicoll
  */
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = { "app.datasource.second.url=jdbc:h2:mem:bar;DB_CLOSE_DELAY=-1",
-		"app.datasource.second.max-total=42" })
+@SpringBootTest(properties = {"app.datasource.second.url=jdbc:h2:mem:bar;DB_CLOSE_DELAY=-1",
+		"app.datasource.second.max-total=42"})
 @Import(MyDataSourcesConfiguration.class)
 class MyDataSourcesConfigurationTests {
 

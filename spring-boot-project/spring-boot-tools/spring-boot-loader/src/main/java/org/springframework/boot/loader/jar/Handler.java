@@ -35,8 +35,8 @@ import java.util.regex.Pattern;
  *
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 1.0.0
  * @see JarFile#registerUrlProtocolHandler()
+ * @since 1.0.0
  */
 public class Handler extends URLStreamHandler {
 
@@ -61,7 +61,7 @@ public class Handler extends URLStreamHandler {
 
 	private static final String PROTOCOL_HANDLER = "java.protocol.handler.pkgs";
 
-	private static final String[] FALLBACK_HANDLERS = { "sun.net.www.protocol.jar.Handler" };
+	private static final String[] FALLBACK_HANDLERS = {"sun.net.www.protocol.jar.Handler"};
 
 	private static URL jarContextUrl;
 
@@ -90,8 +90,7 @@ public class Handler extends URLStreamHandler {
 		}
 		try {
 			return JarURLConnection.get(url, getRootJarFileFromUrl(url));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return openFallbackConnection(url, ex);
 		}
 	}
@@ -107,8 +106,7 @@ public class Handler extends URLStreamHandler {
 			URLConnection connection = openFallbackTomcatConnection(url);
 			connection = (connection != null) ? connection : openFallbackContextConnection(url);
 			return (connection != null) ? connection : openFallbackHandlerConnection(url);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (reason instanceof IOException) {
 				log(false, "Unable to open fallback handler", ex);
 				throw (IOException) reason;
@@ -126,6 +124,7 @@ public class Handler extends URLStreamHandler {
 	 * use our own nested JAR support to open the content rather than the logic in
 	 * {@code sun.net.www.protocol.jar.URLJarFile} which will extract the nested jar to
 	 * the temp folder to that its content can be accessed.
+	 *
 	 * @param url the URL to open
 	 * @return a {@link URLConnection} or {@code null}
 	 */
@@ -138,8 +137,7 @@ public class Handler extends URLStreamHandler {
 				URLConnection connection = openConnection(new URL("jar:file:" + file));
 				connection.getInputStream().close();
 				return connection;
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		}
 		return null;
@@ -152,8 +150,7 @@ public class Handler extends URLStreamHandler {
 				if (connection.getClass().getName().startsWith("org.apache.catalina")) {
 					return true;
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 		}
 		return false;
@@ -164,6 +161,7 @@ public class Handler extends URLStreamHandler {
 	 * jar handler was replaced with our own version. Since this method doesn't use
 	 * reflection it won't trigger "illegal reflective access operation has occurred"
 	 * warnings on Java 13+.
+	 *
 	 * @param url the URL to open
 	 * @return a {@link URLConnection} or {@code null}
 	 */
@@ -172,8 +170,7 @@ public class Handler extends URLStreamHandler {
 			if (jarContextUrl != null) {
 				return new URL(jarContextUrl, url.toExternalForm()).openConnection();
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 		return null;
 	}
@@ -181,6 +178,7 @@ public class Handler extends URLStreamHandler {
 	/**
 	 * Attempt to open a fallback connection by using reflection to access Java's default
 	 * jar {@link URLStreamHandler}.
+	 *
 	 * @param url the URL to open
 	 * @return the {@link URLConnection}
 	 * @throws Exception if not connection could be opened
@@ -199,8 +197,7 @@ public class Handler extends URLStreamHandler {
 				Class<?> handlerClass = Class.forName(handlerClassName);
 				this.fallbackHandler = (URLStreamHandler) handlerClass.getDeclaredConstructor().newInstance();
 				return this.fallbackHandler;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -211,8 +208,7 @@ public class Handler extends URLStreamHandler {
 		try {
 			Level level = warning ? Level.WARNING : Level.FINEST;
 			Logger.getLogger(getClass().getName()).log(level, message, cause);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (warning) {
 				System.err.println("WARNING: " + message);
 			}
@@ -223,8 +219,7 @@ public class Handler extends URLStreamHandler {
 	protected void parseURL(URL context, String spec, int start, int limit) {
 		if (spec.regionMatches(true, 0, JAR_PROTOCOL, 0, JAR_PROTOCOL.length())) {
 			setFile(context, getFileFromSpec(spec.substring(start, limit)));
-		}
-		else {
+		} else {
 			setFile(context, getFileFromContext(context, spec.substring(start, limit)));
 		}
 	}
@@ -237,8 +232,7 @@ public class Handler extends URLStreamHandler {
 		try {
 			new URL(spec.substring(0, separatorIndex));
 			return spec;
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalArgumentException("Invalid spec URL '" + spec + "'", ex);
 		}
 	}
@@ -294,8 +288,7 @@ public class Handler extends URLStreamHandler {
 			int precedingSlashIndex = file.lastIndexOf('/', parentDirIndex - 1);
 			if (precedingSlashIndex >= 0) {
 				file = file.substring(0, precedingSlashIndex) + file.substring(parentDirIndex + 3);
-			}
-			else {
+			} else {
 				file = file.substring(parentDirIndex + 4);
 			}
 		}
@@ -321,8 +314,7 @@ public class Handler extends URLStreamHandler {
 		String entry = canonicalize(file.substring(separatorIndex + 2));
 		try {
 			result += new URL(source).hashCode();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			result += source.hashCode();
 		}
 		result += entry.hashCode();
@@ -352,8 +344,7 @@ public class Handler extends URLStreamHandler {
 		String root2 = u2.getFile().substring(0, separator2);
 		try {
 			return super.sameFile(new URL(root1), new URL(root2));
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			// Continue
 		}
 		return super.sameFile(u1, u2);
@@ -386,16 +377,16 @@ public class Handler extends URLStreamHandler {
 				addToRootFileCache(file, result);
 			}
 			return result;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IOException("Unable to open root Jar file '" + name + "'", ex);
 		}
 	}
 
 	/**
 	 * Add the given {@link JarFile} to the root file cache.
+	 *
 	 * @param sourceFile the source file to add
-	 * @param jarFile the jar file.
+	 * @param jarFile    the jar file.
 	 */
 	static void addToRootFileCache(File sourceFile, JarFile jarFile) {
 		Map<File, JarFile> cache = rootFileCache.get();
@@ -423,15 +414,12 @@ public class Handler extends URLStreamHandler {
 					if (connection instanceof JarURLConnection) {
 						jarContextUrl = null;
 					}
+				} catch (Exception ex) {
 				}
-				catch (Exception ex) {
-				}
-			}
-			finally {
+			} finally {
 				if (handlers == null) {
 					System.clearProperty(PROTOCOL_HANDLER);
-				}
-				else {
+				} else {
 					System.setProperty(PROTOCOL_HANDLER, handlers);
 				}
 			}
@@ -443,8 +431,7 @@ public class Handler extends URLStreamHandler {
 		try {
 			resetCachedUrlHandlers();
 			return true;
-		}
-		catch (Error ex) {
+		} catch (Error ex) {
 			return false;
 		}
 	}
@@ -457,6 +444,7 @@ public class Handler extends URLStreamHandler {
 	 * Set if a generic static exception can be thrown when a URL cannot be connected.
 	 * This optimization is used during class loading to save creating lots of exceptions
 	 * which are then swallowed.
+	 *
 	 * @param useFastConnectionExceptions if fast connection exceptions can be used.
 	 */
 	public static void setUseFastConnectionExceptions(boolean useFastConnectionExceptions) {

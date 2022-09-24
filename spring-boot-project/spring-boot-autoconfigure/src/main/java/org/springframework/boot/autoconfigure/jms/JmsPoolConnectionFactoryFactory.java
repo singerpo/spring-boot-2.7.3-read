@@ -38,6 +38,7 @@ public class JmsPoolConnectionFactoryFactory {
 	/**
 	 * Create a {@link JmsPoolConnectionFactory} based on the specified
 	 * {@link ConnectionFactory}.
+	 *
 	 * @param connectionFactory the connection factory to wrap
 	 * @return a pooled connection factory
 	 */

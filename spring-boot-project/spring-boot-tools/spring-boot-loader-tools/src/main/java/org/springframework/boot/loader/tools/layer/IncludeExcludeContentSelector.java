@@ -42,12 +42,12 @@ public class IncludeExcludeContentSelector<T> implements ContentSelector<T> {
 	private final List<ContentFilter<T>> excludes;
 
 	public IncludeExcludeContentSelector(Layer layer, List<ContentFilter<T>> includes,
-			List<ContentFilter<T>> excludes) {
+										 List<ContentFilter<T>> excludes) {
 		this(layer, includes, excludes, Function.identity());
 	}
 
 	public <S> IncludeExcludeContentSelector(Layer layer, List<S> includes, List<S> excludes,
-			Function<S, ContentFilter<T>> filterFactory) {
+											 Function<S, ContentFilter<T>> filterFactory) {
 		Assert.notNull(layer, "Layer must not be null");
 		Assert.notNull(filterFactory, "FilterFactory must not be null");
 		this.layer = layer;

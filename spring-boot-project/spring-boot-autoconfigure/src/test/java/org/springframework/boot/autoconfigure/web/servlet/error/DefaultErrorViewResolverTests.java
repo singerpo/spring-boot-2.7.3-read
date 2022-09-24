@@ -196,7 +196,7 @@ class DefaultErrorViewResolverTests {
 	private void setResourceLocation(String path) {
 		String packageName = getClass().getPackage().getName();
 		this.resourcesProperties
-				.setStaticLocations(new String[] { "classpath:" + packageName.replace('.', '/') + path + "/" });
+				.setStaticLocations(new String[]{"classpath:" + packageName.replace('.', '/') + path + "/"});
 	}
 
 	private MockHttpServletResponse render(ModelAndView modelAndView) throws Exception {

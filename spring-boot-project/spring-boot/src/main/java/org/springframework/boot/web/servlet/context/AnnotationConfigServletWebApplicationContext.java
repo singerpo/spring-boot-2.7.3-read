@@ -52,9 +52,9 @@ import org.springframework.web.context.support.GenericWebApplicationContext;
  * to deliberately override certain bean definitions via an extra Configuration class.
  *
  * @author Stephane Nicoll
- * @since 2.2.0
  * @see #register(Class...)
  * @see #scan(String...)
+ * @since 2.2.0
  */
 public class AnnotationConfigServletWebApplicationContext extends GenericWebApplicationContext
 		implements AnnotationConfigRegistry {
@@ -81,6 +81,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	 * Create a new {@link AnnotationConfigServletWebApplicationContext} with the given
 	 * {@code DefaultListableBeanFactory}. The context needs to be populated through
 	 * {@link #register} calls and then manually {@linkplain #refresh refreshed}.
+	 *
 	 * @param beanFactory the DefaultListableBeanFactory instance to use for this context
 	 */
 	public AnnotationConfigServletWebApplicationContext(DefaultListableBeanFactory beanFactory) {
@@ -93,8 +94,9 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	 * Create a new {@link AnnotationConfigServletWebApplicationContext}, deriving bean
 	 * definitions from the given annotated classes and automatically refreshing the
 	 * context.
+	 *
 	 * @param annotatedClasses one or more annotated classes, e.g. {@code @Configuration}
-	 * classes
+	 *                         classes
 	 */
 	public AnnotationConfigServletWebApplicationContext(Class<?>... annotatedClasses) {
 		this();
@@ -105,6 +107,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	/**
 	 * Create a new {@link AnnotationConfigServletWebApplicationContext}, scanning for
 	 * bean definitions in the given packages and automatically refreshing the context.
+	 *
 	 * @param basePackages the packages to check for annotated classes
 	 */
 	public AnnotationConfigServletWebApplicationContext(String... basePackages) {
@@ -136,6 +139,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	 * <p>
 	 * Any call to this method must occur prior to calls to {@link #register(Class...)}
 	 * and/or {@link #scan(String...)}.
+	 *
 	 * @param beanNameGenerator the bean name generator
 	 * @see AnnotatedBeanDefinitionReader#setBeanNameGenerator
 	 * @see ClassPathBeanDefinitionScanner#setBeanNameGenerator
@@ -153,6 +157,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	 * <p>
 	 * Any call to this method must occur prior to calls to {@link #register(Class...)}
 	 * and/or {@link #scan(String...)}.
+	 *
 	 * @param scopeMetadataResolver the scope metadata resolver
 	 */
 	public void setScopeMetadataResolver(ScopeMetadataResolver scopeMetadataResolver) {
@@ -167,8 +172,9 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	 * <p>
 	 * Calls to {@code #register} are idempotent; adding the same annotated class more
 	 * than once has no additional effect.
+	 *
 	 * @param annotatedClasses one or more annotated classes, e.g. {@code @Configuration}
-	 * classes
+	 *                         classes
 	 * @see #scan(String...)
 	 * @see #refresh()
 	 */
@@ -181,6 +187,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 	/**
 	 * Perform a scan within the specified base packages. Note that {@link #refresh()}
 	 * must be called in order for the context to fully process the new class.
+	 *
 	 * @param basePackages the packages to check for annotated classes
 	 * @see #register(Class...)
 	 * @see #refresh()
@@ -210,7 +217,7 @@ public class AnnotationConfigServletWebApplicationContext extends GenericWebAppl
 
 	@Override
 	public <T> void registerBean(String beanName, Class<T> beanClass, Supplier<T> supplier,
-			BeanDefinitionCustomizer... customizers) {
+								 BeanDefinitionCustomizer... customizers) {
 		this.reader.registerBean(beanClass, beanName, supplier, customizers);
 	}
 

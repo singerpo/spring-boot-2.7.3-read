@@ -151,8 +151,7 @@ class MeterRegistryConfigurerTests {
 		try {
 			configurer.configure(this.mockRegistry);
 			assertThat(Metrics.globalRegistry.getRegistries()).contains(this.mockRegistry);
-		}
-		finally {
+		} finally {
 			Metrics.removeRegistry(this.mockRegistry);
 		}
 	}

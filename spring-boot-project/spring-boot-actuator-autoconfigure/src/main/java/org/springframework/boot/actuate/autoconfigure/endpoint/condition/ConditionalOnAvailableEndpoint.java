@@ -97,11 +97,11 @@ import org.springframework.core.env.Environment;
  *
  * @author Brian Clozel
  * @author Stephane Nicoll
- * @since 2.2.0
  * @see Endpoint
+ * @since 2.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD, ElementType.TYPE })
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Documented
 @Conditional(OnAvailableEndpointCondition.class)
 public @interface ConditionalOnAvailableEndpoint {
@@ -110,6 +110,7 @@ public @interface ConditionalOnAvailableEndpoint {
 	 * The endpoint type that should be checked. Inferred when the return type of the
 	 * {@code @Bean} method is either an {@link Endpoint @Endpoint} or an
 	 * {@link EndpointExtension @EndpointExtension}.
+	 *
 	 * @return the endpoint type to check
 	 */
 	Class<?> endpoint() default Void.class;
@@ -117,6 +118,7 @@ public @interface ConditionalOnAvailableEndpoint {
 	/**
 	 * Technologies to check the exposure of the endpoint on while considering it to be
 	 * available.
+	 *
 	 * @return the technologies to check
 	 * @since 2.6.0
 	 */

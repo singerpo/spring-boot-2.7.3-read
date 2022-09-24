@@ -71,6 +71,7 @@ public class BufferingApplicationStartup implements ApplicationStartup {
 	/**
 	 * Create a new buffered {@link ApplicationStartup} with a limited capacity and starts
 	 * the recording of steps.
+	 *
 	 * @param capacity the configured capacity; once reached, new steps are not recorded.
 	 */
 	public BufferingApplicationStartup(int capacity) {
@@ -87,8 +88,9 @@ public class BufferingApplicationStartup implements ApplicationStartup {
 	 * Start the recording of steps and mark the beginning of the {@link StartupTimeline}.
 	 * The class constructor already implicitly calls this, but it is possible to reset it
 	 * as long as steps have not been recorded already.
+	 *
 	 * @throws IllegalStateException if called and {@link StartupStep} have been recorded
-	 * already.
+	 *                               already.
 	 */
 	public void startRecording() {
 		Assert.state(this.events.isEmpty(), "Cannot restart recording once steps have been buffered.");
@@ -99,6 +101,7 @@ public class BufferingApplicationStartup implements ApplicationStartup {
 	 * Add a predicate filter to the list of existing ones.
 	 * <p>
 	 * A {@link StartupStep step} that doesn't match all filters will not be recorded.
+	 *
 	 * @param filter the predicate filter to add.
 	 */
 	public void addFilter(Predicate<StartupStep> filter) {
@@ -146,6 +149,7 @@ public class BufferingApplicationStartup implements ApplicationStartup {
 	 * <p>
 	 * This will not remove steps from the buffer, see {@link #drainBufferedTimeline()}
 	 * for its counterpart.
+	 *
 	 * @return a snapshot of currently buffered steps.
 	 */
 	public StartupTimeline getBufferedTimeline() {
@@ -157,6 +161,7 @@ public class BufferingApplicationStartup implements ApplicationStartup {
 	 * <p>
 	 * This removes steps from the buffer, see {@link #getBufferedTimeline()} for its
 	 * read-only counterpart.
+	 *
 	 * @return buffered steps drained from the buffer.
 	 */
 	public StartupTimeline drainBufferedTimeline() {

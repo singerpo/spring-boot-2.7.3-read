@@ -38,7 +38,7 @@ class CouchbaseReactiveDataConfiguration {
 	@Bean(name = BeanNames.REACTIVE_COUCHBASE_TEMPLATE)
 	@ConditionalOnMissingBean(name = BeanNames.REACTIVE_COUCHBASE_TEMPLATE)
 	ReactiveCouchbaseTemplate reactiveCouchbaseTemplate(CouchbaseClientFactory couchbaseClientFactory,
-			MappingCouchbaseConverter mappingCouchbaseConverter) {
+														MappingCouchbaseConverter mappingCouchbaseConverter) {
 		return new ReactiveCouchbaseTemplate(couchbaseClientFactory, mappingCouchbaseConverter);
 	}
 

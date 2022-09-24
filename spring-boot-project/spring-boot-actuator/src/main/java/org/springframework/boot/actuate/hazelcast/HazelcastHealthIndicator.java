@@ -54,8 +54,7 @@ public class HazelcastHealthIndicator extends AbstractHealthIndicator {
 	private String extractUuid() {
 		try {
 			return this.hazelcast.getLocalEndpoint().getUuid().toString();
-		}
-		catch (NoSuchMethodError ex) {
+		} catch (NoSuchMethodError ex) {
 			// Hazelcast 3
 			Method endpointAccessor = ReflectionUtils.findMethod(HazelcastInstance.class, "getLocalEndpoint");
 			Object endpoint = ReflectionUtils.invokeMethod(endpointAccessor, this.hazelcast);

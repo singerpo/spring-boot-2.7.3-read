@@ -43,6 +43,7 @@ public abstract class AbstractDependencyFilterMojo extends AbstractMojo {
 	 * mandatory {@code groupId} and {@code artifactId} properties and an optional
 	 * mandatory {@code groupId} and {@code artifactId} properties and an optional
 	 * {@code classifier} property.
+	 *
 	 * @since 1.2.0
 	 */
 	@Parameter(property = "spring-boot.includes")
@@ -52,6 +53,7 @@ public abstract class AbstractDependencyFilterMojo extends AbstractMojo {
 	 * Collection of artifact definitions to exclude. The {@link Exclude} element defines
 	 * mandatory {@code groupId} and {@code artifactId} properties and an optional
 	 * {@code classifier} property.
+	 *
 	 * @since 1.1.0
 	 */
 	@Parameter(property = "spring-boot.excludes")
@@ -59,6 +61,7 @@ public abstract class AbstractDependencyFilterMojo extends AbstractMojo {
 
 	/**
 	 * Comma separated list of groupId names to exclude (exact match).
+	 *
 	 * @since 1.1.0
 	 */
 	@Parameter(property = "spring-boot.excludeGroupIds", defaultValue = "")
@@ -82,14 +85,14 @@ public abstract class AbstractDependencyFilterMojo extends AbstractMojo {
 			Set<Artifact> filtered = new LinkedHashSet<>(dependencies);
 			filtered.retainAll(filters.filter(dependencies));
 			return filtered;
-		}
-		catch (ArtifactFilterException ex) {
+		} catch (ArtifactFilterException ex) {
 			throw new MojoExecutionException(ex.getMessage(), ex);
 		}
 	}
 
 	/**
 	 * Return artifact filters configured for this MOJO.
+	 *
 	 * @param additionalFilters optional additional filters to apply
 	 * @return the filters
 	 */

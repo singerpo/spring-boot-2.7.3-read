@@ -37,10 +37,10 @@ import org.springframework.graphql.test.tester.HttpGraphQlTester;
  * Spring MVC or Spring WebFlux mock infrastructures.
  *
  * @author Brian Clozel
- * @since 2.7.0
  * @see HttpGraphQlTesterAutoConfiguration
+ * @since 2.7.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited

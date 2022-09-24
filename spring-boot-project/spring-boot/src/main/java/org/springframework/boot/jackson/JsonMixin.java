@@ -41,6 +41,7 @@ public @interface JsonMixin {
 	 * Alias for the {@link #type()} attribute. Allows for more concise annotation
 	 * declarations e.g.: {@code @JsonMixin(MyType.class)} instead of
 	 * {@code @JsonMixin(type=MyType.class)}.
+	 *
 	 * @return the mixed-in classes
 	 * @since 2.7.0
 	 */
@@ -50,6 +51,7 @@ public @interface JsonMixin {
 	/**
 	 * The types that are handled by the provided mix-in class. {@link #value()} is an
 	 * alias for (and mutually exclusive with) this attribute.
+	 *
 	 * @return the mixed-in classes
 	 * @since 2.7.0
 	 */

@@ -76,6 +76,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Directory containing the source archive.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(defaultValue = "${project.build.directory}", required = true)
@@ -83,6 +84,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Name of the source archive.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(defaultValue = "${project.build.finalName}", readonly = true)
@@ -90,6 +92,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Skip the execution.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(property = "spring-boot.build-image.skip", defaultValue = "false")
@@ -97,6 +100,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Classifier used when finding the source archive.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter
@@ -106,6 +110,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	 * Image configuration, with {@code builder}, {@code runImage}, {@code name},
 	 * {@code env}, {@code cleanCache}, {@code verboseLogging}, {@code pullPolicy}, and
 	 * {@code publish} options.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter
@@ -113,6 +118,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Alias for {@link Image#name} to support configuration via command-line property.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(property = "spring-boot.build-image.imageName", readonly = true)
@@ -120,6 +126,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Alias for {@link Image#builder} to support configuration via command-line property.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(property = "spring-boot.build-image.builder", readonly = true)
@@ -128,6 +135,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	/**
 	 * Alias for {@link Image#runImage} to support configuration via command-line
 	 * property.
+	 *
 	 * @since 2.3.1
 	 */
 	@Parameter(property = "spring-boot.build-image.runImage", readonly = true)
@@ -136,6 +144,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	/**
 	 * Alias for {@link Image#cleanCache} to support configuration via command-line
 	 * property.
+	 *
 	 * @since 2.4.0
 	 */
 	@Parameter(property = "spring-boot.build-image.cleanCache", readonly = true)
@@ -156,6 +165,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Alias for {@link Image#network} to support configuration via command-line property.
+	 *
 	 * @since 2.6.0
 	 */
 	@Parameter(property = "spring-boot.build-image.network", readonly = true)
@@ -163,6 +173,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Docker configuration options.
+	 *
 	 * @since 2.4.0
 	 */
 	@Parameter
@@ -172,6 +183,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	 * The type of archive (which corresponds to how the dependencies are laid out inside
 	 * it). Possible values are {@code JAR}, {@code WAR}, {@code ZIP}, {@code DIR},
 	 * {@code NONE}. Defaults to a guess based on the archive type.
+	 *
 	 * @since 2.3.11
 	 */
 	@Parameter
@@ -181,6 +193,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	 * The layout factory that will be used to create the executable archive if no
 	 * explicit layout is set. Alternative layouts implementations can be provided by 3rd
 	 * parties.
+	 *
 	 * @since 2.3.11
 	 */
 	@Parameter
@@ -188,6 +201,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Return the type of archive that should be used when building the image.
+	 *
 	 * @return the value of the {@code layout} parameter, or {@code null} if the parameter
 	 * is not provided
 	 */
@@ -199,6 +213,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 	/**
 	 * Return the layout factory that will be used to determine the
 	 * {@link AbstractPackagerMojo.LayoutType} if no explicit layout is set.
+	 *
 	 * @return the value of the {@code layoutFactory} parameter, or {@code null} if the
 	 * parameter is not provided
 	 */
@@ -228,8 +243,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 			BuildRequest request = getBuildRequest(libraries);
 			Builder builder = new Builder(new MojoBuildLog(this::getLog), dockerConfiguration);
 			builder.build(request);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new MojoExecutionException(ex.getMessage(), ex);
 		}
 	}
@@ -282,6 +296,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Return the {@link File} to use to back up the original source.
+	 *
 	 * @return the file to use to back up the original source
 	 */
 	private File getBackupFile() {
@@ -392,8 +407,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 			tar.setLongFileMode(TarArchiveOutputStream.LONGFILE_POSIX);
 			try {
 				this.packager.packageImage(this.libraries, (entry, entryWriter) -> write(entry, entryWriter, tar));
-			}
-			catch (RuntimeException ex) {
+			} catch (RuntimeException ex) {
 				outputStream.close();
 				throw new RuntimeException("Error packaging archive for image", ex);
 			}
@@ -407,8 +421,7 @@ public class BuildImageMojo extends AbstractPackagerMojo {
 					entryWriter.write(tar);
 				}
 				tar.closeArchiveEntry();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

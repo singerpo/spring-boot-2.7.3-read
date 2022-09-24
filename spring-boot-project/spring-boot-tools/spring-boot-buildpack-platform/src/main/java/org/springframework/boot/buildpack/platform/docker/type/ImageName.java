@@ -23,9 +23,9 @@ import org.springframework.util.Assert;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 2.3.0
  * @see ImageReference
  * @see #of(String)
+ * @since 2.3.0
  */
 public class ImageName {
 
@@ -50,6 +50,7 @@ public class ImageName {
 
 	/**
 	 * Return the domain for this image name.
+	 *
 	 * @return the domain
 	 */
 	public String getDomain() {
@@ -58,6 +59,7 @@ public class ImageName {
 
 	/**
 	 * Return the name of this image.
+	 *
 	 * @return the image name
 	 */
 	public String getName() {
@@ -122,6 +124,7 @@ public class ImageName {
 	 * <li>{@code domain/name}</li>
 	 * <li>{@code domain:port/name}</li>
 	 * </ul>
+	 *
 	 * @param value the value to parse
 	 * @return an {@link ImageName} instance
 	 */

@@ -46,14 +46,14 @@ class IntegrationAutoConfigurationScanRegistrar extends IntegrationComponentScan
 
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
-			final BeanDefinitionRegistry registry) {
+										final BeanDefinitionRegistry registry) {
 		super.registerBeanDefinitions(AnnotationMetadata.introspect(IntegrationComponentScanConfiguration.class),
 				registry);
 	}
 
 	@Override
 	protected Collection<String> getBasePackages(AnnotationMetadata importingClassMetadata,
-			BeanDefinitionRegistry registry) {
+												 BeanDefinitionRegistry registry) {
 		return (AutoConfigurationPackages.has(this.beanFactory) ? AutoConfigurationPackages.get(this.beanFactory)
 				: Collections.emptyList());
 	}

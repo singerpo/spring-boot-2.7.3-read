@@ -47,7 +47,7 @@ import org.springframework.session.jdbc.config.annotation.web.http.JdbcHttpSessi
  * @author Vedran Pavic
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ JdbcTemplate.class, JdbcIndexedSessionRepository.class })
+@ConditionalOnClass({JdbcTemplate.class, JdbcIndexedSessionRepository.class})
 @ConditionalOnMissingBean(SessionRepository.class)
 @ConditionalOnBean(DataSource.class)
 @Conditional(ServletSessionCondition.class)
@@ -57,8 +57,8 @@ class JdbcSessionConfiguration {
 
 	@Bean
 	@SuppressWarnings("deprecation")
-	@ConditionalOnMissingBean({ JdbcSessionDataSourceScriptDatabaseInitializer.class,
-			JdbcSessionDataSourceInitializer.class })
+	@ConditionalOnMissingBean({JdbcSessionDataSourceScriptDatabaseInitializer.class,
+			JdbcSessionDataSourceInitializer.class})
 	@Conditional(OnJdbcSessionDatasourceInitializationCondition.class)
 	JdbcSessionDataSourceScriptDatabaseInitializer jdbcSessionDataSourceScriptDatabaseInitializer(
 			@SpringSessionDataSource ObjectProvider<DataSource> sessionDataSource,
@@ -72,7 +72,7 @@ class JdbcSessionConfiguration {
 
 		@Autowired
 		void customize(SessionProperties sessionProperties, JdbcSessionProperties jdbcSessionProperties,
-				ServerProperties serverProperties) {
+					   ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getServlet().getSession().getTimeout());
 			if (timeout != null) {

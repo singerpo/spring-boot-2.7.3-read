@@ -86,30 +86,30 @@ class SessionAutoConfigurationHazelcastTests extends AbstractSessionAutoConfigur
 	void customMapName() {
 		this.contextRunner.withPropertyValues("spring.session.store-type=hazelcast",
 				"spring.session.hazelcast.map-name=foo:bar:biz").run((context) -> {
-					validateSessionRepository(context, Hazelcast4IndexedSessionRepository.class);
-					HazelcastInstance hazelcastInstance = context.getBean(HazelcastInstance.class);
-					then(hazelcastInstance).should().getMap("foo:bar:biz");
-				});
+			validateSessionRepository(context, Hazelcast4IndexedSessionRepository.class);
+			HazelcastInstance hazelcastInstance = context.getBean(HazelcastInstance.class);
+			then(hazelcastInstance).should().getMap("foo:bar:biz");
+		});
 	}
 
 	@Test
 	void customFlushMode() {
 		this.contextRunner.withPropertyValues("spring.session.store-type=hazelcast",
 				"spring.session.hazelcast.flush-mode=immediate").run((context) -> {
-					Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
-							Hazelcast4IndexedSessionRepository.class);
-					assertThat(repository).hasFieldOrPropertyWithValue("flushMode", FlushMode.IMMEDIATE);
-				});
+			Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
+					Hazelcast4IndexedSessionRepository.class);
+			assertThat(repository).hasFieldOrPropertyWithValue("flushMode", FlushMode.IMMEDIATE);
+		});
 	}
 
 	@Test
 	void customSaveMode() {
 		this.contextRunner.withPropertyValues("spring.session.store-type=hazelcast",
 				"spring.session.hazelcast.save-mode=on-get-attribute").run((context) -> {
-					Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
-							Hazelcast4IndexedSessionRepository.class);
-					assertThat(repository).hasFieldOrPropertyWithValue("saveMode", SaveMode.ON_GET_ATTRIBUTE);
-				});
+			Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
+					Hazelcast4IndexedSessionRepository.class);
+			assertThat(repository).hasFieldOrPropertyWithValue("saveMode", SaveMode.ON_GET_ATTRIBUTE);
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

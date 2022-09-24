@@ -81,6 +81,7 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 	private static final String ERROR_STATUS_CODE = "javax.servlet.error.status_code";
 
 	private static final Set<Class<?>> CLIENT_ABORT_EXCEPTIONS;
+
 	static {
 		Set<Class<?>> clientAbortExceptions = new HashSet<>();
 		addClassIfPresent(clientAbortExceptions, "org.apache.catalina.connector.ClientAbortException");
@@ -127,12 +128,10 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 			if (wrapped.hasErrorToSend()) {
 				handleErrorStatus(request, response, wrapped.getStatus(), wrapped.getMessage());
 				response.flushBuffer();
-			}
-			else if (!request.isAsyncStarted() && !response.isCommitted()) {
+			} else if (!request.isAsyncStarted() && !response.isCommitted()) {
 				response.flushBuffer();
 			}
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			Throwable exceptionToHandle = ex;
 			if (ex instanceof NestedServletException) {
 				Throwable rootCause = ((NestedServletException) ex).getRootCause();
@@ -162,7 +161,7 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 	}
 
 	private void handleException(HttpServletRequest request, HttpServletResponse response, ErrorWrapperResponse wrapped,
-			Throwable ex) throws IOException, ServletException {
+								 Throwable ex) throws IOException, ServletException {
 		Class<?> type = ex.getClass();
 		String errorPath = getErrorPath(type);
 		if (errorPath == null) {
@@ -196,6 +195,7 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 	/**
 	 * Return the description for the given request. By default this method will return a
 	 * description based on the request {@code servletPath} and {@code pathInfo}.
+	 *
 	 * @param request the source request
 	 * @return the description
 	 * @since 1.5.0
@@ -217,8 +217,7 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 				+ " com.ibm.ws.webcontainer.invokeFlushAfterService to false";
 		if (ex == null) {
 			logger.error(message);
-		}
-		else {
+		} else {
 			// User might see the error page without all the data here but throwing the
 			// exception isn't going to help anyone (we'll log it to be on the safe side)
 			logger.error(message, ex);
@@ -282,11 +281,9 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 		for (ErrorPage errorPage : errorPages) {
 			if (errorPage.isGlobal()) {
 				this.global = errorPage.getPath();
-			}
-			else if (errorPage.getStatus() != null) {
+			} else if (errorPage.getStatus() != null) {
 				this.statuses.put(errorPage.getStatus().value(), errorPage.getPath());
-			}
-			else {
+			} else {
 				this.exceptions.put(errorPage.getException(), errorPage.getPath());
 			}
 		}
@@ -304,8 +301,7 @@ public class ErrorPageFilter implements Filter, ErrorPageRegistry, Ordered {
 	private static void addClassIfPresent(Collection<Class<?>> collection, String className) {
 		try {
 			collection.add(ClassUtils.forName(className, null));
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 		}
 	}
 

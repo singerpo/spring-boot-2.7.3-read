@@ -35,7 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		properties = { "management.server.port=0", "spring.jersey.application-path=/app" })
+		properties = {"management.server.port=0", "spring.jersey.application-path=/app"})
 class JerseyApplicationPathAndManagementPortTests {
 
 	@LocalServerPort

@@ -83,7 +83,7 @@ class BinderTests {
 
 	@Test
 	void createWhenArraySourcesContainsNullElementShouldThrowException() {
-		assertThatIllegalArgumentException().isThrownBy(() -> new Binder(new ConfigurationPropertySource[] { null }))
+		assertThatIllegalArgumentException().isThrownBy(() -> new Binder(new ConfigurationPropertySource[]{null}))
 				.withMessageContaining("Sources must not contain null elements");
 	}
 

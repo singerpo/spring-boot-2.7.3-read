@@ -29,7 +29,7 @@ import javax.lang.model.type.TypeMirror;
 class JavaBeanPropertyDescriptor extends PropertyDescriptor<ExecutableElement> {
 
 	JavaBeanPropertyDescriptor(TypeElement ownerElement, ExecutableElement factoryMethod, ExecutableElement getter,
-			String name, TypeMirror type, VariableElement field, ExecutableElement setter) {
+							   String name, TypeMirror type, VariableElement field, ExecutableElement setter) {
 		super(ownerElement, factoryMethod, getter, name, type, field, getter, setter);
 	}
 

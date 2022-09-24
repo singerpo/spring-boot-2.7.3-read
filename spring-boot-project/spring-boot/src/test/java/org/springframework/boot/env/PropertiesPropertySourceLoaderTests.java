@@ -37,7 +37,7 @@ class PropertiesPropertySourceLoaderTests {
 
 	@Test
 	void getFileExtensions() {
-		assertThat(this.loader.getFileExtensions()).isEqualTo(new String[] { "properties", "xml" });
+		assertThat(this.loader.getFileExtensions()).isEqualTo(new String[]{"properties", "xml"});
 	}
 
 	@Test

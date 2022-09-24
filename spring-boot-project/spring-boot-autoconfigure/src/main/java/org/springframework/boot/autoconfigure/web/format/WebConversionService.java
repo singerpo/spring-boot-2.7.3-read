@@ -50,16 +50,16 @@ public class WebConversionService extends DefaultFormattingConversionService {
 	 * Create a new WebConversionService that configures formatters with the provided
 	 * date, time, and date-time formats, or registers the default if no custom format is
 	 * provided.
+	 *
 	 * @param dateTimeFormatters the formatters to use for date, time, and date-time
-	 * formatting
+	 *                           formatting
 	 * @since 2.3.0
 	 */
 	public WebConversionService(DateTimeFormatters dateTimeFormatters) {
 		super(false);
 		if (dateTimeFormatters.isCustomized()) {
 			addFormatters(dateTimeFormatters);
-		}
-		else {
+		} else {
 			addDefaultFormatters(this);
 		}
 	}

@@ -62,7 +62,7 @@ class ScheduledBeanLazyInitializationExcludeFilterTests {
 
 	private static class AnotherTestBean {
 
-		@Schedules({ @Scheduled(fixedRate = 5000), @Scheduled(fixedRate = 2500) })
+		@Schedules({@Scheduled(fixedRate = 5000), @Scheduled(fixedRate = 2500)})
 		void doStuff() {
 		}
 

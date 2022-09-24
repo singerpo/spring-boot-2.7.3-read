@@ -59,14 +59,14 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  * @author Andy Wilkinson
  * @since 1.3.3
  */
-@Conditional({ OnEnabledDevToolsCondition.class, DevToolsDataSourceCondition.class })
+@Conditional({OnEnabledDevToolsCondition.class, DevToolsDataSourceCondition.class})
 @AutoConfiguration(after = DataSourceAutoConfiguration.class)
 @Import(DatabaseShutdownExecutorEntityManagerFactoryDependsOnPostProcessor.class)
 public class DevToolsDataSourceAutoConfiguration {
 
 	@Bean
 	NonEmbeddedInMemoryDatabaseShutdownExecutor inMemoryDatabaseShutdownExecutor(DataSource dataSource,
-			DataSourceProperties dataSourceProperties) {
+																				 DataSourceProperties dataSourceProperties) {
 		return new NonEmbeddedInMemoryDatabaseShutdownExecutor(dataSource, dataSourceProperties);
 	}
 
@@ -112,8 +112,7 @@ public class DevToolsDataSourceAutoConfiguration {
 				String url = dataSource.getConnection().getMetaData().getURL();
 				try {
 					new EmbeddedDriver().connect(url + ";drop=true", new Properties());
-				}
-				catch (SQLException ex) {
+				} catch (SQLException ex) {
 					if (!"08006".equals(ex.getSQLState())) {
 						throw ex;
 					}
@@ -189,8 +188,8 @@ public class DevToolsDataSourceAutoConfiguration {
 			if (dataSourceDefinition instanceof AnnotatedBeanDefinition
 					&& ((AnnotatedBeanDefinition) dataSourceDefinition).getFactoryMethodMetadata() != null
 					&& ((AnnotatedBeanDefinition) dataSourceDefinition).getFactoryMethodMetadata()
-							.getDeclaringClassName().startsWith(DataSourceAutoConfiguration.class.getPackage().getName()
-									+ ".DataSourceConfiguration$")) {
+					.getDeclaringClassName().startsWith(DataSourceAutoConfiguration.class.getPackage().getName()
+							+ ".DataSourceConfiguration$")) {
 				return ConditionOutcome.match(message.foundExactly("auto-configured DataSource"));
 			}
 			return ConditionOutcome.noMatch(message.didNotFind("an auto-configured DataSource").atAll());

@@ -51,12 +51,12 @@ public class EmbeddedWebServerFactoryCustomizerAutoConfiguration {
 	 * Nested configuration if Tomcat is being used.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Tomcat.class, UpgradeProtocol.class })
+	@ConditionalOnClass({Tomcat.class, UpgradeProtocol.class})
 	public static class TomcatWebServerFactoryCustomizerConfiguration {
 
 		@Bean
 		public TomcatWebServerFactoryCustomizer tomcatWebServerFactoryCustomizer(Environment environment,
-				ServerProperties serverProperties) {
+																				 ServerProperties serverProperties) {
 			return new TomcatWebServerFactoryCustomizer(environment, serverProperties);
 		}
 
@@ -66,12 +66,12 @@ public class EmbeddedWebServerFactoryCustomizerAutoConfiguration {
 	 * Nested configuration if Jetty is being used.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Server.class, Loader.class, WebAppContext.class })
+	@ConditionalOnClass({Server.class, Loader.class, WebAppContext.class})
 	public static class JettyWebServerFactoryCustomizerConfiguration {
 
 		@Bean
 		public JettyWebServerFactoryCustomizer jettyWebServerFactoryCustomizer(Environment environment,
-				ServerProperties serverProperties) {
+																			   ServerProperties serverProperties) {
 			return new JettyWebServerFactoryCustomizer(environment, serverProperties);
 		}
 
@@ -81,12 +81,12 @@ public class EmbeddedWebServerFactoryCustomizerAutoConfiguration {
 	 * Nested configuration if Undertow is being used.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Undertow.class, SslClientAuthMode.class })
+	@ConditionalOnClass({Undertow.class, SslClientAuthMode.class})
 	public static class UndertowWebServerFactoryCustomizerConfiguration {
 
 		@Bean
 		public UndertowWebServerFactoryCustomizer undertowWebServerFactoryCustomizer(Environment environment,
-				ServerProperties serverProperties) {
+																					 ServerProperties serverProperties) {
 			return new UndertowWebServerFactoryCustomizer(environment, serverProperties);
 		}
 
@@ -101,7 +101,7 @@ public class EmbeddedWebServerFactoryCustomizerAutoConfiguration {
 
 		@Bean
 		public NettyWebServerFactoryCustomizer nettyWebServerFactoryCustomizer(Environment environment,
-				ServerProperties serverProperties) {
+																			   ServerProperties serverProperties) {
 			return new NettyWebServerFactoryCustomizer(environment, serverProperties);
 		}
 

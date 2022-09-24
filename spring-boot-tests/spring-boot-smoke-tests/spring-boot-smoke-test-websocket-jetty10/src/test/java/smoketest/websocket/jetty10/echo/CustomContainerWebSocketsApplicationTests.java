@@ -49,7 +49,7 @@ import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @EnabledForJreRange(min = JRE.JAVA_11)
-@SpringBootTest(classes = { SampleJetty10WebSocketsApplication.class, CustomContainerConfiguration.class },
+@SpringBootTest(classes = {SampleJetty10WebSocketsApplication.class, CustomContainerConfiguration.class},
 		webEnvironment = WebEnvironment.RANDOM_PORT)
 class CustomContainerWebSocketsApplicationTests {
 
@@ -62,8 +62,8 @@ class CustomContainerWebSocketsApplicationTests {
 	void echoEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
 				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/ws/echo/websocket")
-						.run("--spring.main.web-application-type=none");
+				.properties("websocket.uri:ws://localhost:" + this.port + "/ws/echo/websocket")
+				.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -75,8 +75,8 @@ class CustomContainerWebSocketsApplicationTests {
 	void reverseEndpoint() {
 		ConfigurableApplicationContext context = new SpringApplicationBuilder(ClientConfiguration.class,
 				PropertyPlaceholderAutoConfiguration.class)
-						.properties("websocket.uri:ws://localhost:" + this.port + "/ws/reverse")
-						.run("--spring.main.web-application-type=none");
+				.properties("websocket.uri:ws://localhost:" + this.port + "/ws/reverse")
+				.run("--spring.main.web-application-type=none");
 		long count = context.getBean(ClientConfiguration.class).latch.getCount();
 		AtomicReference<String> messagePayloadReference = context.getBean(ClientConfiguration.class).messagePayload;
 		context.close();
@@ -109,8 +109,7 @@ class CustomContainerWebSocketsApplicationTests {
 			logger.info("Waiting for response: latch=" + this.latch.getCount());
 			if (this.latch.await(10, TimeUnit.SECONDS)) {
 				logger.info("Got response: " + this.messagePayload.get());
-			}
-			else {
+			} else {
 				logger.info("Response not received: latch=" + this.latch.getCount());
 			}
 		}

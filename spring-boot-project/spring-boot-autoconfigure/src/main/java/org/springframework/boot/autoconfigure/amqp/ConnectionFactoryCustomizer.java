@@ -30,6 +30,7 @@ public interface ConnectionFactoryCustomizer {
 
 	/**
 	 * Customize the {@link ConnectionFactory}.
+	 *
 	 * @param factory the factory to customize
 	 */
 	void customize(ConnectionFactory factory);

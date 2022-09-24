@@ -52,11 +52,9 @@ class IndexedLayers implements Layers {
 			if (line.startsWith("- ")) {
 				contents = new ArrayList<>();
 				this.layers.put(line.substring(3, line.length() - 2), contents);
-			}
-			else if (line.startsWith("  - ")) {
+			} else if (line.startsWith("  - ")) {
 				contents.add(line.substring(5, line.length() - 1));
-			}
-			else {
+			} else {
 				throw new IllegalStateException("Layer index file is malformed");
 			}
 		}
@@ -86,6 +84,7 @@ class IndexedLayers implements Layers {
 
 	/**
 	 * Get an {@link IndexedLayers} instance of possible.
+	 *
 	 * @param context the context
 	 * @return an {@link IndexedLayers} instance or {@code null} if this not a layered
 	 * jar.
@@ -102,11 +101,9 @@ class IndexedLayers implements Layers {
 				}
 			}
 			return null;
-		}
-		catch (FileNotFoundException | NoSuchFileException ex) {
+		} catch (FileNotFoundException | NoSuchFileException ex) {
 			return null;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

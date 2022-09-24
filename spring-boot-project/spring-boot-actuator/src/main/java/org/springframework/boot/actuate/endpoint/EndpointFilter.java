@@ -28,6 +28,7 @@ public interface EndpointFilter<E extends ExposableEndpoint<?>> {
 
 	/**
 	 * Return {@code true} if the filter matches.
+	 *
 	 * @param endpoint the endpoint to check
 	 * @return {@code true} if the filter matches
 	 */

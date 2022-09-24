@@ -49,7 +49,7 @@ import static org.mockito.Mockito.never;
  * @author Rob Winch
  * @author Andy Wilkinson
  */
-@ExtendWith({ OutputCaptureExtension.class, MockitoExtension.class })
+@ExtendWith({OutputCaptureExtension.class, MockitoExtension.class})
 class HttpTunnelConnectionTests {
 
 	private String url;

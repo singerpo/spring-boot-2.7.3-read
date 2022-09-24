@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LocaleController {
 	@RequestMapping("locale")
-	public String locale(Model model){
-		model.addAttribute("userName","lucy");
+	public String locale(Model model) {
+		model.addAttribute("userName", "lucy");
 		return "locale";
 	}
 }

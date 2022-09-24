@@ -52,8 +52,7 @@ public final class ConnectionFactoryBuilder {
 	static {
 		if (ClassUtils.isPresent("io.r2dbc.pool.ConnectionPool", ConnectionFactoryBuilder.class.getClassLoader())) {
 			optionsCapableWrapper = new PoolingAwareOptionsCapableWrapper();
-		}
-		else {
+		} else {
 			optionsCapableWrapper = new OptionsCapableWrapper();
 		}
 	}
@@ -68,6 +67,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Initialize a new {@link ConnectionFactoryBuilder} based on the specified R2DBC url.
+	 *
 	 * @param url the url to use
 	 * @return a new builder initialized with the options exposed in the specified url
 	 * @see EmbeddedDatabaseConnection#getUrl(String)
@@ -80,6 +80,7 @@ public final class ConnectionFactoryBuilder {
 	/**
 	 * Initialize a new {@link ConnectionFactoryBuilder} based on the specified
 	 * {@link Builder options}.
+	 *
 	 * @param options the options to use to initialize the builder
 	 * @return a new builder initialized with the settings defined in the given
 	 * {@link Builder options}
@@ -91,8 +92,9 @@ public final class ConnectionFactoryBuilder {
 	/**
 	 * Initialize a new {@link ConnectionFactoryBuilder} derived from the options of the
 	 * specified {@code connectionFactory}.
+	 *
 	 * @param connectionFactory the connection factory whose options are to be used to
-	 * initialize the builder
+	 *                          initialize the builder
 	 * @return a new builder initialized with the options from the connection factory
 	 * @since 2.5.1
 	 */
@@ -115,6 +117,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure additional options.
+	 *
 	 * @param options a {@link Consumer} to customize the options
 	 * @return this for method chaining
 	 */
@@ -125,6 +128,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure the {@linkplain ConnectionFactoryOptions#USER username}.
+	 *
 	 * @param username the connection factory username
 	 * @return this for method chaining
 	 */
@@ -134,6 +138,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure the {@linkplain ConnectionFactoryOptions#PASSWORD password}.
+	 *
 	 * @param password the connection factory password
 	 * @return this for method chaining
 	 */
@@ -143,6 +148,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure the {@linkplain ConnectionFactoryOptions#HOST host name}.
+	 *
 	 * @param host the connection factory hostname
 	 * @return this for method chaining
 	 */
@@ -152,6 +158,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure the {@linkplain ConnectionFactoryOptions#PORT port}.
+	 *
 	 * @param port the connection factory port
 	 * @return this for method chaining
 	 */
@@ -161,6 +168,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Configure the {@linkplain ConnectionFactoryOptions#DATABASE database}.
+	 *
 	 * @param database the connection factory database
 	 * @return this for method chaining
 	 */
@@ -170,6 +178,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Build a {@link ConnectionFactory} based on the state of this builder.
+	 *
 	 * @return a connection factory
 	 */
 	public ConnectionFactory build() {
@@ -179,6 +188,7 @@ public final class ConnectionFactoryBuilder {
 
 	/**
 	 * Build a {@link ConnectionFactoryOptions} based on the state of this builder.
+	 *
 	 * @return the options
 	 */
 	public ConnectionFactoryOptions buildOptions() {
@@ -225,7 +235,7 @@ public final class ConnectionFactoryBuilder {
 
 		@SuppressWarnings("unchecked")
 		ConnectionPoolConfiguration connectionPoolConfiguration(ConnectionFactoryOptions options,
-				ConnectionFactory connectionFactory) {
+																ConnectionFactory connectionFactory) {
 			ConnectionPoolConfiguration.Builder builder = ConnectionPoolConfiguration.builder(connectionFactory);
 			PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
 			map.from(options.getValue(PoolingConnectionFactoryProvider.BACKGROUND_EVICTION_INTERVAL))

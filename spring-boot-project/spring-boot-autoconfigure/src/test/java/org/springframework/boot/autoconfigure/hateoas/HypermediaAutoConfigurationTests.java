@@ -109,12 +109,12 @@ class HypermediaAutoConfigurationTests {
 					assertThat(mappingJacksonConverter).isPresent()
 							.hasValueSatisfying((converter) -> assertThat(
 									converter.canWrite(RepresentationModel.class, MediaType.APPLICATION_JSON))
-											.isFalse());
+									.isFalse());
 				});
 	}
 
-	@ImportAutoConfiguration({ HttpMessageConvertersAutoConfiguration.class, WebMvcAutoConfiguration.class,
-			JacksonAutoConfiguration.class, HypermediaAutoConfiguration.class })
+	@ImportAutoConfiguration({HttpMessageConvertersAutoConfiguration.class, WebMvcAutoConfiguration.class,
+			JacksonAutoConfiguration.class, HypermediaAutoConfiguration.class})
 	static class BaseConfig {
 
 	}

@@ -50,9 +50,9 @@ class WelcomePageRouterFunctionFactoryTests {
 
 	private StaticApplicationContext applicationContext;
 
-	private final String[] noIndexLocations = { "classpath:/" };
+	private final String[] noIndexLocations = {"classpath:/"};
 
-	private final String[] indexLocations = { "classpath:/public/", "classpath:/welcome-page/" };
+	private final String[] indexLocations = {"classpath:/public/", "classpath:/welcome-page/"};
 
 	@BeforeEach
 	void setup() {
@@ -141,7 +141,7 @@ class WelcomePageRouterFunctionFactoryTests {
 	}
 
 	private WelcomePageRouterFunctionFactory factoryWithoutTemplateSupport(String[] locations,
-			String staticPathPattern) {
+																		   String staticPathPattern) {
 		return new WelcomePageRouterFunctionFactory(new TestTemplateAvailabilityProviders(), this.applicationContext,
 				locations, staticPathPattern);
 	}

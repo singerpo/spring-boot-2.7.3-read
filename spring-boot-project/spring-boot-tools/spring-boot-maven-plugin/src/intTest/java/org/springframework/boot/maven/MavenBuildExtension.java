@@ -48,8 +48,7 @@ class MavenBuildExtension implements TestTemplateInvocationContextProvider {
 	public Stream<TestTemplateInvocationContext> provideTestTemplateInvocationContexts(ExtensionContext context) {
 		try {
 			return Files.list(Paths.get("build/maven-binaries")).map(MavenVersionTestTemplateInvocationContext::new);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

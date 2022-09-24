@@ -52,8 +52,7 @@ class PluginXmlParser {
 			List<Mojo> mojos = parseMojos(root);
 			return new Plugin(textAt("//plugin/groupId", root), textAt("//plugin/artifactId", root),
 					textAt("//plugin/version", root), textAt("//plugin/goalPrefix", root), mojos);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -98,7 +97,7 @@ class PluginXmlParser {
 	}
 
 	private Parameter parseParameter(Node parameterNode, Map<String, String> defaultValues,
-			Map<String, String> userProperties) throws XPathExpressionException {
+									 Map<String, String> userProperties) throws XPathExpressionException {
 		return new Parameter(textAt("name", parameterNode), textAt("type", parameterNode),
 				booleanAt("required", parameterNode), booleanAt("editable", parameterNode),
 				format(textAt("description", parameterNode)), defaultValues.get(textAt("name", parameterNode)),
@@ -239,7 +238,7 @@ class PluginXmlParser {
 		private final String since;
 
 		private Parameter(String name, String type, boolean required, boolean editable, String description,
-				String defaultValue, String userProperty, String since) {
+						  String defaultValue, String userProperty, String since) {
 			this.name = name;
 			this.type = type;
 			this.required = required;

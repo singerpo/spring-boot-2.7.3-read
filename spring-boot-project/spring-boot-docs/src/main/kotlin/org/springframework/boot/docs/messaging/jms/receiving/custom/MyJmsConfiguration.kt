@@ -34,7 +34,7 @@ class MyJmsConfiguration {
 		return factory
 	}
 
-	fun getCustomConnectionFactory() : ConnectionFactory? {
+	fun getCustomConnectionFactory(): ConnectionFactory? {
 		return /**/ null
 	}
 

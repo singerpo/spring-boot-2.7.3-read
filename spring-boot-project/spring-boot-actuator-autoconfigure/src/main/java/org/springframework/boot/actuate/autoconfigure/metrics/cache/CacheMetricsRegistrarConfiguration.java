@@ -38,7 +38,7 @@ import org.springframework.util.StringUtils;
  * @author Stephane Nicoll
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnBean({ CacheMeterBinderProvider.class, MeterRegistry.class })
+@ConditionalOnBean({CacheMeterBinderProvider.class, MeterRegistry.class})
 class CacheMetricsRegistrarConfiguration {
 
 	private static final String CACHE_MANAGER_SUFFIX = "cacheManager";
@@ -50,7 +50,7 @@ class CacheMetricsRegistrarConfiguration {
 	private final Map<String, CacheManager> cacheManagers;
 
 	CacheMetricsRegistrarConfiguration(MeterRegistry registry, Collection<CacheMeterBinderProvider<?>> binderProviders,
-			Map<String, CacheManager> cacheManagers) {
+									   Map<String, CacheManager> cacheManagers) {
 		this.registry = registry;
 		this.cacheManagers = cacheManagers;
 		this.cacheMetricsRegistrar = new CacheMetricsRegistrar(this.registry, binderProviders);
@@ -78,6 +78,7 @@ class CacheMetricsRegistrarConfiguration {
 
 	/**
 	 * Get the name of a {@link CacheManager} based on its {@code beanName}.
+	 *
 	 * @param beanName the name of the {@link CacheManager} bean
 	 * @return a name for the given cache manager
 	 */

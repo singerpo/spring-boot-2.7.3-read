@@ -87,8 +87,7 @@ class SpringApplicationShutdownHook implements Runnable {
 	void addRuntimeShutdownHook() {
 		try {
 			Runtime.getRuntime().addShutdownHook(new Thread(this, "SpringApplicationShutdownHook"));
-		}
-		catch (AccessControlException ex) {
+		} catch (AccessControlException ex) {
 			// Not allowed in some environments
 		}
 	}
@@ -136,6 +135,7 @@ class SpringApplicationShutdownHook implements Runnable {
 	 * becomes inactive. We can't assume that just because the close method returns that
 	 * the context is actually inactive. It could be that another thread is still in the
 	 * process of disposing beans.
+	 *
 	 * @param context the context to clean
 	 */
 	private void closeAndWait(ConfigurableApplicationContext context) {
@@ -152,12 +152,10 @@ class SpringApplicationShutdownHook implements Runnable {
 				Thread.sleep(SLEEP);
 				waited += SLEEP;
 			}
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 			logger.warn("Interrupted waiting for application context " + context + " to become inactive");
-		}
-		catch (TimeoutException ex) {
+		} catch (TimeoutException ex) {
 			logger.warn("Timed out waiting for application context " + context + " to become inactive", ex);
 		}
 	}

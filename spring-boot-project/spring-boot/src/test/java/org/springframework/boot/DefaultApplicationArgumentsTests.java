@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
  */
 class DefaultApplicationArgumentsTests {
 
-	private static final String[] ARGS = new String[] { "--foo=bar", "--foo=baz", "--debug", "spring", "boot" };
+	private static final String[] ARGS = new String[]{"--foo=bar", "--foo=baz", "--debug", "spring", "boot"};
 
 	@Test
 	void argumentsMustNotBeNull() {

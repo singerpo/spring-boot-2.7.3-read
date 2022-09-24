@@ -42,7 +42,7 @@ class RestTemplateBuilderClientHttpRequestInitializer implements ClientHttpReque
 	private final Set<RestTemplateRequestCustomizer<?>> requestCustomizers;
 
 	RestTemplateBuilderClientHttpRequestInitializer(BasicAuthentication basicAuthentication,
-			Map<String, List<String>> defaultHeaders, Set<RestTemplateRequestCustomizer<?>> requestCustomizers) {
+													Map<String, List<String>> defaultHeaders, Set<RestTemplateRequestCustomizer<?>> requestCustomizers) {
 		this.basicAuthentication = basicAuthentication;
 		this.defaultHeaders = defaultHeaders;
 		this.requestCustomizers = requestCustomizers;

@@ -29,6 +29,7 @@ public interface DependencyVersion extends Comparable<DependencyVersion> {
 
 	/**
 	 * Returns whether this version is newer than the given {@code other} version.
+	 *
 	 * @param other version to test
 	 * @return {@code true} if this version is newer, otherwise {@code false}
 	 */
@@ -37,6 +38,7 @@ public interface DependencyVersion extends Comparable<DependencyVersion> {
 	/**
 	 * Returns whether this version has the same major versions as the {@code other}
 	 * version while also being newer.
+	 *
 	 * @param other version to test
 	 * @return {@code true} if this version has the same major and is newer, otherwise
 	 * {@code false}
@@ -46,6 +48,7 @@ public interface DependencyVersion extends Comparable<DependencyVersion> {
 	/**
 	 * Returns whether this version has the same major and minor versions as the
 	 * {@code other} version while also being newer.
+	 *
 	 * @param other version to test
 	 * @return {@code true} if this version has the same major and minor and is newer,
 	 * otherwise {@code false}

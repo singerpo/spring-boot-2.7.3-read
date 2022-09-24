@@ -99,21 +99,21 @@ class EnvironmentEndpointTests {
 	void sensitiveKeysHaveTheirValuesSanitized() {
 		TestPropertyValues.of("dbPassword=123456", "apiKey=123456", "mySecret=123456", "myCredentials=123456",
 				"VCAP_SERVICES=123456").applyToSystemProperties(() -> {
-					EnvironmentDescriptor descriptor = new EnvironmentEndpoint(new StandardEnvironment())
-							.environment(null);
-					Map<String, PropertyValueDescriptor> systemProperties = propertySources(descriptor)
-							.get("systemProperties").getProperties();
-					assertThat(systemProperties.get("dbPassword").getValue()).isEqualTo("******");
-					assertThat(systemProperties.get("apiKey").getValue()).isEqualTo("******");
-					assertThat(systemProperties.get("mySecret").getValue()).isEqualTo("******");
-					assertThat(systemProperties.get("myCredentials").getValue()).isEqualTo("******");
-					assertThat(systemProperties.get("VCAP_SERVICES").getValue()).isEqualTo("******");
-					PropertyValueDescriptor command = systemProperties.get("sun.java.command");
-					if (command != null) {
-						assertThat(command.getValue()).isEqualTo("******");
-					}
-					return null;
-				});
+			EnvironmentDescriptor descriptor = new EnvironmentEndpoint(new StandardEnvironment())
+					.environment(null);
+			Map<String, PropertyValueDescriptor> systemProperties = propertySources(descriptor)
+					.get("systemProperties").getProperties();
+			assertThat(systemProperties.get("dbPassword").getValue()).isEqualTo("******");
+			assertThat(systemProperties.get("apiKey").getValue()).isEqualTo("******");
+			assertThat(systemProperties.get("mySecret").getValue()).isEqualTo("******");
+			assertThat(systemProperties.get("myCredentials").getValue()).isEqualTo("******");
+			assertThat(systemProperties.get("VCAP_SERVICES").getValue()).isEqualTo("******");
+			PropertyValueDescriptor command = systemProperties.get("sun.java.command");
+			if (command != null) {
+				assertThat(command.getValue()).isEqualTo("******");
+			}
+			return null;
+		});
 	}
 
 	@Test
@@ -227,7 +227,7 @@ class EnvironmentEndpointTests {
 		TestPropertyValues.of("my.foo: http://${bar.password}://hello", "bar.password: hello").applyTo(environment);
 		EnvironmentDescriptor descriptor = new EnvironmentEndpoint(environment,
 				Collections.singletonList((data) -> data.withValue(data.getPropertySource().getName() + "******")))
-						.environment(null);
+				.environment(null);
 		assertThat(propertySources(descriptor).get("test").getProperties().get("my.foo").getValue())
 				.isEqualTo("test******");
 	}
@@ -368,13 +368,12 @@ class EnvironmentEndpointTests {
 	}
 
 	private void assertPropertySourceEntryDescriptor(PropertySourceEntryDescriptor actual, Object value,
-			String origin) {
+													 String origin) {
 		assertThat(actual).isNotNull();
 		if (value != null) {
 			assertThat(actual.getProperty().getValue()).isEqualTo(value);
 			assertThat(actual.getProperty().getOrigin()).isEqualTo(origin);
-		}
-		else {
+		} else {
 			assertThat(actual.getProperty()).isNull();
 		}
 

@@ -60,7 +60,7 @@ public class JmxEndpointExporter implements InitializingBean, DisposableBean, Be
 	private Collection<ObjectName> registered;
 
 	public JmxEndpointExporter(MBeanServer mBeanServer, EndpointObjectNameFactory objectNameFactory,
-			JmxOperationResponseMapper responseMapper, Collection<? extends ExposableJmxEndpoint> endpoints) {
+							   JmxOperationResponseMapper responseMapper, Collection<? extends ExposableJmxEndpoint> endpoints) {
 		Assert.notNull(mBeanServer, "MBeanServer must not be null");
 		Assert.notNull(objectNameFactory, "ObjectNameFactory must not be null");
 		Assert.notNull(responseMapper, "ResponseMapper must not be null");
@@ -97,11 +97,9 @@ public class JmxEndpointExporter implements InitializingBean, DisposableBean, Be
 			EndpointMBean mbean = new EndpointMBean(this.responseMapper, this.classLoader, endpoint);
 			this.mBeanServer.registerMBean(mbean, name);
 			return name;
-		}
-		catch (MalformedObjectNameException ex) {
+		} catch (MalformedObjectNameException ex) {
 			throw new IllegalStateException("Invalid ObjectName for " + getEndpointDescription(endpoint), ex);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new MBeanExportException("Failed to register MBean for " + getEndpointDescription(endpoint), ex);
 		}
 	}
@@ -116,11 +114,9 @@ public class JmxEndpointExporter implements InitializingBean, DisposableBean, Be
 				logger.debug("Unregister endpoint with ObjectName '" + objectName + "' from the JMX domain");
 			}
 			this.mBeanServer.unregisterMBean(objectName);
-		}
-		catch (InstanceNotFoundException ex) {
+		} catch (InstanceNotFoundException ex) {
 			// Ignore and continue
-		}
-		catch (MBeanRegistrationException ex) {
+		} catch (MBeanRegistrationException ex) {
 			throw new JmxException("Failed to unregister MBean with ObjectName '" + objectName + "'", ex);
 		}
 	}

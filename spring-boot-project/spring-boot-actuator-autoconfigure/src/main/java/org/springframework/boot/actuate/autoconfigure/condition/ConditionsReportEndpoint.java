@@ -128,8 +128,7 @@ public class ConditionsReportEndpoint {
 			if (conditionAndOutcomes.isFullMatch()) {
 				conditionAndOutcomes.forEach((conditionAndOutcome) -> this.positiveMatches.add(name,
 						new MessageAndCondition(conditionAndOutcome)));
-			}
-			else {
+			} else {
 				this.negativeMatches.put(name, new MessageAndConditions(conditionAndOutcomes));
 			}
 		}
@@ -159,7 +158,7 @@ public class ConditionsReportEndpoint {
 	/**
 	 * Adapts {@link ConditionAndOutcomes} to a JSON friendly structure.
 	 */
-	@JsonPropertyOrder({ "notMatched", "matched" })
+	@JsonPropertyOrder({"notMatched", "matched"})
 	public static class MessageAndConditions {
 
 		private final List<MessageAndCondition> notMatched = new ArrayList<>();
@@ -187,7 +186,7 @@ public class ConditionsReportEndpoint {
 	/**
 	 * Adapts {@link ConditionAndOutcome} to a JSON friendly structure.
 	 */
-	@JsonPropertyOrder({ "condition", "message" })
+	@JsonPropertyOrder({"condition", "message"})
 	public static class MessageAndCondition {
 
 		private final String condition;
@@ -200,8 +199,7 @@ public class ConditionsReportEndpoint {
 			this.condition = ClassUtils.getShortName(condition.getClass());
 			if (StringUtils.hasLength(outcome.getMessage())) {
 				this.message = outcome.getMessage();
-			}
-			else {
+			} else {
 				this.message = outcome.isMatch() ? "matched" : "did not match";
 			}
 		}

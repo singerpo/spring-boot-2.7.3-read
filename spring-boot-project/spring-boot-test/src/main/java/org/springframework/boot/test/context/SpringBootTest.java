@@ -77,8 +77,8 @@ import org.springframework.web.context.WebApplicationContext;
  *
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 1.4.0
  * @see ContextConfiguration
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -90,6 +90,7 @@ public @interface SpringBootTest {
 
 	/**
 	 * Alias for {@link #properties()}.
+	 *
 	 * @return the properties to apply
 	 */
 	@AliasFor("properties")
@@ -98,6 +99,7 @@ public @interface SpringBootTest {
 	/**
 	 * Properties in form {@literal key=value} that should be added to the Spring
 	 * {@link Environment} before the test runs.
+	 *
 	 * @return the properties to add
 	 */
 	@AliasFor("value")
@@ -105,6 +107,7 @@ public @interface SpringBootTest {
 
 	/**
 	 * Application arguments that should be passed to the application under test.
+	 *
 	 * @return the application arguments to pass to the application under test.
 	 * @see ApplicationArguments
 	 * @see SpringApplication#run(String...)
@@ -120,14 +123,16 @@ public @interface SpringBootTest {
 	 * explicit classes are defined the test will look for nested
 	 * {@link Configuration @Configuration} classes, before falling back to a
 	 * {@link SpringBootConfiguration @SpringBootConfiguration} search.
-	 * @see ContextConfiguration#classes()
+	 *
 	 * @return the component classes used to load the application context
+	 * @see ContextConfiguration#classes()
 	 */
 	Class<?>[] classes() default {};
 
 	/**
 	 * The type of web environment to create when applicable. Defaults to
 	 * {@link WebEnvironment#MOCK}.
+	 *
 	 * @return the type of web environment
 	 */
 	WebEnvironment webEnvironment() default WebEnvironment.MOCK;
@@ -174,6 +179,7 @@ public @interface SpringBootTest {
 
 		/**
 		 * Return if the environment uses an {@link ServletWebServerApplicationContext}.
+		 *
 		 * @return if an {@link ServletWebServerApplicationContext} is used.
 		 */
 		public boolean isEmbedded() {

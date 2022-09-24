@@ -40,7 +40,7 @@ public class LoaderTestApplication {
 			JarURLConnection connection = (JarURLConnection) resourceUrl.openConnection();
 			String jarName = connection.getJarFile().getName();
 			System.out.println(">>>>> jar file " + jarName);
-			if(jarName.contains(temp.getAbsolutePath())) {
+			if (jarName.contains(temp.getAbsolutePath())) {
 				System.out.println(">>>>> jar written to temp");
 			}
 			byte[] resourceContent = FileCopyUtils.copyToByteArray(resourceUrl.openStream());

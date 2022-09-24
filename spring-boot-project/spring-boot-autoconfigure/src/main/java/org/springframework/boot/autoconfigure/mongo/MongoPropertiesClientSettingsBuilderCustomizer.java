@@ -115,6 +115,7 @@ public class MongoPropertiesClientSettingsBuilderCustomizer implements MongoClie
 
 	/**
 	 * Set the order value of this object.
+	 *
 	 * @param order the new order value
 	 * @see #getOrder()
 	 */

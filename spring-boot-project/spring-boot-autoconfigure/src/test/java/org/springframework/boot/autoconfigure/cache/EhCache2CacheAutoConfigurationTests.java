@@ -44,11 +44,11 @@ class EhCache2CacheAutoConfigurationTests extends AbstractCacheAutoConfiguration
 	void ehCacheWithCaches() {
 		this.contextRunner.withUserConfiguration(DefaultCacheConfiguration.class)
 				.withPropertyValues("spring.cache.type=ehcache").run((context) -> {
-					EhCacheCacheManager cacheManager = getCacheManager(context, EhCacheCacheManager.class);
-					assertThat(cacheManager.getCacheNames()).containsOnly("cacheTest1", "cacheTest2");
-					assertThat(context.getBean(net.sf.ehcache.CacheManager.class))
-							.isEqualTo(cacheManager.getCacheManager());
-				});
+			EhCacheCacheManager cacheManager = getCacheManager(context, EhCacheCacheManager.class);
+			assertThat(cacheManager.getCacheNames()).containsOnly("cacheTest1", "cacheTest2");
+			assertThat(context.getBean(net.sf.ehcache.CacheManager.class))
+					.isEqualTo(cacheManager.getCacheManager());
+		});
 	}
 
 	@Test
@@ -73,9 +73,9 @@ class EhCache2CacheAutoConfigurationTests extends AbstractCacheAutoConfiguration
 	void ehCacheWithExistingCacheManager() {
 		this.contextRunner.withUserConfiguration(EhCacheCustomCacheManager.class)
 				.withPropertyValues("spring.cache.type=ehcache").run((context) -> {
-					EhCacheCacheManager cacheManager = getCacheManager(context, EhCacheCacheManager.class);
-					assertThat(cacheManager.getCacheManager()).isEqualTo(context.getBean("customEhCacheCacheManager"));
-				});
+			EhCacheCacheManager cacheManager = getCacheManager(context, EhCacheCacheManager.class);
+			assertThat(cacheManager.getCacheManager()).isEqualTo(context.getBean("customEhCacheCacheManager"));
+		});
 	}
 
 }

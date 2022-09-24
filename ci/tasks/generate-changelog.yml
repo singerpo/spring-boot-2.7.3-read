@@ -10,10 +10,10 @@ image_resource:
       username: ((docker-hub-mirror-username))
       password: ((docker-hub-mirror-password))
 inputs:
-- name: git-repo
-- name: artifactory-repo
+  - name: git-repo
+  - name: artifactory-repo
 outputs:
-- name: generated-changelog
+  - name: generated-changelog
 params:
   GITHUB_ORGANIZATION:
   GITHUB_REPO:

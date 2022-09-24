@@ -42,7 +42,7 @@ import org.springframework.data.cassandra.core.cql.session.DefaultReactiveSessio
  * @since 2.0.0
  */
 @AutoConfiguration(after = CassandraDataAutoConfiguration.class)
-@ConditionalOnClass({ CqlSession.class, ReactiveCassandraTemplate.class, Flux.class })
+@ConditionalOnClass({CqlSession.class, ReactiveCassandraTemplate.class, Flux.class})
 @ConditionalOnBean(CqlSession.class)
 public class CassandraReactiveDataAutoConfiguration {
 
@@ -61,7 +61,7 @@ public class CassandraReactiveDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(ReactiveCassandraOperations.class)
 	public ReactiveCassandraTemplate reactiveCassandraTemplate(ReactiveSession reactiveCassandraSession,
-			CassandraConverter converter) {
+															   CassandraConverter converter) {
 		return new ReactiveCassandraTemplate(reactiveCassandraSession, converter);
 	}
 

@@ -99,8 +99,9 @@ public class ValidatorAdapter implements SmartValidator, ApplicationContextAware
 	 * If the specified {@link Validator} is not {@code null}, it is wrapped. If not, a
 	 * {@link javax.validation.Validator} is retrieved from the context and wrapped.
 	 * Otherwise, a new default validator is created.
+	 *
 	 * @param applicationContext the application context
-	 * @param validator an existing validator to use or {@code null}
+	 * @param validator          an existing validator to use or {@code null}
 	 * @return the validator to use
 	 */
 	public static Validator get(ApplicationContext applicationContext, Validator validator) {
@@ -125,8 +126,7 @@ public class ValidatorAdapter implements SmartValidator, ApplicationContextAware
 				return (Validator) validator;
 			}
 			return new SpringValidatorAdapter(validator);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return null;
 		}
 	}
@@ -136,8 +136,7 @@ public class ValidatorAdapter implements SmartValidator, ApplicationContextAware
 		try {
 			MessageInterpolatorFactory factory = new MessageInterpolatorFactory(messageSource);
 			validator.setMessageInterpolator(factory.getObject());
-		}
-		catch (ValidationException ex) {
+		} catch (ValidationException ex) {
 			// Ignore
 		}
 		return wrap(validator, false);

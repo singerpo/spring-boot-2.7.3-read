@@ -43,10 +43,10 @@ import org.springframework.boot.actuate.endpoint.EndpointId;
  *
  * @author Andy Wilkinson
  * @author Phillip Webb
- * @since 2.0.0
  * @see EndpointExtension
  * @see FilteredEndpoint
  * @see EndpointDiscoverer
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -55,6 +55,7 @@ public @interface Endpoint {
 
 	/**
 	 * The id of the endpoint (must follow {@link EndpointId} rules).
+	 *
 	 * @return the id
 	 * @see EndpointId
 	 */
@@ -62,6 +63,7 @@ public @interface Endpoint {
 
 	/**
 	 * If the endpoint should be enabled or disabled by default.
+	 *
 	 * @return {@code true} if the endpoint is enabled by default
 	 */
 	boolean enableByDefault() default true;

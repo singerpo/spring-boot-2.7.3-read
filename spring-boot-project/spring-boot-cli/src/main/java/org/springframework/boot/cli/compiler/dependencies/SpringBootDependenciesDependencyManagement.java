@@ -44,8 +44,7 @@ public class SpringBootDependenciesDependencyManagement extends MavenModelDepend
 		try {
 			return modelProcessor.read(SpringBootDependenciesDependencyManagement.class
 					.getResourceAsStream("spring-boot-dependencies-effective-bom.xml"), null);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to build model from effective pom", ex);
 		}
 	}

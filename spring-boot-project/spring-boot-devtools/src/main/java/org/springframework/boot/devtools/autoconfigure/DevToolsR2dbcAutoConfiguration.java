@@ -49,7 +49,7 @@ import org.springframework.core.type.MethodMetadata;
  * @since 2.5.6
  */
 @ConditionalOnClass(ConnectionFactory.class)
-@Conditional({ OnEnabledDevToolsCondition.class, DevToolsConnectionFactoryCondition.class })
+@Conditional({OnEnabledDevToolsCondition.class, DevToolsConnectionFactoryCondition.class})
 @AutoConfiguration(after = R2dbcAutoConfiguration.class)
 public class DevToolsR2dbcAutoConfiguration {
 
@@ -66,7 +66,7 @@ public class DevToolsR2dbcAutoConfiguration {
 		private final ConnectionFactory connectionFactory;
 
 		InMemoryR2dbcDatabaseShutdownExecutor(ApplicationEventPublisher eventPublisher,
-				ConnectionFactory connectionFactory) {
+											  ConnectionFactory connectionFactory) {
 			this.eventPublisher = eventPublisher;
 			this.connectionFactory = connectionFactory;
 		}
@@ -83,8 +83,7 @@ public class DevToolsR2dbcAutoConfiguration {
 		private boolean shouldShutdown() {
 			try {
 				return EmbeddedDatabaseConnection.isEmbedded(this.connectionFactory);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return false;
 			}
 		}

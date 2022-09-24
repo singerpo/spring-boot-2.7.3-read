@@ -33,7 +33,7 @@ class MyMockMvcTests {
 	@Test
 	fun testWithMockMvc(@Autowired mvc: MockMvc) {
 		mvc.perform(MockMvcRequestBuilders.get("/")).andExpect(MockMvcResultMatchers.status().isOk)
-			.andExpect(MockMvcResultMatchers.content().string("Hello World"))
+				.andExpect(MockMvcResultMatchers.content().string("Hello World"))
 	}
 
 	// If Spring WebFlux is on the classpath, you can drive MVC tests with a WebTestClient
@@ -41,10 +41,10 @@ class MyMockMvcTests {
 	@Test
 	fun testWithWebTestClient(@Autowired webClient: WebTestClient) {
 		webClient
-			.get().uri("/")
-			.exchange()
-			.expectStatus().isOk
-			.expectBody<String>().isEqualTo("Hello World")
+				.get().uri("/")
+				.exchange()
+				.expectStatus().isOk
+				.expectBody<String>().isEqualTo("Hello World")
 	}
 
 }

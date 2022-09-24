@@ -60,7 +60,7 @@ import static org.mockito.Mockito.mock;
  *
  * @author Phillip Webb
  */
-@ExtendWith({ OutputCaptureExtension.class, MockRestarter.class })
+@ExtendWith({OutputCaptureExtension.class, MockRestarter.class})
 class RemoteClientConfigurationTests {
 
 	private AnnotationConfigServletWebServerApplicationContext context;

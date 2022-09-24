@@ -39,6 +39,7 @@ public class RandomValuePropertySourceEnvironmentPostProcessor implements Enviro
 
 	/**
 	 * Create a new {@link RandomValuePropertySourceEnvironmentPostProcessor} instance.
+	 *
 	 * @param logger the logger to use
 	 */
 	public RandomValuePropertySourceEnvironmentPostProcessor(Log logger) {

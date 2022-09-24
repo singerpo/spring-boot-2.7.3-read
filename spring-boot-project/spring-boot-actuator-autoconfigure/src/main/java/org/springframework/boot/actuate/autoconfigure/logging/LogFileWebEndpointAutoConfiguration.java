@@ -50,7 +50,7 @@ public class LogFileWebEndpointAutoConfiguration {
 	@ConditionalOnMissingBean
 	@Conditional(LogFileCondition.class)
 	public LogFileWebEndpoint logFileWebEndpoint(ObjectProvider<LogFile> logFile,
-			LogFileWebEndpointProperties properties) {
+												 LogFileWebEndpointProperties properties) {
 		return new LogFileWebEndpoint(logFile.getIfAvailable(), properties.getExternalFile());
 	}
 

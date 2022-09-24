@@ -62,8 +62,8 @@ class JmxEndpointIntegrationTests {
 	void jmxEndpointsAreExposed() {
 		this.contextRunner.run((context) -> {
 			MBeanServer mBeanServer = context.getBean(MBeanServer.class);
-			checkEndpointMBeans(mBeanServer, new String[] { "beans", "conditions", "configprops", "env", "health",
-					"info", "mappings", "threaddump", "httptrace" }, new String[] { "shutdown" });
+			checkEndpointMBeans(mBeanServer, new String[]{"beans", "conditions", "configprops", "env", "health",
+					"info", "mappings", "threaddump", "httptrace"}, new String[]{"shutdown"});
 		});
 	}
 
@@ -71,18 +71,18 @@ class JmxEndpointIntegrationTests {
 	void jmxEndpointsAreExposedWhenLazyInitializationIsEnabled() {
 		this.contextRunner.withBean(LazyInitializationBeanFactoryPostProcessor.class,
 				LazyInitializationBeanFactoryPostProcessor::new).run((context) -> {
-					MBeanServer mBeanServer = context.getBean(MBeanServer.class);
-					checkEndpointMBeans(mBeanServer, new String[] { "beans", "conditions", "configprops", "env",
-							"health", "info", "mappings", "threaddump", "httptrace" }, new String[] { "shutdown" });
-				});
+			MBeanServer mBeanServer = context.getBean(MBeanServer.class);
+			checkEndpointMBeans(mBeanServer, new String[]{"beans", "conditions", "configprops", "env",
+					"health", "info", "mappings", "threaddump", "httptrace"}, new String[]{"shutdown"});
+		});
 	}
 
 	@Test
 	void jmxEndpointsCanBeExcluded() {
 		this.contextRunner.withPropertyValues("management.endpoints.jmx.exposure.exclude:*").run((context) -> {
 			MBeanServer mBeanServer = context.getBean(MBeanServer.class);
-			checkEndpointMBeans(mBeanServer, new String[0], new String[] { "beans", "conditions", "configprops", "env",
-					"health", "mappings", "shutdown", "threaddump", "httptrace" });
+			checkEndpointMBeans(mBeanServer, new String[0], new String[]{"beans", "conditions", "configprops", "env",
+					"health", "mappings", "shutdown", "threaddump", "httptrace"});
 
 		});
 	}
@@ -91,8 +91,8 @@ class JmxEndpointIntegrationTests {
 	void singleJmxEndpointCanBeExposed() {
 		this.contextRunner.withPropertyValues("management.endpoints.jmx.exposure.include=beans").run((context) -> {
 			MBeanServer mBeanServer = context.getBean(MBeanServer.class);
-			checkEndpointMBeans(mBeanServer, new String[] { "beans" }, new String[] { "conditions", "configprops",
-					"env", "health", "mappings", "shutdown", "threaddump", "httptrace" });
+			checkEndpointMBeans(mBeanServer, new String[]{"beans"}, new String[]{"conditions", "configprops",
+					"env", "health", "mappings", "shutdown", "threaddump", "httptrace"});
 		});
 	}
 
@@ -111,8 +111,7 @@ class JmxEndpointIntegrationTests {
 		try {
 			getMBeanInfo(mBeanServer, objectName);
 			return true;
-		}
-		catch (InstanceNotFoundException ex) {
+		} catch (InstanceNotFoundException ex) {
 			return false;
 		}
 	}
@@ -120,8 +119,7 @@ class JmxEndpointIntegrationTests {
 	private MBeanInfo getMBeanInfo(MBeanServer mBeanServer, ObjectName objectName) throws InstanceNotFoundException {
 		try {
 			return mBeanServer.getMBeanInfo(objectName);
-		}
-		catch (ReflectionException | IntrospectionException ex) {
+		} catch (ReflectionException | IntrospectionException ex) {
 			throw new IllegalStateException("Failed to retrieve MBeanInfo for ObjectName " + objectName, ex);
 		}
 	}
@@ -134,8 +132,7 @@ class JmxEndpointIntegrationTests {
 		try {
 			return new ObjectName(
 					String.format("%s:type=Endpoint,name=%s", domain, StringUtils.capitalize(endpointId)));
-		}
-		catch (MalformedObjectNameException ex) {
+		} catch (MalformedObjectNameException ex) {
 			throw new IllegalStateException("Invalid object name", ex);
 		}
 

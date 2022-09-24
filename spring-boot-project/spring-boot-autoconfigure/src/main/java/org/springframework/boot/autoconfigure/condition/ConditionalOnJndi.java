@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Phillip Webb
  * @since 1.2.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(OnJndiCondition.class)
@@ -42,6 +42,7 @@ public @interface ConditionalOnJndi {
 	/**
 	 * JNDI Locations, one of which must exist. If no locations are specific the condition
 	 * matches solely based on the presence of an {@link InitialContext}.
+	 *
 	 * @return the JNDI locations
 	 */
 	String[] value() default {};

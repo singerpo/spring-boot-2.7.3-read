@@ -57,9 +57,9 @@ class CloudFoundryWebFluxEndpointHandlerMapping extends AbstractWebFluxEndpointH
 	private final EndpointLinksResolver linksResolver;
 
 	CloudFoundryWebFluxEndpointHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			CorsConfiguration corsConfiguration, CloudFoundrySecurityInterceptor securityInterceptor,
-			EndpointLinksResolver linksResolver) {
+											  Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+											  CorsConfiguration corsConfiguration, CloudFoundrySecurityInterceptor securityInterceptor,
+											  EndpointLinksResolver linksResolver) {
 		super(endpointMapping, endpoints, endpointMediaTypes, corsConfiguration, true);
 		this.linksResolver = linksResolver;
 		this.securityInterceptor = securityInterceptor;
@@ -67,7 +67,7 @@ class CloudFoundryWebFluxEndpointHandlerMapping extends AbstractWebFluxEndpointH
 
 	@Override
 	protected ReactiveWebOperation wrapReactiveWebOperation(ExposableWebEndpoint endpoint, WebOperation operation,
-			ReactiveWebOperation reactiveWebOperation) {
+															ReactiveWebOperation reactiveWebOperation) {
 		return new SecureReactiveWebOperation(reactiveWebOperation, this.securityInterceptor, endpoint.getEndpointId());
 	}
 
@@ -123,7 +123,7 @@ class CloudFoundryWebFluxEndpointHandlerMapping extends AbstractWebFluxEndpointH
 		private final EndpointId endpointId;
 
 		SecureReactiveWebOperation(ReactiveWebOperation delegate, CloudFoundrySecurityInterceptor securityInterceptor,
-				EndpointId endpointId) {
+								   EndpointId endpointId) {
 			this.delegate = delegate;
 			this.securityInterceptor = securityInterceptor;
 			this.endpointId = endpointId;
@@ -136,7 +136,7 @@ class CloudFoundryWebFluxEndpointHandlerMapping extends AbstractWebFluxEndpointH
 		}
 
 		private Mono<ResponseEntity<Object>> flatMapResponse(ServerWebExchange exchange, Map<String, String> body,
-				SecurityResponse securityResponse) {
+															 SecurityResponse securityResponse) {
 			if (!securityResponse.getStatus().equals(HttpStatus.OK)) {
 				return Mono.just(new ResponseEntity<>(securityResponse.getStatus()));
 			}

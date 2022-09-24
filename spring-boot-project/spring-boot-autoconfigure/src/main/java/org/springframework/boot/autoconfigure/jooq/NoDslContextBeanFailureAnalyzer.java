@@ -51,8 +51,7 @@ class NoDslContextBeanFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchBean
 		try {
 			this.beanFactory.getBean(R2dbcAutoConfiguration.class);
 			return true;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}

@@ -63,7 +63,7 @@ abstract class DiscoveredOperationsFactory<O extends Operation> {
 	private final Collection<OperationInvokerAdvisor> invokerAdvisors;
 
 	DiscoveredOperationsFactory(ParameterValueMapper parameterValueMapper,
-			Collection<OperationInvokerAdvisor> invokerAdvisors) {
+								Collection<OperationInvokerAdvisor> invokerAdvisors) {
 		this.parameterValueMapper = parameterValueMapper;
 		this.invokerAdvisors = invokerAdvisors;
 	}
@@ -81,7 +81,7 @@ abstract class DiscoveredOperationsFactory<O extends Operation> {
 	}
 
 	private O createOperation(EndpointId endpointId, Object target, Method method, OperationType operationType,
-			Class<? extends Annotation> annotationType) {
+							  Class<? extends Annotation> annotationType) {
 		MergedAnnotation<?> annotation = MergedAnnotations.from(method).get(annotationType);
 		if (!annotation.isPresent()) {
 			return null;
@@ -94,7 +94,7 @@ abstract class DiscoveredOperationsFactory<O extends Operation> {
 	}
 
 	private OperationInvoker applyAdvisors(EndpointId endpointId, OperationMethod operationMethod,
-			OperationInvoker invoker) {
+										   OperationInvoker invoker) {
 		if (this.invokerAdvisors != null) {
 			for (OperationInvokerAdvisor advisor : this.invokerAdvisors) {
 				invoker = advisor.apply(endpointId, operationMethod.getOperationType(), operationMethod.getParameters(),
@@ -105,6 +105,6 @@ abstract class DiscoveredOperationsFactory<O extends Operation> {
 	}
 
 	protected abstract O createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-			OperationInvoker invoker);
+										 OperationInvoker invoker);
 
 }

@@ -38,8 +38,8 @@ import org.springframework.util.ClassUtils;
  * {@link MockReset}. Typically used alongside {@link MockitoTestExecutionListener}.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see MockitoTestExecutionListener
+ * @since 1.4.0
  */
 public class ResetMocksTestExecutionListener extends AbstractTestExecutionListener {
 
@@ -91,8 +91,7 @@ public class ResetMocksTestExecutionListener extends AbstractTestExecutionListen
 					Mockito.reset(mockedBean);
 				}
 			}
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			// Continue
 		}
 		if (applicationContext.getParent() != null) {

@@ -40,7 +40,7 @@ public final class DockerConfiguration {
 	}
 
 	private DockerConfiguration(DockerHost host, DockerRegistryAuthentication builderAuthentication,
-			DockerRegistryAuthentication publishAuthentication, boolean bindHostToBuilder) {
+								DockerRegistryAuthentication publishAuthentication, boolean bindHostToBuilder) {
 		this.host = host;
 		this.builderAuthentication = builderAuthentication;
 		this.publishAuthentication = publishAuthentication;
@@ -81,7 +81,7 @@ public final class DockerConfiguration {
 	}
 
 	public DockerConfiguration withBuilderRegistryUserAuthentication(String username, String password, String url,
-			String email) {
+																	 String email) {
 		Assert.notNull(username, "Username must not be null");
 		Assert.notNull(password, "Password must not be null");
 		return new DockerConfiguration(this.host, new DockerRegistryUserAuthentication(username, password, url, email),
@@ -95,7 +95,7 @@ public final class DockerConfiguration {
 	}
 
 	public DockerConfiguration withPublishRegistryUserAuthentication(String username, String password, String url,
-			String email) {
+																	 String email) {
 		Assert.notNull(username, "Username must not be null");
 		Assert.notNull(password, "Password must not be null");
 		return new DockerConfiguration(this.host, this.builderAuthentication,

@@ -67,6 +67,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 	/**
 	 * Create a new {@link DataSourceHealthIndicator} using the specified
 	 * {@link DataSource}.
+	 *
 	 * @param dataSource the data source
 	 */
 	public DataSourceHealthIndicator(DataSource dataSource) {
@@ -76,8 +77,9 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 	/**
 	 * Create a new {@link DataSourceHealthIndicator} using the specified
 	 * {@link DataSource} and validation query.
+	 *
 	 * @param dataSource the data source
-	 * @param query the validation query to use (can be {@code null})
+	 * @param query      the validation query to use (can be {@code null})
 	 */
 	public DataSourceHealthIndicator(DataSource dataSource, String query) {
 		super("DataSource health check failed");
@@ -95,8 +97,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 	protected void doHealthCheck(Health.Builder builder) throws Exception {
 		if (this.dataSource == null) {
 			builder.up().withDetail("database", "unknown");
-		}
-		else {
+		} else {
 			doDataSourceHealthCheck(builder);
 		}
 	}
@@ -110,8 +111,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 			List<Object> results = this.jdbcTemplate.query(validationQuery, new SingleColumnRowMapper());
 			Object result = DataAccessUtils.requiredSingleResult(results);
 			builder.withDetail("result", result);
-		}
-		else {
+		} else {
 			builder.withDetail("validationQuery", "isValid()");
 			boolean valid = isConnectionValid();
 			builder.status((valid) ? Status.UP : Status.DOWN);
@@ -136,6 +136,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 
 	/**
 	 * Set the {@link DataSource} to use.
+	 *
 	 * @param dataSource the data source
 	 */
 	public void setDataSource(DataSource dataSource) {
@@ -146,6 +147,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 	/**
 	 * Set a specific validation query to use to validate a connection. If none is set, a
 	 * validation based on {@link Connection#isValid(int)} is used.
+	 *
 	 * @param query the validation query to use
 	 */
 	public void setQuery(String query) {
@@ -154,6 +156,7 @@ public class DataSourceHealthIndicator extends AbstractHealthIndicator implement
 
 	/**
 	 * Return the validation query or {@code null}.
+	 *
 	 * @return the query
 	 */
 	public String getQuery() {

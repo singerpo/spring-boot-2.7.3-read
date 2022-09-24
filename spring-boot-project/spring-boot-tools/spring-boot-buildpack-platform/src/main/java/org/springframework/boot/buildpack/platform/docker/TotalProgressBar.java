@@ -38,6 +38,7 @@ public class TotalProgressBar implements Consumer<TotalProgressEvent> {
 
 	/**
 	 * Create a new {@link TotalProgressBar} instance.
+	 *
 	 * @param prefix the prefix to output
 	 */
 	public TotalProgressBar(String prefix) {
@@ -46,8 +47,9 @@ public class TotalProgressBar implements Consumer<TotalProgressEvent> {
 
 	/**
 	 * Create a new {@link TotalProgressBar} instance.
+	 *
 	 * @param prefix the prefix to output
-	 * @param out the output print stream to use
+	 * @param out    the output print stream to use
 	 */
 	public TotalProgressBar(String prefix, PrintStream out) {
 		this(prefix, '#', true, out);
@@ -55,10 +57,11 @@ public class TotalProgressBar implements Consumer<TotalProgressEvent> {
 
 	/**
 	 * Create a new {@link TotalProgressBar} instance.
-	 * @param prefix the prefix to output
+	 *
+	 * @param prefix       the prefix to output
 	 * @param progressChar the progress char to print
-	 * @param bookend if bookends should be printed
-	 * @param out the output print stream to use
+	 * @param bookend      if bookends should be printed
+	 * @param out          the output print stream to use
 	 */
 	public TotalProgressBar(String prefix, char progressChar, boolean bookend, PrintStream out) {
 		this.progressChar = progressChar;

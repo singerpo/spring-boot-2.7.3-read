@@ -23,16 +23,17 @@ import java.net.URL;
  * classpath against source directory on a remote system.
  *
  * @author Phillip Webb
- * @since 2.3.0
  * @see DefaultSourceDirectoryUrlFilter
+ * @since 2.3.0
  */
 @FunctionalInterface
 public interface SourceDirectoryUrlFilter {
 
 	/**
 	 * Determine if the specified URL matches a source directory.
+	 *
 	 * @param sourceDirectory the source directory
-	 * @param url the URL to check
+	 * @param url             the URL to check
 	 * @return {@code true} if the URL matches
 	 */
 	boolean isMatch(String sourceDirectory, URL url);

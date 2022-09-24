@@ -62,8 +62,8 @@ import org.junit.jupiter.api.extension.ParameterResolver;
  * @author Phillip Webb
  * @author Andy Wilkinson
  * @author Sam Brannen
- * @since 2.2.0
  * @see CapturedOutput
+ * @since 2.2.0
  */
 public class OutputCaptureExtension
 		implements BeforeAllCallback, AfterAllCallback, BeforeEachCallback, AfterEachCallback, ParameterResolver {

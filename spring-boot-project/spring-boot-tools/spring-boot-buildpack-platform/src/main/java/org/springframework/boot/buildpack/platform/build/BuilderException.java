@@ -36,6 +36,7 @@ public class BuilderException extends RuntimeException {
 
 	/**
 	 * Return the Builder operation that failed.
+	 *
 	 * @return the operation description
 	 */
 	public String getOperation() {
@@ -44,6 +45,7 @@ public class BuilderException extends RuntimeException {
 
 	/**
 	 * Return the status code returned from a Builder operation.
+	 *
 	 * @return the statusCode the status code
 	 */
 	public int getStatusCode() {

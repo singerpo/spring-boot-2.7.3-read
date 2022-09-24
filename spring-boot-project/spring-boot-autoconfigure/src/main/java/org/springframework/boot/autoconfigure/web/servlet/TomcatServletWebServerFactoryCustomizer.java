@@ -63,7 +63,7 @@ public class TomcatServletWebServerFactoryCustomizer
 	}
 
 	private void customizeUseRelativeRedirects(ConfigurableTomcatWebServerFactory factory,
-			boolean useRelativeRedirects) {
+											   boolean useRelativeRedirects) {
 		factory.addContextCustomizers((context) -> context.setUseRelativeRedirects(useRelativeRedirects));
 	}
 

@@ -75,6 +75,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 
 	/**
 	 * Return if this version is greater than or equal to the specified version.
+	 *
 	 * @param other the version to compare
 	 * @return {@code true} if this version is greater than or equal to the specified
 	 * version
@@ -90,6 +91,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 
 	/**
 	 * Return the major version number.
+	 *
 	 * @return the major version
 	 */
 	int getMajor() {
@@ -98,6 +100,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 
 	/**
 	 * Return the minor version number.
+	 *
 	 * @return the minor version
 	 */
 	int getMinor() {
@@ -106,6 +109,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 
 	/**
 	 * Return the patch version number.
+	 *
 	 * @return the patch version
 	 */
 	int getPatch() {
@@ -114,6 +118,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 
 	/**
 	 * Factory method to parse a string into a {@link LifecycleVersion} instance.
+	 *
 	 * @param value the value to parse.
 	 * @return the corresponding {@link LifecycleVersion}
 	 * @throws IllegalArgumentException if the value could not be parsed
@@ -129,8 +134,7 @@ class LifecycleVersion implements Comparable<LifecycleVersion> {
 		for (int i = 0; i < components.length; i++) {
 			try {
 				versions[i] = Integer.parseInt(components[i]);
-			}
-			catch (NumberFormatException ex) {
+			} catch (NumberFormatException ex) {
 				throw new IllegalArgumentException("Malformed version number '" + value + "'", ex);
 			}
 		}

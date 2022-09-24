@@ -42,6 +42,7 @@ public class TestDataSource extends SimpleDriverDataSource {
 
 	/**
 	 * Create an in-memory database with a random name.
+	 *
 	 * @param addTestUser if a test user should be added
 	 */
 	public TestDataSource(boolean addTestUser) {
@@ -50,7 +51,8 @@ public class TestDataSource extends SimpleDriverDataSource {
 
 	/**
 	 * Create an in-memory database with the specified name.
-	 * @param name the name of the database
+	 *
+	 * @param name        the name of the database
 	 * @param addTestUser if a test user should be added
 	 */
 	public TestDataSource(String name, boolean addTestUser) {
@@ -66,8 +68,7 @@ public class TestDataSource extends SimpleDriverDataSource {
 			if (addTestUser) {
 				connection.prepareStatement("CREATE USER \"test\" password \"secret\" ADMIN").execute();
 			}
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

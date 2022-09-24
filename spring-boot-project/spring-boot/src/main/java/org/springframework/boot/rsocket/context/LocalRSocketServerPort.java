@@ -35,7 +35,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @deprecated since 2.7.0 for removal in 3.0.0 in favor of
  * {@code org.springframework.boot.test.rsocket.LocalRSocketServerPort}
  */
-@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Value("${local.rsocket.server.port}")

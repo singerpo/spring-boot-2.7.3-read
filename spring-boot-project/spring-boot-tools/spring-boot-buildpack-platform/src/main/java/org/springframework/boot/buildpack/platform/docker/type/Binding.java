@@ -59,6 +59,7 @@ public final class Binding {
 	/**
 	 * Create a {@link Binding} with the specified value containing a host source,
 	 * container destination, and options.
+	 *
 	 * @param value the volume binding value
 	 * @return a new {@link Binding} instance
 	 */
@@ -69,8 +70,9 @@ public final class Binding {
 
 	/**
 	 * Create a {@link Binding} from the specified source and destination.
+	 *
 	 * @param sourceVolume the volume binding host source
-	 * @param destination the volume binding container destination
+	 * @param destination  the volume binding container destination
 	 * @return a new {@link Binding} instance
 	 */
 	public static Binding from(VolumeName sourceVolume, String destination) {
@@ -80,7 +82,8 @@ public final class Binding {
 
 	/**
 	 * Create a {@link Binding} from the specified source and destination.
-	 * @param source the volume binding host source
+	 *
+	 * @param source      the volume binding host source
 	 * @param destination the volume binding container destination
 	 * @return a new {@link Binding} instance
 	 */

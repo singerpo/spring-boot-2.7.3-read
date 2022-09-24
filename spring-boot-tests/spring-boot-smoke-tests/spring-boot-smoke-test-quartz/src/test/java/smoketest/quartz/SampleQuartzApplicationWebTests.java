@@ -97,7 +97,7 @@ class SampleQuartzApplicationWebTests {
 		return entity.getBody();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

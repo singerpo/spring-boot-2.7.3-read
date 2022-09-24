@@ -79,6 +79,7 @@ public class SessionProperties {
 	/**
 	 * Determine the session timeout. If no timeout is configured, the
 	 * {@code fallbackTimeout} is used.
+	 *
 	 * @param fallbackTimeout a fallback timeout value if the timeout isn't configured
 	 * @return the session timeout
 	 * @since 2.4.0

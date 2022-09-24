@@ -39,8 +39,8 @@ import org.springframework.test.web.client.MockRestServiceServer;
  * getServer(RestTemplate)} or bind a {@link MockRestServiceServer} directly.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see MockServerRestTemplateCustomizer
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -53,6 +53,7 @@ public @interface AutoConfigureMockRestServiceServer {
 	/**
 	 * If {@link MockServerRestTemplateCustomizer} should be enabled and
 	 * {@link MockRestServiceServer} beans should be registered. Defaults to {@code true}
+	 *
 	 * @return if mock support is enabled
 	 */
 	boolean enabled() default true;

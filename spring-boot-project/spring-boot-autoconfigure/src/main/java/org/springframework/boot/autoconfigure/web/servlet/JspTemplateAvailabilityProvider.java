@@ -37,7 +37,7 @@ public class JspTemplateAvailabilityProvider implements TemplateAvailabilityProv
 
 	@Override
 	public boolean isTemplateAvailable(String view, Environment environment, ClassLoader classLoader,
-			ResourceLoader resourceLoader) {
+									   ResourceLoader resourceLoader) {
 		if (ClassUtils.isPresent("org.apache.jasper.compiler.JspConfig", classLoader)) {
 			String resourceName = getResourceName(view, environment);
 			if (resourceLoader.getResource(resourceName).exists()) {
@@ -45,8 +45,7 @@ public class JspTemplateAvailabilityProvider implements TemplateAvailabilityProv
 			}
 			try {
 				return new File("src/main/webapp", resourceName).exists();
-			}
-			catch (AccessControlException ex) {
+			} catch (AccessControlException ex) {
 			}
 		}
 		return false;

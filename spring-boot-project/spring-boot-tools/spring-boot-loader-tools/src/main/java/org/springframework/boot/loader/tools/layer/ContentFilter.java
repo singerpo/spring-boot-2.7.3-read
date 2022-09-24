@@ -29,6 +29,7 @@ public interface ContentFilter<T> {
 
 	/**
 	 * Return if the filter matches the specified item.
+	 *
 	 * @param item the item to test
 	 * @return if the filter matches
 	 */

@@ -40,7 +40,7 @@ class DuplicateJsonObjectContextCustomizerFactory implements ContextCustomizerFa
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		return new DuplicateJsonObjectContextCustomizer();
 	}
 
@@ -60,8 +60,7 @@ class DuplicateJsonObjectContextCustomizerFactory implements ContextCustomizerFa
 			try {
 				Enumeration<URL> resources = getClass().getClassLoader().getResources("org/json/JSONObject.class");
 				return Collections.list(resources);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Continue
 			}
 			return Collections.emptyList();

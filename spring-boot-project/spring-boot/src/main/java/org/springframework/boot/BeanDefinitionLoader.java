@@ -81,8 +81,9 @@ class BeanDefinitionLoader {
 	/**
 	 * Create a new {@link BeanDefinitionLoader} that will load beans into the specified
 	 * {@link BeanDefinitionRegistry}.
+	 *
 	 * @param registry the bean definition registry that will contain the loaded beans
-	 * @param sources the bean sources
+	 * @param sources  the bean sources
 	 */
 	BeanDefinitionLoader(BeanDefinitionRegistry registry, Object... sources) {
 		Assert.notNull(registry, "Registry must not be null");
@@ -97,6 +98,7 @@ class BeanDefinitionLoader {
 
 	/**
 	 * Set the bean name generator to be used by the underlying readers and scanner.
+	 *
 	 * @param beanNameGenerator the bean name generator
 	 */
 	void setBeanNameGenerator(BeanNameGenerator beanNameGenerator) {
@@ -109,6 +111,7 @@ class BeanDefinitionLoader {
 
 	/**
 	 * Set the resource loader to be used by the underlying readers and scanner.
+	 *
 	 * @param resourceLoader the resource loader
 	 */
 	void setResourceLoader(ResourceLoader resourceLoader) {
@@ -121,6 +124,7 @@ class BeanDefinitionLoader {
 
 	/**
 	 * Set the environment to be used by the underlying readers and scanner.
+	 *
 	 * @param environment the environment
 	 */
 	void setEnvironment(ConfigurableEnvironment environment) {
@@ -178,8 +182,7 @@ class BeanDefinitionLoader {
 				throw new BeanDefinitionStoreException("Cannot load Groovy beans without Groovy on classpath");
 			}
 			this.groovyReader.loadBeanDefinitions(source);
-		}
-		else {
+		} else {
 			if (this.xmlReader == null) {
 				throw new BeanDefinitionStoreException("Cannot load XML bean definitions when XML support is disabled");
 			}
@@ -197,8 +200,7 @@ class BeanDefinitionLoader {
 		try {
 			load(ClassUtils.forName(resolvedSource, null));
 			return;
-		}
-		catch (IllegalArgumentException | ClassNotFoundException ex) {
+		} catch (IllegalArgumentException | ClassNotFoundException ex) {
 			// swallow exception and continue
 		}
 		// Attempt as Resources
@@ -237,9 +239,8 @@ class BeanDefinitionLoader {
 			if (loader instanceof ResourcePatternResolver) {
 				return ((ResourcePatternResolver) loader).getResources(source);
 			}
-			return new Resource[] { loader.getResource(source) };
-		}
-		catch (IOException ex) {
+			return new Resource[]{loader.getResource(source)};
+		} catch (IOException ex) {
 			throw new IllegalStateException("Error reading source '" + source + "'");
 		}
 	}
@@ -257,8 +258,7 @@ class BeanDefinitionLoader {
 			if (path.indexOf('.') == -1) {
 				try {
 					return Package.getPackage(path) == null;
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					// Ignore
 				}
 			}
@@ -281,8 +281,7 @@ class BeanDefinitionLoader {
 				load(Class.forName(source.toString() + "." + className));
 				break;
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// swallow exception and continue
 		}
 		return Package.getPackage(source.toString());
@@ -290,6 +289,7 @@ class BeanDefinitionLoader {
 
 	/**
 	 * Check whether the bean is eligible for registration.
+	 *
 	 * @param type candidate bean type
 	 * @return true if the given bean type is eligible for registration, i.e. not a groovy
 	 * closure nor an anonymous class

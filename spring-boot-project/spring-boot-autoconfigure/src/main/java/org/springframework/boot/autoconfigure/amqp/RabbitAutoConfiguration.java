@@ -87,9 +87,9 @@ import org.springframework.core.io.ResourceLoader;
  * @since 1.0.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ RabbitTemplate.class, Channel.class })
+@ConditionalOnClass({RabbitTemplate.class, Channel.class})
 @EnableConfigurationProperties(RabbitProperties.class)
-@Import({ RabbitAnnotationDrivenConfiguration.class, RabbitStreamConfiguration.class })
+@Import({RabbitAnnotationDrivenConfiguration.class, RabbitStreamConfiguration.class})
 public class RabbitAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
@@ -98,8 +98,8 @@ public class RabbitAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		RabbitConnectionFactoryBeanConfigurer rabbitConnectionFactoryBeanConfigurer(RabbitProperties properties,
-				ResourceLoader resourceLoader, ObjectProvider<CredentialsProvider> credentialsProvider,
-				ObjectProvider<CredentialsRefreshService> credentialsRefreshService) {
+																					ResourceLoader resourceLoader, ObjectProvider<CredentialsProvider> credentialsProvider,
+																					ObjectProvider<CredentialsRefreshService> credentialsRefreshService) {
 			RabbitConnectionFactoryBeanConfigurer configurer = new RabbitConnectionFactoryBeanConfigurer(resourceLoader,
 					properties);
 			configurer.setCredentialsProvider(credentialsProvider.getIfUnique());
@@ -110,7 +110,7 @@ public class RabbitAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		CachingConnectionFactoryConfigurer rabbitConnectionFactoryConfigurer(RabbitProperties rabbitProperties,
-				ObjectProvider<ConnectionNameStrategy> connectionNameStrategy) {
+																			 ObjectProvider<ConnectionNameStrategy> connectionNameStrategy) {
 			CachingConnectionFactoryConfigurer configurer = new CachingConnectionFactoryConfigurer(rabbitProperties);
 			configurer.setConnectionNameStrategy(connectionNameStrategy.getIfUnique());
 			return configurer;
@@ -145,8 +145,8 @@ public class RabbitAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		public RabbitTemplateConfigurer rabbitTemplateConfigurer(RabbitProperties properties,
-				ObjectProvider<MessageConverter> messageConverter,
-				ObjectProvider<RabbitRetryTemplateCustomizer> retryTemplateCustomizers) {
+																 ObjectProvider<MessageConverter> messageConverter,
+																 ObjectProvider<RabbitRetryTemplateCustomizer> retryTemplateCustomizers) {
 			RabbitTemplateConfigurer configurer = new RabbitTemplateConfigurer(properties);
 			configurer.setMessageConverter(messageConverter.getIfUnique());
 			configurer

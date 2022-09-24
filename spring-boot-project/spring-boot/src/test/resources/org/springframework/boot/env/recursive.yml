@@ -1,7 +1,7 @@
 &def1
 *def1: a
 test:
-  a: 
+  a:
     spring: 'a'
-  b: 
+  b:
     boot: 'b'

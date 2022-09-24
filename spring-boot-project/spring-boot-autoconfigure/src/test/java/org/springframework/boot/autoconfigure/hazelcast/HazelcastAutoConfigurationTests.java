@@ -81,8 +81,7 @@ class HazelcastAutoConfigurationTests {
 		private URL getEmulatedJetConfigUrl() {
 			try {
 				return FALLBACK.getURL();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalArgumentException(ex);
 			}
 		}

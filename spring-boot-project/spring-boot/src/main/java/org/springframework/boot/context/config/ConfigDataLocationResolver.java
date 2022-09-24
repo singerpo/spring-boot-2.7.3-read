@@ -59,7 +59,8 @@ public interface ConfigDataLocationResolver<R extends ConfigDataResource> {
 
 	/**
 	 * Returns if the specified location address can be resolved by this resolver.
-	 * @param context the location resolver context
+	 *
+	 * @param context  the location resolver context
 	 * @param location the location to check.
 	 * @return if the location is supported by this resolver
 	 */
@@ -68,11 +69,12 @@ public interface ConfigDataLocationResolver<R extends ConfigDataResource> {
 	/**
 	 * Resolve a {@link ConfigDataLocation} into one or more {@link ConfigDataResource}
 	 * instances.
-	 * @param context the location resolver context
+	 *
+	 * @param context  the location resolver context
 	 * @param location the location that should be resolved
 	 * @return a list of {@link ConfigDataResource resources} in ascending priority order.
 	 * @throws ConfigDataLocationNotFoundException on a non-optional location that cannot
-	 * be found
+	 *                                             be found
 	 * @throws ConfigDataResourceNotFoundException if a resolved resource cannot be found
 	 */
 	List<R> resolve(ConfigDataLocationResolverContext context, ConfigDataLocation location)
@@ -83,15 +85,16 @@ public interface ConfigDataLocationResolver<R extends ConfigDataResource> {
 	 * instances based on available profiles. This method is called once profiles have
 	 * been deduced from the contributed values. By default this method returns an empty
 	 * list.
-	 * @param context the location resolver context
+	 *
+	 * @param context  the location resolver context
 	 * @param location the location that should be resolved
 	 * @param profiles profile information
 	 * @return a list of resolved locations in ascending priority order.
 	 * @throws ConfigDataLocationNotFoundException on a non-optional location that cannot
-	 * be found
+	 *                                             be found
 	 */
 	default List<R> resolveProfileSpecific(ConfigDataLocationResolverContext context, ConfigDataLocation location,
-			Profiles profiles) throws ConfigDataLocationNotFoundException {
+										   Profiles profiles) throws ConfigDataLocationNotFoundException {
 		return Collections.emptyList();
 	}
 

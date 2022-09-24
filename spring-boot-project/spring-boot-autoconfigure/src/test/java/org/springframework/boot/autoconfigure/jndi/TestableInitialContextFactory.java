@@ -42,8 +42,7 @@ public class TestableInitialContextFactory implements InitialContextFactory {
 	public static void bind(String name, Object obj) {
 		try {
 			getContext().bind(name, obj);
-		}
-		catch (NamingException ex) {
+		} catch (NamingException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -56,8 +55,7 @@ public class TestableInitialContextFactory implements InitialContextFactory {
 		if (context == null) {
 			try {
 				context = new TestableContext();
-			}
-			catch (NamingException ex) {
+			} catch (NamingException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -85,7 +83,7 @@ public class TestableInitialContextFactory implements InitialContextFactory {
 		@Override
 		public Hashtable<?, ?> getEnvironment() throws NamingException {
 			return new Hashtable<>(); // Used to detect if JNDI is
-										// available
+			// available
 		}
 
 		void clearAll() {

@@ -56,8 +56,7 @@ class DefaultLogbackConfiguration {
 			if (this.logFile != null) {
 				Appender<ILoggingEvent> fileAppender = fileAppender(config, this.logFile.toString());
 				config.root(Level.INFO, consoleAppender, fileAppender);
-			}
-			else {
+			} else {
 				config.root(Level.INFO, consoleAppender);
 			}
 		}

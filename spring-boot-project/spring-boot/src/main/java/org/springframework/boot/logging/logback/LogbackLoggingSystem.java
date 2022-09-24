@@ -93,7 +93,7 @@ public class LogbackLoggingSystem extends Slf4JLoggingSystem {
 
 		@Override
 		public FilterReply decide(Marker marker, ch.qos.logback.classic.Logger logger, Level level, String format,
-				Object[] params, Throwable t) {
+								  Object[] params, Throwable t) {
 			return FilterReply.DENY;
 		}
 
@@ -110,7 +110,7 @@ public class LogbackLoggingSystem extends Slf4JLoggingSystem {
 
 	@Override
 	protected String[] getStandardConfigLocations() {
-		return new String[] { "logback-test.groovy", "logback-test.xml", "logback.groovy", "logback.xml" };
+		return new String[]{"logback-test.groovy", "logback-test.xml", "logback.groovy", "logback.xml"};
 	}
 
 	@Override
@@ -157,14 +157,13 @@ public class LogbackLoggingSystem extends Slf4JLoggingSystem {
 
 	@Override
 	protected void loadConfiguration(LoggingInitializationContext initializationContext, String location,
-			LogFile logFile) {
+									 LogFile logFile) {
 		super.loadConfiguration(initializationContext, location, logFile);
 		LoggerContext loggerContext = getLoggerContext();
 		stopAndReset(loggerContext);
 		try {
 			configureByResourceUrl(initializationContext, loggerContext, ResourceUtils.getURL(location));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Could not initialize Logback logging from " + location, ex);
 		}
 		List<Status> statuses = loggerContext.getStatusManager().getCopyOfStatusList();
@@ -181,13 +180,12 @@ public class LogbackLoggingSystem extends Slf4JLoggingSystem {
 	}
 
 	private void configureByResourceUrl(LoggingInitializationContext initializationContext, LoggerContext loggerContext,
-			URL url) throws JoranException {
+										URL url) throws JoranException {
 		if (XML_ENABLED && url.toString().endsWith("xml")) {
 			JoranConfigurator configurator = new SpringBootJoranConfigurator(initializationContext);
 			configurator.setContext(loggerContext);
 			configurator.doConfigure(url);
-		}
-		else {
+		} else {
 			new ContextInitializer(loggerContext).configureByResource(url);
 		}
 	}
@@ -309,8 +307,7 @@ public class LogbackLoggingSystem extends Slf4JLoggingSystem {
 			if (codeSource != null) {
 				return codeSource.getLocation();
 			}
-		}
-		catch (SecurityException ex) {
+		} catch (SecurityException ex) {
 			// Unable to determine location
 		}
 		return "unknown location";

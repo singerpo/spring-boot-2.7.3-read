@@ -48,6 +48,7 @@ public class Layer implements Content {
 
 	/**
 	 * Return the ID of the layer.
+	 *
 	 * @return the layer ID
 	 */
 	public LayerId getId() {
@@ -66,6 +67,7 @@ public class Layer implements Content {
 
 	/**
 	 * Factory method to create a new {@link Layer} with a specific {@link Layout}.
+	 *
 	 * @param layout the layer layout
 	 * @return a new layer instance
 	 * @throws IOException on IO error
@@ -77,6 +79,7 @@ public class Layer implements Content {
 
 	/**
 	 * Factory method to create a new {@link Layer} from a {@link TarArchive}.
+	 *
 	 * @param tarArchive the contents of the layer
 	 * @return a new layer instance
 	 * @throws IOException on error
@@ -85,8 +88,7 @@ public class Layer implements Content {
 		Assert.notNull(tarArchive, "TarArchive must not be null");
 		try {
 			return new Layer(tarArchive);
-		}
-		catch (NoSuchAlgorithmException ex) {
+		} catch (NoSuchAlgorithmException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

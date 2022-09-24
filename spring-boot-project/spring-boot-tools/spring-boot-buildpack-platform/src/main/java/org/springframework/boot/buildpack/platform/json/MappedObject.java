@@ -44,7 +44,8 @@ public class MappedObject {
 
 	/**
 	 * Create a new {@link MappedObject} instance.
-	 * @param node the source node
+	 *
+	 * @param node   the source node
 	 * @param lookup method handle lookup
 	 */
 	protected MappedObject(JsonNode node, Lookup lookup) {
@@ -54,6 +55,7 @@ public class MappedObject {
 
 	/**
 	 * Return the source node of the mapped object.
+	 *
 	 * @return the source node
 	 */
 	protected final JsonNode getNode() {
@@ -62,9 +64,10 @@ public class MappedObject {
 
 	/**
 	 * Get the value at the given JSON path expression as a specific type.
-	 * @param <T> the data type
+	 *
+	 * @param <T>        the data type
 	 * @param expression the JSON path expression
-	 * @param type the desired type. May be a simple JSON type or an interface
+	 * @param type       the desired type. May be a simple JSON type or an interface
 	 * @return the value
 	 */
 	protected <T> T valueAt(String expression, Class<T> type) {
@@ -92,7 +95,7 @@ public class MappedObject {
 			result = node.at(alternative.toString());
 		}
 		if (type.isInterface() && !type.getName().startsWith("java")) {
-			return (T) Proxy.newProxyInstance(MappedObject.class.getClassLoader(), new Class<?>[] { type },
+			return (T) Proxy.newProxyInstance(MappedObject.class.getClassLoader(), new Class<?>[]{type},
 					new MappedInvocationHandler(root, result, lookup));
 		}
 		if (result.isMissingNode()) {
@@ -100,15 +103,15 @@ public class MappedObject {
 		}
 		try {
 			return SharedObjectMapper.get().treeToValue(result, type);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
 
 	/**
 	 * Factory method to create a new {@link MappedObject} instance.
-	 * @param <T> the mapped object type
+	 *
+	 * @param <T>     the mapped object type
 	 * @param content the JSON content for the object
 	 * @param factory a factory to create the mapped object from a {@link JsonNode}
 	 * @return the mapped object
@@ -120,7 +123,8 @@ public class MappedObject {
 
 	/**
 	 * Factory method to create a new {@link MappedObject} instance.
-	 * @param <T> the mapped object type
+	 *
+	 * @param <T>     the mapped object type
 	 * @param content the JSON content for the object
 	 * @param factory a factory to create the mapped object from a {@link JsonNode}
 	 * @return the mapped object
@@ -133,10 +137,11 @@ public class MappedObject {
 
 	/**
 	 * Factory method to create a new {@link MappedObject} instance.
-	 * @param <T> the mapped object type
-	 * @param <C> the content type
+	 *
+	 * @param <T>     the mapped object type
+	 * @param <C>     the content type
 	 * @param content the JSON content for the object
-	 * @param reader the content reader
+	 * @param reader  the content reader
 	 * @param factory a factory to create the mapped object from a {@link JsonNode}
 	 * @return the mapped object
 	 * @throws IOException on IO error
@@ -158,8 +163,9 @@ public class MappedObject {
 
 		/**
 		 * Read JSON content as a {@link JsonNode}.
+		 *
 		 * @param objectMapper the source object mapper
-		 * @param content the content to read
+		 * @param content      the content to read
 		 * @return a {@link JsonNode}
 		 * @throws IOException on IO error
 		 */

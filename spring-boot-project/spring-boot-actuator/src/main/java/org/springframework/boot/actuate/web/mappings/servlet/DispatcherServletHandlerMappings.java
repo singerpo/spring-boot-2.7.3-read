@@ -51,7 +51,7 @@ final class DispatcherServletHandlerMappings {
 	private final WebApplicationContext applicationContext;
 
 	DispatcherServletHandlerMappings(String name, DispatcherServlet dispatcherServlet,
-			WebApplicationContext applicationContext) {
+									 WebApplicationContext applicationContext) {
 		this.name = name;
 		this.dispatcherServlet = dispatcherServlet;
 		this.applicationContext = applicationContext;
@@ -73,8 +73,7 @@ final class DispatcherServletHandlerMappings {
 		WebServer webServer = ((ServletWebServerApplicationContext) this.applicationContext).getWebServer();
 		if (webServer instanceof UndertowServletWebServer) {
 			new UndertowServletInitializer((UndertowServletWebServer) webServer).initializeServlet(this.name);
-		}
-		else if (webServer instanceof TomcatWebServer) {
+		} else if (webServer instanceof TomcatWebServer) {
 			new TomcatServletInitializer((TomcatWebServer) webServer).initializeServlet(this.name);
 		}
 	}
@@ -106,8 +105,7 @@ final class DispatcherServletHandlerMappings {
 				try {
 					StandardWrapper wrapper = (StandardWrapper) child;
 					wrapper.deallocate(wrapper.allocate());
-				}
-				catch (ServletException ex) {
+				} catch (ServletException ex) {
 					// Continue
 				}
 			}
@@ -126,8 +124,7 @@ final class DispatcherServletHandlerMappings {
 		void initializeServlet(String name) {
 			try {
 				this.webServer.getDeploymentManager().getDeployment().getServlets().getManagedServlet(name).forceInit();
-			}
-			catch (ServletException ex) {
+			} catch (ServletException ex) {
 				// Continue
 			}
 		}

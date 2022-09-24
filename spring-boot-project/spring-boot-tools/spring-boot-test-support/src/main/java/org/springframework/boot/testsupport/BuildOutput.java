@@ -35,6 +35,7 @@ public class BuildOutput {
 
 	/**
 	 * Returns the location into which test classes have been built.
+	 *
 	 * @return test classes location
 	 */
 	public File getTestClassesLocation() {
@@ -46,14 +47,14 @@ public class BuildOutput {
 				return location;
 			}
 			throw new IllegalStateException("Unexpected test classes location '" + location + "'");
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException("Invalid test class code source location", ex);
 		}
 	}
 
 	/**
 	 * Returns the location into which test resources have been built.
+	 *
 	 * @return test resources location
 	 */
 	public File getTestResourcesLocation() {
@@ -74,6 +75,7 @@ public class BuildOutput {
 
 	/**
 	 * Returns the root location into which build output is written.
+	 *
 	 * @return root location
 	 */
 	public File getRootLocation() {

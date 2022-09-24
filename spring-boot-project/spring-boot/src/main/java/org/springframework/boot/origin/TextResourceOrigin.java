@@ -30,8 +30,8 @@ import org.springframework.util.ObjectUtils;
  *
  * @author Madhura Bhave
  * @author Phillip Webb
- * @since 2.0.0
  * @see OriginTrackedResource
+ * @since 2.0.0
  */
 public class TextResourceOrigin implements Origin {
 
@@ -46,6 +46,7 @@ public class TextResourceOrigin implements Origin {
 
 	/**
 	 * Return the resource where the property originated.
+	 *
 	 * @return the text resource or {@code null}
 	 */
 	public Resource getResource() {
@@ -54,6 +55,7 @@ public class TextResourceOrigin implements Origin {
 
 	/**
 	 * Return the location of the property within the source (if known).
+	 *
 	 * @return the location or {@code null}
 	 */
 	public Location getLocation() {
@@ -120,8 +122,7 @@ public class TextResourceOrigin implements Origin {
 			if (jarUri != null) {
 				return jarUri.getDescription(resource.getDescription());
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 		}
 		return resource.getDescription();
 	}
@@ -137,7 +138,8 @@ public class TextResourceOrigin implements Origin {
 
 		/**
 		 * Create a new {@link Location} instance.
-		 * @param line the line number (zero indexed)
+		 *
+		 * @param line   the line number (zero indexed)
 		 * @param column the column number (zero indexed)
 		 */
 		public Location(int line, int column) {
@@ -147,6 +149,7 @@ public class TextResourceOrigin implements Origin {
 
 		/**
 		 * Return the line of the text resource where the property originated.
+		 *
 		 * @return the line number (zero indexed)
 		 */
 		public int getLine() {
@@ -155,6 +158,7 @@ public class TextResourceOrigin implements Origin {
 
 		/**
 		 * Return the column of the text resource where the property originated.
+		 *
 		 * @return the column number (zero indexed)
 		 */
 		public int getColumn() {

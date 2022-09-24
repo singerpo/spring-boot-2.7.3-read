@@ -28,8 +28,8 @@ import org.springframework.util.Assert;
  *
  * @author Madhura Bhave
  * @author Phillip Webb
- * @since 2.4.0
  * @see ConfigTreePropertySource
+ * @since 2.4.0
  */
 public class ConfigTreeConfigDataResource extends ConfigDataResource {
 

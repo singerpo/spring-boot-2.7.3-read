@@ -46,7 +46,7 @@ import org.springframework.boot.ansi.AnsiStyle;
  * @since 1.3.0
  */
 @Plugin(name = "color", category = PatternConverter.CATEGORY)
-@ConverterKeys({ "clr", "color" })
+@ConverterKeys({"clr", "color"})
 public final class ColorConverter extends LogEventPatternConverter {
 
 	private static final Map<String, AnsiElement> ELEMENTS;
@@ -85,7 +85,8 @@ public final class ColorConverter extends LogEventPatternConverter {
 
 	/**
 	 * Creates a new instance of the class. Required by Log4J2.
-	 * @param config the configuration
+	 *
+	 * @param config  the configuration
 	 * @param options the options
 	 * @return a new instance, or {@code null} if the options are invalid
 	 */

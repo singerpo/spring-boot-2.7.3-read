@@ -33,8 +33,8 @@ import org.springframework.util.StringUtils;
  * @author Dave Syer
  * @author Jean de Klerk
  * @author Stephane Nicoll
- * @since 1.2.0
  * @see JsonParserFactory
+ * @since 1.2.0
  */
 public class BasicJsonParser extends AbstractJsonParser {
 
@@ -74,14 +74,12 @@ public class BasicJsonParser extends AbstractJsonParser {
 		}
 		try {
 			return Long.valueOf(json);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			// ignore
 		}
 		try {
 			return Double.valueOf(json);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			// ignore
 		}
 		return json;
@@ -149,11 +147,9 @@ public class BasicJsonParser extends AbstractJsonParser {
 			if (current == ',' && inObject == 0 && inList == 0 && !inValue) {
 				list.add(build.toString());
 				build.setLength(0);
-			}
-			else if (current == '\\') {
+			} else if (current == '\\') {
 				inEscape = true;
-			}
-			else {
+			} else {
 				build.append(current);
 			}
 			index++;

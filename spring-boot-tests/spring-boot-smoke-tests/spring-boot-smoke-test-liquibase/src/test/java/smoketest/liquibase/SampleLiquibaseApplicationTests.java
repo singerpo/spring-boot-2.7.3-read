@@ -49,9 +49,8 @@ class SampleLiquibaseApplicationTests {
 	@Test
 	void testDefaultSettings(CapturedOutput output) {
 		try {
-			SampleLiquibaseApplication.main(new String[] { "--server.port=0" });
-		}
-		catch (IllegalStateException ex) {
+			SampleLiquibaseApplication.main(new String[]{"--server.port=0"});
+		} catch (IllegalStateException ex) {
 			if (serverNotRunning(ex)) {
 				return;
 			}

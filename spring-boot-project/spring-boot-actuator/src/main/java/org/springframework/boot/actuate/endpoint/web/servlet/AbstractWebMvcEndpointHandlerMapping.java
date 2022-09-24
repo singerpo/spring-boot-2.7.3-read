@@ -106,46 +106,49 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 	/**
 	 * Creates a new {@code WebEndpointHandlerMapping} that provides mappings for the
 	 * operations of the given {@code webEndpoints}.
-	 * @param endpointMapping the base mapping for all endpoints
-	 * @param endpoints the web endpoints
-	 * @param endpointMediaTypes media types consumed and produced by the endpoints
+	 *
+	 * @param endpointMapping            the base mapping for all endpoints
+	 * @param endpoints                  the web endpoints
+	 * @param endpointMediaTypes         media types consumed and produced by the endpoints
 	 * @param shouldRegisterLinksMapping whether the links endpoint should be registered
 	 */
 	public AbstractWebMvcEndpointHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			boolean shouldRegisterLinksMapping) {
+												Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+												boolean shouldRegisterLinksMapping) {
 		this(endpointMapping, endpoints, endpointMediaTypes, null, shouldRegisterLinksMapping);
 	}
 
 	/**
 	 * Creates a new {@code AbstractWebMvcEndpointHandlerMapping} that provides mappings
 	 * for the operations of the given endpoints.
-	 * @param endpointMapping the base mapping for all endpoints
-	 * @param endpoints the web endpoints
-	 * @param endpointMediaTypes media types consumed and produced by the endpoints
-	 * @param corsConfiguration the CORS configuration for the endpoints or {@code null}
+	 *
+	 * @param endpointMapping            the base mapping for all endpoints
+	 * @param endpoints                  the web endpoints
+	 * @param endpointMediaTypes         media types consumed and produced by the endpoints
+	 * @param corsConfiguration          the CORS configuration for the endpoints or {@code null}
 	 * @param shouldRegisterLinksMapping whether the links endpoint should be registered
 	 */
 	public AbstractWebMvcEndpointHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			CorsConfiguration corsConfiguration, boolean shouldRegisterLinksMapping) {
+												Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+												CorsConfiguration corsConfiguration, boolean shouldRegisterLinksMapping) {
 		this(endpointMapping, endpoints, endpointMediaTypes, corsConfiguration, shouldRegisterLinksMapping, null);
 	}
 
 	/**
 	 * Creates a new {@code AbstractWebMvcEndpointHandlerMapping} that provides mappings
 	 * for the operations of the given endpoints.
-	 * @param endpointMapping the base mapping for all endpoints
-	 * @param endpoints the web endpoints
-	 * @param endpointMediaTypes media types consumed and produced by the endpoints
-	 * @param corsConfiguration the CORS configuration for the endpoints or {@code null}
+	 *
+	 * @param endpointMapping            the base mapping for all endpoints
+	 * @param endpoints                  the web endpoints
+	 * @param endpointMediaTypes         media types consumed and produced by the endpoints
+	 * @param corsConfiguration          the CORS configuration for the endpoints or {@code null}
 	 * @param shouldRegisterLinksMapping whether the links endpoint should be registered
-	 * @param pathPatternParser the path pattern parser
+	 * @param pathPatternParser          the path pattern parser
 	 */
 	public AbstractWebMvcEndpointHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			CorsConfiguration corsConfiguration, boolean shouldRegisterLinksMapping,
-			PathPatternParser pathPatternParser) {
+												Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+												CorsConfiguration corsConfiguration, boolean shouldRegisterLinksMapping,
+												PathPatternParser pathPatternParser) {
 		this.endpointMapping = endpointMapping;
 		this.endpoints = endpoints;
 		this.endpointMediaTypes = endpointMediaTypes;
@@ -161,8 +164,7 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 		this.builderConfig = new RequestMappingInfo.BuilderConfiguration();
 		if (getPatternParser() != null) {
 			this.builderConfig.setPatternParser(getPatternParser());
-		}
-		else {
+		} else {
 			this.builderConfig.setPathMatcher(null);
 			this.builderConfig.setTrailingSlashMatch(true);
 			this.builderConfig.setSuffixPatternMatch(false);
@@ -213,7 +215,7 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 	}
 
 	protected void registerMapping(ExposableWebEndpoint endpoint, WebOperationRequestPredicate predicate,
-			WebOperation operation, String path) {
+								   WebOperation operation, String path) {
 		ServletWebOperation servletWebOperation = wrapServletWebOperation(endpoint, operation,
 				new ServletWebOperationAdapter(operation));
 		registerMapping(createRequestMappingInfo(predicate, path), new OperationHandler(servletWebOperation),
@@ -223,13 +225,14 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 	/**
 	 * Hook point that allows subclasses to wrap the {@link ServletWebOperation} before
 	 * it's called. Allows additional features, such as security, to be added.
-	 * @param endpoint the source endpoint
-	 * @param operation the source operation
+	 *
+	 * @param endpoint            the source endpoint
+	 * @param operation           the source operation
 	 * @param servletWebOperation the servlet web operation to wrap
 	 * @return a wrapped servlet web operation
 	 */
 	protected ServletWebOperation wrapServletWebOperation(ExposableWebEndpoint endpoint, WebOperation operation,
-			ServletWebOperation servletWebOperation) {
+														  ServletWebOperation servletWebOperation) {
 		return servletWebOperation;
 	}
 
@@ -276,12 +279,14 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 
 	/**
 	 * Return the Handler providing actuator links at the root endpoint.
+	 *
 	 * @return the links handler
 	 */
 	protected abstract LinksHandler getLinksHandler();
 
 	/**
 	 * Return the web endpoints being mapped.
+	 *
 	 * @return the endpoints
 	 */
 	public Collection<ExposableWebEndpoint> getEndpoints() {
@@ -351,8 +356,7 @@ public abstract class AbstractWebMvcEndpointHandlerMapping extends RequestMappin
 				InvocationContext invocationContext = new InvocationContext(securityContext, arguments,
 						serverNamespaceArgumentResolver, producibleOperationArgumentResolver);
 				return handleResult(this.operation.invoke(invocationContext), HttpMethod.resolve(request.getMethod()));
-			}
-			catch (InvalidEndpointRequestException ex) {
+			} catch (InvalidEndpointRequestException ex) {
 				throw new InvalidEndpointBadRequestException(ex);
 			}
 		}

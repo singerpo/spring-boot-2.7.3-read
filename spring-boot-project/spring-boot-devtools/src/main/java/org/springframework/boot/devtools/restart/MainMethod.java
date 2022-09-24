@@ -58,8 +58,7 @@ class MainMethod {
 			if (Modifier.isStatic(method.getModifiers())) {
 				return method;
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 		return null;
@@ -67,6 +66,7 @@ class MainMethod {
 
 	/**
 	 * Returns the actual main method.
+	 *
 	 * @return the main method
 	 */
 	Method getMethod() {
@@ -75,6 +75,7 @@ class MainMethod {
 
 	/**
 	 * Return the name of the declaring class.
+	 *
 	 * @return the declaring class name
 	 */
 	String getDeclaringClassName() {

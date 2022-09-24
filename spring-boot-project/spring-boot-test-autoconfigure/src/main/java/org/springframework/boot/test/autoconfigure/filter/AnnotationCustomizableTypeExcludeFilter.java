@@ -87,7 +87,7 @@ public abstract class AnnotationCustomizableTypeExcludeFilter extends TypeExclud
 
 	@SuppressWarnings("unchecked")
 	protected final boolean isTypeOrAnnotated(MetadataReader metadataReader,
-			MetadataReaderFactory metadataReaderFactory, Class<?> type) throws IOException {
+											  MetadataReaderFactory metadataReaderFactory, Class<?> type) throws IOException {
 		AnnotationTypeFilter annotationFilter = new AnnotationTypeFilter((Class<? extends Annotation>) type);
 		AssignableTypeFilter typeFilter = new AssignableTypeFilter(type);
 		return annotationFilter.match(metadataReader, metadataReaderFactory)

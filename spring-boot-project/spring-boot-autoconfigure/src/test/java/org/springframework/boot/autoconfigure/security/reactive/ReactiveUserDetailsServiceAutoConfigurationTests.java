@@ -69,9 +69,9 @@ class ReactiveUserDetailsServiceAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(ReactiveUserDetailsServiceAutoConfiguration.class,
 						RSocketMessagingAutoConfiguration.class, RSocketStrategiesAutoConfiguration.class))
 				.withUserConfiguration(TestRSocketSecurityConfiguration.class).run((context) -> {
-					ReactiveUserDetailsService userDetailsService = context.getBean(ReactiveUserDetailsService.class);
-					assertThat(userDetailsService.findByUsername("user").block(Duration.ofSeconds(30))).isNotNull();
-				});
+			ReactiveUserDetailsService userDetailsService = context.getBean(ReactiveUserDetailsService.class);
+			assertThat(userDetailsService.findByUsername("user").block(Duration.ofSeconds(30))).isNotNull();
+		});
 	}
 
 	@Test
@@ -135,12 +135,12 @@ class ReactiveUserDetailsServiceAutoConfigurationTests {
 	private void testPasswordEncoding(Class<?> configClass, String providedPassword, String expectedPassword) {
 		this.contextRunner.withUserConfiguration(configClass)
 				.withPropertyValues("spring.security.user.password=" + providedPassword).run(((context) -> {
-					MapReactiveUserDetailsService userDetailsService = context
-							.getBean(MapReactiveUserDetailsService.class);
-					String password = userDetailsService.findByUsername("user").block(Duration.ofSeconds(30))
-							.getPassword();
-					assertThat(password).isEqualTo(expectedPassword);
-				}));
+			MapReactiveUserDetailsService userDetailsService = context
+					.getBean(MapReactiveUserDetailsService.class);
+			String password = userDetailsService.findByUsername("user").block(Duration.ofSeconds(30))
+					.getPassword();
+			assertThat(password).isEqualTo(expectedPassword);
+		}));
 	}
 
 	@Configuration(proxyBeanMethods = false)

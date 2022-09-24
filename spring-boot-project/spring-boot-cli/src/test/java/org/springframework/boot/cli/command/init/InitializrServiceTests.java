@@ -130,7 +130,7 @@ class InitializrServiceTests extends AbstractHttpClientMockTests {
 	}
 
 	private ProjectGenerationResponse generateProject(ProjectGenerationRequest request,
-			MockHttpProjectGenerationRequest mockRequest) throws Exception {
+													  MockHttpProjectGenerationRequest mockRequest) throws Exception {
 		mockSuccessfulProjectGeneration(mockRequest);
 		ProjectGenerationResponse entity = this.invoker.generate(request);
 		assertThat(entity.getContent()).as("wrong body content").isEqualTo(mockRequest.content);
@@ -140,8 +140,7 @@ class InitializrServiceTests extends AbstractHttpClientMockTests {
 	private static void assertProjectEntity(ProjectGenerationResponse entity, String mimeType, String fileName) {
 		if (mimeType == null) {
 			assertThat(entity.getContentType()).isNull();
-		}
-		else {
+		} else {
 			assertThat(entity.getContentType().getMimeType()).isEqualTo(mimeType);
 		}
 		assertThat(entity.getFileName()).isEqualTo(fileName);

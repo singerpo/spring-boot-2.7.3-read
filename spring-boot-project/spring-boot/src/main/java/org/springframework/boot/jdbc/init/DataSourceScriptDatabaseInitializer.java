@@ -48,8 +48,9 @@ public class DataSourceScriptDatabaseInitializer extends AbstractScriptDatabaseI
 	/**
 	 * Creates a new {@link DataSourceScriptDatabaseInitializer} that will initialize the
 	 * given {@code DataSource} using the given settings.
+	 *
 	 * @param dataSource data source to initialize
-	 * @param settings the initialization settings
+	 * @param settings   the initialization settings
 	 */
 	public DataSourceScriptDatabaseInitializer(DataSource dataSource, DatabaseInitializationSettings settings) {
 		super(settings);
@@ -58,6 +59,7 @@ public class DataSourceScriptDatabaseInitializer extends AbstractScriptDatabaseI
 
 	/**
 	 * Returns the {@code DataSource} that will be initialized.
+	 *
 	 * @return the initialization data source
 	 */
 	protected final DataSource getDataSource() {
@@ -68,8 +70,7 @@ public class DataSourceScriptDatabaseInitializer extends AbstractScriptDatabaseI
 	protected boolean isEmbeddedDatabase() {
 		try {
 			return EmbeddedDatabaseConnection.isEmbedded(this.dataSource);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.debug("Could not determine if datasource is embedded", ex);
 			return false;
 		}
@@ -92,6 +93,7 @@ public class DataSourceScriptDatabaseInitializer extends AbstractScriptDatabaseI
 
 	/**
 	 * Customize the {@link ResourceDatabasePopulator}.
+	 *
 	 * @param populator the configured database populator
 	 * @since 2.6.2
 	 */

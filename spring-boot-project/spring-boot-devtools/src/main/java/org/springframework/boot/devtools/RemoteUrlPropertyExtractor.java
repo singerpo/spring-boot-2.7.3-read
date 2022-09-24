@@ -50,8 +50,7 @@ class RemoteUrlPropertyExtractor implements ApplicationListener<ApplicationEnvir
 		Assert.state(url.indexOf(',') == -1, "Multiple URLs specified");
 		try {
 			new URI(url);
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException("Malformed URL '" + url + "'");
 		}
 		Map<String, Object> source = Collections.singletonMap("remoteUrl", url);

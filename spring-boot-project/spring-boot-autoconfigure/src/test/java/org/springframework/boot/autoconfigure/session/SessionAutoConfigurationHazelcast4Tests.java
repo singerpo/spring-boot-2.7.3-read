@@ -78,20 +78,20 @@ class SessionAutoConfigurationHazelcast4Tests extends AbstractSessionAutoConfigu
 	void customFlushMode() {
 		this.contextRunner.withPropertyValues("spring.session.store-type=hazelcast",
 				"spring.session.hazelcast.flush-mode=immediate").run((context) -> {
-					Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
-							Hazelcast4IndexedSessionRepository.class);
-					assertThat(repository).hasFieldOrPropertyWithValue("flushMode", FlushMode.IMMEDIATE);
-				});
+			Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
+					Hazelcast4IndexedSessionRepository.class);
+			assertThat(repository).hasFieldOrPropertyWithValue("flushMode", FlushMode.IMMEDIATE);
+		});
 	}
 
 	@Test
 	void customSaveMode() {
 		this.contextRunner.withPropertyValues("spring.session.store-type=hazelcast",
 				"spring.session.hazelcast.save-mode=on-get-attribute").run((context) -> {
-					Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
-							Hazelcast4IndexedSessionRepository.class);
-					assertThat(repository).hasFieldOrPropertyWithValue("saveMode", SaveMode.ON_GET_ATTRIBUTE);
-				});
+			Hazelcast4IndexedSessionRepository repository = validateSessionRepository(context,
+					Hazelcast4IndexedSessionRepository.class);
+			assertThat(repository).hasFieldOrPropertyWithValue("saveMode", SaveMode.ON_GET_ATTRIBUTE);
+		});
 	}
 
 }

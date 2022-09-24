@@ -25,8 +25,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
  * @author Dave Syer
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "spring.mvc.pathmatch.matching-strategy=path-pattern-parser", "management.server.port=0",
-				"management.endpoints.web.base-path=/admin", "management.endpoint.health.show-details=never" })
+		properties = {"spring.mvc.pathmatch.matching-strategy=path-pattern-parser", "management.server.port=0",
+				"management.endpoints.web.base-path=/admin", "management.endpoint.health.show-details=never"})
 class ManagementPortAndPathWithPathMatcherSampleActuatorApplicationTests
 		extends AbstractManagementPortAndPathSampleActuatorApplicationTests {
 

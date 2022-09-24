@@ -29,10 +29,10 @@ import java.net.URI
 
 @SpringBootConfiguration(proxyBeanMethods = false)
 @ImportAutoConfiguration(
-	ServletWebServerFactoryAutoConfiguration::class,
-	DispatcherServletAutoConfiguration::class,
-	JacksonAutoConfiguration::class,
-	HttpMessageConvertersAutoConfiguration::class
+		ServletWebServerFactoryAutoConfiguration::class,
+		DispatcherServletAutoConfiguration::class,
+		JacksonAutoConfiguration::class,
+		HttpMessageConvertersAutoConfiguration::class
 )
 class MySpringBootTestsConfiguration {
 

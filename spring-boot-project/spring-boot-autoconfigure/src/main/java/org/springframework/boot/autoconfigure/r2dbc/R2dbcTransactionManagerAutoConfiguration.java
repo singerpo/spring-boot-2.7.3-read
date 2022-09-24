@@ -37,7 +37,7 @@ import org.springframework.transaction.ReactiveTransactionManager;
  * @since 2.3.0
  */
 @AutoConfiguration(before = TransactionAutoConfiguration.class)
-@ConditionalOnClass({ R2dbcTransactionManager.class, ReactiveTransactionManager.class })
+@ConditionalOnClass({R2dbcTransactionManager.class, ReactiveTransactionManager.class})
 @ConditionalOnSingleCandidate(ConnectionFactory.class)
 @AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)
 public class R2dbcTransactionManagerAutoConfiguration {

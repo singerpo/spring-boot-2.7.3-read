@@ -33,8 +33,8 @@ import org.springframework.util.Assert;
  *
  * @author Dave Syer
  * @author Jean de Klerk
- * @since 1.0.0
  * @see JsonParserFactory
+ * @since 1.0.0
  */
 public class YamlJsonParser extends AbstractJsonParser {
 
@@ -55,6 +55,7 @@ public class YamlJsonParser extends AbstractJsonParser {
 	private static class TypeLimitedConstructor extends Constructor {
 
 		private static final Set<String> SUPPORTED_TYPES;
+
 		static {
 			Set<Class<?>> supportedTypes = new LinkedHashSet<>();
 			supportedTypes.add(List.class);

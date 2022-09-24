@@ -42,11 +42,11 @@ class LettuceMetricsAutoConfigurationTests {
 	void whenThereIsAMeterRegistryThenCommandLatencyRecorderIsAdded() {
 		this.contextRunner.with(MetricsRun.simple())
 				.withConfiguration(AutoConfigurations.of(RedisAutoConfiguration.class)).run((context) -> {
-					ClientResources clientResources = context.getBean(LettuceConnectionFactory.class)
-							.getClientResources();
-					assertThat(clientResources.commandLatencyRecorder())
-							.isInstanceOf(MicrometerCommandLatencyRecorder.class);
-				});
+			ClientResources clientResources = context.getBean(LettuceConnectionFactory.class)
+					.getClientResources();
+			assertThat(clientResources.commandLatencyRecorder())
+					.isInstanceOf(MicrometerCommandLatencyRecorder.class);
+		});
 	}
 
 	@Test

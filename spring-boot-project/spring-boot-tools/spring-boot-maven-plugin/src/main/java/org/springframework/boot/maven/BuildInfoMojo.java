@@ -76,6 +76,7 @@ public class BuildInfoMojo extends AbstractMojo {
 	 * {@code project.build.outputTimestamp} or {@code session.request.startTime} if the
 	 * former is not set. To disable the {@code build.time} property entirely, use
 	 * {@code 'off'} or add it to {@code excludeInfoProperties}.
+	 *
 	 * @since 2.2.0
 	 */
 	@Parameter(defaultValue = "${project.build.outputTimestamp}")
@@ -103,11 +104,9 @@ public class BuildInfoMojo extends AbstractMojo {
 			ProjectDetails details = getProjectDetails();
 			new BuildPropertiesWriter(this.outputFile).writeBuildProperties(details);
 			this.buildContext.refresh(this.outputFile);
-		}
-		catch (NullAdditionalPropertyValueException ex) {
+		} catch (NullAdditionalPropertyValueException ex) {
 			throw new MojoFailureException("Failed to generate build-info.properties. " + ex.getMessage(), ex);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new MojoExecutionException(ex.getMessage(), ex);
 		}
 	}

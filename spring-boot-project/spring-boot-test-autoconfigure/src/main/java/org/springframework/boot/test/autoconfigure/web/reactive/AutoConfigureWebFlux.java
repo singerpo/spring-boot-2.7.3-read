@@ -31,8 +31,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * using this annotation directly.
  *
  * @author Stephane Nicoll
- * @since 2.0.0
  * @see WebFluxTest
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

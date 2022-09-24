@@ -113,8 +113,7 @@ public class BomPlugin implements Plugin<Project> {
 					replaceVersionsWithVersionPropertyReferences(dependencyManagement);
 					addExclusionsToManagedDependencies(dependencyManagement);
 					addTypesToManagedDependencies(dependencyManagement);
-				}
-				else {
+				} else {
 					projectNode.children().add(properties);
 				}
 				addPluginManagement(projectNode);
@@ -158,11 +157,11 @@ public class BomPlugin implements Plugin<Project> {
 							.flatMap((group) -> group.getModules().stream())
 							.filter((module) -> module.getName().equals(artifactId))
 							.flatMap((module) -> module.getExclusions().stream()).forEach((exclusion) -> {
-								Node exclusions = findOrCreateNode(dependency, "exclusions");
-								Node node = new Node(exclusions, "exclusion");
-								node.appendNode("groupId", exclusion.getGroupId());
-								node.appendNode("artifactId", exclusion.getArtifactId());
-							});
+						Node exclusions = findOrCreateNode(dependency, "exclusions");
+						Node node = new Node(exclusions, "exclusion");
+						node.appendNode("groupId", exclusion.getGroupId());
+						node.appendNode("artifactId", exclusion.getArtifactId());
+					});
 				}
 			}
 		}

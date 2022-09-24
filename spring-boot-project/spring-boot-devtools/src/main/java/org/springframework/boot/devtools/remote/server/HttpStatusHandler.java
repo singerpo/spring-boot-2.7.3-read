@@ -44,6 +44,7 @@ public class HttpStatusHandler implements Handler {
 	/**
 	 * Create a new {@link HttpStatusHandler} instance that will respond with the
 	 * specified status.
+	 *
 	 * @param status the status
 	 */
 	public HttpStatusHandler(HttpStatus status) {

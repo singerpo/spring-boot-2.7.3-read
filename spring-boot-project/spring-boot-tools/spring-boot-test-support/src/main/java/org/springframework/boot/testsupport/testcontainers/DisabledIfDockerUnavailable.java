@@ -31,7 +31,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * @author Phillip Webb
  * @since 2.3.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @ExtendWith(DisabledIfDockerUnavailableCondition.class)

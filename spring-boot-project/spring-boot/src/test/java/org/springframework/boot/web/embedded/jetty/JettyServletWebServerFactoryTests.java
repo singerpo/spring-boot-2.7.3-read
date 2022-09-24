@@ -207,7 +207,7 @@ class JettyServletWebServerFactoryTests extends AbstractServletWebServerFactoryT
 		ssl.setKeyStore("src/test/resources/test.jks");
 		ssl.setKeyStorePassword("secret");
 		ssl.setKeyPassword("password");
-		ssl.setCiphers(new String[] { "ALPHA", "BRAVO", "CHARLIE" });
+		ssl.setCiphers(new String[]{"ALPHA", "BRAVO", "CHARLIE"});
 
 		JettyServletWebServerFactory factory = getFactory();
 		factory.setSsl(ssl);
@@ -261,8 +261,7 @@ class JettyServletWebServerFactoryTests extends AbstractServletWebServerFactoryT
 	private SslContextFactory extractSslContextFactory(SslConnectionFactory connectionFactory) {
 		try {
 			return connectionFactory.getSslContextFactory();
-		}
-		catch (NoSuchMethodError ex) {
+		} catch (NoSuchMethodError ex) {
 			Method getSslContextFactory = ReflectionUtils.findMethod(connectionFactory.getClass(),
 					"getSslContextFactory");
 			return (SslContextFactory) ReflectionUtils.invokeMethod(getSslContextFactory, connectionFactory);
@@ -356,7 +355,7 @@ class JettyServletWebServerFactoryTests extends AbstractServletWebServerFactoryT
 		ssl.setKeyStore("src/test/resources/test.jks");
 		ssl.setKeyStorePassword("secret");
 		ssl.setKeyPassword("password");
-		ssl.setCiphers(new String[] { "ALPHA", "BRAVO", "CHARLIE" });
+		ssl.setCiphers(new String[]{"ALPHA", "BRAVO", "CHARLIE"});
 		ssl.setEnabledProtocols(enabledProtocols);
 		return ssl;
 	}
@@ -473,8 +472,7 @@ class JettyServletWebServerFactoryTests extends AbstractServletWebServerFactoryT
 			WebAppContext context = contexts.iterator().next();
 			try {
 				context.addEventListener(eventListener);
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Jetty 10
 				Method addEventListener = ReflectionUtils.findMethod(context.getClass(), "addEventListener",
 						EventListener.class);
@@ -485,8 +483,7 @@ class JettyServletWebServerFactoryTests extends AbstractServletWebServerFactoryT
 			JettyWebServer jettyWebServer = (JettyWebServer) factory.getWebServer();
 			try {
 				jettyWebServer.start();
-			}
-			finally {
+			} finally {
 				QueuedThreadPool threadPool = (QueuedThreadPool) jettyWebServer.getServer().getThreadPool();
 				assertThat(threadPool.isRunning()).isFalse();
 			}

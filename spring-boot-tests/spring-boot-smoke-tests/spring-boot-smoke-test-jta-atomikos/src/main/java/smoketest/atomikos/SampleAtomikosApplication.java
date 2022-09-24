@@ -31,8 +31,7 @@ public class SampleAtomikosApplication {
 			System.out.println("Count is " + repository.count());
 			try {
 				service.createAccountAndNotify("error");
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			}
 			System.out.println("Count is " + repository.count());

@@ -35,7 +35,7 @@ class AutoConfiguredHealthContributorRegistry extends DefaultHealthContributorRe
 	private final Collection<String> groupNames;
 
 	AutoConfiguredHealthContributorRegistry(Map<String, HealthContributor> contributors,
-			Collection<String> groupNames) {
+											Collection<String> groupNames) {
 		super(contributors);
 		this.groupNames = groupNames;
 		contributors.keySet().forEach(this::assertDoesNotClashWithGroup);

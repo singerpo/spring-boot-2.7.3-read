@@ -44,24 +44,24 @@ import org.springframework.context.annotation.Bean;
  */
 @AutoConfiguration(after = CompositeMeterRegistryAutoConfiguration.class)
 @ConditionalOnWebApplication
-@ConditionalOnClass({ JettyServerThreadPoolMetrics.class, Server.class })
+@ConditionalOnClass({JettyServerThreadPoolMetrics.class, Server.class})
 @ConditionalOnBean(MeterRegistry.class)
 public class JettyMetricsAutoConfiguration {
 
 	@Bean
-	@ConditionalOnMissingBean({ JettyServerThreadPoolMetrics.class, JettyServerThreadPoolMetricsBinder.class })
+	@ConditionalOnMissingBean({JettyServerThreadPoolMetrics.class, JettyServerThreadPoolMetricsBinder.class})
 	public JettyServerThreadPoolMetricsBinder jettyServerThreadPoolMetricsBinder(MeterRegistry meterRegistry) {
 		return new JettyServerThreadPoolMetricsBinder(meterRegistry);
 	}
 
 	@Bean
-	@ConditionalOnMissingBean({ JettyConnectionMetrics.class, JettyConnectionMetricsBinder.class })
+	@ConditionalOnMissingBean({JettyConnectionMetrics.class, JettyConnectionMetricsBinder.class})
 	public JettyConnectionMetricsBinder jettyConnectionMetricsBinder(MeterRegistry meterRegistry) {
 		return new JettyConnectionMetricsBinder(meterRegistry);
 	}
 
 	@Bean
-	@ConditionalOnMissingBean({ JettySslHandshakeMetrics.class, JettySslHandshakeMetricsBinder.class })
+	@ConditionalOnMissingBean({JettySslHandshakeMetrics.class, JettySslHandshakeMetricsBinder.class})
 	@ConditionalOnProperty(name = "server.ssl.enabled", havingValue = "true")
 	public JettySslHandshakeMetricsBinder jettySslHandshakeMetricsBinder(MeterRegistry meterRegistry) {
 		return new JettySslHandshakeMetricsBinder(meterRegistry);

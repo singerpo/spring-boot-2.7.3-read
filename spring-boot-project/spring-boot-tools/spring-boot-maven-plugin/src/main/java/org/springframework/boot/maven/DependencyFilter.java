@@ -39,6 +39,7 @@ public abstract class DependencyFilter extends AbstractArtifactsFilter {
 	/**
 	 * Create a new instance with the list of {@link FilterableDependency} instance(s) to
 	 * use.
+	 *
 	 * @param dependencies the source dependencies
 	 */
 	public DependencyFilter(List<? extends FilterableDependency> dependencies) {
@@ -62,7 +63,8 @@ public abstract class DependencyFilter extends AbstractArtifactsFilter {
 	 * Check if the specified {@link org.apache.maven.artifact.Artifact} matches the
 	 * specified {@link org.springframework.boot.maven.FilterableDependency}. Returns
 	 * {@code true} if it should be excluded
-	 * @param artifact the Maven {@link Artifact}
+	 *
+	 * @param artifact   the Maven {@link Artifact}
 	 * @param dependency the {@link FilterableDependency}
 	 * @return {@code true} if the artifact matches the dependency
 	 */

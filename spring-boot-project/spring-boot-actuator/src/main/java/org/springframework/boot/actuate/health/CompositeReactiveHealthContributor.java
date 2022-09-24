@@ -24,9 +24,9 @@ import java.util.function.Function;
  * {@link ReactiveHealthContributor} instances.
  *
  * @author Phillip Webb
- * @since 2.2.0
  * @see CompositeHealth
  * @see CompositeHealthContributor
+ * @since 2.2.0
  */
 public interface CompositeReactiveHealthContributor
 		extends ReactiveHealthContributor, NamedContributors<ReactiveHealthContributor> {
@@ -34,6 +34,7 @@ public interface CompositeReactiveHealthContributor
 	/**
 	 * Factory method that will create a {@link CompositeReactiveHealthContributor} from
 	 * the specified map.
+	 *
 	 * @param map the source map
 	 * @return a composite health contributor instance
 	 */
@@ -44,13 +45,14 @@ public interface CompositeReactiveHealthContributor
 	/**
 	 * Factory method that will create a {@link CompositeReactiveHealthContributor} from
 	 * the specified map.
-	 * @param <V> the value type
-	 * @param map the source map
+	 *
+	 * @param <V>          the value type
+	 * @param map          the source map
 	 * @param valueAdapter function used to adapt the map value
 	 * @return a composite health contributor instance
 	 */
 	static <V> CompositeReactiveHealthContributor fromMap(Map<String, V> map,
-			Function<V, ? extends ReactiveHealthContributor> valueAdapter) {
+														  Function<V, ? extends ReactiveHealthContributor> valueAdapter) {
 		return new CompositeReactiveHealthContributorMapAdapter<>(map, valueAdapter);
 	}
 

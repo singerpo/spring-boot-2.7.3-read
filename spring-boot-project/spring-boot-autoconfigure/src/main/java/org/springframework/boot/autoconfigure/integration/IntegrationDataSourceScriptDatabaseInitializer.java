@@ -38,23 +38,25 @@ public class IntegrationDataSourceScriptDatabaseInitializer extends DataSourceSc
 
 	/**
 	 * Create a new {@link IntegrationDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Integration data source
 	 * @param properties the Spring Integration JDBC properties
 	 * @see #getSettings
 	 */
 	public IntegrationDataSourceScriptDatabaseInitializer(DataSource dataSource,
-			IntegrationProperties.Jdbc properties) {
+														  IntegrationProperties.Jdbc properties) {
 		this(dataSource, getSettings(dataSource, properties));
 	}
 
 	/**
 	 * Create a new {@link IntegrationDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Integration data source
-	 * @param settings the database initialization settings
+	 * @param settings   the database initialization settings
 	 * @see #getSettings
 	 */
 	public IntegrationDataSourceScriptDatabaseInitializer(DataSource dataSource,
-			DatabaseInitializationSettings settings) {
+														  DatabaseInitializationSettings settings) {
 		super(dataSource, settings);
 	}
 
@@ -62,6 +64,7 @@ public class IntegrationDataSourceScriptDatabaseInitializer extends DataSourceSc
 	 * Adapts {@link IntegrationProperties.Jdbc Spring Integration JDBC properties} to
 	 * {@link DatabaseInitializationSettings} replacing any {@literal @@platform@@}
 	 * placeholders.
+	 *
 	 * @param dataSource the Spring Integration data source
 	 * @param properties the Spring Integration JDBC properties
 	 * @return a new {@link DatabaseInitializationSettings} instance

@@ -192,7 +192,7 @@ class AutoConfigurationImportSelectorTests {
 
 	@Test
 	void filterShouldSupportAware() {
-		TestAutoConfigurationImportFilter filter = new TestAutoConfigurationImportFilter(new String[] {});
+		TestAutoConfigurationImportFilter filter = new TestAutoConfigurationImportFilter(new String[]{});
 		this.filters.add(filter);
 		selectImports(BasicEnableAutoConfiguration.class);
 		assertThat(filter.getBeanFactory()).isEqualTo(this.beanFactory);
@@ -200,7 +200,7 @@ class AutoConfigurationImportSelectorTests {
 
 	@Test
 	void getExclusionFilterReuseFilters() {
-		String[] allImports = new String[] { "com.example.A", "com.example.B", "com.example.C" };
+		String[] allImports = new String[]{"com.example.A", "com.example.B", "com.example.C"};
 		this.filters.add(new TestAutoConfigurationImportFilter(allImports, 0));
 		this.filters.add(new TestAutoConfigurationImportFilter(allImports, 2));
 		assertThat(this.importSelector.getExclusionFilter().test("com.example.A")).isTrue();

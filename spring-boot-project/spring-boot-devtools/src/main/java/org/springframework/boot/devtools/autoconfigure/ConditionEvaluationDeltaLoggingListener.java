@@ -58,8 +58,7 @@ class ConditionEvaluationDeltaLoggingListener
 					logger.info("Condition evaluation delta:"
 							+ new ConditionEvaluationReportMessage(delta, "CONDITION EVALUATION DELTA"));
 				}
-			}
-			else {
+			} else {
 				logger.info("Condition evaluation unchanged");
 			}
 		}

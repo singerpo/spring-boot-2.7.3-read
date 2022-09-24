@@ -55,12 +55,14 @@ public @interface EndpointExtension {
 
 	/**
 	 * The filter class used to determine when the extension applies.
+	 *
 	 * @return the filter class
 	 */
 	Class<? extends EndpointFilter<?>> filter();
 
 	/**
 	 * The class of the endpoint to extend.
+	 *
 	 * @return the class endpoint to extend
 	 */
 	Class<?> endpoint() default Void.class;

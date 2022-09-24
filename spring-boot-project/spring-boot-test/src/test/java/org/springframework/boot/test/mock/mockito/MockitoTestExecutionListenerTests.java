@@ -94,7 +94,7 @@ class MockitoTestExecutionListenerTests {
 		assertThat(this.fieldCaptor.getValue().getName()).isEqualTo("mockBean");
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private TestContext mockTestContext(Object instance) {
 		TestContext testContext = mock(TestContext.class);
 		given(testContext.getTestInstance()).willReturn(instance);

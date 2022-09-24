@@ -45,6 +45,7 @@ public abstract class AgentReloader {
 
 	/**
 	 * Determine if any agent reloader is active.
+	 *
 	 * @return true if agent reloading is active
 	 */
 	public static boolean isActive() {

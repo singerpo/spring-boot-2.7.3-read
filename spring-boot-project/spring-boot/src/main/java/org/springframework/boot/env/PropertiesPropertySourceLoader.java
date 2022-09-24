@@ -41,7 +41,7 @@ public class PropertiesPropertySourceLoader implements PropertySourceLoader {
 
 	@Override
 	public String[] getFileExtensions() {
-		return new String[] { "properties", "xml" };
+		return new String[]{"properties", "xml"};
 	}
 
 	@Override
@@ -59,14 +59,13 @@ public class PropertiesPropertySourceLoader implements PropertySourceLoader {
 		return propertySources;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private List<Map<String, ?>> loadProperties(Resource resource) throws IOException {
 		String filename = resource.getFilename();
 		List<Map<String, ?>> result = new ArrayList<>();
 		if (filename != null && filename.endsWith(XML_FILE_EXTENSION)) {
 			result.add((Map) PropertiesLoaderUtils.loadProperties(resource));
-		}
-		else {
+		} else {
 			List<Document> documents = new OriginTrackedPropertiesLoader(resource).load();
 			documents.forEach((document) -> result.add(document.asMap()));
 		}

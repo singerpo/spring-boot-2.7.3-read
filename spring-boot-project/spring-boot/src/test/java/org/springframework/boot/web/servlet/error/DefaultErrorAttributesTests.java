@@ -218,14 +218,12 @@ class DefaultErrorAttributesTests {
 		if (options.isIncluded(Include.MESSAGE)) {
 			assertThat(attributes.get("message"))
 					.isEqualTo("Validation failed for object='objectName'. Error count: 1");
-		}
-		else {
+		} else {
 			assertThat(attributes).doesNotContainKey("message");
 		}
 		if (options.isIncluded(Include.BINDING_ERRORS)) {
 			assertThat(attributes.get("errors")).isEqualTo(bindingResult.getAllErrors());
-		}
-		else {
+		} else {
 			assertThat(attributes).doesNotContainKey("errors");
 		}
 	}

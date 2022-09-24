@@ -40,6 +40,7 @@ public class DateTimeFormatters {
 
 	/**
 	 * Configures the date format using the given {@code pattern}.
+	 *
 	 * @param pattern the pattern for formatting dates
 	 * @return {@code this} for chained method invocation
 	 */
@@ -47,8 +48,7 @@ public class DateTimeFormatters {
 		if (isIso(pattern)) {
 			this.dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
 			this.datePattern = "yyyy-MM-dd";
-		}
-		else {
+		} else {
 			this.dateFormatter = formatter(pattern);
 			this.datePattern = pattern;
 		}
@@ -57,6 +57,7 @@ public class DateTimeFormatters {
 
 	/**
 	 * Configures the time format using the given {@code pattern}.
+	 *
 	 * @param pattern the pattern for formatting times
 	 * @return {@code this} for chained method invocation
 	 */
@@ -68,6 +69,7 @@ public class DateTimeFormatters {
 
 	/**
 	 * Configures the date-time format using the given {@code pattern}.
+	 *
 	 * @param pattern the pattern for formatting date-times
 	 * @return {@code this} for chained method invocation
 	 */

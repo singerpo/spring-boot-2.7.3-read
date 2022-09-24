@@ -49,8 +49,7 @@ class RedisUrlSyntaxFailureAnalyzer extends AbstractFailureAnalyzer<RedisUrlSynt
 						"Use the scheme 'redis://' for insecure or 'rediss://' for secure Redis standalone configuration.",
 						cause);
 			}
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			// fall through to default description and action
 		}
 		return new FailureAnalysis(getDefaultDescription(cause.getUrl()),

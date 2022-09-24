@@ -60,15 +60,15 @@ class RabbitStreamConfigurationTests {
 	void whenListenerTypeIsStreamThenStreamListenerContainerAndEnvironmentAreAutoConfigured() {
 		this.contextRunner.withUserConfiguration(TestConfiguration.class)
 				.withPropertyValues("spring.rabbitmq.listener.type:stream").run((context) -> {
-					RabbitListenerEndpointRegistry registry = context.getBean(RabbitListenerEndpointRegistry.class);
-					MessageListenerContainer listenerContainer = registry.getListenerContainer("test");
-					assertThat(listenerContainer).isInstanceOf(StreamListenerContainer.class);
-					assertThat(listenerContainer).extracting("consumerCustomizer").isNotNull();
-					assertThat(context.getBean(StreamRabbitListenerContainerFactory.class))
-							.extracting("nativeListener", InstanceOfAssertFactories.BOOLEAN).isFalse();
-					then(context.getBean(ContainerCustomizer.class)).should().configure(listenerContainer);
-					assertThat(context).hasSingleBean(Environment.class);
-				});
+			RabbitListenerEndpointRegistry registry = context.getBean(RabbitListenerEndpointRegistry.class);
+			MessageListenerContainer listenerContainer = registry.getListenerContainer("test");
+			assertThat(listenerContainer).isInstanceOf(StreamListenerContainer.class);
+			assertThat(listenerContainer).extracting("consumerCustomizer").isNotNull();
+			assertThat(context.getBean(StreamRabbitListenerContainerFactory.class))
+					.extracting("nativeListener", InstanceOfAssertFactories.BOOLEAN).isFalse();
+			then(context.getBean(ContainerCustomizer.class)).should().configure(listenerContainer);
+			assertThat(context).hasSingleBean(Environment.class);
+		});
 	}
 
 	@Test

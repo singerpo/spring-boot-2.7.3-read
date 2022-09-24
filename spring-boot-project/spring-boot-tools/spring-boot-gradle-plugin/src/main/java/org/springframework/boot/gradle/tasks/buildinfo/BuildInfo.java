@@ -64,8 +64,7 @@ public class BuildInfo extends ConventionTask {
 					coerceToStringValues(this.properties.getAdditional()));
 			new BuildPropertiesWriter(new File(getDestinationDir(), "build-info.properties"))
 					.writeBuildProperties(details);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new TaskExecutionException(this, ex);
 		}
 	}
@@ -73,6 +72,7 @@ public class BuildInfo extends ConventionTask {
 	/**
 	 * Returns the directory to which the {@code build-info.properties} file will be
 	 * written. Defaults to the {@link Project#getBuildDir() Project's build directory}.
+	 *
 	 * @return the destination directory
 	 */
 	@OutputDirectory
@@ -82,6 +82,7 @@ public class BuildInfo extends ConventionTask {
 
 	/**
 	 * Sets the directory to which the {@code build-info.properties} file will be written.
+	 *
 	 * @param destinationDir the destination directory
 	 */
 	public void setDestinationDir(File destinationDir) {
@@ -91,6 +92,7 @@ public class BuildInfo extends ConventionTask {
 	/**
 	 * Returns the {@link BuildInfoProperties properties} that will be included in the
 	 * {@code build-info.properties} file.
+	 *
 	 * @return the properties
 	 */
 	@Nested
@@ -100,6 +102,7 @@ public class BuildInfo extends ConventionTask {
 
 	/**
 	 * Executes the given {@code action} on the {@link #getProperties()} properties.
+	 *
 	 * @param action the action
 	 */
 	public void properties(Action<BuildInfoProperties> action) {

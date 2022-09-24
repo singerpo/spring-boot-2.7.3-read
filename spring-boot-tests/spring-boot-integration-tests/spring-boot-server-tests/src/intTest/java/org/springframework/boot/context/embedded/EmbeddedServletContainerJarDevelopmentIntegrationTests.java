@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Andy Wilkinson
  */
 @EmbeddedServletContainerTest(packaging = "jar",
-		launchers = { BootRunApplicationLauncher.class, IdeApplicationLauncher.class })
+		launchers = {BootRunApplicationLauncher.class, IdeApplicationLauncher.class})
 class EmbeddedServletContainerJarDevelopmentIntegrationTests {
 
 	@TestTemplate

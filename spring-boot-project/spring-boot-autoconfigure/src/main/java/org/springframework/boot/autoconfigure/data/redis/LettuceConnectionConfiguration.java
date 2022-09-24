@@ -59,9 +59,9 @@ import org.springframework.util.StringUtils;
 class LettuceConnectionConfiguration extends RedisConnectionConfiguration {
 
 	LettuceConnectionConfiguration(RedisProperties properties,
-			ObjectProvider<RedisStandaloneConfiguration> standaloneConfigurationProvider,
-			ObjectProvider<RedisSentinelConfiguration> sentinelConfigurationProvider,
-			ObjectProvider<RedisClusterConfiguration> clusterConfigurationProvider) {
+								   ObjectProvider<RedisStandaloneConfiguration> standaloneConfigurationProvider,
+								   ObjectProvider<RedisSentinelConfiguration> sentinelConfigurationProvider,
+								   ObjectProvider<RedisClusterConfiguration> clusterConfigurationProvider) {
 		super(properties, standaloneConfigurationProvider, sentinelConfigurationProvider, clusterConfigurationProvider);
 	}
 

@@ -80,8 +80,7 @@ class NettyRSocketServerFactoryTests {
 		if (this.server != null) {
 			try {
 				this.server.stop();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -212,7 +211,7 @@ class NettyRSocketServerFactoryTests {
 	}
 
 	private void testBasicSslWithPemCertificate(String certificate, String certificatePrivateKey,
-			String trustCertificate, Transport transport) {
+												String trustCertificate, Transport transport) {
 		NettyRSocketServerFactory factory = getFactory();
 		factory.setTransport(transport);
 		Ssl ssl = new Ssl();
@@ -300,8 +299,7 @@ class NettyRSocketServerFactoryTests {
 		for (int i = 0; i < 10; i++) {
 			try {
 				return action.call();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				lastFailure = ex;
 			}
 		}

@@ -80,6 +80,7 @@ class InitializrService {
 
 	/**
 	 * Generate a project based on the specified {@link ProjectGenerationRequest}.
+	 *
 	 * @param request the generation request
 	 * @return an entity defining the project
 	 * @throws IOException if generation fails
@@ -96,6 +97,7 @@ class InitializrService {
 
 	/**
 	 * Load the {@link InitializrServiceMetadata} at the specified url.
+	 *
 	 * @param serviceUrl to url of the initializer service
 	 * @return the metadata describing the service
 	 * @throws IOException if the service's metadata cannot be loaded
@@ -110,6 +112,7 @@ class InitializrService {
 	 * Loads the service capabilities of the service at the specified URL. If the service
 	 * supports generating a textual representation of the capabilities, it is returned,
 	 * otherwise {@link InitializrServiceMetadata} is returned.
+	 *
 	 * @param serviceUrl to url of the initializer service
 	 * @return the service capabilities (as a String) or the
 	 * {@link InitializrServiceMetadata} describing the service
@@ -131,8 +134,7 @@ class InitializrService {
 	private InitializrServiceMetadata parseJsonMetadata(HttpEntity httpEntity) throws IOException {
 		try {
 			return new InitializrServiceMetadata(getContentAsJson(httpEntity));
-		}
-		catch (JSONException ex) {
+		} catch (JSONException ex) {
 			throw new ReportableException("Invalid content received from server (" + ex.getMessage() + ")", ex);
 		}
 	}
@@ -159,6 +161,7 @@ class InitializrService {
 
 	/**
 	 * Request the creation of the project using the specified URL.
+	 *
 	 * @param url the URL
 	 * @return the response
 	 */
@@ -168,6 +171,7 @@ class InitializrService {
 
 	/**
 	 * Retrieves the meta-data of the service at the specified URL.
+	 *
 	 * @param url the URL
 	 * @return the response
 	 */
@@ -181,8 +185,7 @@ class InitializrService {
 		try {
 			request.addHeader("User-Agent", "SpringBootCli/" + getClass().getPackage().getImplementationVersion());
 			return getHttp().execute(request);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new ReportableException(
 					"Failed to " + description + " from service at '" + url + "' (" + ex.getMessage() + ")");
 		}
@@ -194,8 +197,7 @@ class InitializrService {
 		String error = extractMessage(httpResponse.getEntity());
 		if (StringUtils.hasText(error)) {
 			message += ": '" + error + "'";
-		}
-		else {
+		} else {
 			int statusCode = httpResponse.getStatusLine().getStatusCode();
 			message += " (unexpected " + statusCode + " error)";
 		}
@@ -209,8 +211,7 @@ class InitializrService {
 				if (error.has("message")) {
 					return error.getString("message");
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}

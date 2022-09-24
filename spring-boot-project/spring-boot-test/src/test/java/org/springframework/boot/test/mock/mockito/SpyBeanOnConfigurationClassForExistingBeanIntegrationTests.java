@@ -49,7 +49,7 @@ class SpyBeanOnConfigurationClassForExistingBeanIntegrationTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@SpyBean(SimpleExampleService.class)
-	@Import({ ExampleServiceCaller.class, SimpleExampleService.class })
+	@Import({ExampleServiceCaller.class, SimpleExampleService.class})
 	static class Config {
 
 	}

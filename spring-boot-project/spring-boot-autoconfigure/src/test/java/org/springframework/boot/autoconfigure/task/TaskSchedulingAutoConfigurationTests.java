@@ -68,14 +68,14 @@ class TaskSchedulingAutoConfigurationTests {
 						"spring.task.scheduling.shutdown.await-termination-period=30s",
 						"spring.task.scheduling.thread-name-prefix=scheduling-test-")
 				.withUserConfiguration(SchedulingConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(TaskExecutor.class);
-					TaskExecutor taskExecutor = context.getBean(TaskExecutor.class);
-					TestBean bean = context.getBean(TestBean.class);
-					assertThat(bean.latch.await(30, TimeUnit.SECONDS)).isTrue();
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("waitForTasksToCompleteOnShutdown", true);
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("awaitTerminationMillis", 30000L);
-					assertThat(bean.threadNames).allMatch((name) -> name.contains("scheduling-test-"));
-				});
+			assertThat(context).hasSingleBean(TaskExecutor.class);
+			TaskExecutor taskExecutor = context.getBean(TaskExecutor.class);
+			TestBean bean = context.getBean(TestBean.class);
+			assertThat(bean.latch.await(30, TimeUnit.SECONDS)).isTrue();
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("waitForTasksToCompleteOnShutdown", true);
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("awaitTerminationMillis", 30000L);
+			assertThat(bean.threadNames).allMatch((name) -> name.contains("scheduling-test-"));
+		});
 	}
 
 	@Test
@@ -136,10 +136,10 @@ class TaskSchedulingAutoConfigurationTests {
 				.withBean(LazyTestBean.class, () -> new LazyTestBean(threadNames))
 				.withUserConfiguration(SchedulingConfiguration.class)
 				.withConfiguration(AutoConfigurations.of(TaskSchedulingAutoConfiguration.class)).run((context) -> {
-					// No lazy lookup.
-					Awaitility.waitAtMost(Duration.ofSeconds(3)).until(() -> !threadNames.isEmpty());
-					assertThat(threadNames).allMatch((name) -> name.contains("scheduling-test-"));
-				});
+			// No lazy lookup.
+			Awaitility.waitAtMost(Duration.ofSeconds(3)).until(() -> !threadNames.isEmpty());
+			assertThat(threadNames).allMatch((name) -> name.contains("scheduling-test-"));
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

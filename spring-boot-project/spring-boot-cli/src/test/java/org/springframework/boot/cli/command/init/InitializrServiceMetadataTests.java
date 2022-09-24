@@ -80,8 +80,7 @@ class InitializrServiceMetadataTests {
 	private static InitializrServiceMetadata createInstance(String version) throws JSONException {
 		try {
 			return new InitializrServiceMetadata(readJson(version));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to read json", ex);
 		}
 	}

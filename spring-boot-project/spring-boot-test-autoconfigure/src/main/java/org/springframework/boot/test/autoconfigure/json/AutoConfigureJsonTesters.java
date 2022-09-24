@@ -48,6 +48,7 @@ public @interface AutoConfigureJsonTesters {
 	/**
 	 * If {@link BasicJsonTester}, {@link JacksonTester}, {@link JsonbTester} and
 	 * {@link GsonTester} beans should be registered. Defaults to {@code true}.
+	 *
 	 * @return if tester support is enabled
 	 */
 	boolean enabled() default true;

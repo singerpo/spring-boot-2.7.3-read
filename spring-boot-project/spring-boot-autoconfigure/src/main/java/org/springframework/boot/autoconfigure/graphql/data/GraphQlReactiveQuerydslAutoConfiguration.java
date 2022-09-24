@@ -41,11 +41,11 @@ import org.springframework.graphql.execution.GraphQlSource;
  *
  * @author Rossen Stoyanchev
  * @author Brian Clozel
- * @since 2.7.0
  * @see QuerydslDataFetcher#autoRegistrationConfigurer(List, List)
+ * @since 2.7.0
  */
 @AutoConfiguration(after = GraphQlAutoConfiguration.class)
-@ConditionalOnClass({ GraphQL.class, QuerydslDataFetcher.class, ReactiveQuerydslPredicateExecutor.class })
+@ConditionalOnClass({GraphQL.class, QuerydslDataFetcher.class, ReactiveQuerydslPredicateExecutor.class})
 @ConditionalOnBean(GraphQlSource.class)
 public class GraphQlReactiveQuerydslAutoConfiguration {
 

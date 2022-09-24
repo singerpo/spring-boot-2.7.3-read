@@ -135,7 +135,7 @@ class WebEndpointTestInvocationContextProvider implements TestTemplateInvocation
 		private ConfigurableApplicationContext context;
 
 		<T extends ConfigurableApplicationContext & AnnotationConfigRegistry> WebEndpointsInvocationContext(String name,
-				Function<List<Class<?>>, ConfigurableApplicationContext> contextFactory) {
+																											Function<List<Class<?>>, ConfigurableApplicationContext> contextFactory) {
 			this.name = name;
 			this.contextFactory = contextFactory;
 		}
@@ -170,8 +170,7 @@ class WebEndpointTestInvocationContextProvider implements TestTemplateInvocation
 			Class<?> type = parameterContext.getParameter().getType();
 			if (type.equals(WebTestClient.class)) {
 				return createWebTestClient();
-			}
-			else {
+			} else {
 				return this.context;
 			}
 		}
@@ -209,7 +208,7 @@ class WebEndpointTestInvocationContextProvider implements TestTemplateInvocation
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, JerseyAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, JerseyAutoConfiguration.class})
 	static class JerseyEndpointConfiguration {
 
 		private final ApplicationContext applicationContext;
@@ -247,7 +246,7 @@ class WebEndpointTestInvocationContextProvider implements TestTemplateInvocation
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, WebFluxAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, WebFluxAutoConfiguration.class})
 	static class WebFluxEndpointConfiguration implements ApplicationListener<WebServerInitializedEvent> {
 
 		private final ApplicationContext applicationContext;
@@ -292,8 +291,8 @@ class WebEndpointTestInvocationContextProvider implements TestTemplateInvocation
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class})
 	static class WebMvcEndpointConfiguration {
 
 		private final ApplicationContext applicationContext;

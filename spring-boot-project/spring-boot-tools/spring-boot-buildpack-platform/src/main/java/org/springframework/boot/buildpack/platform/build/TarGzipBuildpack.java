@@ -35,7 +35,7 @@ import org.springframework.util.StreamUtils;
 /**
  * A {@link Buildpack} that references a buildpack contained in a local gzipped tar
  * archive file.
- *
+ * <p>
  * The archive must contain a buildpack descriptor named {@code buildpack.toml} at the
  * root of the archive. The contents of the archive will be provided as a single layer to
  * be included in the builder image.
@@ -67,8 +67,7 @@ final class TarGzipBuildpack implements Buildpack {
 				throw new IllegalArgumentException(
 						"Buildpack descriptor 'buildpack.toml' is required in buildpack '" + path + "'");
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Error parsing descriptor for buildpack '" + path + "'", ex);
 		}
 	}
@@ -88,7 +87,7 @@ final class TarGzipBuildpack implements Buildpack {
 		Path basePath = Paths.get("/cnb/buildpacks/", id, this.coordinates.getVersion());
 		try (TarArchiveInputStream tar = new TarArchiveInputStream(
 				new GzipCompressorInputStream(Files.newInputStream(this.path)));
-				TarArchiveOutputStream output = new TarArchiveOutputStream(outputStream)) {
+			 TarArchiveOutputStream output = new TarArchiveOutputStream(outputStream)) {
 			writeBasePathEntries(output, basePath);
 			TarArchiveEntry entry = tar.getNextTarEntry();
 			while (entry != null) {
@@ -114,7 +113,8 @@ final class TarGzipBuildpack implements Buildpack {
 
 	/**
 	 * A {@link BuildpackResolver} compatible method to resolve tar-gzip buildpacks.
-	 * @param context the resolver context
+	 *
+	 * @param context   the resolver context
 	 * @param reference the buildpack reference
 	 * @return the resolved {@link Buildpack} or {@code null}
 	 */

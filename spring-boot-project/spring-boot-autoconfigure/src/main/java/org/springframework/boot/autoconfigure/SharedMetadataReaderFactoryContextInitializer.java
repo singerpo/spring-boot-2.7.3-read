@@ -111,8 +111,7 @@ class SharedMetadataReaderFactoryContextInitializer
 			try {
 				configureConfigurationClassPostProcessor(
 						registry.getBeanDefinition(AnnotationConfigUtils.CONFIGURATION_ANNOTATION_PROCESSOR_BEAN_NAME));
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 			}
 		}
 
@@ -151,7 +150,7 @@ class SharedMetadataReaderFactoryContextInitializer
 		private final Supplier<?> instanceSupplier;
 
 		ConfigurationClassPostProcessorCustomizingSupplier(ConfigurableApplicationContext context,
-				Supplier<?> instanceSupplier) {
+														   Supplier<?> instanceSupplier) {
 			this.context = context;
 			this.instanceSupplier = instanceSupplier;
 		}

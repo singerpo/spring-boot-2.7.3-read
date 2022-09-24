@@ -44,8 +44,8 @@ public final class WebFluxTypeExcludeFilter extends StandardAnnotationCustomizab
 
 	private static final Class<?>[] NO_CONTROLLERS = {};
 
-	private static final String[] OPTIONAL_INCLUDES = { "com.fasterxml.jackson.databind.Module",
-			"org.thymeleaf.dialect.IDialect" };
+	private static final String[] OPTIONAL_INCLUDES = {"com.fasterxml.jackson.databind.Module",
+			"org.thymeleaf.dialect.IDialect"};
 
 	private static final Set<Class<?>> DEFAULT_INCLUDES;
 
@@ -61,8 +61,7 @@ public final class WebFluxTypeExcludeFilter extends StandardAnnotationCustomizab
 		for (String optionalInclude : OPTIONAL_INCLUDES) {
 			try {
 				includes.add(ClassUtils.forName(optionalInclude, null));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}

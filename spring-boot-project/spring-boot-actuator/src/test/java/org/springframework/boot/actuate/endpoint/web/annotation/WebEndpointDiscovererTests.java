@@ -221,7 +221,7 @@ class WebEndpointDiscovererTests {
 	}
 
 	private void load(Function<EndpointId, Long> timeToLive, PathMapper endpointPathMapper, Class<?> configuration,
-			Consumer<WebEndpointDiscoverer> consumer) {
+					  Consumer<WebEndpointDiscoverer> consumer) {
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(configuration)) {
 			ConversionServiceParameterValueMapper parameterMapper = new ConversionServiceParameterValueMapper(
 					DefaultConversionService.getSharedInstance());
@@ -574,7 +574,7 @@ class WebEndpointDiscovererTests {
 
 		@ReadOperation
 		Resource read() {
-			return new ByteArrayResource(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+			return new ByteArrayResource(new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
 		}
 
 	}
@@ -587,7 +587,7 @@ class WebEndpointDiscovererTests {
 			return "read";
 		}
 
-		@WriteOperation(produces = { "a/b", "c/d" })
+		@WriteOperation(produces = {"a/b", "c/d"})
 		String write() {
 			return "write";
 		}

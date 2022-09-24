@@ -103,11 +103,11 @@ class DataSourceJsonSerializationTests {
 
 		@Override
 		public List<BeanPropertyWriter> changeProperties(SerializationConfig config, BeanDescription beanDesc,
-				List<BeanPropertyWriter> beanProperties) {
+														 List<BeanPropertyWriter> beanProperties) {
 			List<BeanPropertyWriter> result = new ArrayList<>();
 			for (BeanPropertyWriter writer : beanProperties) {
 				AnnotatedMethod setter = beanDesc.findMethod("set" + StringUtils.capitalize(writer.getName()),
-						new Class<?>[] { writer.getType().getRawClass() });
+						new Class<?>[]{writer.getType().getRawClass()});
 				if (setter != null && this.conversionService.canConvert(String.class, writer.getType().getRawClass())) {
 					result.add(writer);
 				}

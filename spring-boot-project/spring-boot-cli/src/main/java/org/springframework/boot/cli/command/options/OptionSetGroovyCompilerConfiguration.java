@@ -46,7 +46,7 @@ public class OptionSetGroovyCompilerConfiguration implements GroovyCompilerConfi
 	}
 
 	public OptionSetGroovyCompilerConfiguration(OptionSet optionSet, CompilerOptionHandler compilerOptionHandler,
-			List<RepositoryConfiguration> repositoryConfiguration) {
+												List<RepositoryConfiguration> repositoryConfiguration) {
 		this.options = optionSet;
 		this.optionHandler = compilerOptionHandler;
 		this.repositoryConfiguration = repositoryConfiguration;

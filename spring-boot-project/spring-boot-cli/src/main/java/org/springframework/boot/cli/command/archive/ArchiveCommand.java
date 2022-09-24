@@ -110,10 +110,10 @@ abstract class ArchiveCommand extends OptionParsingCommand {
 		protected void doOptions() {
 			this.includeOption = option("include",
 					"Pattern applied to directories on the classpath to find files to include in the resulting ")
-							.withRequiredArg().withValuesSeparatedBy(",").defaultsTo("");
+					.withRequiredArg().withValuesSeparatedBy(",").defaultsTo("");
 			this.excludeOption = option("exclude", "Pattern applied to directories on the classpath to find files to "
 					+ "exclude from the resulting " + this.type).withRequiredArg().withValuesSeparatedBy(",")
-							.defaultsTo("");
+					.defaultsTo("");
 		}
 
 		@Override
@@ -174,7 +174,7 @@ abstract class ArchiveCommand extends OptionParsingCommand {
 		}
 
 		private void writeJar(File file, Class<?>[] compiledClasses, List<MatchedResource> classpathEntries,
-				List<URL> dependencies) throws IOException, URISyntaxException {
+							  List<URL> dependencies) throws IOException, URISyntaxException {
 			final List<Library> libraries;
 			try (JarWriter writer = new JarWriter(file)) {
 				addManifest(writer, compiledClasses);
@@ -257,8 +257,7 @@ abstract class ArchiveCommand extends OptionParsingCommand {
 			for (MatchedResource entry : entries) {
 				if (entry.isRoot()) {
 					libraries.add(new Library(null, entry.getFile(), LibraryScope.COMPILE, null, false, false, true));
-				}
-				else {
+				} else {
 					writeClasspathEntry(writer, entry);
 				}
 			}

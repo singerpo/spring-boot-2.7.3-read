@@ -29,10 +29,10 @@ import org.springframework.context.annotation.Scope;
  * restarts.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see RestartScopeInitializer
+ * @since 1.3.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Scope("restart")

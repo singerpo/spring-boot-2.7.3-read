@@ -188,7 +188,7 @@ class ConnectionFactoryBuilderTests {
 	}
 
 	@ParameterizedTest
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@MethodSource("poolingConnectionProviderOptions")
 	void optionIsMappedWhenCreatingPoolConfiguration(Option option) {
 		String url = "r2dbc:pool:h2:mem:///" + UUID.randomUUID();
@@ -206,7 +206,7 @@ class ConnectionFactoryBuilderTests {
 	}
 
 	@ParameterizedTest
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@MethodSource("primitivePoolingConnectionProviderOptions")
 	void stringlyTypedOptionIsMappedWhenCreatingPoolConfiguration(Option option) {
 		String url = "r2dbc:pool:h2:mem:///" + UUID.randomUUID();
@@ -239,7 +239,7 @@ class ConnectionFactoryBuilderTests {
 	}
 
 	private void assertMatchingOptions(ConnectionFactoryOptions actualOptions, ConnectionFactoryOptions expectedOptions,
-			Option<?>... optionsToCheck) {
+									   Option<?>... optionsToCheck) {
 		for (Option<?> option : optionsToCheck) {
 			assertThat(actualOptions.getValue(option)).as(option.name()).isEqualTo(expectedOptions.getValue(option));
 		}

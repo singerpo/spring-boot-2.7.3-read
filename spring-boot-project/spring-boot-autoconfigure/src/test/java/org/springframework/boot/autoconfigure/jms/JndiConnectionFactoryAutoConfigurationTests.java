@@ -62,8 +62,7 @@ class JndiConnectionFactoryAutoConfigurationTests {
 		TestableInitialContextFactory.clearAll();
 		if (this.initialContextFactory != null) {
 			System.setProperty(Context.INITIAL_CONTEXT_FACTORY, this.initialContextFactory);
-		}
-		else {
+		} else {
 			System.clearProperty(Context.INITIAL_CONTEXT_FACTORY);
 		}
 		Thread.currentThread().setContextClassLoader(this.threadContextClassLoader);

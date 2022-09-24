@@ -32,6 +32,7 @@ public class ConfigDataLocationNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataLocationNotFoundException} instance.
+	 *
 	 * @param location the location that could not be found
 	 */
 	public ConfigDataLocationNotFoundException(ConfigDataLocation location) {
@@ -40,8 +41,9 @@ public class ConfigDataLocationNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataLocationNotFoundException} instance.
+	 *
 	 * @param location the location that could not be found
-	 * @param cause the exception cause
+	 * @param cause    the exception cause
 	 */
 	public ConfigDataLocationNotFoundException(ConfigDataLocation location, Throwable cause) {
 		this(location, getMessage(location), cause);
@@ -49,9 +51,10 @@ public class ConfigDataLocationNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataLocationNotFoundException} instance.
+	 *
 	 * @param location the location that could not be found
-	 * @param message the exception message
-	 * @param cause the exception cause
+	 * @param message  the exception message
+	 * @param cause    the exception cause
 	 * @since 2.4.7
 	 */
 	public ConfigDataLocationNotFoundException(ConfigDataLocation location, String message, Throwable cause) {
@@ -62,6 +65,7 @@ public class ConfigDataLocationNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Return the location that could not be found.
+	 *
 	 * @return the location
 	 */
 	public ConfigDataLocation getLocation() {

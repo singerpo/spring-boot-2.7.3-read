@@ -36,17 +36,17 @@ import org.springframework.util.Assert;
  * 	public void setup() {
  * 		Jsonb jsonb = JsonbBuilder.create();
  * 		JsonbTester.initFields(this, jsonb);
- * 	}
+ *    }
  *
  * 	&#064;Test
  * 	public void testWriteJson() throws IOException {
  * 		ExampleObject object = // ...
  * 		assertThat(json.write(object)).isEqualToJson(&quot;expected.json&quot;);
- * 	}
+ *    }
  *
  * }
  * </pre>
- *
+ * <p>
  * See {@link AbstractJsonMarshalTester} for more details.
  *
  * @param <T> the type under test
@@ -59,6 +59,7 @@ public class JsonbTester<T> extends AbstractJsonMarshalTester<T> {
 
 	/**
 	 * Create a new uninitialized {@link JsonbTester} instance.
+	 *
 	 * @param jsonb the Jsonb instance
 	 */
 	protected JsonbTester(Jsonb jsonb) {
@@ -68,9 +69,10 @@ public class JsonbTester<T> extends AbstractJsonMarshalTester<T> {
 
 	/**
 	 * Create a new {@link JsonbTester} instance.
+	 *
 	 * @param resourceLoadClass the source class used to load resources
-	 * @param type the type under test
-	 * @param jsonb the Jsonb instance
+	 * @param type              the type under test
+	 * @param jsonb             the Jsonb instance
 	 * @see #initFields(Object, Jsonb)
 	 */
 	public JsonbTester(Class<?> resourceLoadClass, ResolvableType type, Jsonb jsonb) {
@@ -92,8 +94,9 @@ public class JsonbTester<T> extends AbstractJsonMarshalTester<T> {
 	/**
 	 * Utility method to initialize {@link JsonbTester} fields. See {@link JsonbTester
 	 * class-level documentation} for example usage.
+	 *
 	 * @param testInstance the test instance
-	 * @param jsonb the Jsonb instance
+	 * @param jsonb        the Jsonb instance
 	 */
 	public static void initFields(Object testInstance, Jsonb jsonb) {
 		new JsonbFieldInitializer().initFields(testInstance, jsonb);
@@ -102,8 +105,9 @@ public class JsonbTester<T> extends AbstractJsonMarshalTester<T> {
 	/**
 	 * Utility method to initialize {@link JsonbTester} fields. See {@link JsonbTester
 	 * class-level documentation} for example usage.
+	 *
 	 * @param testInstance the test instance
-	 * @param jsonb an object factory to create the Jsonb instance
+	 * @param jsonb        an object factory to create the Jsonb instance
 	 */
 	public static void initFields(Object testInstance, ObjectFactory<Jsonb> jsonb) {
 		new JsonbTester.JsonbFieldInitializer().initFields(testInstance, jsonb);
@@ -120,7 +124,7 @@ public class JsonbTester<T> extends AbstractJsonMarshalTester<T> {
 
 		@Override
 		protected AbstractJsonMarshalTester<Object> createTester(Class<?> resourceLoadClass, ResolvableType type,
-				Jsonb marshaller) {
+																 Jsonb marshaller) {
 			return new JsonbTester<>(resourceLoadClass, type, marshaller);
 		}
 

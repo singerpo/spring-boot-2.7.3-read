@@ -49,9 +49,9 @@ import org.springframework.util.Assert;
  * @author Phillip Webb
  * @author Rob Winch
  * @author Andy Wilkinson
- * @since 1.3.0
  * @see TunnelClient
  * @see org.springframework.boot.devtools.tunnel.server.HttpTunnelServer
+ * @since 1.3.0
  */
 public class HttpTunnelConnection implements TunnelConnection {
 
@@ -65,7 +65,8 @@ public class HttpTunnelConnection implements TunnelConnection {
 
 	/**
 	 * Create a new {@link HttpTunnelConnection} instance.
-	 * @param url the URL to connect to
+	 *
+	 * @param url            the URL to connect to
 	 * @param requestFactory the HTTP request factory
 	 */
 	public HttpTunnelConnection(String url, ClientHttpRequestFactory requestFactory) {
@@ -74,17 +75,17 @@ public class HttpTunnelConnection implements TunnelConnection {
 
 	/**
 	 * Create a new {@link HttpTunnelConnection} instance.
-	 * @param url the URL to connect to
+	 *
+	 * @param url            the URL to connect to
 	 * @param requestFactory the HTTP request factory
-	 * @param executor the executor used to handle connections
+	 * @param executor       the executor used to handle connections
 	 */
 	protected HttpTunnelConnection(String url, ClientHttpRequestFactory requestFactory, Executor executor) {
 		Assert.hasLength(url, "URL must not be empty");
 		Assert.notNull(requestFactory, "RequestFactory must not be null");
 		try {
 			this.uri = new URL(url).toURI();
-		}
-		catch (URISyntaxException | MalformedURLException ex) {
+		} catch (URISyntaxException | MalformedURLException ex) {
 			throw new IllegalArgumentException("Malformed URL '" + url + "'");
 		}
 		this.requestFactory = requestFactory;
@@ -150,13 +151,11 @@ public class HttpTunnelConnection implements TunnelConnection {
 				public void run() {
 					try {
 						sendAndReceive(payload);
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						if (ex instanceof ConnectException) {
 							logger.warn(LogMessage.format("Failed to connect to remote application at %s",
 									HttpTunnelConnection.this.uri));
-						}
-						else {
+						} else {
 							logger.trace("Unexpected connection error", ex);
 						}
 						closeQuietly();
@@ -166,8 +165,7 @@ public class HttpTunnelConnection implements TunnelConnection {
 				private void closeQuietly() {
 					try {
 						close();
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						// Ignore
 					}
 				}

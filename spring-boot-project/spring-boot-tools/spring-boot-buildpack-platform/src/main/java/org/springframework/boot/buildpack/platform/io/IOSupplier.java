@@ -30,6 +30,7 @@ public interface IOSupplier<T> {
 
 	/**
 	 * Gets the supplied value.
+	 *
 	 * @return the supplied value
 	 * @throws IOException on IO error
 	 */

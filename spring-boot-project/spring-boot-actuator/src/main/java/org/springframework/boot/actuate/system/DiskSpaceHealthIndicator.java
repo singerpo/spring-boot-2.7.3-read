@@ -47,7 +47,8 @@ public class DiskSpaceHealthIndicator extends AbstractHealthIndicator {
 
 	/**
 	 * Create a new {@code DiskSpaceHealthIndicator} instance.
-	 * @param path the Path used to compute the available disk space
+	 *
+	 * @param path      the Path used to compute the available disk space
 	 * @param threshold the minimum disk space that should be available
 	 */
 	public DiskSpaceHealthIndicator(File path, DataSize threshold) {
@@ -61,8 +62,7 @@ public class DiskSpaceHealthIndicator extends AbstractHealthIndicator {
 		long diskFreeInBytes = this.path.getUsableSpace();
 		if (diskFreeInBytes >= this.threshold.toBytes()) {
 			builder.up();
-		}
-		else {
+		} else {
 			logger.warn(LogMessage.format("Free disk space below threshold. Available: %d bytes (threshold: %s)",
 					diskFreeInBytes, this.threshold));
 			builder.down();

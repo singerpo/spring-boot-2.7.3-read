@@ -38,8 +38,7 @@ class MyApplicationTests {
 		try {
 			new MyApplication().hierarchyWithDisabledBanner(new String[0]);
 			assertThat(output).doesNotContain(":: Spring Boot ::");
-		}
-		finally {
+		} finally {
 			System.clearProperty("spring.main.web-application-type");
 		}
 	}

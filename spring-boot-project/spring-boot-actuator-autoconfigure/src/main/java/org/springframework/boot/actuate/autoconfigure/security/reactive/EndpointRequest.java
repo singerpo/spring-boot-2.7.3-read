@@ -69,6 +69,7 @@ public final class EndpointRequest {
 	 * example: <pre class="code">
 	 * EndpointRequest.toAnyEndpoint().excluding(ShutdownEndpoint.class)
 	 * </pre>
+	 *
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
 	public static EndpointServerWebExchangeMatcher toAnyEndpoint() {
@@ -80,6 +81,7 @@ public final class EndpointRequest {
 	 * For example: <pre class="code">
 	 * EndpointRequest.to(ShutdownEndpoint.class, HealthEndpoint.class)
 	 * </pre>
+	 *
 	 * @param endpoints the endpoints to include
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
@@ -92,6 +94,7 @@ public final class EndpointRequest {
 	 * For example: <pre class="code">
 	 * EndpointRequest.to("shutdown", "health")
 	 * </pre>
+	 *
 	 * @param endpoints the endpoints to include
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
@@ -109,6 +112,7 @@ public final class EndpointRequest {
 	 * <pre class="code">
 	 * EndpointRequest.toLinks()
 	 * </pre>
+	 *
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
 	public static LinksServerWebExchangeMatcher toLinks() {
@@ -202,8 +206,7 @@ public final class EndpointRequest {
 		private ServerWebExchangeMatcher createDelegate(Supplier<PathMappedEndpoints> pathMappedEndpoints) {
 			try {
 				return createDelegate(pathMappedEndpoints.get());
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return EMPTY_MATCHER;
 			}
 		}

@@ -54,8 +54,9 @@ public class RestartServer {
 
 	/**
 	 * Create a new {@link RestartServer} instance.
+	 *
 	 * @param sourceDirectoryUrlFilter the source filter used to link remote directory to
-	 * the local classpath
+	 *                                 the local classpath
 	 */
 	public RestartServer(SourceDirectoryUrlFilter sourceDirectoryUrlFilter) {
 		this(sourceDirectoryUrlFilter, Thread.currentThread().getContextClassLoader());
@@ -63,9 +64,10 @@ public class RestartServer {
 
 	/**
 	 * Create a new {@link RestartServer} instance.
+	 *
 	 * @param sourceDirectoryUrlFilter the source filter used to link remote directory to
-	 * the local classpath
-	 * @param classLoader the application classloader
+	 *                                 the local classpath
+	 * @param classLoader              the application classloader
 	 */
 	public RestartServer(SourceDirectoryUrlFilter sourceDirectoryUrlFilter, ClassLoader classLoader) {
 		Assert.notNull(sourceDirectoryUrlFilter, "SourceDirectoryUrlFilter must not be null");
@@ -77,6 +79,7 @@ public class RestartServer {
 	/**
 	 * Update the current running application with the specified {@link ClassLoaderFiles}
 	 * and trigger a reload.
+	 *
 	 * @param files updated class loader files
 	 */
 	public void updateAndRestart(ClassLoaderFiles files) {
@@ -110,8 +113,7 @@ public class RestartServer {
 				FileCopyUtils.copy(classLoaderFile.getContents(), file);
 				return true;
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// Ignore
 		}
 		return false;
@@ -157,15 +159,15 @@ public class RestartServer {
 			URL actualUrl = ResourceUtils.extractJarFileURL(url);
 			File file = ResourceUtils.getFile(actualUrl, "Jar URL");
 			file.setLastModified(System.currentTimeMillis());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 	}
 
 	/**
 	 * Called to restart the application.
-	 * @param urls the updated URLs
+	 *
+	 * @param urls  the updated URLs
 	 * @param files the updated files
 	 */
 	protected void restart(Set<URL> urls, ClassLoaderFiles files) {

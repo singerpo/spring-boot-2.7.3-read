@@ -52,8 +52,7 @@ public class ToolchainPlugin implements Plugin<Project> {
 	private void configure(Project project, ToolchainExtension toolchain) {
 		if (!isJavaVersionSupported(toolchain, toolchain.getJavaVersion())) {
 			disableToolchainTasks(project);
-		}
-		else {
+		} else {
 			JavaToolchainSpec toolchainSpec = project.getExtensions().getByType(JavaPluginExtension.class)
 					.getToolchain();
 			toolchainSpec.getLanguageVersion().set(toolchain.getJavaVersion());

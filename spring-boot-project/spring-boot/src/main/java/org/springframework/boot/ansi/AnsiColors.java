@@ -59,7 +59,7 @@ public final class AnsiColors {
 		ANSI_COLOR_MAP = Collections.unmodifiableMap(colorMap);
 	}
 
-	private static final int[] ANSI_8BIT_COLOR_CODE_LOOKUP = new int[] { 0x000000, 0x800000, 0x008000, 0x808000,
+	private static final int[] ANSI_8BIT_COLOR_CODE_LOOKUP = new int[]{0x000000, 0x800000, 0x008000, 0x808000,
 			0x000080, 0x800080, 0x008080, 0xc0c0c0, 0x808080, 0xff0000, 0x00ff00, 0xffff00, 0x0000ff, 0xff00ff,
 			0x00ffff, 0xffffff, 0x000000, 0x00005f, 0x000087, 0x0000af, 0x0000d7, 0x0000ff, 0x005f00, 0x005f5f,
 			0x005f87, 0x005faf, 0x005fd7, 0x005fff, 0x008700, 0x00875f, 0x008787, 0x0087af, 0x0087d7, 0x0087ff,
@@ -85,12 +85,13 @@ public final class AnsiColors {
 			0xffd7d7, 0xffd7ff, 0xffff00, 0xffff5f, 0xffff87, 0xffffaf, 0xffffd7, 0xffffff, 0x080808, 0x121212,
 			0x1c1c1c, 0x262626, 0x303030, 0x3a3a3a, 0x444444, 0x4e4e4e, 0x585858, 0x626262, 0x6c6c6c, 0x767676,
 			0x808080, 0x8a8a8a, 0x949494, 0x9e9e9e, 0xa8a8a8, 0xb2b2b2, 0xbcbcbc, 0xc6c6c6, 0xd0d0d0, 0xdadada,
-			0xe4e4e4, 0xeeeeee };
+			0xe4e4e4, 0xeeeeee};
 
 	private final Map<AnsiElement, LabColor> lookup;
 
 	/**
 	 * Create a new {@link AnsiColors} instance with the specified bit depth.
+	 *
 	 * @param bitDepth the required bit depth
 	 */
 	public AnsiColors(BitDepth bitDepth) {
@@ -110,6 +111,7 @@ public final class AnsiColors {
 
 	/**
 	 * Find the closest {@link AnsiElement ANSI color} to the given AWT {@link Color}.
+	 *
 	 * @param color the AWT color
 	 * @return the closest ANSI color
 	 */
@@ -163,7 +165,7 @@ public final class AnsiColors {
 			double l = (f(y) - 16.0) * 116.0;
 			double a = (f(x) - f(y)) * 500.0;
 			double b = (f(y) - f(z)) * 200.0;
-			return new float[] { (float) l, (float) a, (float) b };
+			return new float[]{(float) l, (float) a, (float) b};
 		}
 
 		private double f(double t) {
@@ -190,12 +192,14 @@ public final class AnsiColors {
 
 		/**
 		 * 4 bits (16 color).
+		 *
 		 * @see AnsiColor
 		 */
 		FOUR(4),
 
 		/**
 		 * 8 bits (256 color).
+		 *
 		 * @see Ansi8BitColor
 		 */
 		EIGHT(8);

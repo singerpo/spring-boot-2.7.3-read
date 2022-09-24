@@ -38,7 +38,7 @@ public class MyEntityManagerFactoryConfiguration {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean firstEntityManagerFactory(DataSource firstDataSource,
-			JpaProperties firstJpaProperties) {
+																			JpaProperties firstJpaProperties) {
 		EntityManagerFactoryBuilder builder = createEntityManagerFactoryBuilder(firstJpaProperties);
 		return builder.dataSource(firstDataSource).packages(Order.class).persistenceUnit("firstDs").build();
 	}

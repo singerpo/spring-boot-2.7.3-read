@@ -50,7 +50,7 @@ class CompositeHandlerExceptionResolver implements HandlerExceptionResolver {
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex) {
+										 Exception ex) {
 		for (HandlerExceptionResolver resolver : getResolvers()) {
 			ModelAndView resolved = resolver.resolveException(request, response, handler, ex);
 			if (resolved != null) {

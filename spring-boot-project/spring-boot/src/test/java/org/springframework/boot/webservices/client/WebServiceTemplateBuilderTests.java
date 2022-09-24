@@ -196,7 +196,7 @@ class WebServiceTemplateBuilderTests {
 		ClientInterceptor f1 = mock(ClientInterceptor.class);
 		ClientInterceptor f2 = mock(ClientInterceptor.class);
 		WebServiceTemplate webServiceTemplate = new WebServiceTemplate();
-		webServiceTemplate.setInterceptors(new ClientInterceptor[] { f1 });
+		webServiceTemplate.setInterceptors(new ClientInterceptor[]{f1});
 		this.builder.additionalInterceptors(f2).configure(webServiceTemplate);
 		assertThat(webServiceTemplate.getInterceptors()).containsExactlyInAnyOrder(f2, f1);
 	}

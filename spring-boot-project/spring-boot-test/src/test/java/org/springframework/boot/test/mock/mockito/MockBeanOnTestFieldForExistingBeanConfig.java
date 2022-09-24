@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Import;
  * @author Phillip Webb
  */
 @Configuration(proxyBeanMethods = false)
-@Import({ ExampleServiceCaller.class, FailingExampleService.class })
+@Import({ExampleServiceCaller.class, FailingExampleService.class})
 public class MockBeanOnTestFieldForExistingBeanConfig {
 
 }

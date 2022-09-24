@@ -31,6 +31,7 @@ public interface ConfigBuilderCustomizer {
 
 	/**
 	 * Customize the {@link ConfigBuilder}.
+	 *
 	 * @param configBuilder the {@link ConfigBuilder} to customize
 	 */
 	void customize(ConfigBuilder configBuilder);

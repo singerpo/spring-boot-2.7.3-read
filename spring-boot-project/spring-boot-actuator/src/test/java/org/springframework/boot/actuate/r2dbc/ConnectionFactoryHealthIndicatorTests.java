@@ -57,8 +57,7 @@ class ConnectionFactoryHealthIndicatorTests {
 				assertThat(actual.getDetails()).containsOnly(entry("database", "H2"),
 						entry("validationQuery", "validate(REMOTE)"));
 			}).verifyComplete();
-		}
-		finally {
+		} finally {
 			StepVerifier.create(connectionFactory.close()).verifyComplete();
 		}
 	}
@@ -110,8 +109,7 @@ class ConnectionFactoryHealthIndicatorTests {
 				assertThat(actual.getDetails()).containsOnly(entry("database", "H2"), entry("result", 0L),
 						entry("validationQuery", customValidationQuery));
 			}).verifyComplete();
-		}
-		finally {
+		} finally {
 			StepVerifier.create(connectionFactory.close()).verifyComplete();
 		}
 
@@ -130,8 +128,7 @@ class ConnectionFactoryHealthIndicatorTests {
 						entry("validationQuery", invalidValidationQuery));
 				assertThat(actual.getDetails()).containsOnlyKeys("database", "error", "validationQuery");
 			}).verifyComplete();
-		}
-		finally {
+		} finally {
 			StepVerifier.create(connectionFactory.close()).verifyComplete();
 		}
 	}

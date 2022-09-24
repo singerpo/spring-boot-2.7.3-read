@@ -46,8 +46,7 @@ class JsonReader {
 			List<ConfigurationMetadataItem> items = parseAllItems(json);
 			List<ConfigurationMetadataHint> hints = parseAllHints(json);
 			return new RawConfigurationMetadata(groups, items, hints);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (ex instanceof IOException) {
 				throw (IOException) ex;
 			}
@@ -176,8 +175,7 @@ class JsonReader {
 		if (value != null) {
 			try {
 				return Deprecation.Level.valueOf(value.toUpperCase(Locale.ENGLISH));
-			}
-			catch (IllegalArgumentException ex) {
+			} catch (IllegalArgumentException ex) {
 				// let's use the default
 			}
 		}
@@ -206,8 +204,7 @@ class JsonReader {
 				out.append(buffer, 0, bytesRead);
 			}
 			return new JSONObject(out.toString());
-		}
-		finally {
+		} finally {
 			in.close();
 		}
 	}

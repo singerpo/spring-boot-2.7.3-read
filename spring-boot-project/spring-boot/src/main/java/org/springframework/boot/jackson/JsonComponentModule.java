@@ -47,8 +47,8 @@ import org.springframework.util.ObjectUtils;
  *
  * @author Phillip Webb
  * @author Paul Aly
- * @since 1.4.0
  * @see JsonComponent
+ * @since 1.4.0
  */
 public class JsonComponentModule extends SimpleModule implements BeanFactoryAware, InitializingBean {
 
@@ -93,11 +93,9 @@ public class JsonComponentModule extends SimpleModule implements BeanFactoryAwar
 	private void addJsonBean(Object bean, Class<?>[] types, Scope scope) {
 		if (bean instanceof JsonSerializer) {
 			addJsonSerializerBean((JsonSerializer<?>) bean, scope, types);
-		}
-		else if (bean instanceof JsonDeserializer) {
+		} else if (bean instanceof JsonDeserializer) {
 			addJsonDeserializerBean((JsonDeserializer<?>) bean, types);
-		}
-		else if (bean instanceof KeyDeserializer) {
+		} else if (bean instanceof KeyDeserializer) {
 			addKeyDeserializerBean((KeyDeserializer) bean, types);
 		}
 		for (Class<?> innerClass : bean.getClass().getDeclaredClasses()) {
@@ -137,7 +135,7 @@ public class JsonComponentModule extends SimpleModule implements BeanFactoryAwar
 
 	@SuppressWarnings("unchecked")
 	private <E, T> void addBeanToModule(E element, Class<T> baseType, Class<?>[] types,
-			BiConsumer<Class<T>, E> consumer) {
+										BiConsumer<Class<T>, E> consumer) {
 		if (ObjectUtils.isEmpty(types)) {
 			consumer.accept(baseType, element);
 			return;

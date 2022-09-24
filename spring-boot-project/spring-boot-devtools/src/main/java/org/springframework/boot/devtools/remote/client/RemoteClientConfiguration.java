@@ -65,8 +65,8 @@ import org.springframework.util.StringUtils;
  * Configuration used to connect to remote Spring Boot applications.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see org.springframework.boot.devtools.RemoteSpringApplication
+ * @since 1.3.0
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(DevToolsProperties.class)
@@ -142,7 +142,7 @@ public class RemoteClientConfiguration implements InitializingBean {
 		private ExecutorService executor = Executors.newSingleThreadExecutor();
 
 		LiveReloadConfiguration(DevToolsProperties properties, ClientHttpRequestFactory clientHttpRequestFactory,
-				@Value("${remoteUrl}") String remoteUrl) {
+								@Value("${remoteUrl}") String remoteUrl) {
 			this.properties = properties;
 			this.clientHttpRequestFactory = clientHttpRequestFactory;
 			this.remoteUrl = remoteUrl;
@@ -192,7 +192,7 @@ public class RemoteClientConfiguration implements InitializingBean {
 
 		@Bean
 		ClassPathFileSystemWatcher classPathFileSystemWatcher(FileSystemWatcherFactory fileSystemWatcherFactory,
-				ClassPathRestartStrategy classPathRestartStrategy) {
+															  ClassPathRestartStrategy classPathRestartStrategy) {
 			DefaultRestartInitializer restartInitializer = new DefaultRestartInitializer();
 			URL[] urls = restartInitializer.getInitialUrls(Thread.currentThread());
 			if (urls == null) {
@@ -224,7 +224,7 @@ public class RemoteClientConfiguration implements InitializingBean {
 
 		@Bean
 		ClassPathChangeUploader classPathChangeUploader(ClientHttpRequestFactory requestFactory,
-				@Value("${remoteUrl}") String remoteUrl) {
+														@Value("${remoteUrl}") String remoteUrl) {
 			String url = remoteUrl + this.properties.getRemote().getContextPath() + "/restart";
 			return new ClassPathChangeUploader(url, requestFactory);
 		}

@@ -31,8 +31,8 @@ class MyWebServiceClientTests(@Autowired val server: MockWebServiceServer, @Auto
 	@Test
 	fun mockServerCall() {
 		server
-			.expect(RequestMatchers.payload(StringSource("<request/>")))
-			.andRespond(ResponseCreators.withPayload(StringSource("<response><status>200</status></response>")))
+				.expect(RequestMatchers.payload(StringSource("<request/>")))
+				.andRespond(ResponseCreators.withPayload(StringSource("<response><status>200</status></response>")))
 		assertThat(this.someWebService.test()).extracting(Response::status).isEqualTo(200)
 	}
 

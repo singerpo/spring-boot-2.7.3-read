@@ -43,9 +43,10 @@ public class CacheMetricsRegistrar {
 
 	/**
 	 * Creates a new registrar.
-	 * @param registry the {@link MeterRegistry} to use
+	 *
+	 * @param registry        the {@link MeterRegistry} to use
 	 * @param binderProviders the {@link CacheMeterBinderProvider} instances that should
-	 * be used to detect compatible caches
+	 *                        be used to detect compatible caches
 	 */
 	public CacheMetricsRegistrar(MeterRegistry registry, Collection<CacheMeterBinderProvider<?>> binderProviders) {
 		this.registry = registry;
@@ -55,8 +56,9 @@ public class CacheMetricsRegistrar {
 	/**
 	 * Attempt to bind the specified {@link Cache} to the registry. Return {@code true} if
 	 * the cache is supported and was bound to the registry, {@code false} otherwise.
+	 *
 	 * @param cache the cache to handle
-	 * @param tags the tags to associate with the metrics of that cache
+	 * @param tags  the tags to associate with the metrics of that cache
 	 * @return {@code true} if the {@code cache} is supported and was registered
 	 */
 	public boolean bindCacheToRegistry(Cache cache, Tag... tags) {
@@ -68,7 +70,7 @@ public class CacheMetricsRegistrar {
 		return false;
 	}
 
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({"unchecked"})
 	private MeterBinder getMeterBinder(Cache cache, Tags tags) {
 		Tags cacheTags = tags.and(getAdditionalTags(cache));
 		return LambdaSafe.callbacks(CacheMeterBinderProvider.class, this.binderProviders, cache)
@@ -79,6 +81,7 @@ public class CacheMetricsRegistrar {
 
 	/**
 	 * Return additional {@link Tag tags} to be associated with the given {@link Cache}.
+	 *
 	 * @param cache the cache
 	 * @return a list of additional tags to associate to that {@code cache}.
 	 */
@@ -101,8 +104,7 @@ public class CacheMetricsRegistrar {
 				if (cache instanceof TransactionAwareCacheDecorator) {
 					return ((TransactionAwareCacheDecorator) cache).getTargetCache();
 				}
-			}
-			catch (NoClassDefFoundError ex) {
+			} catch (NoClassDefFoundError ex) {
 				// Ignore
 			}
 			return cache;

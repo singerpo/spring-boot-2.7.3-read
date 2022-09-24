@@ -55,9 +55,9 @@ import org.springframework.util.StringUtils;
  * @author Madhura Bhave
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ Caching.class, JCacheCacheManager.class })
+@ConditionalOnClass({Caching.class, JCacheCacheManager.class})
 @ConditionalOnMissingBean(org.springframework.cache.CacheManager.class)
-@Conditional({ CacheCondition.class, JCacheCacheConfiguration.JCacheAvailableCondition.class })
+@Conditional({CacheCondition.class, JCacheCacheConfiguration.JCacheAvailableCondition.class})
 @Import(HazelcastJCacheCustomizationConfiguration.class)
 class JCacheCacheConfiguration implements BeanClassLoaderAware {
 
@@ -77,9 +77,9 @@ class JCacheCacheConfiguration implements BeanClassLoaderAware {
 	@Bean
 	@ConditionalOnMissingBean
 	CacheManager jCacheCacheManager(CacheProperties cacheProperties,
-			ObjectProvider<javax.cache.configuration.Configuration<?, ?>> defaultCacheConfiguration,
-			ObjectProvider<JCacheManagerCustomizer> cacheManagerCustomizers,
-			ObjectProvider<JCachePropertiesCustomizer> cachePropertiesCustomizers) throws IOException {
+									ObjectProvider<javax.cache.configuration.Configuration<?, ?>> defaultCacheConfiguration,
+									ObjectProvider<JCacheManagerCustomizer> cacheManagerCustomizers,
+									ObjectProvider<JCachePropertiesCustomizer> cachePropertiesCustomizers) throws IOException {
 		CacheManager jCacheCacheManager = createCacheManager(cacheProperties, cachePropertiesCustomizers);
 		List<String> cacheNames = cacheProperties.getCacheNames();
 		if (!CollectionUtils.isEmpty(cacheNames)) {
@@ -93,7 +93,7 @@ class JCacheCacheConfiguration implements BeanClassLoaderAware {
 	}
 
 	private CacheManager createCacheManager(CacheProperties cacheProperties,
-			ObjectProvider<JCachePropertiesCustomizer> cachePropertiesCustomizers) throws IOException {
+											ObjectProvider<JCachePropertiesCustomizer> cachePropertiesCustomizers) throws IOException {
 		CachingProvider cachingProvider = getCachingProvider(cacheProperties.getJcache().getProvider());
 		Properties properties = createCacheManagerProperties(cachePropertiesCustomizers, cacheProperties);
 		Resource configLocation = cacheProperties.resolveConfigLocation(cacheProperties.getJcache().getConfig());

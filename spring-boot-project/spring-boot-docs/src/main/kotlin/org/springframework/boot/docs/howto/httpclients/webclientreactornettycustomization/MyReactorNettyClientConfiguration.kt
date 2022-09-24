@@ -31,11 +31,11 @@ class MyReactorNettyClientConfiguration {
 	@Bean
 	fun clientHttpConnector(resourceFactory: ReactorResourceFactory): ClientHttpConnector {
 		val httpClient = HttpClient.create(resourceFactory.connectionProvider)
-			.runOn(resourceFactory.loopResources)
-			.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 60000)
-			.doOnConnected { connection ->
-				connection.addHandlerLast(ReadTimeoutHandler(60))
-			}
+				.runOn(resourceFactory.loopResources)
+				.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 60000)
+				.doOnConnected { connection ->
+					connection.addHandlerLast(ReadTimeoutHandler(60))
+				}
 		return ReactorClientHttpConnector(httpClient)
 	}
 

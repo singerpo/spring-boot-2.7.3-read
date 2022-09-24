@@ -117,8 +117,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 		try {
 			return Collections.list(NoSuchMethodFailureAnalyzer.class.getClassLoader()
 					.getResources(ClassUtils.convertClassNameToResourcePath(className) + ".class"));
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return null;
 		}
 	}
@@ -126,8 +125,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 	private Class<?> load(String className) {
 		try {
 			return Class.forName(className, false, getClass().getClassLoader());
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return null;
 		}
 	}
@@ -141,8 +139,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 				type = type.getSuperclass();
 			}
 			return typeHierarchy;
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return null;
 		}
 	}
@@ -170,8 +167,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 			writer.println("The calling method's class was loaded from the following location:");
 			writer.println();
 			writer.printf("    %s%n", callerDescriptor.getTypeHierarchy().get(0).getLocation());
-		}
-		else {
+		} else {
 			writer.printf("The calling method's class, %s, was loaded from the following location:%n",
 					callerDescriptor.getClassName());
 			writer.println();
@@ -198,8 +194,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 		if (callerDescriptor.getClassName().equals(calledDescriptor.getClassName())) {
 			return "Correct the classpath of your application so that it contains a single, compatible version of "
 					+ calledDescriptor.getClassName();
-		}
-		else {
+		} else {
 			return "Correct the classpath of your application so that it contains compatible versions of the classes "
 					+ callerDescriptor.getClassName() + " and " + calledDescriptor.getClassName();
 		}
@@ -216,7 +211,7 @@ class NoSuchMethodFailureAnalyzer extends AbstractFailureAnalyzer<NoSuchMethodEr
 		private final List<ClassDescriptor> typeHierarchy;
 
 		public NoSuchMethodDescriptor(String errorMessage, String className, List<URL> candidateLocations,
-				List<ClassDescriptor> typeHierarchy) {
+									  List<ClassDescriptor> typeHierarchy) {
 			this.errorMessage = errorMessage;
 			this.className = className;
 			this.candidateLocations = candidateLocations;

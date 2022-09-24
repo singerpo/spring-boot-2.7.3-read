@@ -41,6 +41,7 @@ public class ObjectContentAssert<A> extends AbstractObjectAssert<ObjectContentAs
 	/**
 	 * Verifies that the actual value is an array, and returns an array assertion, to
 	 * allow chaining of array-specific assertions from this call.
+	 *
 	 * @return an array assertion object
 	 */
 	public AbstractObjectArrayAssert<?, Object> asArray() {
@@ -51,6 +52,7 @@ public class ObjectContentAssert<A> extends AbstractObjectAssert<ObjectContentAs
 	/**
 	 * Verifies that the actual value is a map, and returns a map assertion, to allow
 	 * chaining of map-specific assertions from this call.
+	 *
 	 * @return a map assertion object
 	 */
 	@SuppressWarnings("unchecked")

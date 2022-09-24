@@ -54,8 +54,7 @@ public class NodeAssert extends AbstractAssert<NodeAssert, Node> implements Asse
 	private static Document read(File xmlFile) {
 		try {
 			return FACTORY.newDocumentBuilder().parse(xmlFile);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -63,8 +62,7 @@ public class NodeAssert extends AbstractAssert<NodeAssert, Node> implements Asse
 	public NodeAssert nodeAtPath(String xpath) {
 		try {
 			return new NodeAssert((Node) this.xpath.evaluate(xpath, this.actual, XPathConstants.NODE));
-		}
-		catch (XPathExpressionException ex) {
+		} catch (XPathExpressionException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -73,8 +71,7 @@ public class NodeAssert extends AbstractAssert<NodeAssert, Node> implements Asse
 		try {
 			return new StringAssert(
 					(String) this.xpath.evaluate(xpath + "/text()", this.actual, XPathConstants.STRING));
-		}
-		catch (XPathExpressionException ex) {
+		} catch (XPathExpressionException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

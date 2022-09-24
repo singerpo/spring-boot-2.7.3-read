@@ -246,12 +246,12 @@ class MetricsWebFilterTests {
 			return Mono.just("test");
 		}
 
-		@Timed(extraTags = { "tag1", "value1", "tag2", "value2" })
+		@Timed(extraTags = {"tag1", "value1", "tag2", "value2"})
 		Mono<String> timedExtraTags() {
 			return Mono.just("test");
 		}
 
-		@Timed(percentiles = { 0.5, 0.95 })
+		@Timed(percentiles = {0.5, 0.95})
 		Mono<String> timedPercentiles() {
 			return Mono.just("test");
 		}

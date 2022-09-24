@@ -43,6 +43,7 @@ public class HttpExchangeTracer {
 	/**
 	 * Creates a new {@code HttpExchangeTracer} that will use the given {@code includes}
 	 * to determine the contents of its traces.
+	 *
 	 * @param includes the includes
 	 */
 	public HttpExchangeTracer(Set<Include> includes) {
@@ -52,6 +53,7 @@ public class HttpExchangeTracer {
 	/**
 	 * Begins the tracing of the exchange that was initiated by the given {@code request}
 	 * being received.
+	 *
 	 * @param request the received request
 	 * @return the HTTP trace for the
 	 */
@@ -62,13 +64,14 @@ public class HttpExchangeTracer {
 	/**
 	 * Ends the tracing of the exchange that is being concluded by sending the given
 	 * {@code response}.
-	 * @param trace the trace for the exchange
-	 * @param response the response that concludes the exchange
+	 *
+	 * @param trace     the trace for the exchange
+	 * @param response  the response that concludes the exchange
 	 * @param principal a supplier for the exchange's principal
 	 * @param sessionId a supplier for the id of the exchange's session
 	 */
 	public final void sendingResponse(HttpTrace trace, TraceableResponse response, Supplier<Principal> principal,
-			Supplier<String> sessionId) {
+									  Supplier<String> sessionId) {
 		setIfIncluded(Include.TIME_TAKEN, () -> calculateTimeTaken(trace), trace::setTimeTaken);
 		setIfIncluded(Include.SESSION_ID, sessionId, trace::setSessionId);
 		setIfIncluded(Include.PRINCIPAL, principal, trace::setPrincipal);
@@ -77,6 +80,7 @@ public class HttpExchangeTracer {
 
 	/**
 	 * Post-process the given mutable map of request {@code headers}.
+	 *
 	 * @param headers the headers to post-process
 	 */
 	protected void postProcessRequestHeaders(Map<String, List<String>> headers) {
@@ -94,7 +98,7 @@ public class HttpExchangeTracer {
 	}
 
 	private Map<String, List<String>> getHeadersIfIncluded(Include include,
-			Supplier<Map<String, List<String>>> headersSupplier, Predicate<String> headerPredicate) {
+														   Supplier<Map<String, List<String>>> headersSupplier, Predicate<String> headerPredicate) {
 		if (!this.includes.contains(include)) {
 			return new LinkedHashMap<>();
 		}

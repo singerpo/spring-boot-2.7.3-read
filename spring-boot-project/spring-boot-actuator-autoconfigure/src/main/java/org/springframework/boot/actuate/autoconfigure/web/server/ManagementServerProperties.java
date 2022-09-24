@@ -30,8 +30,8 @@ import org.springframework.util.StringUtils;
  * @author Dave Syer
  * @author Stephane Nicoll
  * @author Vedran Pavic
- * @since 2.0.0
  * @see ServerProperties
+ * @since 2.0.0
  */
 @ConfigurationProperties(prefix = "management.server", ignoreUnknownFields = true)
 public class ManagementServerProperties {
@@ -60,6 +60,7 @@ public class ManagementServerProperties {
 	/**
 	 * Returns the management port or {@code null} if the
 	 * {@link ServerProperties#getPort() server port} should be used.
+	 *
 	 * @return the port
 	 * @see #setPort(Integer)
 	 */
@@ -71,6 +72,7 @@ public class ManagementServerProperties {
 	 * Sets the port of the management server, use {@code null} if the
 	 * {@link ServerProperties#getPort() server port} should be used. Set to 0 to use a
 	 * random port or set to -1 to disable.
+	 *
 	 * @param port the port
 	 */
 	public void setPort(Integer port) {

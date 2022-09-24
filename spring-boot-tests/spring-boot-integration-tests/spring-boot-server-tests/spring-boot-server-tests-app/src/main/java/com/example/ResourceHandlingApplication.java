@@ -61,8 +61,7 @@ public class ResourceHandlingApplication {
 			System.err.println("Spring MVC must not be present, otherwise its static resource handling "
 					+ "will be used rather than the embedded containers'");
 			System.exit(1);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			new SpringApplicationBuilder(ResourceHandlingApplication.class).properties("server.port:0")
 					.listeners(new WebServerPortFileWriter(args[0])).run(args);
 		}
@@ -97,8 +96,7 @@ public class ResourceHandlingApplication {
 			URL resource = getServletContext().getResource(req.getQueryString());
 			if (resource == null) {
 				resp.sendError(404);
-			}
-			else {
+			} else {
 				resp.getWriter().println(resource);
 				resp.getWriter().flush();
 			}

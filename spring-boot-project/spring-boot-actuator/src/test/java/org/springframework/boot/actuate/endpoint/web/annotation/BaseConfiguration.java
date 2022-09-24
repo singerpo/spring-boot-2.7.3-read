@@ -48,8 +48,7 @@ class BaseConfiguration {
 		}
 		try {
 			return mock(AbstractWebEndpointIntegrationTests.EndpointDelegate.class);
-		}
-		finally {
+		} finally {
 			Thread.currentThread().setContextClassLoader(classLoader);
 		}
 	}
@@ -62,7 +61,7 @@ class BaseConfiguration {
 
 	@Bean
 	WebEndpointDiscoverer webEndpointDiscoverer(EndpointMediaTypes endpointMediaTypes,
-			ApplicationContext applicationContext) {
+												ApplicationContext applicationContext) {
 		ParameterValueMapper parameterMapper = new ConversionServiceParameterValueMapper(
 				DefaultConversionService.getSharedInstance());
 		return new WebEndpointDiscoverer(applicationContext, parameterMapper, endpointMediaTypes, null,

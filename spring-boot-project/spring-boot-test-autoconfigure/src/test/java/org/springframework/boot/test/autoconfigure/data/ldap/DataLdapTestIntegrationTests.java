@@ -38,8 +38,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
  * @author Eddú Meléndez
  */
 @DataLdapTest
-@TestPropertySource(properties = { "spring.ldap.embedded.base-dn=dc=spring,dc=org",
-		"spring.ldap.embedded.ldif=classpath:org/springframework/boot/test/autoconfigure/data/ldap/schema.ldif" })
+@TestPropertySource(properties = {"spring.ldap.embedded.base-dn=dc=spring,dc=org",
+		"spring.ldap.embedded.ldif=classpath:org/springframework/boot/test/autoconfigure/data/ldap/schema.ldif"})
 class DataLdapTestIntegrationTests {
 
 	@Autowired

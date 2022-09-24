@@ -79,7 +79,8 @@ public class UndertowWebServer implements WebServer {
 
 	/**
 	 * Create a new {@link UndertowWebServer} instance.
-	 * @param builder the builder
+	 *
+	 * @param builder   the builder
 	 * @param autoStart if the server should be started
 	 */
 	public UndertowWebServer(Undertow.Builder builder, boolean autoStart) {
@@ -88,13 +89,14 @@ public class UndertowWebServer implements WebServer {
 
 	/**
 	 * Create a new {@link UndertowWebServer} instance.
-	 * @param builder the builder
+	 *
+	 * @param builder              the builder
 	 * @param httpHandlerFactories the handler factories
-	 * @param autoStart if the server should be started
+	 * @param autoStart            if the server should be started
 	 * @since 2.3.0
 	 */
 	public UndertowWebServer(Undertow.Builder builder, Iterable<HttpHandlerFactory> httpHandlerFactories,
-			boolean autoStart) {
+							 boolean autoStart) {
 		this.builder = builder;
 		this.httpHandlerFactories = httpHandlerFactories;
 		this.autoStart = autoStart;
@@ -117,8 +119,7 @@ public class UndertowWebServer implements WebServer {
 				this.started = true;
 				String message = getStartLogMessage();
 				logger.info(message);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				try {
 					PortInUseException.ifPortBindingException(ex, (bindException) -> {
 						List<Port> failedPorts = getConfiguredPorts();
@@ -128,8 +129,7 @@ public class UndertowWebServer implements WebServer {
 						}
 					});
 					throw new WebServerException("Unable to start embedded Undertow", ex);
-				}
-				finally {
+				} finally {
 					stopSilently();
 				}
 			}
@@ -142,8 +142,7 @@ public class UndertowWebServer implements WebServer {
 				this.undertow.stop();
 				this.closeables.forEach(this::closeSilently);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 	}
@@ -151,8 +150,7 @@ public class UndertowWebServer implements WebServer {
 	private void closeSilently(Closeable closeable) {
 		try {
 			closeable.close();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 	}
 
@@ -192,14 +190,12 @@ public class UndertowWebServer implements WebServer {
 		try {
 			if (!this.autoStart) {
 				ports.add(new Port(-1, "unknown"));
-			}
-			else {
+			} else {
 				for (BoundChannel channel : extractChannels()) {
 					ports.add(getPortFromChannel(channel));
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Continue
 		}
 		return ports;
@@ -230,8 +226,7 @@ public class UndertowWebServer implements WebServer {
 				if (port.getNumber() != 0) {
 					ports.add(port);
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Continue
 			}
 		}
@@ -270,8 +265,7 @@ public class UndertowWebServer implements WebServer {
 				for (Closeable closeable : this.closeables) {
 					closeable.close();
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new WebServerException("Unable to stop undertow", ex);
 			}
 		}
@@ -304,8 +298,7 @@ public class UndertowWebServer implements WebServer {
 			if (success) {
 				logger.info("Graceful shutdown complete");
 				callback.shutdownComplete(GracefulShutdownResult.IDLE);
-			}
-			else {
+			} else {
 				logger.info("Graceful shutdown aborted with one or more requests still active");
 				callback.shutdownComplete(GracefulShutdownResult.REQUESTS_ACTIVE);
 			}

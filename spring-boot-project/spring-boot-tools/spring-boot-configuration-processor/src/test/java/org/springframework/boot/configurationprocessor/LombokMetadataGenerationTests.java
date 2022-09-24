@@ -142,12 +142,12 @@ class LombokMetadataGenerationTests extends AbstractMetadataGenerationTests {
 	}
 
 	private void assertAccessLevelOverwriteLombokProperties(ConfigurationMetadata metadata, Class<?> source,
-			String prefix) {
+															String prefix) {
 		assertAccessLevelLombokProperties(metadata, source, prefix, 7);
 	}
 
 	private void assertAccessLevelLombokProperties(ConfigurationMetadata metadata, Class<?> source, String prefix,
-			int countNameFields) {
+												   int countNameFields) {
 		assertThat(metadata).has(Metadata.withGroup(prefix).fromSource(source));
 		for (int i = 0; i < countNameFields; i++) {
 			assertThat(metadata).has(Metadata.withProperty(prefix + ".name" + i, String.class));

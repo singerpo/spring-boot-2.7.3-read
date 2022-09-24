@@ -194,24 +194,24 @@ class SecurityAutoConfigurationTests {
 	void customFilterDispatcherTypes() {
 		this.contextRunner.withPropertyValues("spring.security.filter.dispatcher-types:INCLUDE,ERROR")
 				.withConfiguration(AutoConfigurations.of(SecurityFilterAutoConfiguration.class)).run((context) -> {
-					DelegatingFilterProxyRegistrationBean bean = context.getBean("securityFilterChainRegistration",
-							DelegatingFilterProxyRegistrationBean.class);
-					assertThat(bean)
-							.extracting("dispatcherTypes", InstanceOfAssertFactories.iterable(DispatcherType.class))
-							.containsOnly(DispatcherType.INCLUDE, DispatcherType.ERROR);
-				});
+			DelegatingFilterProxyRegistrationBean bean = context.getBean("securityFilterChainRegistration",
+					DelegatingFilterProxyRegistrationBean.class);
+			assertThat(bean)
+					.extracting("dispatcherTypes", InstanceOfAssertFactories.iterable(DispatcherType.class))
+					.containsOnly(DispatcherType.INCLUDE, DispatcherType.ERROR);
+		});
 	}
 
 	@Test
 	void emptyFilterDispatcherTypesDoNotThrowException() {
 		this.contextRunner.withPropertyValues("spring.security.filter.dispatcher-types:")
 				.withConfiguration(AutoConfigurations.of(SecurityFilterAutoConfiguration.class)).run((context) -> {
-					DelegatingFilterProxyRegistrationBean bean = context.getBean("securityFilterChainRegistration",
-							DelegatingFilterProxyRegistrationBean.class);
-					assertThat(bean)
-							.extracting("dispatcherTypes", InstanceOfAssertFactories.iterable(DispatcherType.class))
-							.isEmpty();
-				});
+			DelegatingFilterProxyRegistrationBean bean = context.getBean("securityFilterChainRegistration",
+					DelegatingFilterProxyRegistrationBean.class);
+			assertThat(bean)
+					.extracting("dispatcherTypes", InstanceOfAssertFactories.iterable(DispatcherType.class))
+					.isEmpty();
+		});
 	}
 
 	@Test

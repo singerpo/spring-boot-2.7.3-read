@@ -39,8 +39,8 @@ import org.springframework.util.ClassUtils;
  * @author Dave Syer
  * @author Stephane Nicoll
  * @author Nidhi Desai
- * @since 1.0.0
  * @see #get(ClassLoader)
+ * @since 1.0.0
  */
 public enum EmbeddedDatabaseConnection {
 
@@ -63,6 +63,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * HSQL Database Connection.
+	 *
 	 * @since 2.4.0
 	 */
 	HSQLDB(EmbeddedDatabaseType.HSQL, DatabaseDriver.HSQLDB.getDriverClassName(), "org.hsqldb.jdbcDriver",
@@ -79,12 +80,12 @@ public enum EmbeddedDatabaseConnection {
 	private final Predicate<String> embeddedUrl;
 
 	EmbeddedDatabaseConnection(EmbeddedDatabaseType type, String driverClass, String url,
-			Predicate<String> embeddedUrl) {
+							   Predicate<String> embeddedUrl) {
 		this(type, driverClass, null, url, embeddedUrl);
 	}
 
 	EmbeddedDatabaseConnection(EmbeddedDatabaseType type, String driverClass, String fallbackDriverClass, String url,
-			Predicate<String> embeddedUrl) {
+							   Predicate<String> embeddedUrl) {
 		this.type = type;
 		this.driverClass = driverClass;
 		this.alternativeDriverClass = fallbackDriverClass;
@@ -94,6 +95,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * Returns the driver class name.
+	 *
 	 * @return the driver class name
 	 */
 	public String getDriverClassName() {
@@ -102,6 +104,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * Returns the {@link EmbeddedDatabaseType} for the connection.
+	 *
 	 * @return the database type
 	 */
 	public EmbeddedDatabaseType getType() {
@@ -110,6 +113,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * Returns the URL for the connection using the specified {@code databaseName}.
+	 *
 	 * @param databaseName the name of the database
 	 * @return the connection URL
 	 */
@@ -130,8 +134,9 @@ public enum EmbeddedDatabaseConnection {
 	/**
 	 * Convenience method to determine if a given driver class name and url represent an
 	 * embedded database type.
+	 *
 	 * @param driverClass the driver class
-	 * @param url the jdbc url (can be {@code null})
+	 * @param url         the jdbc url (can be {@code null})
 	 * @return true if the driver class and url refer to an embedded database
 	 * @since 2.4.0
 	 */
@@ -154,14 +159,14 @@ public enum EmbeddedDatabaseConnection {
 	/**
 	 * Convenience method to determine if a given data source represents an embedded
 	 * database type.
+	 *
 	 * @param dataSource the data source to interrogate
 	 * @return true if the data source is one of the embedded types
 	 */
 	public static boolean isEmbedded(DataSource dataSource) {
 		try {
 			return new JdbcTemplate(dataSource).execute(new IsEmbedded());
-		}
-		catch (DataAccessException ex) {
+		} catch (DataAccessException ex) {
 			// Could not connect, which means it's not embedded
 			return false;
 		}
@@ -170,6 +175,7 @@ public enum EmbeddedDatabaseConnection {
 	/**
 	 * Returns the most suitable {@link EmbeddedDatabaseConnection} for the given class
 	 * loader.
+	 *
 	 * @param classLoader the class loader used to check for classes
 	 * @return an {@link EmbeddedDatabaseConnection} or {@link #NONE}.
 	 */

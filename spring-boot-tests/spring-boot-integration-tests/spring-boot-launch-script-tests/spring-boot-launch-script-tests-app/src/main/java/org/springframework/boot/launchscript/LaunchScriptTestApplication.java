@@ -55,8 +55,7 @@ public class LaunchScriptTestApplication {
 			ProtectionDomain domain = LaunchScriptTestApplication.class.getProtectionDomain();
 			CodeSource codeSource = (domain != null) ? domain.getCodeSource() : null;
 			return (codeSource != null) ? codeSource.getLocation() : null;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 		return null;
 	}

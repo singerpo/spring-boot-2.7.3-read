@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @author Eddú Meléndez
  * @since 2.7.0
  */
-@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Value("${local.rsocket.server.port}")

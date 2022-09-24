@@ -135,7 +135,7 @@ class ReactiveSessionAutoConfigurationRedisTests extends AbstractSessionAutoConf
 	}
 
 	private ContextConsumer<AssertableReactiveWebApplicationContext> validateSpringSessionUsesRedis(String namespace,
-			SaveMode saveMode) {
+																									SaveMode saveMode) {
 		return (context) -> {
 			ReactiveRedisSessionRepository repository = validateSessionRepository(context,
 					ReactiveRedisSessionRepository.class);

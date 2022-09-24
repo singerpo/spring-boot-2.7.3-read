@@ -107,6 +107,7 @@ public class NettyRSocketServerFactory implements RSocketServerFactory, Configur
 
 	/**
 	 * Set the {@link ReactorResourceFactory} to get the shared resources from.
+	 *
 	 * @param resourceFactory the server resources
 	 */
 	public void setResourceFactory(ReactorResourceFactory resourceFactory) {
@@ -117,6 +118,7 @@ public class NettyRSocketServerFactory implements RSocketServerFactory, Configur
 	 * Set {@link RSocketServerCustomizer}s that should be called to configure the
 	 * {@link io.rsocket.core.RSocketServer} while building the server. Calling this
 	 * method will replace any existing customizers.
+	 *
 	 * @param rSocketServerCustomizers customizers to apply before the server starts
 	 * @since 2.2.7
 	 */
@@ -128,6 +130,7 @@ public class NettyRSocketServerFactory implements RSocketServerFactory, Configur
 	/**
 	 * Add {@link RSocketServerCustomizer}s that should be called to configure the
 	 * {@link io.rsocket.core.RSocketServer}.
+	 *
 	 * @param rSocketServerCustomizers customizers to apply before the server starts
 	 * @since 2.2.7
 	 */
@@ -139,6 +142,7 @@ public class NettyRSocketServerFactory implements RSocketServerFactory, Configur
 	/**
 	 * Set the maximum amount of time that should be waited when starting or stopping the
 	 * server.
+	 *
 	 * @param lifecycleTimeout the lifecycle timeout
 	 */
 	public void setLifecycleTimeout(Duration lifecycleTimeout) {

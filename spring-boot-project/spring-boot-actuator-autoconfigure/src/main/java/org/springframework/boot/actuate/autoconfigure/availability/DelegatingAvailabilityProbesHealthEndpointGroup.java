@@ -36,7 +36,7 @@ class DelegatingAvailabilityProbesHealthEndpointGroup implements HealthEndpointG
 	private final AdditionalHealthEndpointPath additionalPath;
 
 	DelegatingAvailabilityProbesHealthEndpointGroup(HealthEndpointGroup delegate,
-			AdditionalHealthEndpointPath additionalPath) {
+													AdditionalHealthEndpointPath additionalPath) {
 		Assert.notNull(delegate, "Delegate must not be null");
 		this.delegate = delegate;
 		this.additionalPath = additionalPath;

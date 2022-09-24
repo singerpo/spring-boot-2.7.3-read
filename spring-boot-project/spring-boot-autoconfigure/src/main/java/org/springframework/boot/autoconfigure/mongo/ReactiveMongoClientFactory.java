@@ -33,6 +33,7 @@ public class ReactiveMongoClientFactory extends MongoClientFactorySupport<MongoC
 
 	/**
 	 * Construct a factory for creating a {@link MongoClient}.
+	 *
 	 * @param builderCustomizers a list of configuration settings customizers
 	 */
 	public ReactiveMongoClientFactory(List<MongoClientSettingsBuilderCustomizer> builderCustomizers) {

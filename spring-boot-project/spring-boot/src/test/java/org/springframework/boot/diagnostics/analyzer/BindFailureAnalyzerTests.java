@@ -81,7 +81,8 @@ class BindFailureAnalyzerTests {
 				"\"test.foo.value\" from property source \"test\"", "java.lang.RuntimeException: This is a failure"));
 	}
 
-	@Test // gh-27028
+	@Test
+		// gh-27028
 	void bindExceptionDueToClassNotFoundConversionFailure() {
 		FailureAnalysis analysis = performAnalysis(GenericFailureConfiguration.class,
 				"test.foo.type=com.example.Missing");
@@ -119,8 +120,7 @@ class BindFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanCreationException ex) {
+		} catch (BeanCreationException ex) {
 			return ex;
 		}
 	}

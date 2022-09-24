@@ -63,6 +63,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * The Maven project.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter(defaultValue = "${project}", readonly = true, required = true)
@@ -70,6 +71,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * The Maven session.
+	 *
 	 * @since 2.4.0
 	 */
 	@Parameter(defaultValue = "${session}", readonly = true, required = true)
@@ -77,6 +79,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Maven project helper utils.
+	 *
 	 * @since 1.0.0
 	 */
 	@Component
@@ -85,6 +88,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 	/**
 	 * The name of the main class. If not specified the first compiled class found that
 	 * contains a {@code main} method will be used.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter
@@ -92,6 +96,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Exclude Spring Boot devtools from the repackaged archive.
+	 *
 	 * @since 1.3.0
 	 */
 	@Parameter(property = "spring-boot.repackage.excludeDevtools", defaultValue = "true")
@@ -99,6 +104,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Include system scoped dependencies.
+	 *
 	 * @since 1.4.0
 	 */
 	@Parameter(defaultValue = "false")
@@ -107,6 +113,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 	/**
 	 * Layer configuration with options to disable layer creation, exclude layer tools
 	 * jar, and provide a custom layers configuration file.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter
@@ -114,6 +121,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Return the type of archive that should be packaged by this MOJO.
+	 *
 	 * @return {@code null}, indicating a layout type will be chosen based on the original
 	 * archive type
 	 */
@@ -124,6 +132,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 	/**
 	 * Return the layout factory that will be used to determine the {@link LayoutType} if
 	 * no explicit layout is set.
+	 *
 	 * @return {@code null}, indicating a default layout factory will be chosen
 	 */
 	protected LayoutFactory getLayoutFactory() {
@@ -132,7 +141,8 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Return a {@link Packager} configured for this MOJO.
-	 * @param <P> the packager type
+	 *
+	 * @param <P>      the packager type
 	 * @param supplier a packager supplier
 	 * @return a configured packager
 	 */
@@ -148,8 +158,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 		}
 		if (this.layers == null) {
 			packager.setLayers(IMPLICIT_LAYERS);
-		}
-		else if (this.layers.isEnabled()) {
+		} else if (this.layers.isEnabled()) {
 			packager.setLayers((this.layers.getConfiguration() != null)
 					? getCustomLayers(this.layers.getConfiguration()) : IMPLICIT_LAYERS);
 			packager.setIncludeRelevantJarModeJars(this.layers.isIncludeLayerTools());
@@ -161,8 +170,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 		try {
 			Document document = getDocumentIfAvailable(configuration);
 			return new CustomLayersProvider().getLayers(document);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(
 					"Failed to process custom layers configuration " + configuration.getAbsolutePath(), ex);
 		}
@@ -178,6 +186,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 
 	/**
 	 * Return {@link Libraries} that the packager can use.
+	 *
 	 * @param unpacks any libraries that require unpack
 	 * @return the libraries to use
 	 * @throws MojoExecutionException on execution error
@@ -207,6 +216,7 @@ public abstract class AbstractPackagerMojo extends AbstractDependencyFilterMojo 
 	 * Return the source {@link Artifact} to repackage. If a classifier is specified and
 	 * an artifact with that classifier exists, it is used. Otherwise, the main artifact
 	 * is used.
+	 *
 	 * @param classifier the artifact classifier
 	 * @return the source artifact to repackage
 	 */

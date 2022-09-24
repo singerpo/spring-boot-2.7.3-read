@@ -85,8 +85,8 @@ class LoggersEndpointDocumentationTests extends MockMvcEndpointDocumentationTest
 						responseFields(fieldWithPath("levels").description("Levels support by the logging system."),
 								fieldWithPath("loggers").description("Loggers keyed by name."),
 								fieldWithPath("groups").description("Logger groups keyed by name"))
-										.andWithPrefix("loggers.*.", levelFields)
-										.andWithPrefix("groups.*.", groupLevelFields)));
+								.andWithPrefix("loggers.*.", levelFields)
+								.andWithPrefix("groups.*.", groupLevelFields)));
 	}
 
 	@Test
@@ -123,10 +123,10 @@ class LoggersEndpointDocumentationTests extends MockMvcEndpointDocumentationTest
 				.perform(post("/actuator/loggers/test")
 						.content("{\"configuredLevel\":\"debug\"}").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNoContent()).andDo(
-						MockMvcRestDocumentation.document("loggers/setGroup",
-								requestFields(fieldWithPath("configuredLevel").description(
-										"Level for the logger group. May be omitted to clear the level of the loggers.")
-										.optional())));
+				MockMvcRestDocumentation.document("loggers/setGroup",
+						requestFields(fieldWithPath("configuredLevel").description(
+								"Level for the logger group. May be omitted to clear the level of the loggers.")
+								.optional())));
 		then(this.loggingSystem).should().setLogLevel("test.member1", LogLevel.DEBUG);
 		then(this.loggingSystem).should().setLogLevel("test.member2", LogLevel.DEBUG);
 		resetLogger();

@@ -31,25 +31,28 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * @author Moritz Halbritter
  * @since 2.5.11
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(DisabledOnOsCondition.class)
 public @interface DisabledOnOs {
 
 	/**
 	 * See {@link org.junit.jupiter.api.condition.DisabledOnOs#value()}.
+	 *
 	 * @return os
 	 */
 	OS[] os();
 
 	/**
 	 * Architecture of the operating system.
+	 *
 	 * @return architecture
 	 */
 	String architecture();
 
 	/**
 	 * See {@link org.junit.jupiter.api.condition.DisabledOnOs#disabledReason()}.
+	 *
 	 * @return disabled reason
 	 */
 	String disabledReason() default "";

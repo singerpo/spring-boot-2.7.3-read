@@ -148,13 +148,13 @@ class DiscoveredJmxOperationTests {
 		ApplicationContext getApplicationContext();
 
 		Object params(OperationType enumParam, Date dateParam, Instant instantParam, Integer integerParam,
-				ApplicationContext applicationContextParam);
+					  ApplicationContext applicationContextParam);
 
 		@ManagedOperation(description = "fromannotation")
 		Object withManagedOperationDescription();
 
-		@ManagedOperationParameters({ @ManagedOperationParameter(name = "a1", description = "d1"),
-				@ManagedOperationParameter(name = "a2", description = "d2") })
+		@ManagedOperationParameters({@ManagedOperationParameter(name = "a1", description = "d1"),
+				@ManagedOperationParameter(name = "a2", description = "d2")})
 		Object withManagedOperationParameters(Object one, Object two);
 
 	}

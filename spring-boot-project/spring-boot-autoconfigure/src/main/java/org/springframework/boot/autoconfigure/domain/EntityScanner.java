@@ -44,6 +44,7 @@ public class EntityScanner {
 
 	/**
 	 * Create a new {@link EntityScanner} instance.
+	 *
 	 * @param context the source application context
 	 */
 	public EntityScanner(ApplicationContext context) {
@@ -53,6 +54,7 @@ public class EntityScanner {
 
 	/**
 	 * Scan for entities with the specified annotations.
+	 *
 	 * @param annotationTypes the annotation types used on the entities
 	 * @return a set of entity classes
 	 * @throws ClassNotFoundException if an entity class cannot be loaded
@@ -82,6 +84,7 @@ public class EntityScanner {
 	/**
 	 * Create a {@link ClassPathScanningCandidateComponentProvider} to scan entities based
 	 * on the specified {@link ApplicationContext}.
+	 *
 	 * @param context the {@link ApplicationContext} to use
 	 * @return a {@link ClassPathScanningCandidateComponentProvider} suitable to scan
 	 * entities

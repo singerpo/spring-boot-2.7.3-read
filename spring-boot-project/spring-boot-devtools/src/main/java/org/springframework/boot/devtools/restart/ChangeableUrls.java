@@ -112,8 +112,7 @@ final class ChangeableUrls implements Iterable<URL> {
 	private static URL toURL(String classPathEntry) {
 		try {
 			return new File(classPathEntry).toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalArgumentException("URL could not be created from '" + classPathEntry + "'", ex);
 		}
 	}
@@ -125,15 +124,13 @@ final class ChangeableUrls implements Iterable<URL> {
 				try (JarFile jarFile = new JarFile(file)) {
 					try {
 						return getUrlsFromManifestClassPathAttribute(url, jarFile);
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						throw new IllegalStateException(
 								"Failed to read Class-Path attribute from manifest of jar " + url, ex);
 					}
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Assume it's not a jar and continue
 		}
 		return Collections.emptyList();
@@ -156,18 +153,15 @@ final class ChangeableUrls implements Iterable<URL> {
 				URL referenced = new URL(jarUrl, entry);
 				if (new File(referenced.getFile()).exists()) {
 					urls.add(referenced);
-				}
-				else {
+				} else {
 					referenced = new URL(jarUrl, URLDecoder.decode(entry, "UTF-8"));
 					if (new File(referenced.getFile()).exists()) {
 						urls.add(referenced);
-					}
-					else {
+					} else {
 						nonExistentEntries.add(referenced);
 					}
 				}
-			}
-			catch (MalformedURLException ex) {
+			} catch (MalformedURLException ex) {
 				throw new IllegalStateException("Class-Path attribute contains malformed URL", ex);
 			}
 		}

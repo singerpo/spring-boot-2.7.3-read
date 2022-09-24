@@ -306,7 +306,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 			assertThat(jar(repackaged)).hasEntryWithNameStartingWith("BOOT-INF/classes/")
 					.hasEntryWithNameStartingWith("BOOT-INF/lib/jar-release")
 					.hasEntryWithNameStartingWith("BOOT-INF/lib/jar-snapshot").hasEntryWithNameStartingWith(
-							"BOOT-INF/lib/" + JarModeLibrary.LAYER_TOOLS.getCoordinates().getArtifactId());
+					"BOOT-INF/lib/" + JarModeLibrary.LAYER_TOOLS.getCoordinates().getArtifactId());
 			try (JarFile jarFile = new JarFile(repackaged)) {
 				Map<String, List<String>> layerIndex = readLayerIndex(jarFile);
 				assertThat(layerIndex.keySet()).containsExactly("dependencies", "spring-boot-loader",
@@ -315,8 +315,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 						"BOOT-INF/lib/jar-snapshot-0.0.1.BUILD-SNAPSHOT.jar");
 				assertThat(layerIndex.get("dependencies"))
 						.anyMatch((dependency) -> dependency.startsWith("BOOT-INF/lib/log4j-api-2"));
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		});
 	}
@@ -402,8 +401,7 @@ class JarIntegrationTests extends AbstractArchiveIntegrationTests {
 				assertThat(unreproducibleEntries).isEmpty();
 				jarHash.set(FileUtils.sha1Hash(repackaged));
 				FileSystemUtils.deleteRecursively(project);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
 		});

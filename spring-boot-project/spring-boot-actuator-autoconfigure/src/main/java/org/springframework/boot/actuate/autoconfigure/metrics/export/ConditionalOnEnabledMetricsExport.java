@@ -35,13 +35,14 @@ import org.springframework.context.annotation.Conditional;
  * @since 2.4.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Conditional(OnMetricsExportEnabledCondition.class)
 public @interface ConditionalOnEnabledMetricsExport {
 
 	/**
 	 * The name of the metrics exporter.
+	 *
 	 * @return the name of the metrics exporter
 	 */
 	String value();

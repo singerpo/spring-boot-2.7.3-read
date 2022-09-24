@@ -27,8 +27,9 @@ public abstract class ConfigDataException extends RuntimeException {
 
 	/**
 	 * Create a new {@link ConfigDataException} instance.
+	 *
 	 * @param message the exception message
-	 * @param cause the exception cause
+	 * @param cause   the exception cause
 	 */
 	protected ConfigDataException(String message, Throwable cause) {
 		super(message, cause);

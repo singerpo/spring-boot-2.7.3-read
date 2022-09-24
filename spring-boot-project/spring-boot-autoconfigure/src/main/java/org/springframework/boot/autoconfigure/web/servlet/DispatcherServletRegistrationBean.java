@@ -37,8 +37,9 @@ public class DispatcherServletRegistrationBean extends ServletRegistrationBean<D
 	/**
 	 * Create a new {@link DispatcherServletRegistrationBean} instance for the given
 	 * servlet and path.
+	 *
 	 * @param servlet the dispatcher servlet
-	 * @param path the dispatcher servlet path
+	 * @param path    the dispatcher servlet path
 	 */
 	public DispatcherServletRegistrationBean(DispatcherServlet servlet, String path) {
 		super(servlet);

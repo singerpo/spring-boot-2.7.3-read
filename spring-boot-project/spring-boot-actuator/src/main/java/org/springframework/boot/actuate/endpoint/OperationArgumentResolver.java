@@ -30,6 +30,7 @@ public interface OperationArgumentResolver {
 
 	/**
 	 * Return whether an argument of the given {@code type} can be resolved.
+	 *
 	 * @param type argument type
 	 * @return {@code true} if an argument of the required type can be resolved, otherwise
 	 * {@code false}
@@ -38,7 +39,8 @@ public interface OperationArgumentResolver {
 
 	/**
 	 * Resolves an argument of the given {@code type}.
-	 * @param <T> required type of the argument
+	 *
+	 * @param <T>  required type of the argument
 	 * @param type argument type
 	 * @return an argument of the required type, or {@code null}
 	 */
@@ -47,8 +49,9 @@ public interface OperationArgumentResolver {
 	/**
 	 * Factory method that creates an {@link OperationArgumentResolver} for a specific
 	 * type using a {@link Supplier}.
-	 * @param <T> the resolvable type
-	 * @param type the resolvable type
+	 *
+	 * @param <T>      the resolvable type
+	 * @param type     the resolvable type
 	 * @param supplier the value supplier
 	 * @return an {@link OperationArgumentResolver} instance
 	 */

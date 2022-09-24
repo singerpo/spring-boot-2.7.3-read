@@ -42,6 +42,7 @@ public class FilteredMethodValidationPostProcessor extends MethodValidationPostP
 	 * Creates a new {@code FilteredMethodValidationPostProcessor} that will apply the
 	 * given {@code excludeFilters} when identifying beans that are eligible for method
 	 * validation post-processing.
+	 *
 	 * @param excludeFilters filters to apply
 	 */
 	public FilteredMethodValidationPostProcessor(Stream<? extends MethodValidationExcludeFilter> excludeFilters) {
@@ -52,6 +53,7 @@ public class FilteredMethodValidationPostProcessor extends MethodValidationPostP
 	 * Creates a new {@code FilteredMethodValidationPostProcessor} that will apply the
 	 * given {@code excludeFilters} when identifying beans that are eligible for method
 	 * validation post-processing.
+	 *
 	 * @param excludeFilters filters to apply
 	 */
 	public FilteredMethodValidationPostProcessor(Collection<? extends MethodValidationExcludeFilter> excludeFilters) {

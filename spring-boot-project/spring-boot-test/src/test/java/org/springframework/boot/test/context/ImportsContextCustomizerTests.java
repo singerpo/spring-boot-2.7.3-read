@@ -166,7 +166,7 @@ class ImportsContextCustomizerTests {
 
 		@Override
 		public String[] selectImports(AnnotationMetadata arg0) {
-			return new String[] {};
+			return new String[]{};
 		}
 
 	}
@@ -175,7 +175,7 @@ class ImportsContextCustomizerTests {
 
 		@Override
 		public String[] selectImports(AnnotationMetadata arg0) {
-			return new String[] { TestConfig.class.getName() };
+			return new String[]{TestConfig.class.getName()};
 		}
 
 		@Override

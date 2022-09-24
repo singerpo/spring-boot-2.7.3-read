@@ -63,8 +63,7 @@ class SingleRow extends Row {
 	private void writeDescription(Asciidoc builder) {
 		if (this.description == null || this.description.isEmpty()) {
 			builder.appendln("|");
-		}
-		else {
+		} else {
 			String cleanedDescription = this.description.replace("|", "\\|").replace("<", "&lt;").replace(">", "&gt;");
 			builder.appendln("|+++", cleanedDescription, "+++");
 		}
@@ -74,8 +73,7 @@ class SingleRow extends Row {
 		String defaultValue = (this.defaultValue != null) ? this.defaultValue : "";
 		if (defaultValue.isEmpty()) {
 			builder.appendln("|");
-		}
-		else {
+		} else {
 			defaultValue = defaultValue.replace("\\", "\\\\").replace("|", "\\|");
 			builder.appendln("|`+", defaultValue, "+`");
 		}

@@ -45,9 +45,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * {@link WebEndpoint @WebEndpoint} annotations whenever possible.
  *
  * @author Phillip Webb
- * @since 2.0.0
  * @see WebEndpoint
  * @see ControllerEndpoint
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -59,6 +59,7 @@ public @interface RestControllerEndpoint {
 
 	/**
 	 * The id of the endpoint.
+	 *
 	 * @return the id
 	 */
 	@AliasFor(annotation = Endpoint.class)
@@ -66,6 +67,7 @@ public @interface RestControllerEndpoint {
 
 	/**
 	 * If the endpoint should be enabled or disabled by default.
+	 *
 	 * @return {@code true} if the endpoint is enabled by default
 	 */
 	@AliasFor(annotation = Endpoint.class)

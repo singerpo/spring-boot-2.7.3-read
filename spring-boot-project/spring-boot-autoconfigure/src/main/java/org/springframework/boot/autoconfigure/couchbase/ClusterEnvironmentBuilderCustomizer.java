@@ -33,6 +33,7 @@ public interface ClusterEnvironmentBuilderCustomizer {
 	/**
 	 * Customize the {@link com.couchbase.client.java.env.ClusterEnvironment.Builder
 	 * ClusterEnvironment.Builder}.
+	 *
 	 * @param builder the builder to customize
 	 */
 	void customize(ClusterEnvironment.Builder builder);

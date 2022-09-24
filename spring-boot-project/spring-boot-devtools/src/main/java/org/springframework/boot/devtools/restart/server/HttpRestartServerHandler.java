@@ -35,6 +35,7 @@ public class HttpRestartServerHandler implements Handler {
 
 	/**
 	 * Create a new {@link HttpRestartServerHandler} instance.
+	 *
 	 * @param server the server to adapt
 	 */
 	public HttpRestartServerHandler(HttpRestartServer server) {

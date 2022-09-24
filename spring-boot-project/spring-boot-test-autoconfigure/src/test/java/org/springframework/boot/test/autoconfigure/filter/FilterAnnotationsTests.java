@@ -114,7 +114,7 @@ class FilterAnnotationsTests {
 
 	}
 
-	@Target({ ElementType.TYPE })
+	@Target({ElementType.TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@interface Filters {

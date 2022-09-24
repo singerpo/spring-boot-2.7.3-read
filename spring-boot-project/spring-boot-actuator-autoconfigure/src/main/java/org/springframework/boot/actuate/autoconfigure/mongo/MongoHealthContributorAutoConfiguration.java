@@ -38,8 +38,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
  * @author Stephane Nicoll
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
-		MongoReactiveHealthContributorAutoConfiguration.class })
+@AutoConfiguration(after = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
+		MongoReactiveHealthContributorAutoConfiguration.class})
 @ConditionalOnClass(MongoTemplate.class)
 @ConditionalOnBean(MongoTemplate.class)
 @ConditionalOnEnabledHealthIndicator("mongo")
@@ -47,7 +47,7 @@ public class MongoHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<MongoHealthIndicator, MongoTemplate> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "mongoHealthIndicator", "mongoHealthContributor" })
+	@ConditionalOnMissingBean(name = {"mongoHealthIndicator", "mongoHealthContributor"})
 	public HealthContributor mongoHealthContributor(Map<String, MongoTemplate> mongoTemplates) {
 		return createContributor(mongoTemplates);
 	}

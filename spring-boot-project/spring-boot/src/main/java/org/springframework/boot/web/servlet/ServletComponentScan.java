@@ -39,10 +39,10 @@ import org.springframework.core.annotation.AliasFor;
  * absence, scanning will be performed from the package of the class with the annotation.
  *
  * @author Andy Wilkinson
- * @since 1.3.0
  * @see WebServlet
  * @see WebFilter
  * @see WebListener
+ * @since 1.3.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -54,6 +54,7 @@ public @interface ServletComponentScan {
 	 * Alias for the {@link #basePackages()} attribute. Allows for more concise annotation
 	 * declarations e.g.: {@code @ServletComponentScan("org.my.pkg")} instead of
 	 * {@code @ServletComponentScan(basePackages="org.my.pkg")}.
+	 *
 	 * @return the base packages to scan
 	 */
 	@AliasFor("basePackages")
@@ -65,6 +66,7 @@ public @interface ServletComponentScan {
 	 * <p>
 	 * Use {@link #basePackageClasses()} for a type-safe alternative to String-based
 	 * package names.
+	 *
 	 * @return the base packages to scan
 	 */
 	@AliasFor("value")
@@ -74,6 +76,7 @@ public @interface ServletComponentScan {
 	 * Type-safe alternative to {@link #basePackages()} for specifying the packages to
 	 * scan for annotated servlet components. The package of each class specified will be
 	 * scanned.
+	 *
 	 * @return classes from the base packages to scan
 	 */
 	Class<?>[] basePackageClasses() default {};

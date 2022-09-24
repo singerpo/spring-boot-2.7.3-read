@@ -38,7 +38,8 @@ public final class ObjectContent<T> implements AssertProvider<ObjectContentAsser
 
 	/**
 	 * Create a new {@link ObjectContent} instance.
-	 * @param type the type under test (or {@code null} if not known)
+	 *
+	 * @param type   the type under test (or {@code null} if not known)
 	 * @param object the actual object content
 	 */
 	public ObjectContent(ResolvableType type, T object) {
@@ -54,6 +55,7 @@ public final class ObjectContent<T> implements AssertProvider<ObjectContentAsser
 
 	/**
 	 * Return the actual object content.
+	 *
 	 * @return the object content
 	 */
 	public T getObject() {

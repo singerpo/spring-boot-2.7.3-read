@@ -28,8 +28,8 @@ import com.google.gson.reflect.TypeToken;
  *
  * @author Dave Syer
  * @author Jean de Klerk
- * @since 1.2.0
  * @see JsonParserFactory
+ * @since 1.2.0
  */
 public class GsonJsonParser extends AbstractJsonParser {
 

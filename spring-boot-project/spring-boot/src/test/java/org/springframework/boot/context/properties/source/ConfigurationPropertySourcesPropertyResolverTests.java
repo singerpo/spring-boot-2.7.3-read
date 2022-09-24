@@ -102,7 +102,8 @@ class ConfigurationPropertySourcesPropertyResolverTests {
 		assertThat(propertySource.getCount("sprong")).isEqualTo(1);
 	}
 
-	@Test // gh-26732
+	@Test
+		// gh-26732
 	void getPropertyAsTypeWhenHasPlaceholder() {
 		ResolverEnvironment environment = new ResolverEnvironment();
 		MockPropertySource propertySource = new MockPropertySource();

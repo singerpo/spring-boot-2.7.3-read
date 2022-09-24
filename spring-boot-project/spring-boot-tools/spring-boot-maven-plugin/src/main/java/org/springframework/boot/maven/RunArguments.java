@@ -59,8 +59,7 @@ class RunArguments {
 		try {
 			arguments = arguments.replace('\n', ' ').replace('\t', ' ');
 			return CommandLineUtils.translateCommandline(arguments);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalArgumentException("Failed to parse arguments [" + arguments + "]", ex);
 		}
 	}

@@ -68,14 +68,13 @@ class HikariDriverConfigurationFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanCreationException ex) {
+		} catch (BeanCreationException ex) {
 			return ex;
 		}
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ DataSourceAutoConfiguration.class, SqlInitializationAutoConfiguration.class })
+	@ImportAutoConfiguration({DataSourceAutoConfiguration.class, SqlInitializationAutoConfiguration.class})
 	static class TestConfiguration {
 
 	}

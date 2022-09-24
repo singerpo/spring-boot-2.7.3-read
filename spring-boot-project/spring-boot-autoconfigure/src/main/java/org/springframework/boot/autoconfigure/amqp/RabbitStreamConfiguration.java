@@ -53,8 +53,8 @@ class RabbitStreamConfiguration {
 	@Bean(name = "rabbitListenerContainerFactory")
 	@ConditionalOnMissingBean(name = "rabbitListenerContainerFactory")
 	StreamRabbitListenerContainerFactory streamRabbitListenerContainerFactory(Environment rabbitStreamEnvironment,
-			RabbitProperties properties, ObjectProvider<ConsumerCustomizer> consumerCustomizer,
-			ObjectProvider<ContainerCustomizer<StreamListenerContainer>> containerCustomizer) {
+																			  RabbitProperties properties, ObjectProvider<ConsumerCustomizer> consumerCustomizer,
+																			  ObjectProvider<ContainerCustomizer<StreamListenerContainer>> containerCustomizer) {
 		StreamRabbitListenerContainerFactory factory = new StreamRabbitListenerContainerFactory(
 				rabbitStreamEnvironment);
 		factory.setNativeListener(properties.getListener().getStream().isNativeListener());
@@ -72,9 +72,9 @@ class RabbitStreamConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	RabbitStreamTemplateConfigurer rabbitStreamTemplateConfigurer(RabbitProperties properties,
-			ObjectProvider<MessageConverter> messageConverter,
-			ObjectProvider<StreamMessageConverter> streamMessageConverter,
-			ObjectProvider<ProducerCustomizer> producerCustomizer) {
+																  ObjectProvider<MessageConverter> messageConverter,
+																  ObjectProvider<StreamMessageConverter> streamMessageConverter,
+																  ObjectProvider<ProducerCustomizer> producerCustomizer) {
 		RabbitStreamTemplateConfigurer configurer = new RabbitStreamTemplateConfigurer();
 		configurer.setMessageConverter(messageConverter.getIfUnique());
 		configurer.setStreamMessageConverter(streamMessageConverter.getIfUnique());
@@ -86,7 +86,7 @@ class RabbitStreamConfiguration {
 	@ConditionalOnMissingBean(RabbitStreamOperations.class)
 	@ConditionalOnProperty(prefix = "spring.rabbitmq.stream", name = "name")
 	RabbitStreamTemplate rabbitStreamTemplate(Environment rabbitStreamEnvironment, RabbitProperties properties,
-			RabbitStreamTemplateConfigurer configurer) {
+											  RabbitStreamTemplateConfigurer configurer) {
 		RabbitStreamTemplate template = new RabbitStreamTemplate(rabbitStreamEnvironment,
 				properties.getStream().getName());
 		configurer.configure(template);

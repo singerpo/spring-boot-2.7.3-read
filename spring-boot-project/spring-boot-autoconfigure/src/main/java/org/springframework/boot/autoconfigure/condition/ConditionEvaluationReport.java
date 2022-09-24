@@ -65,6 +65,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Private constructor.
+	 *
 	 * @see #get(ConfigurableListableBeanFactory)
 	 */
 	private ConditionEvaluationReport() {
@@ -72,9 +73,10 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Record the occurrence of condition evaluation.
-	 * @param source the source of the condition (class or method name)
+	 *
+	 * @param source    the source of the condition (class or method name)
 	 * @param condition the condition evaluated
-	 * @param outcome the condition outcome
+	 * @param outcome   the condition outcome
 	 */
 	public void recordConditionEvaluation(String source, Condition condition, ConditionOutcome outcome) {
 		Assert.notNull(source, "Source must not be null");
@@ -90,6 +92,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Records the names of the classes that have been excluded from condition evaluation.
+	 *
 	 * @param exclusions the names of the excluded classes
 	 */
 	public void recordExclusions(Collection<String> exclusions) {
@@ -99,8 +102,9 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Records the names of the classes that are candidates for condition evaluation.
+	 *
 	 * @param evaluationCandidates the names of the classes whose conditions will be
-	 * evaluated
+	 *                             evaluated
 	 */
 	public void recordEvaluationCandidates(List<String> evaluationCandidates) {
 		Assert.notNull(evaluationCandidates, "evaluationCandidates must not be null");
@@ -109,6 +113,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Returns condition outcomes from this report, grouped by the source.
+	 *
 	 * @return the condition outcomes
 	 */
 	public Map<String, ConditionAndOutcomes> getConditionAndOutcomesBySource() {
@@ -136,6 +141,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Returns the names of the classes that have been excluded from condition evaluation.
+	 *
 	 * @return the names of the excluded classes
 	 */
 	public List<String> getExclusions() {
@@ -144,6 +150,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Returns the names of the classes that were evaluated but were not conditional.
+	 *
 	 * @return the names of the unconditional classes
 	 */
 	public Set<String> getUnconditionalClasses() {
@@ -154,6 +161,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * The parent report (from a parent BeanFactory if there is one).
+	 *
 	 * @return the parent report (or null if there isn't one)
 	 */
 	public ConditionEvaluationReport getParent() {
@@ -163,6 +171,7 @@ public final class ConditionEvaluationReport {
 	/**
 	 * Attempt to find the {@link ConditionEvaluationReport} for the specified bean
 	 * factory.
+	 *
 	 * @param beanFactory the bean factory (may be {@code null})
 	 * @return the {@link ConditionEvaluationReport} or {@code null}
 	 */
@@ -175,6 +184,7 @@ public final class ConditionEvaluationReport {
 
 	/**
 	 * Obtain a {@link ConditionEvaluationReport} for the specified bean factory.
+	 *
 	 * @param beanFactory the bean factory
 	 * @return an existing or new {@link ConditionEvaluationReport}
 	 */
@@ -183,8 +193,7 @@ public final class ConditionEvaluationReport {
 			ConditionEvaluationReport report;
 			if (beanFactory.containsSingleton(BEAN_NAME)) {
 				report = beanFactory.getBean(BEAN_NAME, ConditionEvaluationReport.class);
-			}
-			else {
+			} else {
 				report = new ConditionEvaluationReport();
 				beanFactory.registerSingleton(BEAN_NAME, report);
 			}
@@ -230,6 +239,7 @@ public final class ConditionEvaluationReport {
 
 		/**
 		 * Return {@code true} if all outcomes match.
+		 *
 		 * @return {@code true} if a full match
 		 */
 		public boolean isFullMatch() {

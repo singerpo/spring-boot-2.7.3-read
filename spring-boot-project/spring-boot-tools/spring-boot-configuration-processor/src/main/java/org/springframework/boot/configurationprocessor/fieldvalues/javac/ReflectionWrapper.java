@@ -55,8 +55,7 @@ class ReflectionWrapper {
 	protected static Class<?> findClass(ClassLoader classLoader, String name) {
 		try {
 			return Class.forName(name, false, classLoader);
-		}
-		catch (ClassNotFoundException ex) {
+		} catch (ClassNotFoundException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -64,8 +63,7 @@ class ReflectionWrapper {
 	protected static Method findMethod(Class<?> type, String name, Class<?>... parameterTypes) {
 		try {
 			return type.getMethod(name, parameterTypes);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

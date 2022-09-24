@@ -32,6 +32,7 @@ class LoggerConfigurationComparator implements Comparator<LoggerConfiguration> {
 
 	/**
 	 * Create a new {@link LoggerConfigurationComparator} instance.
+	 *
 	 * @param rootLoggerName the name of the "root" logger
 	 */
 	LoggerConfigurationComparator(String rootLoggerName) {

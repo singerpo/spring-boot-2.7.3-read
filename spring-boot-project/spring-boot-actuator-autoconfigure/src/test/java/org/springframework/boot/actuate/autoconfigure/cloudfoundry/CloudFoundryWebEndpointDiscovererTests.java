@@ -63,7 +63,7 @@ class CloudFoundryWebEndpointDiscovererTests {
 					WebOperation operation = findMainReadOperation(endpoint);
 					assertThat(operation
 							.invoke(new InvocationContext(mock(SecurityContext.class), Collections.emptyMap())))
-									.isEqualTo("cf");
+							.isEqualTo("cf");
 				}
 			}
 		});
@@ -83,7 +83,7 @@ class CloudFoundryWebEndpointDiscovererTests {
 	}
 
 	private void load(Function<EndpointId, Long> timeToLive, PathMapper endpointPathMapper, Class<?> configuration,
-			Consumer<CloudFoundryWebEndpointDiscoverer> consumer) {
+					  Consumer<CloudFoundryWebEndpointDiscoverer> consumer) {
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(configuration)) {
 			ConversionServiceParameterValueMapper parameterMapper = new ConversionServiceParameterValueMapper(
 					DefaultConversionService.getSharedInstance());

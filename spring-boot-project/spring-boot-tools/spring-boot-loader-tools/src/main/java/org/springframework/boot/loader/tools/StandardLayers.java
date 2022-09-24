@@ -59,6 +59,7 @@ public abstract class StandardLayers implements Layers {
 	public static final Layer APPLICATION = new Layer("application");
 
 	private static final List<Layer> LAYERS;
+
 	static {
 		List<Layer> layers = new ArrayList<>();
 		layers.add(DEPENDENCIES);

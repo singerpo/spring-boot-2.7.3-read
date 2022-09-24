@@ -52,16 +52,16 @@ import org.springframework.util.Assert;
  * Cache store can be auto-detected or specified explicitly via configuration.
  *
  * @author Stephane Nicoll
- * @since 1.3.0
  * @see EnableCaching
+ * @since 1.3.0
  */
-@AutoConfiguration(after = { CouchbaseDataAutoConfiguration.class, HazelcastAutoConfiguration.class,
-		HibernateJpaAutoConfiguration.class, RedisAutoConfiguration.class })
+@AutoConfiguration(after = {CouchbaseDataAutoConfiguration.class, HazelcastAutoConfiguration.class,
+		HibernateJpaAutoConfiguration.class, RedisAutoConfiguration.class})
 @ConditionalOnClass(CacheManager.class)
 @ConditionalOnBean(CacheAspectSupport.class)
 @ConditionalOnMissingBean(value = CacheManager.class, name = "cacheResolver")
 @EnableConfigurationProperties(CacheProperties.class)
-@Import({ CacheConfigurationImportSelector.class, CacheManagerEntityManagerFactoryDependsOnPostProcessor.class })
+@Import({CacheConfigurationImportSelector.class, CacheManagerEntityManagerFactoryDependsOnPostProcessor.class})
 public class CacheAutoConfiguration {
 
 	@Bean
@@ -72,7 +72,7 @@ public class CacheAutoConfiguration {
 
 	@Bean
 	public CacheManagerValidator cacheAutoConfigurationValidator(CacheProperties cacheProperties,
-			ObjectProvider<CacheManager> cacheManager) {
+																 ObjectProvider<CacheManager> cacheManager) {
 		return new CacheManagerValidator(cacheProperties, cacheManager);
 	}
 

@@ -24,7 +24,7 @@ import org.springframework.test.context.TestPropertySource;
  *
  * @author Andy Wilkinson
  */
-@TestPropertySource(properties = { "spring.jersey.type=filter", "server.servlet.register-default-servlet=true" })
+@TestPropertySource(properties = {"spring.jersey.type=filter", "server.servlet.register-default-servlet=true"})
 class JerseyFilterManagementPortTests extends AbstractJerseyManagementPortTests {
 
 }

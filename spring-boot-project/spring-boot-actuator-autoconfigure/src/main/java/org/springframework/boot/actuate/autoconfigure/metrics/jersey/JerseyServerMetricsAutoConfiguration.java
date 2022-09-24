@@ -52,10 +52,10 @@ import org.springframework.core.annotation.Order;
  * @author Andy Wilkinson
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@ConditionalOnClass({ ResourceConfig.class, MetricsApplicationEventListener.class })
-@ConditionalOnBean({ MeterRegistry.class, ResourceConfig.class })
+@ConditionalOnClass({ResourceConfig.class, MetricsApplicationEventListener.class})
+@ConditionalOnBean({MeterRegistry.class, ResourceConfig.class})
 @EnableConfigurationProperties(MetricsProperties.class)
 public class JerseyServerMetricsAutoConfiguration {
 
@@ -73,7 +73,7 @@ public class JerseyServerMetricsAutoConfiguration {
 
 	@Bean
 	public ResourceConfigCustomizer jerseyServerMetricsResourceConfigCustomizer(MeterRegistry meterRegistry,
-			JerseyTagsProvider tagsProvider) {
+																				JerseyTagsProvider tagsProvider) {
 		Server server = this.properties.getWeb().getServer();
 		return (config) -> config.register(
 				new MetricsApplicationEventListener(meterRegistry, tagsProvider, server.getRequest().getMetricName(),

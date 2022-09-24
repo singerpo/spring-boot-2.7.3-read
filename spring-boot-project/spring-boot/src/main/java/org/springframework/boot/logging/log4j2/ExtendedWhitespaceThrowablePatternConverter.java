@@ -33,7 +33,7 @@ import org.apache.logging.log4j.core.pattern.ThrowablePatternConverter;
  * @since 1.3.0
  */
 @Plugin(name = "ExtendedWhitespaceThrowablePatternConverter", category = PatternConverter.CATEGORY)
-@ConverterKeys({ "xwEx", "xwThrowable", "xwException" })
+@ConverterKeys({"xwEx", "xwThrowable", "xwException"})
 public final class ExtendedWhitespaceThrowablePatternConverter extends ThrowablePatternConverter {
 
 	private final ExtendedThrowablePatternConverter delegate;
@@ -54,13 +54,14 @@ public final class ExtendedWhitespaceThrowablePatternConverter extends Throwable
 
 	/**
 	 * Creates a new instance of the class. Required by Log4J2.
+	 *
 	 * @param configuration current configuration
-	 * @param options pattern options, may be null. If first element is "short", only the
-	 * first line of the throwable will be formatted.
+	 * @param options       pattern options, may be null. If first element is "short", only the
+	 *                      first line of the throwable will be formatted.
 	 * @return a new {@code WhitespaceThrowablePatternConverter}
 	 */
 	public static ExtendedWhitespaceThrowablePatternConverter newInstance(Configuration configuration,
-			String[] options) {
+																		  String[] options) {
 		return new ExtendedWhitespaceThrowablePatternConverter(configuration, options);
 	}
 

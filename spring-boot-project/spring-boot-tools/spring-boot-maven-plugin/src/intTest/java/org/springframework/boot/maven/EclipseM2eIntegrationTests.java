@@ -34,7 +34,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class EclipseM2eIntegrationTests {
 
-	@Test // gh-21992
+	@Test
+		// gh-21992
 	void pluginPomIncludesOptionalShadeDependency() throws Exception {
 		String version = new Versions().get("project.version");
 		File repository = new File("build/int-test-maven-repository");

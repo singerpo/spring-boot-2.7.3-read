@@ -82,14 +82,14 @@ class JmxAutoConfigurationTests {
 	void testDefaultDomainConfiguredOnMBeanExport() {
 		this.contextRunner.withPropertyValues("spring.jmx.enabled=true", "spring.jmx.default-domain=my-test-domain",
 				"spring.jmx.unique-names=true").run((context) -> {
-					assertThat(context).hasSingleBean(MBeanExporter.class);
-					MBeanExporter exporter = context.getBean(MBeanExporter.class);
-					assertThat(exporter).hasFieldOrPropertyWithValue("ensureUniqueRuntimeObjectNames", true);
-					MetadataNamingStrategy naming = (MetadataNamingStrategy) ReflectionTestUtils.getField(exporter,
-							"namingStrategy");
-					assertThat(naming).hasFieldOrPropertyWithValue("defaultDomain", "my-test-domain");
-					assertThat(naming).hasFieldOrPropertyWithValue("ensureUniqueRuntimeObjectNames", true);
-				});
+			assertThat(context).hasSingleBean(MBeanExporter.class);
+			MBeanExporter exporter = context.getBean(MBeanExporter.class);
+			assertThat(exporter).hasFieldOrPropertyWithValue("ensureUniqueRuntimeObjectNames", true);
+			MetadataNamingStrategy naming = (MetadataNamingStrategy) ReflectionTestUtils.getField(exporter,
+					"namingStrategy");
+			assertThat(naming).hasFieldOrPropertyWithValue("defaultDomain", "my-test-domain");
+			assertThat(naming).hasFieldOrPropertyWithValue("ensureUniqueRuntimeObjectNames", true);
+		});
 	}
 
 	@Test

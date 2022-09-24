@@ -115,7 +115,7 @@ class ThymeleafServletAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.servlet.produce-partial-output-while-processing:false")
 				.run((context) -> assertThat(
 						context.getBean(ThymeleafViewResolver.class).getProducePartialOutputWhileProcessing())
-								.isFalse());
+						.isFalse());
 	}
 
 	@Test
@@ -135,7 +135,7 @@ class ThymeleafServletAutoConfigurationTests {
 	void overrideViewNames() {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.viewNames:foo,bar")
 				.run((context) -> assertThat(context.getBean(ThymeleafViewResolver.class).getViewNames())
-						.isEqualTo(new String[] { "foo", "bar" }));
+						.isEqualTo(new String[]{"foo", "bar"}));
 	}
 
 	@Test
@@ -225,8 +225,7 @@ class ThymeleafServletAutoConfigurationTests {
 						.setContext(new SecurityContextImpl(new TestingAuthenticationToken("alice", "admin")));
 				String result = engine.process("security-dialect", attrs);
 				assertThat(result).isEqualTo("<html><body><div>alice</div></body></html>" + System.lineSeparator());
-			}
-			finally {
+			} finally {
 				SecurityContextHolder.clearContext();
 			}
 		});
@@ -281,13 +280,13 @@ class ThymeleafServletAutoConfigurationTests {
 		// gh-14897
 		this.contextRunner.withUserConfiguration(FilterRegistrationOtherConfiguration.class)
 				.withPropertyValues("spring.web.resources.chain.enabled:true").run((context) -> {
-					Map<String, FilterRegistrationBean> beans = context.getBeansOfType(FilterRegistrationBean.class);
-					assertThat(beans).hasSize(2);
-					FilterRegistrationBean registration = beans.values().stream()
-							.filter((r) -> r.getFilter() instanceof ResourceUrlEncodingFilter).findFirst().get();
-					assertThat(registration).hasFieldOrPropertyWithValue("dispatcherTypes",
-							EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));
-				});
+			Map<String, FilterRegistrationBean> beans = context.getBeansOfType(FilterRegistrationBean.class);
+			assertThat(beans).hasSize(2);
+			FilterRegistrationBean registration = beans.values().stream()
+					.filter((r) -> r.getFilter() instanceof ResourceUrlEncodingFilter).findFirst().get();
+			assertThat(registration).hasFieldOrPropertyWithValue("dispatcherTypes",
+					EnumSet.of(DispatcherType.REQUEST, DispatcherType.ERROR));
+		});
 	}
 
 	@Test
@@ -296,13 +295,13 @@ class ThymeleafServletAutoConfigurationTests {
 		// gh-14926
 		this.contextRunner.withUserConfiguration(FilterRegistrationResourceConfiguration.class)
 				.withPropertyValues("spring.web.resources.chain.enabled:true").run((context) -> {
-					Map<String, FilterRegistrationBean> beans = context.getBeansOfType(FilterRegistrationBean.class);
-					assertThat(beans).hasSize(1);
-					FilterRegistrationBean registration = beans.values().stream()
-							.filter((r) -> r.getFilter() instanceof ResourceUrlEncodingFilter).findFirst().get();
-					assertThat(registration).hasFieldOrPropertyWithValue("dispatcherTypes",
-							EnumSet.of(DispatcherType.INCLUDE));
-				});
+			Map<String, FilterRegistrationBean> beans = context.getBeansOfType(FilterRegistrationBean.class);
+			assertThat(beans).hasSize(1);
+			FilterRegistrationBean registration = beans.values().stream()
+					.filter((r) -> r.getFilter() instanceof ResourceUrlEncodingFilter).findFirst().get();
+			assertThat(registration).hasFieldOrPropertyWithValue("dispatcherTypes",
+					EnumSet.of(DispatcherType.INCLUDE));
+		});
 	}
 
 	@Test
@@ -310,7 +309,7 @@ class ThymeleafServletAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(LayoutDialectConfiguration.class)
 				.run((context) -> assertThat(
 						ReflectionTestUtils.getField(context.getBean(LayoutDialect.class), "sortingStrategy"))
-								.isInstanceOf(GroupingStrategy.class));
+						.isInstanceOf(GroupingStrategy.class));
 	}
 
 	@Test

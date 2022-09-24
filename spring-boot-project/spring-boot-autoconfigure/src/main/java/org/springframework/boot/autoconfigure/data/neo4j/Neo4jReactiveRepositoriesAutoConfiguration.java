@@ -39,9 +39,9 @@ import org.springframework.data.neo4j.repository.support.ReactiveNeo4jRepository
  * @since 2.4.0
  */
 @AutoConfiguration(after = Neo4jReactiveDataAutoConfiguration.class)
-@ConditionalOnClass({ Driver.class, ReactiveNeo4jRepository.class, Flux.class })
-@ConditionalOnMissingBean({ ReactiveNeo4jRepositoryFactoryBean.class,
-		ReactiveNeo4jRepositoryConfigurationExtension.class })
+@ConditionalOnClass({Driver.class, ReactiveNeo4jRepository.class, Flux.class})
+@ConditionalOnMissingBean({ReactiveNeo4jRepositoryFactoryBean.class,
+		ReactiveNeo4jRepositoryConfigurationExtension.class})
 @ConditionalOnRepositoryType(store = "neo4j", type = RepositoryType.REACTIVE)
 @Import(Neo4jReactiveRepositoriesRegistrar.class)
 public class Neo4jReactiveRepositoriesAutoConfiguration {

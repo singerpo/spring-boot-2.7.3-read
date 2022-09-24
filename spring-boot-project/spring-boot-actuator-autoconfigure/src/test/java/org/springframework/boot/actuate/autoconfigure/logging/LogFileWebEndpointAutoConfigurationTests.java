@@ -97,12 +97,12 @@ class LogFileWebEndpointAutoConfigurationTests {
 		FileCopyUtils.copy("--TEST--".getBytes(), file);
 		this.contextRunner.withPropertyValues("management.endpoints.web.exposure.include=logfile",
 				"management.endpoint.logfile.external-file:" + file.getAbsolutePath()).run((context) -> {
-					assertThat(context).hasSingleBean(LogFileWebEndpoint.class);
-					LogFileWebEndpoint endpoint = context.getBean(LogFileWebEndpoint.class);
-					Resource resource = endpoint.logFile();
-					assertThat(resource).isNotNull();
-					assertThat(contentOf(resource.getFile())).isEqualTo("--TEST--");
-				});
+			assertThat(context).hasSingleBean(LogFileWebEndpoint.class);
+			LogFileWebEndpoint endpoint = context.getBean(LogFileWebEndpoint.class);
+			Resource resource = endpoint.logFile();
+			assertThat(resource).isNotNull();
+			assertThat(contentOf(resource.getFile())).isEqualTo("--TEST--");
+		});
 	}
 
 }

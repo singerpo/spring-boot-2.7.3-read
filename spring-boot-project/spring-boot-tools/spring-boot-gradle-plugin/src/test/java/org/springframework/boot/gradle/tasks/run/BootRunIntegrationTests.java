@@ -98,8 +98,7 @@ class BootRunIntegrationTests {
 		assertThat(result.task(":bootRun").getOutcome()).isEqualTo(TaskOutcome.SUCCESS);
 		if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_13)) {
 			assertThat(result.getOutput()).contains("1. -XX:TieredStopAtLevel=1");
-		}
-		else {
+		} else {
 			assertThat(result.getOutput()).contains("1. -Xverify:none").contains("2. -XX:TieredStopAtLevel=1");
 		}
 	}
@@ -120,8 +119,7 @@ class BootRunIntegrationTests {
 		if (JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_13)) {
 			assertThat(result.getOutput()).contains("1. -Dcom.bar=baz").contains("2. -Dcom.foo=bar")
 					.contains("3. -XX:TieredStopAtLevel=1");
-		}
-		else {
+		} else {
 			assertThat(result.getOutput()).contains("1. -Dcom.bar=baz").contains("2. -Dcom.foo=bar")
 					.contains("3. -Xverify:none").contains("4. -XX:TieredStopAtLevel=1");
 		}

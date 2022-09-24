@@ -160,14 +160,16 @@ class BindableTests {
 		assertThat(bindable1).isEqualTo(bindable3);
 	}
 
-	@Test // gh-18218
+	@Test
+		// gh-18218
 	void withExistingValueDoesNotForgetAnnotations() {
 		Annotation annotation = AnnotationUtils.synthesizeAnnotation(TestAnnotation.class);
 		Bindable<?> bindable = Bindable.of(String.class).withAnnotations(annotation).withExistingValue("");
 		assertThat(bindable.getAnnotations()).containsExactly(annotation);
 	}
 
-	@Test // gh-18218
+	@Test
+		// gh-18218
 	void withSuppliedValueDoesNotForgetAnnotations() {
 		Annotation annotation = AnnotationUtils.synthesizeAnnotation(TestAnnotation.class);
 		Bindable<?> bindable = Bindable.of(String.class).withAnnotations(annotation).withSuppliedValue(() -> "");

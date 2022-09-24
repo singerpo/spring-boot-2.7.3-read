@@ -74,7 +74,8 @@ class ApplicationContextRequestMatcherTests {
 		assertThatExceptionOfType(NoSuchBeanDefinitionException.class).isThrownBy(supplier::get);
 	}
 
-	@Test // gh-18012
+	@Test
+		// gh-18012
 	void matchesWhenCalledWithDifferentApplicationContextDoesNotCache() {
 		StaticWebApplicationContext context1 = createWebApplicationContext();
 		StaticWebApplicationContext context2 = createWebApplicationContext();
@@ -110,7 +111,8 @@ class ApplicationContextRequestMatcherTests {
 		assertThat(matcher.matches(request)).isFalse();
 	}
 
-	@Test // gh-18211
+	@Test
+		// gh-18211
 	void matchesWhenConcurrentlyCalledWaitsForInitialize() {
 		ConcurrentApplicationContextRequestMatcher matcher = new ConcurrentApplicationContextRequestMatcher();
 		StaticWebApplicationContext context = createWebApplicationContext();
@@ -130,8 +132,7 @@ class ApplicationContextRequestMatcherTests {
 	private void join(Thread thread) {
 		try {
 			thread.join(1000);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 		}
 	}
 
@@ -202,8 +203,7 @@ class ApplicationContextRequestMatcherTests {
 		protected void initialized(Supplier<Object> context) {
 			try {
 				Thread.sleep(200);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 			}
 			this.initialized.set(true);
 		}

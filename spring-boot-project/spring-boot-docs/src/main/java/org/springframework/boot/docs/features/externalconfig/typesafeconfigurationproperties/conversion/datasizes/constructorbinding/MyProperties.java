@@ -34,7 +34,7 @@ public class MyProperties {
 
 	// @fold:off
 	public MyProperties(@DataSizeUnit(DataUnit.MEGABYTES) @DefaultValue("2MB") DataSize bufferSize,
-			@DefaultValue("512B") DataSize sizeThreshold) {
+						@DefaultValue("512B") DataSize sizeThreshold) {
 		this.bufferSize = bufferSize;
 		this.sizeThreshold = sizeThreshold;
 	}

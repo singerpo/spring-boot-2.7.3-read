@@ -47,8 +47,7 @@ public class MailSenderValidatorAutoConfiguration {
 	public void validateConnection() {
 		try {
 			this.mailSender.testConnection();
-		}
-		catch (MessagingException ex) {
+		} catch (MessagingException ex) {
 			throw new IllegalStateException("Mail server is not available", ex);
 		}
 	}

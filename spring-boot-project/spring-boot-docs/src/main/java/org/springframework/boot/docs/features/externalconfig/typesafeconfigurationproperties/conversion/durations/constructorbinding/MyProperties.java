@@ -35,7 +35,7 @@ public class MyProperties {
 
 	// @fold:off
 	public MyProperties(@DurationUnit(ChronoUnit.SECONDS) @DefaultValue("30s") Duration sessionTimeout,
-			@DefaultValue("1000ms") Duration readTimeout) {
+						@DefaultValue("1000ms") Duration readTimeout) {
 		this.sessionTimeout = sessionTimeout;
 		this.readTimeout = readTimeout;
 	}

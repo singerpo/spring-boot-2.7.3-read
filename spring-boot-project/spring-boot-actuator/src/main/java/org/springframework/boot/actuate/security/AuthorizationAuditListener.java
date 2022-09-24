@@ -42,8 +42,7 @@ public class AuthorizationAuditListener extends AbstractAuthorizationAuditListen
 	public void onApplicationEvent(AbstractAuthorizationEvent event) {
 		if (event instanceof AuthenticationCredentialsNotFoundEvent) {
 			onAuthenticationCredentialsNotFoundEvent((AuthenticationCredentialsNotFoundEvent) event);
-		}
-		else if (event instanceof AuthorizationFailureEvent) {
+		} else if (event instanceof AuthorizationFailureEvent) {
 			onAuthorizationFailureEvent((AuthorizationFailureEvent) event);
 		}
 	}

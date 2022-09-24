@@ -47,6 +47,7 @@ public abstract class AnsiOutput {
 
 	/**
 	 * Sets if ANSI output is enabled.
+	 *
 	 * @param enabled if ANSI is enabled, disabled or detected
 	 */
 	public static void setEnabled(Enabled enabled) {
@@ -56,6 +57,7 @@ public abstract class AnsiOutput {
 
 	/**
 	 * Returns if ANSI output is enabled
+	 *
 	 * @return if ANSI enabled, disabled or detected
 	 */
 	public static Enabled getEnabled() {
@@ -64,8 +66,9 @@ public abstract class AnsiOutput {
 
 	/**
 	 * Sets if the System.console() is known to be available.
+	 *
 	 * @param consoleAvailable if the console is known to be available or {@code null} to
-	 * use standard detection logic.
+	 *                         use standard detection logic.
 	 */
 	public static void setConsoleAvailable(Boolean consoleAvailable) {
 		AnsiOutput.consoleAvailable = consoleAvailable;
@@ -73,6 +76,7 @@ public abstract class AnsiOutput {
 
 	/**
 	 * Encode a single {@link AnsiElement} if output is enabled.
+	 *
 	 * @param element the element to encode
 	 * @return the encoded element or an empty string
 	 */
@@ -86,6 +90,7 @@ public abstract class AnsiOutput {
 	/**
 	 * Create a new ANSI string from the specified elements. Any {@link AnsiElement}s will
 	 * be encoded as required.
+	 *
 	 * @param elements the elements to encode
 	 * @return a string of the encoded elements
 	 */
@@ -93,8 +98,7 @@ public abstract class AnsiOutput {
 		StringBuilder sb = new StringBuilder();
 		if (isEnabled()) {
 			buildEnabled(sb, elements);
-		}
-		else {
+		} else {
 			buildDisabled(sb, elements);
 		}
 		return sb.toString();
@@ -109,12 +113,10 @@ public abstract class AnsiOutput {
 				if (!writingAnsi) {
 					sb.append(ENCODE_START);
 					writingAnsi = true;
-				}
-				else {
+				} else {
 					sb.append(ENCODE_JOIN);
 				}
-			}
-			else {
+			} else {
 				if (writingAnsi) {
 					sb.append(ENCODE_END);
 					writingAnsi = false;
@@ -156,8 +158,7 @@ public abstract class AnsiOutput {
 				return false;
 			}
 			return !(OPERATING_SYSTEM_NAME.contains("win"));
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return false;
 		}
 	}

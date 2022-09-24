@@ -39,8 +39,8 @@ import javax.tools.Diagnostic.Kind;
 class ConstructorParameterPropertyDescriptor extends PropertyDescriptor<VariableElement> {
 
 	ConstructorParameterPropertyDescriptor(TypeElement ownerElement, ExecutableElement factoryMethod,
-			VariableElement source, String name, TypeMirror type, VariableElement field, ExecutableElement getter,
-			ExecutableElement setter) {
+										   VariableElement source, String name, TypeMirror type, VariableElement field, ExecutableElement getter,
+										   ExecutableElement setter) {
 		super(ownerElement, factoryMethod, source, name, type, field, getter, setter);
 	}
 
@@ -71,8 +71,7 @@ class ConstructorParameterPropertyDescriptor extends PropertyDescriptor<Variable
 				}
 				return defaultValue.stream().map((value) -> coerceValue(specificType, value))
 						.collect(Collectors.toList());
-			}
-			catch (IllegalArgumentException ex) {
+			} catch (IllegalArgumentException ex) {
 				environment.getMessager().printMessage(Kind.ERROR, ex.getMessage(), element, annotation);
 			}
 		}
@@ -108,11 +107,10 @@ class ConstructorParameterPropertyDescriptor extends PropertyDescriptor<Variable
 		private static final DefaultValueCoercionTypeVisitor INSTANCE = new DefaultValueCoercionTypeVisitor();
 
 		private <T extends Number> T parseNumber(String value, Function<String, T> parser,
-				PrimitiveType primitiveType) {
+												 PrimitiveType primitiveType) {
 			try {
 				return parser.apply(value);
-			}
-			catch (NumberFormatException ex) {
+			} catch (NumberFormatException ex) {
 				throw new IllegalArgumentException(
 						String.format("Invalid %s representation '%s'", primitiveType, value));
 			}

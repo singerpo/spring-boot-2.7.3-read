@@ -46,8 +46,7 @@ class SampleAopApplicationTests {
 	void after() {
 		if (this.profiles != null) {
 			System.setProperty("spring.profiles.active", this.profiles);
-		}
-		else {
+		} else {
 			System.clearProperty("spring.profiles.active");
 		}
 	}
@@ -60,7 +59,7 @@ class SampleAopApplicationTests {
 
 	@Test
 	void testCommandLineOverrides(CapturedOutput output) {
-		SampleAopApplication.main(new String[] { "--test.name=Gordon" });
+		SampleAopApplication.main(new String[]{"--test.name=Gordon"});
 		assertThat(output).contains("Hello Gordon");
 	}
 

@@ -56,17 +56,18 @@ class AutoConfiguredHealthEndpointGroup implements HealthEndpointGroup {
 
 	/**
 	 * Create a new {@link AutoConfiguredHealthEndpointGroup} instance.
-	 * @param members a predicate used to test for group membership
-	 * @param statusAggregator the status aggregator to use
+	 *
+	 * @param members              a predicate used to test for group membership
+	 * @param statusAggregator     the status aggregator to use
 	 * @param httpCodeStatusMapper the HTTP code status mapper to use
-	 * @param showComponents the show components setting
-	 * @param showDetails the show details setting
-	 * @param roles the roles to match
-	 * @param additionalPath the additional path to use for this group
+	 * @param showComponents       the show components setting
+	 * @param showDetails          the show details setting
+	 * @param roles                the roles to match
+	 * @param additionalPath       the additional path to use for this group
 	 */
 	AutoConfiguredHealthEndpointGroup(Predicate<String> members, StatusAggregator statusAggregator,
-			HttpCodeStatusMapper httpCodeStatusMapper, Show showComponents, Show showDetails, Collection<String> roles,
-			AdditionalHealthEndpointPath additionalPath) {
+									  HttpCodeStatusMapper httpCodeStatusMapper, Show showComponents, Show showDetails, Collection<String> roles,
+									  AdditionalHealthEndpointPath additionalPath) {
 		this.members = members;
 		this.statusAggregator = statusAggregator;
 		this.httpCodeStatusMapper = httpCodeStatusMapper;

@@ -100,7 +100,7 @@ public class DataSourcePoolMetadataProvidersConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ PoolDataSource.class, OracleConnection.class })
+	@ConditionalOnClass({PoolDataSource.class, OracleConnection.class})
 	static class OracleUcpPoolDataSourceMetadataProviderConfiguration {
 
 		@Bean

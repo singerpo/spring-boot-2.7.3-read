@@ -35,7 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest
-@ActiveProfiles({ "test1", "test2" })
+@ActiveProfiles({"test1", "test2"})
 @ContextConfiguration(loader = SpringBootTestWithCustomEnvironmentTests.Loader.class)
 class SpringBootTestWithCustomEnvironmentTests {
 

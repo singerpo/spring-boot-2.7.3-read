@@ -54,8 +54,7 @@ class BuildOwner implements Owner {
 				() -> "Missing '" + name + "' value from the builder environment '" + env + "'");
 		try {
 			return Long.parseLong(value);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			throw new IllegalStateException(
 					"Malformed '" + name + "' value '" + value + "' in the builder environment '" + env + "'", ex);
 		}
@@ -79,6 +78,7 @@ class BuildOwner implements Owner {
 	/**
 	 * Factory method to create the {@link BuildOwner} by inspecting the image env for
 	 * {@code CNB_USER_ID}/{@code CNB_GROUP_ID} variables.
+	 *
 	 * @param env the env to parse
 	 * @return a {@link BuildOwner} instance extracted from the env
 	 * @throws IllegalStateException if the env does not contain the correct CNB variables
@@ -91,6 +91,7 @@ class BuildOwner implements Owner {
 	/**
 	 * Factory method to create a new {@link BuildOwner} with specified user/group
 	 * identifier.
+	 *
 	 * @param uid the user identifier
 	 * @param gid the group identifier
 	 * @return a new {@link BuildOwner} instance

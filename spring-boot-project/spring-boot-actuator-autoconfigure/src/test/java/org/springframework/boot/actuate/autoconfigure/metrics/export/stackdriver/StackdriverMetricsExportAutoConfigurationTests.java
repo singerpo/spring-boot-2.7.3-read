@@ -93,11 +93,11 @@ class StackdriverMetricsExportAutoConfigurationTests {
 	void stopsMeterRegistryWhenContextIsClosed() {
 		this.contextRunner.withUserConfiguration(BaseConfiguration.class)
 				.withPropertyValues("management.metrics.export.stackdriver.project-id=test-project").run((context) -> {
-					StackdriverMeterRegistry registry = context.getBean(StackdriverMeterRegistry.class);
-					assertThat(registry.isClosed()).isFalse();
-					context.close();
-					assertThat(registry.isClosed()).isTrue();
-				});
+			StackdriverMeterRegistry registry = context.getBean(StackdriverMeterRegistry.class);
+			assertThat(registry.isClosed()).isFalse();
+			context.close();
+			assertThat(registry.isClosed()).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

@@ -51,8 +51,8 @@ public class DependencyAutoConfigurationTransformation implements ASTTransformat
 	private final Iterable<CompilerAutoConfiguration> compilerAutoConfigurations;
 
 	public DependencyAutoConfigurationTransformation(GroovyClassLoader loader,
-			DependencyResolutionContext dependencyResolutionContext,
-			Iterable<CompilerAutoConfiguration> compilerAutoConfigurations) {
+													 DependencyResolutionContext dependencyResolutionContext,
+													 Iterable<CompilerAutoConfiguration> compilerAutoConfigurations) {
 		this.loader = loader;
 		this.dependencyResolutionContext = dependencyResolutionContext;
 		this.compilerAutoConfigurations = compilerAutoConfigurations;

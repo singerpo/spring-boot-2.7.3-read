@@ -170,6 +170,7 @@ public class BootJar extends Jar implements BootArchive {
 
 	/**
 	 * Returns the spec that describes the layers in a layered jar.
+	 *
 	 * @return the spec for the layers
 	 * @since 2.3.0
 	 */
@@ -180,6 +181,7 @@ public class BootJar extends Jar implements BootArchive {
 
 	/**
 	 * Configures the jar's layering using the given {@code action}.
+	 *
 	 * @param action the action to apply
 	 * @since 2.3.0
 	 */
@@ -212,6 +214,7 @@ public class BootJar extends Jar implements BootArchive {
 	/**
 	 * Returns a {@code CopySpec} that can be used to add content to the {@code BOOT-INF}
 	 * directory of the jar.
+	 *
 	 * @return a {@code CopySpec} for {@code BOOT-INF}
 	 * @since 2.0.3
 	 */
@@ -225,6 +228,7 @@ public class BootJar extends Jar implements BootArchive {
 	/**
 	 * Calls the given {@code action} to add content to the {@code BOOT-INF} directory of
 	 * the jar.
+	 *
 	 * @param action the {@code Action} to call
 	 * @return the {@code CopySpec} for {@code BOOT-INF} that was passed to the
 	 * {@code Action}
@@ -241,6 +245,7 @@ public class BootJar extends Jar implements BootArchive {
 	 * represented by the given {@code details} to the jar. By default, any
 	 * {@link #isLibrary(FileCopyDetails) library} is {@link ZipCompression#STORED stored}
 	 * and all other files are {@link ZipCompression#DEFLATED deflated}.
+	 *
 	 * @param details the file copy details
 	 * @return the compression to use
 	 */
@@ -251,6 +256,7 @@ public class BootJar extends Jar implements BootArchive {
 	/**
 	 * Return if the {@link FileCopyDetails} are for a library. By default any file in
 	 * {@code BOOT-INF/lib} is considered to be a library.
+	 *
 	 * @param details the file copy details
 	 * @return {@code true} if the details are for a library
 	 * @since 2.3.0
@@ -271,7 +277,8 @@ public class BootJar extends Jar implements BootArchive {
 
 	/**
 	 * Syntactic sugar that makes {@link CopySpec#into} calls a little easier to read.
-	 * @param <T> the result type
+	 *
+	 * @param <T>      the result type
 	 * @param callable the callable
 	 * @return an action to add the callable to the spec
 	 */
@@ -281,7 +288,8 @@ public class BootJar extends Jar implements BootArchive {
 
 	/**
 	 * Syntactic sugar that makes {@link CopySpec#from} calls a little easier to read.
-	 * @param <T> the result type
+	 *
+	 * @param <T>      the result type
 	 * @param callable the callable
 	 * @return the callable
 	 */

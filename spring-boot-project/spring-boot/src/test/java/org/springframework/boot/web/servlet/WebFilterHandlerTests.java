@@ -157,32 +157,32 @@ class WebFilterHandlerTests {
 
 	}
 
-	@WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE })
+	@WebFilter(dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE})
 	class DispatcherTypesFilter extends BaseFilter {
 
 	}
 
-	@WebFilter(initParams = { @WebInitParam(name = "a", value = "alpha"), @WebInitParam(name = "b", value = "bravo") })
+	@WebFilter(initParams = {@WebInitParam(name = "a", value = "alpha"), @WebInitParam(name = "b", value = "bravo")})
 	class InitParametersFilter extends BaseFilter {
 
 	}
 
-	@WebFilter(servletNames = { "alpha", "bravo" })
+	@WebFilter(servletNames = {"alpha", "bravo"})
 	class ServletNamesFilter extends BaseFilter {
 
 	}
 
-	@WebFilter(urlPatterns = { "alpha", "bravo" })
+	@WebFilter(urlPatterns = {"alpha", "bravo"})
 	class UrlPatternsFilter extends BaseFilter {
 
 	}
 
-	@WebFilter({ "alpha", "bravo" })
+	@WebFilter({"alpha", "bravo"})
 	class UrlPatternsFromValueFilter extends BaseFilter {
 
 	}
 
-	@WebFilter(value = { "alpha", "bravo" }, urlPatterns = { "alpha", "bravo" })
+	@WebFilter(value = {"alpha", "bravo"}, urlPatterns = {"alpha", "bravo"})
 	class UrlPatternsDeclaredTwiceFilter extends BaseFilter {
 
 	}

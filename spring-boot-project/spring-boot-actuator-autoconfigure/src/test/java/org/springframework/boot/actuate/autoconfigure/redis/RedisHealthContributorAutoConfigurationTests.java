@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Phillip Webb
  */
-@ClassPathExclusions({ "reactor-core*.jar", "lettuce-core*.jar" })
+@ClassPathExclusions({"reactor-core*.jar", "lettuce-core*.jar"})
 class RedisHealthContributorAutoConfigurationTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

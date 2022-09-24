@@ -20,7 +20,7 @@ public class SampleApplication {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("Launched");
-		synchronized(args) {
+		synchronized (args) {
 			args.wait(); // Prevent exit"
 		}
 	}

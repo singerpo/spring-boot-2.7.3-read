@@ -53,9 +53,9 @@ class LiquibaseEndpointDocumentationTests extends MockMvcEndpointDocumentationTe
 				.andDo(MockMvcRestDocumentation.document("liquibase",
 						responseFields(fieldWithPath("contexts").description("Application contexts keyed by id"),
 								changeSetsField)
-										.andWithPrefix("contexts.*.liquibaseBeans.*.changeSets[].",
-												getChangeSetFieldDescriptors())
-										.and(parentIdField())));
+								.andWithPrefix("contexts.*.liquibaseBeans.*.changeSets[].",
+										getChangeSetFieldDescriptors())
+								.and(parentIdField())));
 	}
 
 	private List<FieldDescriptor> getChangeSetFieldDescriptors() {
@@ -77,8 +77,8 @@ class LiquibaseEndpointDocumentationTests extends MockMvcEndpointDocumentationTe
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ BaseDocumentationConfiguration.class, EmbeddedDataSourceConfiguration.class,
-			LiquibaseAutoConfiguration.class })
+	@Import({BaseDocumentationConfiguration.class, EmbeddedDataSourceConfiguration.class,
+			LiquibaseAutoConfiguration.class})
 	static class TestConfiguration {
 
 		@Bean

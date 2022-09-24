@@ -25,14 +25,15 @@ import org.apache.coyote.ProtocolHandler;
  *
  * @param <T> specified type for customization based on {@link ProtocolHandler}
  * @author Pascal Zwick
- * @since 2.2.0
  * @see ConfigurableTomcatWebServerFactory
+ * @since 2.2.0
  */
 @FunctionalInterface
 public interface TomcatProtocolHandlerCustomizer<T extends ProtocolHandler> {
 
 	/**
 	 * Customize the protocol handler.
+	 *
 	 * @param protocolHandler the protocol handler to customize
 	 */
 	void customize(T protocolHandler);

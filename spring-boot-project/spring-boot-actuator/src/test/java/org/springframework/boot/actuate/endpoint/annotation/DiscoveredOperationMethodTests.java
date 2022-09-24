@@ -48,7 +48,7 @@ class DiscoveredOperationMethodTests {
 	void getProducesMediaTypesShouldReturnMediaTypes() {
 		Method method = ReflectionUtils.findMethod(getClass(), "example");
 		AnnotationAttributes annotationAttributes = new AnnotationAttributes();
-		String[] produces = new String[] { "application/json" };
+		String[] produces = new String[]{"application/json"};
 		annotationAttributes.put("produces", produces);
 		annotationAttributes.put("producesFrom", Producible.class);
 		DiscoveredOperationMethod discovered = new DiscoveredOperationMethod(method, OperationType.READ,

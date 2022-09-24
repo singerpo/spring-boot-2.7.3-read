@@ -81,20 +81,20 @@ class JerseyAutoConfigurationTests {
 	void whenJaxbIsNotAvailableTheObjectMapperCustomizationBacksOff() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(JacksonAutoConfiguration.class))
 				.withClassLoader(new FilteredClassLoader("javax.xml.bind.annotation")).run((context) -> {
-					ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
-					assertThat(objectMapper.getSerializationConfig().getAnnotationIntrospector().allIntrospectors()
-							.stream().filter(JaxbAnnotationIntrospector.class::isInstance)).isEmpty();
-				});
+			ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
+			assertThat(objectMapper.getSerializationConfig().getAnnotationIntrospector().allIntrospectors()
+					.stream().filter(JaxbAnnotationIntrospector.class::isInstance)).isEmpty();
+		});
 	}
 
 	@Test
 	void whenJacksonJaxbModuleIsNotAvailableTheObjectMapperCustomizationBacksOff() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(JacksonAutoConfiguration.class))
 				.withClassLoader(new FilteredClassLoader(JaxbAnnotationIntrospector.class)).run((context) -> {
-					ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
-					assertThat(objectMapper.getSerializationConfig().getAnnotationIntrospector().allIntrospectors()
-							.stream().filter(JaxbAnnotationIntrospector.class::isInstance)).isEmpty();
-				});
+			ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
+			assertThat(objectMapper.getSerializationConfig().getAnnotationIntrospector().allIntrospectors()
+					.stream().filter(JaxbAnnotationIntrospector.class::isInstance)).isEmpty();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

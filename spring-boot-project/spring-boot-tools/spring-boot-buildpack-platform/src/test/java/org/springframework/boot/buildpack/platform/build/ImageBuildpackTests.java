@@ -187,8 +187,7 @@ class ImageBuildpackTests extends AbstractJsonTests {
 				}
 			};
 			consumer.accept("test", archive);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			fail("Error writing mock layers", ex);
 		}
 		return null;

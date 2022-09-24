@@ -30,6 +30,7 @@ public interface ConfigDataLoaderContext {
 	/**
 	 * Provides access to the {@link ConfigurableBootstrapContext} shared across all
 	 * {@link EnvironmentPostProcessor EnvironmentPostProcessors}.
+	 *
 	 * @return the bootstrap context
 	 */
 	ConfigurableBootstrapContext getBootstrapContext();

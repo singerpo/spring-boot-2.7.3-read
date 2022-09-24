@@ -84,8 +84,8 @@ import org.springframework.util.StringUtils;
  * @author Chris Bono
  * @since 1.1.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class, JdbcTemplateAutoConfiguration.class,
-		HibernateJpaAutoConfiguration.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class, JdbcTemplateAutoConfiguration.class,
+		HibernateJpaAutoConfiguration.class})
 @ConditionalOnClass(Flyway.class)
 @Conditional(FlywayDataSourceCondition.class)
 @ConditionalOnProperty(prefix = "spring.flyway", name = "enabled", matchIfMissing = true)
@@ -111,9 +111,9 @@ public class FlywayAutoConfiguration {
 
 		@Bean
 		public Flyway flyway(FlywayProperties properties, ResourceLoader resourceLoader,
-				ObjectProvider<DataSource> dataSource, @FlywayDataSource ObjectProvider<DataSource> flywayDataSource,
-				ObjectProvider<FlywayConfigurationCustomizer> fluentConfigurationCustomizers,
-				ObjectProvider<JavaMigration> javaMigrations, ObjectProvider<Callback> callbacks) {
+							 ObjectProvider<DataSource> dataSource, @FlywayDataSource ObjectProvider<DataSource> flywayDataSource,
+							 ObjectProvider<FlywayConfigurationCustomizer> fluentConfigurationCustomizers,
+							 ObjectProvider<JavaMigration> javaMigrations, ObjectProvider<Callback> callbacks) {
 			FluentConfiguration configuration = new FluentConfiguration(resourceLoader.getClassLoader());
 			configureDataSource(configuration, properties, flywayDataSource.getIfAvailable(), dataSource.getIfUnique());
 			configureProperties(configuration, properties);
@@ -127,13 +127,13 @@ public class FlywayAutoConfiguration {
 		}
 
 		private void configureDataSource(FluentConfiguration configuration, FlywayProperties properties,
-				DataSource flywayDataSource, DataSource dataSource) {
+										 DataSource flywayDataSource, DataSource dataSource) {
 			DataSource migrationDataSource = getMigrationDataSource(properties, flywayDataSource, dataSource);
 			configuration.dataSource(migrationDataSource);
 		}
 
 		private DataSource getMigrationDataSource(FlywayProperties properties, DataSource flywayDataSource,
-				DataSource dataSource) {
+												  DataSource dataSource) {
 			if (flywayDataSource != null) {
 				return flywayDataSource;
 			}
@@ -260,24 +260,22 @@ public class FlywayAutoConfiguration {
 
 		@SuppressWarnings("deprecation")
 		private void configureIgnoredMigrations(FluentConfiguration configuration, FlywayProperties properties,
-				PropertyMapper map) {
+												PropertyMapper map) {
 			try {
 				map.from(properties.isIgnoreMissingMigrations()).to(configuration::ignoreMissingMigrations);
 				map.from(properties.isIgnoreIgnoredMigrations()).to(configuration::ignoreIgnoredMigrations);
 				map.from(properties.isIgnorePendingMigrations()).to(configuration::ignorePendingMigrations);
 				map.from(properties.isIgnoreFutureMigrations()).to(configuration::ignoreFutureMigrations);
-			}
-			catch (BootstrapMethodError | NoSuchMethodError ex) {
+			} catch (BootstrapMethodError | NoSuchMethodError ex) {
 				// Flyway 9+
 			}
 		}
 
 		private void configureFailOnMissingLocations(FluentConfiguration configuration,
-				boolean failOnMissingLocations) {
+													 boolean failOnMissingLocations) {
 			try {
 				configuration.failOnMissingLocations(failOnMissingLocations);
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Flyway < 7.9
 			}
 		}
@@ -285,8 +283,7 @@ public class FlywayAutoConfiguration {
 		private void configureCreateSchemas(FluentConfiguration configuration, boolean createSchemas) {
 			try {
 				configuration.createSchemas(createSchemas);
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Flyway < 6.5
 			}
 		}
@@ -298,11 +295,10 @@ public class FlywayAutoConfiguration {
 		}
 
 		private void configureValidateMigrationNaming(FluentConfiguration configuration,
-				boolean validateMigrationNaming) {
+													  boolean validateMigrationNaming) {
 			try {
 				configuration.validateMigrationNaming(validateMigrationNaming);
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Flyway < 6.2
 			}
 		}
@@ -323,8 +319,7 @@ public class FlywayAutoConfiguration {
 			if (!migrations.isEmpty()) {
 				try {
 					flyway.javaMigrations(migrations.toArray(new JavaMigration[0]));
-				}
-				catch (NoSuchMethodError ex) {
+				} catch (NoSuchMethodError ex) {
 					// Flyway 5.x
 				}
 			}
@@ -333,7 +328,7 @@ public class FlywayAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		public FlywayMigrationInitializer flywayInitializer(Flyway flyway,
-				ObjectProvider<FlywayMigrationStrategy> migrationStrategy) {
+															ObjectProvider<FlywayMigrationStrategy> migrationStrategy) {
 			return new FlywayMigrationInitializer(flyway, migrationStrategy.getIfAvailable());
 		}
 
@@ -370,8 +365,7 @@ public class FlywayAutoConfiguration {
 			try {
 				String url = JdbcUtils.extractDatabaseMetaData(this.dataSource, DatabaseMetaData::getURL);
 				return DatabaseDriver.fromJdbcUrl(url);
-			}
-			catch (MetaDataAccessException ex) {
+			} catch (MetaDataAccessException ex) {
 				throw new IllegalStateException(ex);
 			}
 

@@ -48,7 +48,8 @@ public interface ConfigDataLoader<R extends ConfigDataResource> {
 
 	/**
 	 * Returns if the specified resource can be loaded by this instance.
-	 * @param context the loader context
+	 *
+	 * @param context  the loader context
 	 * @param resource the resource to check.
 	 * @return if the resource is supported by this loader
 	 */
@@ -58,10 +59,11 @@ public interface ConfigDataLoader<R extends ConfigDataResource> {
 
 	/**
 	 * Load {@link ConfigData} for the given resource.
-	 * @param context the loader context
+	 *
+	 * @param context  the loader context
 	 * @param resource the resource to load
 	 * @return the loaded config data or {@code null} if the location should be skipped
-	 * @throws IOException on IO error
+	 * @throws IOException                         on IO error
 	 * @throws ConfigDataResourceNotFoundException if the resource cannot be found
 	 */
 	ConfigData load(ConfigDataLoaderContext context, R resource)

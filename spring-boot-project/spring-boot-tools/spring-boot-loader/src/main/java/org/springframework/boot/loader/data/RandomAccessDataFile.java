@@ -40,6 +40,7 @@ public class RandomAccessDataFile implements RandomAccessData {
 
 	/**
 	 * Create a new {@link RandomAccessDataFile} backed by the specified file.
+	 *
 	 * @param file the underlying file
 	 * @throws IllegalArgumentException if the file is null or does not exist
 	 */
@@ -54,9 +55,10 @@ public class RandomAccessDataFile implements RandomAccessData {
 
 	/**
 	 * Private constructor used to create a {@link #getSubsection(long, long) subsection}.
+	 *
 	 * @param fileAccess provides access to the underlying file
-	 * @param offset the offset of the section
-	 * @param length the length of the section
+	 * @param offset     the offset of the section
+	 * @param length     the length of the section
 	 */
 	private RandomAccessDataFile(FileAccess fileAccess, long offset, long length) {
 		this.fileAccess = fileAccess;
@@ -66,6 +68,7 @@ public class RandomAccessDataFile implements RandomAccessData {
 
 	/**
 	 * Returns the underlying File.
+	 *
 	 * @return the underlying file
 	 */
 	public File getFile() {
@@ -157,7 +160,8 @@ public class RandomAccessDataFile implements RandomAccessData {
 
 		/**
 		 * Perform the actual read.
-		 * @param b the bytes to read or {@code null} when reading a single byte
+		 *
+		 * @param b   the bytes to read or {@code null} when reading a single byte
 		 * @param off the offset of the byte array
 		 * @param len the length of data to read
 		 * @return the number of bytes read into {@code b} or the actual read byte if
@@ -188,6 +192,7 @@ public class RandomAccessDataFile implements RandomAccessData {
 		/**
 		 * Cap the specified value such that it cannot exceed the number of bytes
 		 * remaining.
+		 *
 		 * @param n the value to cap
 		 * @return the capped value
 		 */
@@ -197,6 +202,7 @@ public class RandomAccessDataFile implements RandomAccessData {
 
 		/**
 		 * Move the stream position forwards the specified amount.
+		 *
 		 * @param amount the amount to move
 		 * @return the amount moved
 		 */
@@ -232,8 +238,7 @@ public class RandomAccessDataFile implements RandomAccessData {
 			if (this.randomAccessFile == null) {
 				try {
 					this.randomAccessFile = new RandomAccessFile(this.file, "r");
-				}
-				catch (FileNotFoundException ex) {
+				} catch (FileNotFoundException ex) {
 					throw new IllegalArgumentException(
 							String.format("File %s must exist", this.file.getAbsolutePath()));
 				}

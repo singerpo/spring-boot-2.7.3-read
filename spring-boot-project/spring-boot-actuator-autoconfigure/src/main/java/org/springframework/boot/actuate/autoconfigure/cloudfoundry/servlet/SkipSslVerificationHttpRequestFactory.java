@@ -50,15 +50,14 @@ class SkipSslVerificationHttpRequestFactory extends SimpleClientHttpRequestFacto
 		connection.setHostnameVerifier(new SkipHostnameVerifier());
 		try {
 			connection.setSSLSocketFactory(createSslSocketFactory());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 	}
 
 	private SSLSocketFactory createSslSocketFactory() throws Exception {
 		SSLContext context = SSLContext.getInstance("TLS");
-		context.init(null, new TrustManager[] { new SkipX509TrustManager() }, new SecureRandom());
+		context.init(null, new TrustManager[]{new SkipX509TrustManager()}, new SecureRandom());
 		return context.getSocketFactory();
 	}
 

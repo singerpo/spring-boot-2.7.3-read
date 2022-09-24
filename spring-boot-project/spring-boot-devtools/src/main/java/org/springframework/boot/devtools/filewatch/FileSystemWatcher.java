@@ -37,8 +37,8 @@ import org.springframework.util.Assert;
  *
  * @author Andy Clement
  * @author Phillip Webb
- * @since 1.3.0
  * @see FileChangeListener
+ * @since 1.3.0
  */
 public class FileSystemWatcher {
 
@@ -75,10 +75,11 @@ public class FileSystemWatcher {
 
 	/**
 	 * Create a new {@link FileSystemWatcher} instance.
-	 * @param daemon if a daemon thread used to monitor changes
+	 *
+	 * @param daemon       if a daemon thread used to monitor changes
 	 * @param pollInterval the amount of time to wait between checking for changes
-	 * @param quietPeriod the amount of time required after a change has been detected to
-	 * ensure that updates have completed
+	 * @param quietPeriod  the amount of time required after a change has been detected to
+	 *                     ensure that updates have completed
 	 */
 	public FileSystemWatcher(boolean daemon, Duration pollInterval, Duration quietPeriod) {
 		this(daemon, pollInterval, quietPeriod, null);
@@ -86,15 +87,16 @@ public class FileSystemWatcher {
 
 	/**
 	 * Create a new {@link FileSystemWatcher} instance.
-	 * @param daemon if a daemon thread used to monitor changes
-	 * @param pollInterval the amount of time to wait between checking for changes
-	 * @param quietPeriod the amount of time required after a change has been detected to
-	 * ensure that updates have completed
+	 *
+	 * @param daemon                  if a daemon thread used to monitor changes
+	 * @param pollInterval            the amount of time to wait between checking for changes
+	 * @param quietPeriod             the amount of time required after a change has been detected to
+	 *                                ensure that updates have completed
 	 * @param snapshotStateRepository the snapshot state repository
 	 * @since 2.4.0
 	 */
 	public FileSystemWatcher(boolean daemon, Duration pollInterval, Duration quietPeriod,
-			SnapshotStateRepository snapshotStateRepository) {
+							 SnapshotStateRepository snapshotStateRepository) {
 		Assert.notNull(pollInterval, "PollInterval must not be null");
 		Assert.notNull(quietPeriod, "QuietPeriod must not be null");
 		Assert.isTrue(pollInterval.toMillis() > 0, "PollInterval must be positive");
@@ -111,6 +113,7 @@ public class FileSystemWatcher {
 	/**
 	 * Add listener for file change events. Cannot be called after the watcher has been
 	 * {@link #start() started}.
+	 *
 	 * @param fileChangeListener the listener to add
 	 */
 	public void addListener(FileChangeListener fileChangeListener) {
@@ -124,6 +127,7 @@ public class FileSystemWatcher {
 	/**
 	 * Add source directories to monitor. Cannot be called after the watcher has been
 	 * {@link #start() started}.
+	 *
 	 * @param directories the directories to monitor
 	 */
 	public void addSourceDirectories(Iterable<File> directories) {
@@ -136,6 +140,7 @@ public class FileSystemWatcher {
 	/**
 	 * Add a source directory to monitor. Cannot be called after the watcher has been
 	 * {@link #start() started}.
+	 *
 	 * @param directory the directory to monitor
 	 */
 	public void addSourceDirectory(File directory) {
@@ -149,6 +154,7 @@ public class FileSystemWatcher {
 
 	/**
 	 * Set an optional {@link FileFilter} used to limit the files that trigger a change.
+	 *
 	 * @param triggerFilter a trigger filter or null
 	 */
 	public void setTriggerFilter(FileFilter triggerFilter) {
@@ -199,6 +205,7 @@ public class FileSystemWatcher {
 
 	/**
 	 * Stop monitoring the source directories.
+	 *
 	 * @param remainingScans the number of remaining scans
 	 */
 	void stopAfter(int remainingScans) {
@@ -216,8 +223,7 @@ public class FileSystemWatcher {
 		if (thread != null && Thread.currentThread() != thread) {
 			try {
 				thread.join();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -240,8 +246,8 @@ public class FileSystemWatcher {
 		private SnapshotStateRepository snapshotStateRepository;
 
 		private Watcher(AtomicInteger remainingScans, List<FileChangeListener> listeners, FileFilter triggerFilter,
-				long pollInterval, long quietPeriod, Map<File, DirectorySnapshot> directories,
-				SnapshotStateRepository snapshotStateRepository) {
+						long pollInterval, long quietPeriod, Map<File, DirectorySnapshot> directories,
+						SnapshotStateRepository snapshotStateRepository) {
 			this.remainingScans = remainingScans;
 			this.listeners = listeners;
 			this.triggerFilter = triggerFilter;
@@ -261,8 +267,7 @@ public class FileSystemWatcher {
 						this.remainingScans.decrementAndGet();
 					}
 					scan();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}
 				remainingScans = this.remainingScans.get();

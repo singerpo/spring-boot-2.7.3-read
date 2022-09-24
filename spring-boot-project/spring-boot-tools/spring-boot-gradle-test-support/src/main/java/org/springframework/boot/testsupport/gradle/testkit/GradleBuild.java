@@ -130,8 +130,7 @@ public class GradleBuild {
 	private String pathOfJarContaining(String className) {
 		try {
 			return pathOfJarContaining(Class.forName(className));
-		}
-		catch (ClassNotFoundException ex) {
+		} catch (ClassNotFoundException ex) {
 			throw new IllegalArgumentException(ex);
 		}
 	}
@@ -187,8 +186,7 @@ public class GradleBuild {
 				assertThat(buildOutput).doesNotContainIgnoringCase("deprecated");
 			}
 			return result;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -196,8 +194,7 @@ public class GradleBuild {
 	public BuildResult buildAndFail(String... arguments) {
 		try {
 			return prepareRunner(arguments).buildAndFail();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -282,8 +279,7 @@ public class GradleBuild {
 			try (JarFile jar = new JarFile(new File(location.toURI()))) {
 				return jar.getManifest().getMainAttributes().getValue("Implementation-Version");
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Failed to find dependency management plugin version", ex);
 		}
 	}

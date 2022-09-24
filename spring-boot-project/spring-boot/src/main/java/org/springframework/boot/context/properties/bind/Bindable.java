@@ -37,9 +37,9 @@ import org.springframework.util.ObjectUtils;
  * @param <T> the source type
  * @author Phillip Webb
  * @author Madhura Bhave
- * @since 2.0.0
  * @see Bindable#of(Class)
  * @see Bindable#of(ResolvableType)
+ * @since 2.0.0
  */
 public final class Bindable<T> {
 
@@ -58,7 +58,7 @@ public final class Bindable<T> {
 	private final EnumSet<BindRestriction> bindRestrictions;
 
 	private Bindable(ResolvableType type, ResolvableType boxedType, Supplier<T> value, Annotation[] annotations,
-			EnumSet<BindRestriction> bindRestrictions) {
+					 EnumSet<BindRestriction> bindRestrictions) {
 		this.type = type;
 		this.boxedType = boxedType;
 		this.value = value;
@@ -68,6 +68,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Return the type of the item to bind.
+	 *
 	 * @return the type being bound
 	 */
 	public ResolvableType getType() {
@@ -76,6 +77,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Return the boxed type of the item to bind.
+	 *
 	 * @return the boxed type for the item being bound
 	 */
 	public ResolvableType getBoxedType() {
@@ -84,6 +86,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Return a supplier that provides the object value or {@code null}.
+	 *
 	 * @return the value or {@code null}
 	 */
 	public Supplier<T> getValue() {
@@ -92,6 +95,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Return any associated annotations that could affect binding.
+	 *
 	 * @return the associated annotations
 	 */
 	public Annotation[] getAnnotations() {
@@ -100,7 +104,8 @@ public final class Bindable<T> {
 
 	/**
 	 * Return a single associated annotations that could affect binding.
-	 * @param <A> the annotation type
+	 *
+	 * @param <A>  the annotation type
 	 * @param type annotation type
 	 * @return the associated annotation or {@code null}
 	 */
@@ -116,6 +121,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Returns {@code true} if the specified bind restriction has been added.
+	 *
 	 * @param bindRestriction the bind restriction to check
 	 * @return if the bind restriction has been added
 	 * @since 2.5.0
@@ -165,6 +171,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Create an updated {@link Bindable} instance with the specified annotations.
+	 *
 	 * @param annotations the annotations
 	 * @return an updated {@link Bindable}
 	 */
@@ -175,6 +182,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Create an updated {@link Bindable} instance with an existing value.
+	 *
 	 * @param existingValue the existing value
 	 * @return an updated {@link Bindable}
 	 */
@@ -188,6 +196,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Create an updated {@link Bindable} instance with a value supplier.
+	 *
 	 * @param suppliedValue the supplier for the value
 	 * @return an updated {@link Bindable}
 	 */
@@ -197,6 +206,7 @@ public final class Bindable<T> {
 
 	/**
 	 * Create an updated {@link Bindable} instance with additional bind restrictions.
+	 *
 	 * @param additionalRestrictions any additional restrictions to apply
 	 * @return an updated {@link Bindable}
 	 * @since 2.5.0
@@ -210,7 +220,8 @@ public final class Bindable<T> {
 	/**
 	 * Create a new {@link Bindable} of the type of the specified instance with an
 	 * existing value equal to the instance.
-	 * @param <T> the source type
+	 *
+	 * @param <T>      the source type
 	 * @param instance the instance (must not be {@code null})
 	 * @return a {@link Bindable} instance
 	 * @see #of(ResolvableType)
@@ -225,7 +236,8 @@ public final class Bindable<T> {
 
 	/**
 	 * Create a new {@link Bindable} of the specified type.
-	 * @param <T> the source type
+	 *
+	 * @param <T>  the source type
 	 * @param type the type (must not be {@code null})
 	 * @return a {@link Bindable} instance
 	 * @see #of(ResolvableType)
@@ -237,7 +249,8 @@ public final class Bindable<T> {
 
 	/**
 	 * Create a new {@link Bindable} {@link List} of the specified element type.
-	 * @param <E> the element type
+	 *
+	 * @param <E>         the element type
 	 * @param elementType the list element type
 	 * @return a {@link Bindable} instance
 	 */
@@ -247,7 +260,8 @@ public final class Bindable<T> {
 
 	/**
 	 * Create a new {@link Bindable} {@link Set} of the specified element type.
-	 * @param <E> the element type
+	 *
+	 * @param <E>         the element type
 	 * @param elementType the set element type
 	 * @return a {@link Bindable} instance
 	 */
@@ -257,9 +271,10 @@ public final class Bindable<T> {
 
 	/**
 	 * Create a new {@link Bindable} {@link Map} of the specified key and value type.
-	 * @param <K> the key type
-	 * @param <V> the value type
-	 * @param keyType the map key type
+	 *
+	 * @param <K>       the key type
+	 * @param <V>       the value type
+	 * @param keyType   the map key type
 	 * @param valueType the map value type
 	 * @return a {@link Bindable} instance
 	 */
@@ -269,7 +284,8 @@ public final class Bindable<T> {
 
 	/**
 	 * Create a new {@link Bindable} of the specified type.
-	 * @param <T> the source type
+	 *
+	 * @param <T>  the source type
 	 * @param type the type (must not be {@code null})
 	 * @return a {@link Bindable} instance
 	 * @see #of(Class)

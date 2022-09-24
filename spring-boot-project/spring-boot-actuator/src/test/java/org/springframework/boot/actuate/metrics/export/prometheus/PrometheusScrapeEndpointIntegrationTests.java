@@ -57,7 +57,7 @@ class PrometheusScrapeEndpointIntegrationTests {
 		client.get().uri("/actuator/prometheus").accept(MediaType.parseMediaType(accept)).exchange().expectStatus()
 				.isOk().expectHeader().contentType(MediaType.parseMediaType(expectedContentType))
 				.expectBody(String.class).value((body) -> assertThat(body).contains("counter1_total")
-						.contains("counter2_total").contains("counter3_total"));
+				.contains("counter2_total").contains("counter3_total"));
 	}
 
 	@WebEndpointTest
@@ -65,7 +65,7 @@ class PrometheusScrapeEndpointIntegrationTests {
 		MediaType openMetrics = MediaType.parseMediaType(TextFormat.CONTENT_TYPE_OPENMETRICS_100);
 		client.get().uri("/actuator/prometheus").accept(openMetrics).exchange().expectStatus().isOk().expectHeader()
 				.contentType(openMetrics).expectBody(String.class).value((body) -> assertThat(body)
-						.contains("counter1_total").contains("counter2_total").contains("counter3_total"));
+				.contains("counter1_total").contains("counter2_total").contains("counter3_total"));
 	}
 
 	@WebEndpointTest
@@ -81,7 +81,7 @@ class PrometheusScrapeEndpointIntegrationTests {
 		client.get().uri("/actuator/prometheus?includedNames=counter1_total,counter2_total").exchange().expectStatus()
 				.isOk().expectHeader().contentType(MediaType.parseMediaType(TextFormat.CONTENT_TYPE_004))
 				.expectBody(String.class).value((body) -> assertThat(body).contains("counter1_total")
-						.contains("counter2_total").doesNotContain("counter3_total"));
+				.contains("counter2_total").doesNotContain("counter3_total"));
 	}
 
 	@Configuration(proxyBeanMethods = false)

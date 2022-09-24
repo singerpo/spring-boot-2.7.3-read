@@ -92,7 +92,7 @@ import org.springframework.util.StringUtils;
  * </ul>
  * <li>{@code spring-boot-parent} is used for dependency management</li>
  * </ul>
- *
+ * <p>
  * <p/>
  *
  * @author Andy Wilkinson
@@ -145,7 +145,7 @@ class JavaConventions {
 	}
 
 	private String determineImplementationTitle(Project project, Set<String> sourceJarTaskNames,
-			Set<String> javadocJarTaskNames, Jar jar) {
+												Set<String> javadocJarTaskNames, Jar jar) {
 		if (sourceJarTaskNames.contains(jar.getName())) {
 			return "Source for " + project.getName();
 		}
@@ -195,8 +195,7 @@ class JavaConventions {
 			if (project.hasProperty("toolchainVersion")) {
 				compile.setSourceCompatibility(SOURCE_AND_TARGET_COMPATIBILITY);
 				compile.setTargetCompatibility(SOURCE_AND_TARGET_COMPATIBILITY);
-			}
-			else if (buildingWithJava8(project)) {
+			} else if (buildingWithJava8(project)) {
 				args.addAll(Arrays.asList("-Werror", "-Xlint:unchecked", "-Xlint:deprecation", "-Xlint:rawtypes",
 						"-Xlint:varargs"));
 			}

@@ -108,8 +108,7 @@ public class ErrorPageSecurityFilter implements Filter {
 	private WebInvocationPrivilegeEvaluator getPrivilegeEvaluatorBean() {
 		try {
 			return this.context.getBean(WebInvocationPrivilegeEvaluator.class);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return ALWAYS;
 		}
 	}

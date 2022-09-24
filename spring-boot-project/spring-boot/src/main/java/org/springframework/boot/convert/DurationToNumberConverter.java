@@ -57,8 +57,7 @@ final class DurationToNumberConverter implements GenericConverter {
 		try {
 			return type.getConstructor(String.class)
 					.newInstance(String.valueOf(DurationStyle.Unit.fromChronoUnit(unit).longValue(source)));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			ReflectionUtils.rethrowRuntimeException(ex);
 			throw new IllegalStateException(ex);
 		}

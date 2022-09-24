@@ -62,17 +62,17 @@ class MockitoContextCustomizerFactoryTests {
 
 	}
 
-	@MockBean({ Service1.class, Service2.class })
+	@MockBean({Service1.class, Service2.class})
 	static class WithMockBeanAnnotation {
 
 	}
 
-	@MockBean({ Service2.class, Service1.class })
+	@MockBean({Service2.class, Service1.class})
 	static class WithSameMockBeanAnnotation {
 
 	}
 
-	@MockBean({ Service1.class })
+	@MockBean({Service1.class})
 	static class WithDifferentMockBeanAnnotation {
 
 	}

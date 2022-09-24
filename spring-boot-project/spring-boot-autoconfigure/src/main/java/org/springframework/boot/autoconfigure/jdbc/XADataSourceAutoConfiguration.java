@@ -57,7 +57,7 @@ import org.springframework.util.StringUtils;
  */
 @AutoConfiguration(before = DataSourceAutoConfiguration.class)
 @EnableConfigurationProperties(DataSourceProperties.class)
-@ConditionalOnClass({ DataSource.class, TransactionManager.class, EmbeddedDatabaseType.class })
+@ConditionalOnClass({DataSource.class, TransactionManager.class, EmbeddedDatabaseType.class})
 @ConditionalOnBean(XADataSourceWrapper.class)
 @ConditionalOnMissingBean(DataSource.class)
 public class XADataSourceAutoConfiguration implements BeanClassLoaderAware {
@@ -66,7 +66,7 @@ public class XADataSourceAutoConfiguration implements BeanClassLoaderAware {
 
 	@Bean
 	public DataSource dataSource(XADataSourceWrapper wrapper, DataSourceProperties properties,
-			ObjectProvider<XADataSource> xaDataSource) throws Exception {
+								 ObjectProvider<XADataSource> xaDataSource) throws Exception {
 		return wrapper.wrapDataSource(xaDataSource.getIfAvailable(() -> createXaDataSource(properties)));
 	}
 
@@ -92,8 +92,7 @@ public class XADataSourceAutoConfiguration implements BeanClassLoaderAware {
 			Object instance = BeanUtils.instantiateClass(dataSourceClass);
 			Assert.isInstanceOf(XADataSource.class, instance);
 			return (XADataSource) instance;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to create XADataSource instance from '" + className + "'");
 		}
 	}
@@ -110,8 +109,7 @@ public class XADataSourceAutoConfiguration implements BeanClassLoaderAware {
 		properties.computeIfAbsent("password", (key) -> dataSourceProperties.determinePassword());
 		try {
 			properties.computeIfAbsent("url", (key) -> dataSourceProperties.determineUrl());
-		}
-		catch (DataSourceBeanCreationException ex) {
+		} catch (DataSourceBeanCreationException ex) {
 			// Continue as not all XA DataSource's require a URL
 		}
 		MapConfigurationPropertySource source = new MapConfigurationPropertySource(properties);

@@ -61,7 +61,7 @@ class ConfigurationPropertiesReportEndpointProxyTests {
 					.getBean(ConfigurationPropertiesReportEndpoint.class).configurationProperties();
 			assertThat(applicationProperties.getContexts().get(context.getId()).getBeans().values().stream()
 					.map(ConfigurationPropertiesBeanDescriptor::getPrefix).filter("executor.sql"::equals).findFirst())
-							.isNotEmpty();
+					.isNotEmpty();
 		});
 	}
 

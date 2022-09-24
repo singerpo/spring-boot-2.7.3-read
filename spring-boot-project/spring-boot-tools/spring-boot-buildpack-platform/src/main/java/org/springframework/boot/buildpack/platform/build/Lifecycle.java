@@ -78,14 +78,15 @@ class Lifecycle implements Closeable {
 
 	/**
 	 * Create a new {@link Lifecycle} instance.
-	 * @param log build output log
-	 * @param docker the Docker API
+	 *
+	 * @param log        build output log
+	 * @param docker     the Docker API
 	 * @param dockerHost the Docker host information
-	 * @param request the request to process
-	 * @param builder the ephemeral builder used to run the phases
+	 * @param request    the request to process
+	 * @param builder    the ephemeral builder used to run the phases
 	 */
 	Lifecycle(BuildLog log, DockerApi docker, ResolvedDockerHost dockerHost, BuildRequest request,
-			EphemeralBuilder builder) {
+			  EphemeralBuilder builder) {
 		this.log = log;
 		this.docker = docker;
 		this.dockerHost = dockerHost;
@@ -139,6 +140,7 @@ class Lifecycle implements Closeable {
 
 	/**
 	 * Execute this lifecycle by running each phase in turn.
+	 *
 	 * @throws IOException on IO error
 	 */
 	void execute() throws IOException {
@@ -193,12 +195,10 @@ class Lifecycle implements Closeable {
 					phase.withEnv("DOCKER_TLS_VERIFY", "1");
 					phase.withEnv("DOCKER_CERT_PATH", this.dockerHost.getCertificatePath());
 				}
-			}
-			else {
+			} else {
 				phase.withBinding(Binding.from(this.dockerHost.getAddress(), DOMAIN_SOCKET_PATH));
 			}
-		}
-		else {
+		} else {
 			phase.withBinding(Binding.from(DOMAIN_SOCKET_PATH, DOMAIN_SOCKET_PATH));
 		}
 	}
@@ -222,8 +222,7 @@ class Lifecycle implements Closeable {
 			if (status.getStatusCode() != 0) {
 				throw new BuilderException(phase.getName(), status.getStatusCode());
 			}
-		}
-		finally {
+		} finally {
 			this.docker.container().remove(reference, true);
 		}
 	}
@@ -236,8 +235,7 @@ class Lifecycle implements Closeable {
 			TarArchive applicationContent = this.request.getApplicationContent(this.builder.getBuildOwner());
 			return this.docker.container().create(config,
 					ContainerContent.of(applicationContent, Directory.APPLICATION));
-		}
-		finally {
+		} finally {
 			this.applicationVolumePopulated = true;
 		}
 	}

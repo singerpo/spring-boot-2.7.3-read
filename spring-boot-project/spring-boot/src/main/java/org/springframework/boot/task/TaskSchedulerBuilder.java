@@ -60,7 +60,7 @@ public class TaskSchedulerBuilder {
 	}
 
 	public TaskSchedulerBuilder(Integer poolSize, Boolean awaitTermination, Duration awaitTerminationPeriod,
-			String threadNamePrefix, Set<TaskSchedulerCustomizer> taskSchedulerCustomizers) {
+								String threadNamePrefix, Set<TaskSchedulerCustomizer> taskSchedulerCustomizers) {
 		this.poolSize = poolSize;
 		this.awaitTermination = awaitTermination;
 		this.awaitTerminationPeriod = awaitTerminationPeriod;
@@ -70,6 +70,7 @@ public class TaskSchedulerBuilder {
 
 	/**
 	 * Set the maximum allowed number of threads.
+	 *
 	 * @param poolSize the pool size to set
 	 * @return a new builder instance
 	 */
@@ -81,8 +82,9 @@ public class TaskSchedulerBuilder {
 	/**
 	 * Set whether the executor should wait for scheduled tasks to complete on shutdown,
 	 * not interrupting running tasks and executing all tasks in the queue.
+	 *
 	 * @param awaitTermination whether the executor needs to wait for the tasks to
-	 * complete on shutdown
+	 *                         complete on shutdown
 	 * @return a new builder instance
 	 * @see #awaitTerminationPeriod(Duration)
 	 */
@@ -97,6 +99,7 @@ public class TaskSchedulerBuilder {
 	 * execution before the rest of the container continues to shut down. This is
 	 * particularly useful if your remaining tasks are likely to need access to other
 	 * resources that are also managed by the container.
+	 *
 	 * @param awaitTerminationPeriod the await termination period to set
 	 * @return a new builder instance
 	 */
@@ -107,6 +110,7 @@ public class TaskSchedulerBuilder {
 
 	/**
 	 * Set the prefix to use for the names of newly created threads.
+	 *
 	 * @param threadNamePrefix the thread name prefix to set
 	 * @return a new builder instance
 	 */
@@ -120,6 +124,7 @@ public class TaskSchedulerBuilder {
 	 * applied to the {@link ThreadPoolTaskScheduler}. Customizers are applied in the
 	 * order that they were added after builder configuration has been applied. Setting
 	 * this value will replace any previously configured customizers.
+	 *
 	 * @param customizers the customizers to set
 	 * @return a new builder instance
 	 * @see #additionalCustomizers(TaskSchedulerCustomizer...)
@@ -134,6 +139,7 @@ public class TaskSchedulerBuilder {
 	 * applied to the {@link ThreadPoolTaskScheduler}. Customizers are applied in the
 	 * order that they were added after builder configuration has been applied. Setting
 	 * this value will replace any previously configured customizers.
+	 *
 	 * @param customizers the customizers to set
 	 * @return a new builder instance
 	 * @see #additionalCustomizers(TaskSchedulerCustomizer...)
@@ -148,6 +154,7 @@ public class TaskSchedulerBuilder {
 	 * Add {@link TaskSchedulerCustomizer taskSchedulerCustomizers} that should be applied
 	 * to the {@link ThreadPoolTaskScheduler}. Customizers are applied in the order that
 	 * they were added after builder configuration has been applied.
+	 *
 	 * @param customizers the customizers to add
 	 * @return a new builder instance
 	 * @see #customizers(TaskSchedulerCustomizer...)
@@ -161,6 +168,7 @@ public class TaskSchedulerBuilder {
 	 * Add {@link TaskSchedulerCustomizer taskSchedulerCustomizers} that should be applied
 	 * to the {@link ThreadPoolTaskScheduler}. Customizers are applied in the order that
 	 * they were added after builder configuration has been applied.
+	 *
 	 * @param customizers the customizers to add
 	 * @return a new builder instance
 	 * @see #customizers(TaskSchedulerCustomizer...)
@@ -174,6 +182,7 @@ public class TaskSchedulerBuilder {
 	/**
 	 * Build a new {@link ThreadPoolTaskScheduler} instance and configure it using this
 	 * builder.
+	 *
 	 * @return a configured {@link ThreadPoolTaskScheduler} instance.
 	 * @see #configure(ThreadPoolTaskScheduler)
 	 */
@@ -183,7 +192,8 @@ public class TaskSchedulerBuilder {
 
 	/**
 	 * Configure the provided {@link ThreadPoolTaskScheduler} instance using this builder.
-	 * @param <T> the type of task scheduler
+	 *
+	 * @param <T>           the type of task scheduler
 	 * @param taskScheduler the {@link ThreadPoolTaskScheduler} to configure
 	 * @return the task scheduler instance
 	 * @see #build()

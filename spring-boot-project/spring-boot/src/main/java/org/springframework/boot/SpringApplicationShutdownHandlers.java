@@ -28,20 +28,22 @@ import org.springframework.context.ApplicationContext;
  *
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 2.5.1
  * @see SpringApplication#getShutdownHandlers()
  * @see SpringApplication#setRegisterShutdownHook(boolean)
+ * @since 2.5.1
  */
 public interface SpringApplicationShutdownHandlers {
 
 	/**
 	 * Add an action to the handlers that will be run when the JVM exits.
+	 *
 	 * @param action the action to add
 	 */
 	void add(Runnable action);
 
 	/**
 	 * Remove a previously added an action so that it no longer runs when the JVM exits.
+	 *
 	 * @param action the action to remove
 	 */
 	void remove(Runnable action);

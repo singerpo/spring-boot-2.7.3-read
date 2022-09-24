@@ -21,8 +21,8 @@ package org.springframework.boot.context.properties.bind;
  *
  * @author Phillip Webb
  * @author Madhura Bhave
- * @since 2.2.3
  * @see DataObjectBinder
+ * @since 2.2.3
  */
 public abstract class DataObjectPropertyName {
 
@@ -31,6 +31,7 @@ public abstract class DataObjectPropertyName {
 
 	/**
 	 * Return the specified Java Bean property name in dashed form.
+	 *
 	 * @param name the source name
 	 * @return the dashed from
 	 */
@@ -44,13 +45,11 @@ public abstract class DataObjectPropertyName {
 				if (ch == ']') {
 					inIndex = false;
 				}
-			}
-			else {
+			} else {
 				if (ch == '[') {
 					inIndex = true;
 					result.append(ch);
-				}
-				else {
+				} else {
 					ch = (ch != '_') ? ch : '-';
 					if (Character.isUpperCase(ch) && result.length() > 0 && result.charAt(result.length() - 1) != '-') {
 						result.append('-');

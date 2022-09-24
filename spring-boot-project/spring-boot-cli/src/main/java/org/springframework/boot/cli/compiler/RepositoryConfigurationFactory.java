@@ -56,6 +56,7 @@ public final class RepositoryConfigurationFactory {
 
 	/**
 	 * Create a new default repository configuration.
+	 *
 	 * @return the newly-created default repository configuration
 	 */
 	public static List<RepositoryConfiguration> createDefaultRepositoryConfiguration() {
@@ -72,7 +73,7 @@ public final class RepositoryConfigurationFactory {
 	}
 
 	private static void addDefaultCacheAsRepository(String localRepository,
-			List<RepositoryConfiguration> repositoryConfiguration) {
+													List<RepositoryConfiguration> repositoryConfiguration) {
 		RepositoryConfiguration repository = new RepositoryConfiguration("local",
 				getLocalRepositoryDirectory(localRepository).toURI(), true);
 		if (!repositoryConfiguration.contains(repository)) {
@@ -81,7 +82,7 @@ public final class RepositoryConfigurationFactory {
 	}
 
 	private static void addActiveProfileRepositories(List<Profile> activeProfiles,
-			List<RepositoryConfiguration> configurations) {
+													 List<RepositoryConfiguration> configurations) {
 		for (Profile activeProfile : activeProfiles) {
 			Interpolator interpolator = new RegexBasedInterpolator();
 			interpolator.addValueSource(new PropertiesBasedValueSource(activeProfile.getProperties()));
@@ -92,7 +93,7 @@ public final class RepositoryConfigurationFactory {
 	}
 
 	private static RepositoryConfiguration getRepositoryConfiguration(Interpolator interpolator,
-			Repository repository) {
+																	  Repository repository) {
 		String name = interpolate(interpolator, repository.getId());
 		String url = interpolate(interpolator, repository.getUrl());
 		boolean snapshotsEnabled = false;
@@ -105,8 +106,7 @@ public final class RepositoryConfigurationFactory {
 	private static String interpolate(Interpolator interpolator, String value) {
 		try {
 			return interpolator.interpolate(value);
-		}
-		catch (InterpolationException ex) {
+		} catch (InterpolationException ex) {
 			return value;
 		}
 	}

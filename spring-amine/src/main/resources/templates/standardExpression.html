@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>#strings </h3>
-<div th:if="${not #strings.isEmpty(Str)}" >
+<div th:if="${not #strings.isEmpty(Str)}">
     <p>Old Str : <span th:text="${Str}"/></p>
     <p>toUpperCase : <span th:text="${#strings.toUpperCase(Str)}"/></p>
     <p>toLowerCase : <span th:text="${#strings.toLowerCase(Str)}"/></p>

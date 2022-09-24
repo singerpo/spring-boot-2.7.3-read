@@ -49,8 +49,9 @@ public class ParentAwareNamingStrategy extends MetadataNamingStrategy implements
 
 	/**
 	 * Set if unique runtime object names should be ensured.
+	 *
 	 * @param ensureUniqueRuntimeObjectNames {@code true} if unique names should be
-	 * ensured.
+	 *                                       ensured.
 	 */
 	public void setEnsureUniqueRuntimeObjectNames(boolean ensureUniqueRuntimeObjectNames) {
 		this.ensureUniqueRuntimeObjectNames = ensureUniqueRuntimeObjectNames;
@@ -80,8 +81,7 @@ public class ParentAwareNamingStrategy extends MetadataNamingStrategy implements
 		try {
 			this.applicationContext.getParent().getBean(beanKey);
 			return true;
-		}
-		catch (BeansException ex) {
+		} catch (BeansException ex) {
 			return parentContextContainsSameBean(context.getParent(), beanKey);
 		}
 	}

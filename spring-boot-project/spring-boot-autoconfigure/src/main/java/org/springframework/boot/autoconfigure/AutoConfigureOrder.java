@@ -44,7 +44,7 @@ import org.springframework.core.annotation.Order;
  * @since 1.3.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD })
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 @Documented
 public @interface AutoConfigureOrder {
 
@@ -55,8 +55,9 @@ public @interface AutoConfigureOrder {
 
 	/**
 	 * The order value. Default is {@code 0}.
-	 * @see Ordered#getOrder()
+	 *
 	 * @return the order value
+	 * @see Ordered#getOrder()
 	 */
 	int value() default DEFAULT_ORDER;
 

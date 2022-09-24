@@ -32,6 +32,7 @@ public interface ConnectionFactoryOptionsBuilderCustomizer {
 
 	/**
 	 * Customize the {@link Builder}.
+	 *
 	 * @param builder the builder to customize
 	 */
 	void customize(Builder builder);

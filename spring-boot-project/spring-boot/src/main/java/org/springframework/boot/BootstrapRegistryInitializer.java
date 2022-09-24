@@ -21,15 +21,16 @@ package org.springframework.boot;
  * is used.
  *
  * @author Phillip Webb
- * @since 2.4.5
  * @see SpringApplication#addBootstrapRegistryInitializer(BootstrapRegistryInitializer)
  * @see BootstrapRegistry
+ * @since 2.4.5
  */
 @FunctionalInterface
 public interface BootstrapRegistryInitializer {
 
 	/**
 	 * Initialize the given {@link BootstrapRegistry} with any required registrations.
+	 *
 	 * @param registry the registry to initialize
 	 */
 	void initialize(BootstrapRegistry registry);

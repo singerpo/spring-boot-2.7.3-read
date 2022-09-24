@@ -118,6 +118,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the property for the archive file from which the image will be built.
+	 *
 	 * @return the archive file property
 	 */
 	@Input
@@ -128,6 +129,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Returns the target Java version of the project (e.g. as provided by the
 	 * {@code targetCompatibility} build property).
+	 *
 	 * @return the target Java version
 	 */
 	@Input
@@ -140,6 +142,7 @@ public class BootBuildImage extends DefaultTask {
 	 * Returns the name of the image that will be built. When {@code null}, the name will
 	 * be derived from the {@link Project Project's} {@link Project#getName() name} and
 	 * {@link Project#getVersion version}.
+	 *
 	 * @return name of the image
 	 */
 	@Input
@@ -150,6 +153,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the name of the image that will be built.
+	 *
 	 * @param imageName name of the image
 	 */
 	@Option(option = "imageName", description = "The name of the image to generate")
@@ -160,6 +164,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Returns the builder that will be used to build the image. When {@code null}, the
 	 * default builder will be used.
+	 *
 	 * @return the builder
 	 */
 	@Input
@@ -170,6 +175,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the builder that will be used to build the image.
+	 *
 	 * @param builder the builder
 	 */
 	@Option(option = "builder", description = "The name of the builder image to use")
@@ -180,6 +186,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Returns the run image that will be included in the built image. When {@code null},
 	 * the run image bundled with the builder will be used.
+	 *
 	 * @return the run image
 	 */
 	@Input
@@ -190,6 +197,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the run image that will be included in the built image.
+	 *
 	 * @param runImage the run image
 	 */
 	@Option(option = "runImage", description = "The name of the run image to use")
@@ -199,6 +207,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the environment that will be used when building the image.
+	 *
 	 * @return the environment
 	 */
 	@Input
@@ -208,6 +217,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the environment that will be used when building the image.
+	 *
 	 * @param environment the environment
 	 */
 	public void setEnvironment(Map<String, String> environment) {
@@ -216,7 +226,8 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Add an entry to the environment that will be used when building the image.
-	 * @param name the name of the entry
+	 *
+	 * @param name  the name of the entry
 	 * @param value the value of the entry
 	 */
 	public void environment(String name, String value) {
@@ -225,6 +236,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Adds entries to the environment that will be used when building the image.
+	 *
 	 * @param entries the entries to add to the environment
 	 */
 	public void environment(Map<String, String> entries) {
@@ -233,6 +245,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns whether caches should be cleaned before packaging.
+	 *
 	 * @return whether caches should be cleaned
 	 */
 	@Input
@@ -242,6 +255,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets whether caches should be cleaned before packaging.
+	 *
 	 * @param cleanCache {@code true} to clean the cache, otherwise {@code false}.
 	 */
 	@Option(option = "cleanCache", description = "Clean caches before packaging")
@@ -251,6 +265,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Whether verbose logging should be enabled while building the image.
+	 *
 	 * @return whether verbose logging should be enabled
 	 */
 	@Input
@@ -260,8 +275,9 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets whether verbose logging should be enabled while building the image.
+	 *
 	 * @param verboseLogging {@code true} to enable verbose logging, otherwise
-	 * {@code false}.
+	 *                       {@code false}.
 	 */
 	public void setVerboseLogging(boolean verboseLogging) {
 		this.verboseLogging = verboseLogging;
@@ -269,6 +285,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns image pull policy that will be used when building the image.
+	 *
 	 * @return whether images should be pulled
 	 */
 	@Input
@@ -279,6 +296,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets image pull policy that will be used when building the image.
+	 *
 	 * @param pullPolicy image pull policy {@link PullPolicy}
 	 */
 	@Option(option = "pullPolicy", description = "The image pull policy")
@@ -288,6 +306,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Whether the built image should be pushed to a registry.
+	 *
 	 * @return whether the built image should be pushed
 	 */
 	@Input
@@ -297,6 +316,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets whether the built image should be pushed to a registry.
+	 *
 	 * @param publish {@code true} the push the built image to a registry. {@code false}.
 	 */
 	@Option(option = "publishImage", description = "Publish the built image to a registry")
@@ -306,6 +326,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the buildpacks that will be used when building the image.
+	 *
 	 * @return the buildpack references
 	 */
 	@Input
@@ -316,6 +337,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the buildpacks that will be used when building the image.
+	 *
 	 * @param buildpacks the buildpack references
 	 */
 	public void setBuildpacks(List<String> buildpacks) {
@@ -324,6 +346,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Add an entry to the buildpacks that will be used when building the image.
+	 *
 	 * @param buildpack the buildpack reference
 	 */
 	public void buildpack(String buildpack) {
@@ -332,6 +355,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Adds entries to the buildpacks that will be used when building the image.
+	 *
 	 * @param buildpacks the buildpack references
 	 */
 	public void buildpacks(List<String> buildpacks) {
@@ -341,6 +365,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Returns the volume bindings that will be mounted to the container when building the
 	 * image.
+	 *
 	 * @return the bindings
 	 */
 	@Input
@@ -352,6 +377,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Sets the volume bindings that will be mounted to the container when building the
 	 * image.
+	 *
 	 * @param bindings the bindings
 	 */
 	public void setBindings(List<String> bindings) {
@@ -361,6 +387,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Add an entry to the volume bindings that will be mounted to the container when
 	 * building the image.
+	 *
 	 * @param binding the binding
 	 */
 	public void binding(String binding) {
@@ -370,6 +397,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Add entries to the volume bindings that will be mounted to the container when
 	 * building the image.
+	 *
 	 * @param bindings the bindings
 	 */
 	public void bindings(List<String> bindings) {
@@ -378,6 +406,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the tags that will be created for the built image.
+	 *
 	 * @return the tags
 	 */
 	@Input
@@ -388,6 +417,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the tags that will be created for the built image.
+	 *
 	 * @param tags the tags
 	 */
 	public void setTags(List<String> tags) {
@@ -396,6 +426,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Add an entry to the tags that will be created for the built image.
+	 *
 	 * @param tag the tag
 	 */
 	public void tag(String tag) {
@@ -404,6 +435,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Add entries to the tags that will be created for the built image.
+	 *
 	 * @param tags the tags
 	 */
 	public void tags(List<String> tags) {
@@ -412,6 +444,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the network the build container will connect to.
+	 *
 	 * @return the network
 	 */
 	@Input
@@ -422,6 +455,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Sets the network the build container will connect to.
+	 *
 	 * @param network the network
 	 */
 	@Option(option = "network", description = "Connect detect and build containers to network")
@@ -431,6 +465,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the build cache that will be used when building the image.
+	 *
 	 * @return the cache
 	 */
 	@Nested
@@ -442,6 +477,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Customizes the {@link CacheSpec} for the build cache using the given
 	 * {@code action}.
+	 *
 	 * @param action the action
 	 */
 	public void buildCache(Action<CacheSpec> action) {
@@ -451,6 +487,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Customizes the {@link CacheSpec} for the build cache using the given
 	 * {@code closure}.
+	 *
 	 * @param closure the closure
 	 */
 	public void buildCache(Closure<?> closure) {
@@ -459,6 +496,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the launch cache that will be used when building the image.
+	 *
 	 * @return the cache
 	 */
 	@Nested
@@ -470,6 +508,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Customizes the {@link CacheSpec} for the launch cache using the given
 	 * {@code action}.
+	 *
 	 * @param action the action
 	 */
 	public void launchCache(Action<CacheSpec> action) {
@@ -479,6 +518,7 @@ public class BootBuildImage extends DefaultTask {
 	/**
 	 * Customizes the {@link CacheSpec} for the launch cache using the given
 	 * {@code closure}.
+	 *
 	 * @param closure the closure
 	 */
 	public void launchCache(Closure<?> closure) {
@@ -487,6 +527,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Returns the Docker configuration the builder will use.
+	 *
 	 * @return docker configuration.
 	 * @since 2.4.0
 	 */
@@ -497,6 +538,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Configures the Docker connection using the given {@code action}.
+	 *
 	 * @param action the action to apply
 	 * @since 2.4.0
 	 */
@@ -506,6 +548,7 @@ public class BootBuildImage extends DefaultTask {
 
 	/**
 	 * Configures the Docker connection using the given {@code closure}.
+	 *
 	 * @param closure the closure to apply
 	 * @since 2.4.0
 	 */

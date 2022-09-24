@@ -37,7 +37,7 @@ public class JdbcSessionDataSourceInitializer extends org.springframework.boot.j
 	private final JdbcSessionProperties properties;
 
 	public JdbcSessionDataSourceInitializer(DataSource dataSource, ResourceLoader resourceLoader,
-			JdbcSessionProperties properties) {
+											JdbcSessionProperties properties) {
 		super(dataSource, resourceLoader);
 		Assert.notNull(properties, "JdbcSessionProperties must not be null");
 		this.properties = properties;

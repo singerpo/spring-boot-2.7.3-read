@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @DirtiesContext
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "spring.main.web-application-type=reactive", "value=123" })
+		properties = {"spring.main.web-application-type=reactive", "value=123"})
 class SpringBootTestReactiveWebEnvironmentUserDefinedTestRestTemplateTests
 		extends AbstractSpringBootTestEmbeddedReactiveWebEnvironmentTests {
 

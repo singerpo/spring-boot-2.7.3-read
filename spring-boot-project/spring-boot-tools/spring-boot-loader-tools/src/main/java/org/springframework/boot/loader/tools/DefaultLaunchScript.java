@@ -51,7 +51,8 @@ public class DefaultLaunchScript implements LaunchScript {
 
 	/**
 	 * Create a new {@link DefaultLaunchScript} instance.
-	 * @param file the source script file or {@code null} to use the default
+	 *
+	 * @param file       the source script file or {@code null} to use the default
 	 * @param properties an optional set of script properties used for variable expansion
 	 * @throws IOException if the script cannot be loaded
 	 */
@@ -72,8 +73,7 @@ public class DefaultLaunchScript implements LaunchScript {
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			copy(inputStream, outputStream);
 			return new String(outputStream.toByteArray(), StandardCharsets.UTF_8);
-		}
-		finally {
+		} finally {
 			inputStream.close();
 		}
 	}
@@ -98,12 +98,10 @@ public class DefaultLaunchScript implements LaunchScript {
 				Object propertyValue = properties.get(name);
 				if (FILE_PATH_KEYS.contains(name)) {
 					value = parseFilePropertyValue(propertyValue);
-				}
-				else {
+				} else {
 					value = propertyValue.toString();
 				}
-			}
-			else {
+			} else {
 				value = (defaultValue != null) ? defaultValue.substring(1) : matcher.group(0);
 			}
 			matcher.appendReplacement(expanded, value.replace("$", "\\$"));

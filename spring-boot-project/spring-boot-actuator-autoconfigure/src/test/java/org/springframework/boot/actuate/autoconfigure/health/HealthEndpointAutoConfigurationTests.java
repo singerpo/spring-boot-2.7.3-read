@@ -106,9 +106,9 @@ class HealthEndpointAutoConfigurationTests {
 	void runWhenHasStatusAggregatorBeanIgnoresProperties() {
 		this.contextRunner.withUserConfiguration(StatusAggregatorConfiguration.class)
 				.withPropertyValues("management.endpoint.health.status.order=up,down").run((context) -> {
-					StatusAggregator aggregator = context.getBean(StatusAggregator.class);
-					assertThat(aggregator.getAggregateStatus(Status.UP, Status.DOWN)).isEqualTo(Status.UNKNOWN);
-				});
+			StatusAggregator aggregator = context.getBean(StatusAggregator.class);
+			assertThat(aggregator.getAggregateStatus(Status.UP, Status.DOWN)).isEqualTo(Status.UNKNOWN);
+		});
 	}
 
 	@Test
@@ -124,9 +124,9 @@ class HealthEndpointAutoConfigurationTests {
 	void runWhenHasHttpCodeStatusMapperBeanIgnoresProperties() {
 		this.contextRunner.withUserConfiguration(HttpCodeStatusMapperConfiguration.class)
 				.withPropertyValues("management.endpoint.health.status.http-mapping.up=123").run((context) -> {
-					HttpCodeStatusMapper mapper = context.getBean(HttpCodeStatusMapper.class);
-					assertThat(mapper.getStatusCode(Status.UP)).isEqualTo(456);
-				});
+			HttpCodeStatusMapper mapper = context.getBean(HttpCodeStatusMapper.class);
+			assertThat(mapper.getStatusCode(Status.UP)).isEqualTo(456);
+		});
 	}
 
 	@Test
@@ -142,9 +142,9 @@ class HealthEndpointAutoConfigurationTests {
 	void runWhenHasHealthEndpointGroupsBeanDoesNotCreateAdditionalHealthEndpointGroups() {
 		this.contextRunner.withUserConfiguration(HealthEndpointGroupsConfiguration.class)
 				.withPropertyValues("management.endpoint.health.group.ready.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					assertThat(groups.getNames()).containsOnly("mock");
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			assertThat(groups.getNames()).containsOnly("mock");
+		});
 	}
 
 	@Test
@@ -261,10 +261,10 @@ class HealthEndpointAutoConfigurationTests {
 	void runWhenHasHealthEndpointGroupsPostProcessorPerformsProcessing() {
 		this.contextRunner.withPropertyValues("management.endpoint.health.group.ready.include=*").withUserConfiguration(
 				HealthEndpointGroupsConfiguration.class, TestHealthEndpointGroupsPostProcessor.class).run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> groups.get("test"))
-							.withMessage("postprocessed");
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> groups.get("test"))
+					.withMessage("postprocessed");
+		});
 	}
 
 	@Test

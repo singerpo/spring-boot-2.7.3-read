@@ -119,7 +119,7 @@ class ThymeleafReactiveAutoConfigurationTests {
 	void overrideViewNames() {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.viewNames:foo,bar")
 				.run((context) -> assertThat(context.getBean(ThymeleafReactiveViewResolver.class).getViewNames())
-						.isEqualTo(new String[] { "foo", "bar" }));
+						.isEqualTo(new String[]{"foo", "bar"}));
 	}
 
 	@Test
@@ -127,21 +127,21 @@ class ThymeleafReactiveAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.reactive.maxChunkSize:8KB")
 				.run((context) -> assertThat(
 						context.getBean(ThymeleafReactiveViewResolver.class).getResponseMaxChunkSizeBytes())
-								.isEqualTo(Integer.valueOf(8192)));
+						.isEqualTo(Integer.valueOf(8192)));
 	}
 
 	@Test
 	void overrideFullModeViewNames() {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.reactive.fullModeViewNames:foo,bar").run(
 				(context) -> assertThat(context.getBean(ThymeleafReactiveViewResolver.class).getFullModeViewNames())
-						.isEqualTo(new String[] { "foo", "bar" }));
+						.isEqualTo(new String[]{"foo", "bar"}));
 	}
 
 	@Test
 	void overrideChunkedModeViewNames() {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.reactive.chunkedModeViewNames:foo,bar").run(
 				(context) -> assertThat(context.getBean(ThymeleafReactiveViewResolver.class).getChunkedModeViewNames())
-						.isEqualTo(new String[] { "foo", "bar" }));
+						.isEqualTo(new String[]{"foo", "bar"}));
 	}
 
 	@Test
@@ -163,7 +163,7 @@ class ThymeleafReactiveAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.thymeleaf.render-hidden-markers-before-checkboxes:true")
 				.run((context) -> assertThat(
 						context.getBean(SpringWebFluxTemplateEngine.class).getRenderHiddenMarkersBeforeCheckboxes())
-								.isTrue());
+						.isTrue());
 	}
 
 	@Test
@@ -239,7 +239,7 @@ class ThymeleafReactiveAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(LayoutDialectConfiguration.class)
 				.run((context) -> assertThat(
 						ReflectionTestUtils.getField(context.getBean(LayoutDialect.class), "sortingStrategy"))
-								.isInstanceOf(GroupingStrategy.class));
+						.isInstanceOf(GroupingStrategy.class));
 	}
 
 	@Configuration(proxyBeanMethods = false)

@@ -112,7 +112,7 @@ class EnableConfigurationPropertiesRegistrarTests {
 		this.registrar.registerBeanDefinitions(metadata, this.beanFactory);
 	}
 
-	@EnableConfigurationProperties({ FooProperties.class, BarProperties.class, BingProperties.class })
+	@EnableConfigurationProperties({FooProperties.class, BarProperties.class, BingProperties.class})
 	static class TestConfiguration {
 
 	}
@@ -122,7 +122,7 @@ class EnableConfigurationPropertiesRegistrarTests {
 
 	}
 
-	@EnableConfigurationProperties({ FooProperties.class, FooProperties.class })
+	@EnableConfigurationProperties({FooProperties.class, FooProperties.class})
 	static class DuplicateConfiguration {
 
 	}

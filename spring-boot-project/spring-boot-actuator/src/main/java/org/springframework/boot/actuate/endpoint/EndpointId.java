@@ -95,6 +95,7 @@ public final class EndpointId {
 
 	/**
 	 * Return a lower-case version of the endpoint ID.
+	 *
 	 * @return the lower-case endpoint ID
 	 */
 	public String toLowerCaseString() {
@@ -108,6 +109,7 @@ public final class EndpointId {
 
 	/**
 	 * Factory method to create a new {@link EndpointId} of the specified value.
+	 *
 	 * @param value the endpoint ID value
 	 * @return an {@link EndpointId} instance
 	 */
@@ -119,8 +121,9 @@ public final class EndpointId {
 	 * Factory method to create a new {@link EndpointId} of the specified value. This
 	 * variant will respect the {@code management.endpoints.migrate-legacy-names} property
 	 * if it has been set in the {@link Environment}.
+	 *
 	 * @param environment the Spring environment
-	 * @param value the endpoint ID value
+	 * @param value       the endpoint ID value
 	 * @return an {@link EndpointId} instance
 	 * @since 2.2.0
 	 */
@@ -139,6 +142,7 @@ public final class EndpointId {
 	/**
 	 * Factory method to create a new {@link EndpointId} from a property value. More
 	 * lenient than {@link #of(String)} to allow for common "relaxed" property variants.
+	 *
 	 * @param value the property value to convert
 	 * @return an {@link EndpointId} instance
 	 */

@@ -69,10 +69,11 @@ public final class CertificateFileSslStoreProvider implements SslStoreProvider {
 	/**
 	 * Create a new {@link KeyStore} populated with the certificate stored at the
 	 * specified file path and an optional private key.
-	 * @param certPath the path to the certificate authority file
-	 * @param keyPath the path to the private file
+	 *
+	 * @param certPath  the path to the certificate authority file
+	 * @param keyPath   the path to the private file
 	 * @param storeType the {@code KeyStore} type to create
-	 * @param keyAlias the alias to use when adding keys to the {@code KeyStore}
+	 * @param keyAlias  the alias to use when adding keys to the {@code KeyStore}
 	 * @return the {@code KeyStore}
 	 */
 	private KeyStore createKeyStore(String certPath, String keyPath, String storeType, String keyAlias) {
@@ -83,24 +84,21 @@ public final class CertificateFileSslStoreProvider implements SslStoreProvider {
 			PrivateKey privateKey = (keyPath != null) ? PrivateKeyParser.parse(keyPath) : null;
 			try {
 				addCertificates(keyStore, certificates, privateKey, keyAlias);
-			}
-			catch (KeyStoreException ex) {
+			} catch (KeyStoreException ex) {
 				throw new IllegalStateException("Error adding certificates to KeyStore: " + ex.getMessage(), ex);
 			}
 			return keyStore;
-		}
-		catch (GeneralSecurityException | IOException ex) {
+		} catch (GeneralSecurityException | IOException ex) {
 			throw new IllegalStateException("Error creating KeyStore: " + ex.getMessage(), ex);
 		}
 	}
 
 	private void addCertificates(KeyStore keyStore, X509Certificate[] certificates, PrivateKey privateKey,
-			String keyAlias) throws KeyStoreException {
+								 String keyAlias) throws KeyStoreException {
 		String alias = (keyAlias != null) ? keyAlias : DEFAULT_KEY_ALIAS;
 		if (privateKey != null) {
 			keyStore.setKeyEntry(alias, privateKey, KEY_PASSWORD.toCharArray(), certificates);
-		}
-		else {
+		} else {
 			for (int index = 0; index < certificates.length; index++) {
 				keyStore.setCertificateEntry(alias + "-" + index, certificates[index]);
 			}
@@ -110,6 +108,7 @@ public final class CertificateFileSslStoreProvider implements SslStoreProvider {
 	/**
 	 * Create an {@link SslStoreProvider} if the appropriate SSL properties are
 	 * configured.
+	 *
 	 * @param ssl the SSL properties
 	 * @return an {@code SslStoreProvider} or {@code null}
 	 */

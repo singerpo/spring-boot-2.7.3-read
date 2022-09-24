@@ -55,6 +55,7 @@ public class ExplodedArchive implements Archive {
 
 	/**
 	 * Create a new {@link ExplodedArchive} instance.
+	 *
 	 * @param root the root directory
 	 */
 	public ExplodedArchive(File root) {
@@ -63,10 +64,11 @@ public class ExplodedArchive implements Archive {
 
 	/**
 	 * Create a new {@link ExplodedArchive} instance.
-	 * @param root the root directory
+	 *
+	 * @param root      the root directory
 	 * @param recursive if recursive searching should be used to locate the manifest.
-	 * Defaults to {@code true}, directories with a large tree might want to set this to
-	 * {@code false}.
+	 *                  Defaults to {@code true}, directories with a large tree might want to set this to
+	 *                  {@code false}.
 	 */
 	public ExplodedArchive(File root, boolean recursive) {
 		if (!root.exists() || !root.isDirectory()) {
@@ -122,8 +124,7 @@ public class ExplodedArchive implements Archive {
 	public String toString() {
 		try {
 			return getUrl().toString();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return "exploded archive";
 		}
 	}
@@ -199,8 +200,7 @@ public class ExplodedArchive implements Archive {
 			String name = uri.getPath().substring(this.rootUrl.length());
 			try {
 				return new FileEntry(name, file, uri.toURL());
-			}
-			catch (MalformedURLException ex) {
+			} catch (MalformedURLException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -331,8 +331,7 @@ public class ExplodedArchive implements Archive {
 		public String toString() {
 			try {
 				return getUrl().toString();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return "jar archive";
 			}
 		}

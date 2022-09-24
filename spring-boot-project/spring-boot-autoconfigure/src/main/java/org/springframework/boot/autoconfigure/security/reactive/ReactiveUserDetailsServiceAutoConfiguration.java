@@ -54,10 +54,10 @@ import org.springframework.util.StringUtils;
  * @since 2.0.0
  */
 @AutoConfiguration(after = RSocketMessagingAutoConfiguration.class)
-@ConditionalOnClass({ ReactiveAuthenticationManager.class })
-@ConditionalOnMissingBean(value = { ReactiveAuthenticationManager.class, ReactiveUserDetailsService.class },
-		type = { "org.springframework.security.oauth2.jwt.ReactiveJwtDecoder",
-				"org.springframework.security.oauth2.server.resource.introspection.ReactiveOpaqueTokenIntrospector" })
+@ConditionalOnClass({ReactiveAuthenticationManager.class})
+@ConditionalOnMissingBean(value = {ReactiveAuthenticationManager.class, ReactiveUserDetailsService.class},
+		type = {"org.springframework.security.oauth2.jwt.ReactiveJwtDecoder",
+				"org.springframework.security.oauth2.server.resource.introspection.ReactiveOpaqueTokenIntrospector"})
 @Conditional(ReactiveUserDetailsServiceAutoConfiguration.ReactiveUserDetailsServiceCondition.class)
 @EnableConfigurationProperties(SecurityProperties.class)
 public class ReactiveUserDetailsServiceAutoConfiguration {
@@ -70,7 +70,7 @@ public class ReactiveUserDetailsServiceAutoConfiguration {
 
 	@Bean
 	public MapReactiveUserDetailsService reactiveUserDetailsService(SecurityProperties properties,
-			ObjectProvider<PasswordEncoder> passwordEncoder) {
+																	ObjectProvider<PasswordEncoder> passwordEncoder) {
 		SecurityProperties.User user = properties.getUser();
 		UserDetails userDetails = getUserDetails(user, getOrDeducePassword(user, passwordEncoder.getIfAvailable()));
 		return new MapReactiveUserDetailsService(userDetails);

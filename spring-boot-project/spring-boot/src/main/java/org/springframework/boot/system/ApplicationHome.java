@@ -55,6 +55,7 @@ public class ApplicationHome {
 
 	/**
 	 * Create a new {@link ApplicationHome} instance for the specified source class.
+	 *
 	 * @param sourceClass the source class or {@code null}
 	 */
 	public ApplicationHome(Class<?> sourceClass) {
@@ -66,8 +67,7 @@ public class ApplicationHome {
 		try {
 			ClassLoader classLoader = getClass().getClassLoader();
 			return getStartClass(classLoader.getResources("META-INF/MANIFEST.MF"));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -80,8 +80,7 @@ public class ApplicationHome {
 				if (startClass != null) {
 					return ClassUtils.forName(startClass, getClass().getClassLoader());
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 		}
 		return null;
@@ -96,8 +95,7 @@ public class ApplicationHome {
 			if (source != null && source.exists() && !isUnitTest()) {
 				return source.getAbsoluteFile();
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 		return null;
 	}
@@ -110,8 +108,7 @@ public class ApplicationHome {
 					return true;
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 		return false;
 	}
@@ -152,6 +149,7 @@ public class ApplicationHome {
 	 * Returns the underlying source used to find the home directory. This is usually the
 	 * jar file or a directory. Can return {@code null} if the source cannot be
 	 * determined.
+	 *
 	 * @return the underlying source or {@code null}
 	 */
 	public File getSource() {
@@ -160,6 +158,7 @@ public class ApplicationHome {
 
 	/**
 	 * Returns the application home directory.
+	 *
 	 * @return the home directory (never {@code null})
 	 */
 	public File getDir() {

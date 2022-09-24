@@ -32,9 +32,9 @@ class MyJsonAssertJTests(@Autowired val json: JacksonTester<SomeObject>) {
 	fun someTest() {
 		val value = SomeObject(0.152f)
 		assertThat(json.write(value)).extractingJsonPathNumberValue("@.test.numberValue")
-			.satisfies(ThrowingConsumer { number ->
-				assertThat(number.toFloat()).isCloseTo(0.15f, within(0.01f))
-			})
+				.satisfies(ThrowingConsumer { number ->
+					assertThat(number.toFloat()).isCloseTo(0.15f, within(0.01f))
+				})
 	}
 	// end::code[]
 

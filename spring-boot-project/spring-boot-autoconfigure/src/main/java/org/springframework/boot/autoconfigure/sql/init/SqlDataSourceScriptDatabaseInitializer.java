@@ -33,6 +33,7 @@ public class SqlDataSourceScriptDatabaseInitializer extends DataSourceScriptData
 
 	/**
 	 * Create a new {@link SqlDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the primary SQL data source
 	 * @param properties the SQL initialization properties
 	 * @see #getSettings
@@ -43,8 +44,9 @@ public class SqlDataSourceScriptDatabaseInitializer extends DataSourceScriptData
 
 	/**
 	 * Create a new {@link SqlDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the primary SQL data source
-	 * @param settings the database initialization settings
+	 * @param settings   the database initialization settings
 	 * @see #getSettings
 	 */
 	public SqlDataSourceScriptDatabaseInitializer(DataSource dataSource, DatabaseInitializationSettings settings) {
@@ -54,6 +56,7 @@ public class SqlDataSourceScriptDatabaseInitializer extends DataSourceScriptData
 	/**
 	 * Adapts {@link SqlInitializationProperties SQL initialization properties} to
 	 * {@link DatabaseInitializationSettings}.
+	 *
 	 * @param properties the SQL initialization properties
 	 * @return a new {@link DatabaseInitializationSettings} instance
 	 * @see #SqlDataSourceScriptDatabaseInitializer(DataSource,

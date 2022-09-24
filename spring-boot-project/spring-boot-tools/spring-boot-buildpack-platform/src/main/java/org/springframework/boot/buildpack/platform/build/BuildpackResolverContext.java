@@ -38,8 +38,9 @@ interface BuildpackResolverContext {
 
 	/**
 	 * Retrieve an image.
+	 *
 	 * @param reference the image reference
-	 * @param type the type of image
+	 * @param type      the type of image
 	 * @return the retrieved image
 	 * @throws IOException on IO error
 	 */
@@ -47,9 +48,10 @@ interface BuildpackResolverContext {
 
 	/**
 	 * Export the layers of an image.
+	 *
 	 * @param reference the reference to export
-	 * @param exports a consumer to receive the layers (contents can only be accessed
-	 * during the callback)
+	 * @param exports   a consumer to receive the layers (contents can only be accessed
+	 *                  during the callback)
 	 * @throws IOException on IO error
 	 */
 	void exportImageLayers(ImageReference reference, IOBiConsumer<String, TarArchive> exports) throws IOException;

@@ -46,12 +46,13 @@ public class ServletEndpointDiscoverer extends EndpointDiscoverer<ExposableServl
 
 	/**
 	 * Create a new {@link ServletEndpointDiscoverer} instance.
-	 * @param applicationContext the source application context
+	 *
+	 * @param applicationContext  the source application context
 	 * @param endpointPathMappers the endpoint path mappers
-	 * @param filters filters to apply
+	 * @param filters             filters to apply
 	 */
 	public ServletEndpointDiscoverer(ApplicationContext applicationContext, List<PathMapper> endpointPathMappers,
-			Collection<EndpointFilter<ExposableServletEndpoint>> filters) {
+									 Collection<EndpointFilter<ExposableServletEndpoint>> filters) {
 		super(applicationContext, ParameterValueMapper.NONE, Collections.emptyList(), filters);
 		this.endpointPathMappers = endpointPathMappers;
 	}
@@ -63,14 +64,14 @@ public class ServletEndpointDiscoverer extends EndpointDiscoverer<ExposableServl
 
 	@Override
 	protected ExposableServletEndpoint createEndpoint(Object endpointBean, EndpointId id, boolean enabledByDefault,
-			Collection<Operation> operations) {
+													  Collection<Operation> operations) {
 		String rootPath = PathMapper.getRootPath(this.endpointPathMappers, id);
 		return new DiscoveredServletEndpoint(this, endpointBean, id, rootPath, enabledByDefault);
 	}
 
 	@Override
 	protected Operation createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-			OperationInvoker invoker) {
+										OperationInvoker invoker) {
 		throw new IllegalStateException("ServletEndpoints must not declare operations");
 	}
 

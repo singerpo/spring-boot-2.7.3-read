@@ -6,8 +6,8 @@ spring:
           simplesamlphp:
             signing:
               credentials:
-              - private-key-location: "classpath:saml/privatekey.txt"
-                certificate-location: "classpath:saml/certificate.txt"
+                - private-key-location: "classpath:saml/privatekey.txt"
+                  certificate-location: "classpath:saml/certificate.txt"
             assertingparty:
               verification:
                 credentials:
@@ -19,8 +19,8 @@ spring:
           okta:
             signing:
               credentials:
-              - private-key-location: "classpath:saml/privatekey.txt"
-                certificate-location: "classpath:saml/certificate.txt"
+                - private-key-location: "classpath:saml/privatekey.txt"
+                  certificate-location: "classpath:saml/certificate.txt"
             assertingparty:
               verification:
                 credentials:

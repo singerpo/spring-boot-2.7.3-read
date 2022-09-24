@@ -76,6 +76,7 @@ public class Image {
 
 	/**
 	 * The name of the created image.
+	 *
 	 * @return the image name
 	 */
 	public String getName() {
@@ -88,6 +89,7 @@ public class Image {
 
 	/**
 	 * The name of the builder image to use to create the image.
+	 *
 	 * @return the builder image name
 	 */
 	public String getBuilder() {
@@ -100,6 +102,7 @@ public class Image {
 
 	/**
 	 * The name of the run image to use to create the image.
+	 *
 	 * @return the builder image name
 	 */
 	public String getRunImage() {
@@ -112,6 +115,7 @@ public class Image {
 
 	/**
 	 * Environment properties that should be passed to the builder.
+	 *
 	 * @return the environment properties
 	 */
 	public Map<String, String> getEnv() {
@@ -120,6 +124,7 @@ public class Image {
 
 	/**
 	 * If the cache should be cleaned before building.
+	 *
 	 * @return {@code true} if the cache should be cleaned
 	 */
 	public Boolean getCleanCache() {
@@ -132,6 +137,7 @@ public class Image {
 
 	/**
 	 * If verbose logging is required.
+	 *
 	 * @return {@code true} for verbose logging
 	 */
 	public boolean isVerboseLogging() {
@@ -140,6 +146,7 @@ public class Image {
 
 	/**
 	 * If images should be pulled from a remote repository during image build.
+	 *
 	 * @return the pull policy
 	 */
 	public PullPolicy getPullPolicy() {
@@ -152,6 +159,7 @@ public class Image {
 
 	/**
 	 * If the built image should be pushed to a registry.
+	 *
 	 * @return {@code true} if the image should be published
 	 */
 	public Boolean getPublish() {
@@ -164,6 +172,7 @@ public class Image {
 
 	/**
 	 * Returns the network the build container will connect to.
+	 *
 	 * @return the network
 	 */
 	public String getNetwork() {

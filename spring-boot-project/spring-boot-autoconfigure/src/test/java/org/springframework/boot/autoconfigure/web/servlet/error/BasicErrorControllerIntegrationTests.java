@@ -84,7 +84,7 @@ class BasicErrorControllerIntegrationTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void testErrorForMachineClientDefault() {
 		load();
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl("?trace=true"), Map.class);
@@ -137,7 +137,7 @@ class BasicErrorControllerIntegrationTests {
 				"No message available", "/noMessage");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void exceptionWithStackTraceAndMessage(String path) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl(path), Map.class);
 		assertErrorAttributes(entity.getBody(), "500", "Internal Server Error", IllegalStateException.class,
@@ -145,7 +145,7 @@ class BasicErrorControllerIntegrationTests {
 		assertThat(entity.getBody()).containsKey("trace");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void exceptionWithoutStackTraceAndMessage(String path) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl(path), Map.class);
 		assertErrorAttributes(entity.getBody(), "500", "Internal Server Error", IllegalStateException.class, null, "/");
@@ -258,21 +258,21 @@ class BasicErrorControllerIntegrationTests {
 		bindingExceptionWithoutMessage("?message=true");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void bindingExceptionWithErrors(String param) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl("/bind" + param), Map.class);
 		assertErrorAttributes(entity.getBody(), "400", "Bad Request", BindException.class, null, "/bind");
 		assertThat(entity.getBody()).containsKey("errors");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void bindingExceptionWithoutErrors(String param) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl("/bind" + param), Map.class);
 		assertErrorAttributes(entity.getBody(), "400", "Bad Request", BindException.class, null, "/bind");
 		assertThat(entity.getBody()).doesNotContainKey("errors");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void bindingExceptionWithMessage(String param) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl("/bind" + param), Map.class);
 		assertErrorAttributes(entity.getBody(), "400", "Bad Request", BindException.class,
@@ -280,7 +280,7 @@ class BasicErrorControllerIntegrationTests {
 		assertThat(entity.getBody()).doesNotContainKey("errors");
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void bindingExceptionWithoutMessage(String param) {
 		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(createUrl("/bind" + param), Map.class);
 		assertErrorAttributes(entity.getBody(), "400", "Bad Request", BindException.class, null, "/bind");
@@ -288,7 +288,7 @@ class BasicErrorControllerIntegrationTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void testRequestBodyValidationForMachineClient() {
 		load("--server.error.include-exception=true");
 		RequestEntity request = RequestEntity.post(URI.create(createUrl("/bodyValidation")))
@@ -300,7 +300,7 @@ class BasicErrorControllerIntegrationTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void testBindingExceptionForMachineClientDefault() {
 		load();
 		RequestEntity request = RequestEntity.get(URI.create(createUrl("/bind?trace=true,message=true")))
@@ -333,13 +333,12 @@ class BasicErrorControllerIntegrationTests {
 	}
 
 	private void assertErrorAttributes(Map<?, ?> content, String status, String error, Class<?> exception,
-			String message, String path) {
+									   String message, String path) {
 		assertThat(content.get("status").toString()).as("Wrong status").isEqualTo(status);
 		assertThat(content.get("error")).as("Wrong error").isEqualTo(error);
 		if (exception != null) {
 			assertThat(content.get("exception")).as("Wrong exception").isEqualTo(exception.getName());
-		}
-		else {
+		} else {
 			assertThat(content.containsKey("exception")).as("Exception attribute should not be set").isFalse();
 		}
 		assertThat(content.get("message")).as("Wrong message").isEqualTo(message);
@@ -363,9 +362,9 @@ class BasicErrorControllerIntegrationTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@ImportAutoConfiguration({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+	@ImportAutoConfiguration({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	private @interface MinimalWebConfiguration {
 
 	}
@@ -385,7 +384,7 @@ class BasicErrorControllerIntegrationTests {
 			return new AbstractView() {
 				@Override
 				protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
-						HttpServletResponse response) throws Exception {
+													   HttpServletResponse response) throws Exception {
 					response.getWriter().write("ERROR_BEAN");
 				}
 			};

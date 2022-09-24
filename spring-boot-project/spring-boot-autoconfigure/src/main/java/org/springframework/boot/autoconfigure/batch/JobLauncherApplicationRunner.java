@@ -97,10 +97,11 @@ public class JobLauncherApplicationRunner implements ApplicationRunner, Ordered,
 
 	/**
 	 * Create a new {@link JobLauncherApplicationRunner}.
-	 * @param jobLauncher to launch jobs
-	 * @param jobExplorer to check the job repository for previous executions
+	 *
+	 * @param jobLauncher   to launch jobs
+	 * @param jobExplorer   to check the job repository for previous executions
 	 * @param jobRepository to check if a job instance exists with the given parameters
-	 * when running a job
+	 *                      when running a job
 	 */
 	public JobLauncherApplicationRunner(JobLauncher jobLauncher, JobExplorer jobExplorer, JobRepository jobRepository) {
 		Assert.notNull(jobLauncher, "JobLauncher must not be null");
@@ -184,8 +185,7 @@ public class JobLauncherApplicationRunner implements ApplicationRunner, Ordered,
 						continue;
 					}
 					execute(job, jobParameters);
-				}
-				catch (NoSuchJobException ex) {
+				} catch (NoSuchJobException ex) {
 					logger.debug(LogMessage.format("No job found in registry for job name: %s", jobName));
 				}
 			}

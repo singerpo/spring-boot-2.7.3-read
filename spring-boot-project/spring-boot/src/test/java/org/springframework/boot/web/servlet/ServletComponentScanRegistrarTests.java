@@ -120,13 +120,13 @@ class ServletComponentScanRegistrarTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ServletComponentScan({ "com.example.foo", "com.example.bar" })
+	@ServletComponentScan({"com.example.foo", "com.example.bar"})
 	static class ValuePackages {
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ServletComponentScan(basePackages = { "com.example.foo", "com.example.bar" })
+	@ServletComponentScan(basePackages = {"com.example.foo", "com.example.bar"})
 	static class BasePackages {
 
 	}

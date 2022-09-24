@@ -38,8 +38,9 @@ public class AvailabilityChangeEvent<S extends AvailabilityState> extends Payloa
 
 	/**
 	 * Create a new {@link AvailabilityChangeEvent} instance.
+	 *
 	 * @param source the source of the event
-	 * @param state the availability state (never {@code null})
+	 * @param state  the availability state (never {@code null})
 	 */
 	public AvailabilityChangeEvent(Object source, S state) {
 		super(source, state);
@@ -47,6 +48,7 @@ public class AvailabilityChangeEvent<S extends AvailabilityState> extends Payloa
 
 	/**
 	 * Return the changed availability state.
+	 *
 	 * @return the availability state
 	 */
 	public S getState() {
@@ -69,9 +71,10 @@ public class AvailabilityChangeEvent<S extends AvailabilityState> extends Payloa
 	/**
 	 * Convenience method that can be used to publish an {@link AvailabilityChangeEvent}
 	 * to the given application context.
-	 * @param <S> the availability state type
+	 *
+	 * @param <S>     the availability state type
 	 * @param context the context used to publish the event
-	 * @param state the changed availability state
+	 * @param state   the changed availability state
 	 */
 	public static <S extends AvailabilityState> void publish(ApplicationContext context, S state) {
 		Assert.notNull(context, "Context must not be null");
@@ -81,13 +84,14 @@ public class AvailabilityChangeEvent<S extends AvailabilityState> extends Payloa
 	/**
 	 * Convenience method that can be used to publish an {@link AvailabilityChangeEvent}
 	 * to the given application context.
-	 * @param <S> the availability state type
+	 *
+	 * @param <S>       the availability state type
 	 * @param publisher the publisher used to publish the event
-	 * @param source the source of the event
-	 * @param state the changed availability state
+	 * @param source    the source of the event
+	 * @param state     the changed availability state
 	 */
 	public static <S extends AvailabilityState> void publish(ApplicationEventPublisher publisher, Object source,
-			S state) {
+															 S state) {
 		Assert.notNull(publisher, "Publisher must not be null");
 		publisher.publishEvent(new AvailabilityChangeEvent<>(source, state));
 	}

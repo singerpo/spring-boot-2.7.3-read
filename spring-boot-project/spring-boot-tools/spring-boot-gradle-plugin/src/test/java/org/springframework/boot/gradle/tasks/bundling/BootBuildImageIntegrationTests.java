@@ -423,8 +423,7 @@ class BootBuildImageIntegrationTests {
 			if (file.isDirectory()) {
 				writeTarEntry(tar, name + "/", mode);
 				writeDirectoryToTar(tar, file, baseDirPath);
-			}
-			else {
+			} else {
 				writeTarEntry(tar, file, name, mode);
 			}
 		}

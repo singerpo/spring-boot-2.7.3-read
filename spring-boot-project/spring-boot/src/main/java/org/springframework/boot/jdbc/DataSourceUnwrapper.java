@@ -44,14 +44,15 @@ public final class DataSourceUnwrapper {
 	/**
 	 * Return an object that implements the given {@code target} type, unwrapping delegate
 	 * or proxy if necessary using the specified {@code unwrapInterface}.
-	 * @param dataSource the datasource to handle
+	 *
+	 * @param dataSource      the datasource to handle
 	 * @param unwrapInterface the interface that the target type must implement
-	 * @param target the type that the result must implement
-	 * @param <I> the interface that the target type must implement
-	 * @param <T> the target type
+	 * @param target          the type that the result must implement
+	 * @param <I>             the interface that the target type must implement
+	 * @param <T>             the target type
 	 * @return an object that implements the target type or {@code null}
-	 * @since 2.3.8
 	 * @see Wrapper#unwrap(Class)
+	 * @since 2.3.8
 	 */
 	public static <I, T extends I> T unwrap(DataSource dataSource, Class<I> unwrapInterface, Class<T> target) {
 		if (target.isInstance(dataSource)) {
@@ -81,9 +82,10 @@ public final class DataSourceUnwrapper {
 	 * or proxy if necessary. Consider using {@link #unwrap(DataSource, Class, Class)} as
 	 * {@link Wrapper#unwrap(Class) unwrapping} won't be considered if {@code target} is
 	 * not an interface.
+	 *
 	 * @param dataSource the datasource to handle
-	 * @param target the type that the result must implement
-	 * @param <T> the target type
+	 * @param target     the type that the result must implement
+	 * @param <T>        the target type
 	 * @return an object that implements the target type or {@code null}
 	 */
 	public static <T> T unwrap(DataSource dataSource, Class<T> target) {
@@ -95,8 +97,7 @@ public final class DataSourceUnwrapper {
 			if (target.isInterface() && wrapper.isWrapperFor(target)) {
 				return wrapper.unwrap(target);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Continue
 		}
 		return null;

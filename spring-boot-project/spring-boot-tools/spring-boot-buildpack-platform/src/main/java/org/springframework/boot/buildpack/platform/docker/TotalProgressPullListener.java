@@ -28,11 +28,12 @@ import java.util.function.Consumer;
  */
 public class TotalProgressPullListener extends TotalProgressListener<PullImageUpdateEvent> {
 
-	private static final String[] TRACKED_STATUS_KEYS = { "Downloading", "Extracting" };
+	private static final String[] TRACKED_STATUS_KEYS = {"Downloading", "Extracting"};
 
 	/**
 	 * Create a new {@link TotalProgressPullListener} that prints a progress bar to
 	 * {@link System#out}.
+	 *
 	 * @param prefix the prefix to output
 	 */
 	public TotalProgressPullListener(String prefix) {
@@ -42,8 +43,9 @@ public class TotalProgressPullListener extends TotalProgressListener<PullImageUp
 	/**
 	 * Create a new {@link TotalProgressPullListener} that sends {@link TotalProgressEvent
 	 * events} to the given consumer.
+	 *
 	 * @param consumer the consumer that receives {@link TotalProgressEvent progress
-	 * events}
+	 *                 events}
 	 */
 	public TotalProgressPullListener(Consumer<TotalProgressEvent> consumer) {
 		super(consumer, TRACKED_STATUS_KEYS);

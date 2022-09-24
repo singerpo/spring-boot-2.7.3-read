@@ -34,11 +34,11 @@ class MyUserDocumentationTests {
 	@Test
 	fun listUsers(@Autowired documentationSpec: RequestSpecification?, @LocalServerPort port: Int) {
 		RestAssured.given(documentationSpec)
-			.filter(RestAssuredRestDocumentation.document("list-users"))
-			.`when`()
-			.port(port)["/"]
-			.then().assertThat()
-			.statusCode(Matchers.`is`(200))
+				.filter(RestAssuredRestDocumentation.document("list-users"))
+				.`when`()
+				.port(port)["/"]
+				.then().assertThat()
+				.statusCode(Matchers.`is`(200))
 	}
 
 }

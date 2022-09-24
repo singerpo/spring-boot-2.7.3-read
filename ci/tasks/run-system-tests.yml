@@ -1,11 +1,11 @@
 ---
 platform: linux
 inputs:
-- name: git-repo
+  - name: git-repo
 outputs:
-- name: git-repo
+  - name: git-repo
 caches:
-- path: gradle
+  - path: gradle
 params:
   BRANCH:
   CI: true

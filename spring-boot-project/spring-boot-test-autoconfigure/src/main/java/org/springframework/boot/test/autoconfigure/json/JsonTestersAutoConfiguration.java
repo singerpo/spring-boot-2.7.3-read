@@ -53,11 +53,11 @@ import org.springframework.util.ReflectionUtils;
  *
  * @author Phillip Webb
  * @author Eddú Meléndez
- * @since 1.4.0
  * @see AutoConfigureJsonTesters
+ * @since 1.4.0
  */
 @AutoConfiguration(
-		after = { JacksonAutoConfiguration.class, GsonAutoConfiguration.class, JsonbAutoConfiguration.class })
+		after = {JacksonAutoConfiguration.class, GsonAutoConfiguration.class, JsonbAutoConfiguration.class})
 @ConditionalOnClass(name = "org.assertj.core.api.Assert")
 @ConditionalOnProperty("spring.test.jsontesters.enabled")
 public class JsonTestersAutoConfiguration {
@@ -174,8 +174,7 @@ public class JsonTestersAutoConfiguration {
 		private void processField(Object bean, Field field) {
 			if (AbstractJsonMarshalTester.class.isAssignableFrom(field.getType())) {
 				initializeTester(bean, field, bean.getClass(), ResolvableType.forField(field).getGeneric());
-			}
-			else if (BasicJsonTester.class.isAssignableFrom(field.getType())) {
+			} else if (BasicJsonTester.class.isAssignableFrom(field.getType())) {
 				initializeTester(bean, field, bean.getClass());
 			}
 		}

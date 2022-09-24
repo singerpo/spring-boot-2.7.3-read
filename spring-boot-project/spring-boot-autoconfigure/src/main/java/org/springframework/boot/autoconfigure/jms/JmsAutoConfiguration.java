@@ -50,7 +50,7 @@ import org.springframework.jms.support.destination.DestinationResolver;
  * @since 1.0.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ Message.class, JmsTemplate.class })
+@ConditionalOnClass({Message.class, JmsTemplate.class})
 @ConditionalOnBean(ConnectionFactory.class)
 @EnableConfigurationProperties(JmsProperties.class)
 @Import(JmsAnnotationDrivenConfiguration.class)
@@ -66,8 +66,8 @@ public class JmsAutoConfiguration {
 		private final ObjectProvider<MessageConverter> messageConverter;
 
 		public JmsTemplateConfiguration(JmsProperties properties,
-				ObjectProvider<DestinationResolver> destinationResolver,
-				ObjectProvider<MessageConverter> messageConverter) {
+										ObjectProvider<DestinationResolver> destinationResolver,
+										ObjectProvider<MessageConverter> messageConverter) {
 			this.properties = properties;
 			this.destinationResolver = destinationResolver;
 			this.messageConverter = messageConverter;

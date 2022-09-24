@@ -40,28 +40,30 @@ public class ApplicationStartedEvent extends SpringApplicationEvent {
 
 	/**
 	 * Create a new {@link ApplicationStartedEvent} instance.
+	 *
 	 * @param application the current application
-	 * @param args the arguments the application is running with
-	 * @param context the context that was being created
+	 * @param args        the arguments the application is running with
+	 * @param context     the context that was being created
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #ApplicationStartedEvent(SpringApplication, String[], ConfigurableApplicationContext, Duration)}
 	 */
 	@Deprecated
 	public ApplicationStartedEvent(SpringApplication application, String[] args,
-			ConfigurableApplicationContext context) {
+								   ConfigurableApplicationContext context) {
 		this(application, args, context, null);
 	}
 
 	/**
 	 * Create a new {@link ApplicationStartedEvent} instance.
+	 *
 	 * @param application the current application
-	 * @param args the arguments the application is running with
-	 * @param context the context that was being created
-	 * @param timeTaken the time taken to start the application
+	 * @param args        the arguments the application is running with
+	 * @param context     the context that was being created
+	 * @param timeTaken   the time taken to start the application
 	 * @since 2.6.0
 	 */
 	public ApplicationStartedEvent(SpringApplication application, String[] args, ConfigurableApplicationContext context,
-			Duration timeTaken) {
+								   Duration timeTaken) {
 		super(application, args);
 		this.context = context;
 		this.timeTaken = timeTaken;
@@ -69,6 +71,7 @@ public class ApplicationStartedEvent extends SpringApplicationEvent {
 
 	/**
 	 * Return the application context.
+	 *
 	 * @return the context
 	 */
 	public ConfigurableApplicationContext getApplicationContext() {
@@ -77,6 +80,7 @@ public class ApplicationStartedEvent extends SpringApplicationEvent {
 
 	/**
 	 * Return the time taken to start the application, or {@code null} if unknown.
+	 *
 	 * @return the startup time
 	 * @since 2.6.0
 	 */

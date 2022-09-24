@@ -105,8 +105,7 @@ class DefaultEndpointObjectNameFactoryTests {
 		try {
 			return new DefaultEndpointObjectNameFactory(this.properties, this.jmxProperties, this.mBeanServer,
 					this.contextId).getObjectName(endpoint);
-		}
-		catch (MalformedObjectNameException ex) {
+		} catch (MalformedObjectNameException ex) {
 			throw new AssertionError("Invalid object name", ex);
 		}
 	}

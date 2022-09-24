@@ -42,8 +42,7 @@ class ClearCachesApplicationListener implements ApplicationListener<ContextRefre
 		try {
 			Method clearCacheMethod = classLoader.getClass().getDeclaredMethod("clearCache");
 			clearCacheMethod.invoke(classLoader);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 		clearClassLoaderCaches(classLoader.getParent());

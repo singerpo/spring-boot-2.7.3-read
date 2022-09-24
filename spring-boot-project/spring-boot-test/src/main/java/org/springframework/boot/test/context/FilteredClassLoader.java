@@ -47,6 +47,7 @@ public class FilteredClassLoader extends URLClassLoader implements SmartClassLoa
 
 	/**
 	 * Create a {@link FilteredClassLoader} that hides the given classes.
+	 *
 	 * @param hiddenClasses the classes to hide
 	 */
 	public FilteredClassLoader(Class<?>... hiddenClasses) {
@@ -55,6 +56,7 @@ public class FilteredClassLoader extends URLClassLoader implements SmartClassLoa
 
 	/**
 	 * Create a {@link FilteredClassLoader} that hides classes from the given packages.
+	 *
 	 * @param hiddenPackages the packages to hide
 	 */
 	public FilteredClassLoader(String... hiddenPackages) {
@@ -64,6 +66,7 @@ public class FilteredClassLoader extends URLClassLoader implements SmartClassLoa
 	/**
 	 * Create a {@link FilteredClassLoader} that hides resources from the given
 	 * {@link ClassPathResource classpath resources}.
+	 *
 	 * @param hiddenResources the resources to hide
 	 * @since 2.1.0
 	 */
@@ -73,10 +76,11 @@ public class FilteredClassLoader extends URLClassLoader implements SmartClassLoa
 
 	/**
 	 * Create a {@link FilteredClassLoader} that filters based on the given predicate.
+	 *
 	 * @param filters a set of filters to determine when a class name or resource should
-	 * be hidden. A {@link Predicate#test(Object) result} of {@code true} indicates a
-	 * filtered class or resource. The input of the predicate can either be the binary
-	 * name of a class or a resource name.
+	 *                be hidden. A {@link Predicate#test(Object) result} of {@code true} indicates a
+	 *                filtered class or resource. The input of the predicate can either be the binary
+	 *                name of a class or a resource name.
 	 */
 	@SafeVarargs
 	@SuppressWarnings("varargs")
@@ -85,7 +89,7 @@ public class FilteredClassLoader extends URLClassLoader implements SmartClassLoa
 	}
 
 	private FilteredClassLoader(Collection<Predicate<String>> classesFilters,
-			Collection<Predicate<String>> resourcesFilters) {
+								Collection<Predicate<String>> resourcesFilters) {
 		super(new URL[0], FilteredClassLoader.class.getClassLoader());
 		this.classesFilters = classesFilters;
 		this.resourcesFilters = resourcesFilters;

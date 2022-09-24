@@ -61,8 +61,7 @@ class OracleUcpDataSourcePoolMetadataTests
 			dataSource.setMinPoolSize(minSize);
 			dataSource.setMaxPoolSize(maxSize);
 			return dataSource;
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 			throw new IllegalStateException("Error while configuring PoolDataSource", ex);
 		}
 	}

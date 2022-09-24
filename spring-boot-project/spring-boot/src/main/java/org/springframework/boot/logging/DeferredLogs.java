@@ -41,6 +41,7 @@ public class DeferredLogs implements DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.
@@ -52,6 +53,7 @@ public class DeferredLogs implements DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.
@@ -63,6 +65,7 @@ public class DeferredLogs implements DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.

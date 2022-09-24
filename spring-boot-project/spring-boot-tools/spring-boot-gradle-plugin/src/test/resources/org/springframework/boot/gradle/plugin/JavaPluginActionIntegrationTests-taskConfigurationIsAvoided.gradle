@@ -1,8 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '{version}'
-	id 'java'
+    id 'org.springframework.boot' version '{version}'
+    id 'java'
 }
 
 tasks.configureEach {
-	println "Configuring ${it.path}"
+    println "Configuring ${it.path}"
 }

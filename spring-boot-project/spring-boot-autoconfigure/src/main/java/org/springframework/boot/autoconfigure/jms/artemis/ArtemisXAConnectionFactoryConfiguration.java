@@ -43,16 +43,16 @@ import org.springframework.context.annotation.Primary;
 class ArtemisXAConnectionFactoryConfiguration {
 
 	@Primary
-	@Bean(name = { "jmsConnectionFactory", "xaJmsConnectionFactory" })
+	@Bean(name = {"jmsConnectionFactory", "xaJmsConnectionFactory"})
 	ConnectionFactory jmsConnectionFactory(ListableBeanFactory beanFactory, ArtemisProperties properties,
-			XAConnectionFactoryWrapper wrapper) throws Exception {
+										   XAConnectionFactoryWrapper wrapper) throws Exception {
 		return wrapper.wrapConnectionFactory(new ArtemisConnectionFactoryFactory(beanFactory, properties)
 				.createConnectionFactory(ActiveMQXAConnectionFactory.class));
 	}
 
 	@Bean
 	ActiveMQXAConnectionFactory nonXaJmsConnectionFactory(ListableBeanFactory beanFactory,
-			ArtemisProperties properties) {
+														  ArtemisProperties properties) {
 		return new ArtemisConnectionFactoryFactory(beanFactory, properties)
 				.createConnectionFactory(ActiveMQXAConnectionFactory.class);
 	}

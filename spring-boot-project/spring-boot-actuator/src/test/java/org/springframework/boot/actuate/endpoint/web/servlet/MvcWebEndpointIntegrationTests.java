@@ -128,8 +128,7 @@ class MvcWebEndpointIntegrationTests
 		try (AnnotationConfigServletWebServerApplicationContext context = new AnnotationConfigServletWebServerApplicationContext()) {
 			if (isPatternParser) {
 				context.register(WebMvcConfiguration.class);
-			}
-			else {
+			} else {
 				context.register(PathMatcherWebMvcConfiguration.class);
 			}
 			context.register(TestEndpointConfiguration.class);
@@ -140,8 +139,7 @@ class MvcWebEndpointIntegrationTests
 				ServletRequestPathUtils.parseAndCache(request);
 				// Trigger initLookupPath
 				bean.getHandler(request);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new RuntimeException(ex);
 			}
 			return bean.match(request, "/spring");
@@ -154,9 +152,9 @@ class MvcWebEndpointIntegrationTests
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			ServletWebServerFactoryAutoConfiguration.class, WebMvcAutoConfiguration.class,
-			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class })
+			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class})
 	static class WebMvcConfiguration {
 
 		@Bean
@@ -166,7 +164,7 @@ class MvcWebEndpointIntegrationTests
 
 		@Bean
 		WebMvcEndpointHandlerMapping webEndpointHandlerMapping(Environment environment,
-				WebEndpointDiscoverer endpointDiscoverer, EndpointMediaTypes endpointMediaTypes) {
+															   WebEndpointDiscoverer endpointDiscoverer, EndpointMediaTypes endpointMediaTypes) {
 			CorsConfiguration corsConfiguration = new CorsConfiguration();
 			corsConfiguration.setAllowedOrigins(Arrays.asList("https://example.com"));
 			corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST"));
@@ -180,9 +178,9 @@ class MvcWebEndpointIntegrationTests
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			ServletWebServerFactoryAutoConfiguration.class, WebMvcAutoConfiguration.class,
-			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class })
+			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class})
 	static class PathMatcherWebMvcConfiguration {
 
 		@Bean
@@ -192,7 +190,7 @@ class MvcWebEndpointIntegrationTests
 
 		@Bean
 		WebMvcEndpointHandlerMapping webEndpointHandlerMapping(Environment environment,
-				WebEndpointDiscoverer endpointDiscoverer, EndpointMediaTypes endpointMediaTypes) {
+															   WebEndpointDiscoverer endpointDiscoverer, EndpointMediaTypes endpointMediaTypes) {
 			CorsConfiguration corsConfiguration = new CorsConfiguration();
 			corsConfiguration.setAllowedOrigins(Arrays.asList("https://example.com"));
 			corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST"));
@@ -215,15 +213,14 @@ class MvcWebEndpointIntegrationTests
 
 				@Override
 				protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-						FilterChain filterChain) throws ServletException, IOException {
+												FilterChain filterChain) throws ServletException, IOException {
 					SecurityContext context = SecurityContextHolder.createEmptyContext();
 					context.setAuthentication(new UsernamePasswordAuthenticationToken("Alice", "secret",
 							Arrays.asList(new SimpleGrantedAuthority("ROLE_ACTUATOR"))));
 					SecurityContextHolder.setContext(context);
 					try {
 						filterChain.doFilter(new SecurityContextHolderAwareRequestWrapper(request, "ROLE_"), response);
-					}
-					finally {
+					} finally {
 						SecurityContextHolder.clearContext();
 					}
 				}

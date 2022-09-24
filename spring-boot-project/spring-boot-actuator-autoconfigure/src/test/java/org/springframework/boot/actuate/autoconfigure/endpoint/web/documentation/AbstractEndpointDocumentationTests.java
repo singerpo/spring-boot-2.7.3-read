@@ -55,8 +55,8 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
  *
  * @author Andy Wilkinson
  */
-@TestPropertySource(properties = { "spring.jackson.serialization.indent_output=true",
-		"management.endpoints.web.exposure.include=*", "spring.jackson.default-property-inclusion=non_null" })
+@TestPropertySource(properties = {"spring.jackson.serialization.indent_output=true",
+		"management.endpoints.web.exposure.include=*", "spring.jackson.default-property-inclusion=non_null"})
 public abstract class AbstractEndpointDocumentationTests {
 
 	protected static String describeEnumValues(Class<? extends Enum<?>> enumType) {
@@ -85,13 +85,11 @@ public abstract class AbstractEndpointDocumentationTests {
 				}
 				if (target instanceof Map) {
 					parent.put(keys[keys.length - 1], select((Map<String, Object>) target, filter));
-				}
-				else {
+				} else {
 					parent.put(keys[keys.length - 1], select((List<Object>) target, filter));
 				}
 				return objectMapper.writeValueAsBytes(payload);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		});
@@ -117,11 +115,11 @@ public abstract class AbstractEndpointDocumentationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class, EndpointAutoConfiguration.class,
 			WebEndpointAutoConfiguration.class, WebMvcEndpointManagementContextConfiguration.class,
 			WebFluxEndpointManagementContextConfiguration.class, PropertyPlaceholderAutoConfiguration.class,
-			WebFluxAutoConfiguration.class, HttpHandlerAutoConfiguration.class })
+			WebFluxAutoConfiguration.class, HttpHandlerAutoConfiguration.class})
 	static class BaseDocumentationConfiguration {
 
 	}

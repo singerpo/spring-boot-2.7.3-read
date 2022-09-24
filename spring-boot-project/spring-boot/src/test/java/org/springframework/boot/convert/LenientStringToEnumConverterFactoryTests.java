@@ -69,8 +69,7 @@ class LenientStringToEnumConverterFactoryTests {
 			LocaleSensitiveEnum result = conversionService.convert("accept-case-insensitive-properties",
 					LocaleSensitiveEnum.class);
 			assertThat(result).isEqualTo(LocaleSensitiveEnum.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
-		}
-		finally {
+		} finally {
 			Locale.setDefault(defaultLocale);
 		}
 	}
@@ -124,7 +123,6 @@ class LenientStringToEnumConverterFactoryTests {
 	enum TestSubclassEnum {
 
 		ONE {
-
 			@Override
 			public String toString() {
 				return "foo";

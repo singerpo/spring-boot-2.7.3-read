@@ -40,6 +40,7 @@ public final class FilePermissions {
 	 * Return the integer representation of the file permissions for a path, where the
 	 * integer value conforms to the
 	 * <a href="https://en.wikipedia.org/wiki/Umask">umask</a> octal notation.
+	 *
 	 * @param path the file path
 	 * @return the integer representation
 	 * @throws IOException if path permissions cannot be read
@@ -55,6 +56,7 @@ public final class FilePermissions {
 	 * Return the integer representation of a set of Posix file permissions, where the
 	 * integer value conforms to the
 	 * <a href="https://en.wikipedia.org/wiki/Umask">umask</a> octal notation.
+	 *
 	 * @param permissions the set of {@code PosixFilePermission}s
 	 * @return the integer representation
 	 */
@@ -70,7 +72,7 @@ public final class FilePermissions {
 	}
 
 	private static int permissionToUmask(Collection<PosixFilePermission> permissions, PosixFilePermission execute,
-			PosixFilePermission write, PosixFilePermission read) {
+										 PosixFilePermission write, PosixFilePermission read) {
 		int value = 0;
 		if (permissions.contains(execute)) {
 			value += 1;

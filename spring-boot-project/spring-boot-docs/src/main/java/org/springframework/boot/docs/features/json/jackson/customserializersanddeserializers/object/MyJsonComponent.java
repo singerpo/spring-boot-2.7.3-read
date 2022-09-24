@@ -47,7 +47,7 @@ public class MyJsonComponent {
 
 		@Override
 		protected MyObject deserializeObject(JsonParser jsonParser, DeserializationContext context, ObjectCodec codec,
-				JsonNode tree) throws IOException {
+											 JsonNode tree) throws IOException {
 			String name = nullSafeValue(tree.get("name"), String.class);
 			int age = nullSafeValue(tree.get("age"), Integer.class);
 			return new MyObject(name, age);

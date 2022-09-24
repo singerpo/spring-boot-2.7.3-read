@@ -498,6 +498,7 @@ public class WebMvcProperties {
 
 	/**
 	 * Matching strategy options.
+	 *
 	 * @since 2.4.0
 	 */
 	public enum MatchingStrategy {

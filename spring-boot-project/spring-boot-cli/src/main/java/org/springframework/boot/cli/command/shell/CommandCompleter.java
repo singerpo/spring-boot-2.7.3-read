@@ -51,7 +51,7 @@ public class CommandCompleter extends StringsCompleter {
 	private final ConsoleReader console;
 
 	public CommandCompleter(ConsoleReader consoleReader, ArgumentDelimiter argumentDelimiter,
-			Iterable<Command> commands) {
+							Iterable<Command> commands) {
 		this.console = consoleReader;
 		List<String> names = new ArrayList<>();
 		for (Command command : commands) {
@@ -111,8 +111,7 @@ public class CommandCompleter extends StringsCompleter {
 						optionHelpLine.getUsage()));
 			}
 			this.console.drawLine();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			Log.error(ex.getMessage() + " (" + ex.getClass().getName() + ")");
 		}
 	}

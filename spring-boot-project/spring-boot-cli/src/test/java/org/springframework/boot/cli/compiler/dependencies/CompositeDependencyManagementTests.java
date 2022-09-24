@@ -78,7 +78,7 @@ class CompositeDependencyManagementTests {
 				.willReturn(Arrays.asList(new Dependency("test", "artifact", "1.2.4")));
 		assertThat(new CompositeDependencyManagement(this.dependencyManagement1, this.dependencyManagement2)
 				.getDependencies()).containsOnly(new Dependency("test", "artifact", "1.2.3"),
-						new Dependency("test", "artifact", "1.2.4"));
+				new Dependency("test", "artifact", "1.2.4"));
 	}
 
 }

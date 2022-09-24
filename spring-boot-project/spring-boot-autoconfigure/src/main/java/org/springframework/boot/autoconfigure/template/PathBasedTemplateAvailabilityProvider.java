@@ -42,7 +42,7 @@ public abstract class PathBasedTemplateAvailabilityProvider implements TemplateA
 
 	@SuppressWarnings("unchecked")
 	public PathBasedTemplateAvailabilityProvider(String className,
-			Class<? extends TemplateAvailabilityProperties> propertiesClass, String propertyPrefix) {
+												 Class<? extends TemplateAvailabilityProperties> propertiesClass, String propertyPrefix) {
 		this.className = className;
 		this.propertiesClass = (Class<TemplateAvailabilityProperties>) propertiesClass;
 		this.propertyPrefix = propertyPrefix;
@@ -50,7 +50,7 @@ public abstract class PathBasedTemplateAvailabilityProvider implements TemplateA
 
 	@Override
 	public boolean isTemplateAvailable(String view, Environment environment, ClassLoader classLoader,
-			ResourceLoader resourceLoader) {
+									   ResourceLoader resourceLoader) {
 		if (ClassUtils.isPresent(this.className, classLoader)) {
 			Binder binder = Binder.get(environment);
 			TemplateAvailabilityProperties properties = binder.bindOrCreate(this.propertyPrefix, this.propertiesClass);
@@ -60,7 +60,7 @@ public abstract class PathBasedTemplateAvailabilityProvider implements TemplateA
 	}
 
 	private boolean isTemplateAvailable(String view, ResourceLoader resourceLoader,
-			TemplateAvailabilityProperties properties) {
+										TemplateAvailabilityProperties properties) {
 		String location = properties.getPrefix() + view + properties.getSuffix();
 		for (String path : properties.getLoaderPath()) {
 			if (resourceLoader.getResource(path + location).exists()) {

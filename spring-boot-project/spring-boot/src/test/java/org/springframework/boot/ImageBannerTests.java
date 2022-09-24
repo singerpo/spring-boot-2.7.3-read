@@ -208,8 +208,7 @@ class ImageBannerTests {
 		try {
 			banner.printBanner(environment, getClass(), new PrintStream(out, false, "UTF-8"));
 			return out.toString("UTF-8");
-		}
-		catch (UnsupportedEncodingException ex) {
+		} catch (UnsupportedEncodingException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

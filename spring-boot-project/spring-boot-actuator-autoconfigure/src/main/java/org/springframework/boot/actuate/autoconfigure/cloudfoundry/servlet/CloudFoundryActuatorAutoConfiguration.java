@@ -76,8 +76,8 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @author Madhura Bhave
  * @since 2.0.0
  */
-@AutoConfiguration(after = { ServletManagementContextAutoConfiguration.class, HealthEndpointAutoConfiguration.class,
-		InfoEndpointAutoConfiguration.class })
+@AutoConfiguration(after = {ServletManagementContextAutoConfiguration.class, HealthEndpointAutoConfiguration.class,
+		InfoEndpointAutoConfiguration.class})
 @ConditionalOnProperty(prefix = "management.cloudfoundry", name = "enabled", matchIfMissing = true)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass(DispatcherServlet.class)
@@ -88,7 +88,7 @@ public class CloudFoundryActuatorAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnAvailableEndpoint
-	@ConditionalOnBean({ HealthEndpoint.class, HealthEndpointWebExtension.class })
+	@ConditionalOnBean({HealthEndpoint.class, HealthEndpointWebExtension.class})
 	public CloudFoundryHealthEndpointWebExtension cloudFoundryHealthEndpointWebExtension(
 			HealthEndpointWebExtension healthEndpointWebExtension) {
 		return new CloudFoundryHealthEndpointWebExtension(healthEndpointWebExtension);
@@ -97,9 +97,9 @@ public class CloudFoundryActuatorAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnAvailableEndpoint
-	@ConditionalOnBean({ InfoEndpoint.class, GitProperties.class })
+	@ConditionalOnBean({InfoEndpoint.class, GitProperties.class})
 	public CloudFoundryInfoEndpointWebExtension cloudFoundryInfoEndpointWebExtension(GitProperties properties,
-			ObjectProvider<InfoContributor> infoContributors) {
+																					 ObjectProvider<InfoContributor> infoContributors) {
 		List<InfoContributor> contributors = infoContributors.orderedStream()
 				.map((infoContributor) -> (infoContributor instanceof GitInfoContributor)
 						? new GitInfoContributor(properties, InfoPropertiesInfoContributor.Mode.FULL) : infoContributor)
@@ -127,7 +127,7 @@ public class CloudFoundryActuatorAutoConfiguration {
 	}
 
 	private CloudFoundrySecurityInterceptor getSecurityInterceptor(RestTemplateBuilder restTemplateBuilder,
-			Environment environment) {
+																   Environment environment) {
 		CloudFoundrySecurityService cloudfoundrySecurityService = getCloudFoundrySecurityService(restTemplateBuilder,
 				environment);
 		TokenValidator tokenValidator = new TokenValidator(cloudfoundrySecurityService);
@@ -136,7 +136,7 @@ public class CloudFoundryActuatorAutoConfiguration {
 	}
 
 	private CloudFoundrySecurityService getCloudFoundrySecurityService(RestTemplateBuilder restTemplateBuilder,
-			Environment environment) {
+																	   Environment environment) {
 		String cloudControllerUrl = environment.getProperty("vcap.application.cf_api");
 		boolean skipSslValidation = environment.getProperty("management.cloudfoundry.skip-ssl-validation",
 				Boolean.class, false);
@@ -158,7 +158,7 @@ public class CloudFoundryActuatorAutoConfiguration {
 	 * specific paths. The Cloud foundry endpoints are protected by their own security
 	 * interceptor.
 	 */
-	@ConditionalOnClass({ WebSecurityCustomizer.class, WebSecurity.class })
+	@ConditionalOnClass({WebSecurityCustomizer.class, WebSecurity.class})
 	@Configuration(proxyBeanMethods = false)
 	public static class IgnoredCloudFoundryPathsWebSecurityConfiguration {
 

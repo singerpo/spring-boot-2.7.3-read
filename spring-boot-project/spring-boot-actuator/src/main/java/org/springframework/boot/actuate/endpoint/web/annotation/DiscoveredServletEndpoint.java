@@ -39,7 +39,7 @@ class DiscoveredServletEndpoint extends AbstractDiscoveredEndpoint<Operation> im
 	private final EndpointServlet endpointServlet;
 
 	DiscoveredServletEndpoint(EndpointDiscoverer<?, ?> discoverer, Object endpointBean, EndpointId id, String rootPath,
-			boolean enabledByDefault) {
+							  boolean enabledByDefault) {
 		super(discoverer, endpointBean, id, enabledByDefault, Collections.emptyList());
 		String beanType = endpointBean.getClass().getName();
 		Assert.state(endpointBean instanceof Supplier,

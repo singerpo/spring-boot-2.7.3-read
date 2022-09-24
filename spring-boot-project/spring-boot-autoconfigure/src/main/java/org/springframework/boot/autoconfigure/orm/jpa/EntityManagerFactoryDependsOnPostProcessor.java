@@ -32,14 +32,15 @@ import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
  * @author Phillip Webb
  * @author Andy Wilkinson
  * @author Andrii Hrytsiuk
- * @since 2.5.0
  * @see BeanDefinition#setDependsOn(String[])
+ * @since 2.5.0
  */
 public class EntityManagerFactoryDependsOnPostProcessor extends AbstractDependsOnBeanFactoryPostProcessor {
 
 	/**
 	 * Creates a new {@code EntityManagerFactoryDependsOnPostProcessor} that will set up
 	 * dependencies upon beans with the given names.
+	 *
 	 * @param dependsOn names of the beans to depend upon
 	 */
 	public EntityManagerFactoryDependsOnPostProcessor(String... dependsOn) {
@@ -49,6 +50,7 @@ public class EntityManagerFactoryDependsOnPostProcessor extends AbstractDependsO
 	/**
 	 * Creates a new {@code EntityManagerFactoryDependsOnPostProcessor} that will set up
 	 * dependencies upon beans with the given types.
+	 *
 	 * @param dependsOn types of the beans to depend upon
 	 */
 	public EntityManagerFactoryDependsOnPostProcessor(Class<?>... dependsOn) {

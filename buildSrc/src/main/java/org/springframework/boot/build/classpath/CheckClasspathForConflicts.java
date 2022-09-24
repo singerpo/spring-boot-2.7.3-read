@@ -70,8 +70,7 @@ public class CheckClasspathForConflicts extends DefaultTask {
 				Path root = file.toPath();
 				Files.walk(root).filter(Files::isRegularFile)
 						.forEach((entry) -> classpathContents.add(root.relativize(entry).toString(), root.toString()));
-			}
-			else {
+			} else {
 				try (JarFile jar = new JarFile(file)) {
 					for (JarEntry entry : Collections.list(jar.entries())) {
 						if (!entry.isDirectory()) {

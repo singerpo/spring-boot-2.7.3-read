@@ -73,8 +73,7 @@ public class JmsHealthIndicator extends AbstractHealthIndicator {
 								.warn("Connection failed to start within 5 seconds and will be closed.");
 						closeConnection();
 					}
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}
 			}, "jms-health-indicator").start();
@@ -85,8 +84,7 @@ public class JmsHealthIndicator extends AbstractHealthIndicator {
 		private void closeConnection() {
 			try {
 				this.connection.close();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Continue
 			}
 		}

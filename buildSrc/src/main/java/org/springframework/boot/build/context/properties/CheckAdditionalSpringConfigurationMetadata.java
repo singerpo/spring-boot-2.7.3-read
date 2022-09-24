@@ -140,8 +140,7 @@ public class CheckAdditionalSpringConfigurationMetadata extends SourceTask {
 				lines.add("");
 				if (analysis.problems.isEmpty()) {
 					lines.add("No problems found.");
-				}
-				else {
+				} else {
 					lines.addAll(analysis.problems);
 				}
 				lines.add("");

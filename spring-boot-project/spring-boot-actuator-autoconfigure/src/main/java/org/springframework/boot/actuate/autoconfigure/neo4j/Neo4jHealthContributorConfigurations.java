@@ -44,7 +44,7 @@ class Neo4jHealthContributorConfigurations {
 	static class Neo4jConfiguration extends CompositeHealthContributorConfiguration<Neo4jHealthIndicator, Driver> {
 
 		@Bean
-		@ConditionalOnMissingBean(name = { "neo4jHealthIndicator", "neo4jHealthContributor" })
+		@ConditionalOnMissingBean(name = {"neo4jHealthIndicator", "neo4jHealthContributor"})
 		HealthContributor neo4jHealthContributor(Map<String, Driver> drivers) {
 			return createContributor(drivers);
 		}
@@ -57,7 +57,7 @@ class Neo4jHealthContributorConfigurations {
 			extends CompositeReactiveHealthContributorConfiguration<Neo4jReactiveHealthIndicator, Driver> {
 
 		@Bean
-		@ConditionalOnMissingBean(name = { "neo4jHealthIndicator", "neo4jHealthContributor" })
+		@ConditionalOnMissingBean(name = {"neo4jHealthIndicator", "neo4jHealthContributor"})
 		ReactiveHealthContributor neo4jHealthContributor(Map<String, Driver> drivers) {
 			return createContributor(drivers);
 		}

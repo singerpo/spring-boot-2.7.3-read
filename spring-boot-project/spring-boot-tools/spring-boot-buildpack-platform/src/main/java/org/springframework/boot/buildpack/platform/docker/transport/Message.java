@@ -36,6 +36,7 @@ public class Message {
 
 	/**
 	 * Return the message contained in the response.
+	 *
 	 * @return the message
 	 */
 	public String getMessage() {

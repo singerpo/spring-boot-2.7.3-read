@@ -15,5 +15,5 @@
 		</plugins>
 	</build>
 </project>
-<!-- end::exclude-dependency[] -->
+		<!-- end::exclude-dependency[] -->
 

@@ -39,10 +39,10 @@ class MyControllerTests {
 	void testExample() {
 		// @formatter:off
 		given(this.userVehicleService.getVehicleDetails("sboot"))
-			.willReturn(new VehicleDetails("Honda", "Civic"));
+				.willReturn(new VehicleDetails("Honda", "Civic"));
 		this.webClient.get().uri("/sboot/vehicle").accept(MediaType.TEXT_PLAIN).exchange()
-			.expectStatus().isOk()
-			.expectBody(String.class).isEqualTo("Honda Civic");
+				.expectStatus().isOk()
+				.expectBody(String.class).isEqualTo("Honda Civic");
 		// @formatter:on
 	}
 

@@ -26,8 +26,8 @@ import org.springframework.ws.test.server.MockWebServiceClient;
  * Auto-configuration for {@link MockWebServiceClient} support.
  *
  * @author Daniil Razorenov
- * @since 2.6.0
  * @see AutoConfigureMockWebServiceClient
+ * @since 2.6.0
  */
 @AutoConfiguration
 @ConditionalOnClass(MockWebServiceClient.class)

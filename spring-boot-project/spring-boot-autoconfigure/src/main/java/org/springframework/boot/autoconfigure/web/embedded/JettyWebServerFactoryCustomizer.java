@@ -84,7 +84,7 @@ public class JettyWebServerFactoryCustomizer
 		propertyMapper.from(threadProperties::getSelectors).whenNonNull().to(factory::setSelectors);
 		propertyMapper.from(properties::getMaxHttpHeaderSize).whenNonNull().asInt(DataSize::toBytes)
 				.when(this::isPositive).to((maxHttpHeaderSize) -> factory
-						.addServerCustomizers(new MaxHttpHeaderSizeCustomizer(maxHttpHeaderSize)));
+				.addServerCustomizers(new MaxHttpHeaderSizeCustomizer(maxHttpHeaderSize)));
 		propertyMapper.from(jettyProperties::getMaxHttpFormPostSize).asInt(DataSize::toBytes).when(this::isPositive)
 				.to((maxHttpFormPostSize) -> customizeMaxHttpFormPostSize(factory, maxHttpFormPostSize));
 		propertyMapper.from(jettyProperties::getConnectionIdleTimeout).whenNonNull()
@@ -127,11 +127,9 @@ public class JettyWebServerFactoryCustomizer
 				for (Handler handler : handlers) {
 					if (handler instanceof ContextHandler) {
 						((ContextHandler) handler).setMaxFormContentSize(maxHttpFormPostSize);
-					}
-					else if (handler instanceof HandlerWrapper) {
+					} else if (handler instanceof HandlerWrapper) {
 						setHandlerMaxHttpFormPostSize(((HandlerWrapper) handler).getHandler());
-					}
-					else if (handler instanceof HandlerCollection) {
+					} else if (handler instanceof HandlerCollection) {
 						setHandlerMaxHttpFormPostSize(((HandlerCollection) handler).getHandlers());
 					}
 				}
@@ -155,14 +153,13 @@ public class JettyWebServerFactoryCustomizer
 		}
 		if (maxQueueCapacity == 0) {
 			return new SynchronousQueue<>();
-		}
-		else {
+		} else {
 			return new BlockingArrayQueue<>(maxQueueCapacity);
 		}
 	}
 
 	private void customizeAccessLog(ConfigurableJettyWebServerFactory factory,
-			ServerProperties.Jetty.Accesslog properties) {
+									ServerProperties.Jetty.Accesslog properties) {
 		factory.addServerCustomizers((server) -> {
 			RequestLogWriter logWriter = new RequestLogWriter();
 			String format = getLogFormat(properties);
@@ -185,8 +182,7 @@ public class JettyWebServerFactoryCustomizer
 	private String getLogFormat(ServerProperties.Jetty.Accesslog properties) {
 		if (properties.getCustomFormat() != null) {
 			return properties.getCustomFormat();
-		}
-		else if (ServerProperties.Jetty.Accesslog.FORMAT.EXTENDED_NCSA.equals(properties.getFormat())) {
+		} else if (ServerProperties.Jetty.Accesslog.FORMAT.EXTENDED_NCSA.equals(properties.getFormat())) {
 			return CustomRequestLog.EXTENDED_NCSA_FORMAT;
 		}
 		return CustomRequestLog.NCSA_FORMAT;

@@ -30,7 +30,8 @@ interface VersionResolver {
 	/**
 	 * Resolves the available versions for the module identified by the given
 	 * {@code groupId} and {@code artifactId}.
-	 * @param groupId module's group ID
+	 *
+	 * @param groupId    module's group ID
 	 * @param artifactId module's artifact ID
 	 * @return the available versions
 	 */

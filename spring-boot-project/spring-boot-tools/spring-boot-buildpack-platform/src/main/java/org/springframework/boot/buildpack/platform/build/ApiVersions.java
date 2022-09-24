@@ -42,6 +42,7 @@ final class ApiVersions {
 	/**
 	 * Find the latest version among the specified versions that is supported by these API
 	 * versions.
+	 *
 	 * @param others the versions to check against
 	 * @return the version
 	 */
@@ -85,6 +86,7 @@ final class ApiVersions {
 
 	/**
 	 * Factory method to parse strings into an {@link ApiVersions} instance.
+	 *
 	 * @param values the values to parse.
 	 * @return the corresponding {@link ApiVersions}
 	 * @throws IllegalArgumentException if any values could not be parsed

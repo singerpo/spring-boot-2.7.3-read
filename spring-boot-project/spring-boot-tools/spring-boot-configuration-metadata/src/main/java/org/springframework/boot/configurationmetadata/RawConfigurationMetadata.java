@@ -34,7 +34,7 @@ class RawConfigurationMetadata {
 	private final List<ConfigurationMetadataHint> hints;
 
 	RawConfigurationMetadata(List<ConfigurationMetadataSource> sources, List<ConfigurationMetadataItem> items,
-			List<ConfigurationMetadataHint> hints) {
+							 List<ConfigurationMetadataHint> hints) {
 		this.sources = new ArrayList<>(sources);
 		this.items = new ArrayList<>(items);
 		this.hints = new ArrayList<>(hints);
@@ -67,6 +67,7 @@ class RawConfigurationMetadata {
 
 	/**
 	 * Resolve the name of an item against this instance.
+	 *
 	 * @param item the item to resolve
 	 * @see ConfigurationMetadataProperty#setName(String)
 	 */

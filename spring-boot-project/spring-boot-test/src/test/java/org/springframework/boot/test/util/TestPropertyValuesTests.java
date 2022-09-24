@@ -160,8 +160,7 @@ class TestPropertyValuesTests {
 			});
 			assertThat(System.getProperty("foo")).isEqualTo("bar1");
 			assertThat(System.getProperties()).doesNotContainKey("baz");
-		}
-		finally {
+		} finally {
 			System.clearProperty("foo");
 		}
 	}
@@ -175,8 +174,7 @@ class TestPropertyValuesTests {
 				return null;
 			});
 			assertThat(System.getProperty("foo")).isEqualTo("bar1");
-		}
-		finally {
+		} finally {
 			System.clearProperty("foo");
 		}
 	}

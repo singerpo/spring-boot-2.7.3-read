@@ -138,8 +138,7 @@ class TomcatServletWebServerFactoryTests extends AbstractServletWebServerFactory
 		TomcatServletWebServerFactory factory = getFactory();
 		if (AprLifecycleListener.isAprAvailable()) {
 			assertThat(factory.getContextLifecycleListeners()).singleElement().isInstanceOf(AprLifecycleListener.class);
-		}
-		else {
+		} else {
 			assertThat(factory.getContextLifecycleListeners()).isEmpty();
 		}
 	}
@@ -198,7 +197,7 @@ class TomcatServletWebServerFactoryTests extends AbstractServletWebServerFactory
 	}
 
 	@Test
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	void tomcatProtocolHandlerCustomizersShouldBeInvoked() {
 		TomcatServletWebServerFactory factory = getFactory();
 		TomcatProtocolHandlerCustomizer<AbstractHttp11Protocol<?>>[] customizers = new TomcatProtocolHandlerCustomizer[4];
@@ -424,8 +423,7 @@ class TomcatServletWebServerFactoryTests extends AbstractServletWebServerFactory
 			TomcatServletWebServerFactory factory = getFactory();
 			this.webServer = factory.getWebServer();
 			this.webServer.start();
-		}
-		finally {
+		} finally {
 			System.clearProperty("jvmRoute");
 		}
 		Tomcat tomcat = ((TomcatWebServer) this.webServer).getTomcat();
@@ -551,8 +549,7 @@ class TomcatServletWebServerFactoryTests extends AbstractServletWebServerFactory
 			protected TomcatWebServer getTomcatWebServer(Tomcat tomcat) {
 				try {
 					return super.getTomcatWebServer(tomcat);
-				}
-				finally {
+				} finally {
 					assertThat(tomcat.getServer().getState()).isEqualTo(LifecycleState.DESTROYED);
 				}
 			}

@@ -62,7 +62,7 @@ class ControllerEndpointHandlerMappingIntegrationTests {
 
 	private final ReactiveWebApplicationContextRunner contextRunner = new ReactiveWebApplicationContextRunner(
 			AnnotationConfigReactiveWebServerApplicationContext::new).withUserConfiguration(EndpointConfiguration.class,
-					ExampleWebFluxEndpoint.class);
+			ExampleWebFluxEndpoint.class);
 
 	@Test
 	void get() {
@@ -102,8 +102,8 @@ class ControllerEndpointHandlerMappingIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			WebFluxAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+			WebFluxAutoConfiguration.class})
 	static class EndpointConfiguration {
 
 		@Bean

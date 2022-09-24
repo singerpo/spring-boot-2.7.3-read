@@ -44,10 +44,11 @@ abstract class Command {
 
 	/**
 	 * Create a new {@link Command} instance.
-	 * @param name the name of the command
+	 *
+	 * @param name        the name of the command
 	 * @param description a description of the command
-	 * @param options the command options
-	 * @param parameters the command parameters
+	 * @param options     the command options
+	 * @param parameters  the command parameters
 	 */
 	Command(String name, String description, Options options, Parameters parameters) {
 		this.name = name;
@@ -58,6 +59,7 @@ abstract class Command {
 
 	/**
 	 * Return the name of this command.
+	 *
 	 * @return the command name
 	 */
 	String getName() {
@@ -66,6 +68,7 @@ abstract class Command {
 
 	/**
 	 * Return the description of this command.
+	 *
 	 * @return the command description
 	 */
 	String getDescription() {
@@ -74,6 +77,7 @@ abstract class Command {
 
 	/**
 	 * Return options that this command accepts.
+	 *
 	 * @return the command options
 	 */
 	Options getOptions() {
@@ -82,6 +86,7 @@ abstract class Command {
 
 	/**
 	 * Return parameters that this command accepts.
+	 *
 	 * @return the command parameters
 	 */
 	Parameters getParameters() {
@@ -90,6 +95,7 @@ abstract class Command {
 
 	/**
 	 * Run the command by processing the remaining arguments.
+	 *
 	 * @param args a mutable deque of the remaining arguments
 	 */
 	final void run(Deque<String> args) {
@@ -100,8 +106,7 @@ abstract class Command {
 			Option option = this.options.find(arg);
 			if (option != null) {
 				options.put(option, option.claimArg(args));
-			}
-			else {
+			} else {
 				parameters.add(arg);
 			}
 		}
@@ -110,15 +115,17 @@ abstract class Command {
 
 	/**
 	 * Run the actual command.
-	 * @param options any options extracted from the arguments
+	 *
+	 * @param options    any options extracted from the arguments
 	 * @param parameters any parameters extracted from the arguments
 	 */
 	protected abstract void run(Map<Option, String> options, List<String> parameters);
 
 	/**
 	 * Static method that can be used to find a single command from a collection.
+	 *
 	 * @param commands the commands to search
-	 * @param name the name of the command to find
+	 * @param name     the name of the command to find
 	 * @return a {@link Command} instance or {@code null}.
 	 */
 	static Command find(Collection<? extends Command> commands, String name) {
@@ -143,6 +150,7 @@ abstract class Command {
 
 		/**
 		 * Return the parameter descriptions.
+		 *
 		 * @return the descriptions
 		 */
 		List<String> getDescriptions() {
@@ -156,6 +164,7 @@ abstract class Command {
 
 		/**
 		 * Factory method used if there are no expected parameters.
+		 *
 		 * @return a new {@link Parameters} instance
 		 */
 		protected static Parameters none() {
@@ -165,6 +174,7 @@ abstract class Command {
 		/**
 		 * Factory method used to create a new {@link Parameters} instance with specific
 		 * descriptions.
+		 *
 		 * @param descriptions the parameter descriptions
 		 * @return a new {@link Parameters} instance with the given descriptions
 		 */
@@ -200,6 +210,7 @@ abstract class Command {
 
 		/**
 		 * Return if this options collection is empty.
+		 *
 		 * @return if there are no options
 		 */
 		boolean isEmpty() {
@@ -208,6 +219,7 @@ abstract class Command {
 
 		/**
 		 * Return a stream of each option.
+		 *
 		 * @return a stream of the options
 		 */
 		Stream<Option> stream() {
@@ -216,6 +228,7 @@ abstract class Command {
 
 		/**
 		 * Factory method used if there are no expected options.
+		 *
 		 * @return a new {@link Options} instance
 		 */
 		protected static Options none() {
@@ -225,6 +238,7 @@ abstract class Command {
 		/**
 		 * Factory method used to create a new {@link Options} instance with specific
 		 * values.
+		 *
 		 * @param values the option values
 		 * @return a new {@link Options} instance with the given values
 		 */
@@ -255,6 +269,7 @@ abstract class Command {
 
 		/**
 		 * Return the name of the option.
+		 *
 		 * @return the options name
 		 */
 		String getName() {
@@ -264,6 +279,7 @@ abstract class Command {
 		/**
 		 * Return the description of the expected argument value or {@code null} if this
 		 * option is a flag/switch.
+		 *
 		 * @return the option value description
 		 */
 		String getValueDescription() {
@@ -272,6 +288,7 @@ abstract class Command {
 
 		/**
 		 * Return the name and the value description combined.
+		 *
 		 * @return the name and value description
 		 */
 		String getNameAndValueDescription() {
@@ -280,6 +297,7 @@ abstract class Command {
 
 		/**
 		 * Return a description of the option.
+		 *
 		 * @return the option description
 		 */
 		String getDescription() {
@@ -319,7 +337,8 @@ abstract class Command {
 
 		/**
 		 * Factory method to create a flag/switch option.
-		 * @param name the name of the option
+		 *
+		 * @param name        the name of the option
 		 * @param description a description of the option
 		 * @return a new {@link Option} instance
 		 */
@@ -329,9 +348,10 @@ abstract class Command {
 
 		/**
 		 * Factory method to create value option.
-		 * @param name the name of the option
+		 *
+		 * @param name             the name of the option
 		 * @param valueDescription a description of the expected value
-		 * @param description a description of the option
+		 * @param description      a description of the option
 		 * @return a new {@link Option} instance
 		 */
 		protected static Option of(String name, String valueDescription, String description) {

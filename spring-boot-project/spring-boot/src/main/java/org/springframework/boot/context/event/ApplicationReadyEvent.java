@@ -29,8 +29,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  *
  * @author Stephane Nicoll
  * @author Chris Bono
- * @since 1.3.0
  * @see ApplicationFailedEvent
+ * @since 1.3.0
  */
 @SuppressWarnings("serial")
 public class ApplicationReadyEvent extends SpringApplicationEvent {
@@ -41,9 +41,10 @@ public class ApplicationReadyEvent extends SpringApplicationEvent {
 
 	/**
 	 * Create a new {@link ApplicationReadyEvent} instance.
+	 *
 	 * @param application the current application
-	 * @param args the arguments the application is running with
-	 * @param context the context that was being created
+	 * @param args        the arguments the application is running with
+	 * @param context     the context that was being created
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #ApplicationReadyEvent(SpringApplication, String[], ConfigurableApplicationContext, Duration)}
 	 */
@@ -54,14 +55,15 @@ public class ApplicationReadyEvent extends SpringApplicationEvent {
 
 	/**
 	 * Create a new {@link ApplicationReadyEvent} instance.
+	 *
 	 * @param application the current application
-	 * @param args the arguments the application is running with
-	 * @param context the context that was being created
-	 * @param timeTaken the time taken to get the application ready to service requests
+	 * @param args        the arguments the application is running with
+	 * @param context     the context that was being created
+	 * @param timeTaken   the time taken to get the application ready to service requests
 	 * @since 2.6.0
 	 */
 	public ApplicationReadyEvent(SpringApplication application, String[] args, ConfigurableApplicationContext context,
-			Duration timeTaken) {
+								 Duration timeTaken) {
 		super(application, args);
 		this.context = context;
 		this.timeTaken = timeTaken;
@@ -69,6 +71,7 @@ public class ApplicationReadyEvent extends SpringApplicationEvent {
 
 	/**
 	 * Return the application context.
+	 *
 	 * @return the context
 	 */
 	public ConfigurableApplicationContext getApplicationContext() {
@@ -78,6 +81,7 @@ public class ApplicationReadyEvent extends SpringApplicationEvent {
 	/**
 	 * Return the time taken for the application to be ready to service requests, or
 	 * {@code null} if unknown.
+	 *
 	 * @return the time taken to be ready to service requests
 	 * @since 2.6.0
 	 */

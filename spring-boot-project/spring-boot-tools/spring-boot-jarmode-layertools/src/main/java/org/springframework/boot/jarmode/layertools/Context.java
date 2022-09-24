@@ -51,8 +51,9 @@ class Context {
 
 	/**
 	 * Create a new {@link Context} instance with the specified value.
+	 *
 	 * @param archiveFile the source archive file
-	 * @param workingDir the working directory
+	 * @param workingDir  the working directory
 	 */
 	Context(File archiveFile, File workingDir) {
 		Assert.state(isExistingFile(archiveFile), "Unable to find source archive");
@@ -81,8 +82,7 @@ class Context {
 				return source.getAbsoluteFile();
 			}
 			return null;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -116,6 +116,7 @@ class Context {
 
 	/**
 	 * Return the source archive file that is running in tools mode.
+	 *
 	 * @return the archive file
 	 */
 	File getArchiveFile() {
@@ -124,6 +125,7 @@ class Context {
 
 	/**
 	 * Return the current working directory.
+	 *
 	 * @return the working dir
 	 */
 	File getWorkingDir() {
@@ -133,6 +135,7 @@ class Context {
 	/**
 	 * Return the directory relative to {@link #getWorkingDir()} that contains the archive
 	 * or {@code null} if none relative directory can be deduced.
+	 *
 	 * @return the relative dir ending in {@code /} or {@code null}
 	 */
 	String getRelativeArchiveDir() {

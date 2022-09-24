@@ -69,8 +69,8 @@ class MustacheAutoConfigurationReactiveIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ReactiveWebServerFactoryAutoConfiguration.class, WebFluxAutoConfiguration.class,
-			HttpHandlerAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+	@Import({ReactiveWebServerFactoryAutoConfiguration.class, WebFluxAutoConfiguration.class,
+			HttpHandlerAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	@Controller
 	static class Application {
 

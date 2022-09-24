@@ -45,7 +45,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.RedisHt
  * @author Vedran Pavic
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ RedisTemplate.class, RedisIndexedSessionRepository.class })
+@ConditionalOnClass({RedisTemplate.class, RedisIndexedSessionRepository.class})
 @ConditionalOnMissingBean(SessionRepository.class)
 @ConditionalOnBean(RedisConnectionFactory.class)
 @Conditional(ServletSessionCondition.class)
@@ -70,7 +70,7 @@ class RedisSessionConfiguration {
 
 		@Autowired
 		public void customize(SessionProperties sessionProperties, RedisSessionProperties redisSessionProperties,
-				ServerProperties serverProperties) {
+							  ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getServlet().getSession().getTimeout());
 			if (timeout != null) {

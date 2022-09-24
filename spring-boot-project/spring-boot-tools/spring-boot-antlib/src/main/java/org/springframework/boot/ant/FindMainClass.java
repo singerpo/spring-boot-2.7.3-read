@@ -72,8 +72,7 @@ public class FindMainClass extends Task {
 			}
 			return MainClassFinder.findSingleMainClass(new JarFile(this.classesRoot), "/",
 					SPRING_BOOT_APPLICATION_CLASS_NAME);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new BuildException(ex);
 		}
 	}
@@ -81,14 +80,14 @@ public class FindMainClass extends Task {
 	private void handle(String mainClass) {
 		if (StringUtils.hasText(this.property)) {
 			getProject().setProperty(this.property, mainClass);
-		}
-		else {
+		} else {
 			log("Found main class " + mainClass);
 		}
 	}
 
 	/**
 	 * Set the main class, which will cause the search to be bypassed.
+	 *
 	 * @param mainClass the main class name
 	 */
 	public void setMainClass(String mainClass) {
@@ -97,6 +96,7 @@ public class FindMainClass extends Task {
 
 	/**
 	 * Set the root location of classes to be searched.
+	 *
 	 * @param classesRoot the root location
 	 */
 	public void setClassesRoot(File classesRoot) {
@@ -105,6 +105,7 @@ public class FindMainClass extends Task {
 
 	/**
 	 * Set the ANT property to set (if left unset, result will be printed to the log).
+	 *
 	 * @param property the ANT property to set
 	 */
 	public void setProperty(String property) {

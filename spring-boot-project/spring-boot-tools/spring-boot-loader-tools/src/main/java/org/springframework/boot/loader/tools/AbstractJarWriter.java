@@ -67,7 +67,8 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Update this writer to use specific layers.
-	 * @param layers the layers to use
+	 *
+	 * @param layers      the layers to use
 	 * @param layersIndex the layers index to update
 	 */
 	void useLayers(Layers layers, LayersIndex layersIndex) {
@@ -77,6 +78,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Write the specified manifest.
+	 *
 	 * @param manifest the manifest to write
 	 * @throws IOException of the manifest cannot be written
 	 */
@@ -86,7 +88,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 	}
 
 	final void writeEntries(JarFile jarFile, EntryTransformer entryTransformer, UnpackHandler unpackHandler,
-			Function<JarEntry, Library> libraryLookup) throws IOException {
+							Function<JarEntry, Library> libraryLookup) throws IOException {
 		Enumeration<JarEntry> entries = jarFile.entries();
 		while (entries.hasMoreElements()) {
 			JarEntry entry = entries.nextElement();
@@ -98,7 +100,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 	}
 
 	private void writeEntry(JarFile jarFile, EntryTransformer entryTransformer, UnpackHandler unpackHandler,
-			JarArchiveEntry entry, Library library) throws IOException {
+							JarArchiveEntry entry, Library library) throws IOException {
 		setUpEntry(jarFile, entry);
 		try (ZipHeaderPeekInputStream inputStream = new ZipHeaderPeekInputStream(jarFile.getInputStream(entry))) {
 			EntryWriter entryWriter = new InputStreamEntryWriter(inputStream);
@@ -113,8 +115,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 		try (ZipHeaderPeekInputStream inputStream = new ZipHeaderPeekInputStream(jarFile.getInputStream(entry))) {
 			if (inputStream.hasZipHeader() && entry.getMethod() != ZipEntry.STORED) {
 				new CrcAndSize(inputStream).setupStoredEntry(entry);
-			}
-			else {
+			} else {
 				entry.setCompressedSize(-1);
 			}
 		}
@@ -122,7 +123,8 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Writes an entry. The {@code inputStream} is closed once the entry has been written
-	 * @param entryName the name of the entry
+	 *
+	 * @param entryName   the name of the entry
 	 * @param inputStream the stream from which the entry's data can be read
 	 * @throws IOException if the write fails
 	 */
@@ -130,15 +132,15 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 	public void writeEntry(String entryName, InputStream inputStream) throws IOException {
 		try {
 			writeEntry(entryName, new InputStreamEntryWriter(inputStream));
-		}
-		finally {
+		} finally {
 			inputStream.close();
 		}
 	}
 
 	/**
 	 * Writes an entry. The {@code inputStream} is closed once the entry has been written
-	 * @param entryName the name of the entry
+	 *
+	 * @param entryName   the name of the entry
 	 * @param entryWriter the entry writer
 	 * @throws IOException if the write fails
 	 */
@@ -149,8 +151,9 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Write a nested library.
+	 *
 	 * @param location the destination of the library
-	 * @param library the library
+	 * @param library  the library
 	 * @throws IOException if the write fails
 	 */
 	public void writeNestedLibrary(String location, Library library) throws IOException {
@@ -164,8 +167,9 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Write a simple index file containing the specified UTF-8 lines.
+	 *
 	 * @param location the location of the index file
-	 * @param lines the lines to write
+	 * @param lines    the lines to write
 	 * @throws IOException if the write fails
 	 * @since 2.3.0
 	 */
@@ -195,8 +199,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 					entry = jarStream.getNextJarEntry();
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore and just use the library timestamp
 		}
 		return library.getLastModified();
@@ -204,6 +207,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Write the required spring-boot-loader classes to the JAR.
+	 *
 	 * @throws IOException if the classes cannot be written
 	 */
 	@Override
@@ -213,8 +217,9 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 
 	/**
 	 * Write the required spring-boot-loader classes to the JAR.
+	 *
 	 * @param loaderJarResourceName the name of the resource containing the loader classes
-	 * to be written
+	 *                              to be written
 	 * @throws IOException if the classes cannot be written
 	 */
 	@Override
@@ -245,14 +250,15 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 	/**
 	 * Perform the actual write of a {@link JarEntry}. All other write methods delegate to
 	 * this one.
-	 * @param entry the entry to write
-	 * @param library the library for the entry or {@code null}
-	 * @param entryWriter the entry writer or {@code null} if there is no content
+	 *
+	 * @param entry         the entry to write
+	 * @param library       the library for the entry or {@code null}
+	 * @param entryWriter   the entry writer or {@code null} if there is no content
 	 * @param unpackHandler handles possible unpacking for the entry
 	 * @throws IOException in case of I/O errors
 	 */
 	private void writeEntry(JarArchiveEntry entry, Library library, EntryWriter entryWriter,
-			UnpackHandler unpackHandler) throws IOException {
+							UnpackHandler unpackHandler) throws IOException {
 		String name = entry.getName();
 		if (this.writtenEntries.add(name)) {
 			writeParentDirectoryEntries(name);
@@ -288,7 +294,7 @@ public abstract class AbstractJarWriter implements LoaderClassesWriter {
 	}
 
 	private EntryWriter addUnpackCommentIfNecessary(JarArchiveEntry entry, EntryWriter entryWriter,
-			UnpackHandler unpackHandler) throws IOException {
+													UnpackHandler unpackHandler) throws IOException {
 		if (entryWriter == null || !unpackHandler.requiresUnpack(entry.getName())) {
 			return entryWriter;
 		}

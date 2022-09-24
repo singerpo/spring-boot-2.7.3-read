@@ -70,15 +70,15 @@ class HealthEndpointConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	HealthEndpointGroups healthEndpointGroups(ApplicationContext applicationContext,
-			HealthEndpointProperties properties) {
+											  HealthEndpointProperties properties) {
 		return new AutoConfiguredHealthEndpointGroups(applicationContext, properties);
 	}
 
 	@Bean
 	@ConditionalOnMissingBean
 	HealthContributorRegistry healthContributorRegistry(ApplicationContext applicationContext,
-			HealthEndpointGroups groups, Map<String, HealthContributor> healthContributors,
-			Map<String, ReactiveHealthContributor> reactiveHealthContributors) {
+														HealthEndpointGroups groups, Map<String, HealthContributor> healthContributors,
+														Map<String, ReactiveHealthContributor> reactiveHealthContributors) {
 		if (ClassUtils.isPresent("reactor.core.publisher.Flux", applicationContext.getClassLoader())) {
 			healthContributors.putAll(new AdaptedReactiveHealthContributors(reactiveHealthContributors).get());
 		}
@@ -88,7 +88,7 @@ class HealthEndpointConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	HealthEndpoint healthEndpoint(HealthContributorRegistry registry, HealthEndpointGroups groups,
-			HealthEndpointProperties properties) {
+								  HealthEndpointProperties properties) {
 		return new HealthEndpoint(registry, groups, properties.getLogging().getSlowIndicatorThreshold());
 	}
 

@@ -255,8 +255,7 @@ class ValidationBindHandlerTests {
 					try {
 						errors.pushNestedPath("items[" + k + "]");
 						ValidationUtils.rejectIfEmptyOrWhitespace(errors, "number", "NUMBER_ERR");
-					}
-					finally {
+					} finally {
 						errors.popNestedPath();
 					}
 				});
@@ -268,8 +267,7 @@ class ValidationBindHandlerTests {
 	private BindValidationException bindAndExpectValidationError(Runnable action) {
 		try {
 			action.run();
-		}
-		catch (BindException ex) {
+		} catch (BindException ex) {
 			return (BindValidationException) ex.getCause();
 		}
 		throw new IllegalStateException("Did not throw");
@@ -447,7 +445,7 @@ class ValidationBindHandlerTests {
 
 		@Override
 		public Object onFailure(ConfigurationPropertyName name, Bindable<?> target, BindContext context,
-				Exception error) throws Exception {
+								Exception error) throws Exception {
 			return this.result;
 		}
 

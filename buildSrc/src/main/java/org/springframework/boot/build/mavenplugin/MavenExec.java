@@ -67,14 +67,12 @@ public class MavenExec extends JavaExec {
 				if (this.log.isInfoEnabled()) {
 					Files.readAllLines(logFile).forEach(this.log::info);
 				}
-			}
-			catch (ExecException ex) {
+			} catch (ExecException ex) {
 				System.out.println("Exec exception! Dumping log");
 				Files.readAllLines(logFile).forEach(System.out::println);
 				throw ex;
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new TaskExecutionException(this, ex);
 		}
 	}

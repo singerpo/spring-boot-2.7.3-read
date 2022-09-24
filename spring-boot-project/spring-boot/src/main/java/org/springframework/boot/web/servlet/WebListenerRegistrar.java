@@ -28,6 +28,7 @@ public interface WebListenerRegistrar {
 
 	/**
 	 * Register web listeners with the given registry.
+	 *
 	 * @param registry the web listener registry
 	 */
 	void register(WebListenerRegistry registry);

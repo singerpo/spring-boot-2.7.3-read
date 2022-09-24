@@ -79,8 +79,7 @@ class MavenBuild {
 	private File createTempDirectory() {
 		try {
 			return Files.createTempDirectory("maven-build").toFile().getCanonicalFile();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -146,8 +145,7 @@ class MavenBuild {
 						}
 						Files.write(destination.resolve(source.relativize(file)),
 								pomXml.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
-					}
-					else {
+					} else {
 						Files.copy(file, destination.resolve(source.relativize(file)),
 								StandardCopyOption.REPLACE_EXISTING);
 					}
@@ -157,10 +155,10 @@ class MavenBuild {
 			});
 			String settingsXml = new String(Files.readAllBytes(Paths.get("src", "intTest", "projects", "settings.xml")),
 					StandardCharsets.UTF_8)
-							.replace("@localCentralUrl@",
-									new File("build/int-test-maven-repository").toURI().toURL().toString())
-							.replace("@localRepositoryPath@",
-									new File("build/local-maven-repository").getAbsolutePath());
+					.replace("@localCentralUrl@",
+							new File("build/int-test-maven-repository").toURI().toURL().toString())
+					.replace("@localRepositoryPath@",
+							new File("build/local-maven-repository").getAbsolutePath());
 			Files.write(destination.resolve("settings.xml"), settingsXml.getBytes(StandardCharsets.UTF_8),
 					StandardOpenOption.CREATE_NEW);
 			request.setBaseDirectory(this.temp);
@@ -185,14 +183,12 @@ class MavenBuild {
 				try {
 					InvocationResult result = invoker.execute(request);
 					assertThat(result.getExitCode()).as(contentOf(buildLogFile)).isEqualTo(expectedExitCode);
-				}
-				catch (MavenInvocationException ex) {
+				} catch (MavenInvocationException ex) {
 					throw new RuntimeException(ex);
 				}
 			}
 			callback.doWith(this.temp);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -205,6 +201,7 @@ class MavenBuild {
 
 		/**
 		 * Take the action on the given project.
+		 *
 		 * @param project the project directory
 		 * @throws Exception on error
 		 */

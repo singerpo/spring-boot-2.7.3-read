@@ -185,7 +185,7 @@ final class ResolveDependencyCoordinatesTransformationTests {
 		Parameter parameter = new Parameter(new ClassNode(Object.class), "test");
 		parameter.addAnnotation(this.grabAnnotation);
 
-		MethodNode methodNode = new MethodNode("test", 0, new ClassNode(Void.class), new Parameter[] { parameter },
+		MethodNode methodNode = new MethodNode("test", 0, new ClassNode(Void.class), new Parameter[]{parameter},
 				new ClassNode[0], null);
 		classNode.addMethod(methodNode);
 
@@ -220,7 +220,7 @@ final class ResolveDependencyCoordinatesTransformationTests {
 	}
 
 	private void assertGrabAnnotationHasBeenTransformed() {
-		this.transformation.visit(new ASTNode[] { this.moduleNode }, this.sourceUnit);
+		this.transformation.visit(new ASTNode[]{this.moduleNode}, this.sourceUnit);
 		assertThat(getGrabAnnotationMemberAsString("group")).isEqualTo("org.springframework");
 		assertThat(getGrabAnnotationMemberAsString("module")).isEqualTo("spring-core");
 	}
@@ -229,11 +229,9 @@ final class ResolveDependencyCoordinatesTransformationTests {
 		Expression expression = this.grabAnnotation.getMember(memberName);
 		if (expression instanceof ConstantExpression) {
 			return ((ConstantExpression) expression).getValue();
-		}
-		else if (expression == null) {
+		} else if (expression == null) {
 			return null;
-		}
-		else {
+		} else {
 			throw new IllegalStateException("Member '" + memberName + "' is not a ConstantExpression");
 		}
 	}

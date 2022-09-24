@@ -74,6 +74,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Return stack metadata.
+	 *
 	 * @return the stack metadata
 	 */
 	Stack getStack() {
@@ -82,6 +83,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Return lifecycle metadata.
+	 *
 	 * @return the lifecycle metadata
 	 */
 	Lifecycle getLifecycle() {
@@ -90,6 +92,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Return information about who created the builder.
+	 *
 	 * @return the created by metadata
 	 */
 	CreatedBy getCreatedBy() {
@@ -98,6 +101,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Return the buildpacks that are bundled in the builder.
+	 *
 	 * @return the buildpacks
 	 */
 	List<BuildpackMetadata> getBuildpacks() {
@@ -106,6 +110,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Create an updated copy of this metadata.
+	 *
 	 * @param update consumer to apply updates
 	 * @return an updated metadata instance
 	 */
@@ -115,20 +120,21 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Attach this metadata to the given update callback.
+	 *
 	 * @param update the update used to attach the metadata
 	 */
 	void attachTo(ImageConfig.Update update) {
 		try {
 			String json = SharedObjectMapper.get().writeValueAsString(getNode());
 			update.withLabel(LABEL_NAME, json);
-		}
-		catch (JsonProcessingException ex) {
+		} catch (JsonProcessingException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
 
 	/**
 	 * Factory method to extract {@link BuilderMetadata} from an image.
+	 *
 	 * @param image the source image
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -140,6 +146,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Factory method to extract {@link BuilderMetadata} from image config.
+	 *
 	 * @param imageConfig the image config
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -154,6 +161,7 @@ class BuilderMetadata extends MappedObject {
 
 	/**
 	 * Factory method create {@link BuilderMetadata} from some JSON.
+	 *
 	 * @param json the source JSON
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -169,6 +177,7 @@ class BuilderMetadata extends MappedObject {
 
 		/**
 		 * Return run image metadata.
+		 *
 		 * @return the run image metadata
 		 */
 		RunImage getRunImage();
@@ -180,12 +189,14 @@ class BuilderMetadata extends MappedObject {
 
 			/**
 			 * Return the builder image reference.
+			 *
 			 * @return the image reference
 			 */
 			String getImage();
 
 			/**
 			 * Return stack mirrors.
+			 *
 			 * @return the stack mirrors
 			 */
 			default String[] getMirrors() {
@@ -203,18 +214,21 @@ class BuilderMetadata extends MappedObject {
 
 		/**
 		 * Return the lifecycle version.
+		 *
 		 * @return the lifecycle version
 		 */
 		String getVersion();
 
 		/**
 		 * Return the default API versions.
+		 *
 		 * @return the API versions
 		 */
 		Api getApi();
 
 		/**
 		 * Return the supported API versions.
+		 *
 		 * @return the API versions
 		 */
 		Apis getApis();
@@ -226,12 +240,14 @@ class BuilderMetadata extends MappedObject {
 
 			/**
 			 * Return the default buildpack API version.
+			 *
 			 * @return the buildpack version
 			 */
 			String getBuildpack();
 
 			/**
 			 * Return the default platform API version.
+			 *
 			 * @return the platform version
 			 */
 			String getPlatform();
@@ -245,6 +261,7 @@ class BuilderMetadata extends MappedObject {
 
 			/**
 			 * Return the supported buildpack API versions.
+			 *
 			 * @return the buildpack versions
 			 */
 			default String[] getBuildpack() {
@@ -253,6 +270,7 @@ class BuilderMetadata extends MappedObject {
 
 			/**
 			 * Return the supported platform API versions.
+			 *
 			 * @return the platform versions
 			 */
 			default String[] getPlatform() {
@@ -270,12 +288,14 @@ class BuilderMetadata extends MappedObject {
 
 		/**
 		 * Return the name of the creator.
+		 *
 		 * @return the creator name
 		 */
 		String getName();
 
 		/**
 		 * Return the version of the creator.
+		 *
 		 * @return the creator version
 		 */
 		String getVersion();
@@ -300,7 +320,8 @@ class BuilderMetadata extends MappedObject {
 
 		/**
 		 * Update the builder meta-data with a specific created by section.
-		 * @param name the name of the creator
+		 *
+		 * @param name    the name of the creator
 		 * @param version the version of the creator
 		 */
 		void withCreatedBy(String name, String version) {

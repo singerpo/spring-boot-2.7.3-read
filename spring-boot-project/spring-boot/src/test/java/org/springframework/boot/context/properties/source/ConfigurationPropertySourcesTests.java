@@ -139,14 +139,16 @@ class ConfigurationPropertySourcesTests {
 		assertThat(configurationSources.iterator()).toIterable().hasSize(5);
 	}
 
-	@Test // gh-20625
+	@Test
+		// gh-20625
 	void environmentPropertyAccessWhenImmutableShouldBePerformant() {
 		long baseline = testPropertySourcePerformance(false);
 		long immutable = testPropertySourcePerformance(true);
 		assertThat(immutable).isLessThan(baseline / 2);
 	}
 
-	@Test // gh-20625
+	@Test
+		// gh-20625
 	void environmentPropertyAccessWhenMutableWithCacheShouldBePerformant() {
 		StandardEnvironment environment = createPerformanceTestEnvironment(false);
 		long uncached = testPropertySourcePerformance(environment);
@@ -161,7 +163,8 @@ class ConfigurationPropertySourcesTests {
 		assertThat(testPropertySourcePerformance(false)).isLessThan(5000);
 	}
 
-	@Test // gh-21416
+	@Test
+		// gh-21416
 	void descendantOfPropertyAccessWhenMutableWithCacheShouldBePerformant() {
 		Function<StandardEnvironment, Long> descendantOfPerformance = (environment) -> {
 			Iterable<ConfigurationPropertySource> sources = ConfigurationPropertySources.get(environment);

@@ -76,11 +76,11 @@ import org.springframework.boot.loader.util.SystemPropertyUtils;
  */
 public class PropertiesLauncher extends Launcher {
 
-	private static final Class<?>[] PARENT_ONLY_PARAMS = new Class<?>[] { ClassLoader.class };
+	private static final Class<?>[] PARENT_ONLY_PARAMS = new Class<?>[]{ClassLoader.class};
 
-	private static final Class<?>[] URLS_AND_PARENT_PARAMS = new Class<?>[] { URL[].class, ClassLoader.class };
+	private static final Class<?>[] URLS_AND_PARENT_PARAMS = new Class<?>[]{URL[].class, ClassLoader.class};
 
-	private static final Class<?>[] NO_PARAMS = new Class<?>[] {};
+	private static final Class<?>[] NO_PARAMS = new Class<?>[]{};
 
 	private static final URL[] NO_URLS = new URL[0];
 
@@ -153,8 +153,7 @@ public class PropertiesLauncher extends Launcher {
 			initializeProperties();
 			initializePaths();
 			this.parent = createArchive();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -162,8 +161,7 @@ public class PropertiesLauncher extends Launcher {
 	protected File getHomeDirectory() {
 		try {
 			return new File(getPropertyWithDefault(HOME, "${user.dir}"));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -172,8 +170,7 @@ public class PropertiesLauncher extends Launcher {
 		List<String> configs = new ArrayList<>();
 		if (getProperty(CONFIG_LOCATION) != null) {
 			configs.add(getProperty(CONFIG_LOCATION));
-		}
-		else {
+		} else {
 			String[] names = getPropertyWithDefault(CONFIG_NAME, "loader").split(",");
 			for (String name : names) {
 				configs.add("file:" + getHomeDirectory() + "/" + name + ".properties");
@@ -188,8 +185,7 @@ public class PropertiesLauncher extends Launcher {
 					loadResource(resource);
 					// Load the first one we find
 					return;
-				}
-				else {
+				} else {
 					debug("Not found: " + config);
 				}
 			}
@@ -266,8 +262,7 @@ public class PropertiesLauncher extends Launcher {
 			URLConnection con = url.openConnection();
 			try {
 				return con.getInputStream();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				// Close the HTTP connection (if applicable).
 				if (con instanceof HttpURLConnection) {
 					((HttpURLConnection) con).disconnect();
@@ -289,14 +284,12 @@ public class PropertiesLauncher extends Launcher {
 				int responseCode = httpConnection.getResponseCode();
 				if (responseCode == HttpURLConnection.HTTP_OK) {
 					return true;
-				}
-				else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
+				} else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
 					return false;
 				}
 			}
 			return (connection.getContentLength() >= 0);
-		}
-		finally {
+		} finally {
 			if (connection instanceof HttpURLConnection) {
 				((HttpURLConnection) connection).disconnect();
 			}
@@ -385,8 +378,7 @@ public class PropertiesLauncher extends Launcher {
 			Constructor<ClassLoader> constructor = loaderClass.getDeclaredConstructor(parameterTypes);
 			constructor.setAccessible(true);
 			return constructor.newInstance(initargs);
-		}
-		catch (NoSuchMethodException ex) {
+		} catch (NoSuchMethodException ex) {
 			return null;
 		}
 	}
@@ -434,8 +426,7 @@ public class PropertiesLauncher extends Launcher {
 					}
 				}
 			}
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			// Ignore
 		}
 		// Otherwise try the parent archive
@@ -504,8 +495,7 @@ public class PropertiesLauncher extends Launcher {
 		}
 		if (path.endsWith("/*")) {
 			path = path.substring(0, path.length() - 1);
-		}
-		else {
+		} else {
 			// It's a directory
 			if (!path.endsWith("/") && !path.equals(".")) {
 				path = path + "/";
@@ -650,8 +640,7 @@ public class PropertiesLauncher extends Launcher {
 				while (archives.hasNext()) {
 					this.classPathArchives.add(archives.next());
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				// Ignore
 			}
 		}

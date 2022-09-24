@@ -62,12 +62,12 @@ class TomcatMetricsAutoConfigurationTests {
 						ServletWebServerFactoryAutoConfiguration.class))
 				.withUserConfiguration(ServletWebServerConfiguration.class, MeterRegistryConfiguration.class)
 				.withPropertyValues("server.tomcat.mbeanregistry.enabled=true").run((context) -> {
-					context.publishEvent(createApplicationStartedEvent(context.getSourceApplicationContext()));
-					assertThat(context).hasSingleBean(TomcatMetricsBinder.class);
-					SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
-					assertThat(registry.find("tomcat.sessions.active.max").meter()).isNotNull();
-					assertThat(registry.find("tomcat.threads.current").meter()).isNotNull();
-				});
+			context.publishEvent(createApplicationStartedEvent(context.getSourceApplicationContext()));
+			assertThat(context).hasSingleBean(TomcatMetricsBinder.class);
+			SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
+			assertThat(registry.find("tomcat.sessions.active.max").meter()).isNotNull();
+			assertThat(registry.find("tomcat.threads.current").meter()).isNotNull();
+		});
 	}
 
 	@Test
@@ -78,11 +78,11 @@ class TomcatMetricsAutoConfigurationTests {
 						ReactiveWebServerFactoryAutoConfiguration.class))
 				.withUserConfiguration(ReactiveWebServerConfiguration.class, MeterRegistryConfiguration.class)
 				.withPropertyValues("server.tomcat.mbeanregistry.enabled=true").run((context) -> {
-					context.publishEvent(createApplicationStartedEvent(context.getSourceApplicationContext()));
-					SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
-					assertThat(registry.find("tomcat.sessions.active.max").meter()).isNotNull();
-					assertThat(registry.find("tomcat.threads.current").meter()).isNotNull();
-				});
+			context.publishEvent(createApplicationStartedEvent(context.getSourceApplicationContext()));
+			SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
+			assertThat(registry.find("tomcat.sessions.active.max").meter()).isNotNull();
+			assertThat(registry.find("tomcat.threads.current").meter()).isNotNull();
+		});
 	}
 
 	@Test

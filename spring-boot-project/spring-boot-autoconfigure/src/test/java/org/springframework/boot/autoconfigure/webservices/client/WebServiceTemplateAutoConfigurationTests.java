@@ -108,8 +108,7 @@ class WebServiceTemplateAutoConfigurationTests {
 		WebServiceTemplate webServiceTemplateOne(WebServiceTemplateBuilder builder) {
 			try {
 				return builder.build();
-			}
-			finally {
+			} finally {
 				breakBuilderOnNextCall(builder);
 			}
 		}
@@ -118,8 +117,7 @@ class WebServiceTemplateAutoConfigurationTests {
 		WebServiceTemplate webServiceTemplateTwo(WebServiceTemplateBuilder builder) {
 			try {
 				return builder.build();
-			}
-			finally {
+			} finally {
 				breakBuilderOnNextCall(builder);
 			}
 		}

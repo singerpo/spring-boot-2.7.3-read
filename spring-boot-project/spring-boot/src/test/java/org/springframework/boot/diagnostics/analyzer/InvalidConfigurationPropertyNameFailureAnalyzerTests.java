@@ -54,8 +54,7 @@ class InvalidConfigurationPropertyNameFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanCreationException ex) {
+		} catch (BeanCreationException ex) {
 			return ex;
 		}
 	}

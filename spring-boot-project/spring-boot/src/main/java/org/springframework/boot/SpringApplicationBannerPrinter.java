@@ -43,7 +43,7 @@ class SpringApplicationBannerPrinter {
 
 	static final String DEFAULT_BANNER_LOCATION = "banner.txt";
 
-	static final String[] IMAGE_EXTENSION = { "gif", "jpg", "png" };
+	static final String[] IMAGE_EXTENSION = {"gif", "jpg", "png"};
 
 	private static final Banner DEFAULT_BANNER = new SpringBootBanner();
 
@@ -60,8 +60,7 @@ class SpringApplicationBannerPrinter {
 		Banner banner = getBanner(environment);
 		try {
 			logger.info(createStringFromBanner(banner, environment, sourceClass));
-		}
-		catch (UnsupportedEncodingException ex) {
+		} catch (UnsupportedEncodingException ex) {
 			logger.warn("Failed to create String for banner", ex);
 		}
 		return new PrintedBanner(banner, sourceClass);
@@ -93,8 +92,7 @@ class SpringApplicationBannerPrinter {
 			if (resource.exists() && !resource.getURL().toExternalForm().contains("liquibase-core")) {
 				return new ResourceBanner(resource);
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// Ignore
 		}
 		return null;

@@ -10,7 +10,7 @@ class Example implements CommandLineRunner {
 
 	@Override
 	void run(String... args) {
-		print template("test.txt", ["message":myService.sayWorld()])
+		print template("test.txt", ["message": myService.sayWorld()])
 	}
 }
 

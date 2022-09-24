@@ -30,6 +30,7 @@ public interface LoggingSystemFactory {
 	/**
 	 * Return a logging system implementation or {@code null} if no logging system is
 	 * available.
+	 *
 	 * @param classLoader the class loader to use
 	 * @return a logging system
 	 */
@@ -37,6 +38,7 @@ public interface LoggingSystemFactory {
 
 	/**
 	 * Return a {@link LoggingSystemFactory} backed by {@code spring.factories}.
+	 *
 	 * @return a {@link LoggingSystemFactory} instance
 	 */
 	static LoggingSystemFactory fromSpringFactories() {

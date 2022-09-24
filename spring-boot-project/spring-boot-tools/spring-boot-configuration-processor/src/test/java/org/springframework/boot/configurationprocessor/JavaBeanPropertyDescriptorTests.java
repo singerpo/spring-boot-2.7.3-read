@@ -234,7 +234,7 @@ class JavaBeanPropertyDescriptorTests extends PropertyDescriptorTests {
 	}
 
 	protected JavaBeanPropertyDescriptor createPropertyDescriptor(TypeElement ownerElement, String name,
-			String getterName, String setterName) {
+																  String getterName, String setterName) {
 		ExecutableElement getter = getMethod(ownerElement, getterName);
 		ExecutableElement setter = getMethod(ownerElement, setterName);
 		VariableElement field = getField(ownerElement, name);

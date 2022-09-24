@@ -61,6 +61,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Directory containing the generated archive.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter(defaultValue = "${project.build.directory}", required = true)
@@ -68,6 +69,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Name of the generated archive.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter(defaultValue = "${project.build.finalName}", readonly = true)
@@ -75,6 +77,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Skip the execution.
+	 *
 	 * @since 1.2.0
 	 */
 	@Parameter(property = "spring-boot.repackage.skip", defaultValue = "false")
@@ -90,6 +93,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * allows to deploy it alongside to the original one, see <a href=
 	 * "https://maven.apache.org/plugins/maven-deploy-plugin/examples/deploying-with-classifiers.html"
 	 * >the Maven documentation for more details</a>.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter
@@ -102,6 +106,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * normal jar and the repackaged jar are different, it will be attached alongside the
 	 * normal jar. When the property is set to {@code false}, the repackaged archive will
 	 * not be installed or deployed.
+	 *
 	 * @since 1.4.0
 	 */
 	@Parameter(defaultValue = "true")
@@ -111,6 +116,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * A list of the libraries that must be unpacked from fat jars in order to run.
 	 * Specify each library as a {@code <dependency>} with a {@code <groupId>} and a
 	 * {@code <artifactId>} and they will be unpacked at runtime.
+	 *
 	 * @since 1.1.0
 	 */
 	@Parameter
@@ -125,6 +131,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * or war that has been made fully-executable. It is recommended that you only enable
 	 * this option if you intend to execute it directly, rather than running it with
 	 * {@code java -jar} or deploying it to a servlet container.
+	 *
 	 * @since 1.3.0
 	 */
 	@Parameter(defaultValue = "false")
@@ -133,6 +140,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	/**
 	 * The embedded launch script to prepend to the front of the jar if it is fully
 	 * executable. If not specified the 'Spring Boot' default script will be used.
+	 *
 	 * @since 1.3.0
 	 */
 	@Parameter
@@ -140,6 +148,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Properties that should be expanded in the embedded launch script.
+	 *
 	 * @since 1.3.0
 	 */
 	@Parameter
@@ -149,6 +158,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * Timestamp for reproducible output archive entries, either formatted as ISO 8601
 	 * (<code>yyyy-MM-dd'T'HH:mm:ssXXX</code>) or an {@code int} representing seconds
 	 * since the epoch.
+	 *
 	 * @since 2.3.0
 	 */
 	@Parameter(defaultValue = "${project.build.outputTimestamp}")
@@ -158,6 +168,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * The type of archive (which corresponds to how the dependencies are laid out inside
 	 * it). Possible values are {@code JAR}, {@code WAR}, {@code ZIP}, {@code DIR},
 	 * {@code NONE}. Defaults to a guess based on the archive type.
+	 *
 	 * @since 1.0.0
 	 */
 	@Parameter(property = "spring-boot.repackage.layout")
@@ -167,6 +178,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	 * The layout factory that will be used to create the executable archive if no
 	 * explicit layout is set. Alternative layouts implementations can be provided by 3rd
 	 * parties.
+	 *
 	 * @since 1.5.0
 	 */
 	@Parameter
@@ -174,6 +186,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 
 	/**
 	 * Return the type of archive that should be packaged by this MOJO.
+	 *
 	 * @return the value of the {@code layout} parameter, or {@code null} if the parameter
 	 * is not provided
 	 */
@@ -185,6 +198,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	/**
 	 * Return the layout factory that will be used to determine the
 	 * {@link AbstractPackagerMojo.LayoutType} if no explicit layout is set.
+	 *
 	 * @return the value of the {@code layoutFactory} parameter, or {@code null} if the
 	 * parameter is not provided
 	 */
@@ -214,8 +228,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 		try {
 			LaunchScript launchScript = getLaunchScript();
 			repackager.repackage(target, libraries, launchScript, parseOutputTimestamp());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new MojoExecutionException(ex.getMessage(), ex);
 		}
 		updateArtifact(source, target, repackager.getBackupFile());
@@ -233,8 +246,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	private long getOutputTimestampEpochSeconds() {
 		try {
 			return Long.parseLong(this.outputTimestamp);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			return OffsetDateTime.parse(this.outputTimestamp).toInstant().getEpochSecond();
 		}
 	}
@@ -280,14 +292,12 @@ public class RepackageMojo extends AbstractPackagerMojo {
 	private void updateArtifact(Artifact source, File target, File original) {
 		if (this.attach) {
 			attachArtifact(source, target);
-		}
-		else if (source.getFile().equals(target) && original.exists()) {
+		} else if (source.getFile().equals(target) && original.exists()) {
 			String artifactId = (this.classifier != null) ? "artifact with classifier " + this.classifier
 					: "main artifact";
 			getLog().info(String.format("Updating %s %s to %s", artifactId, source.getFile(), original));
 			source.setFile(original);
-		}
-		else if (this.classifier != null) {
+		} else if (this.classifier != null) {
 			getLog().info("Creating repackaged archive " + target + " with classifier " + this.classifier);
 		}
 	}
@@ -296,8 +306,7 @@ public class RepackageMojo extends AbstractPackagerMojo {
 		if (this.classifier != null && !source.getFile().equals(target)) {
 			getLog().info("Attaching repackaged archive " + target + " with classifier " + this.classifier);
 			this.projectHelper.attachArtifact(this.project, this.project.getPackaging(), this.classifier, target);
-		}
-		else {
+		} else {
 			String artifactId = (this.classifier != null) ? "artifact with classifier " + this.classifier
 					: "main artifact";
 			getLog().info("Replacing " + artifactId + " with repackaged archive");

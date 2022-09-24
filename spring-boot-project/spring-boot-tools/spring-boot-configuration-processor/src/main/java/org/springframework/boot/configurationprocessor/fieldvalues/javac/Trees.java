@@ -44,8 +44,7 @@ final class Trees extends ReflectionWrapper {
 			Class<?> type = findClass(classLoader, "com.sun.source.util.Trees");
 			Method method = findMethod(type, "instance", ProcessingEnvironment.class);
 			return new Trees(method.invoke(null, env));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return instance(unwrap(env));
 		}
 	}

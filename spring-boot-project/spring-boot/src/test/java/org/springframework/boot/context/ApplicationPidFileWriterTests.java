@@ -54,7 +54,7 @@ import static org.mockito.Mockito.mock;
 class ApplicationPidFileWriterTests {
 
 	private static final ApplicationPreparedEvent EVENT = new ApplicationPreparedEvent(new SpringApplication(),
-			new String[] {}, mock(ConfigurableApplicationContext.class));
+			new String[]{}, mock(ConfigurableApplicationContext.class));
 
 	@TempDir
 	File tempDir;
@@ -125,7 +125,7 @@ class ApplicationPidFileWriterTests {
 		ApplicationPidFileWriter listener = new ApplicationPidFileWriter(file);
 		listener.setTriggerEventType(ApplicationStartingEvent.class);
 		listener.onApplicationEvent(
-				new ApplicationStartingEvent(new DefaultBootstrapContext(), new SpringApplication(), new String[] {}));
+				new ApplicationStartingEvent(new DefaultBootstrapContext(), new SpringApplication(), new String[]{}));
 		assertThat(contentOf(file)).isNotEmpty();
 	}
 
@@ -164,8 +164,7 @@ class ApplicationPidFileWriterTests {
 		file.setReadOnly();
 		try {
 			consumer.accept(file);
-		}
-		finally {
+		} finally {
 			file.setWritable(true);
 		}
 	}
@@ -173,21 +172,21 @@ class ApplicationPidFileWriterTests {
 	private SpringApplicationEvent createEnvironmentPreparedEvent(String propName, String propValue) {
 		ConfigurableEnvironment environment = createEnvironment(propName, propValue);
 		return new ApplicationEnvironmentPreparedEvent(new DefaultBootstrapContext(), new SpringApplication(),
-				new String[] {}, environment);
+				new String[]{}, environment);
 	}
 
 	private SpringApplicationEvent createPreparedEvent(String propName, String propValue) {
 		ConfigurableEnvironment environment = createEnvironment(propName, propValue);
 		ConfigurableApplicationContext context = mock(ConfigurableApplicationContext.class);
 		given(context.getEnvironment()).willReturn(environment);
-		return new ApplicationPreparedEvent(new SpringApplication(), new String[] {}, context);
+		return new ApplicationPreparedEvent(new SpringApplication(), new String[]{}, context);
 	}
 
 	private SpringApplicationEvent createReadyEvent(String propName, String propValue) {
 		ConfigurableEnvironment environment = createEnvironment(propName, propValue);
 		ConfigurableApplicationContext context = mock(ConfigurableApplicationContext.class);
 		given(context.getEnvironment()).willReturn(environment);
-		return new ApplicationReadyEvent(new SpringApplication(), new String[] {}, context, null);
+		return new ApplicationReadyEvent(new SpringApplication(), new String[]{}, context, null);
 	}
 
 	private ConfigurableEnvironment createEnvironment(String propName, String propValue) {

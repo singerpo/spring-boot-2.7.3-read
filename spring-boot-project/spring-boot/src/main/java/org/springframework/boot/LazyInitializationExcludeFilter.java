@@ -49,15 +49,17 @@ public interface LazyInitializationExcludeFilter {
 	/**
 	 * Returns {@code true} if the specified bean definition should be excluded from
 	 * having {@code lazy-init} automatically set.
-	 * @param beanName the bean name
+	 *
+	 * @param beanName       the bean name
 	 * @param beanDefinition the bean definition
-	 * @param beanType the bean type
+	 * @param beanType       the bean type
 	 * @return {@code true} if {@code lazy-init} should not be automatically set
 	 */
 	boolean isExcluded(String beanName, BeanDefinition beanDefinition, Class<?> beanType);
 
 	/**
 	 * Factory method that creates a filter for the given bean types.
+	 *
 	 * @param types the filtered types
 	 * @return a new filter instance
 	 */

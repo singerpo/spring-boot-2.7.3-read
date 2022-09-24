@@ -108,7 +108,7 @@ abstract class AbstractDevToolsDataSourceAutoConfigurationTests {
 	}
 
 	protected final ConfigurableApplicationContext createContext(String driverClassName, String url,
-			Class<?>... classes) {
+																 Class<?>... classes) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(classes);
 		context.register(DevToolsDataSourceAutoConfiguration.class);

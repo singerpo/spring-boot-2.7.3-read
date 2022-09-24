@@ -121,7 +121,7 @@ class SolrHealthIndicatorTests {
 	}
 
 	private void assertHealth(SolrHealthIndicator healthIndicator, Status expectedStatus, int expectedStatusCode,
-			String expectedPathType) {
+							  String expectedPathType) {
 		Health health = healthIndicator.health();
 		assertThat(health.getStatus()).isEqualTo(expectedStatus);
 		assertThat(health.getDetails().get("status")).isEqualTo(expectedStatusCode);

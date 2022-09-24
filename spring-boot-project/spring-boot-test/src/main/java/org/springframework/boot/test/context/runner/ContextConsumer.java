@@ -26,14 +26,15 @@ import org.springframework.util.Assert;
  * @param <C> the application context type
  * @author Stephane Nicoll
  * @author Andy Wilkinson
- * @since 2.0.0
  * @see AbstractApplicationContextRunner
+ * @since 2.0.0
  */
 @FunctionalInterface
 public interface ContextConsumer<C extends ApplicationContext> {
 
 	/**
 	 * Performs this operation on the supplied {@code context}.
+	 *
 	 * @param context the application context to consume
 	 * @throws Throwable any exception that might occur in assertions
 	 */
@@ -42,6 +43,7 @@ public interface ContextConsumer<C extends ApplicationContext> {
 	/**
 	 * Returns a composed {@code ContextConsumer} that performs, in sequence, this
 	 * operation followed by the {@code after} operation.
+	 *
 	 * @param after the operation to perform after this operation
 	 * @return a composed {@code ContextConsumer} that performs in sequence this operation
 	 * followed by the {@code after} operation

@@ -75,14 +75,14 @@ class CassandraAutoConfigurationTests {
 	void driverConfigLoaderWithContactPoints() {
 		this.contextRunner.withPropertyValues("spring.data.cassandra.contact-points=cluster.example.com:9042",
 				"spring.data.cassandra.local-datacenter=cassandra-eu1").run((context) -> {
-					assertThat(context).hasSingleBean(DriverConfigLoader.class);
-					DriverExecutionProfile configuration = context.getBean(DriverConfigLoader.class).getInitialConfig()
-							.getDefaultProfile();
-					assertThat(configuration.getStringList(DefaultDriverOption.CONTACT_POINTS))
-							.containsOnly("cluster.example.com:9042");
-					assertThat(configuration.getString(DefaultDriverOption.LOAD_BALANCING_LOCAL_DATACENTER))
-							.isEqualTo("cassandra-eu1");
-				});
+			assertThat(context).hasSingleBean(DriverConfigLoader.class);
+			DriverExecutionProfile configuration = context.getBean(DriverConfigLoader.class).getInitialConfig()
+					.getDefaultProfile();
+			assertThat(configuration.getStringList(DefaultDriverOption.CONTACT_POINTS))
+					.containsOnly("cluster.example.com:9042");
+			assertThat(configuration.getString(DefaultDriverOption.LOAD_BALANCING_LOCAL_DATACENTER))
+					.isEqualTo("cassandra-eu1");
+		});
 	}
 
 	@Test
@@ -130,32 +130,32 @@ class CassandraAutoConfigurationTests {
 	void driverConfigLoaderWithCustomSessionNameAndCustomizer() {
 		this.contextRunner.withUserConfiguration(SimpleDriverConfigLoaderBuilderCustomizerConfig.class)
 				.withPropertyValues("spring.data.cassandra.session-name=testcluster").run((context) -> {
-					assertThat(context).hasSingleBean(DriverConfigLoader.class);
-					assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
-							.getString(DefaultDriverOption.SESSION_NAME)).isEqualTo("overridden-name");
-				});
+			assertThat(context).hasSingleBean(DriverConfigLoader.class);
+			assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
+					.getString(DefaultDriverOption.SESSION_NAME)).isEqualTo("overridden-name");
+		});
 	}
 
 	@Test
 	void driverConfigLoaderCustomizeConnectionOptions() {
 		this.contextRunner.withPropertyValues("spring.data.cassandra.connection.connect-timeout=200ms",
 				"spring.data.cassandra.connection.init-query-timeout=10").run((context) -> {
-					DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
-							.getDefaultProfile();
-					assertThat(config.getInt(DefaultDriverOption.CONNECTION_CONNECT_TIMEOUT)).isEqualTo(200);
-					assertThat(config.getInt(DefaultDriverOption.CONNECTION_INIT_QUERY_TIMEOUT)).isEqualTo(10);
-				});
+			DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
+					.getDefaultProfile();
+			assertThat(config.getInt(DefaultDriverOption.CONNECTION_CONNECT_TIMEOUT)).isEqualTo(200);
+			assertThat(config.getInt(DefaultDriverOption.CONNECTION_INIT_QUERY_TIMEOUT)).isEqualTo(10);
+		});
 	}
 
 	@Test
 	void driverConfigLoaderCustomizePoolOptions() {
 		this.contextRunner.withPropertyValues("spring.data.cassandra.pool.idle-timeout=42",
 				"spring.data.cassandra.pool.heartbeat-interval=62").run((context) -> {
-					DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
-							.getDefaultProfile();
-					assertThat(config.getInt(DefaultDriverOption.HEARTBEAT_TIMEOUT)).isEqualTo(42);
-					assertThat(config.getInt(DefaultDriverOption.HEARTBEAT_INTERVAL)).isEqualTo(62);
-				});
+			DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
+					.getDefaultProfile();
+			assertThat(config.getInt(DefaultDriverOption.HEARTBEAT_TIMEOUT)).isEqualTo(42);
+			assertThat(config.getInt(DefaultDriverOption.HEARTBEAT_INTERVAL)).isEqualTo(62);
+		});
 	}
 
 	@Test
@@ -206,14 +206,14 @@ class CassandraAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.data.cassandra.request.throttler.type=concurrency-limiting",
 				"spring.data.cassandra.request.throttler.max-concurrent-requests=62",
 				"spring.data.cassandra.request.throttler.max-queue-size=72").run((context) -> {
-					DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
-							.getDefaultProfile();
-					assertThat(config.getString(DefaultDriverOption.REQUEST_THROTTLER_CLASS))
-							.isEqualTo(ConcurrencyLimitingRequestThrottler.class.getSimpleName());
-					assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_CONCURRENT_REQUESTS))
-							.isEqualTo(62);
-					assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_QUEUE_SIZE)).isEqualTo(72);
-				});
+			DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
+					.getDefaultProfile();
+			assertThat(config.getString(DefaultDriverOption.REQUEST_THROTTLER_CLASS))
+					.isEqualTo(ConcurrencyLimitingRequestThrottler.class.getSimpleName());
+			assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_CONCURRENT_REQUESTS))
+					.isEqualTo(62);
+			assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_QUEUE_SIZE)).isEqualTo(72);
+		});
 	}
 
 	@Test
@@ -222,15 +222,15 @@ class CassandraAutoConfigurationTests {
 				"spring.data.cassandra.request.throttler.max-requests-per-second=62",
 				"spring.data.cassandra.request.throttler.max-queue-size=72",
 				"spring.data.cassandra.request.throttler.drain-interval=16ms").run((context) -> {
-					DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
-							.getDefaultProfile();
-					assertThat(config.getString(DefaultDriverOption.REQUEST_THROTTLER_CLASS))
-							.isEqualTo(RateLimitingRequestThrottler.class.getSimpleName());
-					assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_REQUESTS_PER_SECOND))
-							.isEqualTo(62);
-					assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_QUEUE_SIZE)).isEqualTo(72);
-					assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_DRAIN_INTERVAL)).isEqualTo(16);
-				});
+			DriverExecutionProfile config = context.getBean(DriverConfigLoader.class).getInitialConfig()
+					.getDefaultProfile();
+			assertThat(config.getString(DefaultDriverOption.REQUEST_THROTTLER_CLASS))
+					.isEqualTo(RateLimitingRequestThrottler.class.getSimpleName());
+			assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_REQUESTS_PER_SECOND))
+					.isEqualTo(62);
+			assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_MAX_QUEUE_SIZE)).isEqualTo(72);
+			assertThat(config.getInt(DefaultDriverOption.REQUEST_THROTTLER_DRAIN_INTERVAL)).isEqualTo(16);
+		});
 	}
 
 	@Test
@@ -238,15 +238,16 @@ class CassandraAutoConfigurationTests {
 		String configLocation = "org/springframework/boot/autoconfigure/cassandra/simple.conf";
 		this.contextRunner.withPropertyValues("spring.data.cassandra.session-name=testcluster",
 				"spring.data.cassandra.config=" + configLocation).run((context) -> {
-					assertThat(context).hasSingleBean(DriverConfigLoader.class);
-					assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
-							.getString(DefaultDriverOption.SESSION_NAME)).isEqualTo("testcluster");
-					assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
-							.getDuration(DefaultDriverOption.REQUEST_TIMEOUT)).isEqualTo(Duration.ofMillis(500));
-				});
+			assertThat(context).hasSingleBean(DriverConfigLoader.class);
+			assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
+					.getString(DefaultDriverOption.SESSION_NAME)).isEqualTo("testcluster");
+			assertThat(context.getBean(DriverConfigLoader.class).getInitialConfig().getDefaultProfile()
+					.getDuration(DefaultDriverOption.REQUEST_TIMEOUT)).isEqualTo(Duration.ofMillis(500));
+		});
 	}
 
-	@Test // gh-31238
+	@Test
+		// gh-31238
 	void driverConfigLoaderWithConfigOverridesDefaults() {
 		String configLocation = "org/springframework/boot/autoconfigure/cassandra/override-defaults.conf";
 		this.contextRunner.withPropertyValues("spring.data.cassandra.config=" + configLocation).run((context) -> {

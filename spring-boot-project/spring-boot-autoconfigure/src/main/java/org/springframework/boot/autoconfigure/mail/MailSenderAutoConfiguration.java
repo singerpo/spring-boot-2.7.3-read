@@ -40,11 +40,11 @@ import org.springframework.mail.MailSender;
  * @since 1.2.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ MimeMessage.class, MimeType.class, MailSender.class })
+@ConditionalOnClass({MimeMessage.class, MimeType.class, MailSender.class})
 @ConditionalOnMissingBean(MailSender.class)
 @Conditional(MailSenderCondition.class)
 @EnableConfigurationProperties(MailProperties.class)
-@Import({ MailSenderJndiConfiguration.class, MailSenderPropertiesConfiguration.class })
+@Import({MailSenderJndiConfiguration.class, MailSenderPropertiesConfiguration.class})
 public class MailSenderAutoConfiguration {
 
 	/**

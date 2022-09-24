@@ -61,7 +61,7 @@ public class StandardConfigDataLocationResolver
 
 	static final String CONFIG_NAME_PROPERTY = "spring.config.name";
 
-	private static final String[] DEFAULT_CONFIG_NAMES = { "application" };
+	private static final String[] DEFAULT_CONFIG_NAMES = {"application"};
 
 	private static final Pattern URL_PREFIX = Pattern.compile("^([a-zA-Z][a-zA-Z0-9*]*?:)(.*$)");
 
@@ -79,8 +79,9 @@ public class StandardConfigDataLocationResolver
 
 	/**
 	 * Create a new {@link StandardConfigDataLocationResolver} instance.
-	 * @param logger the logger to use
-	 * @param binder a binder backed by the initial {@link Environment}
+	 *
+	 * @param logger         the logger to use
+	 * @param binder         a binder backed by the initial {@link Environment}
 	 * @param resourceLoader a {@link ResourceLoader} used to load resources
 	 */
 	public StandardConfigDataLocationResolver(Log logger, Binder binder, ResourceLoader resourceLoader) {
@@ -115,12 +116,12 @@ public class StandardConfigDataLocationResolver
 
 	@Override
 	public List<StandardConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-			ConfigDataLocation location) throws ConfigDataNotFoundException {
+													ConfigDataLocation location) throws ConfigDataNotFoundException {
 		return resolve(getReferences(context, location.split()));
 	}
 
 	private Set<StandardConfigDataReference> getReferences(ConfigDataLocationResolverContext context,
-			ConfigDataLocation[] configDataLocations) {
+														   ConfigDataLocation[] configDataLocations) {
 		Set<StandardConfigDataReference> references = new LinkedHashSet<>();
 		for (ConfigDataLocation configDataLocation : configDataLocations) {
 			references.addAll(getReferences(context, configDataLocation));
@@ -129,27 +130,26 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private Set<StandardConfigDataReference> getReferences(ConfigDataLocationResolverContext context,
-			ConfigDataLocation configDataLocation) {
+														   ConfigDataLocation configDataLocation) {
 		String resourceLocation = getResourceLocation(context, configDataLocation);
 		try {
 			if (isDirectory(resourceLocation)) {
 				return getReferencesForDirectory(configDataLocation, resourceLocation, NO_PROFILE);
 			}
 			return getReferencesForFile(configDataLocation, resourceLocation, NO_PROFILE);
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			throw new IllegalStateException("Unable to load config data from '" + configDataLocation + "'", ex);
 		}
 	}
 
 	@Override
 	public List<StandardConfigDataResource> resolveProfileSpecific(ConfigDataLocationResolverContext context,
-			ConfigDataLocation location, Profiles profiles) {
+																   ConfigDataLocation location, Profiles profiles) {
 		return resolve(getProfileSpecificReferences(context, location.split(), profiles));
 	}
 
 	private Set<StandardConfigDataReference> getProfileSpecificReferences(ConfigDataLocationResolverContext context,
-			ConfigDataLocation[] configDataLocations, Profiles profiles) {
+																		  ConfigDataLocation[] configDataLocations, Profiles profiles) {
 		Set<StandardConfigDataReference> references = new LinkedHashSet<>();
 		for (String profile : profiles) {
 			for (ConfigDataLocation configDataLocation : configDataLocations) {
@@ -161,7 +161,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private String getResourceLocation(ConfigDataLocationResolverContext context,
-			ConfigDataLocation configDataLocation) {
+									   ConfigDataLocation configDataLocation) {
 		String resourceLocation = configDataLocation.getNonPrefixedValue(PREFIX);
 		boolean isAbsolute = resourceLocation.startsWith("/") || URL_PREFIX.matcher(resourceLocation).matches();
 		if (isAbsolute) {
@@ -177,7 +177,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private Set<StandardConfigDataReference> getReferences(ConfigDataLocation configDataLocation,
-			String resourceLocation, String profile) {
+														   String resourceLocation, String profile) {
 		if (isDirectory(resourceLocation)) {
 			return getReferencesForDirectory(configDataLocation, resourceLocation, profile);
 		}
@@ -185,7 +185,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private Set<StandardConfigDataReference> getReferencesForDirectory(ConfigDataLocation configDataLocation,
-			String directory, String profile) {
+																	   String directory, String profile) {
 		Set<StandardConfigDataReference> references = new LinkedHashSet<>();
 		for (String name : this.configNames) {
 			Deque<StandardConfigDataReference> referencesForName = getReferencesForConfigName(name, configDataLocation,
@@ -196,7 +196,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private Deque<StandardConfigDataReference> getReferencesForConfigName(String name,
-			ConfigDataLocation configDataLocation, String directory, String profile) {
+																		  ConfigDataLocation configDataLocation, String directory, String profile) {
 		Deque<StandardConfigDataReference> references = new ArrayDeque<>();
 		for (PropertySourceLoader propertySourceLoader : this.propertySourceLoaders) {
 			for (String extension : propertySourceLoader.getFileExtensions()) {
@@ -211,7 +211,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private Set<StandardConfigDataReference> getReferencesForFile(ConfigDataLocation configDataLocation, String file,
-			String profile) {
+																  String profile) {
 		Matcher extensionHintMatcher = EXTENSION_HINT_PATTERN.matcher(file);
 		boolean extensionHintLocation = extensionHintMatcher.matches();
 		if (extensionHintLocation) {
@@ -311,8 +311,7 @@ public class StandardConfigDataLocationResolver
 		for (Resource resource : this.resourceLoader.getResources(reference.getResourceLocation(), ResourceType.FILE)) {
 			if (!resource.exists() && reference.isSkippable()) {
 				logSkippingResource(reference);
-			}
-			else {
+			} else {
 				resolved.add(createConfigResourceLocation(reference, resource));
 			}
 		}
@@ -324,7 +323,7 @@ public class StandardConfigDataLocationResolver
 	}
 
 	private StandardConfigDataResource createConfigResourceLocation(StandardConfigDataReference reference,
-			Resource resource) {
+																	Resource resource) {
 		return new StandardConfigDataResource(reference, resource);
 	}
 

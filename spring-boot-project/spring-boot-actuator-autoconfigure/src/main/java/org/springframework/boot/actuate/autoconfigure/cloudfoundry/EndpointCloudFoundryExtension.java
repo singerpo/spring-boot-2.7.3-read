@@ -41,6 +41,7 @@ public @interface EndpointCloudFoundryExtension {
 
 	/**
 	 * The class of the endpoint to provide a Cloud Foundry specific extension for.
+	 *
 	 * @return the class of the endpoint to extend
 	 */
 	Class<?> endpoint();

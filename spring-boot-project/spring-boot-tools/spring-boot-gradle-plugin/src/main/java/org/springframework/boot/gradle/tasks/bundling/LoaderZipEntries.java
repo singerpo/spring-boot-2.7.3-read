@@ -55,8 +55,7 @@ class LoaderZipEntries {
 				if (entry.isDirectory() && !entry.getName().equals("META-INF/")) {
 					writeDirectory(new ZipArchiveEntry(entry), out);
 					written.addDirectory(entry);
-				}
-				else if (entry.getName().endsWith(".class")) {
+				} else if (entry.getName().endsWith(".class")) {
 					writeClass(new ZipArchiveEntry(entry), loaderJar, out);
 					written.addFile(entry);
 				}

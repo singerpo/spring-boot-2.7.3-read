@@ -38,6 +38,7 @@ public interface BootArchive extends Task {
 
 	/**
 	 * Returns the fully-qualified name of the application's main class.
+	 *
 	 * @return the fully-qualified name of the application's main class
 	 * @since 2.4.0
 	 */
@@ -47,6 +48,7 @@ public interface BootArchive extends Task {
 	/**
 	 * Adds Ant-style patterns that identify files that must be unpacked from the archive
 	 * when it is launched.
+	 *
 	 * @param patterns the patterns
 	 */
 	void requiresUnpack(String... patterns);
@@ -54,6 +56,7 @@ public interface BootArchive extends Task {
 	/**
 	 * Adds a spec that identifies files that must be unpacked from the archive when it is
 	 * launched.
+	 *
 	 * @param spec the spec
 	 */
 	void requiresUnpack(Spec<FileTreeElement> spec);
@@ -61,6 +64,7 @@ public interface BootArchive extends Task {
 	/**
 	 * Returns the {@link LaunchScriptConfiguration} that will control the script that is
 	 * prepended to the archive.
+	 *
 	 * @return the launch script configuration, or {@code null} if the launch script has
 	 * not been configured.
 	 */
@@ -76,12 +80,14 @@ public interface BootArchive extends Task {
 	/**
 	 * Configures the archive to have a prepended launch script, customizing its
 	 * configuration using the given {@code action}.
+	 *
 	 * @param action the action to apply
 	 */
 	void launchScript(Action<LaunchScriptConfiguration> action);
 
 	/**
 	 * Returns the classpath that will be included in the archive.
+	 *
 	 * @return the classpath
 	 */
 	@Optional
@@ -91,6 +97,7 @@ public interface BootArchive extends Task {
 	/**
 	 * Adds files to the classpath to include in the archive. The given {@code classpath}
 	 * is evaluated as per {@link Project#files(Object...)}.
+	 *
 	 * @param classpath the additions to the classpath
 	 */
 	void classpath(Object... classpath);
@@ -98,6 +105,7 @@ public interface BootArchive extends Task {
 	/**
 	 * Sets the classpath to include in the archive. The given {@code classpath} is
 	 * evaluated as per {@link Project#files(Object...)}.
+	 *
 	 * @param classpath the classpath
 	 * @since 2.0.7
 	 */
@@ -105,6 +113,7 @@ public interface BootArchive extends Task {
 
 	/**
 	 * Sets the classpath to include in the archive.
+	 *
 	 * @param classpath the classpath
 	 * @since 2.0.7
 	 */

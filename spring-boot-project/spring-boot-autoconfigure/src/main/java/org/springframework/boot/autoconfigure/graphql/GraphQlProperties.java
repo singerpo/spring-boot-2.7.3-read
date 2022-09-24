@@ -72,12 +72,12 @@ public class GraphQlProperties {
 		/**
 		 * Locations of GraphQL schema files.
 		 */
-		private String[] locations = new String[] { "classpath:graphql/**/" };
+		private String[] locations = new String[]{"classpath:graphql/**/"};
 
 		/**
 		 * File extensions for GraphQL schema files.
 		 */
-		private String[] fileExtensions = new String[] { ".graphqls", ".gqls" };
+		private String[] fileExtensions = new String[]{".graphqls", ".gqls"};
 
 		private final Introspection introspection = new Introspection();
 

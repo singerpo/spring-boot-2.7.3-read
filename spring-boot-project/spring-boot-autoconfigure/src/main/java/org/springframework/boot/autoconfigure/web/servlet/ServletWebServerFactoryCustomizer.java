@@ -52,12 +52,12 @@ public class ServletWebServerFactoryCustomizer
 	}
 
 	public ServletWebServerFactoryCustomizer(ServerProperties serverProperties,
-			List<WebListenerRegistrar> webListenerRegistrars) {
+											 List<WebListenerRegistrar> webListenerRegistrars) {
 		this(serverProperties, webListenerRegistrars, null);
 	}
 
 	ServletWebServerFactoryCustomizer(ServerProperties serverProperties,
-			List<WebListenerRegistrar> webListenerRegistrars, List<CookieSameSiteSupplier> cookieSameSiteSuppliers) {
+									  List<WebListenerRegistrar> webListenerRegistrars, List<CookieSameSiteSupplier> cookieSameSiteSuppliers) {
 		this.serverProperties = serverProperties;
 		this.webListenerRegistrars = webListenerRegistrars;
 		this.cookieSameSiteSuppliers = cookieSameSiteSuppliers;

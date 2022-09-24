@@ -46,6 +46,7 @@ public class DefaultRestartInitializer implements RestartInitializer {
 	 * Returns if the thread is for a main invocation. By default {@link #isMain(Thread)
 	 * checks the name of the thread} and {@link #isDevelopmentClassLoader(ClassLoader)
 	 * the context classloader}.
+	 *
 	 * @param thread the thread to check
 	 * @return {@code true} if the thread is a main invocation
 	 * @see #isMainThread
@@ -57,6 +58,7 @@ public class DefaultRestartInitializer implements RestartInitializer {
 
 	/**
 	 * Returns whether the given {@code thread} is considered to be the main thread.
+	 *
 	 * @param thread the thread to check
 	 * @return {@code true} if it's the main thread, otherwise {@code false}
 	 * @since 2.4.0
@@ -68,6 +70,7 @@ public class DefaultRestartInitializer implements RestartInitializer {
 	/**
 	 * Returns whether the given {@code classLoader} is one that is typically used during
 	 * development.
+	 *
 	 * @param classLoader the ClassLoader to check
 	 * @return {@code true} if it's a ClassLoader typically used during development,
 	 * otherwise {@code false}
@@ -79,6 +82,7 @@ public class DefaultRestartInitializer implements RestartInitializer {
 
 	/**
 	 * Return the URLs that should be used with initialization.
+	 *
 	 * @param thread the source thread
 	 * @return the URLs
 	 */

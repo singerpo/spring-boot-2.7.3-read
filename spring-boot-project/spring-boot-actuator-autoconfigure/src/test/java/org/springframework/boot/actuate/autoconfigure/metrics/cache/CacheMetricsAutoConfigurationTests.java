@@ -75,10 +75,10 @@ class CacheMetricsAutoConfigurationTests {
 	void cacheInstrumentationCanBeDisabled() {
 		this.contextRunner.withPropertyValues("management.metrics.enable.cache=false", "spring.cache.type=caffeine",
 				"spring.cache.cache-names=cache1").run((context) -> {
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("cache.requests").tags("name", "cache1")
-							.tags("cache.manager", "cacheManager").meter()).isNull();
-				});
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("cache.requests").tags("name", "cache1")
+					.tags("cache.manager", "cacheManager").meter()).isNull();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

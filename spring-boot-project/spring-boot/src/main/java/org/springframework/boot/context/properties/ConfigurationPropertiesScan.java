@@ -50,6 +50,7 @@ public @interface ConfigurationPropertiesScan {
 	 * Alias for the {@link #basePackages()} attribute. Allows for more concise annotation
 	 * declarations e.g.: {@code @ConfigurationPropertiesScan("org.my.pkg")} instead of
 	 * {@code @ConfigurationPropertiesScan(basePackages="org.my.pkg")}.
+	 *
 	 * @return the base packages to scan
 	 */
 	@AliasFor("basePackages")
@@ -61,6 +62,7 @@ public @interface ConfigurationPropertiesScan {
 	 * <p>
 	 * Use {@link #basePackageClasses()} for a type-safe alternative to String-based
 	 * package names.
+	 *
 	 * @return the base packages to scan
 	 */
 	@AliasFor("value")
@@ -73,6 +75,7 @@ public @interface ConfigurationPropertiesScan {
 	 * <p>
 	 * Consider creating a special no-op marker class or interface in each package that
 	 * serves no purpose other than being referenced by this attribute.
+	 *
 	 * @return classes from the base packages to scan
 	 */
 	Class<?>[] basePackageClasses() default {};

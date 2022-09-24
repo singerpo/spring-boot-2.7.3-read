@@ -79,8 +79,8 @@ class PropertyDescriptorResolverTests {
 							"second", "first");
 					assertThat(resolver.resolve(type, null).map(
 							(descriptor) -> descriptor.getGetter().getEnclosingElement().getSimpleName().toString()))
-									.containsExactly("HierarchicalProperties", "HierarchicalPropertiesParent",
-											"HierarchicalPropertiesParent");
+							.containsExactly("HierarchicalProperties", "HierarchicalPropertiesParent",
+									"HierarchicalPropertiesParent");
 					assertThat(resolver.resolve(type, null)
 							.map((descriptor) -> descriptor.resolveItemMetadata("test", metadataEnv))
 							.map(ItemMetadata::getDefaultValue)).containsExactly("three", "two", "one");
@@ -180,9 +180,9 @@ class PropertyDescriptorResolverTests {
 	}
 
 	private void process(Class<?> target, Collection<Class<?>> additionalClasses,
-			BiConsumer<TypeElement, MetadataGenerationEnvironment> consumer) throws IOException {
+						 BiConsumer<TypeElement, MetadataGenerationEnvironment> consumer) throws IOException {
 		BiConsumer<RoundEnvironmentTester, MetadataGenerationEnvironment> internalConsumer = (roundEnv,
-				metadataEnv) -> {
+																							  metadataEnv) -> {
 			TypeElement element = roundEnv.getRootElement(target);
 			consumer.accept(element, metadataEnv);
 		};

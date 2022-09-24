@@ -40,6 +40,7 @@ public class BatchDataSourceScriptDatabaseInitializer extends DataSourceScriptDa
 
 	/**
 	 * Create a new {@link BatchDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Batch data source
 	 * @param properties the Spring Batch JDBC properties
 	 * @see #getSettings
@@ -50,8 +51,9 @@ public class BatchDataSourceScriptDatabaseInitializer extends DataSourceScriptDa
 
 	/**
 	 * Create a new {@link BatchDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Batch data source
-	 * @param settings the database initialization settings
+	 * @param settings   the database initialization settings
 	 * @see #getSettings
 	 */
 	public BatchDataSourceScriptDatabaseInitializer(DataSource dataSource, DatabaseInitializationSettings settings) {
@@ -62,6 +64,7 @@ public class BatchDataSourceScriptDatabaseInitializer extends DataSourceScriptDa
 	 * Adapts {@link BatchProperties.Jdbc Spring Batch JDBC properties} to
 	 * {@link DatabaseInitializationSettings} replacing any {@literal @@platform@@}
 	 * placeholders.
+	 *
 	 * @param dataSource the Spring Batch data source
 	 * @param properties batch JDBC properties
 	 * @return a new {@link DatabaseInitializationSettings} instance

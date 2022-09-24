@@ -44,7 +44,7 @@ class DefaultEndpointObjectNameFactory implements EndpointObjectNameFactory {
 	private final String contextId;
 
 	DefaultEndpointObjectNameFactory(JmxEndpointProperties properties, JmxProperties jmxProperties,
-			MBeanServer mBeanServer, String contextId) {
+									 MBeanServer mBeanServer, String contextId) {
 		this.properties = properties;
 		this.jmxProperties = jmxProperties;
 		this.mBeanServer = mBeanServer;

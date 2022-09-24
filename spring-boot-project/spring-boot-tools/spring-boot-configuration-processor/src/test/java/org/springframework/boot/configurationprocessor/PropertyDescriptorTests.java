@@ -62,7 +62,7 @@ public abstract class PropertyDescriptorTests {
 	}
 
 	protected ItemMetadataAssert assertItemMetadata(MetadataGenerationEnvironment metadataEnv,
-			PropertyDescriptor<?> property) {
+													PropertyDescriptor<?> property) {
 		return new ItemMetadataAssert(property.resolveItemMetadata("test", metadataEnv));
 	}
 

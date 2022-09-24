@@ -49,7 +49,7 @@ class JavaBeanBinder implements DataObjectBinder {
 
 	@Override
 	public <T> T bind(ConfigurationPropertyName name, Bindable<T> target, Context context,
-			DataObjectPropertyBinder propertyBinder) {
+					  DataObjectPropertyBinder propertyBinder) {
 		boolean hasKnownBindableProperties = target.getValue() != null && hasKnownBindableProperties(name, context);
 		Bean<T> bean = Bean.get(target, hasKnownBindableProperties);
 		if (bean == null) {
@@ -77,7 +77,7 @@ class JavaBeanBinder implements DataObjectBinder {
 	}
 
 	private <T> boolean bind(DataObjectPropertyBinder propertyBinder, Bean<T> bean, BeanSupplier<T> beanSupplier,
-			Context context) {
+							 Context context) {
 		boolean bound = false;
 		for (BeanProperty beanProperty : bean.getProperties().values()) {
 			bound |= bind(beanSupplier, propertyBinder, beanProperty);
@@ -87,7 +87,7 @@ class JavaBeanBinder implements DataObjectBinder {
 	}
 
 	private <T> boolean bind(BeanSupplier<T> beanSupplier, DataObjectPropertyBinder propertyBinder,
-			BeanProperty property) {
+							 BeanProperty property) {
 		String propertyName = property.getName();
 		ResolvableType type = property.getType();
 		Supplier<Object> value = property.getValue(beanSupplier);
@@ -99,8 +99,7 @@ class JavaBeanBinder implements DataObjectBinder {
 		}
 		if (property.isSettable()) {
 			property.setValue(beanSupplier, bound);
-		}
-		else if (value == null || !bound.equals(value.get())) {
+		} else if (value == null || !bound.equals(value.get())) {
 			throw new IllegalStateException("No setter found for property: " + property.getName());
 		}
 		return true;
@@ -171,7 +170,7 @@ class JavaBeanBinder implements DataObjectBinder {
 		}
 
 		private void addMethodIfPossible(Method method, String prefix, int parameterCount,
-				BiConsumer<BeanProperty, Method> consumer) {
+										 BiConsumer<BeanProperty, Method> consumer) {
 			if (method != null && method.getParameterCount() == parameterCount && method.getName().startsWith(prefix)
 					&& method.getName().length() > prefix.length()) {
 				String propertyName = Introspector.decapitalize(method.getName().substring(prefix.length()));
@@ -236,8 +235,7 @@ class JavaBeanBinder implements DataObjectBinder {
 			try {
 				type.getDeclaredConstructor();
 				return true;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return false;
 			}
 		}
@@ -333,8 +331,7 @@ class JavaBeanBinder implements DataObjectBinder {
 		Annotation[] getAnnotations() {
 			try {
 				return (this.field != null) ? this.field.getDeclaredAnnotations() : null;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return null;
 			}
 		}
@@ -347,8 +344,7 @@ class JavaBeanBinder implements DataObjectBinder {
 				try {
 					this.getter.setAccessible(true);
 					return this.getter.invoke(instance.get());
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new IllegalStateException("Unable to get value for property " + this.name, ex);
 				}
 			};
@@ -362,8 +358,7 @@ class JavaBeanBinder implements DataObjectBinder {
 			try {
 				this.setter.setAccessible(true);
 				this.setter.invoke(instance.get(), value);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Unable to set value for property " + this.name, ex);
 			}
 		}

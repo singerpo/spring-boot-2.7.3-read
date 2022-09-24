@@ -50,9 +50,9 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * @author Andy Wilkinson
  * @since 1.1.0
  */
-@AutoConfiguration(after = { WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
-		HttpMessageConvertersAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class })
-@ConditionalOnClass({ EntityModel.class, RequestMapping.class, RequestMappingHandlerAdapter.class, Plugin.class })
+@AutoConfiguration(after = {WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
+		HttpMessageConvertersAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class})
+@ConditionalOnClass({EntityModel.class, RequestMapping.class, RequestMappingHandlerAdapter.class, Plugin.class})
 @ConditionalOnWebApplication
 @EnableConfigurationProperties(HateoasProperties.class)
 public class HypermediaAutoConfiguration {

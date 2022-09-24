@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest
 class MyErrorViewResolver : ErrorViewResolver {
 
 	override fun resolveErrorView(request: HttpServletRequest, status: HttpStatus,
-			model: Map<String, Any>): ModelAndView? {
+								  model: Map<String, Any>): ModelAndView? {
 		// Use the request or status to optionally return a ModelAndView
 		if (status == HttpStatus.INSUFFICIENT_STORAGE) {
 			// We could add custom model values here

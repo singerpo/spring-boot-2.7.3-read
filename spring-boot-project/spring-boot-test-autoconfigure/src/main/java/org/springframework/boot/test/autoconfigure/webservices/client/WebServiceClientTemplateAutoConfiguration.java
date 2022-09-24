@@ -30,8 +30,8 @@ import org.springframework.ws.client.core.WebServiceTemplate;
  * {@link AutoConfigureWebServiceClient#registerWebServiceTemplate()} is {@code true}.
  *
  * @author Dmytro Nosan
- * @since 2.3.0
  * @see AutoConfigureWebServiceClient
+ * @since 2.3.0
  */
 @AutoConfiguration(after = WebServiceTemplateAutoConfiguration.class)
 @ConditionalOnProperty(prefix = "spring.test.webservice.client", name = "register-web-service-template")

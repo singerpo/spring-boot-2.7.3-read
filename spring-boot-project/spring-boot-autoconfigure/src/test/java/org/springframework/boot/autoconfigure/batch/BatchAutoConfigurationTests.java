@@ -155,11 +155,11 @@ class BatchAutoConfigurationTests {
 				.withUserConfiguration(NamedJobConfigurationWithRegisteredJob.class,
 						EmbeddedDataSourceConfiguration.class)
 				.withPropertyValues("spring.batch.job.names:discreteRegisteredJob").run((context) -> {
-					assertThat(context).hasSingleBean(JobLauncher.class);
-					context.getBean(JobLauncherApplicationRunner.class).run();
-					assertThat(context.getBean(JobRepository.class).getLastJobExecution("discreteRegisteredJob",
-							new JobParameters())).isNotNull();
-				});
+			assertThat(context).hasSingleBean(JobLauncher.class);
+			context.getBean(JobLauncherApplicationRunner.class).run();
+			assertThat(context.getBean(JobRepository.class).getLastJobExecution("discreteRegisteredJob",
+					new JobParameters())).isNotNull();
+		});
 	}
 
 	@Test
@@ -167,20 +167,20 @@ class BatchAutoConfigurationTests {
 		this.contextRunner
 				.withUserConfiguration(NamedJobConfigurationWithLocalJob.class, EmbeddedDataSourceConfiguration.class)
 				.withPropertyValues("spring.batch.job.names:discreteLocalJob").run((context) -> {
-					assertThat(context).hasSingleBean(JobLauncher.class);
-					context.getBean(JobLauncherApplicationRunner.class).run();
-					assertThat(context.getBean(JobRepository.class).getLastJobExecution("discreteLocalJob",
-							new JobParameters())).isNotNull();
-				});
+			assertThat(context).hasSingleBean(JobLauncher.class);
+			context.getBean(JobLauncherApplicationRunner.class).run();
+			assertThat(context.getBean(JobRepository.class).getLastJobExecution("discreteLocalJob",
+					new JobParameters())).isNotNull();
+		});
 	}
 
 	@Test
 	void testDisableLaunchesJob() {
 		this.contextRunner.withUserConfiguration(JobConfiguration.class, EmbeddedDataSourceConfiguration.class)
 				.withPropertyValues("spring.batch.job.enabled:false").run((context) -> {
-					assertThat(context).hasSingleBean(JobLauncher.class);
-					assertThat(context).doesNotHaveBean(CommandLineRunner.class);
-				});
+			assertThat(context).hasSingleBean(JobLauncher.class);
+			assertThat(context).doesNotHaveBean(CommandLineRunner.class);
+		});
 	}
 
 	@Test
@@ -203,27 +203,27 @@ class BatchAutoConfigurationTests {
 	void testUsingJpa() {
 		this.contextRunner.withUserConfiguration(TestConfiguration.class, EmbeddedDataSourceConfiguration.class,
 				HibernateJpaAutoConfiguration.class).run((context) -> {
-					PlatformTransactionManager transactionManager = context.getBean(PlatformTransactionManager.class);
-					// It's a lazy proxy, but it does render its target if you ask for
-					// toString():
-					assertThat(transactionManager.toString().contains("JpaTransactionManager")).isTrue();
-					assertThat(context).hasSingleBean(EntityManagerFactory.class);
-					// Ensure the JobRepository can be used (no problem with isolation
-					// level)
-					assertThat(context.getBean(JobRepository.class).getLastJobExecution("job", new JobParameters()))
-							.isNull();
-				});
+			PlatformTransactionManager transactionManager = context.getBean(PlatformTransactionManager.class);
+			// It's a lazy proxy, but it does render its target if you ask for
+			// toString():
+			assertThat(transactionManager.toString().contains("JpaTransactionManager")).isTrue();
+			assertThat(context).hasSingleBean(EntityManagerFactory.class);
+			// Ensure the JobRepository can be used (no problem with isolation
+			// level)
+			assertThat(context.getBean(JobRepository.class).getLastJobExecution("job", new JobParameters()))
+					.isNull();
+		});
 	}
 
 	@Test
 	void testDefaultIsolationLevelWithJpaLogsWarning(CapturedOutput output) {
 		this.contextRunner.withUserConfiguration(TestConfiguration.class, EmbeddedDataSourceConfiguration.class,
 				HibernateJpaAutoConfiguration.class).run((context) -> {
-					assertThat(context.getBean(BasicBatchConfigurer.class).determineIsolationLevel())
-							.isEqualTo("ISOLATION_DEFAULT");
-					assertThat(output).contains("JPA does not support custom isolation levels")
-							.contains("set 'spring.batch.jdbc.isolation-level-for-create' to 'default'");
-				});
+			assertThat(context.getBean(BasicBatchConfigurer.class).determineIsolationLevel())
+					.isEqualTo("ISOLATION_DEFAULT");
+			assertThat(output).contains("JPA does not support custom isolation levels")
+					.contains("set 'spring.batch.jdbc.isolation-level-for-create' to 'default'");
+		});
 	}
 
 	@Test
@@ -323,14 +323,14 @@ class BatchAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestConfiguration.class, EmbeddedDataSourceConfiguration.class)
 				.withUserConfiguration(FlywayAutoConfiguration.class)
 				.withPropertyValues("spring.batch.initialize-schema=never").run((context) -> {
-					ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
-					String[] jobRepositoryNames = beanFactory.getBeanNamesForType(JobRepository.class);
-					assertThat(jobRepositoryNames).isNotEmpty();
-					for (String jobRepositoryName : jobRepositoryNames) {
-						assertThat(beanFactory.getBeanDefinition(jobRepositoryName).getDependsOn()).contains("flyway",
-								"flywayInitializer");
-					}
-				});
+			ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+			String[] jobRepositoryNames = beanFactory.getBeanNamesForType(JobRepository.class);
+			assertThat(jobRepositoryNames).isNotEmpty();
+			for (String jobRepositoryName : jobRepositoryNames) {
+				assertThat(beanFactory.getBeanDefinition(jobRepositoryName).getDependsOn()).contains("flyway",
+						"flywayInitializer");
+			}
+		});
 	}
 
 	@Test
@@ -338,14 +338,14 @@ class BatchAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestConfiguration.class, EmbeddedDataSourceConfiguration.class)
 				.withUserConfiguration(LiquibaseAutoConfiguration.class)
 				.withPropertyValues("spring.batch.initialize-schema=never").run((context) -> {
-					ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
-					String[] jobRepositoryNames = beanFactory.getBeanNamesForType(JobRepository.class);
-					assertThat(jobRepositoryNames).isNotEmpty();
-					for (String jobRepositoryName : jobRepositoryNames) {
-						assertThat(beanFactory.getBeanDefinition(jobRepositoryName).getDependsOn())
-								.contains("liquibase");
-					}
-				});
+			ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+			String[] jobRepositoryNames = beanFactory.getBeanNamesForType(JobRepository.class);
+			assertThat(jobRepositoryNames).isNotEmpty();
+			for (String jobRepositoryName : jobRepositoryNames) {
+				assertThat(beanFactory.getBeanDefinition(jobRepositoryName).getDependsOn())
+						.contains("liquibase");
+			}
+		});
 	}
 
 	@Test

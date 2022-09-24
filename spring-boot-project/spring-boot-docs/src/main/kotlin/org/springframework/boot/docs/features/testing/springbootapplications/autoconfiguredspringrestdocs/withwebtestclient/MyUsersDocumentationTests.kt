@@ -30,12 +30,12 @@ class MyUsersDocumentationTests(@Autowired val webTestClient: WebTestClient) {
 	@Test
 	fun listUsers() {
 		webTestClient
-			.get().uri("/")
-			.exchange()
-			.expectStatus()
-			.isOk
-			.expectBody()
-			.consumeWith(WebTestClientRestDocumentation.document("list-users"))
+				.get().uri("/")
+				.exchange()
+				.expectStatus()
+				.isOk
+				.expectBody()
+				.consumeWith(WebTestClientRestDocumentation.document("list-users"))
 	}
 
 }

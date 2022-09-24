@@ -62,8 +62,7 @@ class IntegrationPropertiesEnvironmentPostProcessor implements EnvironmentPostPr
 			OriginTrackedMapPropertySource propertyFileSource = (OriginTrackedMapPropertySource) loader
 					.load("META-INF/spring.integration.properties", resource).get(0);
 			environment.getPropertySources().addLast(new IntegrationPropertiesPropertySource(propertyFileSource));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to load integration properties from " + resource, ex);
 		}
 	}

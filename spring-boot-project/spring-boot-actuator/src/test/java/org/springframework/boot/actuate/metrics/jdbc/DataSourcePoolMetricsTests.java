@@ -65,7 +65,7 @@ class DataSourcePoolMetricsTests {
 	static class DataSourceConfig {
 
 		DataSourceConfig(DataSource dataSource, Collection<DataSourcePoolMetadataProvider> metadataProviders,
-				MeterRegistry registry) {
+						 MeterRegistry registry) {
 			new DataSourcePoolMetrics(dataSource, metadataProviders, "data.source", Collections.emptyList())
 					.bindTo(registry);
 		}

@@ -140,7 +140,7 @@ class JavaPluginActionIntegrationTests {
 	void applyingJavaPluginCreatesDevelopmentOnlyConfiguration() {
 		assertThat(this.gradleBuild
 				.build("configurationExists", "-PconfigurationName=developmentOnly", "-PapplyJavaPlugin").getOutput())
-						.contains("developmentOnly exists = true");
+				.contains("developmentOnly exists = true");
 	}
 
 	@TestTemplate
@@ -148,8 +148,8 @@ class JavaPluginActionIntegrationTests {
 		assertThat(this.gradleBuild
 				.build("configurationAttributes", "-PconfigurationName=productionRuntimeClasspath", "-PapplyJavaPlugin")
 				.getOutput()).contains("3 productionRuntimeClasspath attributes:")
-						.contains("org.gradle.usage: java-runtime").contains("org.gradle.libraryelements: jar")
-						.contains("org.gradle.dependency.bundling: external");
+				.contains("org.gradle.usage: java-runtime").contains("org.gradle.libraryelements: jar")
+				.contains("org.gradle.dependency.bundling: external");
 	}
 
 	@TestTemplate
@@ -179,8 +179,7 @@ class JavaPluginActionIntegrationTests {
 		if (!this.gradleBuild.isConfigurationCache() && GradleVersion.version(this.gradleBuild.getGradleVersion())
 				.compareTo(GradleVersion.version("7.3.3")) < 0) {
 			assertThat(configured).containsExactly("help");
-		}
-		else {
+		} else {
 			assertThat(configured).containsExactlyInAnyOrder("help", "clean");
 		}
 	}

@@ -37,6 +37,7 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP GET operation.
+	 *
 	 * @param uri the destination URI (excluding any host/port)
 	 * @return the operation response
 	 * @throws IOException on IO error
@@ -45,6 +46,7 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
+	 *
 	 * @param uri the destination URI (excluding any host/port)
 	 * @return the operation response
 	 * @throws IOException on IO error
@@ -53,7 +55,8 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
-	 * @param uri the destination URI (excluding any host/port)
+	 *
+	 * @param uri          the destination URI (excluding any host/port)
 	 * @param registryAuth registry authentication credentials
 	 * @return the operation response
 	 * @throws IOException on IO error
@@ -62,9 +65,10 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
-	 * @param uri the destination URI (excluding any host/port)
+	 *
+	 * @param uri         the destination URI (excluding any host/port)
 	 * @param contentType the content type to write
-	 * @param writer a content writer
+	 * @param writer      a content writer
 	 * @return the operation response
 	 * @throws IOException on IO error
 	 */
@@ -72,9 +76,10 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP PUT operation.
-	 * @param uri the destination URI (excluding any host/port)
+	 *
+	 * @param uri         the destination URI (excluding any host/port)
 	 * @param contentType the content type to write
-	 * @param writer a content writer
+	 * @param writer      a content writer
 	 * @return the operation response
 	 * @throws IOException on IO error
 	 */
@@ -82,6 +87,7 @@ public interface HttpTransport {
 
 	/**
 	 * Perform an HTTP DELETE operation.
+	 *
 	 * @param uri the destination URI (excluding any host/port)
 	 * @return the operation response
 	 * @throws IOException on IO error
@@ -90,6 +96,7 @@ public interface HttpTransport {
 
 	/**
 	 * Create the most suitable {@link HttpTransport} based on the {@link DockerHost}.
+	 *
 	 * @param dockerHost the Docker host information
 	 * @return a {@link HttpTransport} instance
 	 */
@@ -106,6 +113,7 @@ public interface HttpTransport {
 
 		/**
 		 * Return the content of the response.
+		 *
 		 * @return the response content
 		 * @throws IOException on IO error
 		 */

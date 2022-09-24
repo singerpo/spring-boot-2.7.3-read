@@ -42,7 +42,7 @@ class MyJsonComponent {
 	class Deserializer : JsonObjectDeserializer<MyObject>() {
 		@Throws(IOException::class)
 		override fun deserializeObject(jsonParser: JsonParser, context: DeserializationContext,
-				codec: ObjectCodec, tree: JsonNode): MyObject {
+									   codec: ObjectCodec, tree: JsonNode): MyObject {
 			val name = nullSafeValue(tree["name"], String::class.java)
 			val age = nullSafeValue(tree["age"], Int::class.java)
 			return MyObject(name, age)

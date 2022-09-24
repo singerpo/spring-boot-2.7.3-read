@@ -48,7 +48,7 @@ import org.springframework.web.util.pattern.PathPatternRouteMatcher;
  * @since 2.2.0
  */
 @AutoConfiguration(after = JacksonAutoConfiguration.class)
-@ConditionalOnClass({ io.rsocket.RSocket.class, RSocketStrategies.class, PooledByteBufAllocator.class })
+@ConditionalOnClass({io.rsocket.RSocket.class, RSocketStrategies.class, PooledByteBufAllocator.class})
 public class RSocketStrategiesAutoConfiguration {
 
 	private static final String PATHPATTERN_ROUTEMATCHER_CLASS = "org.springframework.web.util.pattern.PathPatternRouteMatcher";
@@ -65,10 +65,10 @@ public class RSocketStrategiesAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ ObjectMapper.class, CBORFactory.class })
+	@ConditionalOnClass({ObjectMapper.class, CBORFactory.class})
 	protected static class JacksonCborStrategyConfiguration {
 
-		private static final MediaType[] SUPPORTED_TYPES = { MediaType.APPLICATION_CBOR };
+		private static final MediaType[] SUPPORTED_TYPES = {MediaType.APPLICATION_CBOR};
 
 		@Bean
 		@Order(0)
@@ -87,8 +87,8 @@ public class RSocketStrategiesAutoConfiguration {
 	@ConditionalOnClass(ObjectMapper.class)
 	protected static class JacksonJsonStrategyConfiguration {
 
-		private static final MediaType[] SUPPORTED_TYPES = { MediaType.APPLICATION_JSON,
-				new MediaType("application", "*+json") };
+		private static final MediaType[] SUPPORTED_TYPES = {MediaType.APPLICATION_JSON,
+				new MediaType("application", "*+json")};
 
 		@Bean
 		@Order(1)

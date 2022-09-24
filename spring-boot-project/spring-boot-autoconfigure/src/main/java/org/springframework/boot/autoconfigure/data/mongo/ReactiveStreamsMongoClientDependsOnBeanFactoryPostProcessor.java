@@ -40,6 +40,7 @@ public class ReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor
 	/**
 	 * Creates a new {@code ReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor}
 	 * that will set up dependencies upon beans with the given types.
+	 *
 	 * @param dependsOn types of the beans to depend upon
 	 */
 	public ReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor(Class<?>... dependsOn) {

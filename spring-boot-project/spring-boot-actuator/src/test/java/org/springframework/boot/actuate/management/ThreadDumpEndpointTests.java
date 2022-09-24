@@ -47,8 +47,7 @@ class ThreadDumpEndpointTests {
 		Thread awaitCountDownLatchThread = new Thread(() -> {
 			try {
 				latch.await();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}, "Awaiting CountDownLatch");
@@ -62,8 +61,7 @@ class ThreadDumpEndpointTests {
 			synchronized (monitor) {
 				try {
 					monitor.wait();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 				}
 			}
@@ -75,11 +73,9 @@ class ThreadDumpEndpointTests {
 			writeLock.lock();
 			try {
 				latch.await();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
-			}
-			finally {
+			} finally {
 				writeLock.unlock();
 			}
 		}, "Holding write lock").start();

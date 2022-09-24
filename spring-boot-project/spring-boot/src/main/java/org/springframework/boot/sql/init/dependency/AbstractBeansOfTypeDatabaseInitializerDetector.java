@@ -35,14 +35,14 @@ public abstract class AbstractBeansOfTypeDatabaseInitializerDetector implements 
 		try {
 			Set<Class<?>> types = getDatabaseInitializerBeanTypes();
 			return new BeansOfTypeDetector(types).detect(beanFactory);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return Collections.emptySet();
 		}
 	}
 
 	/**
 	 * Returns the bean types that should be detected as being database initializers.
+	 *
 	 * @return the database initializer bean types
 	 */
 	protected abstract Set<Class<?>> getDatabaseInitializerBeanTypes();

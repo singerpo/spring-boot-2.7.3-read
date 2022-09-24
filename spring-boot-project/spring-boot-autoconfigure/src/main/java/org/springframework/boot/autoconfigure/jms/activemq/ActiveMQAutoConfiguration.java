@@ -40,10 +40,10 @@ import org.springframework.context.annotation.Import;
  * @since 1.1.0
  */
 @AutoConfiguration(before = JmsAutoConfiguration.class, after = JndiConnectionFactoryAutoConfiguration.class)
-@ConditionalOnClass({ ConnectionFactory.class, ActiveMQConnectionFactory.class })
+@ConditionalOnClass({ConnectionFactory.class, ActiveMQConnectionFactory.class})
 @ConditionalOnMissingBean(ConnectionFactory.class)
-@EnableConfigurationProperties({ ActiveMQProperties.class, JmsProperties.class })
-@Import({ ActiveMQXAConnectionFactoryConfiguration.class, ActiveMQConnectionFactoryConfiguration.class })
+@EnableConfigurationProperties({ActiveMQProperties.class, JmsProperties.class})
+@Import({ActiveMQXAConnectionFactoryConfiguration.class, ActiveMQConnectionFactoryConfiguration.class})
 public class ActiveMQAutoConfiguration {
 
 }

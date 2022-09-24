@@ -84,6 +84,7 @@ public final class WebEndpointResponse<T> {
 	/**
 	 * Creates a new {@code WebEndpointResponse} with no body and the given
 	 * {@code status}.
+	 *
 	 * @param status the HTTP status
 	 */
 	public WebEndpointResponse(int status) {
@@ -93,6 +94,7 @@ public final class WebEndpointResponse<T> {
 	/**
 	 * Creates a new {@code WebEndpointResponse} with the given body and a 200 (OK)
 	 * status.
+	 *
 	 * @param body the body
 	 */
 	public WebEndpointResponse(T body) {
@@ -102,7 +104,8 @@ public final class WebEndpointResponse<T> {
 	/**
 	 * Creates a new {@code WebEndpointResponse} with the given body and content type and
 	 * a 200 (OK) status.
-	 * @param body the body
+	 *
+	 * @param body       the body
 	 * @param producible the producible providing the content type
 	 * @since 2.5.0
 	 */
@@ -113,7 +116,8 @@ public final class WebEndpointResponse<T> {
 	/**
 	 * Creates a new {@code WebEndpointResponse} with the given body and content type and
 	 * a 200 (OK) status.
-	 * @param body the body
+	 *
+	 * @param body        the body
 	 * @param contentType the content type of the response
 	 * @since 2.5.0
 	 */
@@ -123,7 +127,8 @@ public final class WebEndpointResponse<T> {
 
 	/**
 	 * Creates a new {@code WebEndpointResponse} with the given body and status.
-	 * @param body the body
+	 *
+	 * @param body   the body
 	 * @param status the HTTP status
 	 */
 	public WebEndpointResponse(T body, int status) {
@@ -132,8 +137,9 @@ public final class WebEndpointResponse<T> {
 
 	/**
 	 * Creates a new {@code WebEndpointResponse} with the given body and status.
-	 * @param body the body
-	 * @param status the HTTP status
+	 *
+	 * @param body        the body
+	 * @param status      the HTTP status
 	 * @param contentType the content type of the response
 	 * @since 2.5.0
 	 */
@@ -145,6 +151,7 @@ public final class WebEndpointResponse<T> {
 
 	/**
 	 * Returns the content type of the response.
+	 *
 	 * @return the content type;
 	 */
 	public MimeType getContentType() {
@@ -153,6 +160,7 @@ public final class WebEndpointResponse<T> {
 
 	/**
 	 * Returns the body for the response.
+	 *
 	 * @return the body
 	 */
 	public T getBody() {
@@ -161,6 +169,7 @@ public final class WebEndpointResponse<T> {
 
 	/**
 	 * Returns the status for the response.
+	 *
 	 * @return the status
 	 */
 	public int getStatus() {

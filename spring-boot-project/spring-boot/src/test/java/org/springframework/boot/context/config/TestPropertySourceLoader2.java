@@ -35,7 +35,7 @@ class TestPropertySourceLoader2 implements PropertySourceLoader {
 
 	@Override
 	public String[] getFileExtensions() {
-		return new String[] { "custom" };
+		return new String[]{"custom"};
 	}
 
 	@Override

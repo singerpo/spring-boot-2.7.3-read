@@ -37,13 +37,14 @@ public class ApplicationEnvironmentPreparedEvent extends SpringApplicationEvent 
 
 	/**
 	 * Create a new {@link ApplicationEnvironmentPreparedEvent} instance.
+	 *
 	 * @param bootstrapContext the bootstrap context
-	 * @param application the current application
-	 * @param args the arguments the application is running with
-	 * @param environment the environment that was just created
+	 * @param application      the current application
+	 * @param args             the arguments the application is running with
+	 * @param environment      the environment that was just created
 	 */
 	public ApplicationEnvironmentPreparedEvent(ConfigurableBootstrapContext bootstrapContext,
-			SpringApplication application, String[] args, ConfigurableEnvironment environment) {
+											   SpringApplication application, String[] args, ConfigurableEnvironment environment) {
 		super(application, args);
 		this.bootstrapContext = bootstrapContext;
 		this.environment = environment;
@@ -51,6 +52,7 @@ public class ApplicationEnvironmentPreparedEvent extends SpringApplicationEvent 
 
 	/**
 	 * Return the bootstrap context.
+	 *
 	 * @return the bootstrap context
 	 * @since 2.4.0
 	 */
@@ -60,6 +62,7 @@ public class ApplicationEnvironmentPreparedEvent extends SpringApplicationEvent 
 
 	/**
 	 * Return the environment.
+	 *
 	 * @return the environment
 	 */
 	public ConfigurableEnvironment getEnvironment() {

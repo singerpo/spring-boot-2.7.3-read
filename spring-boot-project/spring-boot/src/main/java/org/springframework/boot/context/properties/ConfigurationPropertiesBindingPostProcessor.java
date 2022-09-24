@@ -87,8 +87,7 @@ public class ConfigurationPropertiesBindingPostProcessor
 				+ bean.getName() + "'. Ensure that @ConstructorBinding has not been applied to regular bean");
 		try {
 			this.binder.bind(bean);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new ConfigurationPropertiesBindException(bean, ex);
 		}
 	}
@@ -101,6 +100,7 @@ public class ConfigurationPropertiesBindingPostProcessor
 	/**
 	 * Register a {@link ConfigurationPropertiesBindingPostProcessor} bean if one is not
 	 * already registered.
+	 *
 	 * @param registry the bean definition registry
 	 * @since 2.2.0
 	 */

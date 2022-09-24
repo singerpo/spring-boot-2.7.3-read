@@ -73,8 +73,9 @@ public class Profiles implements Iterable<String> {
 	/**
 	 * Create a new {@link Profiles} instance based on the {@link Environment} and
 	 * {@link Binder}.
-	 * @param environment the source environment
-	 * @param binder the binder for profile properties
+	 *
+	 * @param environment        the source environment
+	 * @param binder             the binder for profile properties
 	 * @param additionalProfiles any additional active profiles
 	 */
 	Profiles(Environment environment, Binder binder, Collection<String> additionalProfiles) {
@@ -84,7 +85,7 @@ public class Profiles implements Iterable<String> {
 	}
 
 	private List<String> getActivatedProfiles(Environment environment, Binder binder,
-			Collection<String> additionalProfiles) {
+											  Collection<String> additionalProfiles) {
 		return asUniqueItemList(getProfiles(environment, binder, Type.ACTIVE), additionalProfiles);
 	}
 
@@ -110,7 +111,7 @@ public class Profiles implements Iterable<String> {
 	}
 
 	private boolean hasProgrammaticallySetProfiles(Type type, String environmentPropertyValue,
-			Set<String> environmentPropertyProfiles, Set<String> environmentProfiles) {
+												   Set<String> environmentPropertyProfiles, Set<String> environmentProfiles) {
 		if (!StringUtils.hasLength(environmentPropertyValue)) {
 			return !type.getDefaultValue().equals(environmentProfiles);
 		}
@@ -171,6 +172,7 @@ public class Profiles implements Iterable<String> {
 
 	/**
 	 * Return the active profiles.
+	 *
 	 * @return the active profiles
 	 */
 	public List<String> getActive() {
@@ -179,6 +181,7 @@ public class Profiles implements Iterable<String> {
 
 	/**
 	 * Return the default profiles.
+	 *
 	 * @return the active profiles
 	 */
 	public List<String> getDefault() {
@@ -187,6 +190,7 @@ public class Profiles implements Iterable<String> {
 
 	/**
 	 * Return the accepted profiles.
+	 *
 	 * @return the accepted profiles
 	 */
 	public List<String> getAccepted() {
@@ -195,6 +199,7 @@ public class Profiles implements Iterable<String> {
 
 	/**
 	 * Return if the given profile is active.
+	 *
 	 * @param profile the profile to test
 	 * @return if the profile is active
 	 */
@@ -231,7 +236,7 @@ public class Profiles implements Iterable<String> {
 		private final Set<String> defaultValue;
 
 		Type(String name, Function<Environment, String[]> getter, boolean mergeWithEnvironmentProfiles,
-				Set<String> defaultValue) {
+			 Set<String> defaultValue) {
 			this.name = name;
 			this.getter = getter;
 			this.mergeWithEnvironmentProfiles = mergeWithEnvironmentProfiles;

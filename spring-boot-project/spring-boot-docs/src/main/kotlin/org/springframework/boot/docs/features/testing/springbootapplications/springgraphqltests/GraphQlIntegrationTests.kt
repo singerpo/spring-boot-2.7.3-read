@@ -31,12 +31,12 @@ class GraphQlIntegrationTests {
 	@Test
 	fun shouldGreetWithSpecificName(@Autowired graphQlTester: HttpGraphQlTester) {
 		val authenticatedTester = graphQlTester.mutate()
-			.webTestClient { client: WebTestClient.Builder ->
-				client.defaultHeaders { headers: HttpHeaders ->
-					headers.setBasicAuth("admin", "ilovespring")
-				}
-			}.build()
+				.webTestClient { client: WebTestClient.Builder ->
+					client.defaultHeaders { headers: HttpHeaders ->
+						headers.setBasicAuth("admin", "ilovespring")
+					}
+				}.build()
 		authenticatedTester.document("{ greeting(name: \"Alice\") } ").execute()
-			.path("greeting").entity(String::class.java).isEqualTo("Hello, Alice!")
+				.path("greeting").entity(String::class.java).isEqualTo("Hello, Alice!")
 	}
 }

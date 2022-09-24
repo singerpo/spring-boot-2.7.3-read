@@ -60,12 +60,12 @@ class SessionAutoConfigurationIntegrationTests extends AbstractSessionAutoConfig
 	void severalCandidatesWithWrongSessionStore() {
 		this.contextRunner.withUserConfiguration(HazelcastConfiguration.class)
 				.withPropertyValues("spring.session.store-type=redis").run((context) -> {
-					assertThat(context).hasFailed();
-					assertThat(context).getFailure().hasCauseInstanceOf(SessionRepositoryUnavailableException.class);
-					assertThat(context).getFailure()
-							.hasMessageContaining("No session repository could be auto-configured");
-					assertThat(context).getFailure().hasMessageContaining("session store type is 'redis'");
-				});
+			assertThat(context).hasFailed();
+			assertThat(context).getFailure().hasCauseInstanceOf(SessionRepositoryUnavailableException.class);
+			assertThat(context).getFailure()
+					.hasMessageContaining("No session repository could be auto-configured");
+			assertThat(context).getFailure().hasMessageContaining("session store type is 'redis'");
+		});
 	}
 
 	@Test

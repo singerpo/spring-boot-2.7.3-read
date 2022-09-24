@@ -83,8 +83,7 @@ class TypeElementMembers {
 				if (getMatchingGetter(matchingGetters, returnType) == null) {
 					matchingGetters.add(method);
 				}
-			}
-			else if (isSetter(method)) {
+			} else if (isSetter(method)) {
 				String propertyName = getAccessorName(name);
 				List<ExecutableElement> matchingSetters = this.publicSetters.computeIfAbsent(propertyName,
 						(k) -> new ArrayList<>());
@@ -111,7 +110,7 @@ class TypeElementMembers {
 	}
 
 	private ExecutableElement getMatchingAccessor(List<ExecutableElement> candidates, TypeMirror type,
-			Function<ExecutableElement, TypeMirror> typeExtractor) {
+												  Function<ExecutableElement, TypeMirror> typeExtractor) {
 		for (ExecutableElement candidate : candidates) {
 			TypeMirror candidateType = typeExtractor.apply(candidate);
 			if (this.env.getTypeUtils().isSameType(candidateType, type)) {
@@ -182,7 +181,7 @@ class TypeElementMembers {
 	}
 
 	private ExecutableElement getPublicAccessor(List<ExecutableElement> candidates, TypeMirror type,
-			Function<TypeMirror, ExecutableElement> matchingAccessorExtractor) {
+												Function<TypeMirror, ExecutableElement> matchingAccessorExtractor) {
 		if (candidates != null) {
 			ExecutableElement matching = matchingAccessorExtractor.apply(type);
 			if (matching != null) {

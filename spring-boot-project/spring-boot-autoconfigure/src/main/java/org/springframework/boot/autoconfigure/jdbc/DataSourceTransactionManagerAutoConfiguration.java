@@ -46,7 +46,7 @@ import org.springframework.transaction.TransactionManager;
  * @since 1.0.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ JdbcTemplate.class, TransactionManager.class })
+@ConditionalOnClass({JdbcTemplate.class, TransactionManager.class})
 @AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)
 @EnableConfigurationProperties(DataSourceProperties.class)
 public class DataSourceTransactionManagerAutoConfiguration {
@@ -58,7 +58,7 @@ public class DataSourceTransactionManagerAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean(TransactionManager.class)
 		DataSourceTransactionManager transactionManager(Environment environment, DataSource dataSource,
-				ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
+														ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
 			DataSourceTransactionManager transactionManager = createTransactionManager(environment, dataSource);
 			transactionManagerCustomizers.ifAvailable((customizers) -> customizers.customize(transactionManager));
 			return transactionManager;

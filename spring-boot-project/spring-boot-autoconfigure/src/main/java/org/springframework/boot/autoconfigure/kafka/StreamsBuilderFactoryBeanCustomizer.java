@@ -29,6 +29,7 @@ public interface StreamsBuilderFactoryBeanCustomizer {
 
 	/**
 	 * Customize the {@link StreamsBuilderFactoryBean}.
+	 *
 	 * @param factoryBean the factory bean to customize
 	 */
 	void customize(StreamsBuilderFactoryBean factoryBean);

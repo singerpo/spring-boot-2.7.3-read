@@ -29,14 +29,15 @@ import org.springframework.web.server.ServerWebExchange;
  *
  * @author Brian Clozel
  * @author Scott Frederick
- * @since 2.0.0
  * @see DefaultErrorAttributes
+ * @since 2.0.0
  */
 public interface ErrorAttributes {
 
 	/**
 	 * Name of the {@link ServerRequest#attribute(String) request attribute} holding the
 	 * error resolved by the {@code ErrorAttributes} implementation.
+	 *
 	 * @since 2.5.0
 	 */
 	String ERROR_ATTRIBUTE = ErrorAttributes.class.getName() + ".error";
@@ -44,6 +45,7 @@ public interface ErrorAttributes {
 	/**
 	 * Return a {@link Map} of the error attributes. The map can be used as the model of
 	 * an error page, or returned as a {@link ServerResponse} body.
+	 *
 	 * @param request the source request
 	 * @param options options for error attribute contents
 	 * @return a map of error attributes
@@ -55,6 +57,7 @@ public interface ErrorAttributes {
 	/**
 	 * Return the underlying cause of the error or {@code null} if the error cannot be
 	 * extracted.
+	 *
 	 * @param request the source ServerRequest
 	 * @return the {@link Exception} that caused the error or {@code null}
 	 */
@@ -62,7 +65,8 @@ public interface ErrorAttributes {
 
 	/**
 	 * Store the given error information in the current {@link ServerWebExchange}.
-	 * @param error the {@link Exception} that caused the error
+	 *
+	 * @param error    the {@link Exception} that caused the error
 	 * @param exchange the source exchange
 	 */
 	void storeErrorInformation(Throwable error, ServerWebExchange exchange);

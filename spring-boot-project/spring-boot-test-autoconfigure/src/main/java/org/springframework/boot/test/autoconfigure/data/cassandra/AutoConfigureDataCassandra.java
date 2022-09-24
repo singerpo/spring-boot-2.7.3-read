@@ -31,8 +31,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * rather than using this annotation directly.
  *
  * @author Artsiom Yudovin
- * @since 2.4.0
  * @see DataCassandraTest
+ * @since 2.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

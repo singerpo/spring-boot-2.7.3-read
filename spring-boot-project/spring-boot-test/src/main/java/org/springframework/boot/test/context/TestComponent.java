@@ -36,9 +36,9 @@ import org.springframework.stereotype.Component;
  * declared as an {@link ComponentScan#excludeFilters() excludeFilter}.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see TypeExcludeFilter
  * @see TestConfiguration
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -49,6 +49,7 @@ public @interface TestComponent {
 	/**
 	 * The value may indicate a suggestion for a logical component name, to be turned into
 	 * a Spring bean in case of an auto-detected component.
+	 *
 	 * @return the specified bean name, if any
 	 */
 	@AliasFor(annotation = Component.class)

@@ -388,7 +388,7 @@ class ConfigDataEnvironmentContributorsTests {
 	}
 
 	private ConfigDataEnvironmentContributor createBoundImportContributor(ConfigData configData,
-			int propertySourceIndex) {
+																		  int propertySourceIndex) {
 		ConfigDataEnvironmentContributor contributor = ConfigDataEnvironmentContributor.ofUnboundImport(null, null,
 				false, configData, propertySourceIndex);
 		return contributor.withBoundProperties(Collections.singleton(contributor), null);

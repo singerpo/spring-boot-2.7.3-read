@@ -30,10 +30,10 @@ import org.springframework.graphql.test.tester.GraphQlTester;
  * Annotation that can be applied to a test class to enable a {@link GraphQlTester}.
  *
  * @author Brian Clozel
- * @since 2.7.0
  * @see GraphQlTesterAutoConfiguration
+ * @since 2.7.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited

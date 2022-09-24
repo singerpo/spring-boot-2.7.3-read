@@ -51,8 +51,8 @@ import org.springframework.util.ClassUtils;
  * {@link Ordered}.
  *
  * @author Phillip Webb
- * @since 2.0.0
  * @see UserConfigurations
+ * @since 2.0.0
  */
 public abstract class Configurations {
 
@@ -69,6 +69,7 @@ public abstract class Configurations {
 
 	/**
 	 * Sort configuration classes into the order that they should be applied.
+	 *
 	 * @param classes the classes to sort
 	 * @return a sorted set of classes
 	 */
@@ -82,8 +83,9 @@ public abstract class Configurations {
 
 	/**
 	 * Merge configurations from another source of the same type.
+	 *
 	 * @param other the other {@link Configurations} (must be of the same type as this
-	 * instance)
+	 *              instance)
 	 * @return a new configurations instance (must be of the same type as this instance)
 	 */
 	protected Configurations merge(Configurations other) {
@@ -94,6 +96,7 @@ public abstract class Configurations {
 
 	/**
 	 * Merge configurations.
+	 *
 	 * @param mergedClasses the merged classes
 	 * @return a new configurations instance (must be of the same type as this instance)
 	 */
@@ -102,6 +105,7 @@ public abstract class Configurations {
 	/**
 	 * Return the classes from all the specified configurations in the order that they
 	 * would be registered.
+	 *
 	 * @param configurations the source configuration
 	 * @return configuration classes in registration order
 	 */
@@ -112,6 +116,7 @@ public abstract class Configurations {
 	/**
 	 * Return the classes from all the specified configurations in the order that they
 	 * would be registered.
+	 *
 	 * @param configurations the source configuration
 	 * @return configuration classes in registration order
 	 */
@@ -133,8 +138,7 @@ public abstract class Configurations {
 		for (Configurations item : orderedConfigurations) {
 			if (collated.isEmpty() || collated.getLast().getClass() != item.getClass()) {
 				collated.add(item);
-			}
-			else {
+			} else {
 				collated.set(collated.size() - 1, collated.getLast().merge(item));
 			}
 		}

@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Stephane Nicoll
  */
-@ClassPathExclusions({ "tomcat-embed-el-*.jar", "el-api-*.jar" })
+@ClassPathExclusions({"tomcat-embed-el-*.jar", "el-api-*.jar"})
 class ValidationAutoConfigurationWithHibernateValidatorMissingElImplTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

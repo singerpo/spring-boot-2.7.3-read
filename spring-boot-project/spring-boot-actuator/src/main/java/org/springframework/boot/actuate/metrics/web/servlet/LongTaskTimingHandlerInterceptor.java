@@ -58,7 +58,8 @@ public class LongTaskTimingHandlerInterceptor implements HandlerInterceptor {
 	 * Creates a new {@code LongTaskTimingHandlerInterceptor} that will create
 	 * {@link LongTaskTimer LongTaskTimers} using the given registry. Timers will be
 	 * tagged using the given {@code tagsProvider}.
-	 * @param registry the registry
+	 *
+	 * @param registry     the registry
 	 * @param tagsProvider the tags provider
 	 */
 	public LongTaskTimingHandlerInterceptor(MeterRegistry registry, WebMvcTagsProvider tagsProvider) {
@@ -92,7 +93,7 @@ public class LongTaskTimingHandlerInterceptor implements HandlerInterceptor {
 	}
 
 	private Collection<LongTaskTimer.Sample> getLongTaskTimerSamples(HttpServletRequest request, Object handler,
-			Set<Timed> annotations) {
+																	 Set<Timed> annotations) {
 		List<LongTaskTimer.Sample> samples = new ArrayList<>();
 		try {
 			annotations.stream().filter(Timed::longTask).forEach((annotation) -> {
@@ -101,8 +102,7 @@ public class LongTaskTimingHandlerInterceptor implements HandlerInterceptor {
 				LongTaskTimer timer = builder.register(this.registry);
 				samples.add(timer.start());
 			});
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn("Failed to start long task timers", ex);
 			// Allow request-response exchange to continue, unaffected by metrics problem
 		}

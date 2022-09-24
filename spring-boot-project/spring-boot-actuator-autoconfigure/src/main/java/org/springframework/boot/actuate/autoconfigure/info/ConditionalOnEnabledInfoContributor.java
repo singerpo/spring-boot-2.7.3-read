@@ -33,19 +33,21 @@ import org.springframework.context.annotation.Conditional;
  * @since 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Conditional(OnEnabledInfoContributorCondition.class)
 public @interface ConditionalOnEnabledInfoContributor {
 
 	/**
 	 * The name of the info contributor.
+	 *
 	 * @return the name of the info contributor
 	 */
 	String value();
 
 	/**
 	 * Fallback behavior when {@code management.info.<name>.enabled} has not been set.
+	 *
 	 * @return the fallback behavior
 	 */
 	InfoContributorFallback fallback() default InfoContributorFallback.USE_DEFAULTS_PROPERTY;

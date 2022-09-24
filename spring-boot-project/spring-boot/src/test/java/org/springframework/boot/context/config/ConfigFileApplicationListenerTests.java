@@ -73,7 +73,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
  * @author Nguyen Bao Sach
  */
 @Deprecated
-@ExtendWith({ OutputCaptureExtension.class, UseLegacyProcessing.class })
+@ExtendWith({OutputCaptureExtension.class, UseLegacyProcessing.class})
 class ConfigFileApplicationListenerTests {
 
 	private final BuildOutput buildOutput = new BuildOutput(getClass());
@@ -224,8 +224,7 @@ class ConfigFileApplicationListenerTests {
 			this.initializer.postProcessEnvironment(this.environment, this.application);
 			String property = this.environment.getProperty("the.property");
 			assertThat(property).isEqualTo("fromlocalfile");
-		}
-		finally {
+		} finally {
 			localFile.delete();
 		}
 	}
@@ -521,7 +520,7 @@ class ConfigFileApplicationListenerTests {
 		String string = ".properties)";
 		return "Loaded config file '"
 				+ new File(this.buildOutput.getTestResourcesLocation(), "application" + suffix + ".properties")
-						.getAbsoluteFile().toURI().toString()
+				.getAbsoluteFile().toURI().toString()
 				+ "' (classpath:/application" + suffix + string;
 	}
 
@@ -1229,13 +1228,13 @@ class ConfigFileApplicationListenerTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@PropertySource({ "classpath:/specificlocation.properties", "classpath:/moreproperties.properties" })
+	@PropertySource({"classpath:/specificlocation.properties", "classpath:/moreproperties.properties"})
 	static class WithPropertySourceMultipleLocations {
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@PropertySource(value = { "classpath:/specificlocation.properties", "classpath:/moreproperties.properties" },
+	@PropertySource(value = {"classpath:/specificlocation.properties", "classpath:/moreproperties.properties"},
 			name = "foo")
 	static class WithPropertySourceMultipleLocationsAndName {
 

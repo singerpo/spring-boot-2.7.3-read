@@ -70,8 +70,7 @@ public class UninstallCommand extends OptionParsingCommand {
 							"Please specify at least one dependency, in the form group:artifact:version, to uninstall");
 				}
 				new Installer(options, this).uninstall(args);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				String message = ex.getMessage();
 				Log.error((message != null) ? message : ex.getClass().toString());
 			}

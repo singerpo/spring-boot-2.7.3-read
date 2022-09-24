@@ -39,6 +39,7 @@ public class MongoClientDependsOnBeanFactoryPostProcessor extends AbstractDepend
 	/**
 	 * Creates a new {@code MongoClientDependsOnBeanFactoryPostProcessor} that will set up
 	 * dependencies upon beans with the given types.
+	 *
 	 * @param dependsOn types of the beans to depend upon
 	 */
 	public MongoClientDependsOnBeanFactoryPostProcessor(Class<?>... dependsOn) {

@@ -40,11 +40,11 @@ class MyWebServiceClientTests {
 	void mockServerCall() {
 		// @formatter:off
 		this.server
-			.expect(payload(new StringSource("<request/>")))
-			.andRespond(withPayload(new StringSource("<response><status>200</status></response>")));
+				.expect(payload(new StringSource("<request/>")))
+				.andRespond(withPayload(new StringSource("<response><status>200</status></response>")));
 		assertThat(this.someWebService.test())
-			.extracting(Response::getStatus)
-			.isEqualTo(200);
+				.extracting(Response::getStatus)
+				.isEqualTo(200);
 		// @formatter:on
 	}
 

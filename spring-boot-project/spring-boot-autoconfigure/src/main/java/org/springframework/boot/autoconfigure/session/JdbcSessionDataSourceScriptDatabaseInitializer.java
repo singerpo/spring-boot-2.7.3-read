@@ -40,6 +40,7 @@ public class JdbcSessionDataSourceScriptDatabaseInitializer extends DataSourceSc
 
 	/**
 	 * Create a new {@link JdbcSessionDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Session JDBC data source
 	 * @param properties the Spring Session JDBC properties
 	 * @see #getSettings
@@ -50,12 +51,13 @@ public class JdbcSessionDataSourceScriptDatabaseInitializer extends DataSourceSc
 
 	/**
 	 * Create a new {@link JdbcSessionDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param dataSource the Spring Session JDBC data source
-	 * @param settings the database initialization settings
+	 * @param settings   the database initialization settings
 	 * @see #getSettings
 	 */
 	public JdbcSessionDataSourceScriptDatabaseInitializer(DataSource dataSource,
-			DatabaseInitializationSettings settings) {
+														  DatabaseInitializationSettings settings) {
 		super(dataSource, settings);
 	}
 
@@ -63,6 +65,7 @@ public class JdbcSessionDataSourceScriptDatabaseInitializer extends DataSourceSc
 	 * Adapts {@link JdbcSessionProperties Spring Session JDBC properties} to
 	 * {@link DatabaseInitializationSettings} replacing any {@literal @@platform@@}
 	 * placeholders.
+	 *
 	 * @param dataSource the Spring Session JDBC data source
 	 * @param properties the Spring Session JDBC properties
 	 * @return a new {@link DatabaseInitializationSettings} instance

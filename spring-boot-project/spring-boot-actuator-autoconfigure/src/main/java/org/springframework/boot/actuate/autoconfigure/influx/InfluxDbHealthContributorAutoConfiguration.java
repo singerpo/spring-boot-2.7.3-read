@@ -46,7 +46,7 @@ public class InfluxDbHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<InfluxDbHealthIndicator, InfluxDB> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "influxDbHealthIndicator", "influxDbHealthContributor" })
+	@ConditionalOnMissingBean(name = {"influxDbHealthIndicator", "influxDbHealthContributor"})
 	public HealthContributor influxDbHealthContributor(Map<String, InfluxDB> influxDbs) {
 		return createContributor(influxDbs);
 	}

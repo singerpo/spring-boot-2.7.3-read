@@ -29,14 +29,14 @@ import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.util.StringUtils;
 
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnMissingBean({ SqlDataSourceScriptDatabaseInitializer.class, SqlR2dbcScriptDatabaseInitializer.class })
+@ConditionalOnMissingBean({SqlDataSourceScriptDatabaseInitializer.class, SqlR2dbcScriptDatabaseInitializer.class})
 @ConditionalOnSingleCandidate(DataSource.class)
 @ConditionalOnClass(DatabasePopulator.class)
 class DataSourceInitializationConfiguration {
 
 	@Bean
 	SqlDataSourceScriptDatabaseInitializer dataSourceScriptDatabaseInitializer(DataSource dataSource,
-			SqlInitializationProperties properties) {
+																			   SqlInitializationProperties properties) {
 		return new SqlDataSourceScriptDatabaseInitializer(
 				determineDataSource(dataSource, properties.getUsername(), properties.getPassword()), properties);
 	}

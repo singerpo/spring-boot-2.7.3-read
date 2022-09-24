@@ -92,7 +92,7 @@ class ErrorPageFilterIntegrationTests {
 	}
 
 	private void doTest(AnnotationConfigServletWebServerApplicationContext context, String resourcePath,
-			HttpStatus status) throws Exception {
+						HttpStatus status) throws Exception {
 		int port = context.getWebServer().getPort();
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<String> entity = template.getForEntity(new URI("http://localhost:" + port + resourcePath),
@@ -153,7 +153,7 @@ class ErrorPageFilterIntegrationTests {
 			registry.addInterceptor(new HandlerInterceptor() {
 				@Override
 				public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-						ModelAndView modelAndView) {
+									   ModelAndView modelAndView) {
 					HelloWorldController.this.setStatus(response.getStatus());
 					HelloWorldController.this.latch.countDown();
 				}

@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Andy Wilkinson
  */
-@ClassPathOverrides({ "org.flywaydb:flyway-core:9.1.2", "com.h2database:h2:2.1.210" })
+@ClassPathOverrides({"org.flywaydb:flyway-core:9.1.2", "com.h2database:h2:2.1.210"})
 class Flyway9xAutoConfigurationTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

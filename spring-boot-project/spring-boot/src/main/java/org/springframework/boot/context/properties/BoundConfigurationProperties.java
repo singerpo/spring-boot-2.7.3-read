@@ -50,6 +50,7 @@ public class BoundConfigurationProperties {
 
 	/**
 	 * Get the configuration property bound to the given name.
+	 *
 	 * @param name the property name
 	 * @return the bound property or {@code null}
 	 */
@@ -59,6 +60,7 @@ public class BoundConfigurationProperties {
 
 	/**
 	 * Get all bound properties.
+	 *
 	 * @return a map of all bound properties
 	 */
 	public Map<ConfigurationPropertyName, ConfigurationProperty> getAll() {
@@ -68,6 +70,7 @@ public class BoundConfigurationProperties {
 	/**
 	 * Return the {@link BoundConfigurationProperties} from the given
 	 * {@link ApplicationContext} if it is available.
+	 *
 	 * @param context the context to search
 	 * @return a {@link BoundConfigurationProperties} or {@code null}
 	 */

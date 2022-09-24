@@ -48,9 +48,10 @@ class PropertyDescriptorResolver {
 	 * Return the {@link PropertyDescriptor} instances that are valid candidates for the
 	 * specified {@link TypeElement type} based on the specified {@link ExecutableElement
 	 * factory method}, if any.
-	 * @param type the target type
+	 *
+	 * @param type          the target type
 	 * @param factoryMethod the method that triggered the metadata for that {@code type}
-	 * or {@code null}
+	 *                      or {@code null}
 	 * @return the candidate properties for metadata generation
 	 */
 	Stream<PropertyDescriptor<?>> resolve(TypeElement type, ExecutableElement factoryMethod) {
@@ -62,7 +63,7 @@ class PropertyDescriptorResolver {
 	}
 
 	private Stream<PropertyDescriptor<?>> resolve(ConfigurationPropertiesTypeElement type,
-			ExecutableElement factoryMethod, TypeElementMembers members) {
+												  ExecutableElement factoryMethod, TypeElementMembers members) {
 		if (type.isConstructorBindingEnabled()) {
 			ExecutableElement constructor = type.getBindConstructor();
 			if (constructor != null) {
@@ -74,7 +75,7 @@ class PropertyDescriptorResolver {
 	}
 
 	Stream<PropertyDescriptor<?>> resolveConstructorProperties(TypeElement type, ExecutableElement factoryMethod,
-			TypeElementMembers members, ExecutableElement constructor) {
+															   TypeElementMembers members, ExecutableElement constructor) {
 		Map<String, PropertyDescriptor<?>> candidates = new LinkedHashMap<>();
 		constructor.getParameters().forEach((parameter) -> {
 			String name = getParameterName(parameter);
@@ -97,7 +98,7 @@ class PropertyDescriptorResolver {
 	}
 
 	Stream<PropertyDescriptor<?>> resolveJavaBeanProperties(TypeElement type, ExecutableElement factoryMethod,
-			TypeElementMembers members) {
+															TypeElementMembers members) {
 		// First check if we have regular java bean properties there
 		Map<String, PropertyDescriptor<?>> candidates = new LinkedHashMap<>();
 		members.getPublicGetters().forEach((name, getters) -> {
@@ -119,7 +120,7 @@ class PropertyDescriptorResolver {
 	}
 
 	private ExecutableElement findMatchingGetter(TypeElementMembers members, List<ExecutableElement> candidates,
-			VariableElement field) {
+												 VariableElement field) {
 		if (candidates.size() > 1 && field != null) {
 			return members.getMatchingGetter(candidates, field.asType());
 		}
@@ -150,7 +151,7 @@ class PropertyDescriptorResolver {
 		private final List<ExecutableElement> boundConstructors;
 
 		ConfigurationPropertiesTypeElement(TypeElement type, boolean constructorBoundType,
-				List<ExecutableElement> constructors, List<ExecutableElement> boundConstructors) {
+										   List<ExecutableElement> constructors, List<ExecutableElement> boundConstructors) {
 			this.type = type;
 			this.constructorBoundType = constructorBoundType;
 			this.constructors = constructors;

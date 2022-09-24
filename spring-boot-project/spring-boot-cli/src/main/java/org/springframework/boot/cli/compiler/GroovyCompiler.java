@@ -86,6 +86,7 @@ public class GroovyCompiler {
 
 	/**
 	 * Create a new {@link GroovyCompiler} instance.
+	 *
 	 * @param configuration the compiler configuration
 	 */
 	public GroovyCompiler(GroovyCompilerConfiguration configuration) {
@@ -104,8 +105,7 @@ public class GroovyCompiler {
 		this.loader.getConfiguration().addCompilationCustomizers(new CompilerAutoConfigureCustomizer());
 		if (configuration.isAutoconfigure()) {
 			this.compilerAutoConfigurations = ServiceLoader.load(CompilerAutoConfiguration.class);
-		}
-		else {
+		} else {
 			this.compilerAutoConfigurations = Collections.emptySet();
 		}
 
@@ -126,6 +126,7 @@ public class GroovyCompiler {
 	/**
 	 * Return a mutable list of the {@link ASTTransformation}s to be applied during
 	 * {@link #compile(String...)}.
+	 *
 	 * @return the AST transformations to apply
 	 */
 	public List<ASTTransformation> getAstTransformations() {
@@ -155,8 +156,7 @@ public class GroovyCompiler {
 		ClassLoader tccl = Thread.currentThread().getContextClassLoader();
 		if (tccl instanceof ExtendedGroovyClassLoader) {
 			return ((ExtendedGroovyClassLoader) tccl).getURLs();
-		}
-		else {
+		} else {
 			return new URL[0];
 		}
 	}
@@ -169,10 +169,11 @@ public class GroovyCompiler {
 	 * Compile the specified Groovy sources, applying any
 	 * {@link CompilerAutoConfiguration}s. All classes defined in the sources will be
 	 * returned from this method.
+	 *
 	 * @param sources the sources to compile
 	 * @return compiled classes
 	 * @throws CompilationFailedException in case of compilation failures
-	 * @throws IOException in case of I/O errors
+	 * @throws IOException                in case of I/O errors
 	 * @throws CompilationFailedException in case of compilation errors
 	 */
 	public Class<?>[] compile(String... sources) throws CompilationFailedException, IOException {
@@ -227,19 +228,18 @@ public class GroovyCompiler {
 			Field field = CompilationUnit.class.getDeclaredField("phaseOperations");
 			field.setAccessible(true);
 			return (Deque[]) field.get(compilationUnit);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Phase operations not available from compilation unit");
 		}
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void processConversionOperations(LinkedList conversionOperations) {
 		int index = getIndexOfASTTransformationVisitor(conversionOperations);
 		conversionOperations.add(index, new CompilationUnit.ISourceUnitOperation() {
 			@Override
 			public void call(SourceUnit source) throws CompilationFailedException {
-				ASTNode[] nodes = new ASTNode[] { source.getAST() };
+				ASTNode[] nodes = new ASTNode[]{source.getAST()};
 				for (ASTTransformation transformation : GroovyCompiler.this.transformations) {
 					transformation.visit(nodes, source);
 				}

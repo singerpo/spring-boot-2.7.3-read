@@ -34,7 +34,7 @@ class MyRabbitConfiguration {
 		return factory
 	}
 
-	fun getCustomConnectionFactory() : ConnectionFactory? {
+	fun getCustomConnectionFactory(): ConnectionFactory? {
 		return /**/ null
 	}
 

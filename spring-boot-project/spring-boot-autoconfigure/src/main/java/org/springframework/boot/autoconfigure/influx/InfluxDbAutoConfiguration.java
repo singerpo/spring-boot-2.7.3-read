@@ -46,7 +46,7 @@ public class InfluxDbAutoConfiguration {
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty("spring.influx.url")
 	public InfluxDB influxDb(InfluxDbProperties properties, ObjectProvider<InfluxDbOkHttpClientBuilderProvider> builder,
-			ObjectProvider<InfluxDbCustomizer> customizers) {
+							 ObjectProvider<InfluxDbCustomizer> customizers) {
 		InfluxDB influxDb = new InfluxDBImpl(properties.getUrl(), properties.getUser(), properties.getPassword(),
 				determineBuilder(builder.getIfAvailable()));
 		customizers.orderedStream().forEach((customizer) -> customizer.customize(influxDb));

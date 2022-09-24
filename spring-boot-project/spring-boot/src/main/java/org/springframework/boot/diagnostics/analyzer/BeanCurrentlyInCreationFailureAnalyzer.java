@@ -43,8 +43,7 @@ class BeanCurrentlyInCreationFailureAnalyzer extends AbstractFailureAnalyzer<Bea
 	BeanCurrentlyInCreationFailureAnalyzer(BeanFactory beanFactory) {
 		if (beanFactory != null && beanFactory instanceof AbstractAutowireCapableBeanFactory) {
 			this.beanFactory = (AbstractAutowireCapableBeanFactory) beanFactory;
-		}
-		else {
+		} else {
 			this.beanFactory = null;
 		}
 	}
@@ -101,8 +100,7 @@ class BeanCurrentlyInCreationFailureAnalyzer extends AbstractFailureAnalyzer<Bea
 			BeanInCycle beanInCycle = beansInCycle.get(i);
 			if (i == cycleStart) {
 				message.append(String.format(singleBean ? "┌──->──┐%n" : "┌─────┐%n"));
-			}
-			else if (i > 0) {
+			} else if (i > 0) {
 				String leftSide = (i < cycleStart) ? " " : "↑";
 				message.append(String.format("%s     ↓%n", leftSide));
 			}

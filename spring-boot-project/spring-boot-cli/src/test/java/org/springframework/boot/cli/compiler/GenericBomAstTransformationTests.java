@@ -66,14 +66,14 @@ final class GenericBomAstTransformationTests {
 	@Test
 	void transformationOfEmptyPackage() {
 		this.moduleNode.setPackage(new PackageNode("foo"));
-		this.transformation.visit(new ASTNode[] { this.moduleNode }, this.sourceUnit);
+		this.transformation.visit(new ASTNode[]{this.moduleNode}, this.sourceUnit);
 		assertThat(getValue().toString()).isEqualTo("[test:child:1.0.0]");
 	}
 
 	@Test
 	void transformationOfClass() {
 		this.moduleNode.addClass(ClassHelper.make("MyClass"));
-		this.transformation.visit(new ASTNode[] { this.moduleNode }, this.sourceUnit);
+		this.transformation.visit(new ASTNode[]{this.moduleNode}, this.sourceUnit);
 		assertThat(getValue().toString()).isEqualTo("[test:child:1.0.0]");
 	}
 
@@ -85,7 +85,7 @@ final class GenericBomAstTransformationTests {
 		AnnotationNode annotation = new AnnotationNode(ClassHelper.make(DependencyManagementBom.class));
 		annotation.addMember("value", new ConstantExpression("test:parent:1.0.0"));
 		cls.addAnnotation(annotation);
-		this.transformation.visit(new ASTNode[] { this.moduleNode }, this.sourceUnit);
+		this.transformation.visit(new ASTNode[]{this.moduleNode}, this.sourceUnit);
 		assertThat(getValue().toString()).isEqualTo("[test:parent:1.0.0, test:child:1.0.0]");
 	}
 
@@ -97,11 +97,9 @@ final class GenericBomAstTransformationTests {
 				list.add((String) ((ConstantExpression) ex).getValue());
 			}
 			return list;
-		}
-		else if (expression == null) {
+		} else if (expression == null) {
 			return null;
-		}
-		else {
+		} else {
 			throw new IllegalStateException("Member 'value' is not a ListExpression");
 		}
 	}

@@ -49,12 +49,12 @@ class R2dbcAutoConfigurationWithoutConnectionPoolTests {
 	void configureWithoutR2dbcPoolCreateGenericConnectionFactory() {
 		this.contextRunner.withPropertyValues("spring.r2dbc.url:r2dbc:h2:mem:///" + randomDatabaseName()
 				+ "?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE").run((context) -> {
-					assertThat(context).hasSingleBean(ConnectionFactory.class);
-					assertThat(context.getBean(ConnectionFactory.class))
-							.asInstanceOf(type(OptionsCapableConnectionFactory.class))
-							.extracting(Wrapped<ConnectionFactory>::unwrap)
-							.isExactlyInstanceOf(H2ConnectionFactory.class);
-				});
+			assertThat(context).hasSingleBean(ConnectionFactory.class);
+			assertThat(context.getBean(ConnectionFactory.class))
+					.asInstanceOf(type(OptionsCapableConnectionFactory.class))
+					.extracting(Wrapped<ConnectionFactory>::unwrap)
+					.isExactlyInstanceOf(H2ConnectionFactory.class);
+		});
 	}
 
 	@Test

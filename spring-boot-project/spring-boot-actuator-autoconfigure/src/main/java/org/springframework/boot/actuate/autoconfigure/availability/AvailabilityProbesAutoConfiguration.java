@@ -40,8 +40,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @author Phillip Webb
  * @since 2.3.0
  */
-@AutoConfiguration(after = { AvailabilityHealthContributorAutoConfiguration.class,
-		ApplicationAvailabilityAutoConfiguration.class })
+@AutoConfiguration(after = {AvailabilityHealthContributorAutoConfiguration.class,
+		ApplicationAvailabilityAutoConfiguration.class})
 @Conditional(AvailabilityProbesAutoConfiguration.ProbesCondition.class)
 public class AvailabilityProbesAutoConfiguration {
 
@@ -95,7 +95,7 @@ public class AvailabilityProbesAutoConfiguration {
 		}
 
 		private ConditionOutcome onProperty(Environment environment, ConditionMessage.Builder message,
-				String propertyName) {
+											String propertyName) {
 			String enabled = environment.getProperty(propertyName);
 			if (enabled != null) {
 				boolean match = !"false".equalsIgnoreCase(enabled);

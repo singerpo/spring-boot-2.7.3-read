@@ -45,14 +45,13 @@ class OnClassCondition extends FilteringSpringBootCondition {
 
 	@Override
 	protected final ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses,
-			AutoConfigurationMetadata autoConfigurationMetadata) {
+												   AutoConfigurationMetadata autoConfigurationMetadata) {
 		// Split the work and perform half in a background thread if more than one
 		// processor is available. Using a single additional thread seems to offer the
 		// best performance. More threads make things worse.
 		if (autoConfigurationClasses.length > 1 && Runtime.getRuntime().availableProcessors() > 1) {
 			return resolveOutcomesThreaded(autoConfigurationClasses, autoConfigurationMetadata);
-		}
-		else {
+		} else {
 			OutcomesResolver outcomesResolver = new StandardOutcomesResolver(autoConfigurationClasses, 0,
 					autoConfigurationClasses.length, autoConfigurationMetadata, getBeanClassLoader());
 			return outcomesResolver.resolveOutcomes();
@@ -60,7 +59,7 @@ class OnClassCondition extends FilteringSpringBootCondition {
 	}
 
 	private ConditionOutcome[] resolveOutcomesThreaded(String[] autoConfigurationClasses,
-			AutoConfigurationMetadata autoConfigurationMetadata) {
+													   AutoConfigurationMetadata autoConfigurationMetadata) {
 		int split = autoConfigurationClasses.length / 2;
 		OutcomesResolver firstHalfResolver = createOutcomesResolver(autoConfigurationClasses, 0, split,
 				autoConfigurationMetadata);
@@ -75,13 +74,12 @@ class OnClassCondition extends FilteringSpringBootCondition {
 	}
 
 	private OutcomesResolver createOutcomesResolver(String[] autoConfigurationClasses, int start, int end,
-			AutoConfigurationMetadata autoConfigurationMetadata) {
+													AutoConfigurationMetadata autoConfigurationMetadata) {
 		OutcomesResolver outcomesResolver = new StandardOutcomesResolver(autoConfigurationClasses, start, end,
 				autoConfigurationMetadata, getBeanClassLoader());
 		try {
 			return new ThreadedOutcomesResolver(outcomesResolver);
-		}
-		catch (AccessControlException ex) {
+		} catch (AccessControlException ex) {
 			return outcomesResolver;
 		}
 	}
@@ -155,8 +153,7 @@ class OnClassCondition extends FilteringSpringBootCondition {
 		public ConditionOutcome[] resolveOutcomes() {
 			try {
 				this.thread.join();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 			return this.outcomes;
@@ -177,7 +174,7 @@ class OnClassCondition extends FilteringSpringBootCondition {
 		private final ClassLoader beanClassLoader;
 
 		private StandardOutcomesResolver(String[] autoConfigurationClasses, int start, int end,
-				AutoConfigurationMetadata autoConfigurationMetadata, ClassLoader beanClassLoader) {
+										 AutoConfigurationMetadata autoConfigurationMetadata, ClassLoader beanClassLoader) {
 			this.autoConfigurationClasses = autoConfigurationClasses;
 			this.start = start;
 			this.end = end;
@@ -191,7 +188,7 @@ class OnClassCondition extends FilteringSpringBootCondition {
 		}
 
 		private ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses, int start, int end,
-				AutoConfigurationMetadata autoConfigurationMetadata) {
+											   AutoConfigurationMetadata autoConfigurationMetadata) {
 			ConditionOutcome[] outcomes = new ConditionOutcome[end - start];
 			for (int i = start; i < end; i++) {
 				String autoConfigurationClass = autoConfigurationClasses[i];
@@ -216,8 +213,7 @@ class OnClassCondition extends FilteringSpringBootCondition {
 						return outcome;
 					}
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// We'll get another chance later
 			}
 			return null;

@@ -39,6 +39,7 @@ public @interface Selector {
 
 	/**
 	 * The match type that should be used for the selection.
+	 *
 	 * @return the match type
 	 * @since 2.2.0
 	 */

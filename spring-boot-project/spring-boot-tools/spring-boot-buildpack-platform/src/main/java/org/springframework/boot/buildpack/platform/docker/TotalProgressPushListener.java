@@ -27,11 +27,12 @@ import java.util.function.Consumer;
  */
 public class TotalProgressPushListener extends TotalProgressListener<PushImageUpdateEvent> {
 
-	private static final String[] TRACKED_STATUS_KEYS = { "Pushing" };
+	private static final String[] TRACKED_STATUS_KEYS = {"Pushing"};
 
 	/**
 	 * Create a new {@link TotalProgressPushListener} that prints a progress bar to
 	 * {@link System#out}.
+	 *
 	 * @param prefix the prefix to output
 	 */
 	public TotalProgressPushListener(String prefix) {
@@ -41,8 +42,9 @@ public class TotalProgressPushListener extends TotalProgressListener<PushImageUp
 	/**
 	 * Create a new {@link TotalProgressPushListener} that sends {@link TotalProgressEvent
 	 * events} to the given consumer.
+	 *
 	 * @param consumer the consumer that receives {@link TotalProgressEvent progress
-	 * events}
+	 *                 events}
 	 */
 	public TotalProgressPushListener(Consumer<TotalProgressEvent> consumer) {
 		super(consumer, TRACKED_STATUS_KEYS);

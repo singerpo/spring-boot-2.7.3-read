@@ -32,9 +32,9 @@ class MyRoutingConfiguration {
 	@Bean
 	fun monoRouterFunction(userHandler: MyUserHandler): RouterFunction<ServerResponse> {
 		return RouterFunctions.route(
-			GET("/{user}").and(ACCEPT_JSON), userHandler::getUser).andRoute(
-			GET("/{user}/customers").and(ACCEPT_JSON), userHandler::getUserCustomers).andRoute(
-			DELETE("/{user}").and(ACCEPT_JSON), userHandler::deleteUser)
+				GET("/{user}").and(ACCEPT_JSON), userHandler::getUser).andRoute(
+				GET("/{user}/customers").and(ACCEPT_JSON), userHandler::getUserCustomers).andRoute(
+				DELETE("/{user}").and(ACCEPT_JSON), userHandler::deleteUser)
 	}
 
 	companion object {

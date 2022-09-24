@@ -321,13 +321,14 @@ class RestTemplateBuilderTests {
 	@Test
 	void defaultHeaderAddsHeaderValues() {
 		String name = HttpHeaders.ACCEPT;
-		String[] values = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE };
+		String[] values = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE};
 		RestTemplate template = this.builder.defaultHeader(name, values).build();
 		ClientHttpRequest request = createRequest(template);
 		assertThat(request.getHeaders()).contains(entry(name, Arrays.asList(values)));
 	}
 
-	@Test // gh-17885
+	@Test
+		// gh-17885
 	void defaultHeaderWhenUsingMockRestServiceServerAddsHeader() {
 		RestTemplate template = this.builder.defaultHeader("spring", "boot").build();
 		MockRestServiceServer.bindTo(template).build();
@@ -422,15 +423,15 @@ class RestTemplateBuilderTests {
 		this.builder.interceptors(this.interceptor).messageConverters(this.messageConverter)
 				.rootUri("http://localhost:8080").errorHandler(errorHandler).basicAuthentication("spring", "boot")
 				.requestFactory(() -> requestFactory).customizers((restTemplate) -> {
-					assertThat(restTemplate.getInterceptors()).hasSize(1);
-					assertThat(restTemplate.getMessageConverters()).contains(this.messageConverter);
-					assertThat(restTemplate.getUriTemplateHandler()).isInstanceOf(RootUriTemplateHandler.class);
-					assertThat(restTemplate.getErrorHandler()).isEqualTo(errorHandler);
-					ClientHttpRequestFactory actualRequestFactory = restTemplate.getRequestFactory();
-					assertThat(actualRequestFactory).isInstanceOf(InterceptingClientHttpRequestFactory.class);
-					ClientHttpRequestInitializer initializer = restTemplate.getClientHttpRequestInitializers().get(0);
-					assertThat(initializer).isInstanceOf(RestTemplateBuilderClientHttpRequestInitializer.class);
-				}).build();
+			assertThat(restTemplate.getInterceptors()).hasSize(1);
+			assertThat(restTemplate.getMessageConverters()).contains(this.messageConverter);
+			assertThat(restTemplate.getUriTemplateHandler()).isInstanceOf(RootUriTemplateHandler.class);
+			assertThat(restTemplate.getErrorHandler()).isEqualTo(errorHandler);
+			ClientHttpRequestFactory actualRequestFactory = restTemplate.getRequestFactory();
+			assertThat(actualRequestFactory).isInstanceOf(InterceptingClientHttpRequestFactory.class);
+			ClientHttpRequestInitializer initializer = restTemplate.getClientHttpRequestInitializers().get(0);
+			assertThat(initializer).isInstanceOf(RestTemplateBuilderClientHttpRequestInitializer.class);
+		}).build();
 	}
 
 	@Test

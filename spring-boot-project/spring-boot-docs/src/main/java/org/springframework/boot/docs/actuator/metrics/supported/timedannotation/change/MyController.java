@@ -33,7 +33,7 @@ public class MyController {
 	}
 
 	@GetMapping("/api/people")
-	@Timed(extraTags = { "region", "us-east-1" })
+	@Timed(extraTags = {"region", "us-east-1"})
 	@Timed(value = "all.people", longTask = true)
 	public List<Person> listPeople() {
 		return /**/ null;

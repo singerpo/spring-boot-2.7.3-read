@@ -43,6 +43,7 @@ public final class PathRequest {
 	/**
 	 * Returns a {@link StaticResourceRequest} that can be used to create a matcher for
 	 * {@link StaticResourceLocation locations}.
+	 *
 	 * @return a {@link StaticResourceRequest}
 	 */
 	public static StaticResourceRequest toStaticResources() {
@@ -54,6 +55,7 @@ public final class PathRequest {
 	 * <pre class="code">
 	 * PathRequest.toH2Console()
 	 * </pre>
+	 *
 	 * @return the configured {@link RequestMatcher}
 	 */
 	public static H2ConsoleRequestMatcher toH2Console() {

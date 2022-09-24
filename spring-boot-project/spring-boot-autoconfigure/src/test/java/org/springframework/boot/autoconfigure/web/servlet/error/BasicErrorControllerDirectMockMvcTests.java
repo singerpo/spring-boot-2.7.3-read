@@ -118,9 +118,9 @@ class BasicErrorControllerDirectMockMvcTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+	@Import({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

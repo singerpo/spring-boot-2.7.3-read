@@ -55,13 +55,13 @@ import static org.assertj.core.api.Assertions.entry;
 
 /**
  * Integration tests for the Paketo builder and buildpacks.
- *
+ * <p>
  * See
  * https://paketo.io/docs/buildpacks/language-family-buildpacks/java/#additional-metadata
  *
  * @author Scott Frederick
  */
-@ExtendWith({ GradleBuildInjectionExtension.class, GradleBuildExtension.class })
+@ExtendWith({GradleBuildInjectionExtension.class, GradleBuildExtension.class})
 @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_17)
 class PaketoBuilderTests {
 
@@ -97,8 +97,7 @@ class PaketoBuilderTests {
 			});
 			assertImageHasSbomLayer(imageReference, config, "executable-jar");
 			assertImageLayersMatchLayersIndex(imageReference, config);
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -114,8 +113,7 @@ class PaketoBuilderTests {
 			container.withCommand("--server.port=9090");
 			container.withExposedPorts(9090);
 			container.waitingFor(Wait.forHttp("/test")).start();
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -138,8 +136,7 @@ class PaketoBuilderTests {
 		try (GenericContainer<?> container = new GenericContainer<>(imageName)) {
 			container.withExposedPorts(8080);
 			container.waitingFor(Wait.forHttp("/test")).start();
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -172,8 +169,7 @@ class PaketoBuilderTests {
 			ImageAssertions.assertThat(imageReference).layer(digest.getDigest(),
 					(layer) -> layer.entries().contains(projectName + "-boot/bin/" + projectName,
 							projectName + "-boot/lib/" + projectName + ".jar"));
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -208,8 +204,7 @@ class PaketoBuilderTests {
 					.anyMatch((s) -> s.startsWith(projectName + "/lib/spring-boot-"))
 					.anyMatch((s) -> s.startsWith(projectName + "/lib/spring-core-"))
 					.anyMatch((s) -> s.startsWith(projectName + "/lib/spring-web-")));
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -238,8 +233,7 @@ class PaketoBuilderTests {
 			});
 			assertImageHasSbomLayer(imageReference, config, "executable-jar");
 			assertImageLayersMatchLayersIndex(imageReference, config);
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
@@ -276,14 +270,13 @@ class PaketoBuilderTests {
 							.anyMatch((s) -> s.startsWith("WEB-INF/lib/spring-boot-"))
 							.anyMatch((s) -> s.startsWith("WEB-INF/lib/spring-core-"))
 							.anyMatch((s) -> s.startsWith("WEB-INF/lib/spring-web-")));
-		}
-		finally {
+		} finally {
 			removeImage(imageReference);
 		}
 	}
 
 	private BuildResult buildImage(String imageName, String... arguments) {
-		String[] buildImageArgs = { "bootBuildImage", "--imageName=" + imageName, "--pullPolicy=IF_NOT_PRESENT" };
+		String[] buildImageArgs = {"bootBuildImage", "--imageName=" + imageName, "--pullPolicy=IF_NOT_PRESENT"};
 		String[] args = StringUtils.concatenateStringArrays(arguments, buildImageArgs);
 		return this.gradleBuild.build(args);
 	}
@@ -408,8 +401,7 @@ class PaketoBuilderTests {
 		String javaVersion = System.getProperty("java.version");
 		if (javaVersion.startsWith("1.")) {
 			return javaVersion.substring(2, 3);
-		}
-		else {
+		} else {
 			int firstDotIndex = javaVersion.indexOf(".");
 			if (firstDotIndex != -1) {
 				return javaVersion.substring(0, firstDotIndex);

@@ -44,6 +44,7 @@ public class HttpWebServiceMessageSenderBuilder {
 
 	/**
 	 * Set the connection timeout.
+	 *
 	 * @param connectTimeout the connection timeout
 	 * @return a new builder instance
 	 */
@@ -54,6 +55,7 @@ public class HttpWebServiceMessageSenderBuilder {
 
 	/**
 	 * Set the read timeout.
+	 *
 	 * @param readTimeout the read timeout
 	 * @return a new builder instance
 	 */
@@ -65,6 +67,7 @@ public class HttpWebServiceMessageSenderBuilder {
 	/**
 	 * Set the {@code Supplier} of {@link ClientHttpRequestFactory} that should be called
 	 * to create the HTTP-based {@link WebServiceMessageSender}.
+	 *
 	 * @param requestFactorySupplier the supplier for the request factory
 	 * @return a new builder instance
 	 */

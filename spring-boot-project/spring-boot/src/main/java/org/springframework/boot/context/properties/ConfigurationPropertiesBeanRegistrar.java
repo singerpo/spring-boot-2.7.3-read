@@ -82,7 +82,7 @@ final class ConfigurationPropertiesBeanRegistrar {
 	}
 
 	private void registerBeanDefinition(String beanName, Class<?> type,
-			MergedAnnotation<ConfigurationProperties> annotation) {
+										MergedAnnotation<ConfigurationProperties> annotation) {
 		Assert.state(annotation.isPresent(), () -> "No " + ConfigurationProperties.class.getSimpleName()
 				+ " annotation found on  '" + type.getName() + "'.");
 		this.registry.registerBeanDefinition(beanName, createBeanDefinition(beanName, type));
@@ -103,8 +103,7 @@ final class ConfigurationPropertiesBeanRegistrar {
 		ConfigurationPropertiesBinder binder = ConfigurationPropertiesBinder.get(this.beanFactory);
 		try {
 			return binder.bindOrCreate(bean);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new ConfigurationPropertiesBindException(bean, ex);
 		}
 	}

@@ -64,8 +64,7 @@ class LoggingApplicationListenerIntegrationTests {
 			SampleService service = context.getBean(SampleService.class);
 			assertThat(service.logFile).isNotNull();
 			assertThat(service.logFile.toString()).isEqualTo(logFile);
-		}
-		finally {
+		} finally {
 			System.clearProperty(LoggingSystemProperties.LOG_FILE);
 		}
 	}
@@ -75,14 +74,14 @@ class LoggingApplicationListenerIntegrationTests {
 		new SpringApplicationBuilder(Config.class).web(WebApplicationType.NONE).child(Config.class)
 				.web(WebApplicationType.NONE).listeners(new ApplicationListener<ApplicationStartingEvent>() {
 
-					private final Logger logger = LoggerFactory.getLogger(getClass());
+			private final Logger logger = LoggerFactory.getLogger(getClass());
 
-					@Override
-					public void onApplicationEvent(ApplicationStartingEvent event) {
-						this.logger.info("Child application starting");
-					}
+			@Override
+			public void onApplicationEvent(ApplicationStartingEvent event) {
+				this.logger.info("Child application starting");
+			}
 
-				}).run();
+		}).run();
 		assertThat(output).contains("Child application starting");
 	}
 

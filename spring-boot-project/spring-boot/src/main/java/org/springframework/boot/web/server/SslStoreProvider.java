@@ -29,6 +29,7 @@ public interface SslStoreProvider {
 
 	/**
 	 * Return the key store that should be used.
+	 *
 	 * @return the key store to use
 	 * @throws Exception on load error
 	 */
@@ -36,6 +37,7 @@ public interface SslStoreProvider {
 
 	/**
 	 * Return the trust store that should be used.
+	 *
 	 * @return the trust store to use
 	 * @throws Exception on load error
 	 */
@@ -43,6 +45,7 @@ public interface SslStoreProvider {
 
 	/**
 	 * Return the password of the private key in the key store.
+	 *
 	 * @return the key password
 	 * @since 2.7.2
 	 */

@@ -66,7 +66,7 @@ public class CouchbaseAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public ClusterEnvironment couchbaseClusterEnvironment(CouchbaseProperties properties,
-			ObjectProvider<ClusterEnvironmentBuilderCustomizer> customizers) {
+														  ObjectProvider<ClusterEnvironmentBuilderCustomizer> customizers) {
 		Builder builder = initializeEnvironmentBuilder(properties);
 		customizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
 		return builder.build();
@@ -106,8 +106,7 @@ public class CouchbaseAutoConfiguration {
 			KeyStore keyStore = loadKeyStore(resource, ssl.getKeyStorePassword());
 			trustManagerFactory.init(keyStore);
 			return trustManagerFactory;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Could not load Couchbase key store '" + resource + "'", ex);
 		}
 	}

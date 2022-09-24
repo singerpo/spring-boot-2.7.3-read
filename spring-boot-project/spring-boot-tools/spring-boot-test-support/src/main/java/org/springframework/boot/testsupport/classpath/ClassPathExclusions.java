@@ -42,6 +42,7 @@ public @interface ClassPathExclusions {
 	 * path. Matching is performed against an entry's {@link File#getName() file name}.
 	 * For example, to exclude Hibernate Validator from the classpath,
 	 * {@code "hibernate-validator-*.jar"} can be used.
+	 *
 	 * @return the exclusion patterns
 	 */
 	String[] value();

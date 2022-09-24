@@ -113,8 +113,7 @@ class ExtractCommandTests {
 					(creationTime) -> assertThat(creationTime).isEqualTo(LAST_MODIFIED_TIME.to(TimeUnit.SECONDS)));
 			assertThat(basicAttributes.lastAccessTime().to(TimeUnit.SECONDS))
 					.isEqualTo(LAST_ACCESS_TIME.to(TimeUnit.SECONDS));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -161,8 +160,7 @@ class ExtractCommandTests {
 			try {
 				out.putNextEntry(new ZipEntry("e/../../e.jar"));
 				out.closeEntry();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		});

@@ -379,7 +379,7 @@ class LoggingApplicationListenerTests {
 		this.listener.setSpringBootLogging(LogLevel.ERROR);
 		this.listener.setParseArgs(false);
 		multicastEvent(new ApplicationStartingEvent(this.bootstrapContext, this.springApplication,
-				new String[] { "--debug" }));
+				new String[]{"--debug"}));
 		this.listener.initialize(this.context.getEnvironment(), this.context.getClassLoader());
 		this.logger.debug("testatdebug");
 		assertThat(this.output).doesNotContain("testatdebug");
@@ -619,7 +619,7 @@ class LoggingApplicationListenerTests {
 
 		@Override
 		protected String[] getStandardConfigLocations() {
-			return new String[] { "foo.bar" };
+			return new String[]{"foo.bar"};
 		}
 
 		@Override
@@ -628,7 +628,7 @@ class LoggingApplicationListenerTests {
 
 		@Override
 		protected void loadConfiguration(LoggingInitializationContext initializationContext, String location,
-				LogFile logFile) {
+										 LogFile logFile) {
 		}
 
 		@Override

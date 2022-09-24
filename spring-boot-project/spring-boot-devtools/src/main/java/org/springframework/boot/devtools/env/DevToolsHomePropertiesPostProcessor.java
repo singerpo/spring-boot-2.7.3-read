@@ -55,8 +55,8 @@ public class DevToolsHomePropertiesPostProcessor implements EnvironmentPostProce
 
 	private static final String LEGACY_FILE_NAME = ".spring-boot-devtools.properties";
 
-	private static final String[] FILE_NAMES = new String[] { "spring-boot-devtools.yml", "spring-boot-devtools.yaml",
-			"spring-boot-devtools.properties" };
+	private static final String[] FILE_NAMES = new String[]{"spring-boot-devtools.yml", "spring-boot-devtools.yaml",
+			"spring-boot-devtools.properties"};
 
 	private static final String CONFIG_PATH = "/.config/spring-boot/";
 
@@ -108,7 +108,7 @@ public class DevToolsHomePropertiesPostProcessor implements EnvironmentPostProce
 	}
 
 	private void addPropertySource(List<PropertySource<?>> propertySources, String fileName,
-			Function<File, String> propertySourceNamer) {
+								   Function<File, String> propertySourceNamer) {
 		File home = getHomeDirectory();
 		File file = (home != null) ? new File(home, fileName) : null;
 		FileSystemResource resource = (file != null) ? new FileSystemResource(file) : null;
@@ -118,7 +118,7 @@ public class DevToolsHomePropertiesPostProcessor implements EnvironmentPostProce
 	}
 
 	private void addPropertySource(List<PropertySource<?>> propertySources, FileSystemResource resource,
-			Function<File, String> propertySourceNamer) {
+								   Function<File, String> propertySourceNamer) {
 		try {
 			String name = propertySourceNamer.apply(resource.getFile());
 			for (PropertySourceLoader loader : PROPERTY_SOURCE_LOADERS) {
@@ -126,8 +126,7 @@ public class DevToolsHomePropertiesPostProcessor implements EnvironmentPostProce
 					propertySources.addAll(loader.load(name, resource));
 				}
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to load " + resource.getFilename(), ex);
 		}
 	}

@@ -29,8 +29,8 @@ import java.lang.annotation.Target;
  * @author Andy Wilkinson
  * @since 1.3.0
  */
-@Target({ ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.LOCAL_VARIABLE, ElementType.METHOD,
-		ElementType.PARAMETER, ElementType.TYPE })
+@Target({ElementType.CONSTRUCTOR, ElementType.FIELD, ElementType.LOCAL_VARIABLE, ElementType.METHOD,
+		ElementType.PARAMETER, ElementType.TYPE})
 @Retention(RetentionPolicy.SOURCE)
 @Documented
 public @interface DependencyManagementBom {
@@ -39,6 +39,7 @@ public @interface DependencyManagementBom {
 	 * One or more sets of colon-separated coordinates ({@code group:module:version}) of a
 	 * Maven bom that contains dependency management that will add to and override the
 	 * default dependency management.
+	 *
 	 * @return the BOM coordinates
 	 */
 	String[] value();

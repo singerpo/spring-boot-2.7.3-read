@@ -87,16 +87,16 @@ class WavefrontMetricsExportAutoConfigurationTests {
 	void defaultWavefrontSenderSettingsAreConsistent() {
 		this.contextRunner.withUserConfiguration(BaseConfiguration.class)
 				.withPropertyValues("management.metrics.export.wavefront.api-token=abcde").run((context) -> {
-					WavefrontProperties properties = new WavefrontProperties();
-					WavefrontSender sender = context.getBean(WavefrontSender.class);
-					assertThat(sender)
-							.extracting("metricsBuffer", as(InstanceOfAssertFactories.type(LinkedBlockingQueue.class)))
-							.satisfies((queue) -> assertThat(queue.remainingCapacity() + queue.size())
-									.isEqualTo(properties.getSender().getMaxQueueSize()));
-					assertThat(sender).hasFieldOrPropertyWithValue("batchSize", properties.getBatchSize());
-					assertThat(sender).hasFieldOrPropertyWithValue("messageSizeBytes",
-							(int) properties.getSender().getMessageSize().toBytes());
-				});
+			WavefrontProperties properties = new WavefrontProperties();
+			WavefrontSender sender = context.getBean(WavefrontSender.class);
+			assertThat(sender)
+					.extracting("metricsBuffer", as(InstanceOfAssertFactories.type(LinkedBlockingQueue.class)))
+					.satisfies((queue) -> assertThat(queue.remainingCapacity() + queue.size())
+							.isEqualTo(properties.getSender().getMaxQueueSize()));
+			assertThat(sender).hasFieldOrPropertyWithValue("batchSize", properties.getBatchSize());
+			assertThat(sender).hasFieldOrPropertyWithValue("messageSizeBytes",
+					(int) properties.getSender().getMessageSize().toBytes());
+		});
 	}
 
 	@Test
@@ -136,11 +136,11 @@ class WavefrontMetricsExportAutoConfigurationTests {
 	void stopsMeterRegistryWhenContextIsClosed() {
 		this.contextRunner.withUserConfiguration(BaseConfiguration.class)
 				.withPropertyValues("management.metrics.export.wavefront.api-token=abcde").run((context) -> {
-					WavefrontMeterRegistry registry = context.getBean(WavefrontMeterRegistry.class);
-					assertThat(registry.isClosed()).isFalse();
-					context.close();
-					assertThat(registry.isClosed()).isTrue();
-				});
+			WavefrontMeterRegistry registry = context.getBean(WavefrontMeterRegistry.class);
+			assertThat(registry.isClosed()).isFalse();
+			context.close();
+			assertThat(registry.isClosed()).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

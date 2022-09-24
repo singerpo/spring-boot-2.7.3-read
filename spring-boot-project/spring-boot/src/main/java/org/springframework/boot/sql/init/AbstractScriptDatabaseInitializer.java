@@ -49,6 +49,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 	/**
 	 * Creates a new {@link AbstractScriptDatabaseInitializer} that will initialize the
 	 * database using the given settings.
+	 *
 	 * @param settings initialization settings
 	 */
 	protected AbstractScriptDatabaseInitializer(DatabaseInitializationSettings settings) {
@@ -67,6 +68,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 
 	/**
 	 * Initializes the database by applying schema and data scripts.
+	 *
 	 * @return {@code true} if one or more scripts were applied to the database, otherwise
 	 * {@code false}
 	 */
@@ -85,6 +87,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 
 	/**
 	 * Returns whether the database that is to be initialized is embedded.
+	 *
 	 * @return {@code true} if the database is embedded, otherwise {@code false}
 	 * @since 2.5.1
 	 */
@@ -123,8 +126,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 			for (Resource resource : doGetResources(location, locationResolver)) {
 				if (resource.exists()) {
 					resources.add(resource);
-				}
-				else if (!optional) {
+				} else if (!optional) {
 					throw new IllegalStateException("No " + type + " scripts found at location '" + location + "'");
 				}
 			}
@@ -135,8 +137,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 	private List<Resource> doGetResources(String location, ScriptLocationResolver locationResolver) {
 		try {
 			return locationResolver.resolve(location);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to load resources from " + location, ex);
 		}
 	}
@@ -147,7 +148,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 	}
 
 	protected abstract void runScripts(List<Resource> resources, boolean continueOnError, String separator,
-			Charset encoding);
+									   Charset encoding);
 
 	private static class ScriptLocationResolver {
 
@@ -163,8 +164,7 @@ public abstract class AbstractScriptDatabaseInitializer implements ResourceLoade
 			resources.sort((r1, r2) -> {
 				try {
 					return r1.getURL().toString().compareTo(r2.getURL().toString());
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					return 0;
 				}
 			});

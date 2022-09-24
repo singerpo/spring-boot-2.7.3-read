@@ -45,8 +45,9 @@ public class JarWriter extends AbstractJarWriter implements AutoCloseable {
 
 	/**
 	 * Create a new {@link JarWriter} instance.
+	 *
 	 * @param file the file to write
-	 * @throws IOException if the file cannot be opened
+	 * @throws IOException           if the file cannot be opened
 	 * @throws FileNotFoundException if the file cannot be found
 	 */
 	public JarWriter(File file) throws FileNotFoundException, IOException {
@@ -55,9 +56,10 @@ public class JarWriter extends AbstractJarWriter implements AutoCloseable {
 
 	/**
 	 * Create a new {@link JarWriter} instance.
-	 * @param file the file to write
+	 *
+	 * @param file         the file to write
 	 * @param launchScript an optional launch script to prepend to the front of the jar
-	 * @throws IOException if the file cannot be opened
+	 * @throws IOException           if the file cannot be opened
 	 * @throws FileNotFoundException if the file cannot be found
 	 */
 	public JarWriter(File file, LaunchScript launchScript) throws FileNotFoundException, IOException {
@@ -66,11 +68,12 @@ public class JarWriter extends AbstractJarWriter implements AutoCloseable {
 
 	/**
 	 * Create a new {@link JarWriter} instance.
-	 * @param file the file to write
-	 * @param launchScript an optional launch script to prepend to the front of the jar
+	 *
+	 * @param file             the file to write
+	 * @param launchScript     an optional launch script to prepend to the front of the jar
 	 * @param lastModifiedTime an optional last modified time to apply to the written
-	 * entries
-	 * @throws IOException if the file cannot be opened
+	 *                         entries
+	 * @throws IOException           if the file cannot be opened
 	 * @throws FileNotFoundException if the file cannot be found
 	 * @since 2.3.0
 	 */
@@ -107,6 +110,7 @@ public class JarWriter extends AbstractJarWriter implements AutoCloseable {
 
 	/**
 	 * Close the writer.
+	 *
 	 * @throws IOException if the file cannot be closed
 	 */
 	@Override

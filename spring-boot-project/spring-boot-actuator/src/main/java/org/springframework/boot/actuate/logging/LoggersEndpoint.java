@@ -54,8 +54,9 @@ public class LoggersEndpoint {
 
 	/**
 	 * Create a new {@link LoggersEndpoint} instance.
+	 *
 	 * @param loggingSystem the logging system to expose
-	 * @param loggerGroups the logger group to expose
+	 * @param loggerGroups  the logger group to expose
 	 */
 	public LoggersEndpoint(LoggingSystem loggingSystem, LoggerGroups loggerGroups) {
 		Assert.notNull(loggingSystem, "LoggingSystem must not be null");

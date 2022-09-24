@@ -46,12 +46,13 @@ public class ControllerEndpointDiscoverer extends EndpointDiscoverer<ExposableCo
 
 	/**
 	 * Create a new {@link ControllerEndpointDiscoverer} instance.
-	 * @param applicationContext the source application context
+	 *
+	 * @param applicationContext  the source application context
 	 * @param endpointPathMappers the endpoint path mappers
-	 * @param filters filters to apply
+	 * @param filters             filters to apply
 	 */
 	public ControllerEndpointDiscoverer(ApplicationContext applicationContext, List<PathMapper> endpointPathMappers,
-			Collection<EndpointFilter<ExposableControllerEndpoint>> filters) {
+										Collection<EndpointFilter<ExposableControllerEndpoint>> filters) {
 		super(applicationContext, ParameterValueMapper.NONE, Collections.emptyList(), filters);
 		this.endpointPathMappers = endpointPathMappers;
 	}
@@ -64,14 +65,14 @@ public class ControllerEndpointDiscoverer extends EndpointDiscoverer<ExposableCo
 
 	@Override
 	protected ExposableControllerEndpoint createEndpoint(Object endpointBean, EndpointId id, boolean enabledByDefault,
-			Collection<Operation> operations) {
+														 Collection<Operation> operations) {
 		String rootPath = PathMapper.getRootPath(this.endpointPathMappers, id);
 		return new DiscoveredControllerEndpoint(this, endpointBean, id, rootPath, enabledByDefault);
 	}
 
 	@Override
 	protected Operation createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-			OperationInvoker invoker) {
+										OperationInvoker invoker) {
 		throw new IllegalStateException("ControllerEndpoints must not declare operations");
 	}
 

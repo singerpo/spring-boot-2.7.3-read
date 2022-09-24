@@ -59,8 +59,8 @@ import org.eclipse.aether.util.repository.DefaultProxySelector;
  * An encapsulation of settings read from a user's Maven settings.xml.
  *
  * @author Andy Wilkinson
- * @since 1.3.0
  * @see MavenSettingsReader
+ * @since 1.3.0
  */
 public class MavenSettings {
 
@@ -78,7 +78,8 @@ public class MavenSettings {
 
 	/**
 	 * Create a new {@link MavenSettings} instance.
-	 * @param settings the source settings
+	 *
+	 * @param settings          the source settings
 	 * @param decryptedSettings the decrypted settings
 	 */
 	public MavenSettings(Settings settings, SettingsDecryptionResult decryptedSettings) {
@@ -262,7 +263,7 @@ public class MavenSettings {
 			return Collections.emptyList();
 		}
 
-		@SuppressWarnings({ "unchecked", "rawtypes" })
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		@Override
 		public Map<String, String> getSystemProperties() {
 			return (Map) System.getProperties();

@@ -69,7 +69,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Dave Syer
  * @author Scott Frederick
  */
-@SpringBootTest(properties = { "server.error.include-message=always" })
+@SpringBootTest(properties = {"server.error.include-message=always"})
 @DirtiesContext
 class BasicErrorControllerMockMvcTests {
 
@@ -132,9 +132,9 @@ class BasicErrorControllerMockMvcTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@ImportAutoConfiguration({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+	@ImportAutoConfiguration({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	private @interface MinimalWebConfiguration {
 
 	}
@@ -153,7 +153,7 @@ class BasicErrorControllerMockMvcTests {
 			return new AbstractView() {
 				@Override
 				protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
-						HttpServletResponse response) throws Exception {
+													   HttpServletResponse response) throws Exception {
 					response.getWriter().write("ERROR_BEAN");
 				}
 			};

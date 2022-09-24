@@ -54,15 +54,13 @@ final class StandardGitHubRepository implements GitHubRepository {
 		requestBody.put("body", body);
 		try {
 			Thread.sleep(1000);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 		try {
 			ResponseEntity<Map> response = this.rest.postForEntity("issues", requestBody, Map.class);
 			return (Integer) response.getBody().get("number");
-		}
-		catch (RestClientException ex) {
+		} catch (RestClientException ex) {
 			if (ex instanceof Forbidden) {
 				System.out.println("Received 403 response with headers " + ((Forbidden) ex).getResponseHeaders());
 			}
@@ -89,7 +87,7 @@ final class StandardGitHubRepository implements GitHubRepository {
 				(issue) -> new Issue(this.rest, (Integer) issue.get("number"), (String) issue.get("title")));
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private <T> List<T> get(String name, Function<Map<String, Object>, T> mapper) {
 		ResponseEntity<List> response = this.rest.getForEntity(name, List.class);
 		List<Map<String, Object>> body = response.getBody();

@@ -52,8 +52,7 @@ public class MyTomcatConfiguration {
 			protocol.setTruststorePass("changeit");
 			protocol.setKeyAlias("apitester");
 			return connector;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Fail to create ssl connector", ex);
 		}
 	}

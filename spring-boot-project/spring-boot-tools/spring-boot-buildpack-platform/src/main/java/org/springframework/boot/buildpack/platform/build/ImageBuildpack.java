@@ -40,7 +40,7 @@ import org.springframework.util.StreamUtils;
 
 /**
  * A {@link Buildpack} that references a buildpack contained in an OCI image.
- *
+ * <p>
  * The reference must be an OCI image reference. The reference can optionally contain a
  * prefix {@code docker://} to unambiguously identify it as an image buildpack reference.
  *
@@ -63,8 +63,7 @@ final class ImageBuildpack implements Buildpack {
 			this.coordinates = BuildpackCoordinates.fromBuildpackMetadata(buildpackMetadata);
 			this.exportedLayers = (!buildpackExistsInBuilder(context, image.getLayers()))
 					? new ExportedLayers(context, reference) : null;
-		}
-		catch (IOException | DockerEngineException ex) {
+		} catch (IOException | DockerEngineException ex) {
 			throw new IllegalArgumentException("Error pulling buildpack image '" + reference + "'", ex);
 		}
 	}
@@ -90,7 +89,8 @@ final class ImageBuildpack implements Buildpack {
 
 	/**
 	 * A {@link BuildpackResolver} compatible method to resolve image buildpacks.
-	 * @param context the resolver context
+	 *
+	 * @param context   the resolver context
 	 * @param reference the buildpack reference
 	 * @return the resolved {@link Buildpack} or {@code null}
 	 */
@@ -100,8 +100,7 @@ final class ImageBuildpack implements Buildpack {
 			ImageReference imageReference = ImageReference
 					.of((unambiguous) ? reference.getSubReference(PREFIX) : reference.toString());
 			return new ImageBuildpack(context, imageReference);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			if (unambiguous) {
 				throw ex;
 			}
@@ -136,7 +135,7 @@ final class ImageBuildpack implements Buildpack {
 
 		private void copyLayerTar(Path path, OutputStream out) throws IOException {
 			try (TarArchiveInputStream tarIn = new TarArchiveInputStream(Files.newInputStream(path));
-					TarArchiveOutputStream tarOut = new TarArchiveOutputStream(out)) {
+				 TarArchiveOutputStream tarOut = new TarArchiveOutputStream(out)) {
 				tarOut.setLongFileMode(TarArchiveOutputStream.LONGFILE_POSIX);
 				TarArchiveEntry entry = tarIn.getNextTarEntry();
 				while (entry != null) {

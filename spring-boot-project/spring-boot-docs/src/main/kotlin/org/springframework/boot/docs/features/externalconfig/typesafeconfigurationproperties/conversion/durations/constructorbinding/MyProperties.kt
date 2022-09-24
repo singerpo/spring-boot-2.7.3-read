@@ -26,4 +26,4 @@ import java.time.temporal.ChronoUnit
 @ConfigurationProperties("my")
 @ConstructorBinding
 class MyProperties(@param:DurationUnit(ChronoUnit.SECONDS) @param:DefaultValue("30s") val sessionTimeout: Duration,
-		@param:DefaultValue("1000ms") val readTimeout: Duration)
+				   @param:DefaultValue("1000ms") val readTimeout: Duration)

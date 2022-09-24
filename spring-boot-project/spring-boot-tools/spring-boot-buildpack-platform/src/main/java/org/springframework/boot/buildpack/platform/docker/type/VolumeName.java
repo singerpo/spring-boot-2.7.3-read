@@ -61,6 +61,7 @@ public final class VolumeName {
 
 	/**
 	 * Factory method to create a new {@link VolumeName} with a random name.
+	 *
 	 * @param prefix the prefix to use with the random name
 	 * @return a randomly named volume
 	 */
@@ -70,7 +71,8 @@ public final class VolumeName {
 
 	/**
 	 * Factory method to create a new {@link VolumeName} with a random name.
-	 * @param prefix the prefix to use with the random name
+	 *
+	 * @param prefix       the prefix to use with the random name
 	 * @param randomLength the number of chars in the random part of the name
 	 * @return a randomly named volume reference
 	 */
@@ -82,10 +84,11 @@ public final class VolumeName {
 	 * Factory method to create a new {@link VolumeName} based on an object. The resulting
 	 * name will be based off a SHA-256 digest of the given object's {@code toString()}
 	 * method.
-	 * @param <S> the source object type
-	 * @param source the source object
-	 * @param prefix the prefix to use with the volume name
-	 * @param suffix the suffix to use with the volume name
+	 *
+	 * @param <S>          the source object type
+	 * @param source       the source object
+	 * @param prefix       the prefix to use with the volume name
+	 * @param suffix       the suffix to use with the volume name
 	 * @param digestLength the number of chars in the digest part of the name
 	 * @return a name based off the image reference
 	 */
@@ -96,16 +99,17 @@ public final class VolumeName {
 	/**
 	 * Factory method to create a new {@link VolumeName} based on an object. The resulting
 	 * name will be based off a SHA-256 digest of the given object's name.
-	 * @param <S> the source object type
-	 * @param source the source object
+	 *
+	 * @param <S>           the source object type
+	 * @param source        the source object
 	 * @param nameExtractor a method to extract the name of the object
-	 * @param prefix the prefix to use with the volume name
-	 * @param suffix the suffix to use with the volume name
-	 * @param digestLength the number of chars in the digest part of the name
+	 * @param prefix        the prefix to use with the volume name
+	 * @param suffix        the suffix to use with the volume name
+	 * @param digestLength  the number of chars in the digest part of the name
 	 * @return a name based off the image reference
 	 */
 	public static <S> VolumeName basedOn(S source, Function<S, String> nameExtractor, String prefix, String suffix,
-			int digestLength) {
+										 int digestLength) {
 		Assert.notNull(source, "Source must not be null");
 		Assert.notNull(nameExtractor, "NameExtractor must not be null");
 		Assert.notNull(prefix, "Prefix must not be null");
@@ -117,8 +121,7 @@ public final class VolumeName {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("sha-256");
 			return asHexString(digest.digest(name.getBytes(StandardCharsets.UTF_8)), length);
-		}
-		catch (NoSuchAlgorithmException ex) {
+		} catch (NoSuchAlgorithmException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -133,6 +136,7 @@ public final class VolumeName {
 
 	/**
 	 * Factory method to create a {@link VolumeName} with a specific value.
+	 *
 	 * @param value the volume reference value
 	 * @return a new {@link VolumeName} instance
 	 */

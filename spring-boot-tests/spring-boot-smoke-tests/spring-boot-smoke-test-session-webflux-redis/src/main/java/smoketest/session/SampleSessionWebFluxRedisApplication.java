@@ -34,14 +34,14 @@ public class SampleSessionWebFluxRedisApplication {
 	public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 		// @formatter:off
 		return http
-			.authorizeExchange()
+				.authorizeExchange()
 				.anyExchange().authenticated()
 				.and()
-			.httpBasic().securityContextRepository(new WebSessionServerSecurityContextRepository())
+				.httpBasic().securityContextRepository(new WebSessionServerSecurityContextRepository())
 				.and()
-			.formLogin()
+				.formLogin()
 				.and()
-			.build();
+				.build();
 		// @formatter:on
 	}
 

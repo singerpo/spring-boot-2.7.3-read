@@ -131,8 +131,7 @@ class SpringBootServletInitializerTests {
 		});
 		try {
 			webServer.start();
-		}
-		finally {
+		} finally {
 			webServer.stop();
 		}
 	}
@@ -152,8 +151,7 @@ class SpringBootServletInitializerTests {
 		});
 		try {
 			webServer.start();
-		}
-		finally {
+		} finally {
 			webServer.stop();
 		}
 	}
@@ -174,8 +172,7 @@ class SpringBootServletInitializerTests {
 		});
 		try {
 			webServer.start();
-		}
-		finally {
+		} finally {
 			webServer.stop();
 		}
 	}

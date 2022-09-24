@@ -29,14 +29,14 @@ class MyCouchbaseCacheManagerConfiguration {
 	fun myCouchbaseCacheManagerBuilderCustomizer(): CouchbaseCacheManagerBuilderCustomizer {
 		return CouchbaseCacheManagerBuilderCustomizer { builder ->
 			builder
-				.withCacheConfiguration(
-					"cache1", CouchbaseCacheConfiguration
-						.defaultCacheConfig().entryExpiry(Duration.ofSeconds(10))
-				)
-				.withCacheConfiguration(
-					"cache2", CouchbaseCacheConfiguration
-						.defaultCacheConfig().entryExpiry(Duration.ofMinutes(1))
-				)
+					.withCacheConfiguration(
+							"cache1", CouchbaseCacheConfiguration
+							.defaultCacheConfig().entryExpiry(Duration.ofSeconds(10))
+					)
+					.withCacheConfiguration(
+							"cache2", CouchbaseCacheConfiguration
+							.defaultCacheConfig().entryExpiry(Duration.ofMinutes(1))
+					)
 		}
 	}
 

@@ -101,8 +101,7 @@ class ConfigurationPropertiesScanRegistrar implements ImportBeanDefinitionRegist
 	private void register(ConfigurationPropertiesBeanRegistrar registrar, String className) throws LinkageError {
 		try {
 			register(registrar, ClassUtils.forName(className, null));
-		}
-		catch (ClassNotFoundException ex) {
+		} catch (ClassNotFoundException ex) {
 			// Ignore
 		}
 	}

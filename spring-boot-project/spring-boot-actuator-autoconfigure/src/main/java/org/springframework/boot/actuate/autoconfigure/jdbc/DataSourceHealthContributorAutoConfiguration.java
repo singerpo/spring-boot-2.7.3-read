@@ -61,7 +61,7 @@ import org.springframework.util.Assert;
  * @since 2.0.0
  */
 @AutoConfiguration(after = DataSourceAutoConfiguration.class)
-@ConditionalOnClass({ JdbcTemplate.class, AbstractRoutingDataSource.class })
+@ConditionalOnClass({JdbcTemplate.class, AbstractRoutingDataSource.class})
 @ConditionalOnBean(DataSource.class)
 @ConditionalOnEnabledHealthIndicator("db")
 @EnableConfigurationProperties(DataSourceHealthIndicatorProperties.class)
@@ -82,9 +82,9 @@ public class DataSourceHealthContributorAutoConfiguration implements Initializin
 	}
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "dbHealthIndicator", "dbHealthContributor" })
+	@ConditionalOnMissingBean(name = {"dbHealthIndicator", "dbHealthContributor"})
 	public HealthContributor dbHealthContributor(Map<String, DataSource> dataSources,
-			DataSourceHealthIndicatorProperties dataSourceHealthIndicatorProperties) {
+												 DataSourceHealthIndicatorProperties dataSourceHealthIndicatorProperties) {
 		if (dataSourceHealthIndicatorProperties.isIgnoreRoutingDataSources()) {
 			Map<String, DataSource> filteredDatasources = dataSources.entrySet().stream()
 					.filter((e) -> !(e.getValue() instanceof AbstractRoutingDataSource))
@@ -127,7 +127,7 @@ public class DataSourceHealthContributorAutoConfiguration implements Initializin
 		private static final String UNNAMED_DATASOURCE_KEY = "unnamed";
 
 		RoutingDataSourceHealthContributor(AbstractRoutingDataSource routingDataSource,
-				Function<DataSource, HealthContributor> contributorFunction) {
+										   Function<DataSource, HealthContributor> contributorFunction) {
 			Map<String, DataSource> routedDataSources = routingDataSource.getResolvedDataSources().entrySet().stream()
 					.collect(Collectors.toMap((e) -> Objects.toString(e.getKey(), UNNAMED_DATASOURCE_KEY),
 							Map.Entry::getValue));

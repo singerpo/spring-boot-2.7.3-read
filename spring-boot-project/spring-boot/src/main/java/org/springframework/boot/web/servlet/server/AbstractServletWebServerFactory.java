@@ -97,6 +97,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Create a new {@link AbstractServletWebServerFactory} instance with the specified
 	 * port.
+	 *
 	 * @param port the port number for the web server
 	 */
 	public AbstractServletWebServerFactory(int port) {
@@ -106,8 +107,9 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Create a new {@link AbstractServletWebServerFactory} instance with the specified
 	 * context path and port.
+	 *
 	 * @param contextPath the context path for the web server
-	 * @param port the port number for the web server
+	 * @param port        the port number for the web server
 	 */
 	public AbstractServletWebServerFactory(String contextPath, int port) {
 		super(port);
@@ -118,6 +120,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Returns the context path for the web server. The path will start with "/" and not
 	 * end with "/". The root context is represented by an empty string.
+	 *
 	 * @return the context path
 	 */
 	public String getContextPath() {
@@ -153,6 +156,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 
 	/**
 	 * Flag to indicate that the default servlet should be registered.
+	 *
 	 * @return true if the default servlet is to be registered
 	 */
 	public boolean isRegisterDefaultServlet() {
@@ -166,6 +170,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 
 	/**
 	 * Returns the mime-type mappings.
+	 *
 	 * @return the mimeMappings the mime-type mappings.
 	 */
 	public MimeMappings getMimeMappings() {
@@ -180,6 +185,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Returns the document root which will be used by the web context to serve static
 	 * files.
+	 *
 	 * @return the document root
 	 */
 	public File getDocumentRoot() {
@@ -223,6 +229,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 
 	/**
 	 * Return the Locale to Charset mappings.
+	 *
 	 * @return the charset mappings
 	 */
 	public Map<Locale, Charset> getLocaleCharsetMappings() {
@@ -263,6 +270,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Utility method that can be used by subclasses wishing to combine the specified
 	 * {@link ServletContextInitializer} parameters with those defined in this instance.
+	 *
 	 * @param initializers the initializers to merge
 	 * @return a complete set of merged initializers (with the specified parameters
 	 * appearing first)
@@ -278,6 +286,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 
 	/**
 	 * Returns whether the JSP servlet should be registered with the web server.
+	 *
 	 * @return {@code true} if the servlet should be registered, otherwise {@code false}
 	 */
 	protected boolean shouldRegisterJspServlet() {
@@ -288,6 +297,7 @@ public abstract class AbstractServletWebServerFactory extends AbstractConfigurab
 	/**
 	 * Returns the absolute document root when it points to a valid directory, logging a
 	 * warning and returning {@code null} otherwise.
+	 *
 	 * @return the valid document root
 	 */
 	protected final File getValidDocumentRoot() {

@@ -26,4 +26,4 @@ import org.springframework.util.unit.DataUnit
 @ConfigurationProperties("my")
 @ConstructorBinding
 class MyProperties(@param:DataSizeUnit(DataUnit.MEGABYTES) @param:DefaultValue("2MB") val bufferSize: DataSize,
-		@param:DefaultValue("512B") val sizeThreshold: DataSize)
+				   @param:DefaultValue("512B") val sizeThreshold: DataSize)

@@ -34,6 +34,7 @@ public final class SubversionBootstrap {
 
 	/**
 	 * Return a {@link BootstrapRegistryInitializer} for the given client factory.
+	 *
 	 * @param clientFactory the client factory
 	 * @return a {@link BootstrapRegistryInitializer} instance
 	 */
@@ -44,7 +45,7 @@ public final class SubversionBootstrap {
 	}
 
 	private static SubversionClient createSubversionClient(BootstrapContext bootstrapContext,
-			Function<SubversionServerCertificate, SubversionClient> clientFactory) {
+														   Function<SubversionServerCertificate, SubversionClient> clientFactory) {
 		return clientFactory.apply(bootstrapContext.get(SubversionServerCertificate.class));
 	}
 

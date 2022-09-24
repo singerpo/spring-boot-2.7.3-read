@@ -57,8 +57,8 @@ import org.springframework.web.util.HtmlUtils;
  *
  * @author Brian Clozel
  * @author Scott Frederick
- * @since 2.0.0
  * @see ErrorAttributes
+ * @since 2.0.0
  */
 public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExceptionHandler, InitializingBean {
 
@@ -94,13 +94,14 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Create a new {@code AbstractErrorWebExceptionHandler}.
-	 * @param errorAttributes the error attributes
-	 * @param resources the resources configuration properties
+	 *
+	 * @param errorAttributes    the error attributes
+	 * @param resources          the resources configuration properties
 	 * @param applicationContext the application context
 	 * @since 2.4.0
 	 */
 	public AbstractErrorWebExceptionHandler(ErrorAttributes errorAttributes, Resources resources,
-			ApplicationContext applicationContext) {
+											ApplicationContext applicationContext) {
 		Assert.notNull(errorAttributes, "ErrorAttributes must not be null");
 		Assert.notNull(resources, "Resources must not be null");
 		Assert.notNull(applicationContext, "ApplicationContext must not be null");
@@ -112,6 +113,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Configure HTTP message writers to serialize the response body with.
+	 *
 	 * @param messageWriters the {@link HttpMessageWriter}s to use
 	 */
 	public void setMessageWriters(List<HttpMessageWriter<?>> messageWriters) {
@@ -121,6 +123,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Configure HTTP message readers to deserialize the request body with.
+	 *
 	 * @param messageReaders the {@link HttpMessageReader}s to use
 	 */
 	public void setMessageReaders(List<HttpMessageReader<?>> messageReaders) {
@@ -130,6 +133,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Configure the {@link ViewResolver} to use for rendering views.
+	 *
 	 * @param viewResolvers the list of {@link ViewResolver}s to use
 	 */
 	public void setViewResolvers(List<ViewResolver> viewResolvers) {
@@ -139,7 +143,8 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	/**
 	 * Extract the error attributes from the current request, to be used to populate error
 	 * views or JSON payloads.
-	 * @param request the source request
+	 *
+	 * @param request           the source request
 	 * @param includeStackTrace whether to include the error stacktrace information
 	 * @return the error attributes as a Map
 	 * @deprecated since 2.3.0 for removal in 2.5.0 in favor of
@@ -154,6 +159,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	/**
 	 * Extract the error attributes from the current request, to be used to populate error
 	 * views or JSON payloads.
+	 *
 	 * @param request the source request
 	 * @param options options to control error attributes
 	 * @return the error attributes as a Map
@@ -164,6 +170,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Extract the original error from the current request.
+	 *
 	 * @param request the source request
 	 * @return the error
 	 */
@@ -173,6 +180,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Check whether the trace attribute has been set on the given request.
+	 *
 	 * @param request the source request
 	 * @return {@code true} if the error trace has been requested, {@code false} otherwise
 	 */
@@ -182,6 +190,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Check whether the message attribute has been set on the given request.
+	 *
 	 * @param request the source request
 	 * @return {@code true} if the message attribute has been requested, {@code false}
 	 * otherwise
@@ -192,6 +201,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 
 	/**
 	 * Check whether the errors attribute has been set on the given request.
+	 *
 	 * @param request the source request
 	 * @return {@code true} if the errors attribute has been requested, {@code false}
 	 * otherwise
@@ -209,13 +219,14 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	 * Render the given error data as a view, using a template view if available or a
 	 * static HTML file if available otherwise. This will return an empty
 	 * {@code Publisher} if none of the above are available.
-	 * @param viewName the view name
+	 *
+	 * @param viewName     the view name
 	 * @param responseBody the error response being built
-	 * @param error the error data as a map
+	 * @param error        the error data as a map
 	 * @return a Publisher of the {@link ServerResponse}
 	 */
 	protected Mono<ServerResponse> renderErrorView(String viewName, ServerResponse.BodyBuilder responseBody,
-			Map<String, Object> error) {
+												   Map<String, Object> error) {
 		if (isTemplateAvailable(viewName)) {
 			return responseBody.render(viewName, error);
 		}
@@ -238,8 +249,7 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 				if (resource.exists()) {
 					return resource;
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -250,12 +260,13 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	 * Render a default HTML "Whitelabel Error Page".
 	 * <p>
 	 * Useful when no other error view is available in the application.
+	 *
 	 * @param responseBody the error response being built
-	 * @param error the error data as a map
+	 * @param error        the error data as a map
 	 * @return a Publisher of the {@link ServerResponse}
 	 */
 	protected Mono<ServerResponse> renderDefaultErrorView(ServerResponse.BodyBuilder responseBody,
-			Map<String, Object> error) {
+														  Map<String, Object> error) {
 		StringBuilder builder = new StringBuilder();
 		Date timestamp = (Date) error.get("timestamp");
 		Object message = error.get("message");
@@ -294,8 +305,9 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	 * If the returned {@link RouterFunction} doesn't route to a {@code HandlerFunction},
 	 * the original exception is propagated in the pipeline and can be processed by other
 	 * {@link org.springframework.web.server.WebExceptionHandler}s.
+	 *
 	 * @param errorAttributes the {@code ErrorAttributes} instance to use to extract error
-	 * information
+	 *                        information
 	 * @return a {@link RouterFunction} that routes and handles errors
 	 */
 	protected abstract RouterFunction<ServerResponse> getRoutingFunction(ErrorAttributes errorAttributes);
@@ -327,8 +339,9 @@ public abstract class AbstractErrorWebExceptionHandler implements ErrorWebExcept
 	 * Logs the {@code throwable} error for the given {@code request} and {@code response}
 	 * exchange. The default implementation logs all errors at debug level. Additionally,
 	 * any internal server error (500) is logged at error level.
-	 * @param request the request that was being handled
-	 * @param response the response that was being sent
+	 *
+	 * @param request   the request that was being handled
+	 * @param response  the response that was being sent
 	 * @param throwable the error to be logged
 	 * @since 2.2.0
 	 */

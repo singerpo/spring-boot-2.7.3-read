@@ -28,6 +28,7 @@ public interface HttpCodeStatusMapper {
 
 	/**
 	 * A {@link HttpCodeStatusMapper} instance using default mappings.
+	 *
 	 * @since 2.3.0
 	 */
 	HttpCodeStatusMapper DEFAULT = new SimpleHttpCodeStatusMapper();
@@ -35,6 +36,7 @@ public interface HttpCodeStatusMapper {
 	/**
 	 * Return the HTTP status code that corresponds to the given {@link Status health
 	 * status}.
+	 *
 	 * @param status the health status to map
 	 * @return the corresponding HTTP status code
 	 */

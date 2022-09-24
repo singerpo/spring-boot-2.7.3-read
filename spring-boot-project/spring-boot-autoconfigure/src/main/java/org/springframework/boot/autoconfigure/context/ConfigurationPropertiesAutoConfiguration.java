@@ -27,9 +27,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * validates any bean annotated with {@code @ConfigurationProperties}.
  *
  * @author Stephane Nicoll
- * @since 1.3.0
  * @see EnableConfigurationProperties
  * @see ConfigurationProperties
+ * @since 1.3.0
  */
 @AutoConfiguration
 @EnableConfigurationProperties

@@ -19,7 +19,7 @@ package org.springframework.boot.docs.using.autoconfiguration.disablingspecific;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class MyApplication {
 
 }

@@ -125,7 +125,7 @@ class ConfigurationWarningsApplicationContextInitializerTests {
 
 		@Override
 		protected Check[] getChecks() {
-			return new Check[] { new TestComponentScanPackageCheck() };
+			return new Check[]{new TestComponentScanPackageCheck()};
 		}
 
 	}
@@ -143,11 +143,9 @@ class ConfigurationWarningsApplicationContextInitializerTests {
 			for (String scannedPackage : scannedPackages) {
 				if (scannedPackage.endsWith("dflt")) {
 					result.add("");
-				}
-				else if (scannedPackage.endsWith("orgspring")) {
+				} else if (scannedPackage.endsWith("orgspring")) {
 					result.add("org.springframework");
-				}
-				else {
+				} else {
 					result.add(scannedPackage);
 				}
 			}

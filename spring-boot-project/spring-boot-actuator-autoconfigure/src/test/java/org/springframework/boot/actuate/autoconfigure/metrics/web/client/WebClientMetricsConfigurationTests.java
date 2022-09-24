@@ -98,13 +98,13 @@ class WebClientMetricsConfigurationTests {
 		this.contextRunner.withPropertyValues("management.metrics.web.client.request.autotime.enabled=true",
 				"management.metrics.web.client.request.autotime.percentiles=0.5,0.7",
 				"management.metrics.web.client.request.autotime.percentiles-histogram=true").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					Timer timer = registry.get("http.client.requests").timer();
-					HistogramSnapshot snapshot = timer.takeSnapshot();
-					assertThat(snapshot.percentileValues()).hasSize(2);
-					assertThat(snapshot.percentileValues()[0].percentile()).isEqualTo(0.5);
-					assertThat(snapshot.percentileValues()[1].percentile()).isEqualTo(0.7);
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			Timer timer = registry.get("http.client.requests").timer();
+			HistogramSnapshot snapshot = timer.takeSnapshot();
+			assertThat(snapshot.percentileValues()).hasSize(2);
+			assertThat(snapshot.percentileValues()[0].percentile()).isEqualTo(0.5);
+			assertThat(snapshot.percentileValues()[1].percentile()).isEqualTo(0.7);
+		});
 	}
 
 	private MeterRegistry getInitializedMeterRegistry(AssertableApplicationContext context) {

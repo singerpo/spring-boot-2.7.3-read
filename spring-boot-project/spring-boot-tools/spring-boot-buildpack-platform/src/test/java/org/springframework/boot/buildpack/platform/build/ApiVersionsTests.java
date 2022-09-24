@@ -64,7 +64,7 @@ class ApiVersionsTests {
 	void findLatestWhenNoneSupportedThrowsException() {
 		assertThatIllegalStateException()
 				.isThrownBy(() -> ApiVersions.parse("1.1", "1.2").findLatestSupported("1.3", "1.4")).withMessage(
-						"Detected platform API versions '1.3,1.4' are not included in supported versions '1.1,1.2'");
+				"Detected platform API versions '1.3,1.4' are not included in supported versions '1.1,1.2'");
 	}
 
 	@Test

@@ -38,6 +38,7 @@ public class InMemoryHttpTraceRepository implements HttpTraceRepository {
 
 	/**
 	 * Flag to say that the repository lists traces in reverse order.
+	 *
 	 * @param reverse flag value (default true)
 	 */
 	public void setReverse(boolean reverse) {
@@ -48,6 +49,7 @@ public class InMemoryHttpTraceRepository implements HttpTraceRepository {
 
 	/**
 	 * Set the capacity of the in-memory repository.
+	 *
 	 * @param capacity the capacity
 	 */
 	public void setCapacity(int capacity) {
@@ -71,8 +73,7 @@ public class InMemoryHttpTraceRepository implements HttpTraceRepository {
 			}
 			if (this.reverse) {
 				this.traces.add(0, trace);
-			}
-			else {
+			} else {
 				this.traces.add(trace);
 			}
 		}

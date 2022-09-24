@@ -39,7 +39,6 @@ public enum TextOutputFormat implements Producible<TextOutputFormat> {
 	 * Prometheus text version 0.0.4.
 	 */
 	CONTENT_TYPE_004(TextFormat.CONTENT_TYPE_004) {
-
 		@Override
 		void write(Writer writer, Enumeration<MetricFamilySamples> samples) throws IOException {
 			TextFormat.write004(writer, samples);
@@ -56,7 +55,6 @@ public enum TextOutputFormat implements Producible<TextOutputFormat> {
 	 * OpenMetrics text version 1.0.0.
 	 */
 	CONTENT_TYPE_OPENMETRICS_100(TextFormat.CONTENT_TYPE_OPENMETRICS_100) {
-
 		@Override
 		void write(Writer writer, Enumeration<MetricFamilySamples> samples) throws IOException {
 			TextFormat.writeOpenMetrics100(writer, samples);

@@ -33,7 +33,7 @@ class ReactiveMongoClientFactoryTests extends MongoClientFactorySupportTests<Mon
 
 	@Override
 	protected MongoClient createMongoClient(List<MongoClientSettingsBuilderCustomizer> customizers,
-			MongoClientSettings settings) {
+											MongoClientSettings settings) {
 		return new ReactiveMongoClientFactory(customizers).createMongoClient(settings);
 	}
 

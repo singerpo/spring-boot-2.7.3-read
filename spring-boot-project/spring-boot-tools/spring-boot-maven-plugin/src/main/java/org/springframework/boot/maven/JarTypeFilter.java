@@ -51,8 +51,7 @@ class JarTypeFilter extends DependencyFilter {
 					return true;
 				}
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// Continue
 		}
 		return false;

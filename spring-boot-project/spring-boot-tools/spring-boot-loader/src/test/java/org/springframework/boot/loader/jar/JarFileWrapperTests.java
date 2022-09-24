@@ -141,7 +141,8 @@ class JarFileWrapperTests {
 		assertThat(this.wrapper.toString()).endsWith("temp.jar");
 	}
 
-	@Test // gh-22991
+	@Test
+		// gh-22991
 	void wrapperMustNotImplementClose() {
 		// If the wrapper overrides close then on Java 11 a FinalizableResource
 		// instance will be used to perform cleanup. This can result in a lot

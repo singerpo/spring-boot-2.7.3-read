@@ -151,6 +151,7 @@ public class RabbitProperties {
 	/**
 	 * Returns the host from the first address, or the configured host if no addresses
 	 * have been set.
+	 *
 	 * @return the host
 	 * @see #setAddresses(String)
 	 * @see #getHost()
@@ -173,6 +174,7 @@ public class RabbitProperties {
 	/**
 	 * Returns the port from the first address, or the configured port if no addresses
 	 * have been set.
+	 *
 	 * @return the port
 	 * @see #setAddresses(String)
 	 * @see #getPort()
@@ -199,6 +201,7 @@ public class RabbitProperties {
 	/**
 	 * Returns the comma-separated addresses or a single address ({@code host:port})
 	 * created from the configured host and port if no addresses have been set.
+	 *
 	 * @return the addresses
 	 */
 	public String determineAddresses() {
@@ -232,6 +235,7 @@ public class RabbitProperties {
 	/**
 	 * If addresses have been set and the first address has a username it is returned.
 	 * Otherwise returns the result of calling {@code getUsername()}.
+	 *
 	 * @return the username
 	 * @see #setAddresses(String)
 	 * @see #getUsername()
@@ -255,6 +259,7 @@ public class RabbitProperties {
 	/**
 	 * If addresses have been set and the first address has a password it is returned.
 	 * Otherwise returns the result of calling {@code getPassword()}.
+	 *
 	 * @return the password or {@code null}
 	 * @see #setAddresses(String)
 	 * @see #getPassword()
@@ -282,6 +287,7 @@ public class RabbitProperties {
 	/**
 	 * If addresses have been set and the first address has a virtual host it is returned.
 	 * Otherwise returns the result of calling {@code getVirtualHost()}.
+	 *
 	 * @return the virtual host or {@code null}
 	 * @see #setAddresses(String)
 	 * @see #getVirtualHost()
@@ -442,6 +448,7 @@ public class RabbitProperties {
 		/**
 		 * Returns whether SSL is enabled from the first address, or the configured ssl
 		 * enabled flag if no addresses have been set.
+		 *
 		 * @return whether ssl is enabled
 		 * @see #setAddresses(String)
 		 * @see #getEnabled() ()
@@ -1158,8 +1165,7 @@ public class RabbitProperties {
 			if (colonIndex == -1 || colonIndex < bracketIndex) {
 				this.host = input;
 				this.port = (determineSslEnabled(sslEnabled)) ? DEFAULT_PORT_SECURE : DEFAULT_PORT;
-			}
-			else {
+			} else {
 				this.host = input.substring(0, colonIndex);
 				this.port = Integer.parseInt(input.substring(colonIndex + 1));
 			}

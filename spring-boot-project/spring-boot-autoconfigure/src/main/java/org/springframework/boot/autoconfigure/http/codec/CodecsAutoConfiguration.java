@@ -46,7 +46,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  * @since 2.0.0
  */
 @AutoConfiguration(after = JacksonAutoConfiguration.class)
-@ConditionalOnClass({ CodecConfigurer.class, WebClient.class })
+@ConditionalOnClass({CodecConfigurer.class, WebClient.class})
 @EnableConfigurationProperties(CodecProperties.class)
 public class CodecsAutoConfiguration {
 

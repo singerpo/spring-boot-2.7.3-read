@@ -31,7 +31,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
  * <ol>
  * <li>Prevent logger warnings from being printed when the application first starts.
  * </ol>
- *
+ * <p>
  * This factory is ordered last and is triggered by a {@code log4j2.springboot} classpath
  * resource (which is bundled in this jar). If the {@link Log4J2LoggingSystem} is active,
  * a {@link DefaultConfiguration} is returned with the expectation that the system will
@@ -44,7 +44,7 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
 @Order(0)
 public class SpringBootConfigurationFactory extends ConfigurationFactory {
 
-	private static final String[] TYPES = { ".springboot" };
+	private static final String[] TYPES = {".springboot"};
 
 	@Override
 	protected String[] getSupportedTypes() {

@@ -90,7 +90,7 @@ class DataNeo4jTestReactiveIntegrationTests {
 
 		@Bean
 		ReactiveNeo4jTransactionManager reactiveTransactionManager(Driver driver,
-				ReactiveDatabaseSelectionProvider databaseNameProvider) {
+																   ReactiveDatabaseSelectionProvider databaseNameProvider) {
 			return new ReactiveNeo4jTransactionManager(driver, databaseNameProvider);
 		}
 

@@ -65,11 +65,9 @@ public class AuthenticationAuditListener extends AbstractAuthenticationAuditList
 	public void onApplicationEvent(AbstractAuthenticationEvent event) {
 		if (event instanceof AbstractAuthenticationFailureEvent) {
 			onAuthenticationFailureEvent((AbstractAuthenticationFailureEvent) event);
-		}
-		else if (this.webListener != null && this.webListener.accepts(event)) {
+		} else if (this.webListener != null && this.webListener.accepts(event)) {
 			this.webListener.process(this, event);
-		}
-		else if (event instanceof AuthenticationSuccessEvent) {
+		} else if (event instanceof AuthenticationSuccessEvent) {
 			onAuthenticationSuccessEvent((AuthenticationSuccessEvent) event);
 		}
 	}

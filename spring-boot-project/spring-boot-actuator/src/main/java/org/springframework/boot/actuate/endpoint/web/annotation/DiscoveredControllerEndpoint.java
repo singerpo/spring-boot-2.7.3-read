@@ -34,7 +34,7 @@ class DiscoveredControllerEndpoint extends AbstractDiscoveredEndpoint<Operation>
 	private final String rootPath;
 
 	DiscoveredControllerEndpoint(EndpointDiscoverer<?, ?> discoverer, Object endpointBean, EndpointId id,
-			String rootPath, boolean enabledByDefault) {
+								 String rootPath, boolean enabledByDefault) {
 		super(discoverer, endpointBean, id, enabledByDefault, Collections.emptyList());
 		this.rootPath = rootPath;
 	}

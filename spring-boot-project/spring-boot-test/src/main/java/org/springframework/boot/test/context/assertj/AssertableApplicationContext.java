@@ -30,18 +30,19 @@ import org.springframework.context.ConfigurableApplicationContext;
  * See {@link ApplicationContextAssertProvider} for more details.
  *
  * @author Phillip Webb
- * @since 2.0.0
  * @see ApplicationContextRunner
  * @see ApplicationContext
+ * @since 2.0.0
  */
 public interface AssertableApplicationContext
 		extends ApplicationContextAssertProvider<ConfigurableApplicationContext>, ConfigurableApplicationContext {
 
 	/**
 	 * Factory method to create a new {@link AssertableApplicationContext} instance.
+	 *
 	 * @param contextSupplier a supplier that will either return a fully configured
-	 * {@link ConfigurableApplicationContext} or throw an exception if the context fails
-	 * to start.
+	 *                        {@link ConfigurableApplicationContext} or throw an exception if the context fails
+	 *                        to start.
 	 * @return an {@link AssertableApplicationContext} instance
 	 */
 	static AssertableApplicationContext get(Supplier<? extends ConfigurableApplicationContext> contextSupplier) {

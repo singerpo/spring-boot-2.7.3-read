@@ -85,7 +85,7 @@ final class LocalHttpClientTransport extends HttpClientTransport {
 	 */
 	private static class LocalDnsResolver implements DnsResolver {
 
-		private static final InetAddress[] LOOPBACK = new InetAddress[] { InetAddress.getLoopbackAddress() };
+		private static final InetAddress[] LOOPBACK = new InetAddress[]{InetAddress.getLoopbackAddress()};
 
 		@Override
 		public InetAddress[] resolve(String host) throws UnknownHostException {
@@ -116,7 +116,7 @@ final class LocalHttpClientTransport extends HttpClientTransport {
 
 		@Override
 		public Socket connectSocket(int connectTimeout, Socket sock, HttpHost host, InetSocketAddress remoteAddress,
-				InetSocketAddress localAddress, HttpContext context) throws IOException {
+									InetSocketAddress localAddress, HttpContext context) throws IOException {
 			return sock;
 		}
 

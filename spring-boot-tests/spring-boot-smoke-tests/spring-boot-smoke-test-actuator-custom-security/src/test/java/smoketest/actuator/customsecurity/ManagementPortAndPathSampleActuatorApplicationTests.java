@@ -38,7 +38,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "management.server.port=0", "management.server.base-path=/management" })
+		properties = {"management.server.port=0", "management.server.base-path=/management"})
 class ManagementPortAndPathSampleActuatorApplicationTests extends AbstractSampleActuatorCustomSecurityTests {
 
 	@LocalServerPort

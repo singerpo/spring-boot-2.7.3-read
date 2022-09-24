@@ -54,11 +54,11 @@ import org.springframework.web.server.adapter.ForwardedHeaderTransformer;
 @ConditionalOnClass(ReactiveHttpInputMessage.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @EnableConfigurationProperties(ServerProperties.class)
-@Import({ ReactiveWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class,
+@Import({ReactiveWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class,
 		ReactiveWebServerFactoryConfiguration.EmbeddedTomcat.class,
 		ReactiveWebServerFactoryConfiguration.EmbeddedJetty.class,
 		ReactiveWebServerFactoryConfiguration.EmbeddedUndertow.class,
-		ReactiveWebServerFactoryConfiguration.EmbeddedNetty.class })
+		ReactiveWebServerFactoryConfiguration.EmbeddedNetty.class})
 public class ReactiveWebServerFactoryAutoConfiguration {
 
 	@Bean
@@ -97,7 +97,7 @@ public class ReactiveWebServerFactoryAutoConfiguration {
 
 		@Override
 		public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
-				BeanDefinitionRegistry registry) {
+											BeanDefinitionRegistry registry) {
 			if (this.beanFactory == null) {
 				return;
 			}
@@ -107,7 +107,7 @@ public class ReactiveWebServerFactoryAutoConfiguration {
 		}
 
 		private <T> void registerSyntheticBeanIfMissing(BeanDefinitionRegistry registry, String name,
-				Class<T> beanClass, Supplier<T> instanceSupplier) {
+														Class<T> beanClass, Supplier<T> instanceSupplier) {
 			if (ObjectUtils.isEmpty(this.beanFactory.getBeanNamesForType(beanClass, true, false))) {
 				RootBeanDefinition beanDefinition = new RootBeanDefinition(beanClass, instanceSupplier);
 				beanDefinition.setSynthetic(true);

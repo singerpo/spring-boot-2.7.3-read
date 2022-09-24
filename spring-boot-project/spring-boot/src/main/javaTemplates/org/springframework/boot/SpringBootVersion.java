@@ -32,6 +32,7 @@ public final class SpringBootVersion {
 
 	/**
 	 * Return the full version string of the present Spring Boot codebase.
+	 *
 	 * @return the version of Spring Boot
 	 */
 	public static String getVersion() {

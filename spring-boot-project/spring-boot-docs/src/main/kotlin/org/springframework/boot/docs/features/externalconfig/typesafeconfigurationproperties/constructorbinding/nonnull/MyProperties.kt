@@ -24,9 +24,9 @@ import java.net.InetAddress
 @ConstructorBinding
 @ConfigurationProperties("my.service")
 class MyProperties(val isEnabled: Boolean, val remoteAddress: InetAddress,
-		@param:DefaultValue val security: Security) {
+				   @param:DefaultValue val security: Security) {
 
 	class Security(val username: String, val password: String,
-		@param:DefaultValue("USER") val roles: List<String>)
+				   @param:DefaultValue("USER") val roles: List<String>)
 
 }

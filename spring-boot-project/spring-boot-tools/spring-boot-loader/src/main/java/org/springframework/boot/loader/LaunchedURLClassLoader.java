@@ -59,7 +59,8 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 
 	/**
 	 * Create a new {@link LaunchedURLClassLoader} instance.
-	 * @param urls the URLs from which to load classes and resources
+	 *
+	 * @param urls   the URLs from which to load classes and resources
 	 * @param parent the parent class loader for delegation
 	 */
 	public LaunchedURLClassLoader(URL[] urls, ClassLoader parent) {
@@ -68,9 +69,10 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 
 	/**
 	 * Create a new {@link LaunchedURLClassLoader} instance.
+	 *
 	 * @param exploded if the underlying archive is exploded
-	 * @param urls the URLs from which to load classes and resources
-	 * @param parent the parent class loader for delegation
+	 * @param urls     the URLs from which to load classes and resources
+	 * @param parent   the parent class loader for delegation
 	 */
 	public LaunchedURLClassLoader(boolean exploded, URL[] urls, ClassLoader parent) {
 		this(exploded, null, urls, parent);
@@ -78,10 +80,11 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 
 	/**
 	 * Create a new {@link LaunchedURLClassLoader} instance.
-	 * @param exploded if the underlying archive is exploded
+	 *
+	 * @param exploded    if the underlying archive is exploded
 	 * @param rootArchive the root archive or {@code null}
-	 * @param urls the URLs from which to load classes and resources
-	 * @param parent the parent class loader for delegation
+	 * @param urls        the URLs from which to load classes and resources
+	 * @param parent      the parent class loader for delegation
 	 * @since 2.3.1
 	 */
 	public LaunchedURLClassLoader(boolean exploded, Archive rootArchive, URL[] urls, ClassLoader parent) {
@@ -98,8 +101,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 		Handler.setUseFastConnectionExceptions(true);
 		try {
 			return super.findResource(name);
-		}
-		finally {
+		} finally {
 			Handler.setUseFastConnectionExceptions(false);
 		}
 	}
@@ -112,8 +114,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 		Handler.setUseFastConnectionExceptions(true);
 		try {
 			return new UseFastConnectionExceptionsEnumeration(super.findResources(name));
-		}
-		finally {
+		} finally {
 			Handler.setUseFastConnectionExceptions(false);
 		}
 	}
@@ -127,8 +128,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 					resolveClass(result);
 				}
 				return result;
-			}
-			catch (ClassNotFoundException ex) {
+			} catch (ClassNotFoundException ex) {
 			}
 		}
 		if (this.exploded) {
@@ -138,8 +138,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 		try {
 			try {
 				definePackageIfNecessary(name);
-			}
-			catch (IllegalArgumentException ex) {
+			} catch (IllegalArgumentException ex) {
 				// Tolerate race condition due to being parallel capable
 				if (getPackage(name) == null) {
 					// This should never happen as the IllegalArgumentException indicates
@@ -149,8 +148,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 				}
 			}
 			return super.loadClass(name, resolve);
-		}
-		finally {
+		} finally {
 			Handler.setUseFastConnectionExceptions(false);
 		}
 	}
@@ -174,12 +172,10 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 				Class<?> definedClass = defineClass(name, bytes, 0, bytes.length);
 				definePackageIfNecessary(name);
 				return definedClass;
-			}
-			finally {
+			} finally {
 				inputStream.close();
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new ClassNotFoundException("Cannot load resource for class [" + name + "]", ex);
 		}
 	}
@@ -188,6 +184,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 	 * Define a package before a {@code findClass} call is made. This is necessary to
 	 * ensure that the appropriate manifest for nested JARs is associated with the
 	 * package.
+	 *
 	 * @param className the class name being found
 	 */
 	private void definePackageIfNecessary(String className) {
@@ -197,8 +194,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 			if (getPackage(packageName) == null) {
 				try {
 					definePackage(className, packageName);
-				}
-				catch (IllegalArgumentException ex) {
+				} catch (IllegalArgumentException ex) {
 					// Tolerate race condition due to being parallel capable
 					if (getPackage(packageName) == null) {
 						// This should never happen as the IllegalArgumentException
@@ -228,15 +224,13 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 								return null;
 							}
 						}
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						// Ignore
 					}
 				}
 				return null;
 			}, AccessController.getContext());
-		}
-		catch (java.security.PrivilegedActionException ex) {
+		} catch (java.security.PrivilegedActionException ex) {
 			// Ignore
 		}
 	}
@@ -253,7 +247,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 
 	@Override
 	protected Package definePackage(String name, String specTitle, String specVersion, String specVendor,
-			String implTitle, String implVersion, String implVendor, URL sealBase) throws IllegalArgumentException {
+									String implTitle, String implVersion, String implVendor, URL sealBase) throws IllegalArgumentException {
 		if (!this.exploded) {
 			return super.definePackage(name, specTitle, specVersion, specVendor, implTitle, implVersion, implVendor,
 					sealBase);
@@ -276,8 +270,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 	private Manifest getManifest(Archive archive) {
 		try {
 			return (archive != null) ? archive.getManifest() : null;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
 		}
 	}
@@ -287,8 +280,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 		try {
 			this.definePackageCallType = type;
 			return call.get();
-		}
-		finally {
+		} finally {
 			this.definePackageCallType = existingType;
 		}
 	}
@@ -306,8 +298,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 				if (connection instanceof JarURLConnection) {
 					clearCache(connection);
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				// Ignore
 			}
 		}
@@ -334,8 +325,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 			Handler.setUseFastConnectionExceptions(true);
 			try {
 				return this.delegate.hasMoreElements();
-			}
-			finally {
+			} finally {
 				Handler.setUseFastConnectionExceptions(false);
 			}
 
@@ -346,8 +336,7 @@ public class LaunchedURLClassLoader extends URLClassLoader {
 			Handler.setUseFastConnectionExceptions(true);
 			try {
 				return this.delegate.nextElement();
-			}
-			finally {
+			} finally {
 				Handler.setUseFastConnectionExceptions(false);
 			}
 		}

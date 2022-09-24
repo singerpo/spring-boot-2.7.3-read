@@ -59,13 +59,14 @@ public class BasicBatchConfigurer implements BatchConfigurer, InitializingBean {
 
 	/**
 	 * Create a new {@link BasicBatchConfigurer} instance.
-	 * @param properties the batch properties
-	 * @param dataSource the underlying data source
+	 *
+	 * @param properties                    the batch properties
+	 * @param dataSource                    the underlying data source
 	 * @param transactionManagerCustomizers transaction manager customizers (or
-	 * {@code null})
+	 *                                      {@code null})
 	 */
 	protected BasicBatchConfigurer(BatchProperties properties, DataSource dataSource,
-			TransactionManagerCustomizers transactionManagerCustomizers) {
+								   TransactionManagerCustomizers transactionManagerCustomizers) {
 		this.properties = properties;
 		this.dataSource = dataSource;
 		this.transactionManagerCustomizers = transactionManagerCustomizers;
@@ -102,8 +103,7 @@ public class BasicBatchConfigurer implements BatchConfigurer, InitializingBean {
 			this.jobRepository = createJobRepository();
 			this.jobLauncher = createJobLauncher();
 			this.jobExplorer = createJobExplorer();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to initialize Spring Batch", ex);
 		}
 	}
@@ -137,6 +137,7 @@ public class BasicBatchConfigurer implements BatchConfigurer, InitializingBean {
 
 	/**
 	 * Determine the isolation level for create* operation of the {@link JobRepository}.
+	 *
 	 * @return the isolation level or {@code null} to use the default
 	 */
 	protected String determineIsolationLevel() {

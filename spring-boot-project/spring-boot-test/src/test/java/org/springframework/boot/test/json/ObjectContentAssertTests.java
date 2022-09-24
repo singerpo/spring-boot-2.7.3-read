@@ -54,7 +54,7 @@ class ObjectContentAssertTests {
 
 	@Test
 	void asArrayForArrayShouldReturnObjectArrayAssert() {
-		ExampleObject[] source = new ExampleObject[] { SOURCE };
+		ExampleObject[] source = new ExampleObject[]{SOURCE};
 		assertThat(forObject(source)).asArray().containsExactly(SOURCE);
 	}
 

@@ -67,10 +67,10 @@ class CassandraAutoConfigurationWithPasswordAuthenticationIntegrationTests {
 	void authenticationWithValidUsernameAndPassword() {
 		this.contextRunner.withPropertyValues("spring.data.cassandra.username=cassandra",
 				"spring.data.cassandra.password=cassandra").run((context) -> {
-					SimpleStatement select = SimpleStatement.newInstance("SELECT release_version FROM system.local")
-							.setConsistencyLevel(ConsistencyLevel.LOCAL_ONE);
-					assertThat(context.getBean(CqlSession.class).execute(select).one()).isNotNull();
-				});
+			SimpleStatement select = SimpleStatement.newInstance("SELECT release_version FROM system.local")
+					.setConsistencyLevel(ConsistencyLevel.LOCAL_ONE);
+			assertThat(context.getBean(CqlSession.class).execute(select).one()).isNotNull();
+		});
 	}
 
 	@Test
@@ -105,8 +105,7 @@ class CassandraAutoConfigurationWithPasswordAuthenticationIntegrationTests {
 					getRateLimiter().doWhenReady(() -> cqlSessionBuilder().build());
 					return true;
 				});
-			}
-			catch (TimeoutException ex) {
+			} catch (TimeoutException ex) {
 				throw new ContainerLaunchException(
 						"Timed out waiting for Cassandra to be accessible for query execution");
 			}

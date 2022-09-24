@@ -74,7 +74,7 @@ public class JavaLoggingSystem extends AbstractLoggingSystem {
 
 	@Override
 	protected String[] getStandardConfigLocations() {
-		return new String[] { "logging.properties" };
+		return new String[]{"logging.properties"};
 	}
 
 	@Override
@@ -87,15 +87,14 @@ public class JavaLoggingSystem extends AbstractLoggingSystem {
 	protected void loadDefaults(LoggingInitializationContext initializationContext, LogFile logFile) {
 		if (logFile != null) {
 			loadConfiguration(getPackagedConfigFile("logging-file.properties"), logFile);
-		}
-		else {
+		} else {
 			loadConfiguration(getPackagedConfigFile("logging.properties"), logFile);
 		}
 	}
 
 	@Override
 	protected void loadConfiguration(LoggingInitializationContext initializationContext, String location,
-			LogFile logFile) {
+									 LogFile logFile) {
 		loadConfiguration(location, logFile);
 	}
 
@@ -108,8 +107,7 @@ public class JavaLoggingSystem extends AbstractLoggingSystem {
 				configuration = configuration.replace("${LOG_FILE}", StringUtils.cleanPath(logFile.toString()));
 			}
 			LogManager.getLogManager().readConfiguration(new ByteArrayInputStream(configuration.getBytes()));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Could not initialize Java logging from " + location, ex);
 		}
 	}

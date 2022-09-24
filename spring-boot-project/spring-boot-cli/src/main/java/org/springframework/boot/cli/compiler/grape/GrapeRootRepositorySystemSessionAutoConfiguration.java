@@ -43,7 +43,7 @@ public class GrapeRootRepositorySystemSessionAutoConfiguration implements Reposi
 	}
 
 	private void configureLocalRepository(DefaultRepositorySystemSession session, RepositorySystem repositorySystem,
-			String grapeRoot) {
+										  String grapeRoot) {
 		File repositoryDir = new File(grapeRoot, "repository");
 		LocalRepository localRepository = new LocalRepository(repositoryDir);
 		LocalRepositoryManager localRepositoryManager = repositorySystem.newLocalRepositoryManager(session,

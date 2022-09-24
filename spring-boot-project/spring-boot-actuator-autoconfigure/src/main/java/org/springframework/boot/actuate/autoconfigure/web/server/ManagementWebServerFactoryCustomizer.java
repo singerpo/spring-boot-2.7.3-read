@@ -51,7 +51,7 @@ public abstract class ManagementWebServerFactoryCustomizer<T extends Configurabl
 	@SafeVarargs
 	@SuppressWarnings("varargs")
 	protected ManagementWebServerFactoryCustomizer(ListableBeanFactory beanFactory,
-			Class<? extends WebServerFactoryCustomizer<?>>... customizerClasses) {
+												   Class<? extends WebServerFactoryCustomizer<?>>... customizerClasses) {
 		this.beanFactory = beanFactory;
 		this.customizerClasses = customizerClasses;
 	}
@@ -86,8 +86,7 @@ public abstract class ManagementWebServerFactoryCustomizer<T extends Configurabl
 			Class<? extends WebServerFactoryCustomizer<?>> customizerClass) {
 		try {
 			return BeanFactoryUtils.beanOfTypeIncludingAncestors(this.beanFactory, customizerClass);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return null;
 		}
 	}
@@ -99,7 +98,7 @@ public abstract class ManagementWebServerFactoryCustomizer<T extends Configurabl
 	}
 
 	protected void customize(T factory, ManagementServerProperties managementServerProperties,
-			ServerProperties serverProperties) {
+							 ServerProperties serverProperties) {
 		factory.setPort(managementServerProperties.getPort());
 		Ssl ssl = managementServerProperties.getSsl();
 		if (ssl != null) {

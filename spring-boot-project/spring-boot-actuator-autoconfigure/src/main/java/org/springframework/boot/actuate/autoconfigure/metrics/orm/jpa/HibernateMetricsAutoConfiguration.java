@@ -44,10 +44,10 @@ import org.springframework.util.StringUtils;
  * @author Stephane Nicoll
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
-@ConditionalOnClass({ EntityManagerFactory.class, SessionFactory.class, HibernateMetrics.class, MeterRegistry.class })
-@ConditionalOnBean({ EntityManagerFactory.class, MeterRegistry.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
+@ConditionalOnClass({EntityManagerFactory.class, SessionFactory.class, HibernateMetrics.class, MeterRegistry.class})
+@ConditionalOnBean({EntityManagerFactory.class, MeterRegistry.class})
 public class HibernateMetricsAutoConfiguration implements SmartInitializingSingleton {
 
 	private static final String ENTITY_MANAGER_FACTORY_SUFFIX = "entityManagerFactory";
@@ -57,7 +57,7 @@ public class HibernateMetricsAutoConfiguration implements SmartInitializingSingl
 	private final MeterRegistry meterRegistry;
 
 	public HibernateMetricsAutoConfiguration(Map<String, EntityManagerFactory> entityManagerFactories,
-			MeterRegistry meterRegistry) {
+											 MeterRegistry meterRegistry) {
 		this.entityManagerFactories = entityManagerFactories;
 		this.meterRegistry = meterRegistry;
 	}
@@ -68,24 +68,24 @@ public class HibernateMetricsAutoConfiguration implements SmartInitializingSingl
 	}
 
 	public void bindEntityManagerFactoriesToRegistry(Map<String, EntityManagerFactory> entityManagerFactories,
-			MeterRegistry registry) {
+													 MeterRegistry registry) {
 		entityManagerFactories.forEach((name, factory) -> bindEntityManagerFactoryToRegistry(name, factory, registry));
 	}
 
 	private void bindEntityManagerFactoryToRegistry(String beanName, EntityManagerFactory entityManagerFactory,
-			MeterRegistry registry) {
+													MeterRegistry registry) {
 		String entityManagerFactoryName = getEntityManagerFactoryName(beanName);
 		try {
 			new HibernateMetrics(entityManagerFactory.unwrap(SessionFactory.class), entityManagerFactoryName,
 					Collections.emptyList()).bindTo(registry);
-		}
-		catch (PersistenceException ex) {
+		} catch (PersistenceException ex) {
 			// Continue
 		}
 	}
 
 	/**
 	 * Get the name of an {@link EntityManagerFactory} based on its {@code beanName}.
+	 *
 	 * @param beanName the name of the {@link EntityManagerFactory} bean
 	 * @return a name for the given entity manager factory
 	 */

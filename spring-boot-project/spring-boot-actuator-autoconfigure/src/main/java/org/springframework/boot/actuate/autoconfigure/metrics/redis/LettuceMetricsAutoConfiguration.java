@@ -38,8 +38,8 @@ import org.springframework.context.annotation.Bean;
  * @since 2.6.0
  */
 @AutoConfiguration(before = RedisAutoConfiguration.class,
-		after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class })
-@ConditionalOnClass({ RedisClient.class, MicrometerCommandLatencyRecorder.class })
+		after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class})
+@ConditionalOnClass({RedisClient.class, MicrometerCommandLatencyRecorder.class})
 @ConditionalOnBean(MeterRegistry.class)
 public class LettuceMetricsAutoConfiguration {
 

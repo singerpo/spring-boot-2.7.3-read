@@ -37,8 +37,8 @@ import org.springframework.util.Assert;
  *
  * @param <T> the supported object type
  * @author Phillip Webb
- * @since 1.4.0
  * @see JsonObjectSerializer
+ * @since 1.4.0
  */
 public abstract class JsonObjectDeserializer<T> extends com.fasterxml.jackson.databind.JsonDeserializer<T> {
 
@@ -48,8 +48,7 @@ public abstract class JsonObjectDeserializer<T> extends com.fasterxml.jackson.da
 			ObjectCodec codec = jp.getCodec();
 			JsonNode tree = codec.readTree(jp);
 			return deserializeObject(jp, ctxt, codec, tree);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (ex instanceof IOException) {
 				throw (IOException) ex;
 			}
@@ -59,30 +58,32 @@ public abstract class JsonObjectDeserializer<T> extends com.fasterxml.jackson.da
 
 	/**
 	 * Deserialize JSON content into the value type this serializer handles.
+	 *
 	 * @param jsonParser the source parser used for reading JSON content
-	 * @param context context that can be used to access information about this
-	 * deserialization activity
-	 * @param codec the {@link ObjectCodec} associated with the parser
-	 * @param tree deserialized JSON content as tree expressed using set of
-	 * {@link TreeNode} instances
+	 * @param context    context that can be used to access information about this
+	 *                   deserialization activity
+	 * @param codec      the {@link ObjectCodec} associated with the parser
+	 * @param tree       deserialized JSON content as tree expressed using set of
+	 *                   {@link TreeNode} instances
 	 * @return the deserialized object
 	 * @throws IOException on error
 	 * @see #deserialize(JsonParser, DeserializationContext)
 	 */
 	protected abstract T deserializeObject(JsonParser jsonParser, DeserializationContext context, ObjectCodec codec,
-			JsonNode tree) throws IOException;
+										   JsonNode tree) throws IOException;
 
 	/**
 	 * Helper method to extract a value from the given {@code jsonNode} or return
 	 * {@code null} when the node itself is {@code null}.
+	 *
 	 * @param jsonNode the source node (may be {@code null})
-	 * @param type the data type. May be {@link String}, {@link Boolean}, {@link Long},
-	 * {@link Integer}, {@link Short}, {@link Double}, {@link Float}, {@link BigDecimal}
-	 * or {@link BigInteger}.
-	 * @param <D> the data type requested
+	 * @param type     the data type. May be {@link String}, {@link Boolean}, {@link Long},
+	 *                 {@link Integer}, {@link Short}, {@link Double}, {@link Float}, {@link BigDecimal}
+	 *                 or {@link BigInteger}.
+	 * @param <D>      the data type requested
 	 * @return the node value or {@code null}
 	 */
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({"unchecked"})
 	protected final <D> D nullSafeValue(JsonNode jsonNode, Class<D> type) {
 		Assert.notNull(type, "Type must not be null");
 		if (jsonNode == null) {
@@ -120,7 +121,8 @@ public abstract class JsonObjectDeserializer<T> extends com.fasterxml.jackson.da
 
 	/**
 	 * Helper method to return a {@link JsonNode} from the tree.
-	 * @param tree the source tree
+	 *
+	 * @param tree      the source tree
 	 * @param fieldName the field name to extract
 	 * @return the {@link JsonNode}
 	 */

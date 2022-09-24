@@ -39,7 +39,7 @@ class ArrayBinder extends IndexedElementsBinder<Object> {
 
 	@Override
 	protected Object bindAggregate(ConfigurationPropertyName name, Bindable<?> target,
-			AggregateElementBinder elementBinder) {
+								   AggregateElementBinder elementBinder) {
 		IndexedCollectionSupplier result = new IndexedCollectionSupplier(ArrayList::new);
 		ResolvableType aggregateType = target.getType();
 		ResolvableType elementType = target.getType().getComponentType();

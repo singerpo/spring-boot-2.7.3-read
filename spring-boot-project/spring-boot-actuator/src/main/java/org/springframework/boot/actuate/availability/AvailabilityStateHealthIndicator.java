@@ -47,10 +47,11 @@ public class AvailabilityStateHealthIndicator extends AbstractHealthIndicator {
 
 	/**
 	 * Create a new {@link AvailabilityStateHealthIndicator} instance.
-	 * @param <S> the availability state type
+	 *
+	 * @param <S>                     the availability state type
 	 * @param applicationAvailability the application availability
-	 * @param stateType the availability state type
-	 * @param statusMappings consumer used to set up the status mappings
+	 * @param stateType               the availability state type
+	 * @param statusMappings          consumer used to set up the status mappings
 	 */
 	public <S extends AvailabilityState> AvailabilityStateHealthIndicator(
 			ApplicationAvailability applicationAvailability, Class<S> stateType,
@@ -64,7 +65,7 @@ public class AvailabilityStateHealthIndicator extends AbstractHealthIndicator {
 		assertAllEnumsMapped(stateType);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private <S extends AvailabilityState> void assertAllEnumsMapped(Class<S> stateType) {
 		if (!this.statusMappings.containsKey(null) && Enum.class.isAssignableFrom(stateType)) {
 			EnumSet elements = EnumSet.allOf((Class) stateType);
@@ -89,6 +90,7 @@ public class AvailabilityStateHealthIndicator extends AbstractHealthIndicator {
 	/**
 	 * Return the current availability state. Subclasses can override this method if a
 	 * different retrieval mechanism is needed.
+	 *
 	 * @param applicationAvailability the application availability
 	 * @return the current availability state
 	 */
@@ -105,6 +107,7 @@ public class AvailabilityStateHealthIndicator extends AbstractHealthIndicator {
 
 		/**
 		 * Add the status that should be used if no explicit mapping is defined.
+		 *
 		 * @param status the default status
 		 */
 		default void addDefaultStatus(Status status) {
@@ -113,8 +116,9 @@ public class AvailabilityStateHealthIndicator extends AbstractHealthIndicator {
 
 		/**
 		 * Add a new status mapping .
+		 *
 		 * @param availabilityState the availability state
-		 * @param status the mapped status
+		 * @param status            the mapped status
 		 */
 		void add(S availabilityState, Status status);
 

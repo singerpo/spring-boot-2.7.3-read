@@ -169,8 +169,7 @@ class LogbackLoggingSystemTests extends AbstractLoggingSystemTests {
 			initialize(this.initializationContext, null, null);
 			assertThat(output).contains(
 					"Ignoring 'logback.configurationFile' system property. Please use 'logging.config' instead.");
-		}
-		finally {
+		} finally {
 			System.clearProperty("logback.configurationFile");
 		}
 	}
@@ -490,8 +489,7 @@ class LogbackLoggingSystemTests extends AbstractLoggingSystemTests {
 			String fileContents = contentOf(new File(tmpDir() + "/spring.log"));
 			assertThat(fileContents).contains("java.lang.RuntimeException: Expected").doesNotContain("Wrapped by:");
 			assertThat(output).contains("java.lang.RuntimeException: Expected").doesNotContain("Wrapped by:");
-		}
-		finally {
+		} finally {
 			System.clearProperty(LoggingSystemProperties.EXCEPTION_CONVERSION_WORD);
 		}
 	}
@@ -558,7 +556,8 @@ class LogbackLoggingSystemTests extends AbstractLoggingSystemTests {
 				.containsPattern("\\d{4}-\\d{2}\\-\\d{2}T\\d{2}:\\d{2}:\\d{2}");
 	}
 
-	@Test // gh-24835
+	@Test
+		// gh-24835
 	void testDateformatPatternPropertyDirect(CapturedOutput output) {
 		this.environment.setProperty("logging.pattern.dateformat", "yyyy'T'hh:mm:ss.SSSZ");
 		new LoggingSystemProperties(this.environment).apply();
@@ -590,8 +589,7 @@ class LogbackLoggingSystemTests extends AbstractLoggingSystemTests {
 			initialize(this.initializationContext, null, logFile);
 			assertThat(output).contains("LevelChangePropagator").contains("SizeAndTimeBasedFNATP")
 					.contains("DebugLogbackConfigurator");
-		}
-		finally {
+		} finally {
 			System.clearProperty("logback.debug");
 		}
 	}

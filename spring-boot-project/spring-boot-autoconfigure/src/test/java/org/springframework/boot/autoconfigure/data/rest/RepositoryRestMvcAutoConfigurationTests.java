@@ -134,9 +134,9 @@ class RepositoryRestMvcAutoConfigurationTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@Import(EmbeddedDataSourceConfiguration.class)
-	@ImportAutoConfiguration({ HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class,
+	@ImportAutoConfiguration({HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class,
 			PropertyPlaceholderAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class,
-			JacksonAutoConfiguration.class })
+			JacksonAutoConfiguration.class})
 	static class BaseConfiguration {
 
 	}
@@ -148,12 +148,12 @@ class RepositoryRestMvcAutoConfigurationTests {
 
 	}
 
-	@Import({ TestConfiguration.class, TestRepositoryRestConfigurer.class })
+	@Import({TestConfiguration.class, TestRepositoryRestConfigurer.class})
 	static class TestConfigurationWithConfigurer {
 
 	}
 
-	@Import({ TestConfiguration.class, RepositoryRestMvcConfiguration.class })
+	@Import({TestConfiguration.class, RepositoryRestMvcConfiguration.class})
 	static class TestConfigurationWithRestMvcConfig {
 
 	}

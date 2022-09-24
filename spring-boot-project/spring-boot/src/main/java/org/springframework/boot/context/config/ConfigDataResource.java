@@ -38,6 +38,7 @@ public abstract class ConfigDataResource {
 
 	/**
 	 * Create a new {@link ConfigDataResource} instance.
+	 *
 	 * @param optional if the resource is optional
 	 * @since 2.4.6
 	 */

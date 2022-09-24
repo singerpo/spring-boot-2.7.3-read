@@ -198,13 +198,13 @@ class ConfigDataLocationResolversTests {
 
 		@Override
 		public List<TestConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location) {
+													ConfigDataLocation location) {
 			return Collections.singletonList(new TestConfigDataResource(this.optionalResource, this, location, false));
 		}
 
 		@Override
 		public List<TestConfigDataResource> resolveProfileSpecific(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location, Profiles profiles) {
+																   ConfigDataLocation location, Profiles profiles) {
 			return Collections.singletonList(new TestConfigDataResource(this.optionalResource, this, location, true));
 		}
 
@@ -248,7 +248,7 @@ class ConfigDataLocationResolversTests {
 	static class TestBootstrappingResolver extends TestResolver {
 
 		TestBootstrappingResolver(ConfigurableBootstrapContext configurableBootstrapContext,
-				BootstrapRegistry bootstrapRegistry, BootstrapContext bootstrapContext) {
+								  BootstrapRegistry bootstrapRegistry, BootstrapContext bootstrapContext) {
 			assertThat(configurableBootstrapContext).isNotNull();
 			assertThat(bootstrapRegistry).isNotNull();
 			assertThat(bootstrapContext).isNotNull();
@@ -285,7 +285,7 @@ class ConfigDataLocationResolversTests {
 		private final boolean profileSpecific;
 
 		TestConfigDataResource(boolean optional, TestResolver resolver, ConfigDataLocation location,
-				boolean profileSpecific) {
+							   boolean profileSpecific) {
 			super(optional);
 			this.resolver = resolver;
 			this.location = location;

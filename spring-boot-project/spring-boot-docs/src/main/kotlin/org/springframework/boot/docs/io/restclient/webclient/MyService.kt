@@ -32,7 +32,7 @@ class MyService(webClientBuilder: WebClient.Builder) {
 
 	fun someRestCall(name: String?): Mono<Relationship.Details> {
 		return webClient.get().uri("/{name}/details", name).retrieve().bodyToMono(
-			Relationship.Details::class.java
+				Relationship.Details::class.java
 		)
 	}
 

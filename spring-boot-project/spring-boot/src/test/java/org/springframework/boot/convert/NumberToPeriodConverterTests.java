@@ -62,7 +62,7 @@ class NumberToPeriodConverterTests {
 		return conversionService.convert(source, Period.class);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private Period convert(ConversionService conversionService, Integer source, ChronoUnit defaultUnit) {
 		TypeDescriptor targetType = mock(TypeDescriptor.class);
 		if (defaultUnit != null) {

@@ -58,7 +58,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @author Dmytro Nosan
  * @since 1.3.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class, TransactionAutoConfiguration.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class, TransactionAutoConfiguration.class})
 @ConditionalOnClass(DSLContext.class)
 @ConditionalOnBean(DataSource.class)
 public class JooqAutoConfiguration {
@@ -94,8 +94,8 @@ public class JooqAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean(org.jooq.Configuration.class)
 		public DefaultConfiguration jooqConfiguration(JooqProperties properties, ConnectionProvider connectionProvider,
-				DataSource dataSource, ObjectProvider<ExecuteListenerProvider> executeListenerProviders,
-				ObjectProvider<DefaultConfigurationCustomizer> configurationCustomizers) {
+													  DataSource dataSource, ObjectProvider<ExecuteListenerProvider> executeListenerProviders,
+													  ObjectProvider<DefaultConfigurationCustomizer> configurationCustomizers) {
 			DefaultConfiguration configuration = new DefaultConfiguration();
 			configuration.set(properties.determineSqlDialect(dataSource));
 			configuration.set(connectionProvider);

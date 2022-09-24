@@ -154,9 +154,9 @@ class DevToolsIntegrationTests extends AbstractDevToolsIntegrationTests {
 
 	static Object[] parameters() {
 		Directories directories = new Directories(buildOutput, temp);
-		return new Object[] { new Object[] { new LocalApplicationLauncher(directories) },
-				new Object[] { new ExplodedRemoteApplicationLauncher(directories) },
-				new Object[] { new JarFileRemoteApplicationLauncher(directories) } };
+		return new Object[]{new Object[]{new LocalApplicationLauncher(directories)},
+				new Object[]{new ExplodedRemoteApplicationLauncher(directories)},
+				new Object[]{new JarFileRemoteApplicationLauncher(directories)}};
 	}
 
 }

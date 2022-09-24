@@ -88,8 +88,7 @@ public class ImageAssert extends AbstractAssert<ImageAssert, ImageReference> {
 						entry = in.getNextTarEntry();
 					}
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				failWithMessage("IOException while reading image layer archive: '%s'", ex.getMessage());
 			}
 			return Assertions.assertThat(entryNames);
@@ -113,8 +112,7 @@ public class ImageAssert extends AbstractAssert<ImageAssert, ImageReference> {
 					}
 				}
 				failWithMessage("Expected JSON entry '%s' in layer with digest '%s'", name, this.actual.getId());
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				failWithMessage("IOException while reading image layer archive: '%s'", ex.getMessage());
 			}
 		}

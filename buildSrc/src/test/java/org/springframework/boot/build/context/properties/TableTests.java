@@ -43,15 +43,15 @@ class TableTests {
 		// @formatter:off
 		assertThat(asciidoc.toString()).isEqualTo(
 				"[cols=\"4,3,3\", options=\"header\"]" + NEWLINE +
-				"|===" + NEWLINE +
-				"|Name|Description|Default Value" + NEWLINE + NEWLINE +
-				"|[[my.spring.test.other]]<<my.spring.test.other,`+spring.test.other+`>>" + NEWLINE +
-				"|+++This is another description.+++" + NEWLINE +
-				"|`+other value+`" + NEWLINE + NEWLINE +
-				"|[[my.spring.test.prop]]<<my.spring.test.prop,`+spring.test.prop+`>>" + NEWLINE +
-				"|+++This is a description.+++" + NEWLINE +
-				"|`+something+`" + NEWLINE + NEWLINE +
-				"|===" + NEWLINE);
+						"|===" + NEWLINE +
+						"|Name|Description|Default Value" + NEWLINE + NEWLINE +
+						"|[[my.spring.test.other]]<<my.spring.test.other,`+spring.test.other+`>>" + NEWLINE +
+						"|+++This is another description.+++" + NEWLINE +
+						"|`+other value+`" + NEWLINE + NEWLINE +
+						"|[[my.spring.test.prop]]<<my.spring.test.prop,`+spring.test.prop+`>>" + NEWLINE +
+						"|+++This is a description.+++" + NEWLINE +
+						"|`+something+`" + NEWLINE + NEWLINE +
+						"|===" + NEWLINE);
 		// @formatter:on
 	}
 

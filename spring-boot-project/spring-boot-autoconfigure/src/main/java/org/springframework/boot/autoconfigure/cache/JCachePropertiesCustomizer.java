@@ -31,8 +31,9 @@ interface JCachePropertiesCustomizer {
 
 	/**
 	 * Customize the properties.
+	 *
 	 * @param cacheProperties the cache properties
-	 * @param properties the current properties
+	 * @param properties      the current properties
 	 * @see CachingProvider#getCacheManager(java.net.URI, ClassLoader, Properties)
 	 */
 	void customize(CacheProperties cacheProperties, Properties properties);

@@ -66,8 +66,7 @@ final class ConfigurationProperties {
 				}
 			}
 			return new ConfigurationProperties(properties);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to load configuration metadata", ex);
 		}
 	}

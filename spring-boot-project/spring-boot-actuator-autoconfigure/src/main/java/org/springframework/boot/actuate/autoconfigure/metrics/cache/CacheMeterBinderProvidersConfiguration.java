@@ -49,7 +49,7 @@ import org.springframework.data.redis.cache.RedisCache;
 class CacheMeterBinderProvidersConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Cache2kBuilder.class, SpringCache2kCache.class, Cache2kCacheMetrics.class })
+	@ConditionalOnClass({Cache2kBuilder.class, SpringCache2kCache.class, Cache2kCacheMetrics.class})
 	static class Cache2kCacheMeterBinderProviderConfiguration {
 
 		@Bean
@@ -60,7 +60,7 @@ class CacheMeterBinderProvidersConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ CaffeineCache.class, com.github.benmanes.caffeine.cache.Cache.class })
+	@ConditionalOnClass({CaffeineCache.class, com.github.benmanes.caffeine.cache.Cache.class})
 	static class CaffeineCacheMeterBinderProviderConfiguration {
 
 		@Bean
@@ -71,7 +71,7 @@ class CacheMeterBinderProvidersConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ EhCacheCache.class, Ehcache.class })
+	@ConditionalOnClass({EhCacheCache.class, Ehcache.class})
 	static class EhCache2CacheMeterBinderProviderConfiguration {
 
 		@Bean
@@ -82,7 +82,7 @@ class CacheMeterBinderProvidersConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ HazelcastCache.class, Hazelcast.class })
+	@ConditionalOnClass({HazelcastCache.class, Hazelcast.class})
 	static class HazelcastCacheMeterBinderProviderConfiguration {
 
 		@Bean
@@ -93,7 +93,7 @@ class CacheMeterBinderProvidersConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ JCacheCache.class, javax.cache.CacheManager.class })
+	@ConditionalOnClass({JCacheCache.class, javax.cache.CacheManager.class})
 	static class JCacheCacheMeterBinderProviderConfiguration {
 
 		@Bean

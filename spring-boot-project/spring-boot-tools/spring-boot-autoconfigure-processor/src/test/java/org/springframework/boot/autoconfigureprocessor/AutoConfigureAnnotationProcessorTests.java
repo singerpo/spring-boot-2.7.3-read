@@ -137,7 +137,8 @@ class AutoConfigureAnnotationProcessorTests {
 				"java.io.OutputStream,test.after1,test.after2,java.io.ObjectOutputStream,test.after3,test.after4");
 	}
 
-	@Test // gh-19370
+	@Test
+		// gh-19370
 	void propertiesAreFullRepeatable() throws Exception {
 		String first = new String(
 				FileCopyUtils.copyToByteArray(process(TestOrderedClassConfiguration.class).getWrittenFile()));

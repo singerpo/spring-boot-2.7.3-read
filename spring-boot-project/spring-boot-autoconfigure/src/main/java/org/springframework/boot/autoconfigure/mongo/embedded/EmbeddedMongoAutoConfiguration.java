@@ -85,15 +85,15 @@ import org.springframework.util.Assert;
  * @since 1.3.0
  */
 @AutoConfiguration(before = MongoAutoConfiguration.class)
-@EnableConfigurationProperties({ MongoProperties.class, EmbeddedMongoProperties.class })
-@ConditionalOnClass({ MongoClientSettings.class, MongodStarter.class })
-@Import({ EmbeddedMongoClientDependsOnBeanFactoryPostProcessor.class,
-		EmbeddedReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor.class })
+@EnableConfigurationProperties({MongoProperties.class, EmbeddedMongoProperties.class})
+@ConditionalOnClass({MongoClientSettings.class, MongodStarter.class})
+@Import({EmbeddedMongoClientDependsOnBeanFactoryPostProcessor.class,
+		EmbeddedReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor.class})
 public class EmbeddedMongoAutoConfiguration {
 
-	private static final byte[] IP4_LOOPBACK_ADDRESS = { 127, 0, 0, 1 };
+	private static final byte[] IP4_LOOPBACK_ADDRESS = {127, 0, 0, 1};
 
-	private static final byte[] IP6_LOOPBACK_ADDRESS = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+	private static final byte[] IP6_LOOPBACK_ADDRESS = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
 
 	private final MongoProperties properties;
 
@@ -104,7 +104,7 @@ public class EmbeddedMongoAutoConfiguration {
 	@Bean(initMethod = "start", destroyMethod = "stop")
 	@ConditionalOnMissingBean
 	public MongodExecutable embeddedMongoServer(MongodConfig mongodConfig, RuntimeConfig runtimeConfig,
-			ApplicationContext context) {
+												ApplicationContext context) {
 		Integer configuredPort = this.properties.getPort();
 		if (configuredPort == null || configuredPort == 0) {
 			setEmbeddedPort(context, mongodConfig.net().getPort());
@@ -134,8 +134,7 @@ public class EmbeddedMongoAutoConfiguration {
 		Integer configuredPort = this.properties.getPort();
 		if (configuredPort != null && configuredPort > 0) {
 			builder.net(new Net(getHost().getHostAddress(), configuredPort, Network.localhostIsIPv6()));
-		}
-		else {
+		} else {
 			builder.net(
 					new Net(getHost().getHostAddress(), Network.freeServerPort(getHost()), Network.localhostIsIPv6()));
 		}
@@ -207,7 +206,7 @@ public class EmbeddedMongoAutoConfiguration {
 		}
 
 		private ExtractedArtifactStore getArtifactStore(Logger logger,
-				Stream<DownloadConfigBuilderCustomizer> downloadConfigBuilderCustomizers) {
+														Stream<DownloadConfigBuilderCustomizer> downloadConfigBuilderCustomizers) {
 			ImmutableDownloadConfig.Builder downloadConfigBuilder = Defaults.downloadConfigFor(Command.MongoD);
 			downloadConfigBuilder.progressListener(new Slf4jProgressListener(logger));
 			downloadConfigBuilderCustomizers.forEach((customizer) -> customizer.customize(downloadConfigBuilder));
@@ -221,7 +220,7 @@ public class EmbeddedMongoAutoConfiguration {
 	 * Post processor to ensure that {@link com.mongodb.client.MongoClient} beans depend
 	 * on any {@link MongodExecutable} beans.
 	 */
-	@ConditionalOnClass({ com.mongodb.client.MongoClient.class, MongoClientFactoryBean.class })
+	@ConditionalOnClass({com.mongodb.client.MongoClient.class, MongoClientFactoryBean.class})
 	static class EmbeddedMongoClientDependsOnBeanFactoryPostProcessor
 			extends MongoClientDependsOnBeanFactoryPostProcessor {
 
@@ -236,7 +235,7 @@ public class EmbeddedMongoAutoConfiguration {
 	 * {@link com.mongodb.reactivestreams.client.MongoClient} beans depend on any
 	 * {@link MongodExecutable} beans.
 	 */
-	@ConditionalOnClass({ com.mongodb.reactivestreams.client.MongoClient.class, ReactiveMongoClientFactoryBean.class })
+	@ConditionalOnClass({com.mongodb.reactivestreams.client.MongoClient.class, ReactiveMongoClientFactoryBean.class})
 	static class EmbeddedReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor
 			extends ReactiveStreamsMongoClientDependsOnBeanFactoryPostProcessor {
 

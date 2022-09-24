@@ -120,8 +120,7 @@ class UndertowReactiveWebServerFactoryTests extends AbstractReactiveWebServerFac
 			try {
 				webClient.get().retrieve().toBodilessEntity().block();
 				return false;
-			}
-			catch (RuntimeException ex) {
+			} catch (RuntimeException ex) {
 				return ex instanceof ServiceUnavailable;
 			}
 		});

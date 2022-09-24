@@ -45,7 +45,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 public abstract class AbstractFilterRegistrationBean<T extends Filter> extends DynamicRegistrationBean<Dynamic> {
 
-	private static final String[] DEFAULT_URL_MAPPINGS = { "/*" };
+	private static final String[] DEFAULT_URL_MAPPINGS = {"/*"};
 
 	private Set<ServletRegistrationBean<?>> servletRegistrationBeans = new LinkedHashSet<>();
 
@@ -60,6 +60,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Create a new instance to be registered with the specified
 	 * {@link ServletRegistrationBean}s.
+	 *
 	 * @param servletRegistrationBeans associate {@link ServletRegistrationBean}s
 	 */
 	AbstractFilterRegistrationBean(ServletRegistrationBean<?>... servletRegistrationBeans) {
@@ -69,6 +70,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 
 	/**
 	 * Set {@link ServletRegistrationBean}s that the filter will be registered against.
+	 *
 	 * @param servletRegistrationBeans the Servlet registration beans
 	 */
 	public void setServletRegistrationBeans(Collection<? extends ServletRegistrationBean<?>> servletRegistrationBeans) {
@@ -79,6 +81,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Return a mutable collection of the {@link ServletRegistrationBean} that the filter
 	 * will be registered against. {@link ServletRegistrationBean}s.
+	 *
 	 * @return the Servlet registration beans
 	 * @see #setServletNames
 	 * @see #setUrlPatterns
@@ -89,6 +92,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 
 	/**
 	 * Add {@link ServletRegistrationBean}s for the filter.
+	 *
 	 * @param servletRegistrationBeans the servlet registration beans to add
 	 * @see #setServletRegistrationBeans
 	 */
@@ -100,6 +104,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Set servlet names that the filter will be registered against. This will replace any
 	 * previously specified servlet names.
+	 *
 	 * @param servletNames the servlet names
 	 * @see #setServletRegistrationBeans
 	 * @see #setUrlPatterns
@@ -112,6 +117,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Return a mutable collection of servlet names that the filter will be registered
 	 * against.
+	 *
 	 * @return the servlet names
 	 */
 	public Collection<String> getServletNames() {
@@ -120,6 +126,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 
 	/**
 	 * Add servlet names for the filter.
+	 *
 	 * @param servletNames the servlet names to add
 	 */
 	public void addServletNames(String... servletNames) {
@@ -130,6 +137,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Set the URL patterns that the filter will be registered against. This will replace
 	 * any previously specified URL patterns.
+	 *
 	 * @param urlPatterns the URL patterns
 	 * @see #setServletRegistrationBeans
 	 * @see #setServletNames
@@ -142,6 +150,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Return a mutable collection of URL patterns, as defined in the Servlet
 	 * specification, that the filter will be registered against.
+	 *
 	 * @return the URL patterns
 	 */
 	public Collection<String> getUrlPatterns() {
@@ -151,6 +160,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Add URL patterns, as defined in the Servlet specification, that the filter will be
 	 * registered against.
+	 *
 	 * @param urlPatterns the URL patterns
 	 */
 	public void addUrlPatterns(String... urlPatterns) {
@@ -161,8 +171,9 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Convenience method to {@link #setDispatcherTypes(EnumSet) set dispatcher types}
 	 * using the specified elements.
+	 *
 	 * @param first the first dispatcher type
-	 * @param rest additional dispatcher types
+	 * @param rest  additional dispatcher types
 	 */
 	public void setDispatcherTypes(DispatcherType first, DispatcherType... rest) {
 		this.dispatcherTypes = EnumSet.of(first, rest);
@@ -172,6 +183,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	 * Sets the dispatcher types that should be used with the registration. If not
 	 * specified the types will be deduced based on the value of
 	 * {@link #isAsyncSupported()}.
+	 *
 	 * @param dispatcherTypes the dispatcher types
 	 */
 	public void setDispatcherTypes(EnumSet<DispatcherType> dispatcherTypes) {
@@ -182,6 +194,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	 * Set if the filter mappings should be matched after any declared filter mappings of
 	 * the ServletContext. Defaults to {@code false} indicating the filters are supposed
 	 * to be matched before any declared filter mappings of the ServletContext.
+	 *
 	 * @param matchAfter if filter mappings are matched after
 	 */
 	public void setMatchAfter(boolean matchAfter) {
@@ -191,6 +204,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Return if filter mappings should be matched after any declared Filter mappings of
 	 * the ServletContext.
+	 *
 	 * @return if filter mappings are matched after
 	 */
 	public boolean isMatchAfter() {
@@ -213,6 +227,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 	/**
 	 * Configure registration settings. Subclasses can override this method to perform
 	 * additional configuration if required.
+	 *
 	 * @param registration the registration
 	 */
 	@Override
@@ -224,8 +239,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 			if (ClassUtils.isPresent("org.springframework.web.filter.OncePerRequestFilter",
 					filter.getClass().getClassLoader()) && filter instanceof OncePerRequestFilter) {
 				dispatcherTypes = EnumSet.allOf(DispatcherType.class);
-			}
-			else {
+			} else {
 				dispatcherTypes = EnumSet.of(DispatcherType.REQUEST);
 			}
 		}
@@ -236,8 +250,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 		servletNames.addAll(this.servletNames);
 		if (servletNames.isEmpty() && this.urlPatterns.isEmpty()) {
 			registration.addMappingForUrlPatterns(dispatcherTypes, this.matchAfter, DEFAULT_URL_MAPPINGS);
-		}
-		else {
+		} else {
 			if (!servletNames.isEmpty()) {
 				registration.addMappingForServletNames(dispatcherTypes, this.matchAfter,
 						StringUtils.toStringArray(servletNames));
@@ -251,6 +264,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 
 	/**
 	 * Return the {@link Filter} to be registered.
+	 *
 	 * @return the filter
 	 */
 	public abstract T getFilter();
@@ -260,8 +274,7 @@ public abstract class AbstractFilterRegistrationBean<T extends Filter> extends D
 		StringBuilder builder = new StringBuilder(getOrDeduceName(this));
 		if (this.servletNames.isEmpty() && this.urlPatterns.isEmpty()) {
 			builder.append(" urls=").append(Arrays.toString(DEFAULT_URL_MAPPINGS));
-		}
-		else {
+		} else {
 			if (!this.servletNames.isEmpty()) {
 				builder.append(" servlets=").append(this.servletNames);
 			}

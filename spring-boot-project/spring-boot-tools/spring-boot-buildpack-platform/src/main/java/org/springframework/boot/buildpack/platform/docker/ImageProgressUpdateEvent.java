@@ -34,6 +34,7 @@ public class ImageProgressUpdateEvent extends ProgressUpdateEvent {
 
 	/**
 	 * Returns the ID of the image layer being updated if available.
+	 *
 	 * @return the ID of the updated layer or {@code null}
 	 */
 	public String getId() {

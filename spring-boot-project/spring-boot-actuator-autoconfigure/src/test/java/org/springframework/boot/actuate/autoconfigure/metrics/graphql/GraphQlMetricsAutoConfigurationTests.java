@@ -78,7 +78,7 @@ class GraphQlMetricsAutoConfigurationTests {
 
 		@Override
 		public Iterable<Tag> getExecutionTags(InstrumentationExecutionParameters parameters, ExecutionResult result,
-				Throwable exception) {
+											  Throwable exception) {
 			return null;
 		}
 
@@ -89,7 +89,7 @@ class GraphQlMetricsAutoConfigurationTests {
 
 		@Override
 		public Iterable<Tag> getDataFetchingTags(DataFetcher<?> dataFetcher,
-				InstrumentationFieldFetchParameters parameters, Throwable exception) {
+												 InstrumentationFieldFetchParameters parameters, Throwable exception) {
 			return null;
 		}
 

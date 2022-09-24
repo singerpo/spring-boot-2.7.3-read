@@ -54,8 +54,8 @@ class MetricsHealthMicrometerExportTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@Import(MyHealthMetricsExportConfiguration.class)
-	@ImportAutoConfiguration(classes = { HealthContributorAutoConfiguration.class, MetricsAutoConfiguration.class,
-			HealthEndpointAutoConfiguration.class })
+	@ImportAutoConfiguration(classes = {HealthContributorAutoConfiguration.class, MetricsAutoConfiguration.class,
+			HealthEndpointAutoConfiguration.class})
 	static class Config {
 
 		@Bean

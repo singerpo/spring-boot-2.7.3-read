@@ -5,25 +5,25 @@ job: Developer
 skill: Elite
 employed: True
 foods:
-    - Apple
-    - Orange
-    - Strawberry
-    - Mango
+  - Apple
+  - Orange
+  - Strawberry
+  - Mango
 languages:
-    perl: Elite
-    python: Elite
-    pascal: Lame
+  perl: Elite
+  python: Elite
+  pascal: Lame
 education: |
-    4 GCSEs
-    3 A-Levels
-    BSc in the Internet of Things
+  4 GCSEs
+  3 A-Levels
+  BSc in the Internet of Things
 example:
-    foo:
-      - name: springboot
-        url: https://springboot.example.com/
-        bar:
-          - bar1: baz
-          - bar2: bling
+  foo:
+    - name: springboot
+      url: https://springboot.example.com/
+      bar:
+        - bar1: baz
+        - bar2: bling
 empty: ""
 null-value: null
 emptylist: []

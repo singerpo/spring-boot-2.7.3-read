@@ -46,7 +46,7 @@ public class SecurityConfiguration {
 				.requestMatchers(EndpointRequest.toAnyEndpoint().excluding(MappingsEndpoint.class)).hasRole("ACTUATOR")
 				.antMatchers("/**").hasRole("USER")
 				.and()
-			.httpBasic();
+				.httpBasic();
 		return http.build();
 		// @formatter:on
 	}

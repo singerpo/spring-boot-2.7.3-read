@@ -72,6 +72,7 @@ public @interface AutoConfiguration {
 	 * {@link AnnotationConfigApplicationContext}. If the {@code @AutoConfiguration} class
 	 * is registered as a traditional XML bean definition, the name/id of the bean element
 	 * will take precedence.
+	 *
 	 * @return the explicit component name, if any (or empty String otherwise)
 	 * @see AnnotationBeanNameGenerator
 	 */
@@ -80,6 +81,7 @@ public @interface AutoConfiguration {
 
 	/**
 	 * The auto-configure classes that should have not yet been applied.
+	 *
 	 * @return the classes
 	 */
 	@AliasFor(annotation = AutoConfigureBefore.class, attribute = "value")
@@ -87,6 +89,7 @@ public @interface AutoConfiguration {
 
 	/**
 	 * The names of the auto-configure classes that should have not yet been applied.
+	 *
 	 * @return the class names
 	 */
 	@AliasFor(annotation = AutoConfigureBefore.class, attribute = "name")
@@ -94,6 +97,7 @@ public @interface AutoConfiguration {
 
 	/**
 	 * The auto-configure classes that should have already been applied.
+	 *
 	 * @return the classes
 	 */
 	@AliasFor(annotation = AutoConfigureAfter.class, attribute = "value")
@@ -101,6 +105,7 @@ public @interface AutoConfiguration {
 
 	/**
 	 * The names of the auto-configure classes that should have already been applied.
+	 *
 	 * @return the class names
 	 */
 	@AliasFor(annotation = AutoConfigureAfter.class, attribute = "name")

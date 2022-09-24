@@ -30,8 +30,8 @@ import org.springframework.core.annotation.AliasFor;
  * Identifies a type as being a JMX-specific extension of an {@link Endpoint @Endpoint}.
  *
  * @author Stephane Nicoll
- * @since 2.0.0
  * @see Endpoint
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -41,6 +41,7 @@ public @interface EndpointJmxExtension {
 
 	/**
 	 * The {@link Endpoint endpoint} class to which this JMX extension relates.
+	 *
 	 * @return the endpoint class
 	 */
 	@AliasFor(annotation = EndpointExtension.class)

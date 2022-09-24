@@ -78,11 +78,11 @@ class MongoReactiveAutoConfigurationTests {
 	void settingsSslConfig() {
 		this.contextRunner.withPropertyValues("spring.data.mongodb.uri:mongodb://localhost/test")
 				.withUserConfiguration(SslSettingsConfig.class).run((context) -> {
-					assertThat(context).hasSingleBean(MongoClient.class);
-					MongoClientSettings settings = getSettings(context);
-					assertThat(settings.getApplicationName()).isEqualTo("test-config");
-					assertThat(settings.getStreamFactoryFactory()).isSameAs(context.getBean("myStreamFactoryFactory"));
-				});
+			assertThat(context).hasSingleBean(MongoClient.class);
+			MongoClientSettings settings = getSettings(context);
+			assertThat(settings.getApplicationName()).isEqualTo("test-config");
+			assertThat(settings.getStreamFactoryFactory()).isSameAs(context.getBean("myStreamFactoryFactory"));
+		});
 	}
 
 	@Test
@@ -103,12 +103,12 @@ class MongoReactiveAutoConfigurationTests {
 	void customizerOverridesAutoConfig() {
 		this.contextRunner.withPropertyValues("spring.data.mongodb.uri:mongodb://localhost/test?appname=auto-config")
 				.withUserConfiguration(SimpleCustomizerConfig.class).run((context) -> {
-					assertThat(context).hasSingleBean(MongoClient.class);
-					MongoClientSettings settings = getSettings(context);
-					assertThat(settings.getApplicationName()).isEqualTo("overridden-name");
-					assertThat(settings.getStreamFactoryFactory())
-							.isEqualTo(SimpleCustomizerConfig.streamFactoryFactory);
-				});
+			assertThat(context).hasSingleBean(MongoClient.class);
+			MongoClientSettings settings = getSettings(context);
+			assertThat(settings.getApplicationName()).isEqualTo("overridden-name");
+			assertThat(settings.getStreamFactoryFactory())
+					.isEqualTo(SimpleCustomizerConfig.streamFactoryFactory);
+		});
 	}
 
 	private MongoClientSettings getSettings(ApplicationContext context) {

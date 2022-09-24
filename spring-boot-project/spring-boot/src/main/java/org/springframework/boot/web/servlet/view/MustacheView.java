@@ -52,6 +52,7 @@ public class MustacheView extends AbstractTemplateView {
 	 * Typically this property is not set directly. Instead a single {@link Compiler} is
 	 * expected in the Spring application context which is used to compile Mustache
 	 * templates.
+	 *
 	 * @param compiler the Mustache compiler
 	 */
 	public void setCompiler(Compiler compiler) {
@@ -60,6 +61,7 @@ public class MustacheView extends AbstractTemplateView {
 
 	/**
 	 * Set the charset used for reading Mustache template files.
+	 *
 	 * @param charset the charset to use for reading template files
 	 */
 	public void setCharset(String charset) {
@@ -74,7 +76,7 @@ public class MustacheView extends AbstractTemplateView {
 
 	@Override
 	protected void renderMergedTemplateModel(Map<String, Object> model, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+											 HttpServletResponse response) throws Exception {
 		Template template = createTemplate(getApplicationContext().getResource(getUrl()));
 		if (template != null) {
 			template.execute(model, response.getWriter());

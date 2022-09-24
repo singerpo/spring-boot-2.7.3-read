@@ -54,7 +54,7 @@ class MongoAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(SettingsConfig.class)
 				.run((context) -> assertThat(
 						getSettings(context).getSocketSettings().getConnectTimeout(TimeUnit.MILLISECONDS))
-								.isEqualTo(300));
+						.isEqualTo(300));
 	}
 
 	@Test
@@ -62,7 +62,7 @@ class MongoAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(SettingsConfig.class)
 				.run((context) -> assertThat(
 						getSettings(context).getSocketSettings().getConnectTimeout(TimeUnit.MILLISECONDS))
-								.isEqualTo(300));
+						.isEqualTo(300));
 	}
 
 	@Test

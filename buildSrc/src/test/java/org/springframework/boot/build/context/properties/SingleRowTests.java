@@ -100,7 +100,7 @@ class SingleRowTests {
 
 	@Test
 	void listProperty() {
-		String[] defaultValue = new String[] { "first", "second", "third" };
+		String[] defaultValue = new String[]{"first", "second", "third"};
 		ConfigurationProperty property = new ConfigurationProperty("spring.test.prop",
 				"java.util.List<java.lang.String>", defaultValue, "This is a description.", false);
 		SingleRow row = new SingleRow(SNIPPET, property);

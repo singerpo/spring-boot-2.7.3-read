@@ -219,7 +219,7 @@ class ConfigDataEnvironmentTests {
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "include", "include[0]" })
+	@CsvSource({"include", "include[0]"})
 	void processAndApplyWhenHasProfileIncludeInProfileSpecificDocumentThrowsException(String property, TestInfo info) {
 		this.environment.setProperty("spring.config.location", getConfigLocation(info));
 		ConfigDataEnvironment configDataEnvironment = new ConfigDataEnvironment(this.logFactory, this.bootstrapContext,
@@ -243,7 +243,7 @@ class ConfigDataEnvironmentTests {
 	}
 
 	@ParameterizedTest
-	@CsvSource({ "spring.profiles.include", "spring.profiles.include[0]" })
+	@CsvSource({"spring.profiles.include", "spring.profiles.include[0]"})
 	void processAndApplyIncludesProfilesFromSpringProfilesInclude(String property, TestInfo info) {
 		this.environment.setProperty("spring.config.location", getConfigLocation(info));
 		ConfigDataEnvironment configDataEnvironment = new ConfigDataEnvironment(this.logFactory, this.bootstrapContext,
@@ -335,15 +335,15 @@ class ConfigDataEnvironmentTests {
 		private Binder configDataLocationResolversBinder;
 
 		TestConfigDataEnvironment(DeferredLogFactory logFactory, ConfigurableBootstrapContext bootstrapContext,
-				ConfigurableEnvironment environment, ResourceLoader resourceLoader,
-				Collection<String> additionalProfiles, ConfigDataEnvironmentUpdateListener environmentUpdateListener) {
+								  ConfigurableEnvironment environment, ResourceLoader resourceLoader,
+								  Collection<String> additionalProfiles, ConfigDataEnvironmentUpdateListener environmentUpdateListener) {
 			super(logFactory, bootstrapContext, environment, resourceLoader, additionalProfiles,
 					environmentUpdateListener);
 		}
 
 		@Override
 		protected ConfigDataLocationResolvers createConfigDataLocationResolvers(DeferredLogFactory logFactory,
-				ConfigurableBootstrapContext bootstrapContext, Binder binder, ResourceLoader resourceLoader) {
+																				ConfigurableBootstrapContext bootstrapContext, Binder binder, ResourceLoader resourceLoader) {
 			this.configDataLocationResolversBinder = binder;
 			return super.createConfigDataLocationResolvers(logFactory, bootstrapContext, binder, resourceLoader);
 		}

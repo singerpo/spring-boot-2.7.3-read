@@ -25,9 +25,9 @@ import org.springframework.util.Assert;
  * {@link CompositeReactiveHealthContributor}.
  *
  * @author Phillip Webb
- * @since 2.2.0
  * @see ReactiveHealthIndicator
  * @see CompositeReactiveHealthContributor
+ * @since 2.2.0
  */
 public interface ReactiveHealthContributor {
 

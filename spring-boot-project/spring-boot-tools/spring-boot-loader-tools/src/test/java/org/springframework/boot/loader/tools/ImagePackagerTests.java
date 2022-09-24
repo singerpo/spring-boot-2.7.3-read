@@ -52,8 +52,7 @@ class ImagePackagerTests extends AbstractPackagerTests<ImagePackager> {
 	private void save(ZipEntry entry, EntryWriter writer) {
 		try {
 			this.entries.put((ZipArchiveEntry) entry, getContent(writer));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

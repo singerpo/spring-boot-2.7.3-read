@@ -119,7 +119,8 @@ class LiveReloadServerTests {
 		assertThat(messages.get(1)).contains("command\":\"reload\"");
 	}
 
-	@Test // gh-26813
+	@Test
+		// gh-26813
 	void triggerReloadWithUppercaseHeaders() throws Exception {
 		LiveReloadWebSocketHandler handler = connect(UppercaseWebSocketClient::new);
 		this.server.triggerReload();
@@ -186,7 +187,7 @@ class LiveReloadServerTests {
 
 		@Override
 		protected Connection createConnection(java.net.Socket socket, InputStream inputStream,
-				OutputStream outputStream) throws IOException {
+											  OutputStream outputStream) throws IOException {
 			return new MonitoredConnection(socket, inputStream, outputStream);
 		}
 
@@ -207,8 +208,7 @@ class LiveReloadServerTests {
 			public void run() throws Exception {
 				try {
 					super.run();
-				}
-				catch (ConnectionClosedException ex) {
+				} catch (ConnectionClosedException ex) {
 					synchronized (MonitoredLiveReloadServer.this.monitor) {
 						MonitoredLiveReloadServer.this.closedExceptions.add(ex);
 					}
@@ -295,8 +295,8 @@ class LiveReloadServerTests {
 
 		@Override
 		protected ListenableFuture<WebSocketSession> doHandshakeInternal(WebSocketHandler webSocketHandler,
-				HttpHeaders headers, URI uri, List<String> protocols, List<WebSocketExtension> extensions,
-				Map<String, Object> attributes) {
+																		 HttpHeaders headers, URI uri, List<String> protocols, List<WebSocketExtension> extensions,
+																		 Map<String, Object> attributes) {
 			InetSocketAddress localAddress = new InetSocketAddress(getLocalHost(), uri.getPort());
 			InetSocketAddress remoteAddress = new InetSocketAddress(uri.getHost(), uri.getPort());
 			StandardWebSocketSession session = new StandardWebSocketSession(headers, attributes, localAddress,
@@ -318,8 +318,7 @@ class LiveReloadServerTests {
 		private InetAddress getLocalHost() {
 			try {
 				return InetAddress.getLocalHost();
-			}
-			catch (UnknownHostException ex) {
+			} catch (UnknownHostException ex) {
 				return InetAddress.getLoopbackAddress();
 			}
 		}

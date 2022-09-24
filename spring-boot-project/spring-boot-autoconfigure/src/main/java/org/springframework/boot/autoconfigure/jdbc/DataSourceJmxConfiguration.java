@@ -87,8 +87,7 @@ class DataSourceJmxConfiguration {
 			if (dataSourceProxy != null) {
 				try {
 					return dataSourceProxy.createPool().getJmxPool();
-				}
-				catch (SQLException ex) {
+				} catch (SQLException ex) {
 					logger.warn("Cannot expose DataSource to JMX (could not connect)");
 				}
 			}

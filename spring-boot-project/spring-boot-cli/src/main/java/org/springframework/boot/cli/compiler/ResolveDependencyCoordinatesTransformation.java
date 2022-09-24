@@ -87,8 +87,7 @@ public class ResolveDependencyCoordinatesTransformation extends AnnotatedNodeAST
 	private void applyGroupAndVersion(AnnotationNode annotation, String module) {
 		if (module != null) {
 			setMember(annotation, "module", module);
-		}
-		else {
+		} else {
 			Expression expression = annotation.getMembers().get("module");
 			module = (String) ((ConstantExpression) expression).getValue();
 		}

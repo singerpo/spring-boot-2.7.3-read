@@ -39,8 +39,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Dave Syer
  */
-@SpringBootTest(classes = { ShutdownSampleActuatorApplicationTests.SecurityConfiguration.class,
-		SampleActuatorApplication.class }, webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {ShutdownSampleActuatorApplicationTests.SecurityConfiguration.class,
+		SampleActuatorApplication.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
 class ShutdownSampleActuatorApplicationTests {
 
 	@Autowired
@@ -64,7 +64,7 @@ class ShutdownSampleActuatorApplicationTests {
 		assertThat(((String) entity.getBody().get("message"))).contains("Shutting down");
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

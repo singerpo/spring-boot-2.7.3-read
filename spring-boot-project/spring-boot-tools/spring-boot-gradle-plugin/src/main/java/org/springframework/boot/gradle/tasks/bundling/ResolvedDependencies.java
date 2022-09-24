@@ -74,7 +74,7 @@ class ResolvedDependencies {
 		private final Map<File, DependencyDescriptor> dependencies = new LinkedHashMap<>();
 
 		ResolvedConfigurationDependencies(Set<String> projectDependencyIds,
-				ResolvedConfiguration resolvedConfiguration) {
+										  ResolvedConfiguration resolvedConfiguration) {
 			if (!resolvedConfiguration.hasError()) {
 				LenientConfiguration lenientConfiguration = resolvedConfiguration.getLenientConfiguration();
 				// Ensure that all files are resolved, allowing Gradle to resolve in

@@ -69,21 +69,21 @@ class MeterRegistryConfigurerIntegrationTests {
 						SimpleMetricsExportAutoConfiguration.class))
 				.withUserConfiguration(TestConfiguration.class).run((context) -> {
 
-				});
+		});
 	}
 
 	@Test
 	void counterIsIncrementedOncePerEventWithoutCompositeMeterRegistry() {
 		new ApplicationContextRunner().with(MetricsRun.limitedTo(JmxMetricsExportAutoConfiguration.class))
 				.withConfiguration(AutoConfigurations.of(LogbackMetricsAutoConfiguration.class)).run((context) -> {
-					Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
-							.getLogger("test-logger");
-					logger.error("Error.");
-					Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
-					assertThat(registriesByName).hasSize(1);
-					MeterRegistry registry = registriesByName.values().iterator().next();
-					assertThat(registry.get("logback.events").tag("level", "error").counter().count()).isEqualTo(1);
-				});
+			Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
+					.getLogger("test-logger");
+			logger.error("Error.");
+			Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
+			assertThat(registriesByName).hasSize(1);
+			MeterRegistry registry = registriesByName.values().iterator().next();
+			assertThat(registry.get("logback.events").tag("level", "error").counter().count()).isEqualTo(1);
+		});
 	}
 
 	@Test
@@ -92,16 +92,16 @@ class MeterRegistryConfigurerIntegrationTests {
 				.with(MetricsRun.limitedTo(JmxMetricsExportAutoConfiguration.class,
 						PrometheusMetricsExportAutoConfiguration.class))
 				.withConfiguration(AutoConfigurations.of(LogbackMetricsAutoConfiguration.class)).run((context) -> {
-					Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
-							.getLogger("test-logger");
-					logger.error("Error.");
-					Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
-					assertThat(registriesByName).hasSize(3);
-					registriesByName.forEach((name,
-							registry) -> assertThat(
-									registry.get("logback.events").tag("level", "error").counter().count())
-											.isEqualTo(1));
-				});
+			Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
+					.getLogger("test-logger");
+			logger.error("Error.");
+			Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
+			assertThat(registriesByName).hasSize(3);
+			registriesByName.forEach((name,
+									  registry) -> assertThat(
+					registry.get("logback.events").tag("level", "error").counter().count())
+					.isEqualTo(1));
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

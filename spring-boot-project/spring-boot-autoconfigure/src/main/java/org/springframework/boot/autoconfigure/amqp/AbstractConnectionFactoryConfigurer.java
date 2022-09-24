@@ -50,6 +50,7 @@ public abstract class AbstractConnectionFactoryConfigurer<T extends AbstractConn
 
 	/**
 	 * Configures the given {@code connectionFactory} with sensible defaults.
+	 *
 	 * @param connectionFactory connection factory to configure
 	 */
 	public final void configure(T connectionFactory) {
@@ -65,8 +66,9 @@ public abstract class AbstractConnectionFactoryConfigurer<T extends AbstractConn
 	/**
 	 * Configures the given {@code connectionFactory} using the given
 	 * {@code rabbitProperties}.
+	 *
 	 * @param connectionFactory connection factory to configure
-	 * @param rabbitProperties properties to use for the configuration
+	 * @param rabbitProperties  properties to use for the configuration
 	 */
 	protected abstract void configure(T connectionFactory, RabbitProperties rabbitProperties);
 

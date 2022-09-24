@@ -53,12 +53,13 @@ public class ControllerEndpointHandlerMapping extends RequestMappingHandlerMappi
 	/**
 	 * Create a new {@link ControllerEndpointHandlerMapping} instance providing mappings
 	 * for the specified endpoints.
-	 * @param endpointMapping the base mapping for all endpoints
-	 * @param endpoints the web endpoints
+	 *
+	 * @param endpointMapping   the base mapping for all endpoints
+	 * @param endpoints         the web endpoints
 	 * @param corsConfiguration the CORS configuration for the endpoints or {@code null}
 	 */
 	public ControllerEndpointHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableControllerEndpoint> endpoints, CorsConfiguration corsConfiguration) {
+											Collection<ExposableControllerEndpoint> endpoints, CorsConfiguration corsConfiguration) {
 		Assert.notNull(endpointMapping, "EndpointMapping must not be null");
 		Assert.notNull(endpoints, "Endpoints must not be null");
 		this.endpointMapping = endpointMapping;
@@ -86,7 +87,7 @@ public class ControllerEndpointHandlerMapping extends RequestMappingHandlerMappi
 	}
 
 	private RequestMappingInfo withEndpointMappedPatterns(ExposableControllerEndpoint endpoint,
-			RequestMappingInfo mapping) {
+														  RequestMappingInfo mapping) {
 		Set<PathPattern> patterns = mapping.getPatternsCondition().getPatterns();
 		if (patterns.isEmpty()) {
 			patterns = Collections.singleton(getPathPatternParser().parse(""));

@@ -59,6 +59,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * Returns the driver class name.
+	 *
 	 * @return the driver class name
 	 */
 	public String getDriverClassName() {
@@ -67,6 +68,7 @@ public enum EmbeddedDatabaseConnection {
 
 	/**
 	 * Returns the R2DBC URL for the connection using the specified {@code databaseName}.
+	 *
 	 * @param databaseName the name of the database
 	 * @return the connection URL
 	 */
@@ -78,6 +80,7 @@ public enum EmbeddedDatabaseConnection {
 	/**
 	 * Returns the most suitable {@link EmbeddedDatabaseConnection} for the given class
 	 * loader.
+	 *
 	 * @param classLoader the class loader used to check for classes
 	 * @return an {@link EmbeddedDatabaseConnection} or {@link #NONE}.
 	 */
@@ -93,6 +96,7 @@ public enum EmbeddedDatabaseConnection {
 	/**
 	 * Convenience method to determine if a given connection factory represents an
 	 * embedded database type.
+	 *
 	 * @param connectionFactory the connection factory to interrogate
 	 * @return true if the connection factory represents an embedded database
 	 * @since 2.5.1

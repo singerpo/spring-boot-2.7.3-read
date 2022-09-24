@@ -42,10 +42,10 @@ class MyControllerTests {
 	void testExample() throws Exception {
 		// @formatter:off
 		given(this.userVehicleService.getVehicleDetails("sboot"))
-			.willReturn(new VehicleDetails("Honda", "Civic"));
+				.willReturn(new VehicleDetails("Honda", "Civic"));
 		this.mvc.perform(get("/sboot/vehicle").accept(MediaType.TEXT_PLAIN))
-			.andExpect(status().isOk())
-			.andExpect(content().string("Honda Civic"));
+				.andExpect(status().isOk())
+				.andExpect(content().string("Honda Civic"));
 		// @formatter:on
 	}
 

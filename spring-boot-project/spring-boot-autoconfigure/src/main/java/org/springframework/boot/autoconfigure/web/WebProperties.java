@@ -85,8 +85,8 @@ public class WebProperties {
 
 	public static class Resources {
 
-		private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/META-INF/resources/",
-				"classpath:/resources/", "classpath:/static/", "classpath:/public/" };
+		private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {"classpath:/META-INF/resources/",
+				"classpath:/resources/", "classpath:/static/", "classpath:/public/"};
 
 		/**
 		 * Locations of static resources. Defaults to classpath:[/META-INF/resources/,
@@ -174,6 +174,7 @@ public class WebProperties {
 			/**
 			 * Return whether the resource chain is enabled. Return {@code null} if no
 			 * specific settings are present.
+			 *
 			 * @return whether the resource chain is enabled or {@code null} if no
 			 * specified settings are present.
 			 */
@@ -254,7 +255,7 @@ public class WebProperties {
 					 * Comma-separated list of patterns to apply to the content Version
 					 * Strategy.
 					 */
-					private String[] paths = new String[] { "/**" };
+					private String[] paths = new String[]{"/**"};
 
 					public boolean isEnabled() {
 						return this.enabled;
@@ -296,7 +297,7 @@ public class WebProperties {
 					 * Comma-separated list of patterns to apply to the fixed Version
 					 * Strategy.
 					 */
-					private String[] paths = new String[] { "/**" };
+					private String[] paths = new String[]{"/**"};
 
 					/**
 					 * Version string to use for the fixed Version Strategy.

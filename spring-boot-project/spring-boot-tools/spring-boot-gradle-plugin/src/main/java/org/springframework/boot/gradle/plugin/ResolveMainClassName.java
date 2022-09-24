@@ -75,6 +75,7 @@ public class ResolveMainClassName extends DefaultTask {
 	/**
 	 * Returns the classpath that the task will examine when resolving the main class
 	 * name.
+	 *
 	 * @return the classpath
 	 */
 	@Classpath
@@ -84,6 +85,7 @@ public class ResolveMainClassName extends DefaultTask {
 
 	/**
 	 * Sets the classpath that the task will examine when resolving the main class name.
+	 *
 	 * @param classpath the classpath
 	 */
 	public void setClasspath(FileCollection classpath) {
@@ -93,6 +95,7 @@ public class ResolveMainClassName extends DefaultTask {
 	/**
 	 * Sets the classpath that the task will examine when resolving the main class name.
 	 * The given {@code classpath} is evaluated as per {@link Project#files(Object...)}.
+	 *
 	 * @param classpath the classpath
 	 * @since 2.5.10
 	 */
@@ -103,6 +106,7 @@ public class ResolveMainClassName extends DefaultTask {
 	/**
 	 * Returns the property for the task's output file that will contain the name of the
 	 * main class.
+	 *
 	 * @return the output file
 	 */
 	@OutputFile
@@ -113,6 +117,7 @@ public class ResolveMainClassName extends DefaultTask {
 	/**
 	 * Returns the property for the explicitly configured main class name that should be
 	 * used in favor of resolving the main class name from the classpath.
+	 *
 	 * @return the configured main class name property
 	 */
 	@Input
@@ -142,8 +147,7 @@ public class ResolveMainClassName extends DefaultTask {
 	private String findMainClass(File file) {
 		try {
 			return MainClassFinder.findSingleMainClass(file, SPRING_BOOT_APPLICATION_CLASS_NAME);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
 		}
 	}
@@ -153,7 +157,7 @@ public class ResolveMainClassName extends DefaultTask {
 	}
 
 	static TaskProvider<ResolveMainClassName> registerForTask(String taskName, Project project,
-			Callable<FileCollection> classpath) {
+															  Callable<FileCollection> classpath) {
 		TaskProvider<ResolveMainClassName> resolveMainClassNameProvider = project.getTasks()
 				.register(taskName + "MainClassName", ResolveMainClassName.class, (resolveMainClassName) -> {
 					Convention convention = project.getConvention();
@@ -195,8 +199,7 @@ public class ResolveMainClassName extends DefaultTask {
 			Path output = file.getAsFile().toPath();
 			try {
 				return new String(Files.readAllBytes(output), StandardCharsets.UTF_8);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException("Failed to read main class name from '" + output + "'");
 			}
 		}

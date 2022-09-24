@@ -13,5 +13,5 @@
 		</plugins>
 	</build>
 </project>
-<!-- end::exclude-artifact-group[] -->
+		<!-- end::exclude-artifact-group[] -->
 

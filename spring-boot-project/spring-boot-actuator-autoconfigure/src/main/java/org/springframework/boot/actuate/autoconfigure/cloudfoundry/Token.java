@@ -62,8 +62,7 @@ public class Token {
 		try {
 			byte[] bytes = Base64Utils.decodeFromUrlSafeString(base64);
 			return JsonParserFactory.getJsonParser().parseMap(new String(bytes, StandardCharsets.UTF_8));
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			throw new CloudFoundryAuthorizationException(Reason.INVALID_TOKEN, "Token could not be parsed", ex);
 		}
 	}

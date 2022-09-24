@@ -94,8 +94,7 @@ class MainMethodTests {
 			try {
 				this.runnable.run();
 				this.mainMethod = MainMethodTests.mainMethod.get();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				this.exception = ex;
 			}
 		}

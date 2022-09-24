@@ -53,7 +53,7 @@ import org.springframework.util.StringUtils;
  * @since 1.0.0
  */
 @AutoConfiguration(before = SqlInitializationAutoConfiguration.class)
-@ConditionalOnClass({ DataSource.class, EmbeddedDatabaseType.class })
+@ConditionalOnClass({DataSource.class, EmbeddedDatabaseType.class})
 @ConditionalOnMissingBean(type = "io.r2dbc.spi.ConnectionFactory")
 @EnableConfigurationProperties(DataSourceProperties.class)
 @Import(DataSourcePoolMetadataProvidersConfiguration.class)
@@ -61,7 +61,7 @@ public class DataSourceAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@Conditional(EmbeddedDatabaseCondition.class)
-	@ConditionalOnMissingBean({ DataSource.class, XADataSource.class })
+	@ConditionalOnMissingBean({DataSource.class, XADataSource.class})
 	@Import(EmbeddedDataSourceConfiguration.class)
 	protected static class EmbeddedDatabaseConfiguration {
 
@@ -69,10 +69,10 @@ public class DataSourceAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@Conditional(PooledDataSourceCondition.class)
-	@ConditionalOnMissingBean({ DataSource.class, XADataSource.class })
-	@Import({ DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class,
+	@ConditionalOnMissingBean({DataSource.class, XADataSource.class})
+	@Import({DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class,
 			DataSourceConfiguration.Dbcp2.class, DataSourceConfiguration.OracleUcp.class,
-			DataSourceConfiguration.Generic.class, DataSourceJmxConfiguration.class })
+			DataSourceConfiguration.Generic.class, DataSourceJmxConfiguration.class})
 	protected static class PooledDataSourceConfiguration {
 
 	}
@@ -147,8 +147,7 @@ public class DataSourceAutoConfiguration {
 			if (environment.containsProperty(DATASOURCE_URL_PROPERTY)) {
 				try {
 					return StringUtils.hasText(environment.getProperty(DATASOURCE_URL_PROPERTY));
-				}
-				catch (IllegalArgumentException ex) {
+				} catch (IllegalArgumentException ex) {
 					// Ignore unresolvable placeholder errors
 				}
 			}

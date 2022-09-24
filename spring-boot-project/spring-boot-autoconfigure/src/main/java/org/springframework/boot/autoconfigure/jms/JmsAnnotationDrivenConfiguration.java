@@ -56,8 +56,8 @@ class JmsAnnotationDrivenConfiguration {
 	private final JmsProperties properties;
 
 	JmsAnnotationDrivenConfiguration(ObjectProvider<DestinationResolver> destinationResolver,
-			ObjectProvider<JtaTransactionManager> transactionManager, ObjectProvider<MessageConverter> messageConverter,
-			ObjectProvider<ExceptionListener> exceptionListener, JmsProperties properties) {
+									 ObjectProvider<JtaTransactionManager> transactionManager, ObjectProvider<MessageConverter> messageConverter,
+									 ObjectProvider<ExceptionListener> exceptionListener, JmsProperties properties) {
 		this.destinationResolver = destinationResolver;
 		this.transactionManager = transactionManager;
 		this.messageConverter = messageConverter;

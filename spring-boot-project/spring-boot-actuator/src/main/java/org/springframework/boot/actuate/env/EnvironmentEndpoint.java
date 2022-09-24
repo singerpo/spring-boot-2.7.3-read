@@ -145,7 +145,7 @@ public class EnvironmentEndpoint {
 	}
 
 	private PropertySourceDescriptor describeSource(String sourceName, EnumerablePropertySource<?> source,
-			PlaceholdersResolver resolver, Predicate<String> namePredicate) {
+													PlaceholdersResolver resolver, Predicate<String> namePredicate) {
 		Map<String, PropertyValueDescriptor> properties = new LinkedHashMap<>();
 		Stream.of(source.getPropertyNames()).filter(namePredicate)
 				.forEach((name) -> properties.put(name, describeValueOf(name, source, resolver)));
@@ -154,7 +154,7 @@ public class EnvironmentEndpoint {
 
 	@SuppressWarnings("unchecked")
 	private PropertyValueDescriptor describeValueOf(String name, PropertySource<?> source,
-			PlaceholdersResolver resolver) {
+													PlaceholdersResolver resolver) {
 		Object resolved = resolver.resolvePlaceholders(source.getProperty(name));
 		Origin origin = ((source instanceof OriginLookup) ? ((OriginLookup<Object>) source).getOrigin(name) : null);
 		Object sanitizedValue = sanitize(source, name, resolved);
@@ -187,15 +187,15 @@ public class EnvironmentEndpoint {
 			for (PropertySource<?> nest : ((CompositePropertySource) source).getPropertySources()) {
 				extract(source.getName() + ":", map, nest);
 			}
-		}
-		else {
+		} else {
 			map.put(root + source.getName(), source);
 		}
 	}
 
 	/**
 	 * Apply sanitization to the given name and value.
-	 * @param key the name to sanitize
+	 *
+	 * @param key   the name to sanitize
 	 * @param value the value to sanitize
 	 * @return the sanitized value
 	 * @deprecated since 2.6.0 for removal in 3.0.0 as sanitization should be internal to
@@ -292,7 +292,7 @@ public class EnvironmentEndpoint {
 		private final List<PropertySourceEntryDescriptor> propertySources;
 
 		private EnvironmentEntryDescriptor(PropertySummaryDescriptor property, List<String> activeProfiles,
-				List<PropertySourceEntryDescriptor> propertySources) {
+										   List<PropertySourceEntryDescriptor> propertySources) {
 			this.property = property;
 			this.activeProfiles = activeProfiles;
 			this.propertySources = propertySources;

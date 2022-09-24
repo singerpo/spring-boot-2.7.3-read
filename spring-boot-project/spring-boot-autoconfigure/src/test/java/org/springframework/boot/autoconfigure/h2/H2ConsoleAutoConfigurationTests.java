@@ -105,13 +105,13 @@ class H2ConsoleAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.h2.console.enabled=true", "spring.h2.console.settings.trace=true",
 				"spring.h2.console.settings.web-allow-others=true",
 				"spring.h2.console.settings.web-admin-password=abcd").run((context) -> {
-					assertThat(context).hasSingleBean(ServletRegistrationBean.class);
-					ServletRegistrationBean<?> registrationBean = context.getBean(ServletRegistrationBean.class);
-					assertThat(registrationBean.getUrlMappings()).contains("/h2-console/*");
-					assertThat(registrationBean.getInitParameters()).containsEntry("trace", "");
-					assertThat(registrationBean.getInitParameters()).containsEntry("webAllowOthers", "");
-					assertThat(registrationBean.getInitParameters()).containsEntry("webAdminPassword", "abcd");
-				});
+			assertThat(context).hasSingleBean(ServletRegistrationBean.class);
+			ServletRegistrationBean<?> registrationBean = context.getBean(ServletRegistrationBean.class);
+			assertThat(registrationBean.getUrlMappings()).contains("/h2-console/*");
+			assertThat(registrationBean.getInitParameters()).containsEntry("trace", "");
+			assertThat(registrationBean.getInitParameters()).containsEntry("webAllowOthers", "");
+			assertThat(registrationBean.getInitParameters()).containsEntry("webAdminPassword", "abcd");
+		});
 	}
 
 	@Test
@@ -119,11 +119,11 @@ class H2ConsoleAutoConfigurationTests {
 	void singleDataSourceUrlIsLoggedWhenOnlyOneAvailable(CapturedOutput output) {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(DataSourceAutoConfiguration.class))
 				.withPropertyValues("spring.h2.console.enabled=true").run((context) -> {
-					try (Connection connection = context.getBean(DataSource.class).getConnection()) {
-						assertThat(output).contains("H2 console available at '/h2-console'. Database available at '"
-								+ connection.getMetaData().getURL() + "'");
-					}
-				});
+			try (Connection connection = context.getBean(DataSource.class).getConnection()) {
+				assertThat(output).contains("H2 console available at '/h2-console'. Database available at '"
+						+ connection.getMetaData().getURL() + "'");
+			}
+		});
 	}
 
 	@Test
@@ -140,7 +140,7 @@ class H2ConsoleAutoConfigurationTests {
 		this.contextRunner
 				.withUserConfiguration(FailingDataSourceConfiguration.class, MultiDataSourceConfiguration.class)
 				.withPropertyValues("spring.h2.console.enabled=true").run((context) -> assertThat(output).contains(
-						"H2 console available at '/h2-console'. Databases available at 'someJdbcUrl', 'anotherJdbcUrl'"));
+				"H2 console available at '/h2-console'. Databases available at 'someJdbcUrl', 'anotherJdbcUrl'"));
 	}
 
 	@Test

@@ -73,9 +73,10 @@ public class JooqExceptionTranslator extends DefaultExecuteListener {
 	 * levels deep. The outermost exception is usually the least interesting one ("Call
 	 * getNextException to see the cause."). Therefore the innermost exception is
 	 * propagated and all other exceptions are logged.
-	 * @param context the execute context
+	 *
+	 * @param context    the execute context
 	 * @param translator the exception translator
-	 * @param exception the exception
+	 * @param exception  the exception
 	 */
 	private void handle(ExecuteContext context, SQLExceptionTranslator translator, SQLException exception) {
 		DataAccessException translated = translate(context, translator, exception);
@@ -83,14 +84,13 @@ public class JooqExceptionTranslator extends DefaultExecuteListener {
 			if (translated != null) {
 				context.exception(translated);
 			}
-		}
-		else {
+		} else {
 			logger.error("Execution of SQL statement failed.", (translated != null) ? translated : exception);
 		}
 	}
 
 	private DataAccessException translate(ExecuteContext context, SQLExceptionTranslator translator,
-			SQLException exception) {
+										  SQLException exception) {
 		return translator.translate("jOOQ", context.sql(), exception);
 	}
 

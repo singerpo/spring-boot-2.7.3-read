@@ -86,7 +86,7 @@ class RunningDocumentationTests {
 	void bootRunSystemProperty() {
 		assertThat(this.gradleBuild.script("src/docs/gradle/running/boot-run-system-property")
 				.build("-Pexample=custom", "configuredSystemProperties").getOutput())
-						.contains("com.example.property = custom");
+				.contains("com.example.property = custom");
 	}
 
 	private void writeMainClass() throws IOException {

@@ -69,8 +69,7 @@ public class MavenSettingsReader {
 		request.setSystemProperties(System.getProperties());
 		try {
 			return new DefaultSettingsBuilderFactory().newInstance().build(request).getEffectiveSettings();
-		}
-		catch (SettingsBuildingException ex) {
+		} catch (SettingsBuildingException ex) {
 			throw new IllegalStateException("Failed to build settings from " + settingsFile, ex);
 		}
 	}
@@ -94,8 +93,7 @@ public class MavenSettingsReader {
 			this._configurationFile = file.getAbsolutePath();
 			try {
 				this._cipher = new DefaultPlexusCipher();
-			}
-			catch (PlexusCipherException ex) {
+			} catch (PlexusCipherException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

@@ -45,7 +45,7 @@ class LombokPropertyDescriptor extends PropertyDescriptor<VariableElement> {
 	private static final String LOMBOK_ACCESS_LEVEL_PUBLIC = "PUBLIC";
 
 	LombokPropertyDescriptor(TypeElement typeElement, ExecutableElement factoryMethod, VariableElement field,
-			String name, TypeMirror type, ExecutableElement getter, ExecutableElement setter) {
+							 String name, TypeMirror type, ExecutableElement getter, ExecutableElement setter) {
 		super(typeElement, factoryMethod, field, name, type, field, getter, setter);
 	}
 
@@ -87,9 +87,10 @@ class LombokPropertyDescriptor extends PropertyDescriptor<VariableElement> {
 	/**
 	 * Determine if the current {@link #getField() field} defines a public accessor using
 	 * lombok annotations.
-	 * @param env the {@link MetadataGenerationEnvironment}
+	 *
+	 * @param env    the {@link MetadataGenerationEnvironment}
 	 * @param getter {@code true} to look for the read accessor, {@code false} for the
-	 * write accessor
+	 *               write accessor
 	 * @return {@code true} if this field has a public accessor of the specified type
 	 */
 	private boolean hasLombokPublicAccessor(MetadataGenerationEnvironment env, boolean getter) {

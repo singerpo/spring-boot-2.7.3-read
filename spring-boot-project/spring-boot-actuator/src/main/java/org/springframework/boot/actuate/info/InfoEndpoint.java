@@ -38,6 +38,7 @@ public class InfoEndpoint {
 
 	/**
 	 * Create a new {@link InfoEndpoint} instance.
+	 *
 	 * @param infoContributors the info contributors to use
 	 */
 	public InfoEndpoint(List<InfoContributor> infoContributors) {

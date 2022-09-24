@@ -43,6 +43,7 @@ public class CacheSpec {
 
 	/**
 	 * Configures a volume cache using the given {@code action}.
+	 *
 	 * @param action the action
 	 */
 	public void volume(Action<VolumeCacheSpec> action) {
@@ -56,6 +57,7 @@ public class CacheSpec {
 
 	/**
 	 * Configures a volume cache using the given {@code closure}.
+	 *
 	 * @param closure the closure
 	 */
 	public void volume(Closure<?> closure) {
@@ -74,6 +76,7 @@ public class CacheSpec {
 
 		/**
 		 * Returns the name of the cache.
+		 *
 		 * @return the cache name
 		 */
 		@Input
@@ -83,6 +86,7 @@ public class CacheSpec {
 
 		/**
 		 * Sets the name of the cache.
+		 *
 		 * @param name the cache name
 		 */
 		public void setName(String name) {

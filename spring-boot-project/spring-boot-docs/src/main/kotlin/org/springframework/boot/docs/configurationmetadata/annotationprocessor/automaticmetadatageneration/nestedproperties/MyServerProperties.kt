@@ -20,8 +20,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "my.server")
 class MyServerProperties(
-	var name: String,
-	var host: Host) {
+		var name: String,
+		var host: Host) {
 
 	class Host(val ip: String, val port: Int = 0)
 

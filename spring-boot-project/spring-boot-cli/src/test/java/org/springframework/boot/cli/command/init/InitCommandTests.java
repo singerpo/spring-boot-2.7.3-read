@@ -90,8 +90,7 @@ class InitCommandTests extends AbstractHttpClientMockTests {
 		try {
 			assertThat(this.command.run()).isEqualTo(ExitStatus.OK);
 			assertThat(file.exists()).as("file should have been created").isTrue();
-		}
-		finally {
+		} finally {
 			assertThat(file.delete()).as("failed to delete test file").isTrue();
 		}
 	}
@@ -149,8 +148,7 @@ class InitCommandTests extends AbstractHttpClientMockTests {
 		try {
 			assertThat(this.command.run(fileName)).isEqualTo(ExitStatus.OK);
 			assertThat(archiveFile).exists();
-		}
-		finally {
+		} finally {
 			archiveFile.delete();
 			file.delete();
 		}
@@ -169,8 +167,7 @@ class InitCommandTests extends AbstractHttpClientMockTests {
 			assertThat(this.command.run(fileName)).isEqualTo(ExitStatus.OK);
 			assertThat(file.exists()).as("File not saved properly").isTrue();
 			assertThat(file.isFile()).as("Should not be a directory").isTrue();
-		}
-		finally {
+		} finally {
 			file.delete();
 		}
 	}
@@ -187,8 +184,7 @@ class InitCommandTests extends AbstractHttpClientMockTests {
 			mockSuccessfulProjectGeneration(request);
 			assertThat(this.command.run("--extract", tempDir.getAbsolutePath())).isEqualTo(ExitStatus.OK);
 			assertThat(file.exists()).as("file should have been saved instead").isTrue();
-		}
-		finally {
+		} finally {
 			assertThat(file.delete()).as("failed to delete test file").isTrue();
 		}
 	}
@@ -204,8 +200,7 @@ class InitCommandTests extends AbstractHttpClientMockTests {
 			mockSuccessfulProjectGeneration(request);
 			assertThat(this.command.run("--extract", tempDir.getAbsolutePath())).isEqualTo(ExitStatus.OK);
 			assertThat(file.exists()).as("file should have been saved instead").isTrue();
-		}
-		finally {
+		} finally {
 			assertThat(file.delete()).as("failed to delete test file").isTrue();
 		}
 	}

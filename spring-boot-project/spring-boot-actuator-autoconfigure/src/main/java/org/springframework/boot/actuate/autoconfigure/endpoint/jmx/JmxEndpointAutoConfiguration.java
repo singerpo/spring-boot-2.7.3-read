@@ -60,8 +60,8 @@ import org.springframework.util.ObjectUtils;
  * @author Phillip Webb
  * @since 2.0.0
  */
-@AutoConfiguration(after = { JmxAutoConfiguration.class, EndpointAutoConfiguration.class })
-@EnableConfigurationProperties({ JmxEndpointProperties.class, JmxProperties.class })
+@AutoConfiguration(after = {JmxAutoConfiguration.class, EndpointAutoConfiguration.class})
+@EnableConfigurationProperties({JmxEndpointProperties.class, JmxProperties.class})
 @ConditionalOnProperty(prefix = "spring.jmx", name = "enabled", havingValue = "true")
 public class JmxEndpointAutoConfiguration {
 
@@ -72,7 +72,7 @@ public class JmxEndpointAutoConfiguration {
 	private final JmxProperties jmxProperties;
 
 	public JmxEndpointAutoConfiguration(ApplicationContext applicationContext, JmxEndpointProperties properties,
-			JmxProperties jmxProperties) {
+										JmxProperties jmxProperties) {
 		this.applicationContext = applicationContext;
 		this.properties = properties;
 		this.jmxProperties = jmxProperties;
@@ -81,8 +81,8 @@ public class JmxEndpointAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(JmxEndpointsSupplier.class)
 	public JmxEndpointDiscoverer jmxAnnotationEndpointDiscoverer(ParameterValueMapper parameterValueMapper,
-			ObjectProvider<OperationInvokerAdvisor> invokerAdvisors,
-			ObjectProvider<EndpointFilter<ExposableJmxEndpoint>> filters) {
+																 ObjectProvider<OperationInvokerAdvisor> invokerAdvisors,
+																 ObjectProvider<EndpointFilter<ExposableJmxEndpoint>> filters) {
 		return new JmxEndpointDiscoverer(this.applicationContext, parameterValueMapper,
 				invokerAdvisors.orderedStream().collect(Collectors.toList()),
 				filters.orderedStream().collect(Collectors.toList()));
@@ -98,8 +98,8 @@ public class JmxEndpointAutoConfiguration {
 	@Bean
 	@ConditionalOnSingleCandidate(MBeanServer.class)
 	public JmxEndpointExporter jmxMBeanExporter(MBeanServer mBeanServer,
-			EndpointObjectNameFactory endpointObjectNameFactory, ObjectProvider<ObjectMapper> objectMapper,
-			JmxEndpointsSupplier jmxEndpointsSupplier) {
+												EndpointObjectNameFactory endpointObjectNameFactory, ObjectProvider<ObjectMapper> objectMapper,
+												JmxEndpointsSupplier jmxEndpointsSupplier) {
 		JmxOperationResponseMapper responseMapper = new JacksonJmxOperationResponseMapper(
 				objectMapper.getIfAvailable());
 		return new JmxEndpointExporter(mBeanServer, endpointObjectNameFactory, responseMapper,

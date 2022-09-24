@@ -38,10 +38,10 @@ import org.springframework.context.annotation.Primary;
  * {@code DataSource} is considered.
  *
  * @author Phillip Webb
- * @since 1.5.0
  * @see TestDatabaseAutoConfiguration
+ * @since 1.5.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -51,6 +51,7 @@ public @interface AutoConfigureTestDatabase {
 
 	/**
 	 * Determines what type of existing DataSource bean can be replaced.
+	 *
 	 * @return the type of existing DataSource to replace
 	 */
 	@PropertyMapping(skip = SkipPropertyMapping.ON_DEFAULT_VALUE)
@@ -60,6 +61,7 @@ public @interface AutoConfigureTestDatabase {
 	 * The type of connection to be established when {@link #replace() replacing} the
 	 * DataSource. By default will attempt to detect the connection based on the
 	 * classpath.
+	 *
 	 * @return the type of connection to use
 	 */
 	EmbeddedDatabaseConnection connection() default EmbeddedDatabaseConnection.NONE;

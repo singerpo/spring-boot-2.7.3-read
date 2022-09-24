@@ -60,7 +60,7 @@ import org.springframework.web.context.support.ServletContextResourcePatternReso
  */
 final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternResolver {
 
-	private static final String[] LOCATION_PATTERN_PREFIXES = { CLASSPATH_ALL_URL_PREFIX, CLASSPATH_URL_PREFIX };
+	private static final String[] LOCATION_PATTERN_PREFIXES = {CLASSPATH_ALL_URL_PREFIX, CLASSPATH_URL_PREFIX};
 
 	private static final String WEB_CONTEXT_CLASS = "org.springframework.web.context.WebApplicationContext";
 
@@ -71,7 +71,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 	private final ClassLoaderFiles classLoaderFiles;
 
 	ClassLoaderFilesResourcePatternResolver(AbstractApplicationContext applicationContext,
-			ClassLoaderFiles classLoaderFiles) {
+											ClassLoaderFiles classLoaderFiles) {
 		this.classLoaderFiles = classLoaderFiles;
 		this.patternResolverDelegate = getResourcePatternResolverFactory()
 				.getResourcePatternResolver(applicationContext, retrieveResourceLoader(applicationContext));
@@ -156,8 +156,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 							&& resource.getURI().toString().endsWith(name)) {
 						return true;
 					}
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					throw new IllegalStateException("Failed to retrieve URI from '" + resource + "'", ex);
 				}
 			}
@@ -200,7 +199,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 	private static class ResourcePatternResolverFactory {
 
 		ResourcePatternResolver getResourcePatternResolver(AbstractApplicationContext applicationContext,
-				ResourceLoader resourceLoader) {
+														   ResourceLoader resourceLoader) {
 			ResourceLoader targetResourceLoader = (resourceLoader != null) ? resourceLoader
 					: new ApplicationContextResourceLoader(applicationContext::getProtocolResolvers);
 			return new PathMatchingResourcePatternResolver(targetResourceLoader);
@@ -216,7 +215,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 
 		@Override
 		public ResourcePatternResolver getResourcePatternResolver(AbstractApplicationContext applicationContext,
-				ResourceLoader resourceLoader) {
+																  ResourceLoader resourceLoader) {
 			if (applicationContext instanceof WebApplicationContext) {
 				return getServletContextResourcePatternResolver(applicationContext, resourceLoader);
 			}
@@ -227,7 +226,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 				AbstractApplicationContext applicationContext, ResourceLoader resourceLoader) {
 			ResourceLoader targetResourceLoader = (resourceLoader != null) ? resourceLoader
 					: new WebApplicationContextResourceLoader(applicationContext::getProtocolResolvers,
-							(WebApplicationContext) applicationContext);
+					(WebApplicationContext) applicationContext);
 			return new ServletContextResourcePatternResolver(targetResourceLoader);
 		}
 
@@ -258,7 +257,7 @@ final class ClassLoaderFilesResourcePatternResolver implements ResourcePatternRe
 		private final WebApplicationContext applicationContext;
 
 		WebApplicationContextResourceLoader(Supplier<Collection<ProtocolResolver>> protocolResolvers,
-				WebApplicationContext applicationContext) {
+											WebApplicationContext applicationContext) {
 			super(protocolResolvers);
 			this.applicationContext = applicationContext;
 		}

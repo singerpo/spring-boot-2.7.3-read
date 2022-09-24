@@ -38,7 +38,7 @@ import static org.mockito.Mockito.mock;
 class TestRestTemplateContextCustomizerTests {
 
 	@Test
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	void whenContextIsNotABeanDefinitionRegistryTestRestTemplateIsRegistered() {
 		new ApplicationContextRunner(TestApplicationContext::new).withInitializer((context) -> {
 			MergedContextConfiguration configuration = mock(MergedContextConfiguration.class);

@@ -85,7 +85,7 @@ class DefaultWebMvcTagsProviderTests {
 
 		@Override
 		public Iterable<Tag> getTags(HttpServletRequest request, HttpServletResponse response, Object handler,
-				Throwable exception) {
+									 Throwable exception) {
 			return this.tagNames.stream().map((name) -> Tag.of(name, "value")).collect(Collectors.toList());
 		}
 

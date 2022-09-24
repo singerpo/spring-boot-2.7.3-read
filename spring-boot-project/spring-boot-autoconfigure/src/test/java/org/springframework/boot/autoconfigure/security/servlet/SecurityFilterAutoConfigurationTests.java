@@ -51,10 +51,10 @@ class SecurityFilterAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ DeserializerBean.class, JacksonModuleBean.class, ExampleController.class, ConverterBean.class })
-	@ImportAutoConfiguration({ WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
+	@Import({DeserializerBean.class, JacksonModuleBean.class, ExampleController.class, ConverterBean.class})
+	@ImportAutoConfiguration({WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
 			HttpMessageConvertersAutoConfiguration.class, DispatcherServletAutoConfiguration.class, WebSecurity.class,
-			SecurityFilterAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			SecurityFilterAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	static class Config {
 
 	}

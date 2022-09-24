@@ -76,8 +76,9 @@ public class DefaultErrorViewResolver implements ErrorViewResolver, Ordered {
 
 	/**
 	 * Create a new {@link DefaultErrorViewResolver} instance.
+	 *
 	 * @param applicationContext the source application context
-	 * @param resources resource properties
+	 * @param resources          resource properties
 	 * @since 2.4.0
 	 */
 	public DefaultErrorViewResolver(ApplicationContext applicationContext, Resources resources) {
@@ -89,7 +90,7 @@ public class DefaultErrorViewResolver implements ErrorViewResolver, Ordered {
 	}
 
 	DefaultErrorViewResolver(ApplicationContext applicationContext, Resources resourceProperties,
-			TemplateAvailabilityProviders templateAvailabilityProviders) {
+							 TemplateAvailabilityProviders templateAvailabilityProviders) {
 		Assert.notNull(applicationContext, "ApplicationContext must not be null");
 		Assert.notNull(resourceProperties, "Resources must not be null");
 		this.applicationContext = applicationContext;
@@ -124,8 +125,7 @@ public class DefaultErrorViewResolver implements ErrorViewResolver, Ordered {
 				if (resource.exists()) {
 					return new ModelAndView(new HtmlResourceView(resource), model);
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 		}
 		return null;

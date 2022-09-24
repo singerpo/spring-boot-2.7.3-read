@@ -23,9 +23,9 @@ import org.springframework.util.Assert;
  *
  * @author Toshiaki Maki
  * @author Phillip Webb
- * @since 2.2.0
  * @see #foreground(int)
  * @see #background(int)
+ * @since 2.2.0
  */
 public final class Ansi8BitColor implements AnsiElement {
 
@@ -35,8 +35,9 @@ public final class Ansi8BitColor implements AnsiElement {
 
 	/**
 	 * Create a new {@link Ansi8BitColor} instance.
+	 *
 	 * @param prefix the prefix escape chars
-	 * @param code color code (must be 0-255)
+	 * @param code   color code (must be 0-255)
 	 * @throws IllegalArgumentException if color code is not between 0 and 255.
 	 */
 	private Ansi8BitColor(String prefix, int code) {
@@ -69,6 +70,7 @@ public final class Ansi8BitColor implements AnsiElement {
 
 	/**
 	 * Return a foreground ANSI color code instance for the given code.
+	 *
 	 * @param code the color code
 	 * @return an ANSI color code instance
 	 */
@@ -78,6 +80,7 @@ public final class Ansi8BitColor implements AnsiElement {
 
 	/**
 	 * Return a background ANSI color code instance for the given code.
+	 *
 	 * @param code the color code
 	 * @return an ANSI color code instance
 	 */

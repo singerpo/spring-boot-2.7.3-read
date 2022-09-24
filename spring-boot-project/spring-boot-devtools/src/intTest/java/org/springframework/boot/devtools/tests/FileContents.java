@@ -46,8 +46,7 @@ class FileContents {
 		}
 		try {
 			return transformer.apply(FileCopyUtils.copyToString(new FileReader(this.file)));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

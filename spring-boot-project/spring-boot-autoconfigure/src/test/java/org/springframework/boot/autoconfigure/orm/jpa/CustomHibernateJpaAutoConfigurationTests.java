@@ -64,25 +64,25 @@ class CustomHibernateJpaAutoConfigurationTests {
 	void namingStrategyDelegatorTakesPrecedence() {
 		this.contextRunner.withPropertyValues("spring.jpa.properties.hibernate.ejb.naming_strategy_delegator:"
 				+ "org.hibernate.cfg.naming.ImprovedNamingStrategyDelegator").run((context) -> {
-					JpaProperties jpaProperties = context.getBean(JpaProperties.class);
-					HibernateProperties hibernateProperties = context.getBean(HibernateProperties.class);
-					Map<String, Object> properties = hibernateProperties
-							.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
-					assertThat(properties.get("hibernate.ejb.naming_strategy")).isNull();
-				});
+			JpaProperties jpaProperties = context.getBean(JpaProperties.class);
+			HibernateProperties hibernateProperties = context.getBean(HibernateProperties.class);
+			Map<String, Object> properties = hibernateProperties
+					.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
+			assertThat(properties.get("hibernate.ejb.naming_strategy")).isNull();
+		});
 	}
 
 	@Test
 	void namingStrategyBeansAreUsed() {
 		this.contextRunner.withUserConfiguration(NamingStrategyConfiguration.class)
 				.withPropertyValues("spring.datasource.url:jdbc:h2:mem:naming-strategy-beans").run((context) -> {
-					HibernateJpaConfiguration jpaConfiguration = context.getBean(HibernateJpaConfiguration.class);
-					Map<String, Object> hibernateProperties = jpaConfiguration.getVendorProperties();
-					assertThat(hibernateProperties.get("hibernate.implicit_naming_strategy"))
-							.isEqualTo(NamingStrategyConfiguration.implicitNamingStrategy);
-					assertThat(hibernateProperties.get("hibernate.physical_naming_strategy"))
-							.isEqualTo(NamingStrategyConfiguration.physicalNamingStrategy);
-				});
+			HibernateJpaConfiguration jpaConfiguration = context.getBean(HibernateJpaConfiguration.class);
+			Map<String, Object> hibernateProperties = jpaConfiguration.getVendorProperties();
+			assertThat(hibernateProperties.get("hibernate.implicit_naming_strategy"))
+					.isEqualTo(NamingStrategyConfiguration.implicitNamingStrategy);
+			assertThat(hibernateProperties.get("hibernate.physical_naming_strategy"))
+					.isEqualTo(NamingStrategyConfiguration.physicalNamingStrategy);
+		});
 	}
 
 	@Test
@@ -118,8 +118,7 @@ class CustomHibernateJpaAutoConfigurationTests {
 			try {
 				given(dataSource.getConnection()).willReturn(mock(Connection.class));
 				given(dataSource.getConnection().getMetaData()).willReturn(mock(DatabaseMetaData.class));
-			}
-			catch (SQLException ex) {
+			} catch (SQLException ex) {
 				// Do nothing
 			}
 			return dataSource;

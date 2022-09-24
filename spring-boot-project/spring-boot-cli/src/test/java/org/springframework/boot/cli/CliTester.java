@@ -77,8 +77,7 @@ public class CliTester implements BeforeEachCallback, AfterEachCallback {
 		this.prefix = prefix;
 		try {
 			this.temp = Files.createTempDirectory("cli-tester").toFile();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to create temp directory");
 		}
 		this.output = output;
@@ -138,8 +137,7 @@ public class CliTester implements BeforeEachCallback, AfterEachCallback {
 			try {
 				command.run(sources);
 				return command;
-			}
-			finally {
+			} finally {
 				System.clearProperty("server.port");
 				System.clearProperty("spring.application.class.name");
 				System.clearProperty("portfile");
@@ -156,12 +154,10 @@ public class CliTester implements BeforeEachCallback, AfterEachCallback {
 			if (!arg.endsWith(".groovy") && !arg.endsWith(".xml")) {
 				if (new File(this.prefix + arg).isDirectory()) {
 					sources[i] = this.prefix + arg;
-				}
-				else {
+				} else {
 					sources[i] = arg;
 				}
-			}
-			else {
+			} else {
 				sources[i] = new File(arg).isAbsolute() ? arg : this.prefix + arg;
 			}
 		}
@@ -202,8 +198,7 @@ public class CliTester implements BeforeEachCallback, AfterEachCallback {
 			InputStream stream = URI.create("http://localhost:" + port + uri).toURL().openStream();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 			return reader.lines().collect(Collectors.joining());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

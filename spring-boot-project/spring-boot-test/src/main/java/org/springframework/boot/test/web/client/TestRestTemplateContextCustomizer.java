@@ -51,7 +51,7 @@ class TestRestTemplateContextCustomizer implements ContextCustomizer {
 
 	@Override
 	public void customizeContext(ConfigurableApplicationContext context,
-			MergedContextConfiguration mergedContextConfiguration) {
+								 MergedContextConfiguration mergedContextConfiguration) {
 		SpringBootTest springBootTest = TestContextAnnotationUtils
 				.findMergedAnnotation(mergedContextConfiguration.getTestClass(), SpringBootTest.class);
 		if (springBootTest.webEnvironment().isEmbedded()) {
@@ -124,7 +124,7 @@ class TestRestTemplateContextCustomizer implements ContextCustomizer {
 
 		private static final HttpClientOption[] DEFAULT_OPTIONS = {};
 
-		private static final HttpClientOption[] SSL_OPTIONS = { HttpClientOption.SSL };
+		private static final HttpClientOption[] SSL_OPTIONS = {HttpClientOption.SSL};
 
 		private TestRestTemplate template;
 
@@ -145,8 +145,7 @@ class TestRestTemplateContextCustomizer implements ContextCustomizer {
 				AbstractServletWebServerFactory webServerFactory = context
 						.getBean(AbstractServletWebServerFactory.class);
 				return webServerFactory.getSsl() != null && webServerFactory.getSsl().isEnabled();
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return false;
 			}
 		}
@@ -154,8 +153,7 @@ class TestRestTemplateContextCustomizer implements ContextCustomizer {
 		private RestTemplateBuilder getRestTemplateBuilder(ApplicationContext applicationContext) {
 			try {
 				return applicationContext.getBean(RestTemplateBuilder.class);
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return new RestTemplateBuilder();
 			}
 		}

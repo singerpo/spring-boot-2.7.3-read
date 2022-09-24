@@ -34,29 +34,32 @@ public class SqlR2dbcScriptDatabaseInitializer extends R2dbcScriptDatabaseInitia
 
 	/**
 	 * Create a new {@link SqlDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param connectionFactory the primary SQL connection factory
-	 * @param properties the SQL initialization properties
+	 * @param properties        the SQL initialization properties
 	 * @see #getSettings
 	 */
 	public SqlR2dbcScriptDatabaseInitializer(ConnectionFactory connectionFactory,
-			SqlInitializationProperties properties) {
+											 SqlInitializationProperties properties) {
 		super(connectionFactory, getSettings(properties));
 	}
 
 	/**
 	 * Create a new {@link BatchDataSourceScriptDatabaseInitializer} instance.
+	 *
 	 * @param connectionFactory the primary SQL connection factory
-	 * @param settings the database initialization settings
+	 * @param settings          the database initialization settings
 	 * @see #getSettings
 	 */
 	public SqlR2dbcScriptDatabaseInitializer(ConnectionFactory connectionFactory,
-			DatabaseInitializationSettings settings) {
+											 DatabaseInitializationSettings settings) {
 		super(connectionFactory, settings);
 	}
 
 	/**
 	 * Adapts {@link SqlInitializationProperties SQL initialization properties} to
 	 * {@link DatabaseInitializationSettings}.
+	 *
 	 * @param properties the SQL initialization properties
 	 * @return a new {@link DatabaseInitializationSettings} instance
 	 * @see #SqlR2dbcScriptDatabaseInitializer(ConnectionFactory,

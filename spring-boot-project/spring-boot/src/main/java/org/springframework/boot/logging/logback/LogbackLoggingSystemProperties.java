@@ -69,8 +69,9 @@ public class LogbackLoggingSystemProperties extends LoggingSystemProperties {
 
 	/**
 	 * Create a new {@link LogbackLoggingSystemProperties} instance.
+	 *
 	 * @param environment the source environment
-	 * @param setter setter used to apply the property
+	 * @param setter      setter used to apply the property
 	 * @since 2.4.3
 	 */
 	public LogbackLoggingSystemProperties(Environment environment, BiConsumer<String, String> setter) {
@@ -98,12 +99,12 @@ public class LogbackLoggingSystemProperties extends LoggingSystemProperties {
 	}
 
 	private void applyRollingPolicy(PropertyResolver resolver, String systemPropertyName, String propertyName,
-			String deprecatedPropertyName) {
+									String deprecatedPropertyName) {
 		applyRollingPolicy(resolver, systemPropertyName, propertyName, deprecatedPropertyName, String.class);
 	}
 
 	private <T> void applyRollingPolicy(PropertyResolver resolver, String systemPropertyName, String propertyName,
-			String deprecatedPropertyName, Class<T> type) {
+										String deprecatedPropertyName, Class<T> type) {
 		T value = getProperty(resolver, propertyName, type);
 		if (value == null) {
 			value = getProperty(resolver, deprecatedPropertyName, type);
@@ -118,8 +119,7 @@ public class LogbackLoggingSystemProperties extends LoggingSystemProperties {
 	private <T> T getProperty(PropertyResolver resolver, String key, Class<T> type) {
 		try {
 			return resolver.getProperty(key, type);
-		}
-		catch (ConversionFailedException | ConverterNotFoundException ex) {
+		} catch (ConversionFailedException | ConverterNotFoundException ex) {
 			if (type != DataSize.class) {
 				throw ex;
 			}

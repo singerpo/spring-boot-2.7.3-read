@@ -46,6 +46,7 @@ public class SpringBootWebTestClientBuilderCustomizer implements WebTestClientBu
 	/**
 	 * Create a new {@code SpringBootWebTestClientBuilderCustomizer} that will configure
 	 * the builder's codecs using the given {@code codecCustomizers}.
+	 *
 	 * @param codecCustomizers the codec customizers
 	 */
 	public SpringBootWebTestClientBuilderCustomizer(Collection<CodecCustomizer> codecCustomizers) {

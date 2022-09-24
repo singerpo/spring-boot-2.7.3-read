@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		properties = { "management.server.port=0", "spring.main.lazy-initialization=true" })
+		properties = {"management.server.port=0", "spring.main.lazy-initialization=true"})
 class ManagementPortWithLazyInitializationTests {
 
 	@LocalManagementPort

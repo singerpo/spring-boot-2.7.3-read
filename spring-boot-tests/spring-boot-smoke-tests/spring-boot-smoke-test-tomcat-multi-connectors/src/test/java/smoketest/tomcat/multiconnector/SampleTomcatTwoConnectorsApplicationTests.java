@@ -91,8 +91,7 @@ class SampleTomcatTwoConnectorsApplicationTests {
 			for (Connector connector : service.findConnectors()) {
 				if (connector.getSecure()) {
 					this.httpsPort = connector.getLocalPort();
-				}
-				else {
+				} else {
 					this.httpPort = connector.getLocalPort();
 				}
 			}

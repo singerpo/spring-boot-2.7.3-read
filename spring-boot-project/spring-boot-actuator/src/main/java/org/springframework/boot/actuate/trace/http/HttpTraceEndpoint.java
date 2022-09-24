@@ -36,6 +36,7 @@ public class HttpTraceEndpoint {
 
 	/**
 	 * Create a new {@link HttpTraceEndpoint} instance.
+	 *
 	 * @param repository the trace repository
 	 */
 	public HttpTraceEndpoint(HttpTraceRepository repository) {

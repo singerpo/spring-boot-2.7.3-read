@@ -37,6 +37,7 @@ interface Layers extends Iterable<String> {
 
 	/**
 	 * Return the layer that a given entry is in.
+	 *
 	 * @param entry the entry to check
 	 * @return the layer that the entry is in
 	 */
@@ -44,6 +45,7 @@ interface Layers extends Iterable<String> {
 
 	/**
 	 * Return a {@link Layers} instance for the currently running application.
+	 *
 	 * @param context the command context
 	 * @return a new layers instance
 	 */

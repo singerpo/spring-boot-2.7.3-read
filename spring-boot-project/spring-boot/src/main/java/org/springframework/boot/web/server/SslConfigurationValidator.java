@@ -38,8 +38,7 @@ public final class SslConfigurationValidator {
 			try {
 				Assert.state(keyStore.containsAlias(keyAlias),
 						() -> String.format("Keystore does not contain specified alias '%s'", keyAlias));
-			}
-			catch (KeyStoreException ex) {
+			} catch (KeyStoreException ex) {
 				throw new IllegalStateException(
 						String.format("Could not determine if keystore contains alias '%s'", keyAlias), ex);
 			}

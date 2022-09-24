@@ -11,7 +11,7 @@
 
 	<network>
 		<join>
-			<auto-detection enabled="false" />
+			<auto-detection enabled="false"/>
 			<multicast enabled="false"/>
 		</join>
 	</network>

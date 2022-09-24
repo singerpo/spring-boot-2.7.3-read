@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Dave Syer
  */
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = { "management.server.port=-1" })
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"management.server.port=-1"})
 class NoManagementSampleActuatorApplicationTests {
 
 	@Autowired
@@ -56,7 +56,7 @@ class NoManagementSampleActuatorApplicationTests {
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

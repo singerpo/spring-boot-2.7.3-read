@@ -28,10 +28,10 @@ class MyConditionEvaluationReportingTests {
 	void autoConfigTest() {
 		// @formatter:off
 		new ApplicationContextRunner()
-			.withInitializer(new ConditionEvaluationReportLoggingListener(LogLevel.INFO))
-			.run((context) -> {
+				.withInitializer(new ConditionEvaluationReportLoggingListener(LogLevel.INFO))
+				.run((context) -> {
 					// Test something...
-			});
+				});
 		// @formatter:on
 	}
 

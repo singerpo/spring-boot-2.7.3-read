@@ -44,8 +44,8 @@ import org.springframework.core.io.ClassPathResource;
  * The remote URL of the application should be provided as a non-option argument.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see RemoteClientConfiguration
+ * @since 1.3.0
  */
 public final class RemoteSpringApplication {
 
@@ -88,8 +88,7 @@ public final class RemoteSpringApplication {
 		while (true) {
 			try {
 				Thread.sleep(1000);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -97,8 +96,9 @@ public final class RemoteSpringApplication {
 
 	/**
 	 * Run the {@link RemoteSpringApplication}.
+	 *
 	 * @param args the program arguments (including the remote URL as a non-option
-	 * argument)
+	 *             argument)
 	 */
 	public static void main(String[] args) {
 		new RemoteSpringApplication().run(args);

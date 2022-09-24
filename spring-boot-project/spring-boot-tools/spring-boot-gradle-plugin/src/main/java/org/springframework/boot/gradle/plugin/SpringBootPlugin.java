@@ -48,30 +48,35 @@ public class SpringBootPlugin implements Plugin<Project> {
 
 	/**
 	 * The name of the {@link Configuration} that contains Spring Boot archives.
+	 *
 	 * @since 2.0.0
 	 */
 	public static final String BOOT_ARCHIVES_CONFIGURATION_NAME = "bootArchives";
 
 	/**
 	 * The name of the default {@link BootJar} task.
+	 *
 	 * @since 2.0.0
 	 */
 	public static final String BOOT_JAR_TASK_NAME = "bootJar";
 
 	/**
 	 * The name of the default {@link BootWar} task.
+	 *
 	 * @since 2.0.0
 	 */
 	public static final String BOOT_WAR_TASK_NAME = "bootWar";
 
 	/**
 	 * The name of the default {@link BootBuildImage} task.
+	 *
 	 * @since 2.3.0
 	 */
 	public static final String BOOT_BUILD_IMAGE_TASK_NAME = "bootBuildImage";
 
 	/**
 	 * The name of the {@code developmentOnly} configuration.
+	 *
 	 * @since 2.3.0
 	 */
 	public static final String DEVELOPMENT_ONLY_CONFIGURATION_NAME = "developmentOnly";
@@ -128,11 +133,10 @@ public class SpringBootPlugin implements Plugin<Project> {
 	}
 
 	private void withPluginClassOfAction(PluginApplicationAction action,
-			Consumer<Class<? extends Plugin<? extends Project>>> consumer) {
+										 Consumer<Class<? extends Plugin<? extends Project>>> consumer) {
 		try {
 			consumer.accept(action.getPluginClass());
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			// Plugin class unavailable. Continue.
 		}
 	}

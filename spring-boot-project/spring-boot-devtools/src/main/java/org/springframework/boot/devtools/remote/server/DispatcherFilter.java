@@ -58,8 +58,7 @@ public class DispatcherFilter implements Filter {
 			throws IOException, ServletException {
 		if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
 			doFilter((HttpServletRequest) request, (HttpServletResponse) response, chain);
-		}
-		else {
+		} else {
 			chain.doFilter(request, response);
 		}
 	}

@@ -46,6 +46,7 @@ public class Errors implements Iterable<Errors.Error> {
 
 	/**
 	 * Returns a sequential {@code Stream} of the errors.
+	 *
 	 * @return a stream of the errors
 	 */
 	public Stream<Error> stream() {
@@ -54,6 +55,7 @@ public class Errors implements Iterable<Errors.Error> {
 
 	/**
 	 * Return if there are any contained errors.
+	 *
 	 * @return if the errors are empty
 	 */
 	public boolean isEmpty() {
@@ -82,6 +84,7 @@ public class Errors implements Iterable<Errors.Error> {
 
 		/**
 		 * Return the error code.
+		 *
 		 * @return the error code
 		 */
 		public String getCode() {
@@ -90,6 +93,7 @@ public class Errors implements Iterable<Errors.Error> {
 
 		/**
 		 * Return the error message.
+		 *
 		 * @return the error message
 		 */
 		public String getMessage() {

@@ -39,7 +39,7 @@ import org.springframework.data.couchbase.repository.support.ReactiveCouchbaseRe
  * @since 2.0.0
  */
 @AutoConfiguration(after = CouchbaseReactiveDataAutoConfiguration.class)
-@ConditionalOnClass({ Cluster.class, ReactiveCouchbaseRepository.class, Flux.class })
+@ConditionalOnClass({Cluster.class, ReactiveCouchbaseRepository.class, Flux.class})
 @ConditionalOnRepositoryType(store = "couchbase", type = RepositoryType.REACTIVE)
 @ConditionalOnBean(ReactiveRepositoryOperationsMapping.class)
 @ConditionalOnMissingBean(ReactiveCouchbaseRepositoryFactoryBean.class)

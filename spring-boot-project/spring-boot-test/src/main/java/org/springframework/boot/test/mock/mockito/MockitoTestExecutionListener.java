@@ -43,8 +43,8 @@ import org.springframework.util.ReflectionUtils.FieldCallback;
  *
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 1.4.2
  * @see ResetMocksTestExecutionListener
+ * @since 1.4.2
  */
 public class MockitoTestExecutionListener extends AbstractTestExecutionListener {
 

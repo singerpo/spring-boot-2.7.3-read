@@ -31,6 +31,7 @@ public class TotalProgressEvent {
 
 	/**
 	 * Create a new {@link TotalProgressEvent} with a specific percent value.
+	 *
 	 * @param percent the progress as a percentage
 	 */
 	public TotalProgressEvent(int percent) {
@@ -40,6 +41,7 @@ public class TotalProgressEvent {
 
 	/**
 	 * Return the total progress.
+	 *
 	 * @return the total progress
 	 */
 	public int getPercent() {

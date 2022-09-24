@@ -44,9 +44,10 @@ public class OnPropertyListCondition extends SpringBootCondition {
 
 	/**
 	 * Create a new instance with the property to check and the message builder to use.
-	 * @param propertyName the name of the property
+	 *
+	 * @param propertyName   the name of the property
 	 * @param messageBuilder a message builder supplier that should provide a fresh
-	 * instance on each call
+	 *                       instance on each call
 	 */
 	protected OnPropertyListCondition(String propertyName, Supplier<ConditionMessage.Builder> messageBuilder) {
 		this.propertyName = propertyName;

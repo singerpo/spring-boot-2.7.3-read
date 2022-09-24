@@ -40,18 +40,20 @@ public class ApplicationStartingEvent extends SpringApplicationEvent {
 
 	/**
 	 * Create a new {@link ApplicationStartingEvent} instance.
+	 *
 	 * @param bootstrapContext the bootstrap context
-	 * @param application the current application
-	 * @param args the arguments the application is running with
+	 * @param application      the current application
+	 * @param args             the arguments the application is running with
 	 */
 	public ApplicationStartingEvent(ConfigurableBootstrapContext bootstrapContext, SpringApplication application,
-			String[] args) {
+									String[] args) {
 		super(application, args);
 		this.bootstrapContext = bootstrapContext;
 	}
 
 	/**
 	 * Return the bootstrap context.
+	 *
 	 * @return the bootstrap context
 	 * @since 2.4.0
 	 */

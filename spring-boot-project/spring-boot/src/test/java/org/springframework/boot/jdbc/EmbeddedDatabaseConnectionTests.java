@@ -79,20 +79,20 @@ class EmbeddedDatabaseConnectionTests {
 	}
 
 	static Object[] embeddedDriverAndUrlParameters() {
-		return new Object[] {
-				new Object[] { EmbeddedDatabaseConnection.H2.getDriverClassName(), "jdbc:h2:~/test", false },
-				new Object[] { EmbeddedDatabaseConnection.H2.getDriverClassName(), "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
-						true },
-				new Object[] { EmbeddedDatabaseConnection.H2.getDriverClassName(), null, true },
-				new Object[] { EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), "jdbc:hsqldb:hsql://localhost",
-						false },
-				new Object[] { EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), "jdbc:hsqldb:mem:test", true },
-				new Object[] { EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), null, true },
-				new Object[] { EmbeddedDatabaseConnection.DERBY.getDriverClassName(), "jdbc:derby:memory:test", true },
-				new Object[] { EmbeddedDatabaseConnection.DERBY.getDriverClassName(), null, true },
-				new Object[] { "com.mysql.cj.jdbc.Driver", "jdbc:mysql:mem:test", false },
-				new Object[] { "com.mysql.cj.jdbc.Driver", null, false },
-				new Object[] { null, "jdbc:none:mem:test", false }, new Object[] { null, null, false } };
+		return new Object[]{
+				new Object[]{EmbeddedDatabaseConnection.H2.getDriverClassName(), "jdbc:h2:~/test", false},
+				new Object[]{EmbeddedDatabaseConnection.H2.getDriverClassName(), "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1",
+						true},
+				new Object[]{EmbeddedDatabaseConnection.H2.getDriverClassName(), null, true},
+				new Object[]{EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), "jdbc:hsqldb:hsql://localhost",
+						false},
+				new Object[]{EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), "jdbc:hsqldb:mem:test", true},
+				new Object[]{EmbeddedDatabaseConnection.HSQLDB.getDriverClassName(), null, true},
+				new Object[]{EmbeddedDatabaseConnection.DERBY.getDriverClassName(), "jdbc:derby:memory:test", true},
+				new Object[]{EmbeddedDatabaseConnection.DERBY.getDriverClassName(), null, true},
+				new Object[]{"com.mysql.cj.jdbc.Driver", "jdbc:mysql:mem:test", false},
+				new Object[]{"com.mysql.cj.jdbc.Driver", null, false},
+				new Object[]{null, "jdbc:none:mem:test", false}, new Object[]{null, null, false}};
 	}
 
 	@Test
@@ -113,8 +113,7 @@ class EmbeddedDatabaseConnectionTests {
 	void testEmbeddedDatabase(EmbeddedDatabase database) {
 		try {
 			assertThat(EmbeddedDatabaseConnection.isEmbedded(database)).isTrue();
-		}
-		finally {
+		} finally {
 			database.shutdown();
 		}
 	}
@@ -128,7 +127,7 @@ class EmbeddedDatabaseConnectionTests {
 	void isEmbeddedWithH2File() throws SQLException {
 		assertThat(EmbeddedDatabaseConnection
 				.isEmbedded(mockDataSource(EmbeddedDatabaseConnection.H2.getDriverClassName(), "jdbc:h2:~/test")))
-						.isFalse();
+				.isFalse();
 	}
 
 	@Test

@@ -46,7 +46,7 @@ class TemplateEngineConfigurations {
 		@Bean
 		@ConditionalOnMissingBean(ISpringTemplateEngine.class)
 		SpringTemplateEngine templateEngine(ThymeleafProperties properties,
-				ObjectProvider<ITemplateResolver> templateResolvers, ObjectProvider<IDialect> dialects) {
+											ObjectProvider<ITemplateResolver> templateResolvers, ObjectProvider<IDialect> dialects) {
 			SpringTemplateEngine engine = new SpringTemplateEngine();
 			engine.setEnableSpringELCompiler(properties.isEnableSpringElCompiler());
 			engine.setRenderHiddenMarkersBeforeCheckboxes(properties.isRenderHiddenMarkersBeforeCheckboxes());
@@ -65,7 +65,7 @@ class TemplateEngineConfigurations {
 		@Bean
 		@ConditionalOnMissingBean(ISpringWebFluxTemplateEngine.class)
 		SpringWebFluxTemplateEngine templateEngine(ThymeleafProperties properties,
-				ObjectProvider<ITemplateResolver> templateResolvers, ObjectProvider<IDialect> dialects) {
+												   ObjectProvider<ITemplateResolver> templateResolvers, ObjectProvider<IDialect> dialects) {
 			SpringWebFluxTemplateEngine engine = new SpringWebFluxTemplateEngine();
 			engine.setEnableSpringELCompiler(properties.isEnableSpringElCompiler());
 			engine.setRenderHiddenMarkersBeforeCheckboxes(properties.isRenderHiddenMarkersBeforeCheckboxes());

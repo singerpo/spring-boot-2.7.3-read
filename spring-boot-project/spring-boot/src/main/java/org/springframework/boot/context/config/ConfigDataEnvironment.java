@@ -77,6 +77,7 @@ class ConfigDataEnvironment {
 	/**
 	 * Property used to determine what action to take when a
 	 * {@code ConfigDataNotFoundAction} is thrown.
+	 *
 	 * @see ConfigDataNotFoundAction
 	 */
 	static final String ON_NOT_FOUND_PROPERTY = "spring.config.on-not-found";
@@ -85,6 +86,7 @@ class ConfigDataEnvironment {
 	 * Default search locations used if not {@link #LOCATION_PROPERTY} is found.
 	 */
 	static final ConfigDataLocation[] DEFAULT_SEARCH_LOCATIONS;
+
 	static {
 		List<ConfigDataLocation> locations = new ArrayList<>();
 		locations.add(ConfigDataLocation.of("optional:classpath:/;optional:classpath:/config/"));
@@ -101,7 +103,7 @@ class ConfigDataEnvironment {
 
 	private static final BinderOption[] ALLOW_INACTIVE_BINDING = {};
 
-	private static final BinderOption[] DENY_INACTIVE_BINDING = { BinderOption.FAIL_ON_BIND_TO_INACTIVE_SOURCE };
+	private static final BinderOption[] DENY_INACTIVE_BINDING = {BinderOption.FAIL_ON_BIND_TO_INACTIVE_SOURCE};
 
 	private final DeferredLogFactory logFactory;
 
@@ -125,18 +127,19 @@ class ConfigDataEnvironment {
 
 	/**
 	 * Create a new {@link ConfigDataEnvironment} instance.
-	 * @param logFactory the deferred log factory
-	 * @param bootstrapContext the bootstrap context
-	 * @param environment the Spring {@link Environment}.
-	 * @param resourceLoader {@link ResourceLoader} to load resource locations
-	 * @param additionalProfiles any additional profiles to activate
+	 *
+	 * @param logFactory                the deferred log factory
+	 * @param bootstrapContext          the bootstrap context
+	 * @param environment               the Spring {@link Environment}.
+	 * @param resourceLoader            {@link ResourceLoader} to load resource locations
+	 * @param additionalProfiles        any additional profiles to activate
 	 * @param environmentUpdateListener optional
-	 * {@link ConfigDataEnvironmentUpdateListener} that can be used to track
-	 * {@link Environment} updates.
+	 *                                  {@link ConfigDataEnvironmentUpdateListener} that can be used to track
+	 *                                  {@link Environment} updates.
 	 */
 	ConfigDataEnvironment(DeferredLogFactory logFactory, ConfigurableBootstrapContext bootstrapContext,
-			ConfigurableEnvironment environment, ResourceLoader resourceLoader, Collection<String> additionalProfiles,
-			ConfigDataEnvironmentUpdateListener environmentUpdateListener) {
+						  ConfigurableEnvironment environment, ResourceLoader resourceLoader, Collection<String> additionalProfiles,
+						  ConfigDataEnvironmentUpdateListener environmentUpdateListener) {
 		Binder binder = Binder.get(environment);
 		UseLegacyConfigProcessingException.throwIfRequested(binder);
 		this.logFactory = logFactory;
@@ -154,7 +157,7 @@ class ConfigDataEnvironment {
 	}
 
 	protected ConfigDataLocationResolvers createConfigDataLocationResolvers(DeferredLogFactory logFactory,
-			ConfigurableBootstrapContext bootstrapContext, Binder binder, ResourceLoader resourceLoader) {
+																			ConfigurableBootstrapContext bootstrapContext, Binder binder, ResourceLoader resourceLoader) {
 		return new ConfigDataLocationResolvers(logFactory, bootstrapContext, binder, resourceLoader);
 	}
 
@@ -166,8 +169,7 @@ class ConfigDataEnvironment {
 		for (PropertySource<?> propertySource : propertySources) {
 			if (DefaultPropertiesPropertySource.hasMatchingName(propertySource)) {
 				defaultPropertySource = propertySource;
-			}
-			else {
+			} else {
 				this.logger.trace(LogMessage.format("Creating wrapped config data contributor for '%s'",
 						propertySource.getName()));
 				contributors.add(ConfigDataEnvironmentContributor.ofExisting(propertySource));
@@ -205,7 +207,7 @@ class ConfigDataEnvironment {
 	}
 
 	private void addInitialImportContributors(List<ConfigDataEnvironmentContributor> initialContributors,
-			ConfigDataLocation[] locations) {
+											  ConfigDataLocation[] locations) {
 		for (int i = locations.length - 1; i >= 0; i--) {
 			initialContributors.add(createInitialImportContributor(locations[i]));
 		}
@@ -235,7 +237,7 @@ class ConfigDataEnvironment {
 	}
 
 	private ConfigDataEnvironmentContributors processInitial(ConfigDataEnvironmentContributors contributors,
-			ConfigDataImporter importer) {
+															 ConfigDataImporter importer) {
 		this.logger.trace("Processing initial config data environment contributors without activation context");
 		contributors = contributors.withProcessedImports(importer, null);
 		registerBootstrapBinder(contributors, null, DENY_INACTIVE_BINDING);
@@ -246,8 +248,7 @@ class ConfigDataEnvironment {
 		this.logger.trace("Creating config data activation context from initial contributions");
 		try {
 			return new ConfigDataActivationContext(this.environment, initialBinder);
-		}
-		catch (BindException ex) {
+		} catch (BindException ex) {
 			if (ex.getCause() instanceof InactiveConfigDataAccessException) {
 				throw (InactiveConfigDataAccessException) ex.getCause();
 			}
@@ -256,7 +257,7 @@ class ConfigDataEnvironment {
 	}
 
 	private ConfigDataEnvironmentContributors processWithoutProfiles(ConfigDataEnvironmentContributors contributors,
-			ConfigDataImporter importer, ConfigDataActivationContext activationContext) {
+																	 ConfigDataImporter importer, ConfigDataActivationContext activationContext) {
 		this.logger.trace("Processing config data environment contributors with initial activation context");
 		contributors = contributors.withProcessedImports(importer, activationContext);
 		registerBootstrapBinder(contributors, activationContext, DENY_INACTIVE_BINDING);
@@ -264,7 +265,7 @@ class ConfigDataEnvironment {
 	}
 
 	private ConfigDataActivationContext withProfiles(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext) {
+													 ConfigDataActivationContext activationContext) {
 		this.logger.trace("Deducing profiles from current config data environment contributors");
 		Binder binder = contributors.getBinder(activationContext,
 				(contributor) -> !contributor.hasConfigDataOption(ConfigData.Option.IGNORE_PROFILES),
@@ -274,8 +275,7 @@ class ConfigDataEnvironment {
 			additionalProfiles.addAll(getIncludedProfiles(contributors, activationContext));
 			Profiles profiles = new Profiles(this.environment, binder, additionalProfiles);
 			return activationContext.withProfiles(profiles);
-		}
-		catch (BindException ex) {
+		} catch (BindException ex) {
 			if (ex.getCause() instanceof InactiveConfigDataAccessException) {
 				throw (InactiveConfigDataAccessException) ex.getCause();
 			}
@@ -284,7 +284,7 @@ class ConfigDataEnvironment {
 	}
 
 	private Collection<? extends String> getIncludedProfiles(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext) {
+															 ConfigDataActivationContext activationContext) {
 		PlaceholdersResolver placeholdersResolver = new ConfigDataEnvironmentContributorPlaceholdersResolver(
 				contributors, activationContext, null, true);
 		Set<String> result = new LinkedHashSet<>();
@@ -306,7 +306,7 @@ class ConfigDataEnvironment {
 	}
 
 	private ConfigDataEnvironmentContributors processWithProfiles(ConfigDataEnvironmentContributors contributors,
-			ConfigDataImporter importer, ConfigDataActivationContext activationContext) {
+																  ConfigDataImporter importer, ConfigDataActivationContext activationContext) {
 		this.logger.trace("Processing config data environment contributors with profile activation context");
 		contributors = contributors.withProcessedImports(importer, activationContext);
 		registerBootstrapBinder(contributors, activationContext, ALLOW_INACTIVE_BINDING);
@@ -314,14 +314,14 @@ class ConfigDataEnvironment {
 	}
 
 	private void registerBootstrapBinder(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext, BinderOption... binderOptions) {
+										 ConfigDataActivationContext activationContext, BinderOption... binderOptions) {
 		this.bootstrapContext.register(Binder.class, InstanceSupplier
 				.from(() -> contributors.getBinder(activationContext, binderOptions)).withScope(Scope.PROTOTYPE));
 	}
 
 	private void applyToEnvironment(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext, Set<ConfigDataLocation> loadedLocations,
-			Set<ConfigDataLocation> optionalLocations) {
+									ConfigDataActivationContext activationContext, Set<ConfigDataLocation> loadedLocations,
+									Set<ConfigDataLocation> optionalLocations) {
 		checkForInvalidProperties(contributors);
 		checkMandatoryLocations(contributors, activationContext, loadedLocations, optionalLocations);
 		MutablePropertySources propertySources = this.environment.getPropertySources();
@@ -336,7 +336,7 @@ class ConfigDataEnvironment {
 	}
 
 	private void applyContributor(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext, MutablePropertySources propertySources) {
+								  ConfigDataActivationContext activationContext, MutablePropertySources propertySources) {
 		this.logger.trace("Applying config data environment contributions");
 		for (ConfigDataEnvironmentContributor contributor : contributors) {
 			PropertySource<?> propertySource = contributor.getPropertySource();
@@ -344,8 +344,7 @@ class ConfigDataEnvironment {
 				if (!contributor.isActive(activationContext)) {
 					this.logger.trace(
 							LogMessage.format("Skipping inactive property source '%s'", propertySource.getName()));
-				}
-				else {
+				} else {
 					this.logger
 							.trace(LogMessage.format("Adding imported property source '%s'", propertySource.getName()));
 					propertySources.addLast(propertySource);
@@ -363,8 +362,8 @@ class ConfigDataEnvironment {
 	}
 
 	private void checkMandatoryLocations(ConfigDataEnvironmentContributors contributors,
-			ConfigDataActivationContext activationContext, Set<ConfigDataLocation> loadedLocations,
-			Set<ConfigDataLocation> optionalLocations) {
+										 ConfigDataActivationContext activationContext, Set<ConfigDataLocation> loadedLocations,
+										 Set<ConfigDataLocation> optionalLocations) {
 		Set<ConfigDataLocation> mandatoryLocations = new LinkedHashSet<>();
 		for (ConfigDataEnvironmentContributor contributor : contributors) {
 			if (contributor.isActive(activationContext)) {

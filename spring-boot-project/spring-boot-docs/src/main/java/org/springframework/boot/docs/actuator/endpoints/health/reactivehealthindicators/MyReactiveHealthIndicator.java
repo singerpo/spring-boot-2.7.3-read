@@ -29,7 +29,7 @@ public class MyReactiveHealthIndicator implements ReactiveHealthIndicator {
 	public Mono<Health> health() {
 		// @formatter:off
 		return doHealthCheck().onErrorResume((exception) ->
-			Mono.just(new Health.Builder().down(exception).build()));
+				Mono.just(new Health.Builder().down(exception).build()));
 		// @formatter:on
 	}
 

@@ -21,9 +21,9 @@ package org.springframework.boot.availability;
  * usually implemented on an {@code enum} type.
  *
  * @author Phillip Webb
- * @since 2.3.0
  * @see LivenessState
  * @see ReadinessState
+ * @since 2.3.0
  */
 public interface AvailabilityState {
 

@@ -33,11 +33,11 @@ import io.micrometer.core.instrument.Tag;
 public interface GraphQlTagsContributor {
 
 	Iterable<Tag> getExecutionTags(InstrumentationExecutionParameters parameters, ExecutionResult result,
-			Throwable exception);
+								   Throwable exception);
 
 	Iterable<Tag> getErrorTags(InstrumentationExecutionParameters parameters, GraphQLError error);
 
 	Iterable<Tag> getDataFetchingTags(DataFetcher<?> dataFetcher, InstrumentationFieldFetchParameters parameters,
-			Throwable exception);
+									  Throwable exception);
 
 }

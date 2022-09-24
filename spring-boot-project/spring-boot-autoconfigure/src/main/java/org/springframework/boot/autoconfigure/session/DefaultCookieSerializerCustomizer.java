@@ -30,6 +30,7 @@ public interface DefaultCookieSerializerCustomizer {
 
 	/**
 	 * Customize the cookie serializer.
+	 *
 	 * @param cookieSerializer the {@code DefaultCookieSerializer} to customize
 	 */
 	void customize(DefaultCookieSerializer cookieSerializer);

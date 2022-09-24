@@ -51,12 +51,12 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @author Andy Wilkinson
  * @author Stephane Nicoll
  * @author Brian Clozel
- * @since 1.4.0
  * @see AutoConfigureWebMvc
+ * @since 1.4.0
  */
-@AutoConfiguration(after = { WebMvcAutoConfiguration.class, WebTestClientAutoConfiguration.class })
+@AutoConfiguration(after = {WebMvcAutoConfiguration.class, WebTestClientAutoConfiguration.class})
 @ConditionalOnWebApplication(type = Type.SERVLET)
-@EnableConfigurationProperties({ ServerProperties.class, WebMvcProperties.class })
+@EnableConfigurationProperties({ServerProperties.class, WebMvcProperties.class})
 public class MockMvcAutoConfiguration {
 
 	private final WebApplicationContext context;
@@ -104,7 +104,7 @@ public class MockMvcAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ WebClient.class, WebTestClient.class })
+	@ConditionalOnClass({WebClient.class, WebTestClient.class})
 	static class WebTestClientMockMvcConfiguration {
 
 		@Bean

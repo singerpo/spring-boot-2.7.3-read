@@ -42,8 +42,7 @@ class BeansOfTypeDetector {
 			try {
 				String[] names = beanFactory.getBeanNamesForType(type, true, false);
 				Arrays.stream(names).map(BeanFactoryUtils::transformedBeanName).forEach(beanNames::add);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				// Continue
 			}
 		}

@@ -117,8 +117,7 @@ public class MessageSourceAutoConfiguration {
 			try {
 				return new PathMatchingResourcePatternResolver(classLoader)
 						.getResources("classpath*:" + target + ".properties");
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return NO_RESOURCES;
 			}
 		}

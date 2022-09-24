@@ -32,13 +32,14 @@ import java.time.temporal.ChronoUnit;
  * @author Edson Chávez
  * @since 2.3.0
  */
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface PeriodUnit {
 
 	/**
 	 * The Period unit to use if one is not specified.
+	 *
 	 * @return the Period unit
 	 */
 	ChronoUnit value();

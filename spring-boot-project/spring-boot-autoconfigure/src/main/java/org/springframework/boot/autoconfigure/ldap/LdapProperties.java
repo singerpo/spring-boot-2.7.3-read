@@ -119,7 +119,7 @@ public class LdapProperties {
 
 	public String[] determineUrls(Environment environment) {
 		if (ObjectUtils.isEmpty(this.urls)) {
-			return new String[] { "ldap://localhost:" + determinePort(environment) };
+			return new String[]{"ldap://localhost:" + determinePort(environment)};
 		}
 		return this.urls;
 	}

@@ -65,15 +65,13 @@ public class OutputCaptureRule implements TestRule, CapturedOutput {
 				OutputCaptureRule.this.delegate.push();
 				try {
 					base.evaluate();
-				}
-				finally {
+				} finally {
 					try {
 						if (!OutputCaptureRule.this.matchers.isEmpty()) {
 							String output = OutputCaptureRule.this.delegate.toString();
 							MatcherAssert.assertThat(output, allOf(OutputCaptureRule.this.matchers));
 						}
-					}
-					finally {
+					} finally {
 						OutputCaptureRule.this.delegate.pop();
 					}
 				}
@@ -104,6 +102,7 @@ public class OutputCaptureRule implements TestRule, CapturedOutput {
 	/**
 	 * Verify that the output is matched by the supplied {@code matcher}. Verification is
 	 * performed after the test method has executed.
+	 *
 	 * @param matcher the matcher
 	 */
 	public void expect(Matcher<? super String> matcher) {

@@ -38,15 +38,15 @@ import org.springframework.context.annotation.Import;
  *
  * @author Eddú Meléndez
  * @author Stephane Nicoll
- * @since 1.3.0
  * @see ArtemisProperties
+ * @since 1.3.0
  */
 @AutoConfiguration(before = JmsAutoConfiguration.class, after = JndiConnectionFactoryAutoConfiguration.class)
-@ConditionalOnClass({ ConnectionFactory.class, ActiveMQConnectionFactory.class })
+@ConditionalOnClass({ConnectionFactory.class, ActiveMQConnectionFactory.class})
 @ConditionalOnMissingBean(ConnectionFactory.class)
-@EnableConfigurationProperties({ ArtemisProperties.class, JmsProperties.class })
-@Import({ ArtemisEmbeddedServerConfiguration.class, ArtemisXAConnectionFactoryConfiguration.class,
-		ArtemisConnectionFactoryConfiguration.class })
+@EnableConfigurationProperties({ArtemisProperties.class, JmsProperties.class})
+@Import({ArtemisEmbeddedServerConfiguration.class, ArtemisXAConnectionFactoryConfiguration.class,
+		ArtemisConnectionFactoryConfiguration.class})
 public class ArtemisAutoConfiguration {
 
 }

@@ -63,7 +63,8 @@ public class CachingOperationInvoker implements OperationInvoker {
 	/**
 	 * Create a new instance with the target {@link OperationInvoker} to use to compute
 	 * the response and the time to live for the cache.
-	 * @param invoker the {@link OperationInvoker} this instance wraps
+	 *
+	 * @param invoker    the {@link OperationInvoker} this instance wraps
 	 * @param timeToLive the maximum time in milliseconds that a response can be cached
 	 */
 	CachingOperationInvoker(OperationInvoker invoker, long timeToLive) {
@@ -75,6 +76,7 @@ public class CachingOperationInvoker implements OperationInvoker {
 
 	/**
 	 * Return the maximum time in milliseconds that a response can be cached.
+	 *
 	 * @return the time to live of a response
 	 */
 	public long getTimeToLive() {
@@ -116,8 +118,7 @@ public class CachingOperationInvoker implements OperationInvoker {
 					iterator.remove();
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 		}
 	}
 
@@ -193,8 +194,8 @@ public class CachingOperationInvoker implements OperationInvoker {
 
 	private static final class CacheKey {
 
-		private static final Class<?>[] CACHEABLE_TYPES = new Class<?>[] { ApiVersion.class, SecurityContext.class,
-				WebServerNamespace.class };
+		private static final Class<?>[] CACHEABLE_TYPES = new Class<?>[]{ApiVersion.class, SecurityContext.class,
+				WebServerNamespace.class};
 
 		private final ApiVersion apiVersion;
 

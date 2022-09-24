@@ -44,6 +44,7 @@ public class HttpTunnelPayloadForwarder {
 
 	/**
 	 * Create a new {@link HttpTunnelPayloadForwarder} instance.
+	 *
 	 * @param targetChannel the target channel
 	 */
 	public HttpTunnelPayloadForwarder(WritableByteChannel targetChannel) {

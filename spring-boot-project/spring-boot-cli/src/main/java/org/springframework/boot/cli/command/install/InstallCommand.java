@@ -55,8 +55,7 @@ public class InstallCommand extends OptionParsingCommand {
 					"Please specify at least one dependency, in the form group:artifact:version, to install");
 			try {
 				new Installer(options, this).install(args);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				String message = ex.getMessage();
 				Log.error((message != null) ? message : ex.getClass().toString());
 			}

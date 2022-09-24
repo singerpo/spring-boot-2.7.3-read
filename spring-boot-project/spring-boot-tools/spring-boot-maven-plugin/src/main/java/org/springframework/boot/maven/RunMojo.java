@@ -57,6 +57,7 @@ public class RunMojo extends AbstractRunMojo {
 
 	/**
 	 * Whether the JVM's launch should be optimized.
+	 *
 	 * @since 2.2.0
 	 */
 	@Parameter(property = "spring-boot.run.optimizedLaunch", defaultValue = "true")
@@ -109,8 +110,7 @@ public class RunMojo extends AbstractRunMojo {
 			RunProcess runProcess = new RunProcess(workingDirectory, getJavaExecutable());
 			Runtime.getRuntime().addShutdownHook(new Thread(new RunProcessKiller(runProcess)));
 			return runProcess.run(true, args, environmentVariables);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new MojoExecutionException("Could not exec java", ex);
 		}
 	}
@@ -137,8 +137,7 @@ public class RunMojo extends AbstractRunMojo {
 					try {
 						hasNonDaemonThreads = true;
 						thread.join();
-					}
-					catch (InterruptedException ex) {
+					} catch (InterruptedException ex) {
 						Thread.currentThread().interrupt();
 					}
 				}
@@ -160,8 +159,7 @@ public class RunMojo extends AbstractRunMojo {
 			try (URLClassLoader classLoader = new URLClassLoader(urls)) {
 				return (classLoader.findResource(RESTARTER_CLASS_LOCATION) != null);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}

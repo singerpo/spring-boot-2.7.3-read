@@ -17,23 +17,23 @@ import java.util.Map;
 public class ThymeleafController {
 
 	@RequestMapping("thymeleaf")
-	public String thymeleaf(ModelMap map){
+	public String thymeleaf(ModelMap map) {
 
-		map.put("thText","th:text设置文本内容 <b>加粗</b>");
-		map.put("thUText","th:utext 设置文本内容 <b>加粗</b>");
-		map.put("thValue","thValue 设置当前元素的value值");
+		map.put("thText", "th:text设置文本内容 <b>加粗</b>");
+		map.put("thUText", "th:utext 设置文本内容 <b>加粗</b>");
+		map.put("thValue", "thValue 设置当前元素的value值");
 		map.put("thEach", Arrays.asList("th:each", "遍历列表"));
-		map.put("thIf","msg is not null");
-		map.put("thObject",new Person("zhangsan",12));
+		map.put("thIf", "msg is not null");
+		map.put("thObject", new Person("zhangsan", 12));
 		return "thymeleaf";
 	}
 
 	@RequestMapping("standardExpression")
-	public String standardExpression(ModelMap map){
+	public String standardExpression(ModelMap map) {
 		map.put("Str", "Blog");
 		map.put("Bool", true);
-		map.put("Array", new Integer[]{1,2,3,4});
-		map.put("List", Arrays.asList(1,3,2,4,0));
+		map.put("Array", new Integer[]{1, 2, 3, 4});
+		map.put("List", Arrays.asList(1, 3, 2, 4, 0));
 		Map hashMap = new HashMap();
 		hashMap.put("thName", "${#...}");
 		hashMap.put("desc", "变量表达式内置方法");
@@ -45,12 +45,12 @@ public class ThymeleafController {
 	}
 
 	@RequestMapping("fragment")
-	public String fragment(){
+	public String fragment() {
 		return "fragment";
 	}
 }
 
-class Person{
+class Person {
 	private String name;
 	private int age;
 

@@ -48,7 +48,7 @@ class AppOpticsMetricsExportAutoConfigurationTests {
 	void autoConfiguresItsConfigAndMeterRegistry() {
 		this.contextRunner.withPropertyValues("management.metrics.export.appoptics.api-token=abcde")
 				.withUserConfiguration(BaseConfiguration.class).run((context) -> assertThat(context)
-						.hasSingleBean(AppOpticsMeterRegistry.class).hasSingleBean(AppOpticsConfig.class));
+				.hasSingleBean(AppOpticsMeterRegistry.class).hasSingleBean(AppOpticsConfig.class));
 	}
 
 	@Test
@@ -86,11 +86,11 @@ class AppOpticsMetricsExportAutoConfigurationTests {
 	void stopsMeterRegistryWhenContextIsClosed() {
 		this.contextRunner.withPropertyValues("management.metrics.export.appoptics.api-token=abcde")
 				.withUserConfiguration(BaseConfiguration.class).run((context) -> {
-					AppOpticsMeterRegistry registry = context.getBean(AppOpticsMeterRegistry.class);
-					assertThat(registry.isClosed()).isFalse();
-					context.close();
-					assertThat(registry.isClosed()).isTrue();
-				});
+			AppOpticsMeterRegistry registry = context.getBean(AppOpticsMeterRegistry.class);
+			assertThat(registry.isClosed()).isFalse();
+			context.close();
+			assertThat(registry.isClosed()).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

@@ -65,8 +65,9 @@ class MessageSourceMessageInterpolator implements MessageInterpolator {
 	 * <p>
 	 * The message parameter prefix <code>&#123;</code> and suffix <code>&#125;</code> can
 	 * be escaped using {@code \}, e.g. <code>\&#123;escaped\&#125;</code>.
+	 *
 	 * @param message the message containing the parameters to be replaced
-	 * @param locale the locale to use when resolving replacements
+	 * @param locale  the locale to use when resolving replacements
 	 * @return the message with parameters replaced
 	 */
 	private String replaceParameters(String message, Locale locale) {
@@ -81,14 +82,12 @@ class MessageSourceMessageInterpolator implements MessageInterpolator {
 		for (int i = 0; i < buf.length(); i++) {
 			if (buf.charAt(i) == ESCAPE) {
 				i++;
-			}
-			else if (buf.charAt(i) == PREFIX) {
+			} else if (buf.charAt(i) == PREFIX) {
 				if (startIndex == -1) {
 					startIndex = i;
 				}
 				parentheses++;
-			}
-			else if (buf.charAt(i) == SUFFIX) {
+			} else if (buf.charAt(i) == SUFFIX) {
 				if (parentheses > 0) {
 					parentheses--;
 				}

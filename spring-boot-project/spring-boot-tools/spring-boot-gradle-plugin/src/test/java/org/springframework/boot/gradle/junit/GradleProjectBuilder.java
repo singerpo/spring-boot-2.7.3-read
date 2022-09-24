@@ -71,8 +71,7 @@ public final class GradleProjectBuilder {
 			NativeServices.initialize(userHome);
 			try {
 				ProjectBuilderImpl.getGlobalServices();
-			}
-			catch (Throwable ignore) {
+			} catch (Throwable ignore) {
 			}
 		}
 		return builder.build();

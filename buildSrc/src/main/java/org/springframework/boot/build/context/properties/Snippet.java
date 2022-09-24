@@ -86,13 +86,15 @@ class Snippet {
 
 		/**
 		 * Accept the given prefix using the meta-data description.
+		 *
 		 * @param prefix the prefix to accept
 		 */
 		void accept(String prefix);
 
 		/**
 		 * Accept the given prefix with a defined description.
-		 * @param prefix the prefix to accept
+		 *
+		 * @param prefix      the prefix to accept
 		 * @param description the description to use
 		 */
 		void accept(String prefix, String description);

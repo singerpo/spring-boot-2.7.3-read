@@ -30,18 +30,19 @@ import org.springframework.web.context.WebApplicationContext;
  * See {@link ApplicationContextAssertProvider} for more details.
  *
  * @author Phillip Webb
- * @since 2.0.0
  * @see WebApplicationContextRunner
  * @see WebApplicationContext
+ * @since 2.0.0
  */
 public interface AssertableWebApplicationContext
 		extends ApplicationContextAssertProvider<ConfigurableWebApplicationContext>, ConfigurableWebApplicationContext {
 
 	/**
 	 * Factory method to create a new {@link AssertableWebApplicationContext} instance.
+	 *
 	 * @param contextSupplier a supplier that will either return a fully configured
-	 * {@link ConfigurableWebApplicationContext} or throw an exception if the context
-	 * fails to start.
+	 *                        {@link ConfigurableWebApplicationContext} or throw an exception if the context
+	 *                        fails to start.
 	 * @return a {@link AssertableWebApplicationContext} instance
 	 */
 	static AssertableWebApplicationContext get(Supplier<? extends ConfigurableWebApplicationContext> contextSupplier) {

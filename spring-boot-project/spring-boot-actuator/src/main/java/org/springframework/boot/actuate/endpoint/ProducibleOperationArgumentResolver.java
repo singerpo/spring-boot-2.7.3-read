@@ -39,6 +39,7 @@ public class ProducibleOperationArgumentResolver implements OperationArgumentRes
 
 	/**
 	 * Create a new {@link ProducibleOperationArgumentResolver} instance.
+	 *
 	 * @param accepts supplier that returns accepted mime types
 	 */
 	public ProducibleOperationArgumentResolver(Supplier<List<String>> accepts) {
@@ -72,7 +73,7 @@ public class ProducibleOperationArgumentResolver implements OperationArgumentRes
 	}
 
 	private Enum<? extends Producible<?>> mostRecent(Enum<? extends Producible<?>> existing,
-			Enum<? extends Producible<?>> candidate) {
+													 Enum<? extends Producible<?>> candidate) {
 		int existingOrdinal = (existing != null) ? existing.ordinal() : -1;
 		int candidateOrdinal = (candidate != null) ? candidate.ordinal() : -1;
 		return (candidateOrdinal > existingOrdinal) ? candidate : existing;

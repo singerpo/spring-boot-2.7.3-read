@@ -145,7 +145,7 @@ class QuartzEndpointDocumentationTests extends MockMvcEndpointDocumentationTests
 	private static final List<FieldDescriptor> customTriggerSummary = Collections.singletonList(
 			fieldWithPath("trigger").description("A toString representation of the custom trigger instance."));
 
-	private static final FieldDescriptor[] commonCronDetails = new FieldDescriptor[] {
+	private static final FieldDescriptor[] commonCronDetails = new FieldDescriptor[]{
 			fieldWithPath("group").description("Name of the group."),
 			fieldWithPath("name").description("Name of the trigger."),
 			fieldWithPath("description").description("Description of the trigger, if any."),
@@ -159,7 +159,7 @@ class QuartzEndpointDocumentationTests extends MockMvcEndpointDocumentationTests
 			fieldWithPath("finalFireTime").optional().type(JsonFieldType.STRING)
 					.description("Last time at which the Trigger will fire, if any."),
 			fieldWithPath("data").optional().type(JsonFieldType.OBJECT)
-					.description("Job data map keyed by name, if any.") };
+					.description("Job data map keyed by name, if any.")};
 
 	@MockBean
 	private Scheduler scheduler;
@@ -234,13 +234,13 @@ class QuartzEndpointDocumentationTests extends MockMvcEndpointDocumentationTests
 						fieldWithPath("triggers.calendarInterval")
 								.description("Calendar interval triggers keyed by name, if any."),
 						fieldWithPath("triggers.custom").description("Any other triggers keyed by name, if any."))
-								.andWithPrefix("triggers.cron.*.", concat(triggerSummary, cronTriggerSummary))
-								.andWithPrefix("triggers.simple.*.", concat(triggerSummary, simpleTriggerSummary))
-								.andWithPrefix("triggers.dailyTimeInterval.*.",
-										concat(triggerSummary, dailyTimeIntervalTriggerSummary))
-								.andWithPrefix("triggers.calendarInterval.*.",
-										concat(triggerSummary, calendarIntervalTriggerSummary))
-								.andWithPrefix("triggers.custom.*.", concat(triggerSummary, customTriggerSummary))));
+						.andWithPrefix("triggers.cron.*.", concat(triggerSummary, cronTriggerSummary))
+						.andWithPrefix("triggers.simple.*.", concat(triggerSummary, simpleTriggerSummary))
+						.andWithPrefix("triggers.dailyTimeInterval.*.",
+								concat(triggerSummary, dailyTimeIntervalTriggerSummary))
+						.andWithPrefix("triggers.calendarInterval.*.",
+								concat(triggerSummary, calendarIntervalTriggerSummary))
+						.andWithPrefix("triggers.custom.*.", concat(triggerSummary, customTriggerSummary))));
 	}
 
 	@Test
@@ -317,13 +317,13 @@ class QuartzEndpointDocumentationTests extends MockMvcEndpointDocumentationTests
 		this.mockMvc.perform(get("/actuator/quartz/triggers/samples/example")).andExpect(status().isOk())
 				.andDo(document("quartz/trigger-details-calendar-interval", relaxedResponseFields(
 						fieldWithPath("calendarInterval").description("Calendar interval trigger specific details."))
-								.andWithPrefix("calendarInterval.", calendarIntervalTriggerSummary)
-								.and(timesTriggered("calendarInterval."), fieldWithPath(
-										"calendarInterval.preserveHourOfDayAcrossDaylightSavings").description(
-												"Whether to fire the trigger at the same time of day, regardless of daylight "
-														+ "saving time transitions."),
-										fieldWithPath("calendarInterval.skipDayIfHourDoesNotExist").description(
-												"Whether to skip if the hour of the day does not exist on a given day."))));
+						.andWithPrefix("calendarInterval.", calendarIntervalTriggerSummary)
+						.and(timesTriggered("calendarInterval."), fieldWithPath(
+								"calendarInterval.preserveHourOfDayAcrossDaylightSavings").description(
+								"Whether to fire the trigger at the same time of day, regardless of daylight "
+										+ "saving time transitions."),
+								fieldWithPath("calendarInterval.skipDayIfHourDoesNotExist").description(
+										"Whether to skip if the hour of the day does not exist on a given day."))));
 	}
 
 	@Test
@@ -333,8 +333,8 @@ class QuartzEndpointDocumentationTests extends MockMvcEndpointDocumentationTests
 				.andDo(document("quartz/trigger-details-daily-time-interval",
 						relaxedResponseFields(fieldWithPath("dailyTimeInterval")
 								.description("Daily time interval trigger specific details."))
-										.andWithPrefix("dailyTimeInterval.", dailyTimeIntervalTriggerSummary)
-										.and(repeatCount("dailyTimeInterval."), timesTriggered("dailyTimeInterval."))));
+								.andWithPrefix("dailyTimeInterval.", dailyTimeIntervalTriggerSummary)
+								.and(repeatCount("dailyTimeInterval."), timesTriggered("dailyTimeInterval."))));
 	}
 
 	@Test

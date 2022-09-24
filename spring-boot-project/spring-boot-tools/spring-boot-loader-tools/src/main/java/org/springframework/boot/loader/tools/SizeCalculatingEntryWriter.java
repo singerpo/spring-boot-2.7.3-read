@@ -45,8 +45,7 @@ final class SizeCalculatingEntryWriter implements EntryWriter {
 		SizeCalculatingOutputStream outputStream = new SizeCalculatingOutputStream();
 		try {
 			entryWriter.write(outputStream);
-		}
-		finally {
+		} finally {
 			outputStream.close();
 		}
 		this.content = outputStream.getContent();
@@ -69,8 +68,7 @@ final class SizeCalculatingEntryWriter implements EntryWriter {
 	private void copy(InputStream inputStream, OutputStream outputStream) throws IOException {
 		try {
 			StreamUtils.copy(inputStream, outputStream);
-		}
-		finally {
+		} finally {
 			inputStream.close();
 		}
 	}
@@ -104,7 +102,7 @@ final class SizeCalculatingEntryWriter implements EntryWriter {
 
 		@Override
 		public void write(int b) throws IOException {
-			write(new byte[] { (byte) b }, 0, 1);
+			write(new byte[]{(byte) b}, 0, 1);
 		}
 
 		@Override

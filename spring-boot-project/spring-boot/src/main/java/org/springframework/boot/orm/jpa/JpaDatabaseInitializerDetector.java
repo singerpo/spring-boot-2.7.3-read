@@ -56,7 +56,7 @@ class JpaDatabaseInitializerDetector extends AbstractBeansOfTypeDatabaseInitiali
 	}
 
 	private void configureOtherInitializersToDependOnJpaInitializers(ConfigurableListableBeanFactory beanFactory,
-			Set<String> dataSourceInitializerNames) {
+																	 Set<String> dataSourceInitializerNames) {
 		Set<String> jpaInitializers = new HashSet<>();
 		Set<String> otherInitializers = new HashSet<>(dataSourceInitializerNames);
 		Iterator<String> iterator = otherInitializers.iterator();

@@ -52,7 +52,7 @@ class CloudFoundrySecurityInterceptor {
 	private static final SecurityResponse SUCCESS = SecurityResponse.success();
 
 	CloudFoundrySecurityInterceptor(TokenValidator tokenValidator,
-			CloudFoundrySecurityService cloudFoundrySecurityService, String applicationId) {
+									CloudFoundrySecurityService cloudFoundrySecurityService, String applicationId) {
 		this.tokenValidator = tokenValidator;
 		this.cloudFoundrySecurityService = cloudFoundrySecurityService;
 		this.applicationId = applicationId;
@@ -75,8 +75,7 @@ class CloudFoundrySecurityInterceptor {
 				return SUCCESS;
 			}
 			check(request, endpointId);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.error(ex);
 			if (ex instanceof CloudFoundryAuthorizationException) {
 				CloudFoundryAuthorizationException cfException = (CloudFoundryAuthorizationException) ex;

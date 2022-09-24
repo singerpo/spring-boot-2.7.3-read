@@ -50,8 +50,7 @@ public interface ApplicationContextFactory {
 				}
 			}
 			return new AnnotationConfigApplicationContext();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable create a default ApplicationContext instance, "
 					+ "you may need a custom ApplicationContextFactory", ex);
 		}
@@ -60,6 +59,7 @@ public interface ApplicationContextFactory {
 	/**
 	 * Creates the {@link ConfigurableApplicationContext application context} for a
 	 * {@link SpringApplication}, respecting the given {@code webApplicationType}.
+	 *
 	 * @param webApplicationType the web application type
 	 * @return the newly created application context
 	 */
@@ -68,6 +68,7 @@ public interface ApplicationContextFactory {
 	/**
 	 * Creates an {@code ApplicationContextFactory} that will create contexts by
 	 * instantiating the given {@code contextClass} via its primary constructor.
+	 *
 	 * @param contextClass the context class
 	 * @return the factory that will instantiate the context class
 	 * @see BeanUtils#instantiateClass(Class)
@@ -79,8 +80,9 @@ public interface ApplicationContextFactory {
 	/**
 	 * Creates an {@code ApplicationContextFactory} that will create contexts by calling
 	 * the given {@link Supplier}.
+	 *
 	 * @param supplier the context supplier, for example
-	 * {@code AnnotationConfigApplicationContext::new}
+	 *                 {@code AnnotationConfigApplicationContext::new}
 	 * @return the factory that will instantiate the context class
 	 */
 	static ApplicationContextFactory of(Supplier<ConfigurableApplicationContext> supplier) {

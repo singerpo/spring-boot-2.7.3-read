@@ -31,8 +31,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * annotation directly.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see JsonTest
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

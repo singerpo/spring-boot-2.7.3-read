@@ -79,8 +79,7 @@ class TomcatEmbeddedContext extends StandardContext {
 	private void load(Wrapper wrapper) {
 		try {
 			wrapper.load();
-		}
-		catch (ServletException ex) {
+		} catch (ServletException ex) {
 			String message = sm.getString("standardContext.loadOnStartup.loadException", getName(), wrapper.getName());
 			if (getComputedFailCtxIfServletStartFails()) {
 				throw new WebServerException(message, ex);
@@ -95,16 +94,16 @@ class TomcatEmbeddedContext extends StandardContext {
 	 * initialize them later the class loader may have changed, so wrap the call to
 	 * loadOnStartup in what we think is going to be the main webapp classloader at
 	 * runtime.
+	 *
 	 * @param classLoader the class loader to use
-	 * @param code the code to run
+	 * @param code        the code to run
 	 */
 	private void doWithThreadContextClassLoader(ClassLoader classLoader, Runnable code) {
 		ClassLoader existingLoader = (classLoader != null) ? ClassUtils.overrideThreadContextClassLoader(classLoader)
 				: null;
 		try {
 			code.run();
-		}
-		finally {
+		} finally {
 			if (existingLoader != null) {
 				ClassUtils.overrideThreadContextClassLoader(existingLoader);
 			}

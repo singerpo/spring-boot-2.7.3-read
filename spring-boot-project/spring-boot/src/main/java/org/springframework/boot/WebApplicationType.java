@@ -48,8 +48,8 @@ public enum WebApplicationType {
 	 */
 	REACTIVE;
 
-	private static final String[] SERVLET_INDICATOR_CLASSES = { "javax.servlet.Servlet",
-			"org.springframework.web.context.ConfigurableWebApplicationContext" };
+	private static final String[] SERVLET_INDICATOR_CLASSES = {"javax.servlet.Servlet",
+			"org.springframework.web.context.ConfigurableWebApplicationContext"};
 
 	private static final String WEBMVC_INDICATOR_CLASS = "org.springframework.web.servlet.DispatcherServlet";
 
@@ -60,6 +60,7 @@ public enum WebApplicationType {
 	/**
 	 * 判断当前应用程序的类型
 	 * 非Web项目，servlet web项目，响应式web项目
+	 *
 	 * @return
 	 */
 	static WebApplicationType deduceFromClasspath() {

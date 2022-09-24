@@ -134,8 +134,7 @@ class LayersIndexTests {
 				String expectedContent = new String(FileCopyUtils.copyToByteArray(in), StandardCharsets.UTF_8);
 				expectedContent = expectedContent.replace("\r", "");
 				assertThat(actualContent).isEqualTo(expectedContent);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 

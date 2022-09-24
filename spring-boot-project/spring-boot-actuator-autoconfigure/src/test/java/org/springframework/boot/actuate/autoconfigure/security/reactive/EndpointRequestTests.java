@@ -211,7 +211,7 @@ class EndpointRequestTests {
 	}
 
 	private RequestMatcherAssert assertMatcher(ServerWebExchangeMatcher matcher,
-			PathMappedEndpoints pathMappedEndpoints) {
+											   PathMappedEndpoints pathMappedEndpoints) {
 		StaticApplicationContext context = new StaticApplicationContext();
 		context.registerBean(WebEndpointProperties.class);
 		if (pathMappedEndpoints != null) {

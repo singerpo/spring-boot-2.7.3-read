@@ -88,8 +88,7 @@ class AbstractDependsOnBeanFactoryPostProcessorTests {
 	private BeanDefinition getBeanDefinition(String beanName, ConfigurableListableBeanFactory beanFactory) {
 		try {
 			return beanFactory.getBeanDefinition(beanName);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			BeanFactory parentBeanFactory = beanFactory.getParentBeanFactory();
 			if (parentBeanFactory instanceof ConfigurableListableBeanFactory) {
 				return getBeanDefinition(beanName, (ConfigurableListableBeanFactory) parentBeanFactory);

@@ -44,7 +44,7 @@ class InputStreamSourceToByteArrayConverterTests {
 
 	@ConversionServiceTest
 	void convertConvertsSource(ConversionService conversionService) {
-		InputStreamSource source = () -> new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+		InputStreamSource source = () -> new ByteArrayInputStream(new byte[]{0, 1, 2});
 		assertThat(conversionService.convert(source, byte[].class)).containsExactly(0, 1, 2);
 	}
 

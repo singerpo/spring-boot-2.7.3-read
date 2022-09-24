@@ -62,17 +62,17 @@ import org.springframework.util.StringUtils;
  * @since 1.0.0
  */
 @AutoConfiguration(after = HibernateJpaAutoConfiguration.class)
-@ConditionalOnClass({ JobLauncher.class, DataSource.class })
+@ConditionalOnClass({JobLauncher.class, DataSource.class})
 @ConditionalOnBean(JobLauncher.class)
 @EnableConfigurationProperties(BatchProperties.class)
-@Import({ BatchConfigurerConfiguration.class, DatabaseInitializationDependencyConfigurer.class })
+@Import({BatchConfigurerConfiguration.class, DatabaseInitializationDependencyConfigurer.class})
 public class BatchAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty(prefix = "spring.batch.job", name = "enabled", havingValue = "true", matchIfMissing = true)
 	public JobLauncherApplicationRunner jobLauncherApplicationRunner(JobLauncher jobLauncher, JobExplorer jobExplorer,
-			JobRepository jobRepository, BatchProperties properties) {
+																	 JobRepository jobRepository, BatchProperties properties) {
 		JobLauncherApplicationRunner runner = new JobLauncherApplicationRunner(jobLauncher, jobExplorer, jobRepository);
 		String jobNames = properties.getJob().getNames();
 		if (StringUtils.hasText(jobNames)) {
@@ -90,8 +90,8 @@ public class BatchAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(JobOperator.class)
 	public SimpleJobOperator jobOperator(ObjectProvider<JobParametersConverter> jobParametersConverter,
-			JobExplorer jobExplorer, JobLauncher jobLauncher, ListableJobLocator jobRegistry,
-			JobRepository jobRepository) throws Exception {
+										 JobExplorer jobExplorer, JobLauncher jobLauncher, ListableJobLocator jobRegistry,
+										 JobRepository jobRepository) throws Exception {
 		SimpleJobOperator factory = new SimpleJobOperator();
 		factory.setJobExplorer(jobExplorer);
 		factory.setJobLauncher(jobLauncher);
@@ -109,9 +109,9 @@ public class BatchAutoConfiguration {
 
 		@Bean
 		@SuppressWarnings("deprecation")
-		@ConditionalOnMissingBean({ BatchDataSourceScriptDatabaseInitializer.class, BatchDataSourceInitializer.class })
+		@ConditionalOnMissingBean({BatchDataSourceScriptDatabaseInitializer.class, BatchDataSourceInitializer.class})
 		BatchDataSourceScriptDatabaseInitializer batchDataSourceInitializer(DataSource dataSource,
-				@BatchDataSource ObjectProvider<DataSource> batchDataSource, BatchProperties properties) {
+																			@BatchDataSource ObjectProvider<DataSource> batchDataSource, BatchProperties properties) {
 			return new BatchDataSourceScriptDatabaseInitializer(batchDataSource.getIfAvailable(() -> dataSource),
 					properties.getJdbc());
 		}

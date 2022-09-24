@@ -60,7 +60,7 @@ final class ApplicationPluginAction implements PluginApplicationAction {
 	}
 
 	private void configureCreateStartScripts(Project project, ApplicationPluginConvention applicationConvention,
-			Distribution distribution, CreateStartScripts createStartScripts) {
+											 Distribution distribution, CreateStartScripts createStartScripts) {
 		createStartScripts
 				.setDescription("Generates OS-specific start scripts to run the project as a Spring Boot application.");
 		((TemplateBasedScriptGenerator) createStartScripts.getUnixStartScriptGenerator())
@@ -104,8 +104,7 @@ final class ApplicationPluginAction implements PluginApplicationAction {
 				writer.write(buffer, 0, read);
 			}
 			return writer.toString();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new GradleException("Failed to read '" + name + "'", ex);
 		}
 	}

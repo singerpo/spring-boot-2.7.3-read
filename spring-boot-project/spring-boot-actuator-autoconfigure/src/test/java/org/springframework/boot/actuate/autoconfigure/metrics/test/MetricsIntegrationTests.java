@@ -124,7 +124,7 @@ class MetricsIntegrationTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void metricsFilterRegisteredForAsyncDispatches() {
 		Map<String, FilterRegistrationBean> filterRegistrations = this.context
 				.getBeansOfType(FilterRegistrationBean.class);
@@ -136,7 +136,7 @@ class MetricsIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ MetricsAutoConfiguration.class, JvmMetricsAutoConfiguration.class,
+	@ImportAutoConfiguration({MetricsAutoConfiguration.class, JvmMetricsAutoConfiguration.class,
 			LogbackMetricsAutoConfiguration.class, SystemMetricsAutoConfiguration.class,
 			RabbitMetricsAutoConfiguration.class, CacheMetricsAutoConfiguration.class,
 			DataSourcePoolMetricsAutoConfiguration.class, HibernateMetricsAutoConfiguration.class,
@@ -144,7 +144,7 @@ class MetricsIntegrationTests {
 			WebMvcMetricsAutoConfiguration.class, JacksonAutoConfiguration.class,
 			HttpMessageConvertersAutoConfiguration.class, RestTemplateAutoConfiguration.class,
 			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
-			ServletWebServerFactoryAutoConfiguration.class })
+			ServletWebServerFactoryAutoConfiguration.class})
 	@Import(PersonController.class)
 	static class MetricsApp {
 

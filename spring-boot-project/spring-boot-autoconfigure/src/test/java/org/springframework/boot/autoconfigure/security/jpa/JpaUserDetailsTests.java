@@ -44,9 +44,9 @@ class JpaUserDetailsTests {
 	void contextLoads() {
 	}
 
-	@Import({ EmbeddedDataSourceConfiguration.class, DataSourceAutoConfiguration.class,
+	@Import({EmbeddedDataSourceConfiguration.class, DataSourceAutoConfiguration.class,
 			HibernateJpaAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class,
-			SecurityAutoConfiguration.class })
+			SecurityAutoConfiguration.class})
 	static class Main {
 
 	}

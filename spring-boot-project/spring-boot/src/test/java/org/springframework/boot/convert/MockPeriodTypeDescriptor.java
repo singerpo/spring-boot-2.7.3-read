@@ -38,7 +38,7 @@ public final class MockPeriodTypeDescriptor {
 	private MockPeriodTypeDescriptor() {
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static TypeDescriptor get(ChronoUnit unit, PeriodStyle style) {
 		TypeDescriptor descriptor = mock(TypeDescriptor.class);
 		if (unit != null) {

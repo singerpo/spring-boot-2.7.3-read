@@ -181,7 +181,7 @@ class ConfigDataLoadersTests {
 	static class BootstrappingConfigDataLoader implements ConfigDataLoader<ConfigDataResource> {
 
 		BootstrappingConfigDataLoader(ConfigurableBootstrapContext configurableBootstrapContext,
-				BootstrapRegistry bootstrapRegistry, BootstrapContext bootstrapContext) {
+									  BootstrapRegistry bootstrapRegistry, BootstrapContext bootstrapContext) {
 			assertThat(configurableBootstrapContext).isNotNull();
 			assertThat(bootstrapRegistry).isNotNull();
 			assertThat(bootstrapContext).isNotNull();

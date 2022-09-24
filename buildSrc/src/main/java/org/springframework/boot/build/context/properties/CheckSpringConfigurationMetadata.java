@@ -150,8 +150,7 @@ public class CheckSpringConfigurationMetadata extends DefaultTask {
 			lines.add("");
 			if (this.propertiesWithNoDescription.isEmpty()) {
 				lines.add("No problems found.");
-			}
-			else {
+			} else {
 				lines.add("The following properties have no description:");
 				lines.add("");
 				lines.addAll(this.propertiesWithNoDescription.stream().map((line) -> "\t" + line)

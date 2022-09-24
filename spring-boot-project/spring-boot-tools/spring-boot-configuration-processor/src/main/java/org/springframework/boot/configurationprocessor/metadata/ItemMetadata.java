@@ -23,8 +23,8 @@ import java.util.Locale;
  *
  * @author Stephane Nicoll
  * @author Phillip Webb
- * @since 1.2.0
  * @see ConfigurationMetadata
+ * @since 1.2.0
  */
 public final class ItemMetadata implements Comparable<ItemMetadata> {
 
@@ -45,7 +45,7 @@ public final class ItemMetadata implements Comparable<ItemMetadata> {
 	private ItemDeprecation deprecation;
 
 	ItemMetadata(ItemType itemType, String prefix, String name, String type, String sourceType, String sourceMethod,
-			String description, Object defaultValue, ItemDeprecation deprecation) {
+				 String description, Object defaultValue, ItemDeprecation deprecation) {
 		this.itemType = itemType;
 		this.name = buildName(prefix, name);
 		this.type = type;
@@ -212,7 +212,7 @@ public final class ItemMetadata implements Comparable<ItemMetadata> {
 	}
 
 	public static ItemMetadata newProperty(String prefix, String name, String type, String sourceType,
-			String sourceMethod, String description, Object defaultValue, ItemDeprecation deprecation) {
+										   String sourceMethod, String description, Object defaultValue, ItemDeprecation deprecation) {
 		return new ItemMetadata(ItemType.PROPERTY, prefix, name, type, sourceType, sourceMethod, description,
 				defaultValue, deprecation);
 	}

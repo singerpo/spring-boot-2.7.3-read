@@ -64,8 +64,7 @@ class HazelcastClientConfigAvailableCondition extends HazelcastConfigResourceCon
 			try (InputStream in = resource.getInputStream()) {
 				boolean clientConfig = new ClientConfigRecognizer().isRecognized(new ConfigStream(in));
 				return new ConditionOutcome(clientConfig, existingConfigurationOutcome(resource, clientConfig));
-			}
-			catch (Throwable ex) { // Hazelcast 4 specific API
+			} catch (Throwable ex) { // Hazelcast 4 specific API
 				return null;
 			}
 		}

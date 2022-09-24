@@ -40,6 +40,7 @@ public abstract class ProgressUpdateEvent extends UpdateEvent {
 
 	/**
 	 * Return the status for the update. For example, "Extracting" or "Downloading".
+	 *
 	 * @return the status of the update.
 	 */
 	public String getStatus() {
@@ -48,6 +49,7 @@ public abstract class ProgressUpdateEvent extends UpdateEvent {
 
 	/**
 	 * Return progress details if available.
+	 *
 	 * @return progress details or {@code null}
 	 */
 	public ProgressDetail getProgressDetail() {
@@ -56,6 +58,7 @@ public abstract class ProgressUpdateEvent extends UpdateEvent {
 
 	/**
 	 * Return a text based progress bar if progress information is available.
+	 *
 	 * @return the progress bar or {@code null}
 	 */
 	public String getProgress() {
@@ -79,6 +82,7 @@ public abstract class ProgressUpdateEvent extends UpdateEvent {
 
 		/**
 		 * Return the current progress value.
+		 *
 		 * @return the current progress
 		 */
 		public int getCurrent() {
@@ -87,6 +91,7 @@ public abstract class ProgressUpdateEvent extends UpdateEvent {
 
 		/**
 		 * Return the total progress possible value.
+		 *
 		 * @return the total progress possible
 		 */
 		public int getTotal() {

@@ -45,6 +45,7 @@ public abstract class Launcher {
 	/**
 	 * Launch the application. This method is the initial entry point that should be
 	 * called by a subclass {@code public static void main(String[] args)} method.
+	 *
 	 * @param args the incoming arguments
 	 * @throws Exception if the application fails to launch
 	 */
@@ -60,6 +61,7 @@ public abstract class Launcher {
 
 	/**
 	 * Create a classloader for the specified archives.
+	 *
 	 * @param archives the archives
 	 * @return the classloader
 	 * @throws Exception if the classloader cannot be created
@@ -73,6 +75,7 @@ public abstract class Launcher {
 
 	/**
 	 * Create a classloader for the specified archives.
+	 *
 	 * @param archives the archives
 	 * @return the classloader
 	 * @throws Exception if the classloader cannot be created
@@ -88,6 +91,7 @@ public abstract class Launcher {
 
 	/**
 	 * Create a classloader for the specified URLs.
+	 *
 	 * @param urls the URLs
 	 * @return the classloader
 	 * @throws Exception if the classloader cannot be created
@@ -98,7 +102,8 @@ public abstract class Launcher {
 
 	/**
 	 * Launch the application given the archive file and a fully configured classloader.
-	 * @param args the incoming arguments
+	 *
+	 * @param args        the incoming arguments
 	 * @param launchClass the launch class to run
 	 * @param classLoader the classloader
 	 * @throws Exception if the launch fails
@@ -110,8 +115,9 @@ public abstract class Launcher {
 
 	/**
 	 * Create the {@code MainMethodRunner} used to launch the application.
-	 * @param mainClass the main class
-	 * @param args the incoming arguments
+	 *
+	 * @param mainClass   the main class
+	 * @param args        the incoming arguments
 	 * @param classLoader the classloader
 	 * @return the main method runner
 	 */
@@ -121,6 +127,7 @@ public abstract class Launcher {
 
 	/**
 	 * Returns the main class that should be launched.
+	 *
 	 * @return the name of the main class
 	 * @throws Exception if the main class cannot be obtained
 	 */
@@ -128,6 +135,7 @@ public abstract class Launcher {
 
 	/**
 	 * Returns the archives that will be used to construct the class path.
+	 *
 	 * @return the class path archives
 	 * @throws Exception if the class path archives cannot be obtained
 	 * @since 2.3.0
@@ -138,6 +146,7 @@ public abstract class Launcher {
 
 	/**
 	 * Returns the archives that will be used to construct the class path.
+	 *
 	 * @return the class path archives
 	 * @throws Exception if the class path archives cannot be obtained
 	 * @deprecated since 2.3.0 for removal in 2.5.0 in favor of implementing
@@ -167,6 +176,7 @@ public abstract class Launcher {
 	 * Returns if the launcher is running in an exploded mode. If this method returns
 	 * {@code true} then only regular JARs are supported and the additional URL and
 	 * ClassLoader support infrastructure can be optimized.
+	 *
 	 * @return if the jar is exploded.
 	 * @since 2.3.0
 	 */
@@ -176,6 +186,7 @@ public abstract class Launcher {
 
 	/**
 	 * Return the root archive.
+	 *
 	 * @return the root archive
 	 * @since 2.3.1
 	 */

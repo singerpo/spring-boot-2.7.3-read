@@ -39,7 +39,7 @@ public class DockerEngineException extends RuntimeException {
 	private final Message responseMessage;
 
 	public DockerEngineException(String host, URI uri, int statusCode, String reasonPhrase, Errors errors,
-			Message responseMessage) {
+								 Message responseMessage) {
 		super(buildMessage(host, uri, statusCode, reasonPhrase, errors, responseMessage));
 		this.statusCode = statusCode;
 		this.reasonPhrase = reasonPhrase;
@@ -49,6 +49,7 @@ public class DockerEngineException extends RuntimeException {
 
 	/**
 	 * Return the status code returned by the Docker API.
+	 *
 	 * @return the statusCode the status code
 	 */
 	public int getStatusCode() {
@@ -57,6 +58,7 @@ public class DockerEngineException extends RuntimeException {
 
 	/**
 	 * Return the reason phrase returned by the Docker API.
+	 *
 	 * @return the reasonPhrase
 	 */
 	public String getReasonPhrase() {
@@ -66,6 +68,7 @@ public class DockerEngineException extends RuntimeException {
 	/**
 	 * Return the errors from the body of the Docker API response, or {@code null} if the
 	 * errors JSON could not be read.
+	 *
 	 * @return the errors or {@code null}
 	 */
 	public Errors getErrors() {
@@ -75,6 +78,7 @@ public class DockerEngineException extends RuntimeException {
 	/**
 	 * Return the message from the body of the Docker API response, or {@code null} if the
 	 * message JSON could not be read.
+	 *
 	 * @return the message or {@code null}
 	 */
 	public Message getResponseMessage() {
@@ -82,7 +86,7 @@ public class DockerEngineException extends RuntimeException {
 	}
 
 	private static String buildMessage(String host, URI uri, int statusCode, String reasonPhrase, Errors errors,
-			Message responseMessage) {
+									   Message responseMessage) {
 		Assert.notNull(host, "Host must not be null");
 		Assert.notNull(uri, "URI must not be null");
 		StringBuilder message = new StringBuilder(

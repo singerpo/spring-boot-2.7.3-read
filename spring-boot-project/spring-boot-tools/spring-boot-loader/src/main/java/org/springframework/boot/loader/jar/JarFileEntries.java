@@ -64,8 +64,7 @@ class JarFileEntries implements CentralDirectoryVisitor, Iterable<JarEntry> {
 		try {
 			Object runtimeVersion = Runtime.class.getMethod("version").invoke(null);
 			version = (int) runtimeVersion.getClass().getMethod("major").invoke(runtimeVersion);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			version = BASE_VERSION;
 		}
 		RUNTIME_VERSION = version;
@@ -270,13 +269,11 @@ class JarFileEntries implements CentralDirectoryVisitor, Iterable<JarEntry> {
 			Manifest manifest = this.jarFile.getManifest();
 			if (manifest == null) {
 				multiRelease = false;
-			}
-			else {
+			} else {
 				Attributes attributes = manifest.getMainAttributes();
 				multiRelease = attributes.containsKey(MULTI_RELEASE);
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			multiRelease = false;
 		}
 		this.multiReleaseJar = multiRelease;
@@ -284,7 +281,7 @@ class JarFileEntries implements CentralDirectoryVisitor, Iterable<JarEntry> {
 	}
 
 	private <T extends FileHeader> T doGetEntry(CharSequence name, Class<T> type, boolean cacheEntry,
-			AsciiBytes nameAlias) {
+												AsciiBytes nameAlias) {
 		int hashCode = AsciiBytes.hashCode(name);
 		T entry = getEntry(hashCode, name, NO_SUFFIX, type, cacheEntry, nameAlias);
 		if (entry == null) {
@@ -295,7 +292,7 @@ class JarFileEntries implements CentralDirectoryVisitor, Iterable<JarEntry> {
 	}
 
 	private <T extends FileHeader> T getEntry(int hashCode, CharSequence name, char suffix, Class<T> type,
-			boolean cacheEntry, AsciiBytes nameAlias) {
+											  boolean cacheEntry, AsciiBytes nameAlias) {
 		int index = getFirstIndex(hashCode);
 		while (index >= 0 && index < this.size && this.hashCodes[index] == hashCode) {
 			T entry = getEntry(index, type, cacheEntry, nameAlias);
@@ -321,8 +318,7 @@ class JarFileEntries implements CentralDirectoryVisitor, Iterable<JarEntry> {
 				this.entriesCache.put(index, entry);
 			}
 			return (T) entry;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

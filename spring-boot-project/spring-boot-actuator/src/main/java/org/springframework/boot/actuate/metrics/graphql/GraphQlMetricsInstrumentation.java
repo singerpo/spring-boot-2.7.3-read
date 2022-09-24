@@ -51,7 +51,7 @@ public class GraphQlMetricsInstrumentation extends SimpleInstrumentation {
 	private final DistributionSummary dataFetchingSummary;
 
 	public GraphQlMetricsInstrumentation(MeterRegistry registry, GraphQlTagsProvider tagsProvider,
-			AutoTimer autoTimer) {
+										 AutoTimer autoTimer) {
 		this.registry = registry;
 		this.tagsProvider = tagsProvider;
 		this.autoTimer = autoTimer;
@@ -90,7 +90,7 @@ public class GraphQlMetricsInstrumentation extends SimpleInstrumentation {
 
 	@Override
 	public DataFetcher<?> instrumentDataFetcher(DataFetcher<?> dataFetcher,
-			InstrumentationFieldFetchParameters parameters) {
+												InstrumentationFieldFetchParameters parameters) {
 		if (this.autoTimer.isEnabled() && !parameters.isTrivialDataFetcher()) {
 			return (environment) -> {
 				Timer.Sample sample = Timer.start(this.registry);
@@ -100,13 +100,11 @@ public class GraphQlMetricsInstrumentation extends SimpleInstrumentation {
 						CompletionStage<?> completion = (CompletionStage<?>) value;
 						return completion.whenComplete(
 								(result, error) -> recordDataFetcherMetric(sample, dataFetcher, parameters, error));
-					}
-					else {
+					} else {
 						recordDataFetcherMetric(sample, dataFetcher, parameters, null);
 						return value;
 					}
-				}
-				catch (Throwable throwable) {
+				} catch (Throwable throwable) {
 					recordDataFetcherMetric(sample, dataFetcher, parameters, throwable);
 					throw throwable;
 				}
@@ -116,7 +114,7 @@ public class GraphQlMetricsInstrumentation extends SimpleInstrumentation {
 	}
 
 	private void recordDataFetcherMetric(Timer.Sample sample, DataFetcher<?> dataFetcher,
-			InstrumentationFieldFetchParameters parameters, Throwable throwable) {
+										 InstrumentationFieldFetchParameters parameters, Throwable throwable) {
 		Timer.Builder timer = this.autoTimer.builder("graphql.datafetcher");
 		timer.tags(this.tagsProvider.getDataFetchingTags(dataFetcher, parameters, throwable));
 		sample.stop(timer.register(this.registry));

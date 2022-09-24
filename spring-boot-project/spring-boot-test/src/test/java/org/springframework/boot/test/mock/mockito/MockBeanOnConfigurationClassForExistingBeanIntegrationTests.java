@@ -50,7 +50,7 @@ class MockBeanOnConfigurationClassForExistingBeanIntegrationTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@MockBean(ExampleService.class)
-	@Import({ ExampleServiceCaller.class, FailingExampleService.class })
+	@Import({ExampleServiceCaller.class, FailingExampleService.class})
 	static class Config {
 
 	}

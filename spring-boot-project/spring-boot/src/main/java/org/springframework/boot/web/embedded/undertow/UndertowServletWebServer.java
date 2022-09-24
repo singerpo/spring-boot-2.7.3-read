@@ -34,8 +34,8 @@ import org.springframework.util.StringUtils;
  * @author Eddú Meléndez
  * @author Christoph Dreis
  * @author Kristine Jetzke
- * @since 2.0.0
  * @see UndertowServletWebServerFactory
+ * @since 2.0.0
  */
 public class UndertowServletWebServer extends UndertowWebServer {
 
@@ -45,14 +45,15 @@ public class UndertowServletWebServer extends UndertowWebServer {
 
 	/**
 	 * Create a new {@link UndertowServletWebServer} instance.
-	 * @param builder the builder
+	 *
+	 * @param builder              the builder
 	 * @param httpHandlerFactories the handler factories
-	 * @param contextPath the root context path
-	 * @param autoStart if the server should be started
+	 * @param contextPath          the root context path
+	 * @param autoStart            if the server should be started
 	 * @since 2.3.0
 	 */
 	public UndertowServletWebServer(Builder builder, Iterable<HttpHandlerFactory> httpHandlerFactories,
-			String contextPath, boolean autoStart) {
+									String contextPath, boolean autoStart) {
 		super(builder, httpHandlerFactories, autoStart);
 		this.contextPath = contextPath;
 		this.manager = findManager(httpHandlerFactories);

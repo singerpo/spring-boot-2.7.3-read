@@ -78,12 +78,12 @@ class Neo4jReactiveDataAutoConfigurationTests {
 	void shouldReuseExistingDatabaseNameProvider() {
 		this.contextRunner.withPropertyValues("spring.data.neo4j.database=ignored")
 				.withUserConfiguration(CustomReactiveDatabaseSelectionProviderConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(ReactiveDatabaseSelectionProvider.class);
-					StepVerifier.create(context.getBean(ReactiveDatabaseSelectionProvider.class).getDatabaseSelection())
-							.consumeNextWith(
-									(databaseSelection) -> assertThat(databaseSelection.getValue()).isEqualTo("custom"))
-							.expectComplete();
-				});
+			assertThat(context).hasSingleBean(ReactiveDatabaseSelectionProvider.class);
+			StepVerifier.create(context.getBean(ReactiveDatabaseSelectionProvider.class).getDatabaseSelection())
+					.consumeNextWith(
+							(databaseSelection) -> assertThat(databaseSelection.getValue()).isEqualTo("custom"))
+					.expectComplete();
+		});
 	}
 
 	@Test

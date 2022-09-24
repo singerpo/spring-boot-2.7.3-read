@@ -61,7 +61,8 @@ public class Instantiator<T> {
 
 	/**
 	 * Create a new {@link Instantiator} instance for the given type.
-	 * @param type the type to instantiate
+	 *
+	 * @param type                the type to instantiate
 	 * @param availableParameters consumer used to register available parameters
 	 */
 	public Instantiator(Class<?> type, Consumer<AvailableParameters> availableParameters) {
@@ -70,14 +71,15 @@ public class Instantiator<T> {
 
 	/**
 	 * Create a new {@link Instantiator} instance for the given type.
-	 * @param type the type to instantiate
+	 *
+	 * @param type                the type to instantiate
 	 * @param availableParameters consumer used to register available parameters
-	 * @param failureHandler a {@link FailureHandler} that will be called in case of
-	 * failure when instantiating objects
+	 * @param failureHandler      a {@link FailureHandler} that will be called in case of
+	 *                            failure when instantiating objects
 	 * @since 2.7.0
 	 */
 	public Instantiator(Class<?> type, Consumer<AvailableParameters> availableParameters,
-			FailureHandler failureHandler) {
+						FailureHandler failureHandler) {
 		this.type = type;
 		this.availableParameters = getAvailableParameters(availableParameters);
 		this.failureHandler = failureHandler;
@@ -105,6 +107,7 @@ public class Instantiator<T> {
 	/**
 	 * Instantiate the given set of class name, injecting constructor arguments as
 	 * necessary.
+	 *
 	 * @param names the class names to instantiate
 	 * @return a list of instantiated instances
 	 */
@@ -115,8 +118,9 @@ public class Instantiator<T> {
 	/**
 	 * Instantiate the given set of class name, injecting constructor arguments as
 	 * necessary.
+	 *
 	 * @param classLoader the source classloader
-	 * @param names the class names to instantiate
+	 * @param names       the class names to instantiate
 	 * @return a list of instantiated instances
 	 * @since 2.4.8
 	 */
@@ -127,6 +131,7 @@ public class Instantiator<T> {
 
 	/**
 	 * Instantiate the given set of classes, injecting constructor arguments as necessary.
+	 *
 	 * @param types the types to instantiate
 	 * @return a list of instantiated instances
 	 * @since 2.4.8
@@ -147,8 +152,7 @@ public class Instantiator<T> {
 			Class<?> type = typeSupplier.get();
 			Assert.isAssignable(this.type, type);
 			return instantiate(type);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			this.failureHandler.handleFailure(this.type, typeSupplier.getName(), ex);
 			return null;
 		}
@@ -196,14 +200,16 @@ public class Instantiator<T> {
 
 		/**
 		 * Add a parameter with an instance value.
-		 * @param type the parameter type
+		 *
+		 * @param type     the parameter type
 		 * @param instance the instance that should be injected
 		 */
 		void add(Class<?> type, Object instance);
 
 		/**
 		 * Add a parameter with an instance factory.
-		 * @param type the parameter type
+		 *
+		 * @param type    the parameter type
 		 * @param factory the factory used to create the instance that should be injected
 		 */
 		void add(Class<?> type, Function<Class<?>, Object> factory);
@@ -263,9 +269,10 @@ public class Instantiator<T> {
 		/**
 		 * Handle the {@code failure} that occurred when instantiating the {@code type}
 		 * that was expected to be of the given {@code typeSupplier}.
-		 * @param type the type
+		 *
+		 * @param type               the type
 		 * @param implementationName the name of the implementation type
-		 * @param failure the failure that occurred
+		 * @param failure            the failure that occurred
 		 */
 		void handleFailure(Class<?> type, String implementationName, Throwable failure);
 

@@ -40,7 +40,8 @@ class OperationMethodParameters implements OperationParameters {
 
 	/**
 	 * Create a new {@link OperationMethodParameters} instance.
-	 * @param method the source method
+	 *
+	 * @param method                  the source method
 	 * @param parameterNameDiscoverer the parameter name discoverer
 	 */
 	OperationMethodParameters(Method method, ParameterNameDiscoverer parameterNameDiscoverer) {

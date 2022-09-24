@@ -41,6 +41,7 @@ public class Docker {
 
 	/**
 	 * The host address of the Docker daemon.
+	 *
 	 * @return the Docker host
 	 */
 	public String getHost() {
@@ -53,6 +54,7 @@ public class Docker {
 
 	/**
 	 * Whether the Docker daemon requires TLS communication.
+	 *
 	 * @return {@code true} to enable TLS
 	 */
 	public boolean isTlsVerify() {
@@ -66,6 +68,7 @@ public class Docker {
 	/**
 	 * The path to TLS certificate and key files required for TLS communication with the
 	 * Docker daemon.
+	 *
 	 * @return the TLS certificate path
 	 */
 	public String getCertPath() {
@@ -78,6 +81,7 @@ public class Docker {
 
 	/**
 	 * Whether to use the configured Docker host in the builder container.
+	 *
 	 * @return {@code true} to use the configured Docker host in the builder container
 	 */
 	public boolean isBindHostToBuilder() {
@@ -90,6 +94,7 @@ public class Docker {
 
 	/**
 	 * Configuration of the Docker registry where builder and run images are stored.
+	 *
 	 * @return the registry configuration
 	 */
 	DockerRegistry getBuilderRegistry() {
@@ -99,6 +104,7 @@ public class Docker {
 	/**
 	 * Sets the {@link DockerRegistry} that configures authentication to the builder
 	 * registry.
+	 *
 	 * @param builderRegistry the registry configuration
 	 */
 	void setBuilderRegistry(DockerRegistry builderRegistry) {
@@ -107,6 +113,7 @@ public class Docker {
 
 	/**
 	 * Configuration of the Docker registry where the generated image will be published.
+	 *
 	 * @return the registry configuration
 	 */
 	DockerRegistry getPublishRegistry() {
@@ -116,6 +123,7 @@ public class Docker {
 	/**
 	 * Sets the {@link DockerRegistry} that configures authentication to the publishing
 	 * registry.
+	 *
 	 * @param builderRegistry the registry configuration
 	 */
 	void setPublishRegistry(DockerRegistry builderRegistry) {
@@ -126,6 +134,7 @@ public class Docker {
 	 * Returns this configuration as a {@link DockerConfiguration} instance. This method
 	 * should only be called when the configuration is complete and will no longer be
 	 * changed.
+	 *
 	 * @return the Docker configuration
 	 */
 	DockerConfiguration asDockerConfiguration() {
@@ -205,6 +214,7 @@ public class Docker {
 
 		/**
 		 * The username that will be used for user authentication to the registry.
+		 *
 		 * @return the username
 		 */
 		public String getUsername() {
@@ -217,6 +227,7 @@ public class Docker {
 
 		/**
 		 * The password that will be used for user authentication to the registry.
+		 *
 		 * @return the password
 		 */
 		public String getPassword() {
@@ -229,6 +240,7 @@ public class Docker {
 
 		/**
 		 * The email address that will be used for user authentication to the registry.
+		 *
 		 * @return the email address
 		 */
 		public String getEmail() {
@@ -241,6 +253,7 @@ public class Docker {
 
 		/**
 		 * The URL of the registry.
+		 *
 		 * @return the registry URL
 		 */
 		String getUrl() {
@@ -253,6 +266,7 @@ public class Docker {
 
 		/**
 		 * The token that will be used for token authentication to the registry.
+		 *
 		 * @return the authentication token
 		 */
 		public String getToken() {

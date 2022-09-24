@@ -46,8 +46,7 @@ public final class RestClientTypeExcludeFilter extends StandardAnnotationCustomi
 			try {
 				includes.add(Class.forName(DATABIND_MODULE_CLASS_NAME, true,
 						RestClientTypeExcludeFilter.class.getClassLoader()));
-			}
-			catch (ClassNotFoundException ex) {
+			} catch (ClassNotFoundException ex) {
 				throw new IllegalStateException("Failed to load " + DATABIND_MODULE_CLASS_NAME, ex);
 			}
 			includes.add(JsonComponent.class);

@@ -60,8 +60,7 @@ class ExplodedApplicationLauncher extends AbstractApplicationLauncher {
 		try {
 			explodeArchive(archive);
 			return Arrays.asList("-cp", this.exploded.getAbsolutePath(), mainClass, serverPortFile.getAbsolutePath());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -75,8 +74,7 @@ class ExplodedApplicationLauncher extends AbstractApplicationLauncher {
 			File extracted = new File(this.exploded, jarEntry.getName());
 			if (jarEntry.isDirectory()) {
 				extracted.mkdirs();
-			}
-			else {
+			} else {
 				extracted.getParentFile().mkdirs();
 				FileOutputStream extractedOutputStream = new FileOutputStream(extracted);
 				StreamUtils.copy(jarFile.getInputStream(jarEntry), extractedOutputStream);

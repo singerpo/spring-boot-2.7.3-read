@@ -60,14 +60,15 @@ class MetricsClientHttpRequestInterceptor implements ClientHttpRequestIntercepto
 
 	/**
 	 * Create a new {@code MetricsClientHttpRequestInterceptor}.
+	 *
 	 * @param meterRegistry the registry to which metrics are recorded
-	 * @param tagProvider provider for metrics tags
-	 * @param metricName name of the metric to record
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param tagProvider   provider for metrics tags
+	 * @param metricName    name of the metric to record
+	 * @param autoTimer     the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.2.0
 	 */
 	MetricsClientHttpRequestInterceptor(MeterRegistry meterRegistry, RestTemplateExchangeTagsProvider tagProvider,
-			String metricName, AutoTimer autoTimer) {
+										String metricName, AutoTimer autoTimer) {
 		this.tagProvider = tagProvider;
 		this.meterRegistry = meterRegistry;
 		this.metricName = metricName;
@@ -85,13 +86,11 @@ class MetricsClientHttpRequestInterceptor implements ClientHttpRequestIntercepto
 		try {
 			response = execution.execute(request, body);
 			return response;
-		}
-		finally {
+		} finally {
 			try {
 				getTimeBuilder(request, response).register(this.meterRegistry).record(System.nanoTime() - startTime,
 						TimeUnit.NANOSECONDS);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				logger.info("Failed to record metrics.", ex);
 			}
 			if (urlTemplate.get().isEmpty()) {

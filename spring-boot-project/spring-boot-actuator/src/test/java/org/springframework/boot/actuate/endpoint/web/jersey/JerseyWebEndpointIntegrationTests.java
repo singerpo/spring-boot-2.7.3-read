@@ -86,7 +86,7 @@ public class JerseyWebEndpointIntegrationTests
 
 	@Override
 	protected void validateErrorBody(WebTestClient.BodyContentSpec body, HttpStatus status, String path,
-			String message) {
+									 String message) {
 		// Jersey doesn't support the general error page handling
 	}
 
@@ -105,7 +105,7 @@ public class JerseyWebEndpointIntegrationTests
 
 		@Bean
 		ResourceConfig resourceConfig(Environment environment, WebEndpointDiscoverer endpointDiscoverer,
-				EndpointMediaTypes endpointMediaTypes) {
+									  EndpointMediaTypes endpointMediaTypes) {
 			ResourceConfig resourceConfig = new ResourceConfig();
 			String endpointPath = environment.getProperty("endpointPath");
 			Collection<Resource> resources = new JerseyEndpointResourceFactory().createEndpointResources(
@@ -128,15 +128,14 @@ public class JerseyWebEndpointIntegrationTests
 
 				@Override
 				protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-						FilterChain filterChain) throws ServletException, IOException {
+												FilterChain filterChain) throws ServletException, IOException {
 					SecurityContext context = SecurityContextHolder.createEmptyContext();
 					context.setAuthentication(new UsernamePasswordAuthenticationToken("Alice", "secret",
 							Arrays.asList(new SimpleGrantedAuthority("ROLE_ACTUATOR"))));
 					SecurityContextHolder.setContext(context);
 					try {
 						filterChain.doFilter(new SecurityContextHolderAwareRequestWrapper(request, "ROLE_"), response);
-					}
-					finally {
+					} finally {
 						SecurityContextHolder.clearContext();
 					}
 				}

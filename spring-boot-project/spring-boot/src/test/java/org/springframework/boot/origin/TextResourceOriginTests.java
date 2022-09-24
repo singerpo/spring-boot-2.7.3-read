@@ -125,8 +125,7 @@ class TextResourceOriginTests {
 				try {
 					return new URI("jar:file:/home/user/project/target/project-0.0.1-SNAPSHOT.jar"
 							+ "!/BOOT-INF/classes!/foo.txt");
-				}
-				catch (URISyntaxException ex) {
+				} catch (URISyntaxException ex) {
 					throw new IllegalStateException(ex);
 				}
 			}

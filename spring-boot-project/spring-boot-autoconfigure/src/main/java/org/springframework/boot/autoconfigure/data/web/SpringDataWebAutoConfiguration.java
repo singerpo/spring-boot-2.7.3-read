@@ -47,7 +47,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @AutoConfiguration(after = RepositoryRestMvcAutoConfiguration.class)
 @EnableSpringDataWebSupport
 @ConditionalOnWebApplication(type = Type.SERVLET)
-@ConditionalOnClass({ PageableHandlerMethodArgumentResolver.class, WebMvcConfigurer.class })
+@ConditionalOnClass({PageableHandlerMethodArgumentResolver.class, WebMvcConfigurer.class})
 @ConditionalOnMissingBean(PageableHandlerMethodArgumentResolver.class)
 @EnableConfigurationProperties(SpringDataWebProperties.class)
 public class SpringDataWebAutoConfiguration {

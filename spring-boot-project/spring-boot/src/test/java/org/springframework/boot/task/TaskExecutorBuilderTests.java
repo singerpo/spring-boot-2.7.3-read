@@ -105,16 +105,16 @@ class TaskExecutorBuilderTests {
 		this.builder.queueCapacity(10).corePoolSize(4).maxPoolSize(8).allowCoreThreadTimeOut(true)
 				.keepAlive(Duration.ofMinutes(1)).awaitTermination(true).awaitTerminationPeriod(Duration.ofSeconds(30))
 				.threadNamePrefix("test-").taskDecorator(taskDecorator).additionalCustomizers((taskExecutor) -> {
-					then(taskExecutor).should().setQueueCapacity(10);
-					then(taskExecutor).should().setCorePoolSize(4);
-					then(taskExecutor).should().setMaxPoolSize(8);
-					then(taskExecutor).should().setAllowCoreThreadTimeOut(true);
-					then(taskExecutor).should().setKeepAliveSeconds(60);
-					then(taskExecutor).should().setWaitForTasksToCompleteOnShutdown(true);
-					then(taskExecutor).should().setAwaitTerminationSeconds(30);
-					then(taskExecutor).should().setThreadNamePrefix("test-");
-					then(taskExecutor).should().setTaskDecorator(taskDecorator);
-				});
+			then(taskExecutor).should().setQueueCapacity(10);
+			then(taskExecutor).should().setCorePoolSize(4);
+			then(taskExecutor).should().setMaxPoolSize(8);
+			then(taskExecutor).should().setAllowCoreThreadTimeOut(true);
+			then(taskExecutor).should().setKeepAliveSeconds(60);
+			then(taskExecutor).should().setWaitForTasksToCompleteOnShutdown(true);
+			then(taskExecutor).should().setAwaitTerminationSeconds(30);
+			then(taskExecutor).should().setThreadNamePrefix("test-");
+			then(taskExecutor).should().setTaskDecorator(taskDecorator);
+		});
 		this.builder.configure(executor);
 	}
 

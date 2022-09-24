@@ -147,7 +147,7 @@ class ConfigFileApplicationListenerYamlProfileNegationTests {
 	}
 
 	private void assertVersionProperty(ConfigurableApplicationContext context, String expectedVersion,
-			String... expectedActiveProfiles) {
+									   String... expectedActiveProfiles) {
 		assertThat(context.getEnvironment().getActiveProfiles()).isEqualTo(expectedActiveProfiles);
 		assertThat(context.getEnvironment().getProperty("version")).as("version mismatch").isEqualTo(expectedVersion);
 	}

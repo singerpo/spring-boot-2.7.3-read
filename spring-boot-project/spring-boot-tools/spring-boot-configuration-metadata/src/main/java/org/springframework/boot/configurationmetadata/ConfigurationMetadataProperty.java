@@ -49,6 +49,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 	/**
 	 * The full identifier of the property, in lowercase dashed form (e.g.
 	 * my.group.simple-property)
+	 *
 	 * @return the property id
 	 */
 	public String getId() {
@@ -62,6 +63,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 	/**
 	 * The name of the property, in lowercase dashed form (e.g. simple-property). If this
 	 * item does not belong to any group, the id is returned.
+	 *
 	 * @return the property name
 	 */
 	public String getName() {
@@ -84,6 +86,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 	 * <p>
 	 * Note that this class may be a complex type that gets converted from a String as
 	 * values are bound.
+	 *
 	 * @return the property type
 	 */
 	public String getType() {
@@ -96,6 +99,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * A description of the property, if any. Can be multi-lines.
+	 *
 	 * @return the property description
 	 * @see #getShortDescription()
 	 */
@@ -109,6 +113,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * A single-line, single-sentence description of this property, if any.
+	 *
 	 * @return the property short description
 	 * @see #getDescription()
 	 */
@@ -122,6 +127,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * The default value, if any.
+	 *
 	 * @return the default value
 	 */
 	public Object getDefaultValue() {
@@ -134,6 +140,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * Return the hints of this item.
+	 *
 	 * @return the hints
 	 */
 	public Hints getHints() {
@@ -142,6 +149,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * The {@link Deprecation} for this property, if any.
+	 *
 	 * @return the deprecation
 	 * @see #isDeprecated()
 	 */
@@ -155,6 +163,7 @@ public class ConfigurationMetadataProperty implements Serializable {
 
 	/**
 	 * Specify if the property is deprecated.
+	 *
 	 * @return if the property is deprecated
 	 * @see #getDeprecation()
 	 */

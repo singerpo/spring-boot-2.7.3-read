@@ -23,8 +23,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  * {@link ApplicationEvent} published by a {@link BootstrapContext} when it's closed.
  *
  * @author Phillip Webb
- * @since 2.4.0
  * @see BootstrapRegistry#addCloseListener(org.springframework.context.ApplicationListener)
+ * @since 2.4.0
  */
 public class BootstrapContextClosedEvent extends ApplicationEvent {
 
@@ -37,6 +37,7 @@ public class BootstrapContextClosedEvent extends ApplicationEvent {
 
 	/**
 	 * Return the {@link BootstrapContext} that was closed.
+	 *
 	 * @return the bootstrap context
 	 */
 	public BootstrapContext getBootstrapContext() {
@@ -45,6 +46,7 @@ public class BootstrapContextClosedEvent extends ApplicationEvent {
 
 	/**
 	 * Return the prepared application context.
+	 *
 	 * @return the application context
 	 */
 	public ConfigurableApplicationContext getApplicationContext() {

@@ -125,15 +125,15 @@ class ReactiveSessionAutoConfigurationMongoTests extends AbstractSessionAutoConf
 				"server.reactive.session.cookie.max-age:60", "server.reactive.session.cookie.http-only:false",
 				"server.reactive.session.cookie.secure:false", "server.reactive.session.cookie.same-site:strict",
 				"spring.data.mongodb.uri=" + mongoDb.getReplicaSetUrl()).run(assertExchangeWithSession((exchange) -> {
-					List<ResponseCookie> cookies = exchange.getResponse().getCookies().get("JSESSIONID");
-					assertThat(cookies).isNotEmpty();
-					assertThat(cookies).allMatch((cookie) -> cookie.getDomain().equals(".example.com"));
-					assertThat(cookies).allMatch((cookie) -> cookie.getPath().equals("/example"));
-					assertThat(cookies).allMatch((cookie) -> cookie.getMaxAge().equals(Duration.ofSeconds(60)));
-					assertThat(cookies).allMatch((cookie) -> !cookie.isHttpOnly());
-					assertThat(cookies).allMatch((cookie) -> !cookie.isSecure());
-					assertThat(cookies).allMatch((cookie) -> cookie.getSameSite().equals("Strict"));
-				}));
+			List<ResponseCookie> cookies = exchange.getResponse().getCookies().get("JSESSIONID");
+			assertThat(cookies).isNotEmpty();
+			assertThat(cookies).allMatch((cookie) -> cookie.getDomain().equals(".example.com"));
+			assertThat(cookies).allMatch((cookie) -> cookie.getPath().equals("/example"));
+			assertThat(cookies).allMatch((cookie) -> cookie.getMaxAge().equals(Duration.ofSeconds(60)));
+			assertThat(cookies).allMatch((cookie) -> !cookie.isHttpOnly());
+			assertThat(cookies).allMatch((cookie) -> !cookie.isSecure());
+			assertThat(cookies).allMatch((cookie) -> cookie.getSameSite().equals("Strict"));
+		}));
 	}
 
 	private ContextConsumer<AssertableReactiveWebApplicationContext> validateSpringSessionUsesMongo(

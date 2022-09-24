@@ -519,8 +519,7 @@ class JavaBeanBinderTests {
 					if (method.getName().equals("setProperty")) {
 						if (method.getParameters()[0].getType().equals(int.class)) {
 							intSetter = i;
-						}
-						else {
+						} else {
 							stringSetter = i;
 						}
 					}
@@ -567,7 +566,8 @@ class JavaBeanBinderTests {
 		assertThat(bean.getGamma()).isEqualTo(2);
 	}
 
-	@Test // gh-23007
+	@Test
+		// gh-23007
 	void bindWhenBeanWithGetSetIsMethodsFoundUsesGetterThatMatchesSetter() {
 		MockConfigurationPropertySource source = new MockConfigurationPropertySource();
 		source.put("test.names", "spring,boot");
@@ -576,7 +576,8 @@ class JavaBeanBinderTests {
 		assertThat(bean.getNames()).containsExactly("spring", "boot");
 	}
 
-	@Test // gh-23007
+	@Test
+		// gh-23007
 	void bindWhenBeanWithGetIsMethodsFoundDoesNotUseIsGetter() {
 		MockConfigurationPropertySource source = new MockConfigurationPropertySource();
 		source.put("test.names", "spring,boot");

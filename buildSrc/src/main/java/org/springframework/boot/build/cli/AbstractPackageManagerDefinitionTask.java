@@ -96,8 +96,7 @@ public abstract class AbstractPackageManagerDefinitionTask extends DefaultTask {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
 			return new DigestUtils(digest).digestAsHex(file);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new TaskExecutionException(this, ex);
 		}
 	}

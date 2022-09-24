@@ -42,6 +42,7 @@ final class ApiVersion {
 
 	/**
 	 * Return the major version number.
+	 *
 	 * @return the major version
 	 */
 	int getMajor() {
@@ -50,6 +51,7 @@ final class ApiVersion {
 
 	/**
 	 * Return the minor version number.
+	 *
 	 * @return the minor version
 	 */
 	int getMinor() {
@@ -58,6 +60,7 @@ final class ApiVersion {
 
 	/**
 	 * Assert that this API version supports the specified version.
+	 *
 	 * @param other the version to check against
 	 * @see #supports(ApiVersion)
 	 */
@@ -72,6 +75,7 @@ final class ApiVersion {
 	 * Returns if this API version supports the given version. A {@code 0.x} matches only
 	 * the same version number. A 1.x or higher release matches when the versions have the
 	 * same major version and a minor that is equal or greater.
+	 *
 	 * @param other the version to check against
 	 * @return if the specified API version is supported
 	 * @see #assertSupports(ApiVersion)
@@ -88,6 +92,7 @@ final class ApiVersion {
 
 	/**
 	 * Returns if this API version supports any of the given versions.
+	 *
 	 * @param others the versions to check against
 	 * @return if any of the specified API versions are supported
 	 * @see #supports(ApiVersion)
@@ -125,6 +130,7 @@ final class ApiVersion {
 
 	/**
 	 * Factory method to parse a string into an {@link ApiVersion} instance.
+	 *
 	 * @param value the value to parse.
 	 * @return the corresponding {@link ApiVersion}
 	 * @throws IllegalArgumentException if the value could not be parsed
@@ -137,8 +143,7 @@ final class ApiVersion {
 			int major = Integer.parseInt(matcher.group(1));
 			int minor = Integer.parseInt(matcher.group(2));
 			return new ApiVersion(major, minor);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			throw new IllegalArgumentException("Malformed version number '" + value + "'", ex);
 		}
 	}

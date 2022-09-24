@@ -140,8 +140,7 @@ public class DocumentPluginGoals extends DefaultTask {
 			String defaultValue = parameter.getDefaultValue();
 			if (defaultValue != null) {
 				writer.printf("| `%s`%n", defaultValue);
-			}
-			else {
+			} else {
 				writer.println("|");
 			}
 			writer.println();
@@ -180,8 +179,7 @@ public class DocumentPluginGoals extends DefaultTask {
 		writer.printf("| %s%n", name);
 		if (value != null) {
 			writer.printf("| `%s`%n", value);
-		}
-		else {
+		} else {
 			writer.println("|");
 		}
 		writer.println();

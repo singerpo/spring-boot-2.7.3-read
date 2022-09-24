@@ -64,6 +64,7 @@ public interface AutoTimer {
 
 	/**
 	 * Return if the auto-timer is enabled and metrics should be recorded.
+	 *
 	 * @return if the auto-timer is enabled
 	 */
 	default boolean isEnabled() {
@@ -73,6 +74,7 @@ public interface AutoTimer {
 	/**
 	 * Factory method to create a new {@link Builder Timer.Builder} with auto-timer
 	 * settings {@link #apply(Timer.Builder) applied}.
+	 *
 	 * @param name the name of the timer
 	 * @return a new builder instance with auto-settings applied
 	 */
@@ -83,6 +85,7 @@ public interface AutoTimer {
 	/**
 	 * Factory method to create a new {@link Builder Timer.Builder} with auto-timer
 	 * settings {@link #apply(Timer.Builder) applied}.
+	 *
 	 * @param supplier the builder supplier
 	 * @return a new builder instance with auto-settings applied
 	 */
@@ -94,6 +97,7 @@ public interface AutoTimer {
 
 	/**
 	 * Called to apply any auto-timer settings to the given {@link Builder Timer.Builder}.
+	 *
 	 * @param builder the builder to apply settings to
 	 */
 	void apply(Timer.Builder builder);
@@ -103,8 +107,7 @@ public interface AutoTimer {
 			for (Timed annotation : annotations) {
 				action.accept(Timer.builder(annotation, metricName));
 			}
-		}
-		else {
+		} else {
 			if (autoTimer != null && autoTimer.isEnabled()) {
 				action.accept(autoTimer.builder(metricName));
 			}

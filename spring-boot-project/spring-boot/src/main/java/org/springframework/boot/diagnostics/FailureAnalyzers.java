@@ -69,7 +69,7 @@ final class FailureAnalyzers implements SpringBootExceptionReporter {
 	}
 
 	private List<FailureAnalyzer> loadFailureAnalyzers(List<String> classNames,
-			ConfigurableApplicationContext context) {
+													   ConfigurableApplicationContext context) {
 		Instantiator<FailureAnalyzer> instantiator = new Instantiator<>(FailureAnalyzer.class,
 				(availableParameters) -> {
 					if (context != null) {
@@ -82,7 +82,7 @@ final class FailureAnalyzers implements SpringBootExceptionReporter {
 	}
 
 	private List<FailureAnalyzer> handleAwareAnalyzers(List<FailureAnalyzer> analyzers,
-			ConfigurableApplicationContext context) {
+													   ConfigurableApplicationContext context) {
 		List<FailureAnalyzer> awareAnalyzers = analyzers.stream()
 				.filter((analyzer) -> analyzer instanceof BeanFactoryAware || analyzer instanceof EnvironmentAware)
 				.collect(Collectors.toList());
@@ -125,8 +125,7 @@ final class FailureAnalyzers implements SpringBootExceptionReporter {
 				if (analysis != null) {
 					return analysis;
 				}
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				logger.trace(LogMessage.format("FailureAnalyzer %s failed", analyzer), ex);
 			}
 		}

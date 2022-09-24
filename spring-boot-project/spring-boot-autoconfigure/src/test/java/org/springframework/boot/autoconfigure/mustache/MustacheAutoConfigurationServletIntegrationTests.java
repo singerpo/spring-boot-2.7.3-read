@@ -131,8 +131,8 @@ class MustacheAutoConfigurationServletIntegrationTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

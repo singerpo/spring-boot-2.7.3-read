@@ -59,7 +59,7 @@ class Neo4jHealthContributorAutoConfigurationTests {
 	void runWithoutReactorShouldCreateHealthIndicator() {
 		this.contextRunner.withUserConfiguration(Neo4jConfiguration.class)
 				.withClassLoader(new FilteredClassLoader(Flux.class)).run((context) -> assertThat(context)
-						.hasSingleBean(Neo4jHealthIndicator.class).doesNotHaveBean(Neo4jReactiveHealthIndicator.class));
+				.hasSingleBean(Neo4jHealthIndicator.class).doesNotHaveBean(Neo4jReactiveHealthIndicator.class));
 	}
 
 	@Test

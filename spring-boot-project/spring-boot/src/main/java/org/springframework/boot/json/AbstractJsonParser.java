@@ -51,8 +51,7 @@ public abstract class AbstractJsonParser implements JsonParser {
 	protected final <T> T tryParse(Callable<T> parser, Class<? extends Exception> check) {
 		try {
 			return parser.call();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (check.isAssignableFrom(ex.getClass())) {
 				throw new JsonParseException(ex);
 			}

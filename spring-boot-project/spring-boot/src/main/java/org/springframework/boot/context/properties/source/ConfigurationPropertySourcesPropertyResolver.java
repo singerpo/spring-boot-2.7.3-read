@@ -47,8 +47,7 @@ class ConfigurationPropertySourcesPropertyResolver extends AbstractPropertyResol
 			if (name != null) {
 				try {
 					return attached.findConfigurationProperty(name) != null;
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 				}
 			}
 		}
@@ -89,8 +88,7 @@ class ConfigurationPropertySourcesPropertyResolver extends AbstractPropertyResol
 				try {
 					ConfigurationProperty configurationProperty = attached.findConfigurationProperty(name);
 					return (configurationProperty != null) ? configurationProperty.getValue() : null;
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 				}
 			}
 		}

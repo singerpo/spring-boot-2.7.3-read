@@ -57,8 +57,7 @@ public class ClassPathDirectories implements Iterable<File> {
 		if (url.getProtocol().equals("file") && url.getPath().endsWith("/")) {
 			try {
 				this.directories.add(ResourceUtils.getFile(url));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				logger.warn(LogMessage.format("Unable to get classpath URL %s", url));
 				logger.trace(LogMessage.format("Unable to get classpath URL %s", url), ex);
 			}

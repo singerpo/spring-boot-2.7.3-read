@@ -44,9 +44,9 @@ import org.springframework.util.StringUtils;
  * (e.g. by JPA auto-configuration).
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see EntityScan
  * @see EntityScanner
+ * @since 1.4.0
  */
 public class EntityScanPackages {
 
@@ -69,6 +69,7 @@ public class EntityScanPackages {
 	/**
 	 * Return the package names specified from all {@link EntityScan @EntityScan}
 	 * annotations.
+	 *
 	 * @return the entity scan package names
 	 */
 	public List<String> getPackageNames() {
@@ -77,6 +78,7 @@ public class EntityScanPackages {
 
 	/**
 	 * Return the {@link EntityScanPackages} for the given bean factory.
+	 *
 	 * @param beanFactory the source bean factory
 	 * @return the {@link EntityScanPackages} for the bean factory (never {@code null})
 	 */
@@ -85,15 +87,15 @@ public class EntityScanPackages {
 		// allow this to change in the future if needed
 		try {
 			return beanFactory.getBean(BEAN, EntityScanPackages.class);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return NONE;
 		}
 	}
 
 	/**
 	 * Register the specified entity scan packages with the system.
-	 * @param registry the source registry
+	 *
+	 * @param registry     the source registry
 	 * @param packageNames the package names to register
 	 */
 	public static void register(BeanDefinitionRegistry registry, String... packageNames) {
@@ -104,7 +106,8 @@ public class EntityScanPackages {
 
 	/**
 	 * Register the specified entity scan packages with the system.
-	 * @param registry the source registry
+	 *
+	 * @param registry     the source registry
 	 * @param packageNames the package names to register
 	 */
 	public static void register(BeanDefinitionRegistry registry, Collection<String> packageNames) {
@@ -114,8 +117,7 @@ public class EntityScanPackages {
 			EntityScanPackagesBeanDefinition beanDefinition = (EntityScanPackagesBeanDefinition) registry
 					.getBeanDefinition(BEAN);
 			beanDefinition.addPackageNames(packageNames);
-		}
-		else {
+		} else {
 			registry.registerBeanDefinition(BEAN, new EntityScanPackagesBeanDefinition(packageNames));
 		}
 	}

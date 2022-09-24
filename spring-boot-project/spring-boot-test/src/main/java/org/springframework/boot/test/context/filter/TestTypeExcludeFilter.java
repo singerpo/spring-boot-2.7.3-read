@@ -32,12 +32,12 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
  */
 class TestTypeExcludeFilter extends TypeExcludeFilter {
 
-	private static final String[] CLASS_ANNOTATIONS = { "org.junit.runner.RunWith",
+	private static final String[] CLASS_ANNOTATIONS = {"org.junit.runner.RunWith",
 			"org.junit.jupiter.api.extension.ExtendWith", "org.junit.platform.commons.annotation.Testable",
-			"org.testng.annotations.Test" };
+			"org.testng.annotations.Test"};
 
-	private static final String[] METHOD_ANNOTATIONS = { "org.junit.Test",
-			"org.junit.platform.commons.annotation.Testable", "org.testng.annotations.Test" };
+	private static final String[] METHOD_ANNOTATIONS = {"org.junit.Test",
+			"org.junit.platform.commons.annotation.Testable", "org.testng.annotations.Test"};
 
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)
@@ -54,8 +54,7 @@ class TestTypeExcludeFilter extends TypeExcludeFilter {
 				if (match(metadataReaderFactory.getMetadataReader(enclosing), metadataReaderFactory)) {
 					return true;
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}

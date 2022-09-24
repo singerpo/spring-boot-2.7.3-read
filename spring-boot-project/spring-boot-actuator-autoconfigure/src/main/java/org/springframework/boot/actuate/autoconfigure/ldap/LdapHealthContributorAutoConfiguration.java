@@ -46,7 +46,7 @@ public class LdapHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<LdapHealthIndicator, LdapOperations> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "ldapHealthIndicator", "ldapHealthContributor" })
+	@ConditionalOnMissingBean(name = {"ldapHealthIndicator", "ldapHealthContributor"})
 	public HealthContributor ldapHealthContributor(Map<String, LdapOperations> ldapOperations) {
 		return createContributor(ldapOperations);
 	}

@@ -35,6 +35,7 @@ public class HttpTunnelServerHandler implements Handler {
 
 	/**
 	 * Create a new {@link HttpTunnelServerHandler} instance.
+	 *
 	 * @param server the server to adapt
 	 */
 	public HttpTunnelServerHandler(HttpTunnelServer server) {

@@ -380,7 +380,8 @@ class PropertiesLauncherTests {
 		assertThat(archiveRoot).isEqualTo(loaderPath);
 	}
 
-	@Test // gh-21575
+	@Test
+		// gh-21575
 	void loadResourceFromJarFile() throws Exception {
 		File jarFile = new File(this.tempDir, "app.jar");
 		TestJarCreator.createTestJar(jarFile);
@@ -389,8 +390,7 @@ class PropertiesLauncherTests {
 		this.launcher = new PropertiesLauncher();
 		try {
 			this.launcher.launch(new String[0]);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Expected ClassNotFoundException
 			LaunchedURLClassLoader classLoader = (LaunchedURLClassLoader) Thread.currentThread()
 					.getContextClassLoader();

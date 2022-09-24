@@ -29,6 +29,7 @@ public class UnsupportedConfigDataLocationException extends ConfigDataException 
 
 	/**
 	 * Create a new {@link UnsupportedConfigDataLocationException} instance.
+	 *
 	 * @param location the unsupported location
 	 */
 	UnsupportedConfigDataLocationException(ConfigDataLocation location) {
@@ -38,6 +39,7 @@ public class UnsupportedConfigDataLocationException extends ConfigDataException 
 
 	/**
 	 * Return the unsupported location reference.
+	 *
 	 * @return the unsupported location reference
 	 */
 	public ConfigDataLocation getLocation() {

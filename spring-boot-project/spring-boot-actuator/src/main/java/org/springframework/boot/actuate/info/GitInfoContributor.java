@@ -60,6 +60,7 @@ public class GitInfoContributor extends InfoPropertiesInfoContributor<GitPropert
 	/**
 	 * Post-process the content to expose. By default, well known keys representing dates
 	 * are converted to {@link Instant} instances.
+	 *
 	 * @param content the content to expose
 	 */
 	@Override

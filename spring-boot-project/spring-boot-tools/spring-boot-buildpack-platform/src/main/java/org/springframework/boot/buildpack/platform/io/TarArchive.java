@@ -40,6 +40,7 @@ public interface TarArchive {
 
 	/**
 	 * Write the TAR archive to the given output stream.
+	 *
 	 * @param outputStream the output stream to write to
 	 * @throws IOException on IO error
 	 */
@@ -47,6 +48,7 @@ public interface TarArchive {
 
 	/**
 	 * Factory method to create a new {@link TarArchive} instance with a specific layout.
+	 *
 	 * @param layout the TAR layout
 	 * @return a new {@link TarArchive} instance
 	 */
@@ -60,7 +62,8 @@ public interface TarArchive {
 
 	/**
 	 * Factory method to adapt a ZIP file to {@link TarArchive}.
-	 * @param zip the source zip file
+	 *
+	 * @param zip   the source zip file
 	 * @param owner the owner of the entries in the TAR
 	 * @return a new {@link TarArchive} instance
 	 */

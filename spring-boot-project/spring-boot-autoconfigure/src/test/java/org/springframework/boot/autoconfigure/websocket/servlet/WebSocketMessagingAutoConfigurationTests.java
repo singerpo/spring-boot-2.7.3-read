@@ -178,7 +178,7 @@ class WebSocketMessagingAutoConfigurationTests {
 
 			@Override
 			public void handleException(StompSession session, StompCommand command, StompHeaders headers,
-					byte[] payload, Throwable exception) {
+										byte[] payload, Throwable exception) {
 				failure.set(exception);
 				latch.countDown();
 			}
@@ -207,8 +207,8 @@ class WebSocketMessagingAutoConfigurationTests {
 	@EnableWebSocket
 	@EnableConfigurationProperties
 	@EnableWebSocketMessageBroker
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class,
-			WebSocketMessagingAutoConfiguration.class, DispatcherServletAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class,
+			WebSocketMessagingAutoConfiguration.class, DispatcherServletAutoConfiguration.class})
 	static class WebSocketMessagingConfiguration implements WebSocketMessageBrokerConfigurer {
 
 		@Override

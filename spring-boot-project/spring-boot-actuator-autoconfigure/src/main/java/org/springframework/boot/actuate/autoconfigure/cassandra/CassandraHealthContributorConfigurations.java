@@ -44,7 +44,7 @@ class CassandraHealthContributorConfigurations {
 			extends CompositeHealthContributorConfiguration<CassandraDriverHealthIndicator, CqlSession> {
 
 		@Bean
-		@ConditionalOnMissingBean(name = { "cassandraHealthIndicator", "cassandraHealthContributor" })
+		@ConditionalOnMissingBean(name = {"cassandraHealthIndicator", "cassandraHealthContributor"})
 		HealthContributor cassandraHealthContributor(Map<String, CqlSession> sessions) {
 			return createContributor(sessions);
 		}
@@ -57,7 +57,7 @@ class CassandraHealthContributorConfigurations {
 			CompositeReactiveHealthContributorConfiguration<CassandraDriverReactiveHealthIndicator, CqlSession> {
 
 		@Bean
-		@ConditionalOnMissingBean(name = { "cassandraHealthIndicator", "cassandraHealthContributor" })
+		@ConditionalOnMissingBean(name = {"cassandraHealthIndicator", "cassandraHealthContributor"})
 		ReactiveHealthContributor cassandraHealthContributor(Map<String, CqlSession> sessions) {
 			return createContributor(sessions);
 		}

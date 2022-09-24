@@ -66,8 +66,7 @@ public class MetricsEndpoint {
 	private void collectNames(Set<String> names, MeterRegistry registry) {
 		if (registry instanceof CompositeMeterRegistry) {
 			((CompositeMeterRegistry) registry).getRegistries().forEach((member) -> collectNames(names, member));
-		}
-		else {
+		} else {
 			registry.getMeters().stream().map(this::getName).forEach(names::add);
 		}
 	}
@@ -116,7 +115,7 @@ public class MetricsEndpoint {
 	}
 
 	private Collection<Meter> findFirstMatchingMeters(CompositeMeterRegistry composite, String name,
-			Iterable<Tag> tags) {
+													  Iterable<Tag> tags) {
 		return composite.getRegistries().stream().map((registry) -> findFirstMatchingMeters(registry, name, tags))
 				.filter((matching) -> !matching.isEmpty()).findFirst().orElse(Collections.emptyList());
 	}
@@ -194,7 +193,7 @@ public class MetricsEndpoint {
 		private final List<AvailableTag> availableTags;
 
 		MetricResponse(String name, String description, String baseUnit, List<Sample> measurements,
-				List<AvailableTag> availableTags) {
+					   List<AvailableTag> availableTags) {
 			this.name = name;
 			this.description = description;
 			this.baseUnit = baseUnit;

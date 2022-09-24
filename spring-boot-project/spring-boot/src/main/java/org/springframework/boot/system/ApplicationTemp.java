@@ -61,6 +61,7 @@ public class ApplicationTemp {
 
 	/**
 	 * Create a new {@link ApplicationTemp} instance for the specified source class.
+	 *
 	 * @param sourceClass the source class or {@code null}
 	 */
 	public ApplicationTemp(Class<?> sourceClass) {
@@ -74,6 +75,7 @@ public class ApplicationTemp {
 
 	/**
 	 * Return the directory to be used for application specific temp files.
+	 *
 	 * @return the application temp directory
 	 */
 	public File getDir() {
@@ -82,6 +84,7 @@ public class ApplicationTemp {
 
 	/**
 	 * Return a subdirectory of the application temp.
+	 *
 	 * @param subDir the subdirectory name
 	 * @return a subdirectory
 	 */
@@ -105,8 +108,7 @@ public class ApplicationTemp {
 				Files.createDirectory(path, getFileAttributes(path.getFileSystem(), DIRECTORY_PERMISSIONS));
 			}
 			return path;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to create application temp directory " + path, ex);
 		}
 	}
@@ -115,7 +117,7 @@ public class ApplicationTemp {
 		if (!fileSystem.supportedFileAttributeViews().contains("posix")) {
 			return NO_FILE_ATTRIBUTES;
 		}
-		return new FileAttribute<?>[] { PosixFilePermissions.asFileAttribute(ownerReadWrite) };
+		return new FileAttribute<?>[]{PosixFilePermissions.asFileAttribute(ownerReadWrite)};
 	}
 
 	private Path getTempDirectory() {
@@ -141,8 +143,7 @@ public class ApplicationTemp {
 			update(digest, System.getProperty("sun.java.command"));
 			update(digest, System.getProperty("sun.boot.class.path"));
 			return digest.digest();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

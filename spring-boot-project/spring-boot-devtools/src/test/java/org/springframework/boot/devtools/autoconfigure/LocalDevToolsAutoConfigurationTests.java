@@ -98,8 +98,7 @@ class LocalDevToolsAutoConfigurationTests {
 			this.context = getContext(() -> initializeAndRun(Config.class));
 			AbstractTemplateViewResolver resolver = this.context.getBean(AbstractTemplateViewResolver.class);
 			assertThat(resolver.isCache()).isTrue();
-		}
-		finally {
+		} finally {
 			System.setProperty("user.home", userHome);
 		}
 	}
@@ -241,7 +240,7 @@ class LocalDevToolsAutoConfigurationTests {
 	}
 
 	private ConfigurableApplicationContext initializeAndRun(Class<?> config, Map<String, Object> properties,
-			String... args) {
+															String... args) {
 		Restarter.initialize(new String[0], false, new MockRestartInitializer(), false);
 		SpringApplication application = new SpringApplication(config);
 		application.setDefaultProperties(getDefaultProperties(properties));
@@ -257,15 +256,15 @@ class LocalDevToolsAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
-			FreeMarkerAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
+			FreeMarkerAutoConfiguration.class})
 	static class Config {
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
-			FreeMarkerAutoConfiguration.class })
+	@ImportAutoConfiguration({ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
+			FreeMarkerAutoConfiguration.class})
 	static class ConfigWithMockLiveReload {
 
 		@Bean
@@ -276,8 +275,8 @@ class LocalDevToolsAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
-			WebProperties.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, LocalDevToolsAutoConfiguration.class,
+			WebProperties.class})
 	static class WebResourcesConfig {
 
 	}

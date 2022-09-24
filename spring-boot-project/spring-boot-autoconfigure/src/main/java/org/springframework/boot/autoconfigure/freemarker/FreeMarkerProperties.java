@@ -46,7 +46,7 @@ public class FreeMarkerProperties extends AbstractTemplateViewResolverProperties
 	/**
 	 * Comma-separated list of template paths.
 	 */
-	private String[] templateLoaderPath = new String[] { DEFAULT_TEMPLATE_LOADER_PATH };
+	private String[] templateLoaderPath = new String[]{DEFAULT_TEMPLATE_LOADER_PATH};
 
 	/**
 	 * Whether to prefer file system access for template loading to enable hot detection

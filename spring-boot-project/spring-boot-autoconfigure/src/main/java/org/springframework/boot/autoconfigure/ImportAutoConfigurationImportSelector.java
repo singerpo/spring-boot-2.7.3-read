@@ -81,7 +81,7 @@ class ImportAutoConfigurationImportSelector extends AutoConfigurationImportSelec
 	}
 
 	private void collectCandidateConfigurations(Class<?> source, List<Annotation> annotations,
-			List<String> candidates) {
+												List<String> candidates) {
 		for (Annotation annotation : annotations) {
 			candidates.addAll(getConfigurationsForAnnotation(source, annotation));
 		}
@@ -135,7 +135,7 @@ class ImportAutoConfigurationImportSelector extends AutoConfigurationImportSelec
 	}
 
 	private void collectAnnotations(Class<?> source, MultiValueMap<Class<?>, Annotation> annotations,
-			HashSet<Class<?>> seen) {
+									HashSet<Class<?>> seen) {
 		if (source != null && seen.add(source)) {
 			for (Annotation annotation : source.getDeclaredAnnotations()) {
 				if (!AnnotationUtils.isInJavaLangAnnotationPackage(annotation)) {

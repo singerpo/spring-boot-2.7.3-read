@@ -76,7 +76,7 @@ class Neo4jAutoConfigurationTests {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "bolt", "neo4j" })
+	@ValueSource(strings = {"bolt", "neo4j"})
 	void uriWithSimpleSchemeAreDetected(String scheme) {
 		this.contextRunner.withPropertyValues("spring.neo4j.uri=" + scheme + "://localhost:4711").run((ctx) -> {
 			assertThat(ctx).hasSingleBean(Driver.class);
@@ -85,7 +85,7 @@ class Neo4jAutoConfigurationTests {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "bolt+s", "bolt+ssc", "neo4j+s", "neo4j+ssc" })
+	@ValueSource(strings = {"bolt+s", "bolt+ssc", "neo4j+s", "neo4j+ssc"})
 	void uriWithAdvancedSchemesAreDetected(String scheme) {
 		this.contextRunner.withPropertyValues("spring.neo4j.uri=" + scheme + "://localhost:4711").run((ctx) -> {
 			assertThat(ctx).hasSingleBean(Driver.class);
@@ -95,7 +95,7 @@ class Neo4jAutoConfigurationTests {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "bolt+routing", "bolt+x", "neo4j+wth" })
+	@ValueSource(strings = {"bolt+routing", "bolt+x", "neo4j+wth"})
 	void uriWithInvalidSchemesAreDetected(String invalidScheme) {
 		this.contextRunner.withPropertyValues("spring.neo4j.uri=" + invalidScheme + "://localhost:4711")
 				.run((ctx) -> assertThat(ctx).hasFailed().getFailure()
@@ -301,7 +301,7 @@ class Neo4jAutoConfigurationTests {
 		properties.getSecurity().setTrustStrategy(TrustStrategy.TRUST_CUSTOM_CA_SIGNED_CERTIFICATES);
 		assertThatExceptionOfType(InvalidConfigurationPropertyValueException.class)
 				.isThrownBy(() -> mapDriverConfig(properties)).withMessage(
-						"Property spring.neo4j.security.trust-strategy with value 'TRUST_CUSTOM_CA_SIGNED_CERTIFICATES' is invalid: Configured trust strategy requires a certificate file.");
+				"Property spring.neo4j.security.trust-strategy with value 'TRUST_CUSTOM_CA_SIGNED_CERTIFICATES' is invalid: Configured trust strategy requires a certificate file.");
 	}
 
 	@Test

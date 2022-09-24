@@ -32,6 +32,7 @@ public interface ReactorNettyHttpClientMapper {
 
 	/**
 	 * Configure the given {@link HttpClient} and return the newly created instance.
+	 *
 	 * @param httpClient the client to configure
 	 * @return the new client instance
 	 */

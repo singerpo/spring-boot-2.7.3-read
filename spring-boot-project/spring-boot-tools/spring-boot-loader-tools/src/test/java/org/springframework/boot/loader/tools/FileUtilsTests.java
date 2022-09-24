@@ -94,7 +94,7 @@ class FileUtilsTests {
 	void hash() throws Exception {
 		File file = new File(this.tempDir, "file");
 		try (OutputStream outputStream = new FileOutputStream(file)) {
-			outputStream.write(new byte[] { 1, 2, 3 });
+			outputStream.write(new byte[]{1, 2, 3});
 		}
 		assertThat(FileUtils.sha1Hash(file)).isEqualTo("7037807198c22a7d2b0807371d763779a84fdfcf");
 	}

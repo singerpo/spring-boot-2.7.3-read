@@ -21,8 +21,8 @@ package org.springframework.boot.actuate.health;
  *
  * @author Dave Syer
  * @author Christian Dupuis
- * @since 2.2.0
  * @see Status#UP
+ * @since 2.2.0
  */
 public class PingHealthIndicator extends AbstractHealthIndicator {
 

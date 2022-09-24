@@ -37,7 +37,7 @@ class OverrideAutoConfigurationContextCustomizerFactory implements ContextCustom
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configurationAttributes) {
+													 List<ContextConfigurationAttributes> configurationAttributes) {
 		OverrideAutoConfiguration overrideAutoConfiguration = TestContextAnnotationUtils.findMergedAnnotation(testClass,
 				OverrideAutoConfiguration.class);
 		boolean enabled = (overrideAutoConfiguration != null) ? overrideAutoConfiguration.enabled() : true;

@@ -162,8 +162,7 @@ class TestFailuresPluginIntegrationTests {
 	private void withPrintWriter(File file, Consumer<PrintWriter> consumer) {
 		try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
 			consumer.accept(writer);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -171,8 +170,7 @@ class TestFailuresPluginIntegrationTests {
 	private List<String> readLines(String output) {
 		try (BufferedReader reader = new BufferedReader(new StringReader(output))) {
 			return reader.lines().collect(Collectors.toList());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

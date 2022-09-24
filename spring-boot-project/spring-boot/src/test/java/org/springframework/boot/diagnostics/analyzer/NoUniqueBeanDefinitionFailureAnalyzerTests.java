@@ -98,8 +98,7 @@ class NoUniqueBeanDefinitionFailureAnalyzerTests {
 		this.context.setParent(new AnnotationConfigApplicationContext(ParentProducer.class));
 		try {
 			this.context.refresh();
-		}
-		catch (BeanCreationException ex) {
+		} catch (BeanCreationException ex) {
 			return ex;
 		}
 		return null;

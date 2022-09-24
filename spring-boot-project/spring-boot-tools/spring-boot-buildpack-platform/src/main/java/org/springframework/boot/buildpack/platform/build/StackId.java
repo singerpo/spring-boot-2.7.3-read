@@ -60,6 +60,7 @@ class StackId {
 
 	/**
 	 * Factory method to create a {@link StackId} from an {@link Image}.
+	 *
 	 * @param image the source image
 	 * @return the extracted stack ID
 	 */
@@ -70,6 +71,7 @@ class StackId {
 
 	/**
 	 * Factory method to create a {@link StackId} from an {@link ImageConfig}.
+	 *
 	 * @param imageConfig the source image config
 	 * @return the extracted stack ID
 	 */
@@ -81,6 +83,7 @@ class StackId {
 
 	/**
 	 * Factory method to create a {@link StackId} with a given value.
+	 *
 	 * @param value the stack ID value
 	 * @return a new stack ID instance
 	 */

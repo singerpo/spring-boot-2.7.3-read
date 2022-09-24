@@ -39,6 +39,7 @@ public class MongoClientFactory extends MongoClientFactorySupport<MongoClient> {
 
 	/**
 	 * Construct a factory for creating a blocking {@link MongoClient}.
+	 *
 	 * @param builderCustomizers a list of configuration settings customizers
 	 */
 	public MongoClientFactory(List<MongoClientSettingsBuilderCustomizer> builderCustomizers) {

@@ -64,7 +64,8 @@ public class AnsiPropertySource extends PropertySource<AnsiElement> {
 
 	/**
 	 * Create a new {@link AnsiPropertySource} instance.
-	 * @param name the name of the property source
+	 *
+	 * @param name   the name of the property source
 	 * @param encode if the output should be encoded
 	 */
 	public AnsiPropertySource(String name, boolean encode) {
@@ -149,8 +150,7 @@ public class AnsiPropertySource extends PropertySource<AnsiElement> {
 			if (containsOnlyDigits(postfix)) {
 				try {
 					return this.factory.apply(Integer.parseInt(postfix));
-				}
-				catch (IllegalArgumentException ex) {
+				} catch (IllegalArgumentException ex) {
 				}
 			}
 			return null;

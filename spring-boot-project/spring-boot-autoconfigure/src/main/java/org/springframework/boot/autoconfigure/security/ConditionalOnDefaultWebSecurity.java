@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Phillip Webb
  * @since 2.4.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(DefaultWebSecurityCondition.class)

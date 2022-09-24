@@ -40,9 +40,9 @@ import org.springframework.util.Assert;
  * use.
  *
  * @author Phillip Webb
- * @since 2.4.0
  * @see BootstrapContext
  * @see ConfigurableBootstrapContext
+ * @since 2.4.0
  */
 public interface BootstrapRegistry {
 
@@ -50,23 +50,26 @@ public interface BootstrapRegistry {
 	 * Register a specific type with the registry. If the specified type has already been
 	 * registered and has not been obtained as a {@link Scope#SINGLETON singleton}, it
 	 * will be replaced.
-	 * @param <T> the instance type
-	 * @param type the instance type
+	 *
+	 * @param <T>              the instance type
+	 * @param type             the instance type
 	 * @param instanceSupplier the instance supplier
 	 */
 	<T> void register(Class<T> type, InstanceSupplier<T> instanceSupplier);
 
 	/**
 	 * Register a specific type with the registry if one is not already present.
-	 * @param <T> the instance type
-	 * @param type the instance type
+	 *
+	 * @param <T>              the instance type
+	 * @param type             the instance type
 	 * @param instanceSupplier the instance supplier
 	 */
 	<T> void registerIfAbsent(Class<T> type, InstanceSupplier<T> instanceSupplier);
 
 	/**
 	 * Return if a registration exists for the given type.
-	 * @param <T> the instance type
+	 *
+	 * @param <T>  the instance type
 	 * @param type the instance type
 	 * @return {@code true} if the type has already been registered
 	 */
@@ -74,7 +77,8 @@ public interface BootstrapRegistry {
 
 	/**
 	 * Return any existing {@link InstanceSupplier} for the given type.
-	 * @param <T> the instance type
+	 *
+	 * @param <T>  the instance type
 	 * @param type the instance type
 	 * @return the registered {@link InstanceSupplier} or {@code null}
 	 */
@@ -84,6 +88,7 @@ public interface BootstrapRegistry {
 	 * Add an {@link ApplicationListener} that will be called with a
 	 * {@link BootstrapContextClosedEvent} when the {@link BootstrapContext} is closed and
 	 * the {@link ApplicationContext} has been prepared.
+	 *
 	 * @param listener the listener to add
 	 */
 	void addCloseListener(ApplicationListener<BootstrapContextClosedEvent> listener);
@@ -99,14 +104,16 @@ public interface BootstrapRegistry {
 
 		/**
 		 * Factory method used to create the instance when needed.
+		 *
 		 * @param context the {@link BootstrapContext} which may be used to obtain other
-		 * bootstrap instances.
+		 *                bootstrap instances.
 		 * @return the instance
 		 */
 		T get(BootstrapContext context);
 
 		/**
 		 * Return the scope of the supplied instance.
+		 *
 		 * @return the scope
 		 * @since 2.4.2
 		 */
@@ -116,6 +123,7 @@ public interface BootstrapRegistry {
 
 		/**
 		 * Return a new {@link InstanceSupplier} with an updated {@link Scope}.
+		 *
 		 * @param scope the new scope
 		 * @return a new {@link InstanceSupplier} instance with the new scope
 		 * @since 2.4.2
@@ -141,7 +149,8 @@ public interface BootstrapRegistry {
 		/**
 		 * Factory method that can be used to create an {@link InstanceSupplier} for a
 		 * given instance.
-		 * @param <T> the instance type
+		 *
+		 * @param <T>      the instance type
 		 * @param instance the instance
 		 * @return a new {@link InstanceSupplier}
 		 */
@@ -152,7 +161,8 @@ public interface BootstrapRegistry {
 		/**
 		 * Factory method that can be used to create an {@link InstanceSupplier} from a
 		 * {@link Supplier}.
-		 * @param <T> the instance type
+		 *
+		 * @param <T>      the instance type
 		 * @param supplier the supplier that will provide the instance
 		 * @return a new {@link InstanceSupplier}
 		 */
@@ -164,6 +174,7 @@ public interface BootstrapRegistry {
 
 	/**
 	 * The scope of an instance.
+	 *
 	 * @since 2.4.2
 	 */
 	enum Scope {

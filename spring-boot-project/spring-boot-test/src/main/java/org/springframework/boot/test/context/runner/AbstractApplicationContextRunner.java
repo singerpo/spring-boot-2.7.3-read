@@ -93,16 +93,16 @@ import org.springframework.util.Assert;
  * <p>
  *
  * @param <SELF> the "self" type for this runner
- * @param <C> the context type
- * @param <A> the application context assertion provider
+ * @param <C>    the context type
+ * @param <A>    the application context assertion provider
  * @author Stephane Nicoll
  * @author Andy Wilkinson
  * @author Phillip Webb
- * @since 2.0.0
  * @see ApplicationContextRunner
  * @see WebApplicationContextRunner
  * @see ReactiveWebApplicationContextRunner
  * @see ApplicationContextAssert
+ * @since 2.0.0
  */
 public abstract class AbstractApplicationContextRunner<SELF extends AbstractApplicationContextRunner<SELF, C, A>, C extends ConfigurableApplicationContext, A extends ApplicationContextAssertProvider<C>> {
 
@@ -112,6 +112,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Create a new {@link AbstractApplicationContextRunner} instance.
+	 *
 	 * @param contextFactory the factory used to create the actual context
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #AbstractApplicationContextRunner(Supplier, Function)}
@@ -125,12 +126,13 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Create a new {@link AbstractApplicationContextRunner} instance.
-	 * @param contextFactory the factory used to create the actual context
+	 *
+	 * @param contextFactory  the factory used to create the actual context
 	 * @param instanceFactory the factory used to create new instance of the runner
 	 * @since 2.6.0
 	 */
 	protected AbstractApplicationContextRunner(Supplier<C> contextFactory,
-			Function<RunnerConfiguration<C>, SELF> instanceFactory) {
+											   Function<RunnerConfiguration<C>, SELF> instanceFactory) {
 		Assert.notNull(contextFactory, "ContextFactory must not be null");
 		Assert.notNull(contextFactory, "RunnerConfiguration must not be null");
 		this.runnerConfiguration = new RunnerConfiguration<>(contextFactory);
@@ -139,12 +141,13 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Create a new {@link AbstractApplicationContextRunner} instance.
-	 * @param configuration the configuration for the runner to use
+	 *
+	 * @param configuration   the configuration for the runner to use
 	 * @param instanceFactory the factory used to create new instance of the runner
 	 * @since 2.6.0
 	 */
 	protected AbstractApplicationContextRunner(RunnerConfiguration<C> configuration,
-			Function<RunnerConfiguration<C>, SELF> instanceFactory) {
+											   Function<RunnerConfiguration<C>, SELF> instanceFactory) {
 		Assert.notNull(configuration, "RunnerConfiguration must not be null");
 		Assert.notNull(instanceFactory, "instanceFactory must not be null");
 		this.runnerConfiguration = configuration;
@@ -153,23 +156,24 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Create a new {@link AbstractApplicationContextRunner} instance.
-	 * @param contextFactory the factory used to create the actual context
+	 *
+	 * @param contextFactory                the factory used to create the actual context
 	 * @param allowBeanDefinitionOverriding whether bean definition overriding is allowed
-	 * @param initializers the initializers
-	 * @param environmentProperties the environment properties
-	 * @param systemProperties the system properties
-	 * @param classLoader the class loader
-	 * @param parent the parent
-	 * @param beanRegistrations the bean registrations
-	 * @param configurations the configuration
+	 * @param initializers                  the initializers
+	 * @param environmentProperties         the environment properties
+	 * @param systemProperties              the system properties
+	 * @param classLoader                   the class loader
+	 * @param parent                        the parent
+	 * @param beanRegistrations             the bean registrations
+	 * @param configurations                the configuration
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #AbstractApplicationContextRunner(Supplier, Function)}
 	 */
 	@Deprecated
 	protected AbstractApplicationContextRunner(Supplier<C> contextFactory, boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super C>> initializers, TestPropertyValues environmentProperties,
-			TestPropertyValues systemProperties, ClassLoader classLoader, ApplicationContext parent,
-			List<BeanRegistration<?>> beanRegistrations, List<Configurations> configurations) {
+											   List<ApplicationContextInitializer<? super C>> initializers, TestPropertyValues environmentProperties,
+											   TestPropertyValues systemProperties, ClassLoader classLoader, ApplicationContext parent,
+											   List<BeanRegistration<?>> beanRegistrations, List<Configurations> configurations) {
 		Assert.notNull(contextFactory, "ContextFactory must not be null");
 		Assert.notNull(environmentProperties, "EnvironmentProperties must not be null");
 		Assert.notNull(systemProperties, "SystemProperties must not be null");
@@ -191,10 +195,11 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	/**
 	 * Specify if bean definition overriding, by registering a definition with the same
 	 * name as an existing definition, should be allowed.
+	 *
 	 * @param allowBeanDefinitionOverriding if bean overriding is allowed
 	 * @return a new instance with the updated bean definition overriding policy
-	 * @since 2.3.0
 	 * @see DefaultListableBeanFactory#setAllowBeanDefinitionOverriding(boolean)
+	 * @since 2.3.0
 	 */
 	public SELF withAllowBeanDefinitionOverriding(boolean allowBeanDefinitionOverriding) {
 		return newInstance(this.runnerConfiguration.withAllowBeanDefinitionOverriding(allowBeanDefinitionOverriding));
@@ -202,10 +207,11 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Specify if circular references between beans should be allowed.
+	 *
 	 * @param allowCircularReferences if circular references between beans are allowed
 	 * @return a new instance with the updated circular references policy
-	 * @since 2.6.0
 	 * @see AbstractAutowireCapableBeanFactory#setAllowCircularReferences(boolean)
+	 * @since 2.6.0
 	 */
 	public SELF withAllowCircularReferences(boolean allowCircularReferences) {
 		return newInstance(this.runnerConfiguration.withAllowCircularReferences(allowCircularReferences));
@@ -214,6 +220,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	/**
 	 * Add an {@link ApplicationContextInitializer} to be called when the context is
 	 * created.
+	 *
 	 * @param initializer the initializer to add
 	 * @return a new instance with the updated initializers
 	 */
@@ -226,8 +233,9 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * Add the specified {@link Environment} property pairs. Key-value pairs can be
 	 * specified with colon (":") or equals ("=") separators. Override matching keys that
 	 * might have been specified previously.
+	 *
 	 * @param pairs the key-value pairs for properties that need to be added to the
-	 * environment
+	 *              environment
 	 * @return a new instance with the updated property values
 	 * @see TestPropertyValues
 	 * @see #withSystemProperties(String...)
@@ -241,6 +249,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * with colon (":") or equals ("=") separators. System properties are added before the
 	 * context is {@link #run(ContextConsumer) run} and restored when the context is
 	 * closed.
+	 *
 	 * @param pairs the key-value pairs for properties that need to be added to the system
 	 * @return a new instance with the updated system properties
 	 * @see TestPropertyValues
@@ -253,6 +262,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	/**
 	 * Customize the {@link ClassLoader} that the {@link ApplicationContext} should use
 	 * for resource loading and bean class loading.
+	 *
 	 * @param classLoader the classloader to use (can be null to use the default)
 	 * @return a new instance with the updated class loader
 	 * @see FilteredClassLoader
@@ -264,6 +274,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	/**
 	 * Configure the {@link ConfigurableApplicationContext#setParent(ApplicationContext)
 	 * parent} of the {@link ApplicationContext}.
+	 *
 	 * @param parent the parent
 	 * @return a new instance with the updated parent
 	 */
@@ -278,11 +289,12 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * <p>
 	 * Such beans are registered after regular {@linkplain #withUserConfiguration(Class[])
 	 * user configurations} in the order of registration.
-	 * @param type the type of the bean
+	 *
+	 * @param type            the type of the bean
 	 * @param constructorArgs custom argument values to be fed into Spring's constructor
-	 * resolution algorithm, resolving either all arguments or just specific ones, with
-	 * the rest to be resolved through regular autowiring (may be {@code null} or empty)
-	 * @param <T> the type of the bean
+	 *                        resolution algorithm, resolving either all arguments or just specific ones, with
+	 *                        the rest to be resolved through regular autowiring (may be {@code null} or empty)
+	 * @param <T>             the type of the bean
 	 * @return a new instance with the updated bean
 	 */
 	public <T> SELF withBean(Class<T> type, Object... constructorArgs) {
@@ -294,12 +306,13 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * <p>
 	 * Such beans are registered after regular {@linkplain #withUserConfiguration(Class[])
 	 * user configurations} in the order of registration.
-	 * @param name the bean name or {@code null} to use a generated name
-	 * @param type the type of the bean
+	 *
+	 * @param name            the bean name or {@code null} to use a generated name
+	 * @param type            the type of the bean
 	 * @param constructorArgs custom argument values to be fed into Spring's constructor
-	 * resolution algorithm, resolving either all arguments or just specific ones, with
-	 * the rest to be resolved through regular autowiring (may be {@code null} or empty)
-	 * @param <T> the type of the bean
+	 *                        resolution algorithm, resolving either all arguments or just specific ones, with
+	 *                        the rest to be resolved through regular autowiring (may be {@code null} or empty)
+	 * @param <T>             the type of the bean
 	 * @return a new instance with the updated bean
 	 */
 	public <T> SELF withBean(String name, Class<T> type, Object... constructorArgs) {
@@ -313,11 +326,12 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * <p>
 	 * Such beans are registered after regular {@linkplain #withUserConfiguration(Class[])
 	 * user configurations} in the order of registration.
-	 * @param type the type of the bean
-	 * @param supplier a supplier for the bean
+	 *
+	 * @param type        the type of the bean
+	 * @param supplier    a supplier for the bean
 	 * @param customizers one or more callbacks for customizing the factory's
-	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
-	 * @param <T> the type of the bean
+	 *                    {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
+	 * @param <T>         the type of the bean
 	 * @return a new instance with the updated bean
 	 */
 	public <T> SELF withBean(Class<T> type, Supplier<T> supplier, BeanDefinitionCustomizer... customizers) {
@@ -331,22 +345,24 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * <p>
 	 * Such beans are registered after regular {@linkplain #withUserConfiguration(Class[])
 	 * user configurations} in the order of registration.
-	 * @param name the bean name or {@code null} to use a generated name
-	 * @param type the type of the bean
-	 * @param supplier a supplier for the bean
+	 *
+	 * @param name        the bean name or {@code null} to use a generated name
+	 * @param type        the type of the bean
+	 * @param supplier    a supplier for the bean
 	 * @param customizers one or more callbacks for customizing the factory's
-	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
-	 * @param <T> the type of the bean
+	 *                    {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
+	 * @param <T>         the type of the bean
 	 * @return a new instance with the updated bean
 	 */
 	public <T> SELF withBean(String name, Class<T> type, Supplier<T> supplier,
-			BeanDefinitionCustomizer... customizers) {
+							 BeanDefinitionCustomizer... customizers) {
 		return newInstance(this.runnerConfiguration.withBean(name, type, supplier, customizers));
 	}
 
 	/**
 	 * Register the specified user configuration classes with the
 	 * {@link ApplicationContext}.
+	 *
 	 * @param configurationClasses the user configuration classes to add
 	 * @return a new instance with the updated configuration
 	 */
@@ -356,6 +372,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Register the specified configuration classes with the {@link ApplicationContext}.
+	 *
 	 * @param configurations the configurations to add
 	 * @return a new instance with the updated configuration
 	 */
@@ -366,6 +383,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	/**
 	 * Apply customization to this runner.
+	 *
 	 * @param customizer the customizer to call
 	 * @return a new instance with the customizations applied
 	 */
@@ -384,9 +402,9 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 
 	@Deprecated
 	protected abstract SELF newInstance(Supplier<C> contextFactory, boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super C>> initializers, TestPropertyValues environmentProperties,
-			TestPropertyValues systemProperties, ClassLoader classLoader, ApplicationContext parent,
-			List<BeanRegistration<?>> beanRegistrations, List<Configurations> configurations);
+										List<ApplicationContextInitializer<? super C>> initializers, TestPropertyValues environmentProperties,
+										TestPropertyValues systemProperties, ClassLoader classLoader, ApplicationContext parent,
+										List<BeanRegistration<?>> beanRegistrations, List<Configurations> configurations);
 
 	private SELF newInstance(RunnerConfiguration<C> runnerConfiguration) {
 		return this.instanceFactory.apply(runnerConfiguration);
@@ -396,6 +414,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	 * Create and refresh a new {@link ApplicationContext} based on the current state of
 	 * this loader. The context is consumed by the specified {@code consumer} and closed
 	 * upon completion.
+	 *
 	 * @param consumer the consumer of the created {@link ApplicationContext}
 	 * @return this instance
 	 */
@@ -414,15 +433,13 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	private void withContextClassLoader(ClassLoader classLoader, Runnable action) {
 		if (classLoader == null) {
 			action.run();
-		}
-		else {
+		} else {
 			Thread currentThread = Thread.currentThread();
 			ClassLoader previous = currentThread.getContextClassLoader();
 			currentThread.setContextClassLoader(classLoader);
 			try {
 				action.run();
-			}
-			finally {
+			} finally {
 				currentThread.setContextClassLoader(previous);
 			}
 		}
@@ -450,8 +467,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 		try {
 			configureContext(context);
 			return context;
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			context.close();
 			throw ex;
 		}
@@ -478,8 +494,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 	private void accept(ContextConsumer<? super A> consumer, A context) {
 		try {
 			consumer.accept(context);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			rethrow(ex);
 		}
 	}
@@ -503,7 +518,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 		}
 
 		public BeanRegistration(String name, Class<T> type, Supplier<T> supplier,
-				BeanDefinitionCustomizer... customizers) {
+								BeanDefinitionCustomizer... customizers) {
 			this.registrar = (context) -> context.registerBean(name, type, supplier, customizers);
 		}
 
@@ -604,7 +619,7 @@ public abstract class AbstractApplicationContextRunner<SELF extends AbstractAppl
 		}
 
 		private <T> RunnerConfiguration<C> withBean(String name, Class<T> type, Supplier<T> supplier,
-				BeanDefinitionCustomizer... customizers) {
+													BeanDefinitionCustomizer... customizers) {
 			RunnerConfiguration<C> config = new RunnerConfiguration<>(this);
 			config.beanRegistrations = add(config.beanRegistrations,
 					new BeanRegistration<>(name, type, supplier, customizers));

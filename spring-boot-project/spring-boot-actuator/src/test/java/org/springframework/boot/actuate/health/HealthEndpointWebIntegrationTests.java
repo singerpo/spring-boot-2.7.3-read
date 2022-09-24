@@ -115,7 +115,7 @@ class HealthEndpointWebIntegrationTests {
 	}
 
 	private void withHealthContributor(ApplicationContext context, String name, HealthContributor healthContributor,
-			ReactiveHealthContributor reactiveHealthContributor, ThrowingCallable callable) {
+									   ReactiveHealthContributor reactiveHealthContributor, ThrowingCallable callable) {
 		HealthContributorRegistry healthContributorRegistry = getContributorRegistry(context,
 				HealthContributorRegistry.class);
 		healthContributorRegistry.registerContributor(name, healthContributor);
@@ -126,11 +126,9 @@ class HealthEndpointWebIntegrationTests {
 		}
 		try {
 			callable.call();
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			ReflectionUtils.rethrowRuntimeException(ex);
-		}
-		finally {
+		} finally {
 			healthContributorRegistry.unregisterContributor(name);
 			if (reactiveHealthContributorRegistry != null) {
 				reactiveHealthContributorRegistry.unregisterContributor(name);
@@ -139,7 +137,7 @@ class HealthEndpointWebIntegrationTests {
 	}
 
 	private <R extends ContributorRegistry<?>> R getContributorRegistry(ApplicationContext context,
-			Class<R> registryType) {
+																		Class<R> registryType) {
 		return context.getBeanProvider(registryType).getIfAvailable();
 	}
 
@@ -157,8 +155,7 @@ class HealthEndpointWebIntegrationTests {
 			client.get().uri("/actuator/health").accept(MediaType.APPLICATION_JSON).exchange().expectStatus().isOk()
 					.expectBody().jsonPath("status").isEqualTo("UP").jsonPath("components.alpha.status").isEqualTo("UP")
 					.jsonPath("components.bravo.status").doesNotExist();
-		}
-		finally {
+		} finally {
 			healthContributorRegistry.registerContributor(name, bravo);
 			if (reactiveHealthContributorRegistry != null && reactiveBravo != null) {
 				reactiveHealthContributorRegistry.registerContributor(name, reactiveBravo);
@@ -187,14 +184,14 @@ class HealthEndpointWebIntegrationTests {
 
 		@Bean
 		HealthEndpoint healthEndpoint(HealthContributorRegistry healthContributorRegistry,
-				HealthEndpointGroups healthEndpointGroups) {
+									  HealthEndpointGroups healthEndpointGroups) {
 			return new HealthEndpoint(healthContributorRegistry, healthEndpointGroups, null);
 		}
 
 		@Bean
 		@ConditionalOnWebApplication(type = Type.SERVLET)
 		HealthEndpointWebExtension healthWebEndpointExtension(HealthContributorRegistry healthContributorRegistry,
-				HealthEndpointGroups healthEndpointGroups) {
+															  HealthEndpointGroups healthEndpointGroups) {
 			return new HealthEndpointWebExtension(healthContributorRegistry, healthEndpointGroups, null);
 		}
 

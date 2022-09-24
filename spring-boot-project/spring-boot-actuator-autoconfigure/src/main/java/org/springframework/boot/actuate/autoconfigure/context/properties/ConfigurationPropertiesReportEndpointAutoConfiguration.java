@@ -66,7 +66,7 @@ public class ConfigurationPropertiesReportEndpointAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnBean(ConfigurationPropertiesReportEndpoint.class)
-	@ConditionalOnAvailableEndpoint(exposure = { EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY })
+	@ConditionalOnAvailableEndpoint(exposure = {EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY})
 	public ConfigurationPropertiesReportEndpointWebExtension configurationPropertiesReportEndpointWebExtension(
 			ConfigurationPropertiesReportEndpoint configurationPropertiesReportEndpoint) {
 		return new ConfigurationPropertiesReportEndpointWebExtension(configurationPropertiesReportEndpoint);

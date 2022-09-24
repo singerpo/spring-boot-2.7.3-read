@@ -67,6 +67,7 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP GET operation.
+	 *
 	 * @param uri the destination URI
 	 * @return the operation response
 	 */
@@ -77,6 +78,7 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
+	 *
 	 * @param uri the destination URI
 	 * @return the operation response
 	 */
@@ -87,7 +89,8 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
-	 * @param uri the destination URI
+	 *
+	 * @param uri          the destination URI
 	 * @param registryAuth registry authentication credentials
 	 * @return the operation response
 	 */
@@ -98,9 +101,10 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP POST operation.
-	 * @param uri the destination URI
+	 *
+	 * @param uri         the destination URI
 	 * @param contentType the content type to write
-	 * @param writer a content writer
+	 * @param writer      a content writer
 	 * @return the operation response
 	 */
 	@Override
@@ -110,9 +114,10 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP PUT operation.
-	 * @param uri the destination URI
+	 *
+	 * @param uri         the destination URI
 	 * @param contentType the content type to write
-	 * @param writer a content writer
+	 * @param writer      a content writer
 	 * @return the operation response
 	 */
 	@Override
@@ -122,6 +127,7 @@ abstract class HttpClientTransport implements HttpTransport {
 
 	/**
 	 * Perform an HTTP DELETE operation.
+	 *
 	 * @param uri the destination URI
 	 * @return the operation response
 	 */
@@ -131,7 +137,7 @@ abstract class HttpClientTransport implements HttpTransport {
 	}
 
 	private Response execute(HttpEntityEnclosingRequestBase request, String contentType,
-			IOConsumer<OutputStream> writer) {
+							 IOConsumer<OutputStream> writer) {
 		request.setEntity(new WritableHttpEntity(contentType, writer));
 		return execute(request);
 	}
@@ -156,8 +162,7 @@ abstract class HttpClientTransport implements HttpTransport {
 						statusLine.getReasonPhrase(), errors, message);
 			}
 			return new HttpClientResponse(response);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new DockerConnectionException(this.host.toHostString(), ex);
 		}
 	}
@@ -165,8 +170,7 @@ abstract class HttpClientTransport implements HttpTransport {
 	private Errors getErrorsFromResponse(HttpEntity entity) {
 		try {
 			return SharedObjectMapper.get().readValue(entity.getContent(), Errors.class);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
 		}
 	}
@@ -175,8 +179,7 @@ abstract class HttpClientTransport implements HttpTransport {
 		try {
 			return (entity.getContent() != null)
 					? SharedObjectMapper.get().readValue(entity.getContent(), Message.class) : null;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
 		}
 	}
@@ -230,8 +233,7 @@ abstract class HttpClientTransport implements HttpTransport {
 				ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 				this.writer.accept(bytes);
 				return bytes.toByteArray().length;
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				return -1;
 			}
 		}

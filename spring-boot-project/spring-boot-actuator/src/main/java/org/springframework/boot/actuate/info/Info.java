@@ -46,6 +46,7 @@ public final class Info {
 
 	/**
 	 * Return the content.
+	 *
 	 * @return the details of the info or an empty map.
 	 */
 	@JsonAnyGetter
@@ -101,7 +102,8 @@ public final class Info {
 
 		/**
 		 * Record detail using given {@code key} and {@code value}.
-		 * @param key the detail key
+		 *
+		 * @param key   the detail key
 		 * @param value the detail value
 		 * @return this {@link Builder} instance
 		 */
@@ -112,6 +114,7 @@ public final class Info {
 
 		/**
 		 * Record several details.
+		 *
 		 * @param details the details
 		 * @return this {@link Builder} instance
 		 * @see #withDetail(String, Object)
@@ -123,6 +126,7 @@ public final class Info {
 
 		/**
 		 * Create a new {@link Info} instance based on the state of this builder.
+		 *
 		 * @return a new {@link Info} instance
 		 */
 		public Info build() {

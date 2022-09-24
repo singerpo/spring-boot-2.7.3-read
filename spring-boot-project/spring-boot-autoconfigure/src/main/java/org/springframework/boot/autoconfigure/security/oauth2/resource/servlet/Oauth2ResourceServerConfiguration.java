@@ -31,15 +31,15 @@ class Oauth2ResourceServerConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnClass(JwtDecoder.class)
-	@Import({ OAuth2ResourceServerJwtConfiguration.JwtDecoderConfiguration.class,
-			OAuth2ResourceServerJwtConfiguration.OAuth2SecurityFilterChainConfiguration.class })
+	@Import({OAuth2ResourceServerJwtConfiguration.JwtDecoderConfiguration.class,
+			OAuth2ResourceServerJwtConfiguration.OAuth2SecurityFilterChainConfiguration.class})
 	static class JwtConfiguration {
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ OAuth2ResourceServerOpaqueTokenConfiguration.OpaqueTokenIntrospectionClientConfiguration.class,
-			OAuth2ResourceServerOpaqueTokenConfiguration.OAuth2SecurityFilterChainConfiguration.class })
+	@Import({OAuth2ResourceServerOpaqueTokenConfiguration.OpaqueTokenIntrospectionClientConfiguration.class,
+			OAuth2ResourceServerOpaqueTokenConfiguration.OAuth2SecurityFilterChainConfiguration.class})
 	static class OpaqueTokenConfiguration {
 
 	}

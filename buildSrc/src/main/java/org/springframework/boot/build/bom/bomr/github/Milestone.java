@@ -34,6 +34,7 @@ public class Milestone {
 
 	/**
 	 * Returns the name of the milestone.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -42,6 +43,7 @@ public class Milestone {
 
 	/**
 	 * Returns the number of the milestone.
+	 *
 	 * @return the number
 	 */
 	public int getNumber() {

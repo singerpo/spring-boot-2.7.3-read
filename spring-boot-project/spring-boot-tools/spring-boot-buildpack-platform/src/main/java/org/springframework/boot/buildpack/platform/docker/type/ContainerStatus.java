@@ -50,6 +50,7 @@ public class ContainerStatus extends MappedObject {
 
 	/**
 	 * Return the container exit status code.
+	 *
 	 * @return the exit status code
 	 */
 	public int getStatusCode() {
@@ -58,6 +59,7 @@ public class ContainerStatus extends MappedObject {
 
 	/**
 	 * Return a message indicating an error waiting for a container to stop.
+	 *
 	 * @return the waiting error message
 	 */
 	public String getWaitingErrorMessage() {
@@ -67,6 +69,7 @@ public class ContainerStatus extends MappedObject {
 	/**
 	 * Create a new {@link ContainerStatus} instance from the specified JSON content
 	 * stream.
+	 *
 	 * @param content the JSON content stream
 	 * @return a new {@link ContainerStatus} instance
 	 * @throws IOException on IO error
@@ -77,7 +80,8 @@ public class ContainerStatus extends MappedObject {
 
 	/**
 	 * Create a new {@link ContainerStatus} instance with the specified values.
-	 * @param statusCode the status code
+	 *
+	 * @param statusCode   the status code
 	 * @param errorMessage the error message
 	 * @return a new {@link ContainerStatus} instance
 	 */

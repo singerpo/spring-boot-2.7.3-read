@@ -50,8 +50,7 @@ public final class GraphQlTags {
 	public static Tag executionOutcome(ExecutionResult result, Throwable exception) {
 		if (exception == null && result.getErrors().isEmpty()) {
 			return OUTCOME_SUCCESS;
-		}
-		else {
+		} else {
 			return OUTCOME_ERROR;
 		}
 	}
@@ -73,8 +72,7 @@ public final class GraphQlTags {
 				try {
 					Integer.parseUnsignedInt(segment.toString());
 					builder.append("[*]");
-				}
-				catch (NumberFormatException exc) {
+				} catch (NumberFormatException exc) {
 					builder.append('.');
 					builder.append(segment);
 				}

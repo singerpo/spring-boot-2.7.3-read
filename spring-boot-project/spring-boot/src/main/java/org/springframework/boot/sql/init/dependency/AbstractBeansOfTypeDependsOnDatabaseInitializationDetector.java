@@ -37,8 +37,7 @@ public abstract class AbstractBeansOfTypeDependsOnDatabaseInitializationDetector
 		try {
 			Set<Class<?>> types = getDependsOnDatabaseInitializationBeanTypes();
 			return new BeansOfTypeDetector(types).detect(beanFactory);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return Collections.emptySet();
 		}
 	}
@@ -46,6 +45,7 @@ public abstract class AbstractBeansOfTypeDependsOnDatabaseInitializationDetector
 	/**
 	 * Returns the bean types that should be detected as depending on database
 	 * initialization.
+	 *
 	 * @return the database initialization dependent bean types
 	 */
 	protected abstract Set<Class<?>> getDependsOnDatabaseInitializationBeanTypes();

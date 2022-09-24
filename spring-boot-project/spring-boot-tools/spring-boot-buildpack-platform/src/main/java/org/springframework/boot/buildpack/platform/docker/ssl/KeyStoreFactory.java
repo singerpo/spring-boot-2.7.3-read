@@ -42,9 +42,10 @@ final class KeyStoreFactory {
 	/**
 	 * Create a new {@link KeyStore} populated with the certificate stored at the
 	 * specified file path and an optional private key.
+	 *
 	 * @param certPath the path to the certificate authority file
-	 * @param keyPath the path to the private file
-	 * @param alias the alias to use for KeyStore entries
+	 * @param keyPath  the path to the private file
+	 * @param alias    the alias to use for KeyStore entries
 	 * @return the {@code KeyStore}
 	 */
 	static KeyStore create(Path certPath, Path keyPath, String alias) {
@@ -54,13 +55,11 @@ final class KeyStoreFactory {
 			PrivateKey privateKey = getPrivateKey(keyPath);
 			try {
 				addCertificates(keyStore, certificates, privateKey, alias);
-			}
-			catch (KeyStoreException ex) {
+			} catch (KeyStoreException ex) {
 				throw new IllegalStateException("Error adding certificates to KeyStore: " + ex.getMessage(), ex);
 			}
 			return keyStore;
-		}
-		catch (GeneralSecurityException | IOException ex) {
+		} catch (GeneralSecurityException | IOException ex) {
 			throw new IllegalStateException("Error creating KeyStore: " + ex.getMessage(), ex);
 		}
 	}
@@ -80,11 +79,10 @@ final class KeyStoreFactory {
 	}
 
 	private static void addCertificates(KeyStore keyStore, X509Certificate[] certificates, PrivateKey privateKey,
-			String alias) throws KeyStoreException {
+										String alias) throws KeyStoreException {
 		if (privateKey != null) {
 			keyStore.setKeyEntry(alias, privateKey, NO_PASSWORD, certificates);
-		}
-		else {
+		} else {
 			for (int index = 0; index < certificates.length; index++) {
 				keyStore.setCertificateEntry(alias + "-" + index, certificates[index]);
 			}

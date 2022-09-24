@@ -55,6 +55,7 @@ public final class RestTemplateBuilderConfigurer {
 	/**
 	 * Configure the specified {@link RestTemplateBuilder}. The builder can be further
 	 * tuned and default settings can be overridden.
+	 *
 	 * @param builder the {@link RestTemplateBuilder} instance to configure
 	 * @return the configured builder
 	 */
@@ -68,7 +69,7 @@ public final class RestTemplateBuilderConfigurer {
 	}
 
 	private <T> RestTemplateBuilder addCustomizers(RestTemplateBuilder builder, List<T> customizers,
-			BiFunction<RestTemplateBuilder, Collection<T>, RestTemplateBuilder> method) {
+												   BiFunction<RestTemplateBuilder, Collection<T>, RestTemplateBuilder> method) {
 		if (!ObjectUtils.isEmpty(customizers)) {
 			return method.apply(builder, customizers);
 		}

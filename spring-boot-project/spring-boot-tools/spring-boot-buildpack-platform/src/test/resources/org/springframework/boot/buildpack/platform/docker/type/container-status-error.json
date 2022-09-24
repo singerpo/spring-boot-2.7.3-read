@@ -1,6 +1,6 @@
 {
-	"StatusCode": 1,
-	"Error": {
-		"Message": "error detail"
-	}
+  "StatusCode": 1,
+  "Error": {
+    "Message": "error detail"
+  }
 }

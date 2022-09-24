@@ -79,7 +79,7 @@ public class NettyWebServer implements WebServer {
 	private volatile DisposableServer disposableServer;
 
 	public NettyWebServer(HttpServer httpServer, ReactorHttpHandlerAdapter handlerAdapter, Duration lifecycleTimeout,
-			Shutdown shutdown) {
+						  Shutdown shutdown) {
 		Assert.notNull(httpServer, "HttpServer must not be null");
 		Assert.notNull(handlerAdapter, "HandlerAdapter must not be null");
 		this.lifecycleTimeout = lifecycleTimeout;
@@ -98,8 +98,7 @@ public class NettyWebServer implements WebServer {
 		if (this.disposableServer == null) {
 			try {
 				this.disposableServer = startHttpServer();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				PortInUseException.ifCausedBy(ex, ChannelBindException.class, (bindException) -> {
 					if (bindException.localPort() > 0 && !isPermissionDenied(bindException.getCause())) {
 						throw new PortInUseException(bindException.localPort(), ex);
@@ -126,8 +125,7 @@ public class NettyWebServer implements WebServer {
 			Object value = supplier.get();
 			message.append((message.length() != 0) ? " " : "");
 			message.append(String.format(format, value));
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 		}
 	}
 
@@ -135,8 +133,7 @@ public class NettyWebServer implements WebServer {
 		HttpServer server = this.httpServer;
 		if (this.routeProviders.isEmpty()) {
 			server = server.handle(this.handler);
-		}
-		else {
+		} else {
 			server = server.route(this::applyRouteProviders);
 		}
 		if (this.lifecycleTimeout != null) {
@@ -150,8 +147,7 @@ public class NettyWebServer implements WebServer {
 			if (bindExceptionCause instanceof NativeIoException) {
 				return ((NativeIoException) bindExceptionCause).expectedErr() == ERROR_NO_EACCES;
 			}
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 		}
 		return false;
 	}
@@ -195,12 +191,10 @@ public class NettyWebServer implements WebServer {
 			try {
 				if (this.lifecycleTimeout != null) {
 					this.disposableServer.disposeNow(this.lifecycleTimeout);
-				}
-				else {
+				} else {
 					this.disposableServer.disposeNow();
 				}
-			}
-			catch (IllegalStateException ex) {
+			} catch (IllegalStateException ex) {
 				// Continue
 			}
 			this.disposableServer = null;
@@ -212,8 +206,7 @@ public class NettyWebServer implements WebServer {
 		if (this.disposableServer != null) {
 			try {
 				return this.disposableServer.port();
-			}
-			catch (UnsupportedOperationException ex) {
+			} catch (UnsupportedOperationException ex) {
 				return -1;
 			}
 		}

@@ -57,10 +57,10 @@ import org.springframework.util.StringUtils;
  * DependsOnDatabaseInitializationDetectors}.
  *
  * @author Andy Wilkinson
- * @since 2.5.0
  * @see DatabaseInitializerDetector
  * @see DependsOnDatabaseInitializationDetector
  * @see DependsOnDatabaseInitialization
+ * @since 2.5.0
  */
 public class DatabaseInitializationDependencyConfigurer implements ImportBeanDefinitionRegistrar {
 
@@ -160,8 +160,7 @@ public class DatabaseInitializationDependencyConfigurer implements ImportBeanDef
 		private static BeanDefinition getBeanDefinition(String beanName, ConfigurableListableBeanFactory beanFactory) {
 			try {
 				return beanFactory.getBeanDefinition(beanName);
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				BeanFactory parentBeanFactory = beanFactory.getParentBeanFactory();
 				if (parentBeanFactory instanceof ConfigurableListableBeanFactory) {
 					return getBeanDefinition(beanName, (ConfigurableListableBeanFactory) parentBeanFactory);

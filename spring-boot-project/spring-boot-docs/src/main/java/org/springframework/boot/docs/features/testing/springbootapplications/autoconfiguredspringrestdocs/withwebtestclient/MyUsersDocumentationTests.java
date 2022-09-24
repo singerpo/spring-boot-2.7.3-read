@@ -36,12 +36,12 @@ class MyUsersDocumentationTests {
 	void listUsers() {
 		// @formatter:off
 		this.webTestClient
-			.get().uri("/")
-		.exchange()
-		.expectStatus()
-			.isOk()
-		.expectBody()
-			.consumeWith(document("list-users"));
+				.get().uri("/")
+				.exchange()
+				.expectStatus()
+				.isOk()
+				.expectBody()
+				.consumeWith(document("list-users"));
 		// @formatter:on
 	}
 

@@ -42,11 +42,9 @@ public class LibraryContentFilter implements ContentFilter<Library> {
 			char c = coordinatesPattern.charAt(i);
 			if (c == '.') {
 				regex.append("\\.");
-			}
-			else if (c == '*') {
+			} else if (c == '*') {
 				regex.append(".*");
-			}
-			else {
+			} else {
 				regex.append(c);
 			}
 		}

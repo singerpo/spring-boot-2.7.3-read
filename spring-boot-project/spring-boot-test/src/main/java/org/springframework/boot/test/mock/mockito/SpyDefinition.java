@@ -45,7 +45,7 @@ class SpyDefinition extends Definition {
 	private final ResolvableType typeToSpy;
 
 	SpyDefinition(String name, ResolvableType typeToSpy, MockReset reset, boolean proxyTargetAware,
-			QualifierDefinition qualifier) {
+				  QualifierDefinition qualifier) {
 		super(name, reset, proxyTargetAware, qualifier);
 		Assert.notNull(typeToSpy, "TypeToSpy must not be null");
 		this.typeToSpy = typeToSpy;
@@ -105,8 +105,7 @@ class SpyDefinition extends Definition {
 		if (Proxy.isProxyClass(instance.getClass())) {
 			settings.defaultAnswer(AdditionalAnswers.delegatesTo(instance));
 			toSpy = this.typeToSpy.toClass();
-		}
-		else {
+		} else {
 			settings.defaultAnswer(Mockito.CALLS_REAL_METHODS);
 			settings.spiedInstance(instance);
 			toSpy = instance.getClass();

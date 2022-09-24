@@ -43,8 +43,8 @@ import org.springframework.util.StringUtils;
  * @author Phillip Webb
  * @author Andy Wilkinson
  * @author Dmytro Nosan
- * @since 1.3.0
  * @see BeanDefinition#setDependsOn(String[])
+ * @since 1.3.0
  */
 public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
 
@@ -56,12 +56,13 @@ public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanF
 
 	/**
 	 * Create an instance with target bean, factory bean classes, and dependency names.
-	 * @param beanClass target bean class
+	 *
+	 * @param beanClass        target bean class
 	 * @param factoryBeanClass target factory bean class
-	 * @param dependsOn dependency names
+	 * @param dependsOn        dependency names
 	 */
 	protected AbstractDependsOnBeanFactoryPostProcessor(Class<?> beanClass,
-			Class<? extends FactoryBean<?>> factoryBeanClass, String... dependsOn) {
+														Class<? extends FactoryBean<?>> factoryBeanClass, String... dependsOn) {
 		this.beanClass = beanClass;
 		this.factoryBeanClass = factoryBeanClass;
 		this.dependsOn = (beanFactory) -> new HashSet<>(Arrays.asList(dependsOn));
@@ -69,13 +70,14 @@ public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanF
 
 	/**
 	 * Create an instance with target bean, factory bean classes, and dependency types.
-	 * @param beanClass target bean class
+	 *
+	 * @param beanClass        target bean class
 	 * @param factoryBeanClass target factory bean class
-	 * @param dependencyTypes dependency types
+	 * @param dependencyTypes  dependency types
 	 * @since 2.1.7
 	 */
 	protected AbstractDependsOnBeanFactoryPostProcessor(Class<?> beanClass,
-			Class<? extends FactoryBean<?>> factoryBeanClass, Class<?>... dependencyTypes) {
+														Class<? extends FactoryBean<?>> factoryBeanClass, Class<?>... dependencyTypes) {
 		this.beanClass = beanClass;
 		this.factoryBeanClass = factoryBeanClass;
 		this.dependsOn = (beanFactory) -> Arrays.stream(dependencyTypes)
@@ -85,6 +87,7 @@ public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanF
 
 	/**
 	 * Create an instance with target bean class and dependency names.
+	 *
 	 * @param beanClass target bean class
 	 * @param dependsOn dependency names
 	 * @since 2.0.4
@@ -95,7 +98,8 @@ public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanF
 
 	/**
 	 * Create an instance with target bean class and dependency types.
-	 * @param beanClass target bean class
+	 *
+	 * @param beanClass       target bean class
 	 * @param dependencyTypes dependency types
 	 * @since 2.1.7
 	 */
@@ -136,8 +140,7 @@ public abstract class AbstractDependsOnBeanFactoryPostProcessor implements BeanF
 	private static BeanDefinition getBeanDefinition(String beanName, ConfigurableListableBeanFactory beanFactory) {
 		try {
 			return beanFactory.getBeanDefinition(beanName);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			BeanFactory parentBeanFactory = beanFactory.getParentBeanFactory();
 			if (parentBeanFactory instanceof ConfigurableListableBeanFactory) {
 				return getBeanDefinition(beanName, (ConfigurableListableBeanFactory) parentBeanFactory);

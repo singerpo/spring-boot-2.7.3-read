@@ -72,11 +72,11 @@ import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
  * @author Artsiom Yudovin
  * @since 1.0.0
  */
-@AutoConfiguration(after = { WebMvcAutoConfiguration.class, WebFluxAutoConfiguration.class })
+@AutoConfiguration(after = {WebMvcAutoConfiguration.class, WebFluxAutoConfiguration.class})
 @EnableConfigurationProperties(ThymeleafProperties.class)
-@ConditionalOnClass({ TemplateMode.class, SpringTemplateEngine.class })
-@Import({ TemplateEngineConfigurations.ReactiveTemplateEngineConfiguration.class,
-		TemplateEngineConfigurations.DefaultTemplateEngineConfiguration.class })
+@ConditionalOnClass({TemplateMode.class, SpringTemplateEngine.class})
+@Import({TemplateEngineConfigurations.ReactiveTemplateEngineConfiguration.class,
+		TemplateEngineConfigurations.DefaultTemplateEngineConfiguration.class})
 public class ThymeleafAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
@@ -148,7 +148,7 @@ public class ThymeleafAutoConfiguration {
 			@Bean
 			@ConditionalOnMissingBean(name = "thymeleafViewResolver")
 			ThymeleafViewResolver thymeleafViewResolver(ThymeleafProperties properties,
-					SpringTemplateEngine templateEngine) {
+														SpringTemplateEngine templateEngine) {
 				ThymeleafViewResolver resolver = new ThymeleafViewResolver();
 				resolver.setTemplateEngine(templateEngine);
 				resolver.setCharacterEncoding(properties.getEncoding().name());
@@ -187,7 +187,7 @@ public class ThymeleafAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean(name = "thymeleafReactiveViewResolver")
 		ThymeleafReactiveViewResolver thymeleafViewResolver(ISpringWebFluxTemplateEngine templateEngine,
-				ThymeleafProperties properties) {
+															ThymeleafProperties properties) {
 			ThymeleafReactiveViewResolver resolver = new ThymeleafReactiveViewResolver();
 			resolver.setTemplateEngine(templateEngine);
 			mapProperties(properties, resolver);
@@ -241,7 +241,7 @@ public class ThymeleafAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ SpringSecurityDialect.class, CsrfToken.class })
+	@ConditionalOnClass({SpringSecurityDialect.class, CsrfToken.class})
 	static class ThymeleafSecurityDialectConfiguration {
 
 		@Bean

@@ -34,11 +34,11 @@ class SpringApplicationRunnerTests {
 	@Test
 	void exceptionMessageWhenSourcesContainsNoClasses() {
 		SpringApplicationRunnerConfiguration configuration = mock(SpringApplicationRunnerConfiguration.class);
-		given(configuration.getClasspath()).willReturn(new String[] { "foo", "bar" });
+		given(configuration.getClasspath()).willReturn(new String[]{"foo", "bar"});
 		given(configuration.getLogLevel()).willReturn(Level.INFO);
 		assertThatExceptionOfType(RuntimeException.class)
 				.isThrownBy(
-						() -> new SpringApplicationRunner(configuration, new String[] { "foo", "bar" }).compileAndRun())
+						() -> new SpringApplicationRunner(configuration, new String[]{"foo", "bar"}).compileAndRun())
 				.withMessage("No classes found in '[foo, bar]'");
 	}
 

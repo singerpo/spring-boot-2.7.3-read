@@ -40,13 +40,14 @@ import java.lang.annotation.Target;
  * @since 2.2.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.PARAMETER })
+@Target({ElementType.PARAMETER})
 @Documented
 public @interface DefaultValue {
 
 	/**
 	 * The default value of the property. Can be an array of values for collection or
 	 * array-based properties.
+	 *
 	 * @return the default value of the property.
 	 */
 	String[] value() default {};

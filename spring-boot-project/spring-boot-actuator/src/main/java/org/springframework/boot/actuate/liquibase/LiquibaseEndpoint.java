@@ -89,17 +89,14 @@ public class LiquibaseEndpoint {
 				service.setDatabase(database);
 				return new LiquibaseBean(
 						service.getRanChangeSets().stream().map(ChangeSet::new).collect(Collectors.toList()));
-			}
-			finally {
+			} finally {
 				if (database != null) {
 					database.close();
-				}
-				else {
+				} else {
 					connection.close();
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to get Liquibase change sets", ex);
 		}
 	}

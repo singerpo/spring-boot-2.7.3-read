@@ -55,41 +55,37 @@ class SpringApplicationAdminClient {
 	 * Check if the spring application managed by this instance is ready. Returns
 	 * {@code false} if the mbean is not yet deployed so this method should be repeatedly
 	 * called until a timeout is reached.
+	 *
 	 * @return {@code true} if the application is ready to service requests
 	 * @throws MojoExecutionException if the JMX service could not be contacted
 	 */
 	boolean isReady() throws MojoExecutionException {
 		try {
 			return (Boolean) this.connection.getAttribute(this.objectName, "Ready");
-		}
-		catch (InstanceNotFoundException ex) {
+		} catch (InstanceNotFoundException ex) {
 			return false; // Instance not available yet
-		}
-		catch (AttributeNotFoundException ex) {
+		} catch (AttributeNotFoundException ex) {
 			throw new IllegalStateException("Unexpected: attribute 'Ready' not available", ex);
-		}
-		catch (ReflectionException ex) {
+		} catch (ReflectionException ex) {
 			throw new MojoExecutionException("Failed to retrieve Ready attribute", ex.getCause());
-		}
-		catch (MBeanException | IOException ex) {
+		} catch (MBeanException | IOException ex) {
 			throw new MojoExecutionException(ex.getMessage(), ex);
 		}
 	}
 
 	/**
 	 * Stop the application managed by this instance.
-	 * @throws MojoExecutionException if the JMX service could not be contacted
-	 * @throws IOException if an I/O error occurs
+	 *
+	 * @throws MojoExecutionException    if the JMX service could not be contacted
+	 * @throws IOException               if an I/O error occurs
 	 * @throws InstanceNotFoundException if the lifecycle mbean cannot be found
 	 */
 	void stop() throws MojoExecutionException, IOException, InstanceNotFoundException {
 		try {
 			this.connection.invoke(this.objectName, "shutdown", null, null);
-		}
-		catch (ReflectionException ex) {
+		} catch (ReflectionException ex) {
 			throw new MojoExecutionException("Shutdown failed", ex.getCause());
-		}
-		catch (MBeanException ex) {
+		} catch (MBeanException ex) {
 			throw new MojoExecutionException("Could not invoke shutdown operation", ex);
 		}
 	}
@@ -97,8 +93,7 @@ class SpringApplicationAdminClient {
 	private ObjectName toObjectName(String name) {
 		try {
 			return new ObjectName(name);
-		}
-		catch (MalformedObjectNameException ex) {
+		} catch (MalformedObjectNameException ex) {
 			throw new IllegalArgumentException("Invalid jmx name '" + name + "'");
 		}
 	}
@@ -106,6 +101,7 @@ class SpringApplicationAdminClient {
 	/**
 	 * Create a connector for an {@link javax.management.MBeanServer} exposed on the
 	 * current machine and the current port. Security should be disabled.
+	 *
 	 * @param port the port on which the mbean server is exposed
 	 * @return a connection
 	 * @throws IOException if the connection to that server failed

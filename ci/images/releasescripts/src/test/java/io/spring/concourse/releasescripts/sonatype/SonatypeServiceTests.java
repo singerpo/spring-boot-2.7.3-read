@@ -221,8 +221,7 @@ class SonatypeServiceTests {
 						iterator.next().match(request);
 						iterator.remove();
 						return;
-					}
-					catch (AssertionError ex) {
+					} catch (AssertionError ex) {
 						// Continue
 					}
 				}

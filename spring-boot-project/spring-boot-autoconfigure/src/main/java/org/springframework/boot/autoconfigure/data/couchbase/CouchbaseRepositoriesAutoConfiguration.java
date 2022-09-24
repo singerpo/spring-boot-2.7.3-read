@@ -39,7 +39,7 @@ import org.springframework.data.couchbase.repository.support.CouchbaseRepository
  * @since 1.4.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ Bucket.class, CouchbaseRepository.class })
+@ConditionalOnClass({Bucket.class, CouchbaseRepository.class})
 @ConditionalOnBean(RepositoryOperationsMapping.class)
 @ConditionalOnRepositoryType(store = "couchbase", type = RepositoryType.IMPERATIVE)
 @ConditionalOnMissingBean(CouchbaseRepositoryFactoryBean.class)

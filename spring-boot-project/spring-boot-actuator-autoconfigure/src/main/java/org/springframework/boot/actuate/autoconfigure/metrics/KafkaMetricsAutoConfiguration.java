@@ -46,8 +46,8 @@ import org.springframework.kafka.streams.KafkaStreamsMicrometerListener;
  * @since 2.1.0
  */
 @AutoConfiguration(before = KafkaAutoConfiguration.class,
-		after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class })
-@ConditionalOnClass({ KafkaClientMetrics.class, ProducerFactory.class })
+		after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class})
+@ConditionalOnClass({KafkaClientMetrics.class, ProducerFactory.class})
 @ConditionalOnBean(MeterRegistry.class)
 public class KafkaMetricsAutoConfiguration {
 
@@ -70,7 +70,7 @@ public class KafkaMetricsAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ KafkaStreamsMetrics.class, StreamsBuilderFactoryBean.class })
+	@ConditionalOnClass({KafkaStreamsMetrics.class, StreamsBuilderFactoryBean.class})
 	static class KafkaStreamsMetricsConfiguration {
 
 		@Bean

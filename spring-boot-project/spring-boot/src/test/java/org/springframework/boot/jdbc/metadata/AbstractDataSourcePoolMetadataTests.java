@@ -36,6 +36,7 @@ abstract class AbstractDataSourcePoolMetadataTests<D extends AbstractDataSourceP
 	/**
 	 * Return a data source metadata instance with a min size of 0 and max size of 2. Idle
 	 * connections are not reclaimed immediately.
+	 *
 	 * @return the data source metadata
 	 */
 	protected abstract D getDataSourceMetadata();

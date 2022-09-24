@@ -67,7 +67,7 @@ class StartupEndpointDocumentationTests extends MockMvcEndpointDocumentationTest
 	}
 
 	private FieldDescriptor[] responseFields() {
-		return new FieldDescriptor[] {
+		return new FieldDescriptor[]{
 				fieldWithPath("springBootVersion").type(JsonFieldType.STRING)
 						.description("Spring Boot version for this application.").optional(),
 				fieldWithPath("timeline.startTime").description("Start time of the application."),
@@ -85,7 +85,7 @@ class StartupEndpointDocumentationTests extends MockMvcEndpointDocumentationTest
 				fieldWithPath("timeline.events.[].startupStep.tags[].key")
 						.description("The key of the StartupStep Tag."),
 				fieldWithPath("timeline.events.[].startupStep.tags[].value")
-						.description("The value of the StartupStep Tag.") };
+						.description("The value of the StartupStep Tag.")};
 	}
 
 	@Configuration(proxyBeanMethods = false)

@@ -93,8 +93,7 @@ class StartupInfoLogger {
 		try {
 			double uptime = ManagementFactory.getRuntimeMXBean().getUptime() / 1000.0;
 			message.append(" (JVM running for ").append(uptime).append(")");
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			// No JVM time available
 		}
 		return message;
@@ -172,8 +171,7 @@ class StartupInfoLogger {
 	private Object callIfPossible(Callable<Object> call) {
 		try {
 			return call.call();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}

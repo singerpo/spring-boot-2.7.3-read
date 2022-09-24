@@ -27,13 +27,13 @@ import org.springframework.test.web.client.response.MockRestResponseCreators
 
 @RestClientTest(RemoteVehicleDetailsService::class)
 class MyRestClientTests(
-	@Autowired val service: RemoteVehicleDetailsService,
-	@Autowired val server: MockRestServiceServer) {
+		@Autowired val service: RemoteVehicleDetailsService,
+		@Autowired val server: MockRestServiceServer) {
 
 	@Test
 	fun getVehicleDetailsWhenResultIsSuccessShouldReturnDetails(): Unit {
 		server.expect(MockRestRequestMatchers.requestTo("/greet/details"))
-			.andRespond(MockRestResponseCreators.withSuccess("hello", MediaType.TEXT_PLAIN))
+				.andRespond(MockRestResponseCreators.withSuccess("hello", MediaType.TEXT_PLAIN))
 		val greeting = service.callRestService()
 		assertThat(greeting).isEqualTo("hello")
 	}

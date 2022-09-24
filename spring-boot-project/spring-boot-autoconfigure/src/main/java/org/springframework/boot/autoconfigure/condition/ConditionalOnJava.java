@@ -34,7 +34,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Andy Wilkinson
  * @since 1.1.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(OnJavaCondition.class)
@@ -44,6 +44,7 @@ public @interface ConditionalOnJava {
 	 * Configures whether the value configured in {@link #value()} shall be considered the
 	 * upper exclusive or lower inclusive boundary. Defaults to
 	 * {@link Range#EQUAL_OR_NEWER}.
+	 *
 	 * @return the range
 	 */
 	Range range() default Range.EQUAL_OR_NEWER;
@@ -51,6 +52,7 @@ public @interface ConditionalOnJava {
 	/**
 	 * The {@link JavaVersion} to check for. Use {@link #range()} to specify whether the
 	 * configured value is an upper-exclusive or lower-inclusive boundary.
+	 *
 	 * @return the java version
 	 */
 	JavaVersion value();

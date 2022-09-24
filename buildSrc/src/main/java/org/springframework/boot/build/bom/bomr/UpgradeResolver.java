@@ -30,8 +30,9 @@ interface UpgradeResolver {
 
 	/**
 	 * Resolves the upgrades to be applied to the given {@code libraries}.
+	 *
 	 * @param librariesToUpgrade the libraries to upgrade
-	 * @param libraries all libraries
+	 * @param libraries          all libraries
 	 * @return the upgrades
 	 */
 	List<Upgrade> resolveUpgrades(Collection<Library> librariesToUpgrade, Collection<Library> libraries);

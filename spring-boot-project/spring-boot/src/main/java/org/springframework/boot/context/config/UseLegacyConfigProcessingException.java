@@ -52,6 +52,7 @@ final class UseLegacyConfigProcessingException extends ConfigDataException {
 	/**
 	 * Return the source configuration property that requested the use of legacy
 	 * processing.
+	 *
 	 * @return the configurationProperty the configuration property
 	 */
 	ConfigurationProperty getConfigurationProperty() {
@@ -61,13 +62,13 @@ final class UseLegacyConfigProcessingException extends ConfigDataException {
 	/**
 	 * Throw a new {@link UseLegacyConfigProcessingException} instance if
 	 * {@link #PROPERTY_NAME} binds to {@code true}.
+	 *
 	 * @param binder the binder to use
 	 */
 	static void throwIfRequested(Binder binder) {
 		try {
 			binder.bind(PROPERTY_NAME, BOOLEAN, BIND_HANDLER);
-		}
-		catch (BindException ex) {
+		} catch (BindException ex) {
 			if (ex.getCause() instanceof UseLegacyConfigProcessingException) {
 				throw (UseLegacyConfigProcessingException) ex.getCause();
 			}
@@ -82,7 +83,7 @@ final class UseLegacyConfigProcessingException extends ConfigDataException {
 
 		@Override
 		public Object onSuccess(ConfigurationPropertyName name, Bindable<?> target, BindContext context,
-				Object result) {
+								Object result) {
 			if (Boolean.TRUE.equals(result)) {
 				throw new UseLegacyConfigProcessingException(context.getConfigurationProperty());
 			}

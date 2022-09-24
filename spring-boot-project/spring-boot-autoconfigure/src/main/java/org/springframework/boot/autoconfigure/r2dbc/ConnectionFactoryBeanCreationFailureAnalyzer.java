@@ -66,8 +66,7 @@ class ConnectionFactoryBeanCreationFailureAnalyzer
 		action.append(String.format("Consider the following:%n"));
 		if (EmbeddedDatabaseConnection.NONE == cause.getEmbeddedDatabaseConnection()) {
 			action.append(String.format("\tIf you want an embedded database (H2), please put it on the classpath.%n"));
-		}
-		else {
+		} else {
 			action.append(String.format("\tReview the configuration of %s%n.", cause.getEmbeddedDatabaseConnection()));
 		}
 		action.append("\tIf you have database settings to be loaded from a particular "
@@ -80,8 +79,7 @@ class ConnectionFactoryBeanCreationFailureAnalyzer
 		String[] profiles = this.environment.getActiveProfiles();
 		if (ObjectUtils.isEmpty(profiles)) {
 			message.append(" (no profiles are currently active).");
-		}
-		else {
+		} else {
 			message.append(" (the profiles ");
 			message.append(StringUtils.arrayToCommaDelimitedString(profiles));
 			message.append(" are currently active).");

@@ -50,31 +50,31 @@ class ModifiedClassPathExtension implements InvocationInterceptor {
 
 	@Override
 	public void interceptBeforeAllMethod(Invocation<Void> invocation,
-			ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
+										 ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
 		intercept(invocation, extensionContext);
 	}
 
 	@Override
 	public void interceptBeforeEachMethod(Invocation<Void> invocation,
-			ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
+										  ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
 		intercept(invocation, extensionContext);
 	}
 
 	@Override
 	public void interceptAfterEachMethod(Invocation<Void> invocation,
-			ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
+										 ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
 		intercept(invocation, extensionContext);
 	}
 
 	@Override
 	public void interceptAfterAllMethod(Invocation<Void> invocation,
-			ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
+										ReflectiveInvocationContext<Method> invocationContext, ExtensionContext extensionContext) throws Throwable {
 		intercept(invocation, extensionContext);
 	}
 
 	@Override
 	public void interceptTestMethod(Invocation<Void> invocation, ReflectiveInvocationContext<Method> invocationContext,
-			ExtensionContext extensionContext) throws Throwable {
+									ExtensionContext extensionContext) throws Throwable {
 		if (isModifiedClassPathClassLoader(extensionContext)) {
 			invocation.proceed();
 			return;
@@ -84,7 +84,7 @@ class ModifiedClassPathExtension implements InvocationInterceptor {
 	}
 
 	private void runTestWithModifiedClassPath(ReflectiveInvocationContext<Method> invocationContext,
-			ExtensionContext extensionContext) throws Throwable {
+											  ExtensionContext extensionContext) throws Throwable {
 		Class<?> testClass = extensionContext.getRequiredTestClass();
 		Method testMethod = invocationContext.getExecutable();
 		ClassLoader originalClassLoader = Thread.currentThread().getContextClassLoader();
@@ -92,8 +92,7 @@ class ModifiedClassPathExtension implements InvocationInterceptor {
 		Thread.currentThread().setContextClassLoader(modifiedClassLoader);
 		try {
 			runTest(modifiedClassLoader, testClass.getName(), testMethod.getName());
-		}
-		finally {
+		} finally {
 			Thread.currentThread().setContextClassLoader(originalClassLoader);
 		}
 	}

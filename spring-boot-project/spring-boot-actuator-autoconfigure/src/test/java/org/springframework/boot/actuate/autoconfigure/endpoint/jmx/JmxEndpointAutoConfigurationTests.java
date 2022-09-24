@@ -82,12 +82,12 @@ class JmxEndpointAutoConfigurationTests {
 		EndpointObjectNameFactory factory = mock(EndpointObjectNameFactory.class);
 		this.contextRunner.withPropertyValues("spring.jmx.enabled=true").with(mockMBeanServer())
 				.withBean(EndpointObjectNameFactory.class, () -> factory).run((context) -> {
-					ArgumentCaptor<ExposableJmxEndpoint> argumentCaptor = ArgumentCaptor
-							.forClass(ExposableJmxEndpoint.class);
-					then(factory).should().getObjectName(argumentCaptor.capture());
-					ExposableJmxEndpoint jmxEndpoint = argumentCaptor.getValue();
-					assertThat(jmxEndpoint.getEndpointId().toLowerCaseString()).isEqualTo("test");
-				});
+			ArgumentCaptor<ExposableJmxEndpoint> argumentCaptor = ArgumentCaptor
+					.forClass(ExposableJmxEndpoint.class);
+			then(factory).should().getObjectName(argumentCaptor.capture());
+			ExposableJmxEndpoint jmxEndpoint = argumentCaptor.getValue();
+			assertThat(jmxEndpoint.getEndpointId().toLowerCaseString()).isEqualTo("test");
+		});
 	}
 
 	@Test

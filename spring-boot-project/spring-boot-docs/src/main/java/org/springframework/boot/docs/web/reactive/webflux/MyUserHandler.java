@@ -26,15 +26,18 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class MyUserHandler {
 
 	public Mono<ServerResponse> getUser(ServerRequest request) {
-		/**/ return ServerResponse.ok().build();
+		/**/
+		return ServerResponse.ok().build();
 	}
 
 	public Mono<ServerResponse> getUserCustomers(ServerRequest request) {
-		/**/ return ServerResponse.ok().build();
+		/**/
+		return ServerResponse.ok().build();
 	}
 
 	public Mono<ServerResponse> deleteUser(ServerRequest request) {
-		/**/ return ServerResponse.ok().build();
+		/**/
+		return ServerResponse.ok().build();
 	}
 
 }

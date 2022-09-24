@@ -21,8 +21,8 @@ package org.springframework.boot.actuate.metrics.web.reactive.server;
  * cancel signal} for the WebFlux server metrics instrumentation.
  *
  * @author Brian Clozel
- * @since 2.5.0
  * @see MetricsWebFilter
+ * @since 2.5.0
  */
 public class CancelledServerWebExchangeException extends RuntimeException {
 

@@ -37,10 +37,10 @@ import org.springframework.context.annotation.Bean;
  * @author Stephane Nicoll
  * @since 2.0.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, RabbitAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
-@ConditionalOnClass({ ConnectionFactory.class, AbstractConnectionFactory.class })
-@ConditionalOnBean({ org.springframework.amqp.rabbit.connection.ConnectionFactory.class, MeterRegistry.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, RabbitAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
+@ConditionalOnClass({ConnectionFactory.class, AbstractConnectionFactory.class})
+@ConditionalOnBean({org.springframework.amqp.rabbit.connection.ConnectionFactory.class, MeterRegistry.class})
 public class RabbitMetricsAutoConfiguration {
 
 	@Bean

@@ -37,7 +37,7 @@ public class SimpleClientWebSocketHandler extends TextWebSocketHandler {
 	private final AtomicReference<String> messagePayload;
 
 	public SimpleClientWebSocketHandler(GreetingService greetingService, CountDownLatch latch,
-			AtomicReference<String> message) {
+										AtomicReference<String> message) {
 		this.greetingService = greetingService;
 		this.latch = latch;
 		this.messagePayload = message;

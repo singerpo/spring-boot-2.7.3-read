@@ -35,9 +35,9 @@ import org.springframework.core.io.ResourceLoader;
  * partials (i.e. tiles-like features).
  *
  * @author Dave Syer
- * @since 1.2.2
  * @see Mustache
  * @see Resource
+ * @since 1.2.2
  */
 public class MustacheResourceTemplateLoader implements TemplateLoader, ResourceLoaderAware {
 
@@ -59,6 +59,7 @@ public class MustacheResourceTemplateLoader implements TemplateLoader, ResourceL
 
 	/**
 	 * Set the charset.
+	 *
 	 * @param charSet the charset
 	 */
 	public void setCharset(String charSet) {
@@ -67,6 +68,7 @@ public class MustacheResourceTemplateLoader implements TemplateLoader, ResourceL
 
 	/**
 	 * Set the resource loader.
+	 *
 	 * @param resourceLoader the resource loader
 	 */
 	@Override

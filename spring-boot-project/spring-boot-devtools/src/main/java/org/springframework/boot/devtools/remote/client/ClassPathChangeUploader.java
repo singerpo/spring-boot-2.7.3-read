@@ -79,8 +79,7 @@ public class ClassPathChangeUploader implements ApplicationListener<ClassPathCha
 		Assert.notNull(requestFactory, "RequestFactory must not be null");
 		try {
 			this.uri = new URL(url).toURI();
-		}
-		catch (URISyntaxException | MalformedURLException ex) {
+		} catch (URISyntaxException | MalformedURLException ex) {
 			throw new IllegalArgumentException("Malformed URL '" + url + "'");
 		}
 		this.requestFactory = requestFactory;
@@ -92,8 +91,7 @@ public class ClassPathChangeUploader implements ApplicationListener<ClassPathCha
 			ClassLoaderFiles classLoaderFiles = getClassLoaderFiles(event);
 			byte[] bytes = serialize(classLoaderFiles);
 			performUpload(classLoaderFiles, bytes, event);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -114,16 +112,14 @@ public class ClassPathChangeUploader implements ApplicationListener<ClassPathCha
 					Assert.state(statusCode == HttpStatus.OK,
 							() -> "Unexpected " + statusCode + " response uploading class files");
 					return;
-				}
-				catch (SocketException ex) {
+				} catch (SocketException ex) {
 					logger.warn(LogMessage.format(
 							"A failure occurred when uploading to %s. Upload will be retried in 2 seconds", this.uri));
 					logger.debug("Upload failure", ex);
 					Thread.sleep(2000);
 				}
 			}
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 			throw new IllegalStateException(ex);
 		}

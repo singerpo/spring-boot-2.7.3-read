@@ -52,8 +52,7 @@ public class ShutdownEndpoint implements ApplicationContextAware {
 		}
 		try {
 			return SHUTDOWN_MESSAGE;
-		}
-		finally {
+		} finally {
 			Thread thread = new Thread(this::performShutdown);
 			thread.setContextClassLoader(getClass().getClassLoader());
 			thread.start();
@@ -63,8 +62,7 @@ public class ShutdownEndpoint implements ApplicationContextAware {
 	private void performShutdown() {
 		try {
 			Thread.sleep(500L);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 		this.context.close();

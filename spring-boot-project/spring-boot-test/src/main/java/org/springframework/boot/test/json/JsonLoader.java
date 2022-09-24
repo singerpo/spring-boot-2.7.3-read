@@ -71,8 +71,7 @@ class JsonLoader {
 	String getJson(File source) {
 		try {
 			return getJson(new FileInputStream(source));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to load JSON from " + source, ex);
 		}
 	}
@@ -80,8 +79,7 @@ class JsonLoader {
 	String getJson(Resource source) {
 		try {
 			return getJson(source.getInputStream());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to load JSON from " + source, ex);
 		}
 	}
@@ -89,8 +87,7 @@ class JsonLoader {
 	String getJson(InputStream source) {
 		try {
 			return FileCopyUtils.copyToString(new InputStreamReader(source, this.charset));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to load JSON from InputStream", ex);
 		}
 	}

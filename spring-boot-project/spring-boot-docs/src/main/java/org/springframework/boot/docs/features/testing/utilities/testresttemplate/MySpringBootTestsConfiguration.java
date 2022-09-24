@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootConfiguration(proxyBeanMethods = false)
-@ImportAutoConfiguration({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
-		JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class })
+@ImportAutoConfiguration({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+		JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class})
 public class MySpringBootTestsConfiguration {
 
 	@RestController

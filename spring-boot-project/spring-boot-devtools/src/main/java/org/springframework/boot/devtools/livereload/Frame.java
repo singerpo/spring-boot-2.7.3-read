@@ -37,6 +37,7 @@ class Frame {
 	/**
 	 * Create a new {@link Type#TEXT text} {@link Frame} instance with the specified
 	 * payload.
+	 *
 	 * @param payload the text payload
 	 */
 	Frame(String payload) {
@@ -73,8 +74,7 @@ class Frame {
 		outputStream.write(0x80 | this.type.code);
 		if (this.payload.length < 126) {
 			outputStream.write(this.payload.length & 0x7F);
-		}
-		else {
+		} else {
 			outputStream.write(0x7E);
 			outputStream.write(this.payload.length >> 8 & 0xFF);
 			outputStream.write(this.payload.length & 0xFF);

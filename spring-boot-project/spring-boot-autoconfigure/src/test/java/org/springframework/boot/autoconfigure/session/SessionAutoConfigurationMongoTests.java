@@ -90,7 +90,7 @@ class SessionAutoConfigurationMongoTests extends AbstractSessionAutoConfiguratio
 	}
 
 	private ContextConsumer<AssertableWebApplicationContext> validateSpringSessionUsesMongo(String collectionName,
-			Duration timeout) {
+																							Duration timeout) {
 		return (context) -> {
 			MongoIndexedSessionRepository repository = validateSessionRepository(context,
 					MongoIndexedSessionRepository.class);

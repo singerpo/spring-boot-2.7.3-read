@@ -141,8 +141,7 @@ public class BomExtension {
 										new File(this.project.getBuildDir(), "local-m2-repository").getAbsolutePath());
 						syncBom.from(this.project.getResources().getText().fromString(settingsXmlContent),
 								(settingsXml) -> settingsXml.rename((name) -> "settings.xml"));
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						throw new GradleException("Failed to prepare settings.xml", ex);
 					}
 					MavenExec generateEffectiveBom = this.project.getTasks().create("generateEffectiveBom",
@@ -178,7 +177,7 @@ public class BomExtension {
 	}
 
 	private void putArtifactVersionProperty(String groupId, String artifactId, String classifier,
-			String versionProperty) {
+											String versionProperty) {
 		String coordinates = groupId + ":" + artifactId + ":" + ((classifier != null) ? classifier : "");
 		String existing = this.artifactVersionProperties.putIfAbsent(coordinates, versionProperty);
 		if (existing != null) {
@@ -251,8 +250,7 @@ public class BomExtension {
 			try {
 				this.prohibitedVersions.add(new ProhibitedVersion(VersionRange.createFromVersionSpec(range),
 						prohibitedVersionHandler.reason));
-			}
-			catch (InvalidVersionSpecificationException ex) {
+			} catch (InvalidVersionSpecificationException ex) {
 				throw new InvalidUserCodeException("Invalid version range", ex);
 			}
 		}
@@ -497,8 +495,7 @@ public class BomExtension {
 				reporting.getParentNode().removeChild(reporting);
 				TransformerFactory.newInstance().newTransformer().transform(new DOMSource(document),
 						new StreamResult(this.effectiveBom));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new TaskExecutionException(task, ex);
 			}
 		}

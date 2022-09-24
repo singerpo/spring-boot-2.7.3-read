@@ -37,12 +37,14 @@ public interface Content {
 
 	/**
 	 * The size of the content in bytes.
+	 *
 	 * @return the content size
 	 */
 	int size();
 
 	/**
 	 * Write the content to the given output stream.
+	 *
 	 * @param outputStream the output stream to write to
 	 * @throws IOException on IO error
 	 */
@@ -50,6 +52,7 @@ public interface Content {
 
 	/**
 	 * Create a new {@link Content} from the given UTF-8 string.
+	 *
 	 * @param string the string to write
 	 * @return a new {@link Content} instance
 	 */
@@ -60,6 +63,7 @@ public interface Content {
 
 	/**
 	 * Create a new {@link Content} from the given input stream.
+	 *
 	 * @param bytes the bytes to write
 	 * @return a new {@link Content} instance
 	 */
@@ -70,6 +74,7 @@ public interface Content {
 
 	/**
 	 * Create a new {@link Content} from the given file.
+	 *
 	 * @param file the file to write
 	 * @return a new {@link Content} instance
 	 */
@@ -81,7 +86,8 @@ public interface Content {
 	/**
 	 * Create a new {@link Content} from the given input stream. The stream will be closed
 	 * after it has been written.
-	 * @param size the size of the supplied input stream
+	 *
+	 * @param size     the size of the supplied input stream
 	 * @param supplier the input stream supplier
 	 * @return a new {@link Content} instance
 	 */

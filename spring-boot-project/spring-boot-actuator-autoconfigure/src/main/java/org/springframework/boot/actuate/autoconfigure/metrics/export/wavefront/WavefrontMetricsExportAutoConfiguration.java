@@ -48,10 +48,10 @@ import org.springframework.util.unit.DataSize;
  * @since 2.0.0
  */
 @AutoConfiguration(
-		before = { CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class },
+		before = {CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class},
 		after = MetricsAutoConfiguration.class)
 @ConditionalOnBean(Clock.class)
-@ConditionalOnClass({ WavefrontMeterRegistry.class, WavefrontSender.class })
+@ConditionalOnClass({WavefrontMeterRegistry.class, WavefrontSender.class})
 @ConditionalOnEnabledMetricsExport("wavefront")
 @EnableConfigurationProperties(WavefrontProperties.class)
 public class WavefrontMetricsExportAutoConfiguration {
@@ -77,7 +77,7 @@ public class WavefrontMetricsExportAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public WavefrontMeterRegistry wavefrontMeterRegistry(WavefrontConfig wavefrontConfig, Clock clock,
-			WavefrontSender wavefrontSender) {
+														 WavefrontSender wavefrontSender) {
 		return WavefrontMeterRegistry.builder(wavefrontConfig).clock(clock).wavefrontSender(wavefrontSender).build();
 	}
 

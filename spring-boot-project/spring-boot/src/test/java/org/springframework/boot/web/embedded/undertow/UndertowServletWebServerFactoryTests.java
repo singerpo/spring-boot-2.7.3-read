@@ -238,36 +238,36 @@ class UndertowServletWebServerFactoryTests extends AbstractServletWebServerFacto
 	@Test
 	void sslRestrictedProtocolsEmptyCipherFailure() {
 		assertThatIOException()
-				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[] { "TLSv1.2" },
-						new String[] { "TLS_EMPTY_RENEGOTIATION_INFO_SCSV" }))
+				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[]{"TLSv1.2"},
+						new String[]{"TLS_EMPTY_RENEGOTIATION_INFO_SCSV"}))
 				.isInstanceOfAny(SSLException.class, SSLHandshakeException.class, SocketException.class);
 	}
 
 	@Test
 	void sslRestrictedProtocolsECDHETLS1Failure() {
 		assertThatIOException()
-				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[] { "TLSv1" },
-						new String[] { "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256" }))
+				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[]{"TLSv1"},
+						new String[]{"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"}))
 				.isInstanceOfAny(SSLException.class, SocketException.class);
 	}
 
 	@Test
 	void sslRestrictedProtocolsECDHESuccess() throws Exception {
-		testRestrictedSSLProtocolsAndCipherSuites(new String[] { "TLSv1.2" },
-				new String[] { "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256" });
+		testRestrictedSSLProtocolsAndCipherSuites(new String[]{"TLSv1.2"},
+				new String[]{"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"});
 	}
 
 	@Test
 	void sslRestrictedProtocolsRSATLS12Success() throws Exception {
-		testRestrictedSSLProtocolsAndCipherSuites(new String[] { "TLSv1.2" },
-				new String[] { "TLS_RSA_WITH_AES_128_CBC_SHA256" });
+		testRestrictedSSLProtocolsAndCipherSuites(new String[]{"TLSv1.2"},
+				new String[]{"TLS_RSA_WITH_AES_128_CBC_SHA256"});
 	}
 
 	@Test
 	void sslRestrictedProtocolsRSATLS11Failure() {
 		assertThatIOException()
-				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[] { "TLSv1.1" },
-						new String[] { "TLS_RSA_WITH_AES_128_CBC_SHA256" }))
+				.isThrownBy(() -> testRestrictedSSLProtocolsAndCipherSuites(new String[]{"TLSv1.1"},
+						new String[]{"TLS_RSA_WITH_AES_128_CBC_SHA256"}))
 				.isInstanceOfAny(SSLException.class, SocketException.class);
 	}
 
@@ -284,8 +284,7 @@ class UndertowServletWebServerFactoryTests extends AbstractServletWebServerFacto
 		UndertowServletWebServer container = (UndertowServletWebServer) getFactory().getWebServer();
 		try {
 			return container.getDeploymentManager().getDeployment().getServletContainer();
-		}
-		finally {
+		} finally {
 			container.stop();
 		}
 	}

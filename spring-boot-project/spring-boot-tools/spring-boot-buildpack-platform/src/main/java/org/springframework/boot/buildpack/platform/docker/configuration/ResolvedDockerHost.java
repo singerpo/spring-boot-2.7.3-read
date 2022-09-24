@@ -60,8 +60,7 @@ public class ResolvedDockerHost extends DockerHost {
 	public boolean isLocalFileReference() {
 		try {
 			return Files.exists(Paths.get(getAddress()));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}
@@ -85,8 +84,7 @@ public class ResolvedDockerHost extends DockerHost {
 	private static boolean isTrue(String value) {
 		try {
 			return (value != null) && (Integer.parseInt(value) == 1);
-		}
-		catch (NumberFormatException ex) {
+		} catch (NumberFormatException ex) {
 			return false;
 		}
 	}

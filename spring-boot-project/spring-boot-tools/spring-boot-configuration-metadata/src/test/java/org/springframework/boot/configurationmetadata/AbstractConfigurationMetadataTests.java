@@ -39,7 +39,7 @@ public abstract class AbstractConfigurationMetadataTests {
 	}
 
 	protected void assertProperty(ConfigurationMetadataProperty actual, String id, String name, Class<?> type,
-			Object defaultValue) {
+								  Object defaultValue) {
 		assertThat(actual).isNotNull();
 		assertThat(actual.getId()).isEqualTo(id);
 		assertThat(actual.getName()).isEqualTo(name);

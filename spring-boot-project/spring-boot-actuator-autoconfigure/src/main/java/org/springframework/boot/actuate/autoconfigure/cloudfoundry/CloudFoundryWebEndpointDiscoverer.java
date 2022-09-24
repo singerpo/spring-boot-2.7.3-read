@@ -42,17 +42,18 @@ public class CloudFoundryWebEndpointDiscoverer extends WebEndpointDiscoverer {
 
 	/**
 	 * Create a new {@link WebEndpointDiscoverer} instance.
-	 * @param applicationContext the source application context
+	 *
+	 * @param applicationContext   the source application context
 	 * @param parameterValueMapper the parameter value mapper
-	 * @param endpointMediaTypes the endpoint media types
-	 * @param endpointPathMappers the endpoint path mappers
-	 * @param invokerAdvisors invoker advisors to apply
-	 * @param filters filters to apply
+	 * @param endpointMediaTypes   the endpoint media types
+	 * @param endpointPathMappers  the endpoint path mappers
+	 * @param invokerAdvisors      invoker advisors to apply
+	 * @param filters              filters to apply
 	 */
 	public CloudFoundryWebEndpointDiscoverer(ApplicationContext applicationContext,
-			ParameterValueMapper parameterValueMapper, EndpointMediaTypes endpointMediaTypes,
-			List<PathMapper> endpointPathMappers, Collection<OperationInvokerAdvisor> invokerAdvisors,
-			Collection<EndpointFilter<ExposableWebEndpoint>> filters) {
+											 ParameterValueMapper parameterValueMapper, EndpointMediaTypes endpointMediaTypes,
+											 List<PathMapper> endpointPathMappers, Collection<OperationInvokerAdvisor> invokerAdvisors,
+											 Collection<EndpointFilter<ExposableWebEndpoint>> filters) {
 		super(applicationContext, parameterValueMapper, endpointMediaTypes, endpointPathMappers, invokerAdvisors,
 				filters);
 	}

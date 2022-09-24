@@ -34,6 +34,7 @@ public class RoundEnvironmentTester {
 
 	/**
 	 * Return the root {@link TypeElement} for the specified {@code type}.
+	 *
 	 * @param type the type of the class
 	 * @return the {@link TypeElement}
 	 */

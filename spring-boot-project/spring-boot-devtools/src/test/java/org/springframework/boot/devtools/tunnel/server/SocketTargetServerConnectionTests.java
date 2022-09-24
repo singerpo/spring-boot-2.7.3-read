@@ -155,8 +155,7 @@ class SocketTargetServerConnectionTests {
 						MockServer.this.actualRead = buffer;
 					}
 					channel.close();
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new RuntimeException(ex);
 				}
 			}

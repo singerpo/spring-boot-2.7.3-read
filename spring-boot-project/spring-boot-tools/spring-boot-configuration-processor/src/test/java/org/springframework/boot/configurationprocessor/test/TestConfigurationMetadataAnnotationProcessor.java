@@ -40,14 +40,14 @@ import org.springframework.boot.configurationprocessor.metadata.JsonMarshaller;
  * @author Andy Wilkinson
  * @author Kris De Volder
  */
-@SupportedAnnotationTypes({ TestConfigurationMetadataAnnotationProcessor.CONFIGURATION_PROPERTIES_ANNOTATION,
+@SupportedAnnotationTypes({TestConfigurationMetadataAnnotationProcessor.CONFIGURATION_PROPERTIES_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.CONTROLLER_ENDPOINT_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.ENDPOINT_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.JMX_ENDPOINT_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.REST_CONTROLLER_ENDPOINT_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.SERVLET_ENDPOINT_ANNOTATION,
 		TestConfigurationMetadataAnnotationProcessor.WEB_ENDPOINT_ANNOTATION,
-		"org.springframework.context.annotation.Configuration" })
+		"org.springframework.context.annotation.Configuration"})
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 public class TestConfigurationMetadataAnnotationProcessor extends ConfigurationMetadataAnnotationProcessor {
 
@@ -135,13 +135,11 @@ public class TestConfigurationMetadataAnnotationProcessor extends ConfigurationM
 				try (InputStream input = new FileInputStream(metadataFile)) {
 					this.metadata = new JsonMarshaller().read(input);
 				}
-			}
-			else {
+			} else {
 				this.metadata = new ConfigurationMetadata();
 			}
 			return this.metadata;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to read metadata from disk", ex);
 		}
 	}

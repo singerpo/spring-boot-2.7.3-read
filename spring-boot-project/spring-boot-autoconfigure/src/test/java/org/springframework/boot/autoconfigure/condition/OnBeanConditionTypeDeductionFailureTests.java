@@ -84,7 +84,7 @@ class OnBeanConditionTypeDeductionFailureTests {
 
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-			return new String[] { OnMissingBeanConfiguration.class.getName() };
+			return new String[]{OnMissingBeanConfiguration.class.getName()};
 		}
 
 	}

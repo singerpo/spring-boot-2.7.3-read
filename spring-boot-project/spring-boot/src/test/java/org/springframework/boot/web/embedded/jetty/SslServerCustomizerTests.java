@@ -57,7 +57,7 @@ class SslServerCustomizerTests {
 
 	@Test
 	@SuppressWarnings("rawtypes")
-	@DisabledOnOs(os = { OS.LINUX, OS.MAC }, architecture = "aarch64",
+	@DisabledOnOs(os = {OS.LINUX, OS.MAC}, architecture = "aarch64",
 			disabledReason = "conscrypt doesn't support Linux/macOS aarch64, see https://github.com/google/conscrypt/issues/1051")
 	void whenHttp2IsEnabledServerConnectorsHasSslAlpnH2AndHttpConnectionFactories() {
 		Http2 http2 = new Http2();
@@ -71,7 +71,7 @@ class SslServerCustomizerTests {
 	}
 
 	@Test
-	@DisabledOnOs(os = { OS.LINUX, OS.MAC }, architecture = "aarch64",
+	@DisabledOnOs(os = {OS.LINUX, OS.MAC}, architecture = "aarch64",
 			disabledReason = "conscrypt doesn't support Linux/macOS aarch64, see https://github.com/google/conscrypt/issues/1051")
 	void alpnConnectionFactoryHasNullDefaultProtocolToAllowNegotiationToHttp11() {
 		Http2 http2 = new Http2();

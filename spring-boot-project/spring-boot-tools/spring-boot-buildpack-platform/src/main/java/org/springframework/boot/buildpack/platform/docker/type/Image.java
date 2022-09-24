@@ -71,6 +71,7 @@ public class Image extends MappedObject {
 
 	/**
 	 * Return the digests of the image.
+	 *
 	 * @return the image digests
 	 */
 	public List<String> getDigests() {
@@ -79,6 +80,7 @@ public class Image extends MappedObject {
 
 	/**
 	 * Return image config information.
+	 *
 	 * @return the image config
 	 */
 	public ImageConfig getConfig() {
@@ -87,6 +89,7 @@ public class Image extends MappedObject {
 
 	/**
 	 * Return the layer IDs contained in the image.
+	 *
 	 * @return the layer IDs.
 	 */
 	public List<LayerId> getLayers() {
@@ -95,6 +98,7 @@ public class Image extends MappedObject {
 
 	/**
 	 * Return the OS of the image.
+	 *
 	 * @return the image OS
 	 */
 	public String getOs() {
@@ -103,6 +107,7 @@ public class Image extends MappedObject {
 
 	/**
 	 * Create a new {@link Image} instance from the specified JSON content.
+	 *
 	 * @param content the JSON content
 	 * @return a new {@link Image} instance
 	 * @throws IOException on IO error

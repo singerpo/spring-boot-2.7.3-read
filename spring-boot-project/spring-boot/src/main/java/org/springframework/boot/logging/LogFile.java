@@ -32,14 +32,15 @@ import org.springframework.util.StringUtils;
  *
  * @author Phillip Webb
  * @author Christian Carriere-Tisseur
- * @since 1.2.1
  * @see #get(PropertyResolver)
+ * @since 1.2.1
  */
 public class LogFile {
 
 	/**
 	 * The name of the Spring property that contains the name of the log file. Names can
 	 * be an exact location or relative to the current directory.
+	 *
 	 * @since 2.2.0
 	 */
 	public static final String FILE_NAME_PROPERTY = "logging.file.name";
@@ -47,6 +48,7 @@ public class LogFile {
 	/**
 	 * The name of the Spring property that contains the directory where log files are
 	 * written.
+	 *
 	 * @since 2.2.0
 	 */
 	public static final String FILE_PATH_PROPERTY = "logging.file.path";
@@ -57,6 +59,7 @@ public class LogFile {
 
 	/**
 	 * Create a new {@link LogFile} instance.
+	 *
 	 * @param file a reference to the file to write
 	 */
 	LogFile(String file) {
@@ -65,6 +68,7 @@ public class LogFile {
 
 	/**
 	 * Create a new {@link LogFile} instance.
+	 *
 	 * @param file a reference to the file to write
 	 * @param path a reference to the logging path to use if {@code file} is not specified
 	 */
@@ -83,6 +87,7 @@ public class LogFile {
 
 	/**
 	 * Apply log file details to {@code LOG_PATH} and {@code LOG_FILE} map entries.
+	 *
 	 * @param properties the properties to apply to
 	 */
 	public void applyTo(Properties properties) {
@@ -106,8 +111,9 @@ public class LogFile {
 
 	/**
 	 * Get a {@link LogFile} from the given Spring {@link Environment}.
+	 *
 	 * @param propertyResolver the {@link PropertyResolver} used to obtain the logging
-	 * properties
+	 *                         properties
 	 * @return a {@link LogFile} or {@code null} if the environment didn't contain any
 	 * suitable properties
 	 */

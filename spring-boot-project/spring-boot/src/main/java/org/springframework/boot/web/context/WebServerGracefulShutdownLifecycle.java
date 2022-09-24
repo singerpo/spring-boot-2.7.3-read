@@ -40,6 +40,7 @@ public final class WebServerGracefulShutdownLifecycle implements SmartLifecycle 
 	/**
 	 * Creates a new {@code WebServerGracefulShutdownLifecycle} that will gracefully shut
 	 * down the given {@code webServer}.
+	 *
 	 * @param webServer web server to shut down gracefully
 	 */
 	public WebServerGracefulShutdownLifecycle(WebServer webServer) {

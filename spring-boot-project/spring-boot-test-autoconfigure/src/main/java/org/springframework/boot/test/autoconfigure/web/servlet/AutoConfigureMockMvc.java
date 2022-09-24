@@ -37,11 +37,11 @@ import org.springframework.test.web.servlet.MvcResult;
  * auto-configuration of {@link MockMvc}.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see MockMvcAutoConfiguration
  * @see SpringBootMockMvcBuilderCustomizer
+ * @since 1.4.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -52,12 +52,14 @@ public @interface AutoConfigureMockMvc {
 	/**
 	 * If filters from the application context should be registered with MockMVC. Defaults
 	 * to {@code true}.
+	 *
 	 * @return if filters should be added
 	 */
 	boolean addFilters() default true;
 
 	/**
 	 * How {@link MvcResult} information should be printed after each MockMVC invocation.
+	 *
 	 * @return how information is printed
 	 */
 	@PropertyMapping(skip = SkipPropertyMapping.ON_DEFAULT_VALUE)
@@ -65,6 +67,7 @@ public @interface AutoConfigureMockMvc {
 
 	/**
 	 * If {@link MvcResult} information should be printed only if the test fails.
+	 *
 	 * @return {@code true} if printing only occurs on failure
 	 */
 	boolean printOnlyOnFailure() default true;
@@ -72,6 +75,7 @@ public @interface AutoConfigureMockMvc {
 	/**
 	 * If a {@link WebClient} should be auto-configured when HtmlUnit is on the classpath.
 	 * Defaults to {@code true}.
+	 *
 	 * @return if a {@link WebClient} is auto-configured
 	 */
 	@PropertyMapping("webclient.enabled")
@@ -80,6 +84,7 @@ public @interface AutoConfigureMockMvc {
 	/**
 	 * If a {@link WebDriver} should be auto-configured when Selenium is on the classpath.
 	 * Defaults to {@code true}.
+	 *
 	 * @return if a {@link WebDriver} is auto-configured
 	 */
 	@PropertyMapping("webdriver.enabled")

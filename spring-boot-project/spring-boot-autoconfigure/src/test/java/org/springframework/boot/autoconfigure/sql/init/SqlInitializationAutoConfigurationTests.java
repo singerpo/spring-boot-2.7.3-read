@@ -109,38 +109,38 @@ class SqlInitializationAutoConfigurationTests {
 	void whenAnInitializerIsDefinedThenSqlInitializerIsStillAutoConfigured() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(DataSourceAutoConfiguration.class))
 				.withUserConfiguration(DatabaseInitializerConfiguration.class).run((context) -> assertThat(context)
-						.hasSingleBean(SqlDataSourceScriptDatabaseInitializer.class).hasBean("customInitializer"));
+				.hasSingleBean(SqlDataSourceScriptDatabaseInitializer.class).hasBean("customInitializer"));
 	}
 
 	@Test
 	void whenBeanIsAnnotatedAsDependingOnDatabaseInitializationThenItDependsOnR2dbcScriptDatabaseInitializer() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(R2dbcAutoConfiguration.class))
 				.withUserConfiguration(DependsOnInitializedDatabaseConfiguration.class).run((context) -> {
-					BeanDefinition beanDefinition = context.getBeanFactory().getBeanDefinition(
-							"sqlInitializationAutoConfigurationTests.DependsOnInitializedDatabaseConfiguration");
-					assertThat(beanDefinition.getDependsOn())
-							.containsExactlyInAnyOrder("r2dbcScriptDatabaseInitializer");
-				});
+			BeanDefinition beanDefinition = context.getBeanFactory().getBeanDefinition(
+					"sqlInitializationAutoConfigurationTests.DependsOnInitializedDatabaseConfiguration");
+			assertThat(beanDefinition.getDependsOn())
+					.containsExactlyInAnyOrder("r2dbcScriptDatabaseInitializer");
+		});
 	}
 
 	@Test
 	void whenBeanIsAnnotatedAsDependingOnDatabaseInitializationThenItDependsOnDataSourceScriptDatabaseInitializer() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(DataSourceAutoConfiguration.class))
 				.withUserConfiguration(DependsOnInitializedDatabaseConfiguration.class).run((context) -> {
-					BeanDefinition beanDefinition = context.getBeanFactory().getBeanDefinition(
-							"sqlInitializationAutoConfigurationTests.DependsOnInitializedDatabaseConfiguration");
-					assertThat(beanDefinition.getDependsOn())
-							.containsExactlyInAnyOrder("dataSourceScriptDatabaseInitializer");
-				});
+			BeanDefinition beanDefinition = context.getBeanFactory().getBeanDefinition(
+					"sqlInitializationAutoConfigurationTests.DependsOnInitializedDatabaseConfiguration");
+			assertThat(beanDefinition.getDependsOn())
+					.containsExactlyInAnyOrder("dataSourceScriptDatabaseInitializer");
+		});
 	}
 
 	@Test
 	void whenADataSourceIsAvailableAndSpringJdbcIsNotThenAutoConfigurationBacksOff() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(DataSourceAutoConfiguration.class))
 				.withClassLoader(new FilteredClassLoader(DatabasePopulator.class)).run((context) -> {
-					assertThat(context).hasSingleBean(DataSource.class);
-					assertThat(context).doesNotHaveBean(AbstractScriptDatabaseInitializer.class);
-				});
+			assertThat(context).hasSingleBean(DataSource.class);
+			assertThat(context).doesNotHaveBean(AbstractScriptDatabaseInitializer.class);
+		});
 	}
 
 	@Test
@@ -163,7 +163,7 @@ class SqlInitializationAutoConfigurationTests {
 
 				@Override
 				protected void runScripts(List<Resource> resources, boolean continueOnError, String separator,
-						Charset encoding) {
+										  Charset encoding) {
 					// No-op
 				}
 
@@ -186,7 +186,7 @@ class SqlInitializationAutoConfigurationTests {
 
 				@Override
 				protected void runScripts(List<Resource> resources, boolean continueOnError, String separator,
-						Charset encoding) {
+										  Charset encoding) {
 					// No-op
 				}
 

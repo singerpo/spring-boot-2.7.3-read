@@ -135,8 +135,8 @@ class JarFileArchiveTests {
 	void unpackedLocationsFromSameArchiveShareSameParent() throws Exception {
 		setup(true);
 		try (Archive nestedArchive = this.archive.getNestedArchive(getEntriesMap(this.archive).get("nested.jar"));
-				Archive anotherNestedArchive = this.archive
-						.getNestedArchive(getEntriesMap(this.archive).get("another-nested.jar"))) {
+			 Archive anotherNestedArchive = this.archive
+					 .getNestedArchive(getEntriesMap(this.archive).get("another-nested.jar"))) {
 			File nested = new File(nestedArchive.getUrl().toURI());
 			File anotherNested = new File(anotherNestedArchive.getUrl().toURI());
 			assertThat(nested.getParent()).isEqualTo(anotherNested.getParent());

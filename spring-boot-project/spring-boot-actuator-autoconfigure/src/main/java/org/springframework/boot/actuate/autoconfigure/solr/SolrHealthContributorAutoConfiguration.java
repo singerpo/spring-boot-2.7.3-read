@@ -47,7 +47,7 @@ public class SolrHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<SolrHealthIndicator, SolrClient> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "solrHealthIndicator", "solrHealthContributor" })
+	@ConditionalOnMissingBean(name = {"solrHealthIndicator", "solrHealthContributor"})
 	public HealthContributor solrHealthContributor(Map<String, SolrClient> solrClients) {
 		return createContributor(solrClients);
 	}

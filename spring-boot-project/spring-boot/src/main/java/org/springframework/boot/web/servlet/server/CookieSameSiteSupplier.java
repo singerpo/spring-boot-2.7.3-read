@@ -37,14 +37,15 @@ import org.springframework.util.ObjectUtils;
  * </pre>
  *
  * @author Phillip Webb
- * @since 2.6.0
  * @see ConfigurableServletWebServerFactory#addCookieSameSiteSuppliers(CookieSameSiteSupplier...)
+ * @since 2.6.0
  */
 @FunctionalInterface
 public interface CookieSameSiteSupplier {
 
 	/**
 	 * Get the {@link SameSite} values that should be used for the given {@link Cookie}.
+	 *
 	 * @param cookie the cookie to check
 	 * @return the {@link SameSite} value to use or {@code null} if the next supplier
 	 * should be checked
@@ -53,6 +54,7 @@ public interface CookieSameSiteSupplier {
 
 	/**
 	 * Limit this supplier so that it's only called if the Cookie has the given name.
+	 *
 	 * @param name the name to check
 	 * @return a new {@link CookieSameSiteSupplier} that only calls this supplier when the
 	 * name matches
@@ -64,6 +66,7 @@ public interface CookieSameSiteSupplier {
 
 	/**
 	 * Limit this supplier so that it's only called if the Cookie has the given name.
+	 *
 	 * @param nameSupplier a supplier providing the name to check
 	 * @return a new {@link CookieSameSiteSupplier} that only calls this supplier when the
 	 * name matches
@@ -76,6 +79,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Limit this supplier so that it's only called if the Cookie name matches the given
 	 * regex.
+	 *
 	 * @param regex the regex pattern that must match
 	 * @return a new {@link CookieSameSiteSupplier} that only calls this supplier when the
 	 * name matches the regex
@@ -88,6 +92,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Limit this supplier so that it's only called if the Cookie name matches the given
 	 * {@link Pattern}.
+	 *
 	 * @param pattern the regex pattern that must match
 	 * @return a new {@link CookieSameSiteSupplier} that only calls this supplier when the
 	 * name matches the pattern
@@ -99,6 +104,7 @@ public interface CookieSameSiteSupplier {
 
 	/**
 	 * Limit this supplier so that it's only called if the predicate accepts the Cookie.
+	 *
 	 * @param predicate the predicate used to match the cookie
 	 * @return a new {@link CookieSameSiteSupplier} that only calls this supplier when the
 	 * cookie matches the predicate
@@ -111,6 +117,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Return a new {@link CookieSameSiteSupplier} that always returns
 	 * {@link SameSite#NONE}.
+	 *
 	 * @return the supplier instance
 	 */
 	static CookieSameSiteSupplier ofNone() {
@@ -120,6 +127,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Return a new {@link CookieSameSiteSupplier} that always returns
 	 * {@link SameSite#LAX}.
+	 *
 	 * @return the supplier instance
 	 */
 	static CookieSameSiteSupplier ofLax() {
@@ -129,6 +137,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Return a new {@link CookieSameSiteSupplier} that always returns
 	 * {@link SameSite#STRICT}.
+	 *
 	 * @return the supplier instance
 	 */
 	static CookieSameSiteSupplier ofStrict() {
@@ -138,6 +147,7 @@ public interface CookieSameSiteSupplier {
 	/**
 	 * Return a new {@link CookieSameSiteSupplier} that always returns the given
 	 * {@link SameSite} value.
+	 *
 	 * @param sameSite the value to return
 	 * @return the supplier instance
 	 */

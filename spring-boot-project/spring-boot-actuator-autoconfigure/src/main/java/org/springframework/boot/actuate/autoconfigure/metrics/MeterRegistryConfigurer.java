@@ -49,7 +49,7 @@ class MeterRegistryConfigurer {
 	private final boolean hasCompositeMeterRegistry;
 
 	MeterRegistryConfigurer(ObjectProvider<MeterRegistryCustomizer<?>> customizers, ObjectProvider<MeterFilter> filters,
-			ObjectProvider<MeterBinder> binders, boolean addToGlobalRegistry, boolean hasCompositeMeterRegistry) {
+							ObjectProvider<MeterBinder> binders, boolean addToGlobalRegistry, boolean hasCompositeMeterRegistry) {
 		this.customizers = customizers;
 		this.filters = filters;
 		this.binders = binders;

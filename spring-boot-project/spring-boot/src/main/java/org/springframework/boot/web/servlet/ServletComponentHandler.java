@@ -77,6 +77,6 @@ abstract class ServletComponentHandler {
 	}
 
 	protected abstract void doHandle(Map<String, Object> attributes, AnnotatedBeanDefinition beanDefinition,
-			BeanDefinitionRegistry registry);
+									 BeanDefinitionRegistry registry);
 
 }

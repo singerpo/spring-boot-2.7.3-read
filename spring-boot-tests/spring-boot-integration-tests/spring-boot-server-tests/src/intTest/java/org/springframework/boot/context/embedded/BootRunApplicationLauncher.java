@@ -64,8 +64,7 @@ class BootRunApplicationLauncher extends AbstractApplicationLauncher {
 			}
 			return Arrays.asList("-cp", StringUtils.collectionToDelimitedString(classpath, File.pathSeparator),
 					"com.example.ResourceHandlingApplication", serverPortFile.getAbsolutePath());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -123,8 +122,7 @@ class BootRunApplicationLauncher extends AbstractApplicationLauncher {
 			File extracted = new File(this.exploded, jarEntry.getName());
 			if (jarEntry.isDirectory()) {
 				extracted.mkdirs();
-			}
-			else {
+			} else {
 				FileOutputStream extractedOutputStream = new FileOutputStream(extracted);
 				StreamUtils.copy(jarFile.getInputStream(jarEntry), extractedOutputStream);
 				extractedOutputStream.close();

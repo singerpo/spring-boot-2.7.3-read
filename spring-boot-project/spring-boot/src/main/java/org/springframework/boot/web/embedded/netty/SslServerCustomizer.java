@@ -85,8 +85,7 @@ public class SslServerCustomizer implements NettyServerCustomizer {
 		AbstractProtocolSslContextSpec<?> sslContextSpec;
 		if (this.http2 != null && this.http2.isEnabled()) {
 			sslContextSpec = Http2SslContextSpec.forServer(getKeyManagerFactory(this.ssl, this.sslStoreProvider));
-		}
-		else {
+		} else {
 			sslContextSpec = Http11SslContextSpec.forServer(getKeyManagerFactory(this.ssl, this.sslStoreProvider));
 		}
 		sslContextSpec.configure((builder) -> {
@@ -99,8 +98,7 @@ public class SslServerCustomizer implements NettyServerCustomizer {
 			}
 			if (this.ssl.getClientAuth() == Ssl.ClientAuth.NEED) {
 				builder.clientAuth(ClientAuth.REQUIRE);
-			}
-			else if (this.ssl.getClientAuth() == Ssl.ClientAuth.WANT) {
+			} else if (this.ssl.getClientAuth() == Ssl.ClientAuth.WANT) {
 				builder.clientAuth(ClientAuth.OPTIONAL);
 			}
 		});
@@ -114,15 +112,14 @@ public class SslServerCustomizer implements NettyServerCustomizer {
 			KeyManagerFactory keyManagerFactory = (ssl.getKeyAlias() == null)
 					? KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
 					: new ConfigurableAliasKeyManagerFactory(ssl.getKeyAlias(),
-							KeyManagerFactory.getDefaultAlgorithm());
+					KeyManagerFactory.getDefaultAlgorithm());
 			String keyPassword = (sslStoreProvider != null) ? sslStoreProvider.getKeyPassword() : null;
 			if (keyPassword == null) {
 				keyPassword = (ssl.getKeyPassword() != null) ? ssl.getKeyPassword() : ssl.getKeyStorePassword();
 			}
 			keyManagerFactory.init(keyStore, (keyPassword != null) ? keyPassword.toCharArray() : null);
 			return keyManagerFactory;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -142,8 +139,7 @@ public class SslServerCustomizer implements NettyServerCustomizer {
 					.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 			trustManagerFactory.init(store);
 			return trustManagerFactory;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -177,8 +173,7 @@ public class SslServerCustomizer implements NettyServerCustomizer {
 				store.load(stream, (password != null) ? password.toCharArray() : null);
 			}
 			return store;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new WebServerException("Could not load key store '" + resource + "'", ex);
 		}
 

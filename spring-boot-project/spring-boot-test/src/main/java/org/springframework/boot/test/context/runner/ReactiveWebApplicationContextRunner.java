@@ -52,6 +52,7 @@ public final class ReactiveWebApplicationContextRunner extends
 	/**
 	 * Create a new {@link ApplicationContextRunner} instance using the specified
 	 * {@code contextFactory} as the underlying source.
+	 *
 	 * @param contextFactory a supplier that returns a new instance on each call
 	 */
 	public ReactiveWebApplicationContextRunner(Supplier<ConfigurableReactiveWebApplicationContext> contextFactory) {
@@ -65,11 +66,11 @@ public final class ReactiveWebApplicationContextRunner extends
 
 	@Deprecated
 	private ReactiveWebApplicationContextRunner(Supplier<ConfigurableReactiveWebApplicationContext> contextFactory,
-			boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super ConfigurableReactiveWebApplicationContext>> initializers,
-			TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
-			ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
-			List<Configurations> configurations) {
+												boolean allowBeanDefinitionOverriding,
+												List<ApplicationContextInitializer<? super ConfigurableReactiveWebApplicationContext>> initializers,
+												TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
+												ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
+												List<Configurations> configurations) {
 		super(contextFactory, allowBeanDefinitionOverriding, initializers, environmentProperties, systemProperties,
 				classLoader, parent, beanRegistrations, configurations);
 	}

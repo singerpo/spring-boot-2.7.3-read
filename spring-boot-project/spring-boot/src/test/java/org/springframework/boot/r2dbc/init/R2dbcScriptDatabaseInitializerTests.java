@@ -41,7 +41,7 @@ class R2dbcScriptDatabaseInitializerTests
 	private final ConnectionFactory standaloneConnectionFactory = ConnectionFactoryBuilder
 			.withUrl("r2dbc:h2:file:///"
 					+ new BuildOutput(R2dbcScriptDatabaseInitializerTests.class).getRootLocation().getAbsolutePath()
-							.replace('\\', '/')
+					.replace('\\', '/')
 					+ "/" + UUID.randomUUID() + "?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
 			.build();
 

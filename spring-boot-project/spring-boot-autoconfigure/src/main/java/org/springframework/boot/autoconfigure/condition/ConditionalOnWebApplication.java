@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Stephane Nicoll
  * @since 1.0.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(OnWebApplicationCondition.class)
@@ -41,6 +41,7 @@ public @interface ConditionalOnWebApplication {
 
 	/**
 	 * The required type of the web application.
+	 *
 	 * @return the required web application type
 	 */
 	Type type() default Type.ANY;

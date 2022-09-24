@@ -38,7 +38,7 @@ public class QuartzDataSourceInitializer extends org.springframework.boot.jdbc.A
 	private final QuartzProperties properties;
 
 	public QuartzDataSourceInitializer(DataSource dataSource, ResourceLoader resourceLoader,
-			QuartzProperties properties) {
+									   QuartzProperties properties) {
 		super(dataSource, resourceLoader);
 		Assert.notNull(properties, "QuartzProperties must not be null");
 		this.properties = properties;

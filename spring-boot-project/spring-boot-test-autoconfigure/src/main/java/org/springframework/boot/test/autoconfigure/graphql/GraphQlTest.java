@@ -75,8 +75,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  * with {@link AutoConfigureHttpGraphQlTester @AutoConfigureHttpGraphQlTester}.
  *
  * @author Brian Clozel
- * @since 2.7.0
  * @see AutoConfigureGraphQlTester
+ * @since 2.7.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -96,6 +96,7 @@ public @interface GraphQlTest {
 	/**
 	 * Properties in form {@literal key=value} that should be added to the Spring
 	 * {@link Environment} before the test runs.
+	 *
 	 * @return the properties to add
 	 */
 	String[] properties() default {};
@@ -104,8 +105,9 @@ public @interface GraphQlTest {
 	 * Specifies the controllers to test. This is an alias of {@link #controllers()} which
 	 * can be used for brevity if no other attributes are defined. See
 	 * {@link #controllers()} for details.
-	 * @see #controllers()
+	 *
 	 * @return the controllers to test
+	 * @see #controllers()
 	 */
 	@AliasFor("controllers")
 	Class<?>[] value() default {};
@@ -113,8 +115,9 @@ public @interface GraphQlTest {
 	/**
 	 * Specifies the controllers to test. May be left blank if all {@code @Controller}
 	 * beans should be added to the application context.
-	 * @see #value()
+	 *
 	 * @return the controllers to test
+	 * @see #value()
 	 */
 	@AliasFor("value")
 	Class<?>[] controllers() default {};
@@ -127,15 +130,17 @@ public @interface GraphQlTest {
 	 * {@code Converter}, {@code GenericConverter}, {@code DataFetcherExceptionResolver},
 	 * {@code Instrumentation} and {@code GraphQlSourceBuilderCustomizer} beans are
 	 * included.
+	 *
+	 * @return if default filters should be used
 	 * @see #includeFilters()
 	 * @see #excludeFilters()
-	 * @return if default filters should be used
 	 */
 	boolean useDefaultFilters() default true;
 
 	/**
 	 * A set of include filters which can be used to add otherwise filtered beans to the
 	 * application context.
+	 *
 	 * @return include filters to apply
 	 */
 	ComponentScan.Filter[] includeFilters() default {};
@@ -143,12 +148,14 @@ public @interface GraphQlTest {
 	/**
 	 * A set of exclude filters which can be used to filter beans that would otherwise be
 	 * added to the application context.
+	 *
 	 * @return exclude filters to apply
 	 */
 	ComponentScan.Filter[] excludeFilters() default {};
 
 	/**
 	 * Auto-configuration exclusions that should be applied for this test.
+	 *
 	 * @return auto-configuration exclusions to apply
 	 */
 	@AliasFor(annotation = ImportAutoConfiguration.class, attribute = "exclude")

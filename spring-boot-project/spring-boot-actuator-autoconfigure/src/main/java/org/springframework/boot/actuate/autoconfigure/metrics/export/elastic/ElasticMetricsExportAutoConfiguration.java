@@ -42,7 +42,7 @@ import org.springframework.context.annotation.Bean;
  * @since 2.1.0
  */
 @AutoConfiguration(
-		before = { CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class },
+		before = {CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class},
 		after = MetricsAutoConfiguration.class)
 @ConditionalOnBean(Clock.class)
 @ConditionalOnClass(ElasticMeterRegistry.class)

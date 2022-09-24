@@ -80,8 +80,7 @@ class SpringIterableConfigurationPropertySource extends SpringConfigurationPrope
 		if (getPropertySource() instanceof MapPropertySource) {
 			try {
 				((MapPropertySource) getPropertySource()).getSource().size();
-			}
-			catch (UnsupportedOperationException ex) {
+			} catch (UnsupportedOperationException ex) {
 				throw new IllegalArgumentException("PropertySource must be fully enumerable");
 			}
 		}
@@ -216,8 +215,7 @@ class SpringIterableConfigurationPropertySource extends SpringConfigurationPrope
 					try {
 						updateMappings(propertyNames.get());
 						return;
-					}
-					catch (ConcurrentModificationException ex) {
+					} catch (ConcurrentModificationException ex) {
 						if (count++ > 10) {
 							throw ex;
 						}
@@ -263,7 +261,7 @@ class SpringIterableConfigurationPropertySource extends SpringConfigurationPrope
 		}
 
 		private void addParents(Map<ConfigurationPropertyName, Set<ConfigurationPropertyName>> descendants,
-				ConfigurationPropertyName name) {
+								ConfigurationPropertyName name) {
 			ConfigurationPropertyName parent = name;
 			while (!parent.isEmpty()) {
 				add(descendants, parent, name);
@@ -296,7 +294,7 @@ class SpringIterableConfigurationPropertySource extends SpringConfigurationPrope
 		}
 
 		ConfigurationPropertyState containsDescendantOf(ConfigurationPropertyName name,
-				BiPredicate<ConfigurationPropertyName, ConfigurationPropertyName> ancestorOfCheck) {
+														BiPredicate<ConfigurationPropertyName, ConfigurationPropertyName> ancestorOfCheck) {
 			if (name.isEmpty() && !this.descendants.isEmpty()) {
 				return ConfigurationPropertyState.PRESENT;
 			}

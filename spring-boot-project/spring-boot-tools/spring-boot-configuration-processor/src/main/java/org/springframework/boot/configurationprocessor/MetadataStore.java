@@ -57,8 +57,7 @@ public class MetadataStore {
 	public ConfigurationMetadata readMetadata() {
 		try {
 			return readMetadata(getMetadataResource().openInputStream());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
 		}
 	}
@@ -78,16 +77,13 @@ public class MetadataStore {
 	private ConfigurationMetadata readMetadata(InputStream in) throws IOException {
 		try {
 			return new JsonMarshaller().read(in);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return null;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new InvalidConfigurationMetadataException(
 					"Invalid additional meta-data in '" + METADATA_PATH + "': " + ex.getMessage(),
 					Diagnostic.Kind.ERROR);
-		}
-		finally {
+		} finally {
 			in.close();
 		}
 	}

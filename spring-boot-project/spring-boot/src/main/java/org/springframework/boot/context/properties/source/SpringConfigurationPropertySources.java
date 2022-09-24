@@ -83,7 +83,7 @@ class SpringConfigurationPropertySources implements Iterable<ConfigurationProper
 		private final Function<PropertySource<?>, ConfigurationPropertySource> adapter;
 
 		SourcesIterator(Iterator<PropertySource<?>> iterator,
-				Function<PropertySource<?>, ConfigurationPropertySource> adapter) {
+						Function<PropertySource<?>, ConfigurationPropertySource> adapter) {
 			this.iterators = new ArrayDeque<>(4);
 			this.iterators.push(iterator);
 			this.adapter = adapter;

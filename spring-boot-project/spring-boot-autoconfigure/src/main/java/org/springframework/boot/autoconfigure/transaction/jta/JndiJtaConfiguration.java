@@ -35,8 +35,8 @@ import org.springframework.transaction.jta.JtaTransactionManager;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(JtaTransactionManager.class)
-@ConditionalOnJndi({ JtaTransactionManager.DEFAULT_USER_TRANSACTION_NAME, "java:comp/TransactionManager",
-		"java:appserver/TransactionManager", "java:pm/TransactionManager", "java:/TransactionManager" })
+@ConditionalOnJndi({JtaTransactionManager.DEFAULT_USER_TRANSACTION_NAME, "java:comp/TransactionManager",
+		"java:appserver/TransactionManager", "java:pm/TransactionManager", "java:/TransactionManager"})
 @ConditionalOnMissingBean(org.springframework.transaction.TransactionManager.class)
 class JndiJtaConfiguration {
 

@@ -44,7 +44,7 @@ import org.springframework.web.reactive.function.client.WebClient;
  * @author Brian Clozel
  * @since 2.0.0
  */
-@AutoConfiguration(after = { CodecsAutoConfiguration.class, ClientHttpConnectorAutoConfiguration.class })
+@AutoConfiguration(after = {CodecsAutoConfiguration.class, ClientHttpConnectorAutoConfiguration.class})
 @ConditionalOnClass(WebClient.class)
 public class WebClientAutoConfiguration {
 

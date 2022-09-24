@@ -31,7 +31,7 @@ class AliasedIterableConfigurationPropertySource extends AliasedConfigurationPro
 		implements IterableConfigurationPropertySource {
 
 	AliasedIterableConfigurationPropertySource(IterableConfigurationPropertySource source,
-			ConfigurationPropertyNameAliases aliases) {
+											   ConfigurationPropertyNameAliases aliases) {
 		super(source, aliases);
 	}
 

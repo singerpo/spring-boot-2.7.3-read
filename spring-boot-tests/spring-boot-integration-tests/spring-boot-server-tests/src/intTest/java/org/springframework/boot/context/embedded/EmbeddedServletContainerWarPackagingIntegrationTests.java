@@ -40,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Andy Wilkinson
  */
 @EmbeddedServletContainerTest(packaging = "war",
-		launchers = { PackagedApplicationLauncher.class, ExplodedApplicationLauncher.class })
+		launchers = {PackagedApplicationLauncher.class, ExplodedApplicationLauncher.class})
 class EmbeddedServletContainerWarPackagingIntegrationTests {
 
 	@TestTemplate
@@ -115,8 +115,7 @@ class EmbeddedServletContainerWarPackagingIntegrationTests {
 		}
 		try (BufferedReader reader = new BufferedReader(new StringReader(input))) {
 			return reader.lines().collect(Collectors.toList());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to read lines from input '" + input + "'");
 		}
 	}

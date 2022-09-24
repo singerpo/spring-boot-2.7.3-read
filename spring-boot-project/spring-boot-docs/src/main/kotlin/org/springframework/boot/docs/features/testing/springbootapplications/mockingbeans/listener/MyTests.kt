@@ -23,8 +23,8 @@ import org.springframework.test.context.TestExecutionListeners
 
 @ContextConfiguration(classes = [MyConfig::class])
 @TestExecutionListeners(
-	MockitoTestExecutionListener::class,
-	ResetMocksTestExecutionListener::class
+		MockitoTestExecutionListener::class,
+		ResetMocksTestExecutionListener::class
 )
 class MyTests {
 

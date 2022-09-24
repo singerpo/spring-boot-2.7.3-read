@@ -75,7 +75,7 @@ class InvalidConfigurationPropertyValueFailureAnalyzer
 	}
 
 	private void appendDetails(StringBuilder message, InvalidConfigurationPropertyValueException cause,
-			List<Descriptor> descriptors) {
+							   List<Descriptor> descriptors) {
 		Descriptor mainDescriptor = descriptors.get(0);
 		message.append("Invalid value '").append(mainDescriptor.getValue()).append("' for configuration property '");
 		message.append(cause.getName()).append("'");
@@ -87,8 +87,7 @@ class InvalidConfigurationPropertyValueFailureAnalyzer
 		if (StringUtils.hasText(cause.getReason())) {
 			message.append(String.format(" Validation failed for the following reason:%n%n"));
 			message.append(cause.getReason());
-		}
-		else {
+		} else {
 			message.append(" No reason was provided.");
 		}
 	}

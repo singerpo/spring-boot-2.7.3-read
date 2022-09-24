@@ -34,8 +34,8 @@ import org.springframework.core.annotation.AliasFor;
  * {@link SpringBootConfiguration @SpringBootConfiguration}.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see SpringBootTestContextBootstrapper
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -47,6 +47,7 @@ public @interface TestConfiguration {
 	/**
 	 * Explicitly specify the name of the Spring bean definition associated with this
 	 * Configuration class. See {@link Configuration#value()} for details.
+	 *
 	 * @return the specified bean name, if any
 	 */
 	@AliasFor(annotation = Configuration.class)
@@ -71,6 +72,7 @@ public @interface TestConfiguration {
 	 * individually like when declared on non-{@code @Configuration} classes, a.k.a.
 	 * "@Bean Lite Mode" (see {@link Bean @Bean's javadoc}). It is therefore behaviorally
 	 * equivalent to removing the {@code @Configuration} stereotype.
+	 *
 	 * @return whether to proxy {@code @Bean} methods
 	 * @since 2.2.1
 	 */

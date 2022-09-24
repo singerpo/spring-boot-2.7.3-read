@@ -1,16 +1,16 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{gradle-project-version}'
+    id 'java'
+    id 'org.springframework.boot' version '{gradle-project-version}'
 }
 
 // tag::source-resources[]
 tasks.named("bootRun") {
-	sourceResources sourceSets.main
+    sourceResources sourceSets.main
 }
 // end::source-resources[]
 
 tasks.register("configuredClasspath") {
-	doLast {
-		println bootRun.classpath.files
-	}
+    doLast {
+        println bootRun.classpath.files
+    }
 }

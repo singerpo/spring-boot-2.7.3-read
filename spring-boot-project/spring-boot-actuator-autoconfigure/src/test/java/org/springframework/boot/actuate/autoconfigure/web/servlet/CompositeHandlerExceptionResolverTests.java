@@ -101,7 +101,7 @@ class CompositeHandlerExceptionResolverTests {
 
 		@Override
 		public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
-				Exception ex) {
+											 Exception ex) {
 			return new ModelAndView("test-view");
 		}
 

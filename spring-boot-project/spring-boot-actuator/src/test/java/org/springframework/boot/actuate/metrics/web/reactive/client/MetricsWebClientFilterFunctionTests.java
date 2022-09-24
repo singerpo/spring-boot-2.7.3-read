@@ -106,7 +106,7 @@ class MetricsWebClientFilterFunctionTests {
 				.block(Duration.ofSeconds(5));
 		assertThat(this.registry.get("http.client.requests")
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "IO_ERROR").timer().count())
-						.isEqualTo(1);
+				.isEqualTo(1);
 	}
 
 	@Test
@@ -118,7 +118,7 @@ class MetricsWebClientFilterFunctionTests {
 				.block(Duration.ofSeconds(5));
 		assertThat(this.registry.get("http.client.requests")
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "CLIENT_ERROR").timer().count())
-						.isEqualTo(1);
+				.isEqualTo(1);
 	}
 
 	@Test
@@ -130,10 +130,10 @@ class MetricsWebClientFilterFunctionTests {
 		StepVerifier.create(filter).thenCancel().verify(Duration.ofSeconds(5));
 		assertThat(this.registry.get("http.client.requests")
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "CLIENT_ERROR").timer().count())
-						.isEqualTo(1);
+				.isEqualTo(1);
 		assertThatThrownBy(() -> this.registry.get("http.client.requests")
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "200").timer())
-						.isInstanceOf(MeterNotFoundException.class);
+				.isInstanceOf(MeterNotFoundException.class);
 	}
 
 	@Test
@@ -147,7 +147,7 @@ class MetricsWebClientFilterFunctionTests {
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "200").timer().count()).isEqualTo(1);
 		assertThatThrownBy(() -> this.registry.get("http.client.requests")
 				.tags("method", "GET", "uri", "/projects/spring-boot", "status", "CLIENT_ERROR").timer())
-						.isInstanceOf(MeterNotFoundException.class);
+				.isInstanceOf(MeterNotFoundException.class);
 	}
 
 	@Test

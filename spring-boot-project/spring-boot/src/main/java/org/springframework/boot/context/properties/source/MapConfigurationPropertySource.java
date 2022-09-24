@@ -35,7 +35,7 @@ import org.springframework.util.Assert;
  */
 public class MapConfigurationPropertySource implements IterableConfigurationPropertySource {
 
-	private static final PropertyMapper[] DEFAULT_MAPPERS = { DefaultPropertyMapper.INSTANCE };
+	private static final PropertyMapper[] DEFAULT_MAPPERS = {DefaultPropertyMapper.INSTANCE};
 
 	private final Map<String, Object> source;
 
@@ -51,6 +51,7 @@ public class MapConfigurationPropertySource implements IterableConfigurationProp
 	/**
 	 * Create a new {@link MapConfigurationPropertySource} instance with entries copies
 	 * from the specified map.
+	 *
 	 * @param map the source map
 	 */
 	public MapConfigurationPropertySource(Map<?, ?> map) {
@@ -62,6 +63,7 @@ public class MapConfigurationPropertySource implements IterableConfigurationProp
 
 	/**
 	 * Add all entries from the specified map.
+	 *
 	 * @param map the source map
 	 */
 	public void putAll(Map<?, ?> map) {
@@ -72,7 +74,8 @@ public class MapConfigurationPropertySource implements IterableConfigurationProp
 
 	/**
 	 * Add an individual entry.
-	 * @param name the name
+	 *
+	 * @param name  the name
 	 * @param value the value
 	 */
 	public void put(Object name, Object value) {
@@ -102,8 +105,7 @@ public class MapConfigurationPropertySource implements IterableConfigurationProp
 	private void assertNotReadOnlySystemAttributesMap(Map<?, ?> map) {
 		try {
 			map.size();
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			throw new IllegalArgumentException("Security restricted maps are not supported", ex);
 		}
 	}

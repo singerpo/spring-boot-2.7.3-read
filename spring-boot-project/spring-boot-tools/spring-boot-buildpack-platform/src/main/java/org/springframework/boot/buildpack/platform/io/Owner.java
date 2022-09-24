@@ -31,18 +31,21 @@ public interface Owner {
 
 	/**
 	 * Return the user identifier (UID) of the owner.
+	 *
 	 * @return the user identifier
 	 */
 	long getUid();
 
 	/**
 	 * Return the group identifier (GID) of the owner.
+	 *
 	 * @return the group identifier
 	 */
 	long getGid();
 
 	/**
 	 * Factory method to create a new {@link Owner} with specified user/group identifier.
+	 *
 	 * @param uid the user identifier
 	 * @param gid the group identifier
 	 * @return a new {@link Owner} instance

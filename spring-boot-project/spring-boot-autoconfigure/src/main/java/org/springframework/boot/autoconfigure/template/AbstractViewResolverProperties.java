@@ -31,8 +31,8 @@ import org.springframework.web.servlet.ViewResolver;
  *
  * @author Andy Wilkinson
  * @author Stephane Nicoll
- * @since 1.2.0
  * @see AbstractTemplateViewResolverProperties
+ * @since 1.2.0
  */
 public abstract class AbstractViewResolverProperties {
 

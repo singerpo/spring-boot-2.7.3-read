@@ -34,10 +34,11 @@ public class MissingWebServerFactoryBeanException extends NoSuchBeanDefinitionEx
 
 	/**
 	 * Create a new {@code MissingWebServerFactoryBeanException}.
+	 *
 	 * @param webServerApplicationContextClass the class of the
-	 * WebServerApplicationContext that required the WebServerFactory
-	 * @param webServerFactoryClass the class of the WebServerFactory that was missing
-	 * @param webApplicationType the type of the web application
+	 *                                         WebServerApplicationContext that required the WebServerFactory
+	 * @param webServerFactoryClass            the class of the WebServerFactory that was missing
+	 * @param webApplicationType               the type of the web application
 	 */
 	public MissingWebServerFactoryBeanException(
 			Class<? extends WebServerApplicationContext> webServerApplicationContextClass,
@@ -50,6 +51,7 @@ public class MissingWebServerFactoryBeanException extends NoSuchBeanDefinitionEx
 	/**
 	 * Returns the type of web application for which a {@link WebServerFactory} bean was
 	 * missing.
+	 *
 	 * @return the type of web application
 	 */
 	public WebApplicationType getWebApplicationType() {

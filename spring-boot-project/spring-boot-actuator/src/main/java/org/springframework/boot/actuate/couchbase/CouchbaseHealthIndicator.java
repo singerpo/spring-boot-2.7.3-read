@@ -37,6 +37,7 @@ public class CouchbaseHealthIndicator extends AbstractHealthIndicator {
 
 	/**
 	 * Create an indicator with the specified {@link Cluster}.
+	 *
 	 * @param cluster the Couchbase Cluster
 	 * @since 2.0.6
 	 */

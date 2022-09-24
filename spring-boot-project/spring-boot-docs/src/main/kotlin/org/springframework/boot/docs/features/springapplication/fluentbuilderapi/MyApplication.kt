@@ -23,10 +23,10 @@ class MyApplication {
 	fun hierarchyWithDisabledBanner(args: Array<String?>) {
 		// tag::code[]
 		SpringApplicationBuilder()
-			.sources(Parent::class.java)
-			.child(Application::class.java)
-			.bannerMode(Banner.Mode.OFF)
-			.run(*args)
+				.sources(Parent::class.java)
+				.child(Application::class.java)
+				.bannerMode(Banner.Mode.OFF)
+				.run(*args)
 		// end::code[]
 	}
 

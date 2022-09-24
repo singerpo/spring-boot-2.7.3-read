@@ -31,9 +31,9 @@ class MyLegacyCookieProcessorConfiguration {
 	fun cookieProcessorCustomizer(): WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 		return WebServerFactoryCustomizer { factory: TomcatServletWebServerFactory ->
 			factory
-				.addContextCustomizers(TomcatContextCustomizer { context: Context ->
-					context.cookieProcessor = LegacyCookieProcessor()
-				})
+					.addContextCustomizers(TomcatContextCustomizer { context: Context ->
+						context.cookieProcessor = LegacyCookieProcessor()
+					})
 		}
 	}
 

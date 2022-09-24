@@ -28,6 +28,7 @@ public interface UpdateListener<E extends UpdateEvent> {
 
 	/**
 	 * A no-op update listener.
+	 *
 	 * @see #none()
 	 */
 	UpdateListener<UpdateEvent> NONE = (event) -> {
@@ -41,6 +42,7 @@ public interface UpdateListener<E extends UpdateEvent> {
 
 	/**
 	 * Called when an update event is available.
+	 *
 	 * @param event the update event
 	 */
 	void onUpdate(E event);
@@ -53,6 +55,7 @@ public interface UpdateListener<E extends UpdateEvent> {
 
 	/**
 	 * A no-op update listener that does nothing.
+	 *
 	 * @param <E> the event type
 	 * @return a no-op update listener
 	 */

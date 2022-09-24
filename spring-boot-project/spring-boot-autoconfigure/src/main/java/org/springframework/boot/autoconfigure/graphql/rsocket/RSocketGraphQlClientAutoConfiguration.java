@@ -42,8 +42,8 @@ import org.springframework.util.MimeTypeUtils;
  * @since 2.7.0
  */
 @AutoConfiguration(after = RSocketRequesterAutoConfiguration.class)
-@ConditionalOnClass({ GraphQL.class, RSocketGraphQlClient.class, RSocketRequester.class, RSocket.class,
-		TcpClientTransport.class })
+@ConditionalOnClass({GraphQL.class, RSocketGraphQlClient.class, RSocketRequester.class, RSocket.class,
+		TcpClientTransport.class})
 public class RSocketGraphQlClientAutoConfiguration {
 
 	@Bean

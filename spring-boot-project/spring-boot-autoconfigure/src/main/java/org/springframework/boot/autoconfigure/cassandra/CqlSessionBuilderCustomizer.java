@@ -32,6 +32,7 @@ public interface CqlSessionBuilderCustomizer {
 
 	/**
 	 * Customize the {@link CqlSessionBuilder}.
+	 *
 	 * @param cqlSessionBuilder the builder to customize
 	 */
 	void customize(CqlSessionBuilder cqlSessionBuilder);

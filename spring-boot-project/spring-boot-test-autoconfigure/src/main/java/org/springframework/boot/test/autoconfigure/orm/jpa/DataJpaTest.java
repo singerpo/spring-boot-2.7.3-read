@@ -68,11 +68,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Phillip Webb
  * @author Artsiom Yudovin
  * @author Scott Frederick
- * @since 1.4.0
  * @see AutoConfigureDataJpa
  * @see AutoConfigureTestDatabase
  * @see AutoConfigureTestEntityManager
  * @see AutoConfigureCache
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -93,6 +93,7 @@ public @interface DataJpaTest {
 	/**
 	 * Properties in form {@literal key=value} that should be added to the Spring
 	 * {@link Environment} before the test runs.
+	 *
 	 * @return the properties to add
 	 * @since 2.1.0
 	 */
@@ -100,6 +101,7 @@ public @interface DataJpaTest {
 
 	/**
 	 * If SQL output should be logged.
+	 *
 	 * @return if SQL is logged
 	 */
 	@PropertyMapping("spring.jpa.show-sql")
@@ -108,6 +110,7 @@ public @interface DataJpaTest {
 	/**
 	 * The {@link BootstrapMode} for the test repository support. Defaults to
 	 * {@link BootstrapMode#DEFAULT}.
+	 *
 	 * @return the {@link BootstrapMode} to use for testing the repository
 	 */
 	@PropertyMapping("spring.data.jpa.repositories.bootstrap-mode")
@@ -117,15 +120,17 @@ public @interface DataJpaTest {
 	 * Determines if default filtering should be used with
 	 * {@link SpringBootApplication @SpringBootApplication}. By default no beans are
 	 * included.
+	 *
+	 * @return if default filters should be used
 	 * @see #includeFilters()
 	 * @see #excludeFilters()
-	 * @return if default filters should be used
 	 */
 	boolean useDefaultFilters() default true;
 
 	/**
 	 * A set of include filters which can be used to add otherwise filtered beans to the
 	 * application context.
+	 *
 	 * @return include filters to apply
 	 */
 	Filter[] includeFilters() default {};
@@ -133,12 +138,14 @@ public @interface DataJpaTest {
 	/**
 	 * A set of exclude filters which can be used to filter beans that would otherwise be
 	 * added to the application context.
+	 *
 	 * @return exclude filters to apply
 	 */
 	Filter[] excludeFilters() default {};
 
 	/**
 	 * Auto-configuration exclusions that should be applied for this test.
+	 *
 	 * @return auto-configuration exclusions to apply
 	 */
 	@AliasFor(annotation = ImportAutoConfiguration.class, attribute = "exclude")

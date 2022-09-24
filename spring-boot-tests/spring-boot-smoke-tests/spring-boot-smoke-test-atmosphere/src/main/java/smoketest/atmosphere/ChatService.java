@@ -60,8 +60,7 @@ public class ChatService {
 		public String encode(Message m) {
 			try {
 				return this.mapper.writeValueAsString(m);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -70,8 +69,7 @@ public class ChatService {
 		public Message decode(String s) {
 			try {
 				return this.mapper.readValue(s, Message.class);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

@@ -74,8 +74,7 @@ class JarTypeFilterTests {
 		}
 		try {
 			new JarOutputStream(new FileOutputStream(jarPath.toFile()), manifest).close();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		return mockArtifact(jarPath);
@@ -85,8 +84,7 @@ class JarTypeFilterTests {
 		Path jarPath = this.temp.resolve("test.jar");
 		try {
 			new JarOutputStream(new FileOutputStream(jarPath.toFile())).close();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		return mockArtifact(jarPath);

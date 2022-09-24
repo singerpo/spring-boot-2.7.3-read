@@ -196,8 +196,7 @@ class SpringBootJoranConfiguratorTests {
 		this.logger.trace("Hello");
 		if (expected) {
 			assertThat(this.output).contains("Hello");
-		}
-		else {
+		} else {
 			assertThat(this.output).doesNotContain("Hello");
 		}
 

@@ -66,7 +66,7 @@ class WebPropertiesResourcesTests {
 
 	@Test
 	void customStaticLocationsAreNormalizedToEndWithTrailingSlash() {
-		this.properties.setStaticLocations(new String[] { "/foo", "/bar", "/baz/" });
+		this.properties.setStaticLocations(new String[]{"/foo", "/bar", "/baz/"});
 		String[] actual = this.properties.getStaticLocations();
 		assertThat(actual).containsExactly("/foo/", "/bar/", "/baz/");
 	}

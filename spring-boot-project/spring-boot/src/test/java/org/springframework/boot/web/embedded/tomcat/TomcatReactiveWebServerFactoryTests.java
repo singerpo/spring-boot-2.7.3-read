@@ -99,8 +99,7 @@ class TomcatReactiveWebServerFactoryTests extends AbstractReactiveWebServerFacto
 		TomcatReactiveWebServerFactory factory = getFactory();
 		if (AprLifecycleListener.isAprAvailable()) {
 			assertThat(factory.getContextLifecycleListeners()).singleElement().isInstanceOf(AprLifecycleListener.class);
-		}
-		else {
+		} else {
 			assertThat(factory.getContextLifecycleListeners()).isEmpty();
 		}
 	}
@@ -165,7 +164,7 @@ class TomcatReactiveWebServerFactoryTests extends AbstractReactiveWebServerFacto
 	}
 
 	@Test
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	void tomcatProtocolHandlerCustomizersShouldBeInvoked() {
 		TomcatReactiveWebServerFactory factory = getFactory();
 		HttpHandler handler = mock(HttpHandler.class);
@@ -249,8 +248,7 @@ class TomcatReactiveWebServerFactoryTests extends AbstractReactiveWebServerFacto
 			try {
 				webClient.get().retrieve().toBodilessEntity().block();
 				return false;
-			}
-			catch (RuntimeException ex) {
+			} catch (RuntimeException ex) {
 				return ex.getCause() instanceof ConnectException;
 			}
 		});

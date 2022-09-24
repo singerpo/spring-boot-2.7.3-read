@@ -83,8 +83,7 @@ public class DelegatingApplicationListener implements ApplicationListener<Applic
 					Assert.isAssignable(ApplicationListener.class, clazz,
 							() -> "class [" + className + "] must implement ApplicationListener");
 					listeners.add((ApplicationListener<ApplicationEvent>) BeanUtils.instantiateClass(clazz));
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new ApplicationContextException("Failed to load context listener class [" + className + "]",
 							ex);
 				}

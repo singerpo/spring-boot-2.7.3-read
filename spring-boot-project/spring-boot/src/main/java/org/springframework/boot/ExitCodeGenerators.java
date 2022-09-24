@@ -87,6 +87,7 @@ class ExitCodeGenerators implements Iterable<ExitCodeGenerator> {
 	/**
 	 * Get the final exit code that should be returned. The final exit code is the first
 	 * non-zero exit code that is {@link ExitCodeGenerator#getExitCode generated}.
+	 *
 	 * @return the final exit code.
 	 */
 	int getExitCode() {
@@ -98,8 +99,7 @@ class ExitCodeGenerators implements Iterable<ExitCodeGenerator> {
 					exitCode = value;
 					break;
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				exitCode = 1;
 				ex.printStackTrace();
 			}

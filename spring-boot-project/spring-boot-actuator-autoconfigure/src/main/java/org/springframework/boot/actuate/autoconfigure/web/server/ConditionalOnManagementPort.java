@@ -32,13 +32,14 @@ import org.springframework.context.annotation.Conditional;
  * @since 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Conditional(OnManagementPortCondition.class)
 public @interface ConditionalOnManagementPort {
 
 	/**
 	 * The {@link ManagementPortType} to match.
+	 *
 	 * @return the port type
 	 */
 	ManagementPortType value();

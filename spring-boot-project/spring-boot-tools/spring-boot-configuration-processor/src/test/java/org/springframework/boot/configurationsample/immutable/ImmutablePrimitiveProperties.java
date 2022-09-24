@@ -41,7 +41,7 @@ public class ImmutablePrimitiveProperties {
 	private final double ratio;
 
 	public ImmutablePrimitiveProperties(boolean flag, byte octet, char letter, short number, int counter, long value,
-			float percentage, double ratio) {
+										float percentage, double ratio) {
 		this.flag = flag;
 		this.octet = octet;
 		this.letter = letter;

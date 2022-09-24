@@ -395,8 +395,7 @@ class HttpTunnelServerTests {
 				dst.put(bytes);
 				bytes.limit(bytes.capacity());
 				return initialRemaining - dst.remaining();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

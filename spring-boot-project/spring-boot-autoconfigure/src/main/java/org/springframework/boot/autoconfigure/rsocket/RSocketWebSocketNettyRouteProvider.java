@@ -43,7 +43,7 @@ class RSocketWebSocketNettyRouteProvider implements NettyRouteProvider {
 	private final List<RSocketServerCustomizer> customizers;
 
 	RSocketWebSocketNettyRouteProvider(String mappingPath, SocketAcceptor socketAcceptor,
-			Stream<RSocketServerCustomizer> customizers) {
+									   Stream<RSocketServerCustomizer> customizers) {
 		this.mappingPath = mappingPath;
 		this.socketAcceptor = socketAcceptor;
 		this.customizers = customizers.collect(Collectors.toList());

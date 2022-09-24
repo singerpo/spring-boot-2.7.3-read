@@ -39,8 +39,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @author Andy Wilkinson
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class })
-@ConditionalOnClass(value = { Log4j2Metrics.class, LogManager.class },
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class})
+@ConditionalOnClass(value = {Log4j2Metrics.class, LogManager.class},
 		name = "org.apache.logging.log4j.core.LoggerContext")
 @ConditionalOnBean(MeterRegistry.class)
 @Conditional(Log4JCoreLoggerContextCondition.class)
@@ -62,8 +62,7 @@ public class Log4J2MetricsAutoConfiguration {
 					return ConditionOutcome
 							.match("LoggerContext was an instance of org.apache.logging.log4j.core.LoggerContext");
 				}
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				// Continue with no match
 			}
 			return ConditionOutcome

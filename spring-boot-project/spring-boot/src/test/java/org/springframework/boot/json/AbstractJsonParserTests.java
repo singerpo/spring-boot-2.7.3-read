@@ -190,7 +190,8 @@ abstract class AbstractJsonParserTests {
 		assertThatExceptionOfType(JsonParseException.class).isThrownBy(() -> this.parser.parseMap("{\"foo\"}"));
 	}
 
-	@Test // gh-31868
+	@Test
+		// gh-31868
 	void listWithRepeatedOpenArray() throws IOException {
 		String input = StreamUtils.copyToString(
 				AbstractJsonParserTests.class.getResourceAsStream("repeated-open-array.txt"), StandardCharsets.UTF_8);
@@ -198,14 +199,16 @@ abstract class AbstractJsonParserTests {
 				.withMessageContaining("too deeply nested");
 	}
 
-	@Test // gh-31869
+	@Test
+		// gh-31869
 	void largeMalformed() throws IOException {
 		String input = StreamUtils.copyToString(
 				AbstractJsonParserTests.class.getResourceAsStream("large-malformed-json.txt"), StandardCharsets.UTF_8);
 		assertThatExceptionOfType(JsonParseException.class).isThrownBy(() -> this.parser.parseList(input));
 	}
 
-	@Test // gh-32029
+	@Test
+		// gh-32029
 	void deeplyNestedMap() throws IOException {
 		String input = StreamUtils.copyToString(
 				AbstractJsonParserTests.class.getResourceAsStream("deeply-nested-map-json.txt"),

@@ -35,13 +35,14 @@ import org.springframework.context.annotation.Conditional;
  * @since 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Conditional(OnEnabledHealthIndicatorCondition.class)
 public @interface ConditionalOnEnabledHealthIndicator {
 
 	/**
 	 * The name of the health indicator.
+	 *
 	 * @return the name of the health indicator
 	 */
 	String value();

@@ -105,41 +105,41 @@ class MetricsAutoConfigurationIntegrationTests {
 	void compositeCreatedWithMultipleRegistries() {
 		new ApplicationContextRunner().with(MetricsRun.limitedTo(GraphiteMetricsExportAutoConfiguration.class,
 				JmxMetricsExportAutoConfiguration.class)).run((context) -> {
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry).isInstanceOf(CompositeMeterRegistry.class);
-					assertThat(((CompositeMeterRegistry) registry).getRegistries())
-							.hasAtLeastOneElementOfType(GraphiteMeterRegistry.class)
-							.hasAtLeastOneElementOfType(JmxMeterRegistry.class);
-				});
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry).isInstanceOf(CompositeMeterRegistry.class);
+			assertThat(((CompositeMeterRegistry) registry).getRegistries())
+					.hasAtLeastOneElementOfType(GraphiteMeterRegistry.class)
+					.hasAtLeastOneElementOfType(JmxMeterRegistry.class);
+		});
 	}
 
 	@Test
 	void autoConfiguredCompositeDoesNotHaveMeterFiltersApplied() {
 		new ApplicationContextRunner().with(MetricsRun.limitedTo(GraphiteMetricsExportAutoConfiguration.class,
 				JmxMetricsExportAutoConfiguration.class)).run((context) -> {
-					MeterRegistry composite = context.getBean(MeterRegistry.class);
-					assertThat(composite).extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(0);
-					assertThat(composite).isInstanceOf(CompositeMeterRegistry.class);
-					Set<MeterRegistry> registries = ((CompositeMeterRegistry) composite).getRegistries();
-					assertThat(registries).hasSize(2);
-					assertThat(registries).hasAtLeastOneElementOfType(GraphiteMeterRegistry.class)
-							.hasAtLeastOneElementOfType(JmxMeterRegistry.class);
-					assertThat(registries).allSatisfy((registry) -> assertThat(registry)
-							.extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(1));
-				});
+			MeterRegistry composite = context.getBean(MeterRegistry.class);
+			assertThat(composite).extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(0);
+			assertThat(composite).isInstanceOf(CompositeMeterRegistry.class);
+			Set<MeterRegistry> registries = ((CompositeMeterRegistry) composite).getRegistries();
+			assertThat(registries).hasSize(2);
+			assertThat(registries).hasAtLeastOneElementOfType(GraphiteMeterRegistry.class)
+					.hasAtLeastOneElementOfType(JmxMeterRegistry.class);
+			assertThat(registries).allSatisfy((registry) -> assertThat(registry)
+					.extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(1));
+		});
 	}
 
 	@Test
 	void userConfiguredCompositeHasMeterFiltersApplied() {
 		new ApplicationContextRunner().with(MetricsRun.limitedTo())
 				.withUserConfiguration(CompositeMeterRegistryConfiguration.class).run((context) -> {
-					MeterRegistry composite = context.getBean(MeterRegistry.class);
-					assertThat(composite).extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(1);
-					assertThat(composite).isInstanceOf(CompositeMeterRegistry.class);
-					Set<MeterRegistry> registries = ((CompositeMeterRegistry) composite).getRegistries();
-					assertThat(registries).hasSize(2);
-					assertThat(registries).hasOnlyElementsOfTypes(SimpleMeterRegistry.class);
-				});
+			MeterRegistry composite = context.getBean(MeterRegistry.class);
+			assertThat(composite).extracting("filters", InstanceOfAssertFactories.ARRAY).hasSize(1);
+			assertThat(composite).isInstanceOf(CompositeMeterRegistry.class);
+			Set<MeterRegistry> registries = ((CompositeMeterRegistry) composite).getRegistries();
+			assertThat(registries).hasSize(2);
+			assertThat(registries).hasOnlyElementsOfTypes(SimpleMeterRegistry.class);
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

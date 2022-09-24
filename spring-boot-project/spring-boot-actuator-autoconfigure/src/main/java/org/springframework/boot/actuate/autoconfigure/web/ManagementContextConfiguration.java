@@ -50,6 +50,7 @@ public @interface ManagementContextConfiguration {
 	/**
 	 * Specifies the type of management context that is required for this configuration to
 	 * be applied.
+	 *
 	 * @return the required management context type
 	 * @since 2.0.0
 	 */
@@ -74,6 +75,7 @@ public @interface ManagementContextConfiguration {
 	 * individually like when declared on non-{@code @Configuration} classes, a.k.a.
 	 * "@Bean Lite Mode" (see {@link Bean @Bean's javadoc}). It is therefore behaviorally
 	 * equivalent to removing the {@code @Configuration} stereotype.
+	 *
 	 * @return whether to proxy {@code @Bean} methods
 	 * @since 2.2
 	 */

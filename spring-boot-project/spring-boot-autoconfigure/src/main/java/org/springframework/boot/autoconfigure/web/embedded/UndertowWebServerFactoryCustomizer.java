@@ -149,8 +149,7 @@ public class UndertowWebServerFactoryCustomizer
 					try {
 						Option<?> option = (Option<?>) field.get(null);
 						lookup.put(getCanonicalName(field.getName()), option);
-					}
-					catch (IllegalAccessException ex) {
+					} catch (IllegalAccessException ex) {
 					}
 				}
 			});

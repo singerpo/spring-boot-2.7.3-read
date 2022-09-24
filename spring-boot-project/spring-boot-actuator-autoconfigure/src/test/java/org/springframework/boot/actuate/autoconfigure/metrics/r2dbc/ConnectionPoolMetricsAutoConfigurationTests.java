@@ -70,18 +70,18 @@ class ConnectionPoolMetricsAutoConfigurationTests {
 				.withPropertyValues(
 						"spring.r2dbc.url:r2dbc:pool:h2:mem:///name?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
 				.withConfiguration(AutoConfigurations.of(R2dbcAutoConfiguration.class)).run((context) -> {
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("r2dbc.pool.acquired").gauges()).hasSize(1);
-				});
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("r2dbc.pool.acquired").gauges()).hasSize(1);
+		});
 	}
 
 	@Test
 	void connectionPoolInstrumentationCanBeDisabled() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(R2dbcAutoConfiguration.class))
 				.withPropertyValues("management.metrics.enable.r2dbc=false").run((context) -> {
-					MeterRegistry registry = context.getBean(MeterRegistry.class);
-					assertThat(registry.find("r2dbc.pool.acquired").gauge()).isNull();
-				});
+			MeterRegistry registry = context.getBean(MeterRegistry.class);
+			assertThat(registry.find("r2dbc.pool.acquired").gauge()).isNull();
+		});
 	}
 
 	@Test

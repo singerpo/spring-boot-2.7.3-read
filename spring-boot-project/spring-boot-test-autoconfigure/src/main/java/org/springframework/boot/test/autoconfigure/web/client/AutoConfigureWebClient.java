@@ -47,6 +47,7 @@ public @interface AutoConfigureWebClient {
 	/**
 	 * If a {@link RestTemplate} bean should be registered. Defaults to {@code false} with
 	 * the assumption that the {@link RestTemplateBuilder} will be used.
+	 *
 	 * @return if a {@link RestTemplate} bean should be added.
 	 */
 	boolean registerRestTemplate() default false;

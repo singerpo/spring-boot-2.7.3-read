@@ -80,15 +80,15 @@ import org.springframework.web.socket.server.support.WebSocketHandlerMapping;
  */
 @AutoConfiguration(after = GraphQlAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@ConditionalOnClass({ GraphQL.class, GraphQlHttpHandler.class })
+@ConditionalOnClass({GraphQL.class, GraphQlHttpHandler.class})
 @ConditionalOnBean(ExecutionGraphQlService.class)
 @EnableConfigurationProperties(GraphQlCorsProperties.class)
 public class GraphQlWebMvcAutoConfiguration {
 
 	private static final Log logger = LogFactory.getLog(GraphQlWebMvcAutoConfiguration.class);
 
-	private static MediaType[] SUPPORTED_MEDIA_TYPES = new MediaType[] { MediaType.APPLICATION_GRAPHQL,
-			MediaType.APPLICATION_JSON };
+	private static MediaType[] SUPPORTED_MEDIA_TYPES = new MediaType[]{MediaType.APPLICATION_GRAPHQL,
+			MediaType.APPLICATION_JSON};
 
 	@Bean
 	@ConditionalOnMissingBean
@@ -99,8 +99,8 @@ public class GraphQlWebMvcAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public WebGraphQlHandler webGraphQlHandler(ExecutionGraphQlService service,
-			ObjectProvider<WebGraphQlInterceptor> interceptorsProvider,
-			ObjectProvider<ThreadLocalAccessor> accessorsProvider) {
+											   ObjectProvider<WebGraphQlInterceptor> interceptorsProvider,
+											   ObjectProvider<ThreadLocalAccessor> accessorsProvider) {
 		return WebGraphQlHandler.builder(service)
 				.interceptors(interceptorsProvider.orderedStream().collect(Collectors.toList()))
 				.threadLocalAccessors(accessorsProvider.orderedStream().collect(Collectors.toList())).build();
@@ -109,7 +109,7 @@ public class GraphQlWebMvcAutoConfiguration {
 	@Bean
 	@Order(0)
 	public RouterFunction<ServerResponse> graphQlRouterFunction(GraphQlHttpHandler httpHandler,
-			GraphQlSource graphQlSource, GraphQlProperties properties) {
+																GraphQlSource graphQlSource, GraphQlProperties properties) {
 		String path = properties.getPath();
 		logger.info(LogMessage.format("GraphQL endpoint HTTP POST %s", path));
 		RouterFunctions.Builder builder = RouterFunctions.route();
@@ -158,14 +158,14 @@ public class GraphQlWebMvcAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ ServerContainer.class, WebSocketHandler.class })
+	@ConditionalOnClass({ServerContainer.class, WebSocketHandler.class})
 	@ConditionalOnProperty(prefix = "spring.graphql.websocket", name = "path")
 	public static class WebSocketConfiguration {
 
 		@Bean
 		@ConditionalOnMissingBean
 		public GraphQlWebSocketHandler graphQlWebSocketHandler(WebGraphQlHandler webGraphQlHandler,
-				GraphQlProperties properties, HttpMessageConverters converters) {
+															   GraphQlProperties properties, HttpMessageConverters converters) {
 			return new GraphQlWebSocketHandler(webGraphQlHandler, getJsonConverter(converters),
 					properties.getWebsocket().getConnectionInitTimeout());
 		}

@@ -78,8 +78,7 @@ public class ConditionEvaluationReportMessage {
 				.filter((entry) -> entry.getValue().isFullMatch()).collect(Collectors.toList());
 		if (matched.isEmpty()) {
 			message.append(String.format("%n    None%n"));
-		}
-		else {
+		} else {
 			matched.forEach((entry) -> addMatchLogMessage(message, entry.getKey(), entry.getValue()));
 		}
 		message.append(String.format("%n%n"));
@@ -92,8 +91,7 @@ public class ConditionEvaluationReportMessage {
 				.filter((entry) -> !entry.getValue().isFullMatch()).collect(Collectors.toList());
 		if (nonMatched.isEmpty()) {
 			message.append(String.format("%n    None%n"));
-		}
-		else {
+		} else {
 			nonMatched.forEach((entry) -> addNonMatchLogMessage(message, entry.getKey(), entry.getValue()));
 		}
 		message.append(String.format("%n%n"));
@@ -104,8 +102,7 @@ public class ConditionEvaluationReportMessage {
 		message.append(String.format("-----------%n"));
 		if (report.getExclusions().isEmpty()) {
 			message.append(String.format("%n    None%n"));
-		}
-		else {
+		} else {
 			for (String exclusion : report.getExclusions()) {
 				message.append(String.format("%n    %s%n", exclusion));
 			}
@@ -118,8 +115,7 @@ public class ConditionEvaluationReportMessage {
 		message.append(String.format("----------------------%n"));
 		if (report.getUnconditionalClasses().isEmpty()) {
 			message.append(String.format("%n    None%n"));
-		}
-		else {
+		} else {
 			for (String unconditionalClass : report.getUnconditionalClasses()) {
 				message.append(String.format("%n    %s%n", unconditionalClass));
 			}
@@ -136,8 +132,7 @@ public class ConditionEvaluationReportMessage {
 			if (fullyQualifiedNames.size() > 1) {
 				fullyQualifiedNames.forEach(
 						(fullyQualifiedName) -> result.put(fullyQualifiedName, outcomes.get(fullyQualifiedName)));
-			}
-			else {
+			} else {
 				result.put(shortName, outcomes.get(fullyQualifiedNames.get(0)));
 			}
 		}
@@ -159,15 +154,14 @@ public class ConditionEvaluationReportMessage {
 	}
 
 	private void addNonMatchLogMessage(StringBuilder message, String source,
-			ConditionAndOutcomes conditionAndOutcomes) {
+									   ConditionAndOutcomes conditionAndOutcomes) {
 		message.append(String.format("%n   %s:%n", source));
 		List<ConditionAndOutcome> matches = new ArrayList<>();
 		List<ConditionAndOutcome> nonMatches = new ArrayList<>();
 		for (ConditionAndOutcome conditionAndOutcome : conditionAndOutcomes) {
 			if (conditionAndOutcome.getOutcome().isMatch()) {
 				matches.add(conditionAndOutcome);
-			}
-			else {
+			} else {
 				nonMatches.add(conditionAndOutcome);
 			}
 		}
@@ -188,8 +182,7 @@ public class ConditionEvaluationReportMessage {
 		String outcomeMessage = conditionAndOutcome.getOutcome().getMessage();
 		if (StringUtils.hasLength(outcomeMessage)) {
 			message.append(outcomeMessage);
-		}
-		else {
+		} else {
 			message.append(conditionAndOutcome.getOutcome().isMatch() ? "matched" : "did not match");
 		}
 		message.append(" (");

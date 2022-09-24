@@ -50,11 +50,10 @@ public class ConfigTreeConfigDataLocationResolver implements ConfigDataLocationR
 
 	@Override
 	public List<ConfigTreeConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-			ConfigDataLocation location) {
+													  ConfigDataLocation location) {
 		try {
 			return resolve(location.getNonPrefixedValue(PREFIX));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new ConfigDataLocationNotFoundException(location, ex);
 		}
 	}

@@ -52,7 +52,7 @@ class DiscoveredWebOperation extends AbstractDiscoveredOperation implements WebO
 	private final WebOperationRequestPredicate requestPredicate;
 
 	DiscoveredWebOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod, OperationInvoker invoker,
-			WebOperationRequestPredicate requestPredicate) {
+						   WebOperationRequestPredicate requestPredicate) {
 		super(operationMethod, invoker);
 		Method method = operationMethod.getMethod();
 		this.id = getId(endpointId, method);

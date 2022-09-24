@@ -88,8 +88,8 @@ class JerseyAutoConfigurationWithoutApplicationPathTests {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Configuration
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

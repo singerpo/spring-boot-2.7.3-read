@@ -36,6 +36,7 @@ public interface DatabaseInitializerDetector extends Ordered {
 	/**
 	 * Detect beans defined in the given {@code beanFactory} that initialize a
 	 * {@link DataSource}.
+	 *
 	 * @param beanFactory bean factory to examine
 	 * @return names of the detected {@code DataSource} initializer beans, or an empty set
 	 * if none were detected.
@@ -45,12 +46,13 @@ public interface DatabaseInitializerDetector extends Ordered {
 	/**
 	 * Callback indicating that all known {@code DataSourceInitializerDetectors} have been
 	 * called and detection of beans that initialize a {@link DataSource} is complete.
-	 * @param beanFactory bean factory that was examined
+	 *
+	 * @param beanFactory                bean factory that was examined
 	 * @param dataSourceInitializerNames names of the {@code DataSource} initializer beans
-	 * detected by all known detectors
+	 *                                   detected by all known detectors
 	 */
 	default void detectionComplete(ConfigurableListableBeanFactory beanFactory,
-			Set<String> dataSourceInitializerNames) {
+								   Set<String> dataSourceInitializerNames) {
 	}
 
 	@Override

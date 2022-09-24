@@ -55,7 +55,7 @@ abstract class AbstractArchiveIntegrationTests {
 
 	protected String launchScript(File jar) {
 		String content = contentOf(jar);
-		return content.substring(0, content.indexOf(new String(new byte[] { 0x50, 0x4b, 0x03, 0x04 })));
+		return content.substring(0, content.indexOf(new String(new byte[]{0x50, 0x4b, 0x03, 0x04})));
 	}
 
 	protected AssertProvider<JarAssert> jar(File file) {
@@ -85,8 +85,7 @@ abstract class AbstractArchiveIntegrationTests {
 				if (line.startsWith(layerPrefix)) {
 					layer = line.substring(layerPrefix.length() + 1, line.length() - 2);
 					index.put(layer, new ArrayList<>());
-				}
-				else if (line.startsWith(entryPrefix)) {
+				} else if (line.startsWith(entryPrefix)) {
 					index.computeIfAbsent(layer, (key) -> new ArrayList<>())
 							.add(line.substring(entryPrefix.length() + 1, line.length() - 1));
 				}
@@ -190,8 +189,7 @@ abstract class AbstractArchiveIntegrationTests {
 			withJarFile((jarFile) -> {
 				try {
 					consumer.accept(new ManifestAssert(jarFile.getManifest()));
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					throw new RuntimeException(ex);
 				}
 			});
@@ -201,8 +199,7 @@ abstract class AbstractArchiveIntegrationTests {
 		void withJarFile(Consumer<JarFile> consumer) {
 			try (JarFile jarFile = new JarFile(this.actual)) {
 				consumer.accept(jarFile);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new RuntimeException(ex);
 			}
 		}

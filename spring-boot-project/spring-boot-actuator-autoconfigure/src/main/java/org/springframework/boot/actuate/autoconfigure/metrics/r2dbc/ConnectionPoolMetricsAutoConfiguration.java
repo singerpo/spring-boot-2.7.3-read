@@ -42,15 +42,15 @@ import org.springframework.boot.autoconfigure.r2dbc.R2dbcAutoConfiguration;
  * @author Stephane Nicoll
  * @since 2.3.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class,
-		R2dbcAutoConfiguration.class })
-@ConditionalOnClass({ ConnectionPool.class, MeterRegistry.class })
-@ConditionalOnBean({ ConnectionFactory.class, MeterRegistry.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class,
+		R2dbcAutoConfiguration.class})
+@ConditionalOnClass({ConnectionPool.class, MeterRegistry.class})
+@ConditionalOnBean({ConnectionFactory.class, MeterRegistry.class})
 public class ConnectionPoolMetricsAutoConfiguration {
 
 	@Autowired
 	public void bindConnectionPoolsToRegistry(Map<String, ConnectionFactory> connectionFactories,
-			MeterRegistry registry) {
+											  MeterRegistry registry) {
 		connectionFactories.forEach((beanName, connectionFactory) -> {
 			ConnectionPool pool = extractPool(connectionFactory);
 			if (pool != null) {

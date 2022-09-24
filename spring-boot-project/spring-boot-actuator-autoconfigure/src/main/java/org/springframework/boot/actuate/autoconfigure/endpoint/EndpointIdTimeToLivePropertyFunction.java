@@ -42,6 +42,7 @@ class EndpointIdTimeToLivePropertyFunction implements Function<EndpointId, Long>
 
 	/**
 	 * Create a new instance with the {@link PropertyResolver} to use.
+	 *
 	 * @param environment the environment
 	 */
 	EndpointIdTimeToLivePropertyFunction(Environment environment) {

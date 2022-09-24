@@ -30,6 +30,7 @@ public interface RSocketServer {
 	/**
 	 * Starts the RSocket server. Calling this method on an already started server has no
 	 * effect.
+	 *
 	 * @throws RSocketServerException if the server cannot be started
 	 */
 	void start() throws RSocketServerException;
@@ -37,12 +38,14 @@ public interface RSocketServer {
 	/**
 	 * Stops the RSocket server. Calling this method on an already stopped server has no
 	 * effect.
+	 *
 	 * @throws RSocketServerException if the server cannot be stopped
 	 */
 	void stop() throws RSocketServerException;
 
 	/**
 	 * Return the address this server is listening on.
+	 *
 	 * @return the address
 	 */
 	InetSocketAddress address();

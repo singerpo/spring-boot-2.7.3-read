@@ -118,8 +118,9 @@ public class TestSliceMetadata extends DefaultTask {
 	 * Reads files from the given directory and puts them in springFactories. The key is
 	 * the file name, the value is the file contents, split by line, delimited with comma.
 	 * This is done to mimic the spring.factories structure.
+	 *
 	 * @param springFactories spring.factories parsed as properties
-	 * @param directory directory to scan
+	 * @param directory       directory to scan
 	 */
 	private void readTestSlicesDirectory(Properties springFactories, File directory) {
 		File[] files = directory.listFiles((dir, name) -> name.endsWith(".imports"));
@@ -133,8 +134,7 @@ public class TestSliceMetadata extends DefaultTask {
 						file.getName().length() - ".imports".length());
 				springFactories.setProperty(fileNameWithoutExtension,
 						StringUtils.collectionToCommaDelimitedString(lines));
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new UncheckedIOException("Failed to read file " + file, ex);
 			}
 		}
@@ -158,8 +158,7 @@ public class TestSliceMetadata extends DefaultTask {
 	private URL toURL(File file) {
 		try {
 			return file.toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -173,7 +172,7 @@ public class TestSliceMetadata extends DefaultTask {
 	}
 
 	private void addTestSlices(Properties testSlices, File classesDir, MetadataReaderFactory metadataReaderFactory,
-			Properties springFactories) throws IOException {
+							   Properties springFactories) throws IOException {
 		try (Stream<Path> classes = Files.walk(classesDir.toPath())) {
 			classes.filter((path) -> path.toString().endsWith("Test.class"))
 					.map((path) -> getMetadataReader(path, metadataReaderFactory))
@@ -186,8 +185,7 @@ public class TestSliceMetadata extends DefaultTask {
 	private MetadataReader getMetadataReader(Path path, MetadataReaderFactory metadataReaderFactory) {
 		try {
 			return metadataReaderFactory.getMetadataReader(new FileSystemResource(path));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -199,7 +197,7 @@ public class TestSliceMetadata extends DefaultTask {
 	}
 
 	private SortedSet<String> getImportedAutoConfiguration(Properties springFactories,
-			AnnotationMetadata annotationMetadata) {
+														   AnnotationMetadata annotationMetadata) {
 		Stream<String> importers = findMetaImporters(annotationMetadata);
 		if (annotationMetadata.isAnnotated("org.springframework.boot.autoconfigure.ImportAutoConfiguration")) {
 			importers = Stream.concat(importers, Stream.of(annotationMetadata.getClassName()));

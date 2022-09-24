@@ -118,9 +118,9 @@ class MutuallyExclusiveConfigurationPropertiesExceptionTests {
 					entries.put("b", "B");
 					entries.put("c", null);
 				})).satisfies((ex) -> {
-					assertThat(ex.getConfiguredNames()).containsExactly("a", "b");
-					assertThat(ex.getMutuallyExclusiveNames()).containsExactly("a", "b", "c");
-				});
+			assertThat(ex.getConfiguredNames()).containsExactly("a", "b");
+			assertThat(ex.getMutuallyExclusiveNames()).containsExactly("a", "b", "c");
+		});
 	}
 
 }

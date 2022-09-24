@@ -33,8 +33,8 @@ import org.springframework.util.Assert;
  * restarts.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see RestartServer
+ * @since 1.3.0
  */
 public class HttpRestartServer {
 
@@ -44,8 +44,9 @@ public class HttpRestartServer {
 
 	/**
 	 * Create a new {@link HttpRestartServer} instance.
+	 *
 	 * @param sourceDirectoryUrlFilter the source filter used to link remote directory to
-	 * the local classpath
+	 *                                 the local classpath
 	 */
 	public HttpRestartServer(SourceDirectoryUrlFilter sourceDirectoryUrlFilter) {
 		Assert.notNull(sourceDirectoryUrlFilter, "SourceDirectoryUrlFilter must not be null");
@@ -54,6 +55,7 @@ public class HttpRestartServer {
 
 	/**
 	 * Create a new {@link HttpRestartServer} instance.
+	 *
 	 * @param restartServer the underlying restart server
 	 */
 	public HttpRestartServer(RestartServer restartServer) {
@@ -63,7 +65,8 @@ public class HttpRestartServer {
 
 	/**
 	 * Handle a server request.
-	 * @param request the request
+	 *
+	 * @param request  the request
 	 * @param response the response
 	 * @throws IOException in case of I/O errors
 	 */
@@ -75,8 +78,7 @@ public class HttpRestartServer {
 			objectInputStream.close();
 			this.server.updateAndRestart(files);
 			response.setStatusCode(HttpStatus.OK);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn("Unable to handler restart server HTTP request", ex);
 			response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
 		}

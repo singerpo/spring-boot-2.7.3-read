@@ -84,8 +84,7 @@ class SpringApplicationLauncherTests {
 		TestClassLoader classLoader = new TestClassLoader(getClass().getClassLoader());
 		try {
 			new TestSpringApplicationLauncher(classLoader).launch(new Class<?>[0], new String[0]);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Launch will fail, but we can still check that the launcher tried to use
 			// the right class
 		}

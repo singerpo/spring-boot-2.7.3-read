@@ -37,6 +37,7 @@ final class VersionExtractor {
 
 	/**
 	 * Return the version information for the provided {@link Class}.
+	 *
 	 * @param cls the Class to retrieve the version for
 	 * @return the version, or {@code null} if a version can not be extracted
 	 */
@@ -54,8 +55,7 @@ final class VersionExtractor {
 			try (JarFile jarFile = new JarFile(new File(codeSourceLocation.toURI()))) {
 				return getImplementationVersion(jarFile);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}

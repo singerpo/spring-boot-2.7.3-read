@@ -1,18 +1,18 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
-	java
-	id("org.springframework.boot") version "{gradle-project-version}"
+    java
+    id("org.springframework.boot") version "{gradle-project-version}"
 }
 
 tasks.named<BootJar>("bootJar") {
-	mainClass.set("com.example.ExampleApplication")
+    mainClass.set("com.example.ExampleApplication")
 }
 
 // tag::layered[]
 tasks.named<BootJar>("bootJar") {
-	layered {
-		isEnabled = false
-	}
+    layered {
+        isEnabled = false
+    }
 }
 // end::layered[]

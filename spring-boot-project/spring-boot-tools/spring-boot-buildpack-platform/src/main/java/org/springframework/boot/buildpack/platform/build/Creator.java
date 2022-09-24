@@ -34,6 +34,7 @@ public class Creator {
 
 	/**
 	 * Return the name of the builder creator.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -42,6 +43,7 @@ public class Creator {
 
 	/**
 	 * Return the version of the builder creator.
+	 *
 	 * @return the version
 	 */
 	public String getVersion() {
@@ -50,6 +52,7 @@ public class Creator {
 
 	/**
 	 * Create a new {@code Creator} using the provided version.
+	 *
 	 * @param version the creator version
 	 * @return a new creator instance
 	 */

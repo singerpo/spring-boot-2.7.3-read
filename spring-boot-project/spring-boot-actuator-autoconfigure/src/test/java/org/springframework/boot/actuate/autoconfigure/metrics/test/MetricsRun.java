@@ -75,6 +75,7 @@ public final class MetricsRun {
 	/**
 	 * Return a function that configures the run to be limited to the {@code simple}
 	 * implementation.
+	 *
 	 * @return the function to apply
 	 */
 	public static <T extends AbstractApplicationContextRunner<?, ?, ?>> Function<T, T> simple() {
@@ -84,6 +85,7 @@ public final class MetricsRun {
 	/**
 	 * Return a function that configures the run to be limited to the specified
 	 * implementations.
+	 *
 	 * @param exportAutoConfigurations the export auto-configurations to include
 	 * @return the function to apply
 	 */
@@ -94,7 +96,7 @@ public final class MetricsRun {
 
 	@SuppressWarnings("unchecked")
 	private static <T extends AbstractApplicationContextRunner<?, ?, ?>> T apply(T contextRunner,
-			Class<?>[] exportAutoConfigurations) {
+																				 Class<?>[] exportAutoConfigurations) {
 		for (Class<?> configuration : exportAutoConfigurations) {
 			Assert.state(EXPORT_AUTO_CONFIGURATIONS.contains(configuration),
 					() -> "Unknown export auto-configuration " + configuration.getName());

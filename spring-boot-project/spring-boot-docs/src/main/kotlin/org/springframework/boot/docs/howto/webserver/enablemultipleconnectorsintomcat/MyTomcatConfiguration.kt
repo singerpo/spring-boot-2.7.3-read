@@ -32,7 +32,7 @@ class MyTomcatConfiguration {
 	fun sslConnectorCustomizer(): WebServerFactoryCustomizer<TomcatServletWebServerFactory> {
 		return WebServerFactoryCustomizer { tomcat: TomcatServletWebServerFactory ->
 			tomcat.addAdditionalTomcatConnectors(
-				createSslConnector()
+					createSslConnector()
 			)
 		}
 	}

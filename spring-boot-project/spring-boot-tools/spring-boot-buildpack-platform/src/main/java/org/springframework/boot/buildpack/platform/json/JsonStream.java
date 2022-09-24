@@ -38,6 +38,7 @@ public class JsonStream {
 
 	/**
 	 * Create a new {@link JsonStream} backed by the given object mapper.
+	 *
 	 * @param objectMapper the object mapper to use
 	 */
 	public JsonStream(ObjectMapper objectMapper) {
@@ -46,7 +47,8 @@ public class JsonStream {
 
 	/**
 	 * Stream {@link ObjectNode object nodes} from the content as they become available.
-	 * @param content the source content
+	 *
+	 * @param content  the source content
 	 * @param consumer the {@link ObjectNode} consumer
 	 * @throws IOException on IO error
 	 */
@@ -56,9 +58,10 @@ public class JsonStream {
 
 	/**
 	 * Stream objects from the content as they become available.
-	 * @param <T> the object type
-	 * @param content the source content
-	 * @param type the object type
+	 *
+	 * @param <T>      the object type
+	 * @param content  the source content
+	 * @param type     the object type
 	 * @param consumer the {@link ObjectNode} consumer
 	 * @throws IOException on IO error
 	 */

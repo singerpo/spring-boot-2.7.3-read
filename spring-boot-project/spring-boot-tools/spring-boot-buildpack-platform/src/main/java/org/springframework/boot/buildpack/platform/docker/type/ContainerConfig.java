@@ -48,7 +48,7 @@ public class ContainerConfig {
 	private final String json;
 
 	ContainerConfig(String user, ImageReference image, String command, List<String> args, Map<String, String> labels,
-			List<Binding> bindings, Map<String, String> env, String networkMode) throws IOException {
+					List<Binding> bindings, Map<String, String> env, String networkMode) throws IOException {
 		Assert.notNull(image, "Image must not be null");
 		Assert.hasText(command, "Command must not be empty");
 		ObjectMapper objectMapper = SharedObjectMapper.get();
@@ -75,6 +75,7 @@ public class ContainerConfig {
 
 	/**
 	 * Write this container configuration to the specified {@link OutputStream}.
+	 *
 	 * @param outputStream the output stream
 	 * @throws IOException on IO error
 	 */
@@ -89,8 +90,9 @@ public class ContainerConfig {
 
 	/**
 	 * Factory method to create a {@link ContainerConfig} with specific settings.
+	 *
 	 * @param imageReference the source image for the container config
-	 * @param update an update callback used to customize the config
+	 * @param update         an update callback used to customize the config
 	 * @return a new {@link ContainerConfig} instance
 	 */
 	public static ContainerConfig of(ImageReference imageReference, Consumer<Update> update) {
@@ -129,14 +131,14 @@ public class ContainerConfig {
 			try {
 				return new ContainerConfig(this.user, this.image, this.command, this.args, this.labels, this.bindings,
 						this.env, this.networkMode);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
 
 		/**
 		 * Update the container config with a specific user.
+		 *
 		 * @param user the user to set
 		 */
 		public void withUser(String user) {
@@ -145,8 +147,9 @@ public class ContainerConfig {
 
 		/**
 		 * Update the container config with a specific command.
+		 *
 		 * @param command the command to set
-		 * @param args additional arguments to add
+		 * @param args    additional arguments to add
 		 * @see #withArgs(String...)
 		 */
 		public void withCommand(String command, String... args) {
@@ -156,6 +159,7 @@ public class ContainerConfig {
 
 		/**
 		 * Update the container config with additional args.
+		 *
 		 * @param args the arguments to add
 		 */
 		public void withArgs(String... args) {
@@ -164,7 +168,8 @@ public class ContainerConfig {
 
 		/**
 		 * Update the container config with an additional label.
-		 * @param name the label name
+		 *
+		 * @param name  the label name
 		 * @param value the label value
 		 */
 		public void withLabel(String name, String value) {
@@ -173,6 +178,7 @@ public class ContainerConfig {
 
 		/**
 		 * Update the container config with an additional binding.
+		 *
 		 * @param binding the binding
 		 */
 		public void withBinding(Binding binding) {
@@ -181,7 +187,8 @@ public class ContainerConfig {
 
 		/**
 		 * Update the container config with an additional environment variable.
-		 * @param name the variable name
+		 *
+		 * @param name  the variable name
 		 * @param value the variable value
 		 */
 		public void withEnv(String name, String value) {
@@ -191,6 +198,7 @@ public class ContainerConfig {
 		/**
 		 * Update the container config with the network that the build container will
 		 * connect to.
+		 *
 		 * @param networkMode the network
 		 */
 		public void withNetworkMode(String networkMode) {

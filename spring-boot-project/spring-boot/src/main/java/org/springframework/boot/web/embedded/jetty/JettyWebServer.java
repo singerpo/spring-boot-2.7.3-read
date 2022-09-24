@@ -50,8 +50,8 @@ import org.springframework.util.StringUtils;
  * @author Eddú Meléndez
  * @author Brian Clozel
  * @author Kristine Jetzke
- * @since 2.0.0
  * @see JettyReactiveWebServerFactory
+ * @since 2.0.0
  */
 public class JettyWebServer implements WebServer {
 
@@ -71,6 +71,7 @@ public class JettyWebServer implements WebServer {
 
 	/**
 	 * Create a new {@link JettyWebServer} instance.
+	 *
 	 * @param server the underlying Jetty server
 	 */
 	public JettyWebServer(Server server) {
@@ -79,7 +80,8 @@ public class JettyWebServer implements WebServer {
 
 	/**
 	 * Create a new {@link JettyWebServer} instance.
-	 * @param server the underlying Jetty server
+	 *
+	 * @param server    the underlying Jetty server
 	 * @param autoStart if auto-starting the server
 	 */
 	public JettyWebServer(Server server, boolean autoStart) {
@@ -122,8 +124,7 @@ public class JettyWebServer implements WebServer {
 				// Start the server so that the ServletContext is available
 				this.server.start();
 				this.server.setStopAtShutdown(false);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				// Ensure process isn't left running
 				stopSilently();
 				throw new WebServerException("Unable to start embedded Jetty web server", ex);
@@ -134,8 +135,7 @@ public class JettyWebServer implements WebServer {
 	private void stopSilently() {
 		try {
 			this.server.stop();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 	}
@@ -159,8 +159,7 @@ public class JettyWebServer implements WebServer {
 				for (Connector connector : connectors) {
 					try {
 						connector.start();
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						if (connector instanceof NetworkConnector) {
 							PortInUseException.throwIfPortBindingException(ex,
 									() -> ((NetworkConnector) connector).getPort());
@@ -171,12 +170,10 @@ public class JettyWebServer implements WebServer {
 				this.started = true;
 				logger.info("Jetty started on port(s) " + getActualPortsDescription() + " with context path '"
 						+ getContextPath() + "'");
-			}
-			catch (WebServerException ex) {
+			} catch (WebServerException ex) {
 				stopSilently();
 				throw ex;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				stopSilently();
 				throw new WebServerException("Unable to start embedded Jetty server", ex);
 			}
@@ -218,11 +215,9 @@ public class JettyWebServer implements WebServer {
 		for (Handler handler : handlers) {
 			if (handler instanceof JettyEmbeddedWebAppContext) {
 				((JettyEmbeddedWebAppContext) handler).deferredInitialize();
-			}
-			else if (handler instanceof HandlerWrapper) {
+			} else if (handler instanceof HandlerWrapper) {
 				handleDeferredInitialize(((HandlerWrapper) handler).getHandler());
-			}
-			else if (handler instanceof HandlerCollection) {
+			} else if (handler instanceof HandlerCollection) {
 				handleDeferredInitialize(((HandlerCollection) handler).getHandlers());
 			}
 		}
@@ -237,11 +232,9 @@ public class JettyWebServer implements WebServer {
 			}
 			try {
 				this.server.stop();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new WebServerException("Unable to stop embedded Jetty server", ex);
 			}
 		}
@@ -277,6 +270,7 @@ public class JettyWebServer implements WebServer {
 
 	/**
 	 * Returns access to the underlying Jetty Server.
+	 *
 	 * @return the Jetty server
 	 */
 	public Server getServer() {

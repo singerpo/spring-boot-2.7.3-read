@@ -180,7 +180,8 @@ class BindConverterTests {
 		assertThat(result.getSeconds()).isEqualTo(10);
 	}
 
-	@Test // gh-27028
+	@Test
+		// gh-27028
 	void convertWhenConversionFailsThrowsConversionFailedExceptionRatherThanConverterNotFoundException() {
 		BindConverter bindConverter = BindConverter.get(Collections.singletonList(new GenericConversionService()),
 				null);
@@ -206,8 +207,7 @@ class BindConverterTests {
 		for (Thread thread : threads) {
 			try {
 				thread.join();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 			}
 		}
 		assertThat(results).isNotEmpty().doesNotContainNull();

@@ -51,8 +51,7 @@ class FileSessionPersistence implements SessionPersistenceManager {
 	public void persistSessions(String deploymentName, Map<String, PersistentSession> sessionData) {
 		try {
 			save(sessionData, getSessionFile(deploymentName));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			UndertowServletLogger.ROOT_LOGGER.failedToPersistSessions(ex);
 		}
 	}
@@ -76,8 +75,7 @@ class FileSessionPersistence implements SessionPersistenceManager {
 			if (file.exists()) {
 				return load(file, classLoader);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			UndertowServletLogger.ROOT_LOGGER.failedtoLoadPersistentSessions(ex);
 		}
 		return null;

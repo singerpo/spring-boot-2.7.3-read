@@ -59,8 +59,7 @@ class ServletWebServerMvcIntegrationTests {
 	void closeContext() {
 		try {
 			this.context.close();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Ignore
 		}
 	}

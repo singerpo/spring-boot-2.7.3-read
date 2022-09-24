@@ -34,8 +34,8 @@ import org.springframework.context.annotation.Bean;
  */
 @AutoConfiguration
 @ConditionalOnClass(Jsonb.class)
-@ConditionalOnResource(resources = { "classpath:META-INF/services/javax.json.bind.spi.JsonbProvider",
-		"classpath:META-INF/services/javax.json.spi.JsonProvider" })
+@ConditionalOnResource(resources = {"classpath:META-INF/services/javax.json.bind.spi.JsonbProvider",
+		"classpath:META-INF/services/javax.json.spi.JsonProvider"})
 public class JsonbAutoConfiguration {
 
 	@Bean

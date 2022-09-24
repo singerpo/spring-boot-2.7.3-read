@@ -42,6 +42,7 @@ public @interface WebEndpoint {
 
 	/**
 	 * The id of the endpoint.
+	 *
 	 * @return the id
 	 */
 	@AliasFor(annotation = Endpoint.class)
@@ -49,6 +50,7 @@ public @interface WebEndpoint {
 
 	/**
 	 * If the endpoint should be enabled or disabled by default.
+	 *
 	 * @return {@code true} if the endpoint is enabled by default
 	 */
 	@AliasFor(annotation = Endpoint.class)

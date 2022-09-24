@@ -24,7 +24,7 @@ import org.springframework.util.Assert;
 
 /**
  * A {@link Buildpack} that references a buildpack contained in the builder.
- *
+ * <p>
  * The buildpack reference must contain a buildpack ID (for example,
  * {@code "example/buildpack"}) or a buildpack ID and version (for example,
  * {@code "example/buildpack@1.0.0"}). The reference can optionally contain a prefix
@@ -55,7 +55,8 @@ class BuilderBuildpack implements Buildpack {
 
 	/**
 	 * A {@link BuildpackResolver} compatible method to resolve builder buildpacks.
-	 * @param context the resolver context
+	 *
+	 * @param context   the resolver context
 	 * @param reference the buildpack reference
 	 * @return the resolved {@link Buildpack} or {@code null}
 	 */
@@ -71,7 +72,7 @@ class BuilderBuildpack implements Buildpack {
 	}
 
 	private static BuildpackMetadata findBuildpackMetadata(BuildpackResolverContext context,
-			BuilderReference builderReference) {
+														   BuilderReference builderReference) {
 		for (BuildpackMetadata candidate : context.getBuildpackMetadata()) {
 			if (builderReference.matches(candidate)) {
 				return candidate;

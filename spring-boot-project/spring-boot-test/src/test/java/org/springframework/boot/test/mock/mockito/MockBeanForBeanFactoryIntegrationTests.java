@@ -47,7 +47,7 @@ class MockBeanForBeanFactoryIntegrationTests {
 	private ApplicationContext applicationContext;
 
 	@Test
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	void testName() {
 		TestBean testBean = mock(TestBean.class);
 		given(testBean.hello()).willReturn("amock");

@@ -40,8 +40,9 @@ public class StandardConfigDataResource extends ConfigDataResource {
 
 	/**
 	 * Create a new {@link StandardConfigDataResource} instance.
+	 *
 	 * @param reference the resource reference
-	 * @param resource the underlying resource
+	 * @param resource  the underlying resource
 	 */
 	StandardConfigDataResource(StandardConfigDataReference reference, Resource resource) {
 		this(reference, resource, false);
@@ -49,8 +50,9 @@ public class StandardConfigDataResource extends ConfigDataResource {
 
 	/**
 	 * Create a new {@link StandardConfigDataResource} instance.
-	 * @param reference the resource reference
-	 * @param resource the underlying resource
+	 *
+	 * @param reference      the resource reference
+	 * @param resource       the underlying resource
 	 * @param emptyDirectory if the resource is an empty directory that we know exists
 	 */
 	StandardConfigDataResource(StandardConfigDataReference reference, Resource resource, boolean emptyDirectory) {
@@ -67,6 +69,7 @@ public class StandardConfigDataResource extends ConfigDataResource {
 
 	/**
 	 * Return the underlying Spring {@link Resource} being loaded.
+	 *
 	 * @return the underlying resource
 	 * @since 2.4.2
 	 */
@@ -76,6 +79,7 @@ public class StandardConfigDataResource extends ConfigDataResource {
 
 	/**
 	 * Return the profile or {@code null} if the resource is not profile specific.
+	 *
 	 * @return the profile or {@code null}
 	 * @since 2.4.6
 	 */
@@ -109,8 +113,7 @@ public class StandardConfigDataResource extends ConfigDataResource {
 		if (this.resource instanceof FileSystemResource || this.resource instanceof FileUrlResource) {
 			try {
 				return "file [" + this.resource.getFile().toString() + "]";
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		}
 		return this.resource.toString();

@@ -37,7 +37,7 @@ class WebDriverContextCustomizerFactory implements ContextCustomizerFactory {
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		return new Customizer();
 	}
 

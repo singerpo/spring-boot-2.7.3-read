@@ -58,7 +58,7 @@ final class CentralDirectoryFileHeader implements FileHeader {
 	}
 
 	CentralDirectoryFileHeader(byte[] header, int headerOffset, AsciiBytes name, byte[] extra, AsciiBytes comment,
-			long localHeaderOffset) {
+							   long localHeaderOffset) {
 		this.header = header;
 		this.headerOffset = headerOffset;
 		this.name = name;
@@ -152,6 +152,7 @@ final class CentralDirectoryFileHeader implements FileHeader {
 	 * Decode MS-DOS Date Time details. See <a href=
 	 * "https://docs.microsoft.com/en-gb/windows/desktop/api/winbase/nf-winbase-dosdatetimetofiletime">
 	 * Microsoft's documentation</a> for more details of the format.
+	 *
 	 * @param datetime the date and time
 	 * @return the date and time as milliseconds since the epoch
 	 */

@@ -42,7 +42,8 @@ public class CacheManagerCustomizers {
 	 * Customize the specified {@link CacheManager}. Locates all
 	 * {@link CacheManagerCustomizer} beans able to handle the specified instance and
 	 * invoke {@link CacheManagerCustomizer#customize(CacheManager)} on them.
-	 * @param <T> the type of cache manager
+	 *
+	 * @param <T>          the type of cache manager
 	 * @param cacheManager the cache manager to customize
 	 * @return the cache manager
 	 */

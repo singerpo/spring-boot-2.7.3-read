@@ -34,6 +34,7 @@ public class Layers {
 
 	/**
 	 * Whether a {@code layers.idx} file should be added to the jar.
+	 *
 	 * @return true if a {@code layers.idx} file should be added.
 	 */
 	public boolean isEnabled() {
@@ -42,6 +43,7 @@ public class Layers {
 
 	/**
 	 * Whether to include the layer tools jar.
+	 *
 	 * @return true if layer tools should be included
 	 */
 	public boolean isIncludeLayerTools() {
@@ -52,6 +54,7 @@ public class Layers {
 	 * The location of the layers configuration file. If no file is provided, a default
 	 * configuration is used with four layers: {@code application}, {@code resources},
 	 * {@code snapshot-dependencies} and {@code dependencies}.
+	 *
 	 * @return the layers configuration file
 	 */
 	public File getConfiguration() {

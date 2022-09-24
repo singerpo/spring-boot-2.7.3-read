@@ -30,6 +30,7 @@ public interface HealthEndpointGroup {
 
 	/**
 	 * Returns {@code true} if the given contributor is a member of this group.
+	 *
 	 * @param name the contributor name
 	 * @return {@code true} if the contributor is a member of this group
 	 */
@@ -38,6 +39,7 @@ public interface HealthEndpointGroup {
 	/**
 	 * Returns if {@link CompositeHealth#getComponents() health components} should be
 	 * shown in the response.
+	 *
 	 * @param securityContext the endpoint security context
 	 * @return {@code true} to shown details or {@code false} to hide them
 	 */
@@ -46,6 +48,7 @@ public interface HealthEndpointGroup {
 	/**
 	 * Returns if {@link Health#getDetails() health details} should be shown in the
 	 * response.
+	 *
 	 * @param securityContext the endpoint security context
 	 * @return {@code true} to shown details or {@code false} to hide them
 	 */
@@ -53,12 +56,14 @@ public interface HealthEndpointGroup {
 
 	/**
 	 * Returns the status aggregator that should be used for this group.
+	 *
 	 * @return the status aggregator for this group
 	 */
 	StatusAggregator getStatusAggregator();
 
 	/**
 	 * Returns the {@link HttpCodeStatusMapper} that should be used for this group.
+	 *
 	 * @return the HTTP code status mapper
 	 */
 	HttpCodeStatusMapper getHttpCodeStatusMapper();
@@ -66,6 +71,7 @@ public interface HealthEndpointGroup {
 	/**
 	 * Return an additional path that can be used to map the health group to an
 	 * alternative location.
+	 *
 	 * @return the additional health path or {@code null}
 	 * @since 2.6.0
 	 */

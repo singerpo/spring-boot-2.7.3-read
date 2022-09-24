@@ -94,8 +94,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 		if (this.webServer != null) {
 			try {
 				this.webServer.stop();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -228,7 +227,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 	}
 
 	protected ReactorClientHttpConnector buildTrustAllSslWithClientKeyConnector(String keyStoreFile,
-			String keyStorePassword) throws Exception {
+																				String keyStorePassword) throws Exception {
 		KeyStore clientKeyStore = KeyStore.getInstance(KeyStore.getDefaultType());
 		try (InputStream stream = new FileInputStream("src/test/resources/" + keyStoreFile)) {
 			clientKeyStore.load(stream, "secret".toCharArray());
@@ -338,7 +337,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 	void noCompressionForMimeType() {
 		Compression compression = new Compression();
 		compression.setEnabled(true);
-		compression.setMimeTypes(new String[] { "application/json" });
+		compression.setMimeTypes(new String[]{"application/json"});
 		WebClient client = prepareCompressionTest(compression);
 		ResponseEntity<Void> response = client.get().retrieve().toBodilessEntity().block(Duration.ofSeconds(30));
 		assertResponseIsNotCompressed(response);
@@ -348,7 +347,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 	protected void noCompressionForUserAgent() {
 		Compression compression = new Compression();
 		compression.setEnabled(true);
-		compression.setExcludedUserAgents(new String[] { "testUserAgent" });
+		compression.setExcludedUserAgents(new String[]{"testUserAgent"});
 		WebClient client = prepareCompressionTest(compression);
 		ResponseEntity<Void> response = client.get().header("User-Agent", "testUserAgent").retrieve().toBodilessEntity()
 				.block(Duration.ofSeconds(30));
@@ -359,7 +358,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 	void noCompressionForResponseWithInvalidContentType() {
 		Compression compression = new Compression();
 		compression.setEnabled(true);
-		compression.setMimeTypes(new String[] { "application/json" });
+		compression.setMimeTypes(new String[]{"application/json"});
 		WebClient client = prepareCompressionTest(compression, "test~plain");
 		ResponseEntity<Void> response = client.get().retrieve().toBodilessEntity().block(Duration.ofSeconds(30));
 		assertResponseIsNotCompressed(response);
@@ -429,8 +428,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 		assertThat(responseReference.get()).isNull();
 		try {
 			this.webServer.stop();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Continue
 		}
 		System.out.println("Stopped");
@@ -480,8 +478,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 		blockingHandler.awaitQueue();
 		try {
 			this.webServer.stop();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Continue
 		}
 		blockingHandler.completeOne();
@@ -503,8 +500,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 					.content(new StringContentProvider("Hello World"), "text/plain").send();
 			assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
 			assertThat(response.getContentAsString()).isEqualTo("Hello World");
-		}
-		finally {
+		} finally {
 			client.stop();
 		}
 	}
@@ -568,8 +564,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 		for (int i = 0; i < 10; i++) {
 			try {
 				return action.call();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				lastFailure = ex;
 			}
 		}
@@ -584,8 +579,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 		});
 		try {
 			action.run(blockedPort);
-		}
-		finally {
+		} finally {
 			serverSocket.close();
 		}
 	}
@@ -633,8 +627,7 @@ public abstract class AbstractReactiveWebServerFactoryTests {
 			try {
 				Sinks.Empty<Void> processor = this.processors.take();
 				processor.tryEmitEmpty();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}

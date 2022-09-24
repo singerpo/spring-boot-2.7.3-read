@@ -43,8 +43,8 @@ class ResourceUtilsTests {
 
 	@Test
 	void duplicateResource() throws Exception {
-		URLClassLoader loader = new URLClassLoader(new URL[] { new URL("file:./src/test/resources/"),
-				new File("src/test/resources/").getAbsoluteFile().toURI().toURL() });
+		URLClassLoader loader = new URLClassLoader(new URL[]{new URL("file:./src/test/resources/"),
+				new File("src/test/resources/").getAbsoluteFile().toURI().toURL()});
 		List<String> urls = ResourceUtils.getUrls("classpath:init.groovy", loader);
 		assertThat(urls).hasSize(1);
 		assertThat(urls.get(0).startsWith("file:")).isTrue();

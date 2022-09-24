@@ -47,7 +47,7 @@ public class DefaultGraphQlTagsProvider implements GraphQlTagsProvider {
 
 	@Override
 	public Iterable<Tag> getExecutionTags(InstrumentationExecutionParameters parameters, ExecutionResult result,
-			Throwable exception) {
+										  Throwable exception) {
 		Tags tags = Tags.of(GraphQlTags.executionOutcome(result, exception));
 		for (GraphQlTagsContributor contributor : this.contributors) {
 			tags = tags.and(contributor.getExecutionTags(parameters, result, exception));
@@ -66,7 +66,7 @@ public class DefaultGraphQlTagsProvider implements GraphQlTagsProvider {
 
 	@Override
 	public Iterable<Tag> getDataFetchingTags(DataFetcher<?> dataFetcher, InstrumentationFieldFetchParameters parameters,
-			Throwable exception) {
+											 Throwable exception) {
 		Tags tags = Tags.of(GraphQlTags.dataFetchingOutcome(exception), GraphQlTags.dataFetchingPath(parameters));
 		for (GraphQlTagsContributor contributor : this.contributors) {
 			tags = tags.and(contributor.getDataFetchingTags(dataFetcher, parameters, exception));

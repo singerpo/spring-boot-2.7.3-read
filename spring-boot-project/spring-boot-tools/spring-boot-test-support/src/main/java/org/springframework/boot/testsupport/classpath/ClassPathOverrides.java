@@ -40,6 +40,7 @@ public @interface ClassPathOverrides {
 	 * One or more sets of Maven coordinates ({@code groupId:artifactId:version}) to be
 	 * added to the classpath. The additions will take precedence over any existing
 	 * classes on the classpath.
+	 *
 	 * @return the coordinates
 	 */
 	String[] value();

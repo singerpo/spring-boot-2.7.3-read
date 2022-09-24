@@ -52,7 +52,7 @@ class MapBinder extends AggregateBinder<Map<Object, Object>> {
 
 	@Override
 	protected Object bindAggregate(ConfigurationPropertyName name, Bindable<?> target,
-			AggregateElementBinder elementBinder) {
+								   AggregateElementBinder elementBinder) {
 		Map<Object, Object> map = CollectionFactory
 				.createMap((target.getValue() != null) ? Map.class : target.getType().resolve(Object.class), 0);
 		Bindable<?> resolvedTarget = resolveTarget(target);
@@ -97,8 +97,7 @@ class MapBinder extends AggregateBinder<Map<Object, Object>> {
 		try {
 			existingMap.putAll(additional);
 			return copyIfPossible(existingMap);
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			Map<Object, Object> result = createNewMap(additional.getClass(), existingMap);
 			result.putAll(additional);
 			return result;
@@ -108,8 +107,7 @@ class MapBinder extends AggregateBinder<Map<Object, Object>> {
 	private Map<Object, Object> getExistingIfPossible(Supplier<Map<Object, Object>> existing) {
 		try {
 			return existing.get();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -117,8 +115,7 @@ class MapBinder extends AggregateBinder<Map<Object, Object>> {
 	private Map<Object, Object> copyIfPossible(Map<Object, Object> map) {
 		try {
 			return createNewMap(map.getClass(), map);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return map;
 		}
 	}
@@ -168,7 +165,7 @@ class MapBinder extends AggregateBinder<Map<Object, Object>> {
 		}
 
 		private ConfigurationPropertyName getEntryName(ConfigurationPropertySource source,
-				ConfigurationPropertyName name) {
+													   ConfigurationPropertyName name) {
 			Class<?> resolved = this.valueType.resolve(Object.class);
 			if (Collection.class.isAssignableFrom(resolved) || this.valueType.isArray()) {
 				return chopNameAtNumericIndex(name);

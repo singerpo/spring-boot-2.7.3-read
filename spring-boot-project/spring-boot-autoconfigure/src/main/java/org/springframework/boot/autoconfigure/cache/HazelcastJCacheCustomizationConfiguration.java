@@ -56,8 +56,7 @@ class HazelcastJCacheCustomizationConfiguration {
 			if (configLocation != null) {
 				// Hazelcast does not use the URI as a mean to specify a custom config.
 				properties.setProperty("hazelcast.config.location", toUri(configLocation).toString());
-			}
-			else if (this.hazelcastInstance != null) {
+			} else if (this.hazelcastInstance != null) {
 				properties.put("hazelcast.instance.itself", this.hazelcastInstance);
 			}
 		}
@@ -65,8 +64,7 @@ class HazelcastJCacheCustomizationConfiguration {
 		private static URI toUri(Resource config) {
 			try {
 				return config.getURI();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalArgumentException("Could not get URI from " + config, ex);
 			}
 		}

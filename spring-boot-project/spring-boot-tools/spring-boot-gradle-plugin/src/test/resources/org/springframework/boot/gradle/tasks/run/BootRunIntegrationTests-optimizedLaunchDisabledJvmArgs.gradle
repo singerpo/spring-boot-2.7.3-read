@@ -1,8 +1,8 @@
 plugins {
-	id 'application'
-	id 'org.springframework.boot' version '{version}'
+    id 'application'
+    id 'org.springframework.boot' version '{version}'
 }
 
 bootRun {
-	optimizedLaunch = false
+    optimizedLaunch = false
 }

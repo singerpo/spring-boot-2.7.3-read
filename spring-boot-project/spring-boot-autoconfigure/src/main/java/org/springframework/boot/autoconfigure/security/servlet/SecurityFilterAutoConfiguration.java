@@ -49,7 +49,7 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
 @AutoConfiguration(after = SecurityAutoConfiguration.class)
 @ConditionalOnWebApplication(type = Type.SERVLET)
 @EnableConfigurationProperties(SecurityProperties.class)
-@ConditionalOnClass({ AbstractSecurityWebApplicationInitializer.class, SessionCreationPolicy.class })
+@ConditionalOnClass({AbstractSecurityWebApplicationInitializer.class, SessionCreationPolicy.class})
 public class SecurityFilterAutoConfiguration {
 
 	private static final String DEFAULT_FILTER_NAME = AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME;

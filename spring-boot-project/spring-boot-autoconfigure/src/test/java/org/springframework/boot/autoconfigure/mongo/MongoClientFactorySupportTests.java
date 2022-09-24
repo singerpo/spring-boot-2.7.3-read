@@ -124,7 +124,7 @@ abstract class MongoClientFactorySupportTests<T> {
 	}
 
 	protected abstract T createMongoClient(List<MongoClientSettingsBuilderCustomizer> customizers,
-			MongoClientSettings settings);
+										   MongoClientSettings settings);
 
 	protected abstract MongoClientSettings getClientSettings(T client);
 

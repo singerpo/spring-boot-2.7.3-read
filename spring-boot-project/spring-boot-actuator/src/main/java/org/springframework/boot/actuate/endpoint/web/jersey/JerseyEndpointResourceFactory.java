@@ -73,16 +73,17 @@ public class JerseyEndpointResourceFactory {
 	/**
 	 * Creates {@link Resource Resources} for the operations of the given
 	 * {@code webEndpoints}.
-	 * @param endpointMapping the base mapping for all endpoints
-	 * @param endpoints the web endpoints
-	 * @param endpointMediaTypes media types consumed and produced by the endpoints
-	 * @param linksResolver resolver for determining links to available endpoints
+	 *
+	 * @param endpointMapping     the base mapping for all endpoints
+	 * @param endpoints           the web endpoints
+	 * @param endpointMediaTypes  media types consumed and produced by the endpoints
+	 * @param linksResolver       resolver for determining links to available endpoints
 	 * @param shouldRegisterLinks should register links
 	 * @return the resources for the operations
 	 */
 	public Collection<Resource> createEndpointResources(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			EndpointLinksResolver linksResolver, boolean shouldRegisterLinks) {
+														Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+														EndpointLinksResolver linksResolver, boolean shouldRegisterLinks) {
 		List<Resource> resources = new ArrayList<>();
 		endpoints.stream().flatMap((endpoint) -> endpoint.getOperations().stream())
 				.map((operation) -> createResource(endpointMapping, operation)).forEach(resources::add);
@@ -106,8 +107,8 @@ public class JerseyEndpointResourceFactory {
 	}
 
 	protected Resource getResource(EndpointMapping endpointMapping, WebOperation operation,
-			WebOperationRequestPredicate requestPredicate, String path, WebServerNamespace serverNamespace,
-			JerseyRemainingPathSegmentProvider remainingPathSegmentProvider) {
+								   WebOperationRequestPredicate requestPredicate, String path, WebServerNamespace serverNamespace,
+								   JerseyRemainingPathSegmentProvider remainingPathSegmentProvider) {
 		Builder resourceBuilder = Resource.builder().path(endpointMapping.getPath())
 				.path(endpointMapping.createSubPath(path));
 		resourceBuilder.addMethod(requestPredicate.getHttpMethod().name())
@@ -119,7 +120,7 @@ public class JerseyEndpointResourceFactory {
 	}
 
 	private Resource createEndpointLinksResource(String endpointPath, EndpointMediaTypes endpointMediaTypes,
-			EndpointLinksResolver linksResolver) {
+												 EndpointLinksResolver linksResolver) {
 		Builder resourceBuilder = Resource.builder().path(endpointPath);
 		resourceBuilder.addMethod("GET").produces(StringUtils.toStringArray(endpointMediaTypes.getProduced()))
 				.handledBy(new EndpointLinksInflector(linksResolver));
@@ -154,7 +155,7 @@ public class JerseyEndpointResourceFactory {
 		private final JerseyRemainingPathSegmentProvider remainingPathSegmentProvider;
 
 		private OperationInflector(WebOperation operation, boolean readBody, WebServerNamespace serverNamespace,
-				JerseyRemainingPathSegmentProvider remainingPathSegments) {
+								   JerseyRemainingPathSegmentProvider remainingPathSegments) {
 			this.operation = operation;
 			this.readBody = readBody;
 			this.serverNamespace = serverNamespace;
@@ -178,8 +179,7 @@ public class JerseyEndpointResourceFactory {
 						new ProducibleOperationArgumentResolver(() -> data.getHeaders().get("Accept")));
 				Object response = this.operation.invoke(invocationContext);
 				return convertToJaxRsResponse(response, data.getRequest().getMethod());
-			}
-			catch (InvalidEndpointRequestException ex) {
+			} catch (InvalidEndpointRequestException ex) {
 				return Response.status(Status.BAD_REQUEST).build();
 			}
 		}
@@ -203,7 +203,7 @@ public class JerseyEndpointResourceFactory {
 		}
 
 		private String getRemainingPathSegments(ContainerRequestContext requestContext,
-				Map<String, Object> pathParameters, String matchAllRemainingPathSegmentsVariable) {
+												Map<String, Object> pathParameters, String matchAllRemainingPathSegmentsVariable) {
 			if (this.remainingPathSegmentProvider != null) {
 				return this.remainingPathSegmentProvider.get(requestContext, matchAllRemainingPathSegmentsVariable);
 			}
@@ -269,8 +269,7 @@ public class JerseyEndpointResourceFactory {
 			if (body instanceof org.springframework.core.io.Resource) {
 				try {
 					return ((org.springframework.core.io.Resource) body).getInputStream();
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					throw new IllegalStateException();
 				}
 			}

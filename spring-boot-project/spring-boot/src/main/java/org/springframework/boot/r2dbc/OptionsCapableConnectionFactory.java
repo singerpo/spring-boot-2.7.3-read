@@ -40,7 +40,8 @@ public class OptionsCapableConnectionFactory implements Wrapped<ConnectionFactor
 	 * Create a new {@code OptionsCapableConnectionFactory} that will provide access to
 	 * the given {@code options} that were used to build the given {@code delegate}
 	 * {@link ConnectionFactory}.
-	 * @param options the options from which the connection factory was built
+	 *
+	 * @param options  the options from which the connection factory was built
 	 * @param delegate the delegate connection factory that was built with options
 	 */
 	public OptionsCapableConnectionFactory(ConnectionFactoryOptions options, ConnectionFactory delegate) {
@@ -73,6 +74,7 @@ public class OptionsCapableConnectionFactory implements Wrapped<ConnectionFactor
 	 * {@code connectionFactory} does not wrap an {@code OptionsCapableConnectionFactory}
 	 * and is not itself an {@code OptionsCapableConnectionFactory}, {@code null} is
 	 * returned.
+	 *
 	 * @param connectionFactory the connection factory to unwrap
 	 * @return the {@code OptionsCapableConnectionFactory} or {@code null}
 	 * @since 2.5.1

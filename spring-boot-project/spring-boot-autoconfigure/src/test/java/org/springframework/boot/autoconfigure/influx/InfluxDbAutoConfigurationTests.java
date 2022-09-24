@@ -70,20 +70,20 @@ class InfluxDbAutoConfigurationTests {
 	void influxDbWithOkHttpClientBuilderProvider() {
 		this.contextRunner.withUserConfiguration(CustomOkHttpClientBuilderProviderConfig.class)
 				.withPropertyValues("spring.influx.url=http://localhost").run((context) -> {
-					assertThat(context).hasSingleBean(InfluxDB.class);
-					int readTimeout = getReadTimeoutProperty(context);
-					assertThat(readTimeout).isEqualTo(40_000);
-				});
+			assertThat(context).hasSingleBean(InfluxDB.class);
+			int readTimeout = getReadTimeoutProperty(context);
+			assertThat(readTimeout).isEqualTo(40_000);
+		});
 	}
 
 	@Test
 	void influxDbWithCustomizer() {
 		this.contextRunner.withBean(InfluxDbCustomizer.class, () -> (influxDb) -> influxDb.setDatabase("test"))
 				.withPropertyValues("spring.influx.url=http://localhost").run((context) -> {
-					assertThat(context).hasSingleBean(InfluxDB.class);
-					InfluxDB influxDb = context.getBean(InfluxDB.class);
-					assertThat(influxDb).hasFieldOrPropertyWithValue("database", "test");
-				});
+			assertThat(context).hasSingleBean(InfluxDB.class);
+			InfluxDB influxDb = context.getBean(InfluxDB.class);
+			assertThat(influxDb).hasFieldOrPropertyWithValue("database", "test");
+		});
 	}
 
 	private int getReadTimeoutProperty(AssertableApplicationContext context) {

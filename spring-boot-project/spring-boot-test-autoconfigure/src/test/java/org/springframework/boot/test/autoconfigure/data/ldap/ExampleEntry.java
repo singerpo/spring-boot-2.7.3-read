@@ -26,7 +26,7 @@ import org.springframework.ldap.odm.annotations.Id;
  *
  * @author Eddú Meléndez
  */
-@Entry(objectClasses = { "person", "top" })
+@Entry(objectClasses = {"person", "top"})
 public class ExampleEntry {
 
 	@Id

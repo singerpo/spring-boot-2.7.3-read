@@ -29,7 +29,7 @@ import java.util.Arrays;
  */
 class ZipHeaderPeekInputStream extends FilterInputStream {
 
-	private static final byte[] ZIP_HEADER = new byte[] { 0x50, 0x4b, 0x03, 0x04 };
+	private static final byte[] ZIP_HEADER = new byte[]{0x50, 0x4b, 0x03, 0x04};
 
 	private final byte[] header;
 

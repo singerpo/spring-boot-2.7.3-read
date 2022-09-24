@@ -56,7 +56,7 @@ public class AtomikosDependsOnBeanFactoryPostProcessor implements BeanFactoryPos
 	}
 
 	private void addTransactionManagerDependencies(ConfigurableListableBeanFactory beanFactory,
-			String transactionManager) {
+												   String transactionManager) {
 		BeanDefinition bean = beanFactory.getBeanDefinition(transactionManager);
 		Set<String> dependsOn = new LinkedHashSet<>(asList(bean.getDependsOn()));
 		int initialSize = dependsOn.size();
@@ -68,7 +68,7 @@ public class AtomikosDependsOnBeanFactoryPostProcessor implements BeanFactoryPos
 	}
 
 	private void addMessageDrivenContainerDependencies(ConfigurableListableBeanFactory beanFactory,
-			String[] transactionManagers) {
+													   String[] transactionManagers) {
 		String[] messageDrivenContainers = getBeanNamesForType(beanFactory,
 				"com.atomikos.jms.extra.MessageDrivenContainer");
 		for (String messageDrivenContainer : messageDrivenContainers) {
@@ -86,8 +86,7 @@ public class AtomikosDependsOnBeanFactoryPostProcessor implements BeanFactoryPos
 	private String[] getBeanNamesForType(ConfigurableListableBeanFactory beanFactory, String type) {
 		try {
 			return beanFactory.getBeanNamesForType(Class.forName(type), true, false);
-		}
-		catch (ClassNotFoundException | NoClassDefFoundError ex) {
+		} catch (ClassNotFoundException | NoClassDefFoundError ex) {
 			// Ignore
 		}
 		return NO_BEANS;

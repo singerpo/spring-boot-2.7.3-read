@@ -42,7 +42,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Stephane Nicoll
  * @since 1.3.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(OnBeanCondition.class)
@@ -55,6 +55,7 @@ public @interface ConditionalOnSingleCandidate {
 	 * <p>
 	 * This attribute may <strong>not</strong> be used in conjunction with
 	 * {@link #type()}, but it may be used instead of {@link #type()}.
+	 *
 	 * @return the class type of the bean to check
 	 */
 	Class<?> value() default Object.class;
@@ -66,6 +67,7 @@ public @interface ConditionalOnSingleCandidate {
 	 * <p>
 	 * This attribute may <strong>not</strong> be used in conjunction with
 	 * {@link #value()}, but it may be used instead of {@link #value()}.
+	 *
 	 * @return the class type name of the bean to check
 	 */
 	String type() default "";
@@ -73,6 +75,7 @@ public @interface ConditionalOnSingleCandidate {
 	/**
 	 * Strategy to decide if the application context hierarchy (parent contexts) should be
 	 * considered.
+	 *
 	 * @return the search strategy
 	 */
 	SearchStrategy search() default SearchStrategy.ALL;

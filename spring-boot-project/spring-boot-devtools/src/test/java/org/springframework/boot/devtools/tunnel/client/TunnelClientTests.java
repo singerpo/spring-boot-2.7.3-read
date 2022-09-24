@@ -99,8 +99,7 @@ class TunnelClientTests {
 	private Object readWithPossibleFailure(SocketChannel channel) {
 		try {
 			return channel.read(ByteBuffer.allocate(1));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return ex;
 		}
 	}

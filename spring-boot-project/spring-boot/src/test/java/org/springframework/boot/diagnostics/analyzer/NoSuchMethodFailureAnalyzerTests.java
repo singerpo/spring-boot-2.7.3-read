@@ -39,8 +39,8 @@ import static org.mockito.Mockito.mock;
  * @author Stephane Nicoll
  * @author Scott Frederick
  */
-@ClassPathOverrides({ "javax.servlet:servlet-api:2.5",
-		"org.springframework.data:spring-data-relational:1.1.7.RELEASE" })
+@ClassPathOverrides({"javax.servlet:servlet-api:2.5",
+		"org.springframework.data:spring-data-relational:1.1.7.RELEASE"})
 class NoSuchMethodFailureAnalyzerTests {
 
 	@Test
@@ -127,8 +127,7 @@ class NoSuchMethodFailureAnalyzerTests {
 			servletContext.addServlet("example", new HttpServlet() {
 			});
 			return null;
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return ex;
 		}
 	}
@@ -137,8 +136,7 @@ class NoSuchMethodFailureAnalyzerTests {
 		try {
 			new R2dbcMappingContext();
 			return null;
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return ex;
 		}
 	}

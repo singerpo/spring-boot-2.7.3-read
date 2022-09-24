@@ -46,8 +46,7 @@ class SampleSimpleApplicationTests {
 	void after() {
 		if (this.profiles != null) {
 			System.setProperty("spring.profiles.active", this.profiles);
-		}
-		else {
+		} else {
 			System.clearProperty("spring.profiles.active");
 		}
 	}
@@ -60,7 +59,7 @@ class SampleSimpleApplicationTests {
 
 	@Test
 	void testCommandLineOverrides(CapturedOutput output) {
-		SampleSimpleApplication.main(new String[] { "--test.name=Gordon", "--test.duration=1m" });
+		SampleSimpleApplication.main(new String[]{"--test.name=Gordon", "--test.duration=1m"});
 		assertThat(output).contains("Hello Gordon for 60 seconds");
 	}
 

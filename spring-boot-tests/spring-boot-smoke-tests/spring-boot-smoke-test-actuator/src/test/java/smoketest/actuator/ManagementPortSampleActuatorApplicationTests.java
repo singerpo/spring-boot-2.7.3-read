@@ -44,7 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Dave Syer
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "management.server.port=0", "management.endpoint.health.show-details=always" })
+		properties = {"management.server.port=0", "management.endpoint.health.show-details=always"})
 @Import(CustomErrorAttributes.class)
 class ManagementPortSampleActuatorApplicationTests {
 
@@ -101,7 +101,7 @@ class ManagementPortSampleActuatorApplicationTests {
 		assertThat(entity.getBody().get("status")).isEqualTo(404);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

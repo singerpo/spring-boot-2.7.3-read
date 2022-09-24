@@ -51,16 +51,16 @@ import org.springframework.web.reactive.function.client.WebClient;
  */
 @SuppressWarnings("deprecation")
 @AutoConfiguration
-@ConditionalOnClass({ ReactiveRestClients.class, WebClient.class, HttpClient.class })
-@EnableConfigurationProperties({ ElasticsearchProperties.class, ReactiveElasticsearchRestClientProperties.class,
-		DeprecatedReactiveElasticsearchRestClientProperties.class })
+@ConditionalOnClass({ReactiveRestClients.class, WebClient.class, HttpClient.class})
+@EnableConfigurationProperties({ElasticsearchProperties.class, ReactiveElasticsearchRestClientProperties.class,
+		DeprecatedReactiveElasticsearchRestClientProperties.class})
 public class ReactiveElasticsearchRestClientAutoConfiguration {
 
 	private final ConsolidatedProperties properties;
 
 	ReactiveElasticsearchRestClientAutoConfiguration(ElasticsearchProperties properties,
-			ReactiveElasticsearchRestClientProperties restClientProperties,
-			DeprecatedReactiveElasticsearchRestClientProperties reactiveProperties) {
+													 ReactiveElasticsearchRestClientProperties restClientProperties,
+													 DeprecatedReactiveElasticsearchRestClientProperties reactiveProperties) {
 		this.properties = new ConsolidatedProperties(properties, restClientProperties, reactiveProperties);
 	}
 
@@ -81,7 +81,7 @@ public class ReactiveElasticsearchRestClientAutoConfiguration {
 	}
 
 	private void configureExchangeStrategies(PropertyMapper map,
-			ClientConfiguration.TerminalClientConfigurationBuilder builder) {
+											 ClientConfiguration.TerminalClientConfigurationBuilder builder) {
 		map.from(this.properties.getMaxInMemorySize()).asInt(DataSize::toBytes).to((maxInMemorySize) -> {
 			builder.withClientConfigurer(WebClientConfigurationCallback.from((webClient) -> {
 				ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
@@ -108,8 +108,8 @@ public class ReactiveElasticsearchRestClientAutoConfiguration {
 		private final List<URI> uris;
 
 		private ConsolidatedProperties(ElasticsearchProperties properties,
-				ReactiveElasticsearchRestClientProperties restClientProperties,
-				DeprecatedReactiveElasticsearchRestClientProperties deprecatedreactiveProperties) {
+									   ReactiveElasticsearchRestClientProperties restClientProperties,
+									   DeprecatedReactiveElasticsearchRestClientProperties deprecatedreactiveProperties) {
 			this.properties = properties;
 			this.restClientProperties = restClientProperties;
 			this.deprecatedProperties = deprecatedreactiveProperties;

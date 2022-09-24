@@ -54,6 +54,7 @@ class MetadataGenerationEnvironment {
 	private static final String NULLABLE_ANNOTATION = "org.springframework.lang.Nullable";
 
 	private static final Set<String> TYPE_EXCLUDES;
+
 	static {
 		Set<String> excludes = new HashSet<>();
 		excludes.add("com.zaxxer.hikari.IConnectionCustomizer");
@@ -100,9 +101,9 @@ class MetadataGenerationEnvironment {
 	private final String nameAnnotation;
 
 	MetadataGenerationEnvironment(ProcessingEnvironment environment, String configurationPropertiesAnnotation,
-			String nestedConfigurationPropertyAnnotation, String deprecatedConfigurationPropertyAnnotation,
-			String constructorBindingAnnotation, String defaultValueAnnotation, Set<String> endpointAnnotations,
-			String readOperationAnnotation, String nameAnnotation) {
+								  String nestedConfigurationPropertyAnnotation, String deprecatedConfigurationPropertyAnnotation,
+								  String constructorBindingAnnotation, String defaultValueAnnotation, Set<String> endpointAnnotations,
+								  String readOperationAnnotation, String nameAnnotation) {
 		this.typeUtils = new TypeUtils(environment);
 		this.elements = environment.getElementUtils();
 		this.messager = environment.getMessager();
@@ -120,8 +121,7 @@ class MetadataGenerationEnvironment {
 	private static FieldValuesParser resolveFieldValuesParser(ProcessingEnvironment env) {
 		try {
 			return new JavaCompilerFieldValuesParser(env);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return FieldValuesParser.NONE;
 		}
 	}
@@ -136,6 +136,7 @@ class MetadataGenerationEnvironment {
 
 	/**
 	 * Return the default value of the field with the specified {@code name}.
+	 *
 	 * @param type the type to consider
 	 * @param name the name of the field
 	 * @return the default value or {@code null} if the field does not exist or no default
@@ -206,7 +207,8 @@ class MetadataGenerationEnvironment {
 	/**
 	 * Collect the annotations that are annotated or meta-annotated with the specified
 	 * {@link TypeElement annotation}.
-	 * @param element the element to inspect
+	 *
+	 * @param element        the element to inspect
 	 * @param annotationType the annotation to discover
 	 * @return the annotations that are annotated or meta-annotated with this annotation
 	 */
@@ -307,8 +309,7 @@ class MetadataGenerationEnvironment {
 					values.put(name, value);
 				}
 			});
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// continue
 		}
 		Element superType = this.typeUtils.asElement(element.getSuperclass());

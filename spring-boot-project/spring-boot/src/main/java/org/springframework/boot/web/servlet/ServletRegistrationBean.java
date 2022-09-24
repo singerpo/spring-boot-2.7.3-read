@@ -44,13 +44,13 @@ import org.springframework.util.StringUtils;
  *
  * @param <T> the type of the {@link Servlet} to register
  * @author Phillip Webb
- * @since 1.4.0
  * @see ServletContextInitializer
  * @see ServletContext#addServlet(String, Servlet)
+ * @since 1.4.0
  */
 public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrationBean<ServletRegistration.Dynamic> {
 
-	private static final String[] DEFAULT_MAPPINGS = { "/*" };
+	private static final String[] DEFAULT_MAPPINGS = {"/*"};
 
 	private T servlet;
 
@@ -71,7 +71,8 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Create a new {@link ServletRegistrationBean} instance with the specified
 	 * {@link Servlet} and URL mappings.
-	 * @param servlet the servlet being mapped
+	 *
+	 * @param servlet     the servlet being mapped
 	 * @param urlMappings the URLs being mapped
 	 */
 	public ServletRegistrationBean(T servlet, String... urlMappings) {
@@ -81,9 +82,10 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Create a new {@link ServletRegistrationBean} instance with the specified
 	 * {@link Servlet} and URL mappings.
-	 * @param servlet the servlet being mapped
+	 *
+	 * @param servlet      the servlet being mapped
 	 * @param alwaysMapUrl if omitted URL mappings should be replaced with '/*'
-	 * @param urlMappings the URLs being mapped
+	 * @param urlMappings  the URLs being mapped
 	 */
 	public ServletRegistrationBean(T servlet, boolean alwaysMapUrl, String... urlMappings) {
 		Assert.notNull(servlet, "Servlet must not be null");
@@ -95,6 +97,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 
 	/**
 	 * Sets the servlet to be registered.
+	 *
 	 * @param servlet the servlet
 	 */
 	public void setServlet(T servlet) {
@@ -104,6 +107,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 
 	/**
 	 * Return the servlet being registered.
+	 *
 	 * @return the servlet
 	 */
 	public T getServlet() {
@@ -113,6 +117,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Set the URL mappings for the servlet. If not specified the mapping will default to
 	 * '/'. This will replace any previously specified mappings.
+	 *
 	 * @param urlMappings the mappings to set
 	 * @see #addUrlMappings(String...)
 	 */
@@ -124,6 +129,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Return a mutable collection of the URL mappings, as defined in the Servlet
 	 * specification, for the servlet.
+	 *
 	 * @return the urlMappings
 	 */
 	public Collection<String> getUrlMappings() {
@@ -132,6 +138,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 
 	/**
 	 * Add URL mappings, as defined in the Servlet specification, for the servlet.
+	 *
 	 * @param urlMappings the mappings to add
 	 * @see #setUrlMappings(Collection)
 	 */
@@ -143,6 +150,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Sets the {@code loadOnStartup} priority. See
 	 * {@link ServletRegistration.Dynamic#setLoadOnStartup} for details.
+	 *
 	 * @param loadOnStartup if load on startup is enabled
 	 */
 	public void setLoadOnStartup(int loadOnStartup) {
@@ -151,6 +159,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 
 	/**
 	 * Set the {@link MultipartConfigElement multi-part configuration}.
+	 *
 	 * @param multipartConfig the multipart configuration to set or {@code null}
 	 */
 	public void setMultipartConfig(MultipartConfigElement multipartConfig) {
@@ -160,6 +169,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Returns the {@link MultipartConfigElement multi-part configuration} to be applied
 	 * or {@code null}.
+	 *
 	 * @return the multipart config
 	 */
 	public MultipartConfigElement getMultipartConfig() {
@@ -181,6 +191,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 	/**
 	 * Configure registration settings. Subclasses can override this method to perform
 	 * additional configuration if required.
+	 *
 	 * @param registration the registration
 	 */
 	@Override
@@ -201,6 +212,7 @@ public class ServletRegistrationBean<T extends Servlet> extends DynamicRegistrat
 
 	/**
 	 * Returns the servlet name that will be registered.
+	 *
 	 * @return the servlet name
 	 */
 	public String getServletName() {

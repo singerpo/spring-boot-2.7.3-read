@@ -64,7 +64,7 @@ class InspectedContentTests {
 
 	@Test
 	void ofSmallContent() throws Exception {
-		InputStream inputStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+		InputStream inputStream = new ByteArrayInputStream(new byte[]{0, 1, 2});
 		InspectedContent content = InspectedContent.of(inputStream);
 		assertThat(content.size()).isEqualTo(3);
 		assertThat(readBytes(content)).containsExactly(0, 1, 2);
@@ -73,7 +73,7 @@ class InspectedContentTests {
 	@Test
 	void ofLargeContent() throws Exception {
 		byte[] bytes = new byte[InspectedContent.MEMORY_LIMIT + 3];
-		System.arraycopy(new byte[] { 0, 1, 2 }, 0, bytes, 0, 3);
+		System.arraycopy(new byte[]{0, 1, 2}, 0, bytes, 0, 3);
 		InputStream inputStream = new ByteArrayInputStream(bytes);
 		InspectedContent content = InspectedContent.of(inputStream);
 		assertThat(content.size()).isEqualTo(bytes.length);

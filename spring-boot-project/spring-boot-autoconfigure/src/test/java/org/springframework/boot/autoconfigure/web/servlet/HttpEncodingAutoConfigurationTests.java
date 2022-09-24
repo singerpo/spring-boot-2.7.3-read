@@ -147,26 +147,26 @@ class HttpEncodingAutoConfigurationTests {
 				.isEqualTo(2);
 		assertThat(
 				this.context.getBean(MockServletWebServerFactory.class).getLocaleCharsetMappings().get(Locale.ENGLISH))
-						.isEqualTo(StandardCharsets.UTF_8);
+				.isEqualTo(StandardCharsets.UTF_8);
 		assertThat(
 				this.context.getBean(MockServletWebServerFactory.class).getLocaleCharsetMappings().get(Locale.FRANCE))
-						.isEqualTo(StandardCharsets.UTF_8);
+				.isEqualTo(StandardCharsets.UTF_8);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private Map<String, WebServerFactoryCustomizer<?>> getWebServerFactoryCustomizerBeans() {
 		return (Map) this.context.getBeansOfType(WebServerFactoryCustomizer.class);
 	}
 
 	private void assertCharacterEncodingFilter(CharacterEncodingFilter actual, String encoding,
-			boolean forceRequestEncoding, boolean forceResponseEncoding) {
+											   boolean forceRequestEncoding, boolean forceResponseEncoding) {
 		assertThat(actual.getEncoding()).isEqualTo(encoding);
 		assertThat(actual.isForceRequestEncoding()).isEqualTo(forceRequestEncoding);
 		assertThat(actual.isForceResponseEncoding()).isEqualTo(forceResponseEncoding);
 	}
 
 	private void load(Class<?> config, String... environment) {
-		this.context = doLoad(new Class<?>[] { config }, environment);
+		this.context = doLoad(new Class<?>[]{config}, environment);
 	}
 
 	private AnnotationConfigServletWebApplicationContext doLoad(Class<?>[] configs, String... environment) {

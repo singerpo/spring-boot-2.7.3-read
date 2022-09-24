@@ -110,20 +110,20 @@ class ConfigurationPropertiesReportEndpointTests {
 	void descriptorWithSimpleList() {
 		this.contextRunner.withUserConfiguration(SensiblePropertiesConfiguration.class)
 				.withPropertyValues("sensible.simpleList=a,b").run(assertProperties("sensible", (properties) -> {
-					assertThat(properties.get("simpleList")).isInstanceOf(List.class);
-					List<String> list = (List<String>) properties.get("simpleList");
-					assertThat(list).hasSize(2);
-					assertThat(list.get(0)).isEqualTo("a");
-					assertThat(list.get(1)).isEqualTo("b");
-				}, (inputs) -> {
-					List<Object> list = (List<Object>) inputs.get("simpleList");
-					assertThat(list).hasSize(2);
-					Map<String, String> item = (Map<String, String>) list.get(0);
-					String origin = item.get("origin");
-					String value = item.get("value");
-					assertThat(value).isEqualTo("a,b");
-					assertThat(origin).isEqualTo("\"sensible.simpleList\" from property source \"test\"");
-				}));
+			assertThat(properties.get("simpleList")).isInstanceOf(List.class);
+			List<String> list = (List<String>) properties.get("simpleList");
+			assertThat(list).hasSize(2);
+			assertThat(list.get(0)).isEqualTo("a");
+			assertThat(list.get(1)).isEqualTo("b");
+		}, (inputs) -> {
+			List<Object> list = (List<Object>) inputs.get("simpleList");
+			assertThat(list).hasSize(2);
+			Map<String, String> item = (Map<String, String>) list.get(0);
+			String origin = item.get("origin");
+			String value = item.get("value");
+			assertThat(value).isEqualTo("a,b");
+			assertThat(origin).isEqualTo("\"sensible.simpleList\" from property source \"test\"");
+		}));
 	}
 
 	@Test
@@ -181,18 +181,18 @@ class ConfigurationPropertiesReportEndpointTests {
 	void sanitizeWithCustomKey() {
 		this.contextRunner.withUserConfiguration(TestPropertiesConfiguration.class)
 				.withPropertyValues("test.keys-to-sanitize=property").run(assertProperties("test", (properties) -> {
-					assertThat(properties.get("dbPassword")).isEqualTo("123456");
-					assertThat(properties.get("myTestProperty")).isEqualTo("******");
-				}));
+			assertThat(properties.get("dbPassword")).isEqualTo("123456");
+			assertThat(properties.get("myTestProperty")).isEqualTo("******");
+		}));
 	}
 
 	@Test
 	void sanitizeWithCustomKeyPattern() {
 		this.contextRunner.withUserConfiguration(TestPropertiesConfiguration.class)
 				.withPropertyValues("test.keys-to-sanitize=.*pass.*").run(assertProperties("test", (properties) -> {
-					assertThat(properties.get("dbPassword")).isEqualTo("******");
-					assertThat(properties.get("myTestProperty")).isEqualTo("654321");
-				}));
+			assertThat(properties.get("dbPassword")).isEqualTo("******");
+			assertThat(properties.get("myTestProperty")).isEqualTo("654321");
+		}));
 	}
 
 	@Test
@@ -214,11 +214,11 @@ class ConfigurationPropertiesReportEndpointTests {
 				.withPropertyValues("sensible.sensitiveUri=http://user:password@localhost:8080")
 				.run(assertProperties("sensible", (properties) -> assertThat(properties.get("sensitiveUri"))
 						.isEqualTo("http://user:******@localhost:8080"), (inputs) -> {
-							Map<String, Object> sensitiveUri = (Map<String, Object>) inputs.get("sensitiveUri");
-							assertThat(sensitiveUri.get("value")).isEqualTo("http://user:******@localhost:8080");
-							assertThat(sensitiveUri.get("origin"))
-									.isEqualTo("\"sensible.sensitiveUri\" from property source \"test\"");
-						}));
+					Map<String, Object> sensitiveUri = (Map<String, Object>) inputs.get("sensitiveUri");
+					assertThat(sensitiveUri.get("value")).isEqualTo("http://user:******@localhost:8080");
+					assertThat(sensitiveUri.get("origin"))
+							.isEqualTo("\"sensible.sensitiveUri\" from property source \"test\"");
+				}));
 	}
 
 	@Test
@@ -227,11 +227,11 @@ class ConfigurationPropertiesReportEndpointTests {
 				.withPropertyValues("sensible.noPasswordUri=http://user:@localhost:8080")
 				.run(assertProperties("sensible", (properties) -> assertThat(properties.get("noPasswordUri"))
 						.isEqualTo("http://user:******@localhost:8080"), (inputs) -> {
-							Map<String, Object> noPasswordUri = (Map<String, Object>) inputs.get("noPasswordUri");
-							assertThat(noPasswordUri.get("value")).isEqualTo("http://user:******@localhost:8080");
-							assertThat(noPasswordUri.get("origin"))
-									.isEqualTo("\"sensible.noPasswordUri\" from property source \"test\"");
-						}));
+					Map<String, Object> noPasswordUri = (Map<String, Object>) inputs.get("noPasswordUri");
+					assertThat(noPasswordUri.get("value")).isEqualTo("http://user:******@localhost:8080");
+					assertThat(noPasswordUri.get("origin"))
+							.isEqualTo("\"sensible.noPasswordUri\" from property source \"test\"");
+				}));
 	}
 
 	@Test
@@ -304,9 +304,9 @@ class ConfigurationPropertiesReportEndpointTests {
 				.withUserConfiguration(CustomSanitizingEndpointConfig.class,
 						PropertySourceBasedSanitizingFunctionConfiguration.class, TestPropertiesConfiguration.class)
 				.withPropertyValues("test.my-test-property=abcde").run(assertProperties("test", (properties) -> {
-					assertThat(properties.get("dbPassword")).isEqualTo("******");
-					assertThat(properties.get("myTestProperty")).isEqualTo("$$$");
-				}));
+			assertThat(properties.get("dbPassword")).isEqualTo("******");
+			assertThat(properties.get("myTestProperty")).isEqualTo("$$$");
+		}));
 	}
 
 	@Test
@@ -336,11 +336,11 @@ class ConfigurationPropertiesReportEndpointTests {
 	void originParents() {
 		this.contextRunner.withUserConfiguration(SensiblePropertiesConfiguration.class)
 				.withInitializer(this::initializeOriginParents).run(assertProperties("sensible", (properties) -> {
-				}, (inputs) -> {
-					Map<String, Object> stringInputs = (Map<String, Object>) inputs.get("string");
-					String[] originParents = (String[]) stringInputs.get("originParents");
-					assertThat(originParents).containsExactly("spring", "boot");
-				}));
+		}, (inputs) -> {
+			Map<String, Object> stringInputs = (Map<String, Object>) inputs.get("string");
+			String[] originParents = (String[]) stringInputs.get("originParents");
+			assertThat(originParents).containsExactly("spring", "boot");
+		}));
 	}
 
 	private void initializeOriginParents(ConfigurableApplicationContext context) {
@@ -350,13 +350,13 @@ class ConfigurationPropertiesReportEndpointTests {
 	}
 
 	private ContextConsumer<AssertableApplicationContext> assertProperties(String prefix,
-			Consumer<Map<String, Object>> properties) {
+																		   Consumer<Map<String, Object>> properties) {
 		return assertProperties(prefix, properties, (inputs) -> {
 		});
 	}
 
 	private ContextConsumer<AssertableApplicationContext> assertProperties(String prefix,
-			Consumer<Map<String, Object>> properties, Consumer<Map<String, Object>> inputs) {
+																		   Consumer<Map<String, Object>> properties, Consumer<Map<String, Object>> inputs) {
 		return (context) -> {
 			ConfigurationPropertiesReportEndpoint endpoint = context
 					.getBean(ConfigurationPropertiesReportEndpoint.class);
@@ -503,7 +503,7 @@ class ConfigurationPropertiesReportEndpointTests {
 		private final String ignored;
 
 		ImmutableProperties(@DefaultValue("123456") String dbPassword, @DefaultValue("654321") String myTestProperty,
-				String nullValue, @DefaultValue("10s") @Name("for") Duration forDuration) {
+							String nullValue, @DefaultValue("10s") @Name("for") Duration forDuration) {
 			this.dbPassword = dbPassword;
 			this.myTestProperty = myTestProperty;
 			this.nullValue = nullValue;

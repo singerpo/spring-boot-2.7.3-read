@@ -37,7 +37,7 @@ public final class MockDurationTypeDescriptor {
 	private MockDurationTypeDescriptor() {
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static TypeDescriptor get(ChronoUnit unit, DurationStyle style) {
 		TypeDescriptor descriptor = mock(TypeDescriptor.class);
 		if (unit != null) {

@@ -37,7 +37,7 @@ public final class MockDataSizeTypeDescriptor {
 	private MockDataSizeTypeDescriptor() {
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	public static TypeDescriptor get(DataUnit unit) {
 		TypeDescriptor descriptor = mock(TypeDescriptor.class);
 		if (unit != null) {

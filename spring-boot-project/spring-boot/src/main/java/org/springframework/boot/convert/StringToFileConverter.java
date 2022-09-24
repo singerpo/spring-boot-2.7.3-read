@@ -54,8 +54,7 @@ class StringToFileConverter implements Converter<String, File> {
 	private File getFile(Resource resource) {
 		try {
 			return resource.getFile();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Could not retrieve file for " + resource + ": " + ex.getMessage());
 		}
 	}

@@ -68,8 +68,7 @@ class Neo4jPropertiesTests {
 	private static void assertDuration(Duration duration, long expectedValueInMillis) {
 		if (expectedValueInMillis == org.neo4j.driver.internal.async.pool.PoolSettings.NOT_CONFIGURED) {
 			assertThat(duration).isNull();
-		}
-		else {
+		} else {
 			assertThat(duration.toMillis()).isEqualTo(expectedValueInMillis);
 		}
 	}

@@ -70,30 +70,32 @@ public class ArtifactsLibraries implements Libraries {
 
 	/**
 	 * Creates a new {@code ArtifactsLibraries} from the given {@code artifacts}.
-	 * @param artifacts the artifacts to represent as libraries
+	 *
+	 * @param artifacts     the artifacts to represent as libraries
 	 * @param localProjects projects for which {@link Library#isLocal() local} libraries
-	 * should be created
-	 * @param unpacks artifacts that should be unpacked on launch
-	 * @param log the log
+	 *                      should be created
+	 * @param unpacks       artifacts that should be unpacked on launch
+	 * @param log           the log
 	 * @since 2.4.0
 	 */
 	public ArtifactsLibraries(Set<Artifact> artifacts, Collection<MavenProject> localProjects,
-			Collection<Dependency> unpacks, Log log) {
+							  Collection<Dependency> unpacks, Log log) {
 		this(artifacts, artifacts, localProjects, unpacks, log);
 	}
 
 	/**
 	 * Creates a new {@code ArtifactsLibraries} from the given {@code artifacts}.
-	 * @param artifacts all artifacts that can be represented as libraries
+	 *
+	 * @param artifacts         all artifacts that can be represented as libraries
 	 * @param includedArtifacts the actual artifacts to include in the fat jar
-	 * @param localProjects projects for which {@link Library#isLocal() local} libraries
-	 * should be created
-	 * @param unpacks artifacts that should be unpacked on launch
-	 * @param log the log
+	 * @param localProjects     projects for which {@link Library#isLocal() local} libraries
+	 *                          should be created
+	 * @param unpacks           artifacts that should be unpacked on launch
+	 * @param log               the log
 	 * @since 2.4.8
 	 */
 	public ArtifactsLibraries(Set<Artifact> artifacts, Set<Artifact> includedArtifacts,
-			Collection<MavenProject> localProjects, Collection<Dependency> unpacks, Log log) {
+							  Collection<MavenProject> localProjects, Collection<Dependency> unpacks, Log log) {
 		this.artifacts = artifacts;
 		this.includedArtifacts = includedArtifacts;
 		this.localProjects = localProjects;

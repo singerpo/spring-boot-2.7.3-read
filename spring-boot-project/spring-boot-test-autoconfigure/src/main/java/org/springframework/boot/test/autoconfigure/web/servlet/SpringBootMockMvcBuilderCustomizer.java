@@ -67,6 +67,7 @@ public class SpringBootMockMvcBuilderCustomizer implements MockMvcBuilderCustomi
 
 	/**
 	 * Create a new {@link SpringBootMockMvcBuilderCustomizer} instance.
+	 *
 	 * @param context the source application context
 	 */
 	public SpringBootMockMvcBuilderCustomizer(WebApplicationContext context) {
@@ -118,8 +119,7 @@ public class SpringBootMockMvcBuilderCustomizer implements MockMvcBuilderCustomi
 		Collection<String> urls = registration.getUrlPatterns();
 		if (urls.isEmpty()) {
 			builder.addFilters(filter);
-		}
-		else {
+		} else {
 			builder.addFilter(filter, StringUtils.toStringArray(urls));
 		}
 	}
@@ -246,8 +246,7 @@ public class SpringBootMockMvcBuilderCustomizer implements MockMvcBuilderCustomi
 		static DeferredLinesWriter get(ApplicationContext applicationContext) {
 			try {
 				return applicationContext.getBean(BEAN_NAME, DeferredLinesWriter.class);
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return null;
 			}
 		}

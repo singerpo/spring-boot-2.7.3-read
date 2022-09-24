@@ -46,7 +46,7 @@ public class TestableAnnotationProcessor<T> extends AbstractProcessor {
 	private T target;
 
 	public TestableAnnotationProcessor(BiConsumer<RoundEnvironmentTester, T> consumer,
-			Function<ProcessingEnvironment, T> factory) {
+									   Function<ProcessingEnvironment, T> factory) {
 		this.consumer = consumer;
 		this.factory = factory;
 	}

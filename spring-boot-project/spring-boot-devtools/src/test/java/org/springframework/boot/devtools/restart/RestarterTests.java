@@ -166,7 +166,7 @@ class RestarterTests {
 	void getInitialUrls() throws Exception {
 		Restarter.clearInstance();
 		RestartInitializer initializer = mock(RestartInitializer.class);
-		URL[] urls = new URL[] { new URL("file:/proj/module-a.jar!/") };
+		URL[] urls = new URL[]{new URL("file:/proj/module-a.jar!/")};
 		given(initializer.getInitialUrls(any(Thread.class))).willReturn(urls);
 		Restarter.initialize(new String[0], false, initializer, false);
 		assertThat(Restarter.getInstance().getInitialUrls()).isEqualTo(urls);
@@ -218,11 +218,11 @@ class RestarterTests {
 		private ClassLoader relaunchClassLoader;
 
 		TestableRestarter() {
-			this(Thread.currentThread(), new String[] {}, false, new MockRestartInitializer());
+			this(Thread.currentThread(), new String[]{}, false, new MockRestartInitializer());
 		}
 
 		protected TestableRestarter(Thread thread, String[] args, boolean forceReferenceCleanup,
-				RestartInitializer initializer) {
+									RestartInitializer initializer) {
 			super(thread, args, forceReferenceCleanup, initializer);
 		}
 
@@ -231,8 +231,7 @@ class RestarterTests {
 			try {
 				stop();
 				start(failureHandler);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

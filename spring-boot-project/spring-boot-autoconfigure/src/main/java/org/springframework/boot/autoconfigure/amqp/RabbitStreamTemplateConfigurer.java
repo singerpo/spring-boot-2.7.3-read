@@ -38,6 +38,7 @@ public class RabbitStreamTemplateConfigurer {
 	/**
 	 * Set the {@link MessageConverter} to use or {@code null} if the out-of-the-box
 	 * converter should be used.
+	 *
 	 * @param messageConverter the {@link MessageConverter}
 	 */
 	public void setMessageConverter(MessageConverter messageConverter) {
@@ -47,6 +48,7 @@ public class RabbitStreamTemplateConfigurer {
 	/**
 	 * Set the {@link StreamMessageConverter} to use or {@code null} if the out-of-the-box
 	 * stream message converter should be used.
+	 *
 	 * @param streamMessageConverter the {@link StreamMessageConverter}
 	 */
 	public void setStreamMessageConverter(StreamMessageConverter streamMessageConverter) {
@@ -55,6 +57,7 @@ public class RabbitStreamTemplateConfigurer {
 
 	/**
 	 * Set the {@link ProducerCustomizer} instances to use.
+	 *
 	 * @param producerCustomizer the producer customizer
 	 */
 	public void setProducerCustomizer(ProducerCustomizer producerCustomizer) {
@@ -64,6 +67,7 @@ public class RabbitStreamTemplateConfigurer {
 	/**
 	 * Configure the specified {@link RabbitStreamTemplate}. The template can be further
 	 * tuned and default settings can be overridden.
+	 *
 	 * @param template the {@link RabbitStreamTemplate} instance to configure
 	 */
 	public void configure(RabbitStreamTemplate template) {

@@ -40,14 +40,14 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  *
  * @author Stephane Nicoll
  * @author Vedran Pavic
- * @since 1.3.0
  * @see HazelcastConfigResourceCondition
+ * @since 1.3.0
  */
 @AutoConfiguration
 @Conditional(HazelcastDataGridCondition.class)
 @ConditionalOnClass(HazelcastInstance.class)
 @EnableConfigurationProperties(HazelcastProperties.class)
-@Import({ HazelcastClientConfiguration.class, HazelcastServerConfiguration.class })
+@Import({HazelcastClientConfiguration.class, HazelcastServerConfiguration.class})
 public class HazelcastAutoConfiguration {
 
 	static class HazelcastDataGridCondition extends SpringBootCondition {

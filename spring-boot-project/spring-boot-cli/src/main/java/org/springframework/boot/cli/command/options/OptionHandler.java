@@ -44,9 +44,9 @@ import org.springframework.boot.cli.command.status.ExitStatus;
  * Delegate used by {@link OptionParsingCommand} to parse options and run the command.
  *
  * @author Dave Syer
- * @since 1.0.0
  * @see OptionParsingCommand
  * @see #run(OptionSet)
+ * @since 1.0.0
  */
 public class OptionHandler {
 
@@ -67,8 +67,9 @@ public class OptionHandler {
 
 	/**
 	 * Create a new {@link OptionHandler} instance with an argument processor.
+	 *
 	 * @param argumentProcessor strategy that can be used to manipulate arguments before
-	 * they are used.
+	 *                          they are used.
 	 */
 	public OptionHandler(Function<String, String> argumentProcessor) {
 		this.argumentProcessor = argumentProcessor;
@@ -107,6 +108,7 @@ public class OptionHandler {
 
 	/**
 	 * Run the command using the specified parsed {@link OptionSet}.
+	 *
 	 * @param options the parsed option set
 	 * @return an ExitStatus
 	 * @throws Exception in case of errors
@@ -121,8 +123,7 @@ public class OptionHandler {
 			OutputStream out = new ByteArrayOutputStream();
 			try {
 				getParser().printHelpOn(out);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				return "Help not available";
 			}
 			this.help = out.toString().replace(" --cp ", " -cp  ");
@@ -136,8 +137,7 @@ public class OptionHandler {
 			getParser().formatHelpWith(formatter);
 			try {
 				getParser().printHelpOn(new ByteArrayOutputStream());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore and provide no hints
 			}
 			this.optionHelp = formatter.getOptionHelp();

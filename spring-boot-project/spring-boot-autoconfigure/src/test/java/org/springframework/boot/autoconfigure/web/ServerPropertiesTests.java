@@ -506,8 +506,7 @@ class ServerPropertiesTests {
 			String message = failure.get().getCause().getMessage();
 			int defaultMaxPostSize = Integer.parseInt(message.substring(message.lastIndexOf(' ')).trim());
 			assertThat(this.properties.getJetty().getMaxHttpFormPostSize().toBytes()).isEqualTo(defaultMaxPostSize);
-		}
-		finally {
+		} finally {
 			jetty.stop();
 		}
 	}

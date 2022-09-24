@@ -50,7 +50,7 @@ class RestartApplicationListenerTests {
 
 	private static final String ENABLED_PROPERTY = "spring.devtools.restart.enabled";
 
-	private static final String[] ARGS = new String[] { "a", "b", "c" };
+	private static final String[] ARGS = new String[]{"a", "b", "c"};
 
 	@BeforeEach
 	@AfterEach
@@ -108,8 +108,7 @@ class RestartApplicationListenerTests {
 		listener.onApplicationEvent(new ApplicationPreparedEvent(application, ARGS, context));
 		if (failed) {
 			listener.onApplicationEvent(new ApplicationFailedEvent(application, ARGS, context, new RuntimeException()));
-		}
-		else {
+		} else {
 			listener.onApplicationEvent(new ApplicationReadyEvent(application, ARGS, context, null));
 		}
 	}

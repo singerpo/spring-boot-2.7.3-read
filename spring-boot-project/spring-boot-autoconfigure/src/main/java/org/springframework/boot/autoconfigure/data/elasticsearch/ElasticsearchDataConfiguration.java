@@ -61,7 +61,7 @@ abstract class ElasticsearchDataConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		SimpleElasticsearchMappingContext mappingContext(ApplicationContext applicationContext,
-				ElasticsearchCustomConversions elasticsearchCustomConversions) throws ClassNotFoundException {
+														 ElasticsearchCustomConversions elasticsearchCustomConversions) throws ClassNotFoundException {
 			SimpleElasticsearchMappingContext mappingContext = new SimpleElasticsearchMappingContext();
 			mappingContext.setInitialEntitySet(new EntityScanner(applicationContext).scan(Document.class));
 			mappingContext.setSimpleTypeHolder(elasticsearchCustomConversions.getSimpleTypeHolder());
@@ -71,7 +71,7 @@ abstract class ElasticsearchDataConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		ElasticsearchConverter elasticsearchConverter(SimpleElasticsearchMappingContext mappingContext,
-				ElasticsearchCustomConversions elasticsearchCustomConversions) {
+													  ElasticsearchCustomConversions elasticsearchCustomConversions) {
 			MappingElasticsearchConverter converter = new MappingElasticsearchConverter(mappingContext);
 			converter.setConversions(elasticsearchCustomConversions);
 			return converter;
@@ -88,21 +88,21 @@ abstract class ElasticsearchDataConfiguration {
 		@ConditionalOnMissingBean(value = ElasticsearchOperations.class, name = "elasticsearchTemplate")
 		@ConditionalOnBean(org.elasticsearch.client.RestHighLevelClient.class)
 		ElasticsearchRestTemplate elasticsearchTemplate(org.elasticsearch.client.RestHighLevelClient client,
-				ElasticsearchConverter converter) {
+														ElasticsearchConverter converter) {
 			return new ElasticsearchRestTemplate(client, converter);
 		}
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ WebClient.class, ReactiveElasticsearchOperations.class })
+	@ConditionalOnClass({WebClient.class, ReactiveElasticsearchOperations.class})
 	static class ReactiveRestClientConfiguration {
 
 		@Bean
 		@ConditionalOnMissingBean(value = ReactiveElasticsearchOperations.class, name = "reactiveElasticsearchTemplate")
 		@ConditionalOnBean(ReactiveElasticsearchClient.class)
 		ReactiveElasticsearchTemplate reactiveElasticsearchTemplate(ReactiveElasticsearchClient client,
-				ElasticsearchConverter converter) {
+																	ElasticsearchConverter converter) {
 			return new ReactiveElasticsearchTemplate(client, converter);
 		}
 

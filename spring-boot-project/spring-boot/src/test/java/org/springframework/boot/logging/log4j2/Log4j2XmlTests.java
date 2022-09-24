@@ -83,8 +83,7 @@ class Log4j2XmlTests {
 		action.run();
 		if (previous == null) {
 			System.clearProperty(name);
-		}
-		else {
+		} else {
 			System.setProperty(name, previous);
 		}
 	}
@@ -110,8 +109,7 @@ class Log4j2XmlTests {
 	private ConfigurationSource configurationSource() {
 		try (InputStream in = getClass().getResourceAsStream(getConfigFileName())) {
 			return new ConfigurationSource(in);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

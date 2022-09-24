@@ -96,7 +96,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Test
-	// Enabled by default
+		// Enabled by default
 	void enabledIfNotConfiguredOtherwise() {
 		load(EnabledIfNotConfiguredOtherwiseConfig.class);
 		assertThat(this.context.containsBean("foo")).isTrue();
@@ -115,7 +115,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Test
-	// Disabled by default
+		// Disabled by default
 	void disableIfNotConfiguredOtherwise() {
 		load(DisabledIfNotConfiguredOtherwiseConfig.class);
 		assertThat(this.context.containsBean("foo")).isFalse();
@@ -279,7 +279,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnProperty(name = { "property1", "property2" })
+	@ConditionalOnProperty(name = {"property1", "property2"})
 	static class MultiplePropertiesRequiredConfiguration {
 
 		@Bean
@@ -369,7 +369,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnProperty(prefix = "simple", name = { "my-property", "my-another-property" }, havingValue = "bar")
+	@ConditionalOnProperty(prefix = "simple", name = {"my-property", "my-another-property"}, havingValue = "bar")
 	static class MultiValuesConfig {
 
 		@Bean
@@ -436,7 +436,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)
-	@Target({ ElementType.TYPE, ElementType.METHOD })
+	@Target({ElementType.TYPE, ElementType.METHOD})
 	@ConditionalOnProperty(prefix = "my.feature", name = "enabled", havingValue = "true")
 	@interface ConditionalOnMyFeature {
 
@@ -466,7 +466,7 @@ class ConditionalOnPropertyTests {
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)
-	@Target({ ElementType.TYPE, ElementType.METHOD })
+	@Target({ElementType.TYPE, ElementType.METHOD})
 	@ConditionalOnProperty(name = "enabled", havingValue = "true")
 	@interface ConditionalOnMyFeatureWithAlias {
 

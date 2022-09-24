@@ -43,8 +43,7 @@ public class LayerToolsJarMode implements JarMode {
 	public void run(String mode, String[] args) {
 		try {
 			new Runner().run(args);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -83,12 +82,10 @@ public class LayerToolsJarMode implements JarMode {
 		private void runCommand(Command command, Deque<String> args) {
 			try {
 				command.run(args);
-			}
-			catch (UnknownOptionException ex) {
+			} catch (UnknownOptionException ex) {
 				printError("Unknown option \"" + ex.getMessage() + "\" for the " + command.getName() + " command");
 				this.help.run(dequeOf(command.getName()));
-			}
-			catch (MissingValueException ex) {
+			} catch (MissingValueException ex) {
 				printError("Option \"" + ex.getMessage() + "\" for the " + command.getName()
 						+ " command requires a value");
 				this.help.run(dequeOf(command.getName()));

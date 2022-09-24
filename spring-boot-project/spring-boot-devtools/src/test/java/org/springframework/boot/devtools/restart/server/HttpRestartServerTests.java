@@ -101,7 +101,7 @@ class HttpRestartServerTests {
 	void sendBadData() throws Exception {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		MockHttpServletResponse response = new MockHttpServletResponse();
-		request.setContent(new byte[] { 0, 0, 0 });
+		request.setContent(new byte[]{0, 0, 0});
 		this.server.handle(new ServletServerHttpRequest(request), new ServletServerHttpResponse(response));
 		then(this.delegate).shouldHaveNoInteractions();
 		assertThat(response.getStatus()).isEqualTo(500);

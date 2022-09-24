@@ -76,7 +76,8 @@ class DataSourceBuilderTests {
 		assertThat(hikariDataSource.getJdbcUrl()).isEqualTo("jdbc:h2:test");
 	}
 
-	@Test // gh-26633
+	@Test
+		// gh-26633
 	void buildWhenHikariDataSourceWithNullPasswordReturnsHikariDataSource() {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:h2:test").username("test").password(null).build();
 		assertThat(this.dataSource).isInstanceOf(HikariDataSource.class);
@@ -91,7 +92,8 @@ class DataSourceBuilderTests {
 		assertThat(this.dataSource).isInstanceOf(org.apache.tomcat.jdbc.pool.DataSource.class);
 	}
 
-	@Test // gh-26633
+	@Test
+		// gh-26633
 	void buildWhenTomcatDataSourceWithNullPasswordReturnsDataSource() {
 		this.dataSource = DataSourceBuilder.create(new HidePackagesClassLoader("com.zaxxer.hikari")).url("jdbc:h2:test")
 				.username("test").password(null).build();
@@ -106,7 +108,8 @@ class DataSourceBuilderTests {
 		assertThat(this.dataSource).isInstanceOf(BasicDataSource.class);
 	}
 
-	@Test // gh-26633
+	@Test
+		// gh-26633
 	void buildWhenDbcp2DataSourceWithNullPasswordReturnsDbcp2DataSource() {
 		this.dataSource = DataSourceBuilder
 				.create(new HidePackagesClassLoader("com.zaxxer.hikari", "org.apache.tomcat.jdbc.pool"))
@@ -146,7 +149,8 @@ class DataSourceBuilderTests {
 		assertThat(oracleDataSource.getUser()).isEqualTo("test");
 	}
 
-	@Test // gh-26631
+	@Test
+		// gh-26631
 	void buildWhenOracleTypeSpecifiedWithDriverClassReturnsExpectedDataSource() throws SQLException {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:oracle:thin:@localhost:1521:xe")
 				.type(OracleDataSource.class).driverClassName("oracle.jdbc.pool.OracleDataSource").username("test")
@@ -177,7 +181,8 @@ class DataSourceBuilderTests {
 		assertThat(h2DataSource.getPassword()).isEqualTo("secret");
 	}
 
-	@Test // gh-26631
+	@Test
+		// gh-26631
 	void buildWhenH2TypeSpecifiedWithDriverClassReturnsExpectedDataSource() {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:h2:test").type(JdbcDataSource.class)
 				.driverClassName("org.h2.jdbcx.JdbcDataSource").username("test").password("secret").build();
@@ -196,7 +201,8 @@ class DataSourceBuilderTests {
 		assertThat(pgDataSource.getUser()).isEqualTo("test");
 	}
 
-	@Test // gh-26631
+	@Test
+		// gh-26631
 	void buildWhenPostgresTypeSpecifiedWithDriverClassReturnsExpectedDataSource() {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:postgresql://localhost/test")
 				.type(PGSimpleDataSource.class).driverClassName("org.postgresql.ds.PGSimpleDataSource").username("test")
@@ -206,7 +212,8 @@ class DataSourceBuilderTests {
 		assertThat(pgDataSource.getUser()).isEqualTo("test");
 	}
 
-	@Test // gh-26647
+	@Test
+		// gh-26647
 	void buildWhenSqlServerTypeSpecifiedReturnsExpectedDataSource() {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:sqlserver://localhost/test")
 				.type(SQLServerDataSource.class).username("test").build();
@@ -344,7 +351,8 @@ class DataSourceBuilderTests {
 		assertThat(built.getUrl()).startsWith("jdbc:hsqldb:mem");
 	}
 
-	@Test // gh-26644
+	@Test
+		// gh-26644
 	void buildWhenDerivedFromExistingDatabaseWithTypeChange() {
 		HikariDataSource dataSource = new HikariDataSource();
 		dataSource.setUsername("test");
@@ -357,7 +365,8 @@ class DataSourceBuilderTests {
 		assertThat(built.getUrl()).isEqualTo("jdbc:postgresql://localhost:5432/postgres");
 	}
 
-	@Test // gh-27295
+	@Test
+		// gh-27295
 	void buildWhenDerivedFromCustomType() {
 		CustomDataSource dataSource = new CustomDataSource();
 		dataSource.setUsername("test");
@@ -372,7 +381,8 @@ class DataSourceBuilderTests {
 		assertThat(testSource.getPassword()).isEqualTo("confidential");
 	}
 
-	@Test // gh-27295
+	@Test
+		// gh-27295
 	void buildWhenDerivedFromCustomTypeWithTypeChange() {
 		CustomDataSource dataSource = new CustomDataSource();
 		dataSource.setUsername("test");
@@ -385,7 +395,8 @@ class DataSourceBuilderTests {
 		assertThat(testSource.getPassword()).isEqualTo("secret");
 	}
 
-	@Test // gh-31920
+	@Test
+		// gh-31920
 	void buildWhenC3P0TypeSpecifiedReturnsExpectedDataSource() {
 		this.dataSource = DataSourceBuilder.create().url("jdbc:postgresql://localhost:5432/postgres")
 				.type(ComboPooledDataSource.class).username("test").password("secret")

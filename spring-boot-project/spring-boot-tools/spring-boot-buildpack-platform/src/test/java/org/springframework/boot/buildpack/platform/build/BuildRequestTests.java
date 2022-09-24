@@ -266,8 +266,7 @@ class BuildRequestTests {
 				assertThat(tar.getNextEntry().getName()).isEqualTo("spring/boot");
 				assertThat(tar.getNextEntry()).isNull();
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

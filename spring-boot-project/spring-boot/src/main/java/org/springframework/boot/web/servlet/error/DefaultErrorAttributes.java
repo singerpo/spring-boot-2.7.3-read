@@ -61,8 +61,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Stephane Nicoll
  * @author Vedran Pavic
  * @author Scott Frederick
- * @since 2.0.0
  * @see ErrorAttributes
+ * @since 2.0.0
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class DefaultErrorAttributes implements ErrorAttributes, HandlerExceptionResolver, Ordered {
@@ -76,7 +76,7 @@ public class DefaultErrorAttributes implements ErrorAttributes, HandlerException
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception ex) {
+										 Exception ex) {
 		storeErrorAttributes(request, ex);
 		return null;
 	}
@@ -122,15 +122,14 @@ public class DefaultErrorAttributes implements ErrorAttributes, HandlerException
 		errorAttributes.put("status", status);
 		try {
 			errorAttributes.put("error", HttpStatus.valueOf(status).getReasonPhrase());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Unable to obtain a reason
 			errorAttributes.put("error", "Http Status " + status);
 		}
 	}
 
 	private void addErrorDetails(Map<String, Object> errorAttributes, WebRequest webRequest,
-			boolean includeStackTrace) {
+								 boolean includeStackTrace) {
 		Throwable error = getError(webRequest);
 		if (error != null) {
 			while (error instanceof ServletException && error.getCause() != null) {
@@ -148,8 +147,7 @@ public class DefaultErrorAttributes implements ErrorAttributes, HandlerException
 		BindingResult result = extractBindingResult(error);
 		if (result == null) {
 			addExceptionErrorMessage(errorAttributes, webRequest, error);
-		}
-		else {
+		} else {
 			addBindingResultErrorMessage(errorAttributes, result);
 		}
 	}
@@ -167,8 +165,9 @@ public class DefaultErrorAttributes implements ErrorAttributes, HandlerException
 	 * <li>Message of the given {@code error}.
 	 * <li>{@code No message available}.
 	 * </ol>
+	 *
 	 * @param webRequest current request
-	 * @param error current error, if any
+	 * @param error      current error, if any
 	 * @return message to include in the error attributes
 	 * @since 2.4.0
 	 */

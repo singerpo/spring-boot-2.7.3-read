@@ -41,6 +41,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Returns the locations of the schema (DDL) scripts to apply to the database.
+	 *
 	 * @return the locations of the schema scripts
 	 */
 	public List<String> getSchemaLocations() {
@@ -51,6 +52,7 @@ public class DatabaseInitializationSettings {
 	 * Sets the locations of schema (DDL) scripts to apply to the database. By default,
 	 * initialization will fail if a location does not exist. To prevent a failure, a
 	 * location can be made optional by prefixing it with {@code optional:}.
+	 *
 	 * @param schemaLocations locations of the schema scripts
 	 */
 	public void setSchemaLocations(List<String> schemaLocations) {
@@ -59,6 +61,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Returns the locations of data (DML) scripts to apply to the database.
+	 *
 	 * @return the locations of the data scripts
 	 */
 	public List<String> getDataLocations() {
@@ -69,6 +72,7 @@ public class DatabaseInitializationSettings {
 	 * Sets the locations of data (DML) scripts to apply to the database. By default,
 	 * initialization will fail if a location does not exist. To prevent a failure, a
 	 * location can be made optional by prefixing it with {@code optional:}.
+	 *
 	 * @param dataLocations locations of the data scripts
 	 */
 	public void setDataLocations(List<String> dataLocations) {
@@ -78,6 +82,7 @@ public class DatabaseInitializationSettings {
 	/**
 	 * Returns whether to continue when an error occurs while applying a schema or data
 	 * script.
+	 *
 	 * @return whether to continue on error
 	 */
 	public boolean isContinueOnError() {
@@ -87,6 +92,7 @@ public class DatabaseInitializationSettings {
 	/**
 	 * Sets whether initialization should continue when an error occurs when applying a
 	 * schema or data script.
+	 *
 	 * @param continueOnError whether to continue when an error occurs.
 	 */
 	public void setContinueOnError(boolean continueOnError) {
@@ -95,6 +101,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Returns the statement separator used in the schema and data scripts.
+	 *
 	 * @return the statement separator
 	 */
 	public String getSeparator() {
@@ -103,6 +110,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Sets the statement separator to use when reading the schema and data scripts.
+	 *
 	 * @param separator statement separator used in the schema and data scripts
 	 */
 	public void setSeparator(String separator) {
@@ -111,6 +119,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Returns the encoding to use when reading the schema and data scripts.
+	 *
 	 * @return the script encoding
 	 */
 	public Charset getEncoding() {
@@ -119,6 +128,7 @@ public class DatabaseInitializationSettings {
 
 	/**
 	 * Sets the encoding to use when reading the schema and data scripts.
+	 *
 	 * @param encoding encoding to use when reading the schema and data scripts
 	 */
 	public void setEncoding(Charset encoding) {
@@ -128,6 +138,7 @@ public class DatabaseInitializationSettings {
 	/**
 	 * Gets the mode to use when determining whether database initialization should be
 	 * performed.
+	 *
 	 * @return the initialization mode
 	 * @since 2.5.1
 	 */
@@ -138,6 +149,7 @@ public class DatabaseInitializationSettings {
 	/**
 	 * Sets the mode the use when determining whether database initialization should be
 	 * performed.
+	 *
 	 * @param mode the initialization mode
 	 * @since 2.5.1
 	 */

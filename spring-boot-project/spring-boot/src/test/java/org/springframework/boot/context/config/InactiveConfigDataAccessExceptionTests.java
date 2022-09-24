@@ -114,7 +114,7 @@ class InactiveConfigDataAccessExceptionTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void throwIfPropertyFoundWhenPropertyFoundThrowsException() {
 		this.propertySource.setProperty("spring", "test");
 		ConfigDataEnvironmentContributor contributor = mock(ConfigDataEnvironmentContributor.class);

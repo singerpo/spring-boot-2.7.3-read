@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
  * @author Phillip Webb
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD })
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 @Documented
 public @interface TestAutoConfigureOrder {
 

@@ -47,6 +47,7 @@ public class RunProcess {
 
 	/**
 	 * Creates new {@link RunProcess} instance for the specified command.
+	 *
 	 * @param command the program to execute and its arguments
 	 */
 	public RunProcess(String... command) {
@@ -56,9 +57,10 @@ public class RunProcess {
 	/**
 	 * Creates new {@link RunProcess} instance for the specified working directory and
 	 * command.
+	 *
 	 * @param workingDirectory the working directory of the child process or {@code null}
-	 * to run in the working directory of the current Java process
-	 * @param command the program to execute and its arguments
+	 *                         to run in the working directory of the current Java process
+	 * @param command          the program to execute and its arguments
 	 */
 	public RunProcess(File workingDirectory, String... command) {
 		this.workingDirectory = workingDirectory;
@@ -84,15 +86,13 @@ public class RunProcess {
 			if (waitForProcess) {
 				try {
 					return process.waitFor();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
 					return 1;
 				}
 			}
 			return 5;
-		}
-		finally {
+		} finally {
 			if (waitForProcess) {
 				this.endTime = System.currentTimeMillis();
 				this.process = null;
@@ -102,6 +102,7 @@ public class RunProcess {
 
 	/**
 	 * Return the running process.
+	 *
 	 * @return the process or {@code null}
 	 */
 	public Process getRunningProcess() {
@@ -110,6 +111,7 @@ public class RunProcess {
 
 	/**
 	 * Return if the process was stopped.
+	 *
 	 * @return {@code true} if stopped
 	 */
 	public boolean handleSigInt() {
@@ -131,8 +133,7 @@ public class RunProcess {
 			}
 			try {
 				Thread.sleep(500);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 				return false;
 			}
@@ -156,8 +157,7 @@ public class RunProcess {
 				process.waitFor();
 				this.process = null;
 				return true;
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}

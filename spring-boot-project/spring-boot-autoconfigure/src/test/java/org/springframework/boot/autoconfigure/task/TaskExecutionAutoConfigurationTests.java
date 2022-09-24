@@ -66,15 +66,15 @@ class TaskExecutionAutoConfigurationTests {
 				"spring.task.execution.shutdown.await-termination=true",
 				"spring.task.execution.shutdown.await-termination-period=30s",
 				"spring.task.execution.thread-name-prefix=mytest-").run(assertTaskExecutor((taskExecutor) -> {
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("queueCapacity", 10);
-					assertThat(taskExecutor.getCorePoolSize()).isEqualTo(2);
-					assertThat(taskExecutor.getMaxPoolSize()).isEqualTo(4);
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("allowCoreThreadTimeOut", true);
-					assertThat(taskExecutor.getKeepAliveSeconds()).isEqualTo(5);
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("waitForTasksToCompleteOnShutdown", true);
-					assertThat(taskExecutor).hasFieldOrPropertyWithValue("awaitTerminationMillis", 30000L);
-					assertThat(taskExecutor.getThreadNamePrefix()).isEqualTo("mytest-");
-				}));
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("queueCapacity", 10);
+			assertThat(taskExecutor.getCorePoolSize()).isEqualTo(2);
+			assertThat(taskExecutor.getMaxPoolSize()).isEqualTo(4);
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("allowCoreThreadTimeOut", true);
+			assertThat(taskExecutor.getKeepAliveSeconds()).isEqualTo(5);
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("waitForTasksToCompleteOnShutdown", true);
+			assertThat(taskExecutor).hasFieldOrPropertyWithValue("awaitTerminationMillis", 30000L);
+			assertThat(taskExecutor.getThreadNamePrefix()).isEqualTo("mytest-");
+		}));
 	}
 
 	@Test
@@ -127,11 +127,11 @@ class TaskExecutionAutoConfigurationTests {
 	void enableAsyncUsesAutoConfiguredOneByDefault() {
 		this.contextRunner.withPropertyValues("spring.task.execution.thread-name-prefix=task-test-")
 				.withUserConfiguration(AsyncConfiguration.class, TestBean.class).run((context) -> {
-					assertThat(context).hasSingleBean(TaskExecutor.class);
-					TestBean bean = context.getBean(TestBean.class);
-					String text = bean.echo("something").get();
-					assertThat(text).contains("task-test-").contains("something");
-				});
+			assertThat(context).hasSingleBean(TaskExecutor.class);
+			TestBean bean = context.getBean(TestBean.class);
+			String text = bean.echo("something").get();
+			assertThat(text).contains("task-test-").contains("something");
+		});
 	}
 
 	@Test

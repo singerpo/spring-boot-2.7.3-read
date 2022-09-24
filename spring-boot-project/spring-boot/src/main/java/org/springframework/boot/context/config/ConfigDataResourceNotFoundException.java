@@ -39,6 +39,7 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataResourceNotFoundException} instance.
+	 *
 	 * @param resource the resource that could not be found
 	 */
 	public ConfigDataResourceNotFoundException(ConfigDataResource resource) {
@@ -47,15 +48,16 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataResourceNotFoundException} instance.
+	 *
 	 * @param resource the resource that could not be found
-	 * @param cause the exception cause
+	 * @param cause    the exception cause
 	 */
 	public ConfigDataResourceNotFoundException(ConfigDataResource resource, Throwable cause) {
 		this(resource, null, cause);
 	}
 
 	private ConfigDataResourceNotFoundException(ConfigDataResource resource, ConfigDataLocation location,
-			Throwable cause) {
+												Throwable cause) {
 		super(getMessage(resource, location), cause);
 		Assert.notNull(resource, "Resource must not be null");
 		this.resource = resource;
@@ -64,6 +66,7 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Return the resource that could not be found.
+	 *
 	 * @return the resource
 	 */
 	public ConfigDataResource getResource() {
@@ -72,6 +75,7 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Return the original location that was resolved to determine the resource.
+	 *
 	 * @return the location or {@code null} if no location is available
 	 */
 	public ConfigDataLocation getLocation() {
@@ -90,6 +94,7 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 
 	/**
 	 * Create a new {@link ConfigDataResourceNotFoundException} instance with a location.
+	 *
 	 * @param location the location to set
 	 * @return a new {@link ConfigDataResourceNotFoundException} instance
 	 */
@@ -112,7 +117,8 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 	/**
 	 * Throw a {@link ConfigDataNotFoundException} if the specified {@link Path} does not
 	 * exist.
-	 * @param resource the config data resource
+	 *
+	 * @param resource    the config data resource
 	 * @param pathToCheck the path to check
 	 */
 	public static void throwIfDoesNotExist(ConfigDataResource resource, Path pathToCheck) {
@@ -122,7 +128,8 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 	/**
 	 * Throw a {@link ConfigDataNotFoundException} if the specified {@link File} does not
 	 * exist.
-	 * @param resource the config data resource
+	 *
+	 * @param resource    the config data resource
 	 * @param fileToCheck the file to check
 	 */
 	public static void throwIfDoesNotExist(ConfigDataResource resource, File fileToCheck) {
@@ -132,7 +139,8 @@ public class ConfigDataResourceNotFoundException extends ConfigDataNotFoundExcep
 	/**
 	 * Throw a {@link ConfigDataNotFoundException} if the specified {@link Resource} does
 	 * not exist.
-	 * @param resource the config data resource
+	 *
+	 * @param resource        the config data resource
 	 * @param resourceToCheck the resource to check
 	 */
 	public static void throwIfDoesNotExist(ConfigDataResource resource, Resource resourceToCheck) {

@@ -28,8 +28,9 @@ public abstract class ConfigDataNotFoundException extends ConfigDataException im
 
 	/**
 	 * Create a new {@link ConfigDataNotFoundException} instance.
+	 *
 	 * @param message the exception message
-	 * @param cause the exception cause
+	 * @param cause   the exception cause
 	 */
 	ConfigDataNotFoundException(String message, Throwable cause) {
 		super(message, cause);
@@ -37,6 +38,7 @@ public abstract class ConfigDataNotFoundException extends ConfigDataException im
 
 	/**
 	 * Return a description of actual referenced item that could not be found.
+	 *
 	 * @return a description of the referenced items
 	 */
 	public abstract String getReferenceDescription();

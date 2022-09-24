@@ -30,8 +30,8 @@ class MyWebServiceServerTests(@Autowired val client: MockWebServiceClient) {
 	@Test
 	fun mockServerCall() {
 		client
-			.sendRequest(RequestCreators.withPayload(StringSource("<ExampleRequest/>")))
-			.andExpect(ResponseMatchers.payload(StringSource("<ExampleResponse>42</ExampleResponse>")))
+				.sendRequest(RequestCreators.withPayload(StringSource("<ExampleRequest/>")))
+				.andExpect(ResponseMatchers.payload(StringSource("<ExampleResponse>42</ExampleResponse>")))
 	}
 
 }

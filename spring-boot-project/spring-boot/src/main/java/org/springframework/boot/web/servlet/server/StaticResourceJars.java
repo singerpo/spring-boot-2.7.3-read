@@ -44,8 +44,7 @@ class StaticResourceJars {
 		ClassLoader classLoader = getClass().getClassLoader();
 		if (classLoader instanceof URLClassLoader) {
 			return getUrlsFrom(((URLClassLoader) classLoader).getURLs());
-		}
-		else {
+		} else {
 			return getUrlsFrom(Stream.of(ManagementFactory.getRuntimeMXBean().getClassPath().split(File.pathSeparator))
 					.map(this::toUrl).toArray(URL[]::new));
 		}
@@ -62,8 +61,7 @@ class StaticResourceJars {
 	private URL toUrl(String classPathEntry) {
 		try {
 			return new File(classPathEntry).toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalArgumentException("URL could not be created from '" + classPathEntry + "'", ex);
 		}
 	}
@@ -71,11 +69,9 @@ class StaticResourceJars {
 	private File toFile(URL url) {
 		try {
 			return new File(url.toURI());
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException("Failed to create File from URL '" + url + "'");
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			return null;
 		}
 	}
@@ -84,18 +80,15 @@ class StaticResourceJars {
 		try {
 			if (!"file".equals(url.getProtocol())) {
 				addUrlConnection(urls, url, url.openConnection());
-			}
-			else {
+			} else {
 				File file = toFile(url);
 				if (file != null) {
 					addUrlFile(urls, url, file);
-				}
-				else {
+				} else {
 					addUrlConnection(urls, url, url.openConnection());
 				}
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -115,8 +108,7 @@ class StaticResourceJars {
 	private boolean isResourcesJar(JarURLConnection connection) {
 		try {
 			return isResourcesJar(connection.getJarFile());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return false;
 		}
 	}
@@ -124,8 +116,7 @@ class StaticResourceJars {
 	private boolean isResourcesJar(File file) {
 		try {
 			return isResourcesJar(new JarFile(file));
-		}
-		catch (IOException | InvalidPathException ex) {
+		} catch (IOException | InvalidPathException ex) {
 			return false;
 		}
 	}
@@ -133,8 +124,7 @@ class StaticResourceJars {
 	private boolean isResourcesJar(JarFile jar) throws IOException {
 		try {
 			return jar.getName().endsWith(".jar") && (jar.getJarEntry("META-INF/resources") != null);
-		}
-		finally {
+		} finally {
 			jar.close();
 		}
 	}

@@ -27,27 +27,31 @@ public interface LibraryCoordinates {
 
 	/**
 	 * Return the group ID of the coordinates.
+	 *
 	 * @return the group ID
 	 */
 	String getGroupId();
 
 	/**
 	 * Return the artifact ID of the coordinates.
+	 *
 	 * @return the artifact ID
 	 */
 	String getArtifactId();
 
 	/**
 	 * Return the version of the coordinates.
+	 *
 	 * @return the version
 	 */
 	String getVersion();
 
 	/**
 	 * Factory method to create {@link LibraryCoordinates} with the specified values.
-	 * @param groupId the group ID
+	 *
+	 * @param groupId    the group ID
 	 * @param artifactId the artifact ID
-	 * @param version the version
+	 * @param version    the version
 	 * @return a new {@link LibraryCoordinates} instance
 	 */
 	static LibraryCoordinates of(String groupId, String artifactId, String version) {
@@ -57,6 +61,7 @@ public interface LibraryCoordinates {
 	/**
 	 * Utility method that returns the given coordinates using the standard
 	 * {@code group:artifact:version} form.
+	 *
 	 * @param coordinates the coordinates to convert (may be {@code null})
 	 * @return the standard notation form or {@code "::"} when the coordinates are null
 	 */

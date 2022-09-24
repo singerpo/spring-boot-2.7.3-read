@@ -75,8 +75,7 @@ abstract class LenientObjectToEnumConverterFactory<T> implements ConverterFactor
 			}
 			try {
 				return (E) Enum.valueOf(this.enumType, value);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return findEnum(value);
 			}
 		}

@@ -39,17 +39,18 @@ class StandardConfigDataReference {
 
 	/**
 	 * Create a new {@link StandardConfigDataReference} instance.
-	 * @param configDataLocation the original location passed to the resolver
-	 * @param directory the directory of the resource or {@code null} if the reference is
-	 * to a file
-	 * @param root the root of the resource location
-	 * @param profile the profile being loaded
-	 * @param extension the file extension for the resource
+	 *
+	 * @param configDataLocation   the original location passed to the resolver
+	 * @param directory            the directory of the resource or {@code null} if the reference is
+	 *                             to a file
+	 * @param root                 the root of the resource location
+	 * @param profile              the profile being loaded
+	 * @param extension            the file extension for the resource
 	 * @param propertySourceLoader the property source loader that should be used for this
-	 * reference
+	 *                             reference
 	 */
 	StandardConfigDataReference(ConfigDataLocation configDataLocation, String directory, String root, String profile,
-			String extension, PropertySourceLoader propertySourceLoader) {
+								String extension, PropertySourceLoader propertySourceLoader) {
 		this.configDataLocation = configDataLocation;
 		String profileSuffix = (StringUtils.hasText(profile)) ? "-" + profile : "";
 		this.resourceLocation = root + profileSuffix + ((extension != null) ? "." + extension : "");

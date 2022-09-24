@@ -189,11 +189,11 @@ class MetricsEndpointTests {
 	}
 
 	private void assertMetricHasStatisticEqualTo(MeterRegistry registry, String metricName, Statistic stat,
-			Double value) {
+												 Double value) {
 		MetricsEndpoint endpoint = new MetricsEndpoint(registry);
 		assertThat(endpoint.metric(metricName, Collections.emptyList()).getMeasurements().stream()
 				.filter((sample) -> sample.getStatistic().equals(stat)).findAny())
-						.hasValueSatisfying((sample) -> assertThat(sample.getValue()).isEqualTo(value));
+				.hasValueSatisfying((sample) -> assertThat(sample.getValue()).isEqualTo(value));
 	}
 
 	private Optional<Double> getCount(MetricsEndpoint.MetricResponse response) {

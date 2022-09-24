@@ -84,8 +84,7 @@ class SampleSessionJdbcApplicationTests {
 		HttpHeaders headers = new HttpHeaders();
 		if (cookie != null) {
 			headers.set("Cookie", cookie);
-		}
-		else {
+		} else {
 			headers.set("Authorization", getBasicAuth());
 		}
 		return headers;

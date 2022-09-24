@@ -61,8 +61,9 @@ class AutoConfiguredHealthEndpointGroups implements HealthEndpointGroups {
 
 	/**
 	 * Create a new {@link AutoConfiguredHealthEndpointGroups} instance.
+	 *
 	 * @param applicationContext the application context used to check for override beans
-	 * @param properties the health endpoint properties
+	 * @param properties         the health endpoint properties
 	 */
 	AutoConfiguredHealthEndpointGroups(ApplicationContext applicationContext, HealthEndpointProperties properties) {
 		ListableBeanFactory beanFactory = (applicationContext instanceof ConfigurableApplicationContext)
@@ -85,8 +86,8 @@ class AutoConfiguredHealthEndpointGroups implements HealthEndpointGroups {
 	}
 
 	private Map<String, HealthEndpointGroup> createGroups(Map<String, Group> groupProperties, BeanFactory beanFactory,
-			StatusAggregator defaultStatusAggregator, HttpCodeStatusMapper defaultHttpCodeStatusMapper,
-			Show defaultShowComponents, Show defaultShowDetails, Set<String> defaultRoles) {
+														  StatusAggregator defaultStatusAggregator, HttpCodeStatusMapper defaultHttpCodeStatusMapper,
+														  Show defaultShowComponents, Show defaultShowDetails, Set<String> defaultRoles) {
 		Map<String, HealthEndpointGroup> groups = new LinkedHashMap<>();
 		groupProperties.forEach((groupName, group) -> {
 			Status status = group.getStatus();
@@ -138,8 +139,7 @@ class AutoConfiguredHealthEndpointGroups implements HealthEndpointGroups {
 	private <T> T getQualifiedBean(BeanFactory beanFactory, Class<T> type, String qualifier, Supplier<T> fallback) {
 		try {
 			return BeanFactoryAnnotationUtils.qualifiedBeanOfType(beanFactory, type, qualifier);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return fallback.get();
 		}
 	}

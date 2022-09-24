@@ -42,11 +42,11 @@ import org.springframework.core.annotation.Order;
  * @author Raheela Aslam
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class, RestTemplateAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class, RestTemplateAutoConfiguration.class})
 @ConditionalOnClass(MeterRegistry.class)
 @ConditionalOnBean(MeterRegistry.class)
-@Import({ RestTemplateMetricsConfiguration.class, WebClientMetricsConfiguration.class })
+@Import({RestTemplateMetricsConfiguration.class, WebClientMetricsConfiguration.class})
 public class HttpClientMetricsAutoConfiguration {
 
 	@Bean

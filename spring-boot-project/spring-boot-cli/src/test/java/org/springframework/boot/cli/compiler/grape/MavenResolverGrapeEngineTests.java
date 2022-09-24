@@ -237,8 +237,7 @@ class MavenResolverGrapeEngineTests {
 		String previousValue = setOrClearSystemProperty(key, value);
 		try {
 			action.run();
-		}
-		finally {
+		} finally {
 			setOrClearSystemProperty(key, previousValue);
 		}
 	}

@@ -107,7 +107,8 @@ class BufferingApplicationStartupTests {
 		assertThatThrownBy(() -> step.getTags().iterator().remove()).isInstanceOf(UnsupportedOperationException.class);
 	}
 
-	@Test // gh-25792
+	@Test
+		// gh-25792
 	void outOfOrderWithMultipleEndCallsShouldNotFail() {
 		BufferingApplicationStartup applicationStartup = new BufferingApplicationStartup(200);
 		StartupStep one = applicationStartup.start("one");
@@ -122,7 +123,8 @@ class BufferingApplicationStartupTests {
 		one.end();
 	}
 
-	@Test // gh-25792
+	@Test
+		// gh-25792
 	void multiThreadedAccessShouldWork() throws InterruptedException {
 		BufferingApplicationStartup applicationStartup = new BufferingApplicationStartup(5000);
 		Queue<Exception> errors = new ConcurrentLinkedQueue<>();
@@ -135,13 +137,11 @@ class BufferingApplicationStartupTests {
 						StartupStep step = applicationStartup.start(prefix + i);
 						try {
 							Thread.sleep(1);
-						}
-						catch (InterruptedException ex) {
+						} catch (InterruptedException ex) {
 						}
 						step.end();
 					}
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					errors.add(ex);
 				}
 			}));

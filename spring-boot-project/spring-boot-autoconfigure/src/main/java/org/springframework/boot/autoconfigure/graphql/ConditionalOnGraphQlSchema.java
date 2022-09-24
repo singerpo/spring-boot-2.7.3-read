@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Conditional;
  * @author Brian Clozel
  * @since 2.7.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Conditional(DefaultGraphQlSchemaCondition.class)

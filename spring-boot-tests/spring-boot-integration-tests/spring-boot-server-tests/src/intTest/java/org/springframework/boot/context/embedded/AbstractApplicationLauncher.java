@@ -66,8 +66,7 @@ abstract class AbstractApplicationLauncher implements BeforeEachCallback {
 			this.process.destroy();
 			try {
 				this.process.waitFor();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -130,8 +129,7 @@ abstract class AbstractApplicationLauncher implements BeforeEachCallback {
 		public void run() {
 			try {
 				StreamUtils.copy(this.input, this.output);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		}
 

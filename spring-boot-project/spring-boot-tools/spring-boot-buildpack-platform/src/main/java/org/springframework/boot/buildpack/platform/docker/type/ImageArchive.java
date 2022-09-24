@@ -48,10 +48,10 @@ import org.springframework.util.Assert;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 2.3.0
  * @see #from(Image, IOConsumer)
  * @see <a href="https://github.com/moby/moby/blob/master/image/spec/v1.2.md">Docker Image
  * Specification</a>
+ * @since 2.3.0
  */
 public class ImageArchive implements TarArchive {
 
@@ -81,7 +81,7 @@ public class ImageArchive implements TarArchive {
 	private final List<Layer> newLayers;
 
 	ImageArchive(ObjectMapper objectMapper, ImageConfig imageConfig, Instant createDate, ImageReference tag, String os,
-			List<LayerId> existingLayers, List<Layer> newLayers) {
+				 List<LayerId> existingLayers, List<Layer> newLayers) {
 		this.objectMapper = objectMapper;
 		this.imageConfig = imageConfig;
 		this.createDate = createDate;
@@ -93,6 +93,7 @@ public class ImageArchive implements TarArchive {
 
 	/**
 	 * Return the image config for the archive.
+	 *
 	 * @return the image config
 	 */
 	public ImageConfig getImageConfig() {
@@ -101,6 +102,7 @@ public class ImageArchive implements TarArchive {
 
 	/**
 	 * Return the create date of the archive.
+	 *
 	 * @return the create date
 	 */
 	public Instant getCreateDate() {
@@ -109,6 +111,7 @@ public class ImageArchive implements TarArchive {
 
 	/**
 	 * Return the tag of the archive.
+	 *
 	 * @return the tag
 	 */
 	public ImageReference getTag() {
@@ -156,8 +159,7 @@ public class ImageArchive implements TarArchive {
 			String name = LayerId.ofSha256Digest(digest.digest()).getHash() + ".json";
 			writer.file(name, Owner.ROOT, content);
 			return name;
-		}
-		catch (NoSuchAlgorithmException ex) {
+		} catch (NoSuchAlgorithmException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -221,6 +223,7 @@ public class ImageArchive implements TarArchive {
 
 	/**
 	 * Create a new {@link ImageArchive} based on an existing {@link Image}.
+	 *
 	 * @param image the image that this archive is based on
 	 * @return the new image archive.
 	 * @throws IOException on IO error
@@ -231,7 +234,8 @@ public class ImageArchive implements TarArchive {
 
 	/**
 	 * Create a new {@link ImageArchive} based on an existing {@link Image}.
-	 * @param image the image that this archive is based on
+	 *
+	 * @param image  the image that this archive is based on
 	 * @param update consumer to apply updates
 	 * @return the new image archive.
 	 * @throws IOException on IO error
@@ -269,6 +273,7 @@ public class ImageArchive implements TarArchive {
 
 		/**
 		 * Apply updates to the {@link ImageConfig}.
+		 *
 		 * @param update consumer to apply updates
 		 */
 		public void withUpdatedConfig(Consumer<ImageConfig.Update> update) {
@@ -277,6 +282,7 @@ public class ImageArchive implements TarArchive {
 
 		/**
 		 * Add a new layer to the image archive.
+		 *
 		 * @param layer the layer to add
 		 */
 		public void withNewLayer(Layer layer) {
@@ -286,6 +292,7 @@ public class ImageArchive implements TarArchive {
 
 		/**
 		 * Set the create date for the image archive.
+		 *
 		 * @param createDate the create date
 		 */
 		public void withCreateDate(Instant createDate) {
@@ -295,6 +302,7 @@ public class ImageArchive implements TarArchive {
 
 		/**
 		 * Set the tag for the image archive.
+		 *
 		 * @param tag the tag
 		 */
 		public void withTag(ImageReference tag) {

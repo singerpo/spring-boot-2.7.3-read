@@ -129,6 +129,7 @@ public class MultipartProperties {
 
 	/**
 	 * Create a new {@link MultipartConfigElement} using the properties.
+	 *
 	 * @return a new {@link MultipartConfigElement} configured using there properties
 	 */
 	public MultipartConfigElement createMultipartConfig() {

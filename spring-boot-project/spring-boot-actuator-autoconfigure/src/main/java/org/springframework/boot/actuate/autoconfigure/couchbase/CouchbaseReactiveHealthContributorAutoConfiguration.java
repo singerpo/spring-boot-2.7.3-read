@@ -42,14 +42,14 @@ import org.springframework.context.annotation.Bean;
  * @since 2.1.0
  */
 @AutoConfiguration(after = CouchbaseAutoConfiguration.class)
-@ConditionalOnClass({ Cluster.class, Flux.class })
+@ConditionalOnClass({Cluster.class, Flux.class})
 @ConditionalOnBean(Cluster.class)
 @ConditionalOnEnabledHealthIndicator("couchbase")
 public class CouchbaseReactiveHealthContributorAutoConfiguration
 		extends CompositeReactiveHealthContributorConfiguration<CouchbaseReactiveHealthIndicator, Cluster> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "couchbaseHealthIndicator", "couchbaseHealthContributor" })
+	@ConditionalOnMissingBean(name = {"couchbaseHealthIndicator", "couchbaseHealthContributor"})
 	public ReactiveHealthContributor couchbaseHealthContributor(Map<String, Cluster> clusters) {
 		return createContributor(clusters);
 	}

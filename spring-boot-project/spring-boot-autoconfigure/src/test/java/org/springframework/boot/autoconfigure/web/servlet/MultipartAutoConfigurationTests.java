@@ -169,7 +169,7 @@ class MultipartAutoConfigurationTests {
 	}
 
 	private void testWebServerWithCustomMultipartConfigEnabledSetting(final String propertyValue,
-			int expectedNumberOfMultipartConfigElementBeans) {
+																	  int expectedNumberOfMultipartConfigElementBeans) {
 		this.context = new AnnotationConfigServletWebServerApplicationContext();
 		TestPropertyValues.of("spring.servlet.multipart.enabled=" + propertyValue).applyTo(this.context);
 		this.context.register(WebServerWithNoMultipartTomcat.class, BaseConfiguration.class);
@@ -284,8 +284,8 @@ class MultipartAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
-			MultipartAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+			MultipartAutoConfiguration.class})
 	@EnableConfigurationProperties(MultipartProperties.class)
 	static class BaseConfiguration {
 

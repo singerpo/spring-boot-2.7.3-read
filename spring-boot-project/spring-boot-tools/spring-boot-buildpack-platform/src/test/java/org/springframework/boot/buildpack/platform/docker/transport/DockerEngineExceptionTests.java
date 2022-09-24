@@ -36,11 +36,11 @@ class DockerEngineExceptionTests {
 	private static final String HOST = "docker://localhost/";
 
 	private static final URI URI;
+
 	static {
 		try {
 			URI = new URI("example");
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

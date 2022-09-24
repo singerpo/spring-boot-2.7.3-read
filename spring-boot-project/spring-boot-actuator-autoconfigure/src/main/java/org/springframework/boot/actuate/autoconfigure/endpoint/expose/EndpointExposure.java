@@ -36,6 +36,7 @@ public enum EndpointExposure {
 
 	/**
 	 * Exposed on Cloud Foundry via `/cloudfoundryapplication`.
+	 *
 	 * @since 2.6.4
 	 */
 	CLOUD_FOUNDRY("*");
@@ -48,6 +49,7 @@ public enum EndpointExposure {
 
 	/**
 	 * Return the default set of include patterns.
+	 *
 	 * @return the default includes
 	 */
 	public String[] getDefaultIncludes() {

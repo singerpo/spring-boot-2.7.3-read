@@ -47,7 +47,7 @@ final class RemoteHttpClientTransport extends HttpClientTransport {
 	}
 
 	static RemoteHttpClientTransport createIfPossible(ResolvedDockerHost dockerHost,
-			SslContextFactory sslContextFactory) {
+													  SslContextFactory sslContextFactory) {
 		if (!dockerHost.isRemote()) {
 			return null;
 		}
@@ -55,7 +55,7 @@ final class RemoteHttpClientTransport extends HttpClientTransport {
 	}
 
 	private static RemoteHttpClientTransport create(DockerHost host, SslContextFactory sslContextFactory,
-			HttpHost tcpHost) {
+													HttpHost tcpHost) {
 		HttpClientBuilder builder = HttpClients.custom();
 		if (host.isSecure()) {
 			builder.setSSLSocketFactory(getSecureConnectionSocketFactory(host, sslContextFactory));
@@ -66,7 +66,7 @@ final class RemoteHttpClientTransport extends HttpClientTransport {
 	}
 
 	private static LayeredConnectionSocketFactory getSecureConnectionSocketFactory(DockerHost host,
-			SslContextFactory sslContextFactory) {
+																				   SslContextFactory sslContextFactory) {
 		String directory = host.getCertificatePath();
 		Assert.hasText(directory,
 				() -> "Docker host TLS verification requires trust material location to be specified with certificate path");

@@ -39,7 +39,7 @@ class CouchbaseClientFactoryDependentConfiguration {
 	@Bean(name = BeanNames.COUCHBASE_TEMPLATE)
 	@ConditionalOnMissingBean(name = BeanNames.COUCHBASE_TEMPLATE)
 	CouchbaseTemplate couchbaseTemplate(CouchbaseClientFactory couchbaseClientFactory,
-			MappingCouchbaseConverter mappingCouchbaseConverter) {
+										MappingCouchbaseConverter mappingCouchbaseConverter) {
 		return new CouchbaseTemplate(couchbaseClientFactory, mappingCouchbaseConverter);
 	}
 

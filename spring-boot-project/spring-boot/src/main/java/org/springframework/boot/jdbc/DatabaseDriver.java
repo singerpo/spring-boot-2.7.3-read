@@ -78,6 +78,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Google App Engine.
+	 *
 	 * @deprecated since 2.7.0 for removal in 3.0.0 without replacement following the
 	 * removal of AppEngineDriver from version 2.0 of the AppEngine API SDK.
 	 */
@@ -97,12 +98,14 @@ public enum DatabaseDriver {
 
 	/**
 	 * Amazon Redshift.
+	 *
 	 * @since 2.2.0
 	 */
 	REDSHIFT("Redshift", "com.amazon.redshift.jdbc.Driver", null, "SELECT 1"),
 
 	/**
 	 * HANA - SAP HANA Database - HDB.
+	 *
 	 * @since 2.1.0
 	 */
 	HANA("HDB", "com.sap.db.jdbc.Driver", "com.sap.db.jdbcext.XADataSourceSAP", "SELECT 1 FROM SYS.DUMMY") {
@@ -123,7 +126,6 @@ public enum DatabaseDriver {
 	 */
 	SQLSERVER("Microsoft SQL Server", "com.microsoft.sqlserver.jdbc.SQLServerDriver",
 			"com.microsoft.sqlserver.jdbc.SQLServerXADataSource", "SELECT 1") {
-
 		@Override
 		protected boolean matchProductName(String productName) {
 			return super.matchProductName(productName) || "SQL SERVER".equalsIgnoreCase(productName);
@@ -136,7 +138,6 @@ public enum DatabaseDriver {
 	 */
 	FIREBIRD("Firebird", "org.firebirdsql.jdbc.FBDriver", "org.firebirdsql.ds.FBXADataSource",
 			"SELECT 1 FROM RDB$DATABASE") {
-
 		@Override
 		protected Collection<String> getUrlPrefixes() {
 			return Arrays.asList("firebirdsql", "firebird");
@@ -153,7 +154,6 @@ public enum DatabaseDriver {
 	 * DB2 Server.
 	 */
 	DB2("DB2", "com.ibm.db2.jcc.DB2Driver", "com.ibm.db2.jcc.DB2XADataSource", "SELECT 1 FROM SYSIBM.SYSDUMMY1") {
-
 		@Override
 		protected boolean matchProductName(String productName) {
 			return super.matchProductName(productName) || productName.toLowerCase(Locale.ENGLISH).startsWith("db2/");
@@ -165,7 +165,6 @@ public enum DatabaseDriver {
 	 */
 	DB2_AS400("DB2 UDB for AS/400", "com.ibm.as400.access.AS400JDBCDriver",
 			"com.ibm.as400.access.AS400JDBCXADataSource", "SELECT 1 FROM SYSIBM.SYSDUMMY1") {
-
 		@Override
 		public String getId() {
 			return "db2";
@@ -191,7 +190,6 @@ public enum DatabaseDriver {
 	 * Informix.
 	 */
 	INFORMIX("Informix Dynamic Server", "com.informix.jdbc.IfxDriver", null, "select count(*) from systables") {
-
 		@Override
 		protected Collection<String> getUrlPrefixes() {
 			return Arrays.asList("informix-sqli", "informix-direct");
@@ -201,6 +199,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Apache Phoenix.
+	 *
 	 * @since 2.5.0
 	 */
 	PHOENIX("Apache Phoenix", "org.apache.phoenix.jdbc.PhoenixDriver", null, "SELECT 1 FROM SYSTEM.CATALOG LIMIT 1"),
@@ -209,7 +208,6 @@ public enum DatabaseDriver {
 	 * Testcontainers.
 	 */
 	TESTCONTAINERS(null, "org.testcontainers.jdbc.ContainerDatabaseDriver") {
-
 		@Override
 		protected Collection<String> getUrlPrefixes() {
 			return Collections.singleton("tc");
@@ -242,6 +240,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Return the identifier of this driver.
+	 *
 	 * @return the identifier
 	 */
 	public String getId() {
@@ -258,6 +257,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Return the driver class name.
+	 *
 	 * @return the class name or {@code null}
 	 */
 	public String getDriverClassName() {
@@ -266,6 +266,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Return the XA driver source class name.
+	 *
 	 * @return the class name or {@code null}
 	 */
 	public String getXaDataSourceClassName() {
@@ -274,6 +275,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Return the validation query.
+	 *
 	 * @return the validation query or {@code null}
 	 */
 	public String getValidationQuery() {
@@ -282,6 +284,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Find a {@link DatabaseDriver} for the given URL.
+	 *
 	 * @param url the JDBC URL
 	 * @return the database driver or {@link #UNKNOWN} if not found
 	 */
@@ -303,6 +306,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Find a {@link DatabaseDriver} for the given product name.
+	 *
 	 * @param productName product name
 	 * @return the database driver or {@link #UNKNOWN} if not found
 	 */
@@ -319,6 +323,7 @@ public enum DatabaseDriver {
 
 	/**
 	 * Find a {@link DatabaseDriver} for the given {@code DataSource}.
+	 *
 	 * @param dataSource data source to inspect
 	 * @return the database driver of {@link #UNKNOWN} if not found
 	 * @since 2.6.0
@@ -328,8 +333,7 @@ public enum DatabaseDriver {
 			String productName = JdbcUtils.commonDatabaseName(
 					JdbcUtils.extractDatabaseMetaData(dataSource, DatabaseMetaData::getDatabaseProductName));
 			return DatabaseDriver.fromProductName(productName);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return DatabaseDriver.UNKNOWN;
 		}
 	}

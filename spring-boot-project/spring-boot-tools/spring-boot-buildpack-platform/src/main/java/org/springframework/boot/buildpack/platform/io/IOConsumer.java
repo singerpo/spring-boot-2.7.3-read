@@ -30,6 +30,7 @@ public interface IOConsumer<T> {
 
 	/**
 	 * Performs this operation on the given argument.
+	 *
 	 * @param t the instance to consume
 	 * @throws IOException on IO error
 	 */

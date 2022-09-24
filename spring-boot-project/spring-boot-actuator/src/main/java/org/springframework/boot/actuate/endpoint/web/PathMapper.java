@@ -35,6 +35,7 @@ public interface PathMapper {
 
 	/**
 	 * Resolve the root path for the specified {@code endpointId}.
+	 *
 	 * @param endpointId the id of an endpoint
 	 * @return the path of the endpoint or {@code null} if this mapper doesn't support the
 	 * given endpoint ID
@@ -44,8 +45,9 @@ public interface PathMapper {
 	/**
 	 * Resolve the root path for the specified {@code endpointId} from the given path
 	 * mappers. If no mapper matches then the ID itself is returned.
+	 *
 	 * @param pathMappers the path mappers (may be {@code null})
-	 * @param endpointId the id of an endpoint
+	 * @param endpointId  the id of an endpoint
 	 * @return the path of the endpoint
 	 */
 	static String getRootPath(List<PathMapper> pathMappers, EndpointId endpointId) {

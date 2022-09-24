@@ -36,7 +36,7 @@ class MetricsExportContextCustomizerFactory implements ContextCustomizerFactory 
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		boolean disableMetricsExport = TestContextAnnotationUtils.findMergedAnnotation(testClass,
 				AutoConfigureMetrics.class) == null;
 		return disableMetricsExport ? new DisableMetricExportContextCustomizer() : null;
@@ -46,7 +46,7 @@ class MetricsExportContextCustomizerFactory implements ContextCustomizerFactory 
 
 		@Override
 		public void customizeContext(ConfigurableApplicationContext context,
-				MergedContextConfiguration mergedContextConfiguration) {
+									 MergedContextConfiguration mergedContextConfiguration) {
 			TestPropertyValues.of("management.metrics.export.defaults.enabled=false",
 					"management.metrics.export.simple.enabled=true").applyTo(context);
 		}

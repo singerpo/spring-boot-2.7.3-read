@@ -56,14 +56,15 @@ public class Library {
 	/**
 	 * Create a new {@code Library} with the given {@code name}, {@code version}, and
 	 * {@code groups}.
-	 * @param name name of the library
-	 * @param version version of the library
-	 * @param groups groups in the library
+	 *
+	 * @param name               name of the library
+	 * @param version            version of the library
+	 * @param groups             groups in the library
 	 * @param prohibitedVersions version of the library that are prohibited
 	 * @param dependencyVersions the library's dependency versions
 	 */
 	public Library(String name, LibraryVersion version, List<Group> groups, List<ProhibitedVersion> prohibitedVersions,
-			DependencyVersions dependencyVersions) {
+				   DependencyVersions dependencyVersions) {
 		this.name = name;
 		this.version = version;
 		this.groups = groups;
@@ -305,8 +306,7 @@ public class Library {
 						}
 					}
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new GradleException("Failed to load versions from dependency lock file '" + source + "'", ex);
 			}
 		}
@@ -355,8 +355,7 @@ public class Library {
 						}
 					}
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new GradleException(
 						"Failed to load versions from dependency constraints declared in '" + source + "'", ex);
 			}

@@ -46,17 +46,18 @@ class EphemeralBuilder {
 
 	/**
 	 * Create a new {@link EphemeralBuilder} instance.
-	 * @param buildOwner the build owner
-	 * @param builderImage the base builder image
-	 * @param targetImage the image being built
+	 *
+	 * @param buildOwner      the build owner
+	 * @param builderImage    the base builder image
+	 * @param targetImage     the image being built
 	 * @param builderMetadata the builder metadata
-	 * @param creator the builder creator
-	 * @param env the builder env
-	 * @param buildpacks an optional set of buildpacks to apply
+	 * @param creator         the builder creator
+	 * @param env             the builder env
+	 * @param buildpacks      an optional set of buildpacks to apply
 	 * @throws IOException on IO error
 	 */
 	EphemeralBuilder(BuildOwner buildOwner, Image builderImage, ImageReference targetImage,
-			BuilderMetadata builderMetadata, Creator creator, Map<String, String> env, Buildpacks buildpacks)
+					 BuilderMetadata builderMetadata, Creator creator, Map<String, String> env, Buildpacks buildpacks)
 			throws IOException {
 		ImageReference name = ImageReference.random("pack.local/builder/").inTaggedForm();
 		this.buildOwner = buildOwner;
@@ -91,6 +92,7 @@ class EphemeralBuilder {
 
 	/**
 	 * Return the name of this archive as tagged in Docker.
+	 *
 	 * @return the ephemeral builder name
 	 */
 	ImageReference getName() {
@@ -99,6 +101,7 @@ class EphemeralBuilder {
 
 	/**
 	 * Return the build owner that should be used for written content.
+	 *
 	 * @return the builder owner
 	 */
 	Owner getBuildOwner() {
@@ -107,6 +110,7 @@ class EphemeralBuilder {
 
 	/**
 	 * Return the builder meta-data that was used to create this ephemeral builder.
+	 *
 	 * @return the builder meta-data
 	 */
 	BuilderMetadata getBuilderMetadata() {
@@ -115,6 +119,7 @@ class EphemeralBuilder {
 
 	/**
 	 * Return the contents of ephemeral builder for passing to Docker.
+	 *
 	 * @return the ephemeral builder archive
 	 */
 	ImageArchive getArchive() {

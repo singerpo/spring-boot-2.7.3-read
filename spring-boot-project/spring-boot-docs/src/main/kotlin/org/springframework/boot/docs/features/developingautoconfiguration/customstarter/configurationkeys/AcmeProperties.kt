@@ -22,12 +22,12 @@ import java.time.Duration
 @ConfigurationProperties("acme")
 class AcmeProperties(
 
-	/**
-	 * Whether to check the location of acme resources.
-	 */
-	var isCheckLocation: Boolean = true,
+		/**
+		 * Whether to check the location of acme resources.
+		 */
+		var isCheckLocation: Boolean = true,
 
-	/**
-	 * Timeout for establishing a connection to the acme server.
-	 */
-	var loginTimeout:Duration = Duration.ofSeconds(3))
+		/**
+		 * Timeout for establishing a connection to the acme server.
+		 */
+		var loginTimeout: Duration = Duration.ofSeconds(3))

@@ -43,7 +43,7 @@ public class CustomLayers implements Layers {
 	private final List<ContentSelector<Library>> librarySelectors;
 
 	public CustomLayers(List<Layer> layers, List<ContentSelector<String>> applicationSelectors,
-			List<ContentSelector<Library>> librarySelectors) {
+						List<ContentSelector<Library>> librarySelectors) {
 		Assert.notNull(layers, "Layers must not be null");
 		Assert.notNull(applicationSelectors, "ApplicationSelectors must not be null");
 		validateSelectorLayers(applicationSelectors, layers);

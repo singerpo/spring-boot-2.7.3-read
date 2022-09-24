@@ -41,7 +41,7 @@ import org.springframework.util.ObjectUtils;
  * @author Stephane Nicoll
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ Cluster.class, CouchbaseClientFactory.class, CouchbaseCacheManager.class })
+@ConditionalOnClass({Cluster.class, CouchbaseClientFactory.class, CouchbaseCacheManager.class})
 @ConditionalOnMissingBean(CacheManager.class)
 @ConditionalOnSingleCandidate(CouchbaseClientFactory.class)
 @Conditional(CacheCondition.class)
@@ -49,8 +49,8 @@ class CouchbaseCacheConfiguration {
 
 	@Bean
 	CouchbaseCacheManager cacheManager(CacheProperties cacheProperties, CacheManagerCustomizers customizers,
-			ObjectProvider<CouchbaseCacheManagerBuilderCustomizer> couchbaseCacheManagerBuilderCustomizers,
-			CouchbaseClientFactory clientFactory) {
+									   ObjectProvider<CouchbaseCacheManagerBuilderCustomizer> couchbaseCacheManagerBuilderCustomizers,
+									   CouchbaseClientFactory clientFactory) {
 		List<String> cacheNames = cacheProperties.getCacheNames();
 		CouchbaseCacheManagerBuilder builder = CouchbaseCacheManager.builder(clientFactory);
 		Couchbase couchbase = cacheProperties.getCouchbase();

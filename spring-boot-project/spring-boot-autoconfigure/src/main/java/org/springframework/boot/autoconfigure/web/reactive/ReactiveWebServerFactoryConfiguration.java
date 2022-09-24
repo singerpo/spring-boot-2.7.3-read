@@ -56,7 +56,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnMissingBean(ReactiveWebServerFactory.class)
-	@ConditionalOnClass({ HttpServer.class })
+	@ConditionalOnClass({HttpServer.class})
 	static class EmbeddedNetty {
 
 		@Bean
@@ -67,7 +67,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 		@Bean
 		NettyReactiveWebServerFactory nettyReactiveWebServerFactory(ReactorResourceFactory resourceFactory,
-				ObjectProvider<NettyRouteProvider> routes, ObjectProvider<NettyServerCustomizer> serverCustomizers) {
+																	ObjectProvider<NettyRouteProvider> routes, ObjectProvider<NettyServerCustomizer> serverCustomizers) {
 			NettyReactiveWebServerFactory serverFactory = new NettyReactiveWebServerFactory();
 			serverFactory.setResourceFactory(resourceFactory);
 			routes.orderedStream().forEach(serverFactory::addRouteProviders);
@@ -79,7 +79,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnMissingBean(ReactiveWebServerFactory.class)
-	@ConditionalOnClass({ org.apache.catalina.startup.Tomcat.class })
+	@ConditionalOnClass({org.apache.catalina.startup.Tomcat.class})
 	static class EmbeddedTomcat {
 
 		@Bean
@@ -101,7 +101,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnMissingBean(ReactiveWebServerFactory.class)
-	@ConditionalOnClass({ org.eclipse.jetty.server.Server.class, ServletHolder.class })
+	@ConditionalOnClass({org.eclipse.jetty.server.Server.class, ServletHolder.class})
 	static class EmbeddedJetty {
 
 		@Bean
@@ -112,7 +112,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 		@Bean
 		JettyReactiveWebServerFactory jettyReactiveWebServerFactory(JettyResourceFactory resourceFactory,
-				ObjectProvider<JettyServerCustomizer> serverCustomizers) {
+																	ObjectProvider<JettyServerCustomizer> serverCustomizers) {
 			JettyReactiveWebServerFactory serverFactory = new JettyReactiveWebServerFactory();
 			serverFactory.getServerCustomizers().addAll(serverCustomizers.orderedStream().collect(Collectors.toList()));
 			serverFactory.setResourceFactory(resourceFactory);
@@ -123,7 +123,7 @@ abstract class ReactiveWebServerFactoryConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnMissingBean(ReactiveWebServerFactory.class)
-	@ConditionalOnClass({ Undertow.class })
+	@ConditionalOnClass({Undertow.class})
 	static class EmbeddedUndertow {
 
 		@Bean

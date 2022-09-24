@@ -34,6 +34,7 @@ public class PortInUseException extends WebServerException {
 
 	/**
 	 * Creates a new port in use exception for the given {@code port}.
+	 *
 	 * @param port the port that was in use
 	 */
 	public PortInUseException(int port) {
@@ -42,7 +43,8 @@ public class PortInUseException extends WebServerException {
 
 	/**
 	 * Creates a new port in use exception for the given {@code port}.
-	 * @param port the port that was in use
+	 *
+	 * @param port  the port that was in use
 	 * @param cause the cause of the exception
 	 */
 	public PortInUseException(int port, Throwable cause) {
@@ -52,6 +54,7 @@ public class PortInUseException extends WebServerException {
 
 	/**
 	 * Returns the port that was in use.
+	 *
 	 * @return the port
 	 */
 	public int getPort() {
@@ -61,7 +64,8 @@ public class PortInUseException extends WebServerException {
 	/**
 	 * Throw a {@link PortInUseException} if the given exception was caused by a "port in
 	 * use" {@link BindException}.
-	 * @param ex the source exception
+	 *
+	 * @param ex   the source exception
 	 * @param port a suppler used to provide the port
 	 * @since 2.2.7
 	 */
@@ -74,7 +78,8 @@ public class PortInUseException extends WebServerException {
 	/**
 	 * Perform an action if the given exception was caused by a "port in use"
 	 * {@link BindException}.
-	 * @param ex the source exception
+	 *
+	 * @param ex     the source exception
 	 * @param action the action to perform
 	 * @since 2.2.7
 	 */
@@ -89,10 +94,11 @@ public class PortInUseException extends WebServerException {
 
 	/**
 	 * Perform an action if the given exception was caused by a specific exception type.
-	 * @param <E> the cause exception type
-	 * @param ex the source exception
+	 *
+	 * @param <E>      the cause exception type
+	 * @param ex       the source exception
 	 * @param causedBy the required cause type
-	 * @param action the action to perform
+	 * @param action   the action to perform
 	 * @since 2.2.7
 	 */
 	@SuppressWarnings("unchecked")

@@ -82,13 +82,14 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 
 	/**
 	 * Create a new {@link EndpointDiscoverer} instance.
-	 * @param applicationContext the source application context
+	 *
+	 * @param applicationContext   the source application context
 	 * @param parameterValueMapper the parameter value mapper
-	 * @param invokerAdvisors invoker advisors to apply
-	 * @param filters filters to apply
+	 * @param invokerAdvisors      invoker advisors to apply
+	 * @param filters              filters to apply
 	 */
 	public EndpointDiscoverer(ApplicationContext applicationContext, ParameterValueMapper parameterValueMapper,
-			Collection<OperationInvokerAdvisor> invokerAdvisors, Collection<EndpointFilter<E>> filters) {
+							  Collection<OperationInvokerAdvisor> invokerAdvisors, Collection<EndpointFilter<E>> filters) {
 		Assert.notNull(applicationContext, "ApplicationContext must not be null");
 		Assert.notNull(parameterValueMapper, "ParameterValueMapper must not be null");
 		Assert.notNull(invokerAdvisors, "InvokerAdvisors must not be null");
@@ -99,12 +100,12 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 	}
 
 	private DiscoveredOperationsFactory<O> getOperationsFactory(ParameterValueMapper parameterValueMapper,
-			Collection<OperationInvokerAdvisor> invokerAdvisors) {
+																Collection<OperationInvokerAdvisor> invokerAdvisors) {
 		return new DiscoveredOperationsFactory<O>(parameterValueMapper, invokerAdvisors) {
 
 			@Override
 			protected O createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-					OperationInvoker invoker) {
+										OperationInvoker invoker) {
 				return EndpointDiscoverer.this.createOperation(endpointId, operationMethod, invoker);
 			}
 
@@ -205,7 +206,7 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 	}
 
 	private void addOperations(MultiValueMap<OperationKey, O> indexed, EndpointId id, Object target,
-			boolean replaceLast) {
+							   boolean replaceLast) {
 		Set<OperationKey> replacedLast = new HashSet<>();
 		Collection<O> operations = this.operationsFactory.createOperations(id, target);
 		for (O operation : operations) {
@@ -243,6 +244,7 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 	/**
 	 * Determine if an extension bean should be exposed. Subclasses can override this
 	 * method to provide additional logic.
+	 *
 	 * @param extensionBeanType the extension bean type
 	 * @return {@code true} if the extension is exposed
 	 */
@@ -258,6 +260,7 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 	/**
 	 * Determine if an endpoint bean should be exposed. Subclasses can override this
 	 * method to provide additional logic.
+	 *
 	 * @param beanType the endpoint bean type
 	 * @return {@code true} if the endpoint is exposed
 	 */
@@ -318,27 +321,30 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 
 	/**
 	 * Factory method called to create the {@link ExposableEndpoint endpoint}.
-	 * @param endpointBean the source endpoint bean
-	 * @param id the ID of the endpoint
+	 *
+	 * @param endpointBean     the source endpoint bean
+	 * @param id               the ID of the endpoint
 	 * @param enabledByDefault if the endpoint is enabled by default
-	 * @param operations the endpoint operations
+	 * @param operations       the endpoint operations
 	 * @return a created endpoint (a {@link DiscoveredEndpoint} is recommended)
 	 */
 	protected abstract E createEndpoint(Object endpointBean, EndpointId id, boolean enabledByDefault,
-			Collection<O> operations);
+										Collection<O> operations);
 
 	/**
 	 * Factory method to create an {@link Operation endpoint operation}.
-	 * @param endpointId the endpoint id
+	 *
+	 * @param endpointId      the endpoint id
 	 * @param operationMethod the operation method
-	 * @param invoker the invoker to use
+	 * @param invoker         the invoker to use
 	 * @return a created operation
 	 */
 	protected abstract O createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-			OperationInvoker invoker);
+										 OperationInvoker invoker);
 
 	/**
 	 * Create an {@link OperationKey} for the given operation.
+	 *
 	 * @param operation the source operation
 	 * @return the operation key
 	 */
@@ -356,7 +362,8 @@ public abstract class EndpointDiscoverer<E extends ExposableEndpoint<O>, O exten
 
 		/**
 		 * Create a new {@link OperationKey} instance.
-		 * @param key the underlying key for the operation
+		 *
+		 * @param key         the underlying key for the operation
 		 * @param description a human-readable description of the key
 		 */
 		public OperationKey(Object key, Supplier<String> description) {

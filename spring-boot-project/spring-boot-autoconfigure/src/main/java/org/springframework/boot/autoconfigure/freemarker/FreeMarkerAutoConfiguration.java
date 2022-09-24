@@ -40,10 +40,10 @@ import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
  * @since 1.1.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ freemarker.template.Configuration.class, FreeMarkerConfigurationFactory.class })
+@ConditionalOnClass({freemarker.template.Configuration.class, FreeMarkerConfigurationFactory.class})
 @EnableConfigurationProperties(FreeMarkerProperties.class)
-@Import({ FreeMarkerServletWebConfiguration.class, FreeMarkerReactiveWebConfiguration.class,
-		FreeMarkerNonWebConfiguration.class })
+@Import({FreeMarkerServletWebConfiguration.class, FreeMarkerReactiveWebConfiguration.class,
+		FreeMarkerNonWebConfiguration.class})
 public class FreeMarkerAutoConfiguration {
 
 	private static final Log logger = LogFactory.getLog(FreeMarkerAutoConfiguration.class);

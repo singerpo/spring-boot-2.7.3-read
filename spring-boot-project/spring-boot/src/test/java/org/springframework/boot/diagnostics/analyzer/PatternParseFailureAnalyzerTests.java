@@ -52,8 +52,7 @@ class PatternParseFailureAnalyzerTests {
 		try {
 			this.parser.parse(pattern);
 			return null;
-		}
-		catch (PatternParseException ex) {
+		} catch (PatternParseException ex) {
 			return ex;
 		}
 	}

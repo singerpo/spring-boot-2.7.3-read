@@ -104,8 +104,8 @@ class DataSourceAutoConfigurationTests {
 	@Test
 	void hikariValidatesConnectionByDefault() {
 		assertDataSource(HikariDataSource.class, Collections.singletonList("org.apache.tomcat"), (dataSource) ->
-		// Use Connection#isValid()
-		assertThat(dataSource.getConnectionTestQuery()).isNull());
+				// Use Connection#isValid()
+				assertThat(dataSource.getConnectionTestQuery()).isNull());
 	}
 
 	@Test
@@ -161,11 +161,11 @@ class DataSourceAutoConfigurationTests {
 	void testEmbeddedTypeDefaultsUsername() {
 		this.contextRunner.withPropertyValues("spring.datasource.driverClassName:org.hsqldb.jdbcDriver",
 				"spring.datasource.url:jdbc:hsqldb:mem:testdb").run((context) -> {
-					DataSource bean = context.getBean(DataSource.class);
-					HikariDataSource pool = (HikariDataSource) bean;
-					assertThat(pool.getDriverClassName()).isEqualTo("org.hsqldb.jdbcDriver");
-					assertThat(pool.getUsername()).isEqualTo("sa");
-				});
+			DataSource bean = context.getBean(DataSource.class);
+			HikariDataSource pool = (HikariDataSource) bean;
+			assertThat(pool.getDriverClassName()).isEqualTo("org.hsqldb.jdbcDriver");
+			assertThat(pool.getUsername()).isEqualTo("sa");
+		});
 	}
 
 	@Test
@@ -206,11 +206,11 @@ class DataSourceAutoConfigurationTests {
 	void testExplicitDriverClassClearsUsername() {
 		this.contextRunner.withPropertyValues("spring.datasource.driverClassName:" + DatabaseTestDriver.class.getName(),
 				"spring.datasource.url:jdbc:foo://localhost").run((context) -> {
-					assertThat(context).hasSingleBean(DataSource.class);
-					HikariDataSource dataSource = context.getBean(HikariDataSource.class);
-					assertThat(dataSource.getDriverClassName()).isEqualTo(DatabaseTestDriver.class.getName());
-					assertThat(dataSource.getUsername()).isNull();
-				});
+			assertThat(context).hasSingleBean(DataSource.class);
+			HikariDataSource dataSource = context.getBean(HikariDataSource.class);
+			assertThat(dataSource.getDriverClassName()).isEqualTo(DatabaseTestDriver.class.getName());
+			assertThat(dataSource.getUsername()).isNull();
+		});
 	}
 
 	@Test
@@ -244,7 +244,7 @@ class DataSourceAutoConfigurationTests {
 	}
 
 	private <T extends DataSource> void assertDataSource(Class<T> expectedType, List<String> hiddenPackages,
-			Consumer<T> consumer) {
+														 Consumer<T> consumer) {
 		FilteredClassLoader classLoader = new FilteredClassLoader(StringUtils.toStringArray(hiddenPackages));
 		this.contextRunner.withClassLoader(classLoader).run((context) -> {
 			DataSource bean = context.getBean(DataSource.class);

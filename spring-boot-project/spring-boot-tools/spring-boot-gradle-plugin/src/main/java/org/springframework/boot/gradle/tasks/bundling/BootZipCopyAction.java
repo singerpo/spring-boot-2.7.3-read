@@ -95,10 +95,10 @@ class BootZipCopyAction implements CopyAction {
 	private final LayerResolver layerResolver;
 
 	BootZipCopyAction(File output, Manifest manifest, boolean preserveFileTimestamps, boolean includeDefaultLoader,
-			String layerToolsLocation, Spec<FileTreeElement> requiresUnpack, Spec<FileTreeElement> exclusions,
-			LaunchScriptConfiguration launchScript, Spec<FileCopyDetails> librarySpec,
-			Function<FileCopyDetails, ZipCompression> compressionResolver, String encoding,
-			LayerResolver layerResolver) {
+					  String layerToolsLocation, Spec<FileTreeElement> requiresUnpack, Spec<FileTreeElement> exclusions,
+					  LaunchScriptConfiguration launchScript, Spec<FileCopyDetails> librarySpec,
+					  Function<FileCopyDetails, ZipCompression> compressionResolver, String encoding,
+					  LayerResolver layerResolver) {
 		this.output = output;
 		this.manifest = manifest;
 		this.preserveFileTimestamps = preserveFileTimestamps;
@@ -118,8 +118,7 @@ class BootZipCopyAction implements CopyAction {
 		try {
 			writeArchive(copyActions);
 			return WorkResults.didWork(true);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new GradleException("Failed to create " + this.output, ex);
 		}
 	}
@@ -128,8 +127,7 @@ class BootZipCopyAction implements CopyAction {
 		OutputStream output = new FileOutputStream(this.output);
 		try {
 			writeArchive(copyActions, output);
-		}
-		finally {
+		} finally {
 			closeQuietly(output);
 		}
 	}
@@ -142,8 +140,7 @@ class BootZipCopyAction implements CopyAction {
 			Processor processor = new Processor(zipOutput);
 			copyActions.process(processor::process);
 			processor.finish();
-		}
-		finally {
+		} finally {
 			closeQuietly(zipOutput);
 		}
 	}
@@ -157,8 +154,7 @@ class BootZipCopyAction implements CopyAction {
 			Map<String, String> properties = this.launchScript.getProperties();
 			outputStream.writePreamble(new DefaultLaunchScript(file, properties).toByteArray());
 			this.output.setExecutable(true);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new GradleException("Failed to write launch script to " + this.output, ex);
 		}
 	}
@@ -172,8 +168,7 @@ class BootZipCopyAction implements CopyAction {
 	private void closeQuietly(OutputStream outputStream) {
 		try {
 			outputStream.close();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 		}
 	}
 
@@ -206,12 +201,10 @@ class BootZipCopyAction implements CopyAction {
 				writeLoaderEntriesIfNecessary(details);
 				if (details.isDirectory()) {
 					processDirectory(details);
-				}
-				else {
+				} else {
 					processFile(details);
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new GradleException("Failed to add " + details + " to " + BootZipCopyAction.this.output, ex);
 			}
 		}
@@ -346,7 +339,7 @@ class BootZipCopyAction implements CopyAction {
 		}
 
 		private void writeEntry(String name, ZipEntryContentWriter entryWriter, boolean addToLayerIndex,
-				ZipEntryCustomizer entryCustomizer) throws IOException {
+								ZipEntryCustomizer entryCustomizer) throws IOException {
 			ZipArchiveEntry entry = new ZipArchiveEntry(name);
 			prepareEntry(entry, name, getTime(), UnixStat.FILE_FLAG | UnixStat.DEFAULT_FILE_PERM);
 			entryCustomizer.customize(entry);
@@ -405,6 +398,7 @@ class BootZipCopyAction implements CopyAction {
 
 		/**
 		 * Customize the entry.
+		 *
 		 * @param entry the entry to customize
 		 * @throws IOException on IO error
 		 */
@@ -420,6 +414,7 @@ class BootZipCopyAction implements CopyAction {
 
 		/**
 		 * Write the entry data.
+		 *
 		 * @param out the output stream used to write the data
 		 * @throws IOException on IO error
 		 */
@@ -428,6 +423,7 @@ class BootZipCopyAction implements CopyAction {
 		/**
 		 * Create a new {@link ZipEntryContentWriter} that will copy content from the
 		 * given {@link InputStream}.
+		 *
 		 * @param in the source input stream
 		 * @return a new {@link ZipEntryContentWriter} instance
 		 */
@@ -441,8 +437,9 @@ class BootZipCopyAction implements CopyAction {
 		/**
 		 * Create a new {@link ZipEntryContentWriter} that will copy content from the
 		 * given lines.
+		 *
 		 * @param encoding the required character encoding
-		 * @param lines the lines to write
+		 * @param lines    the lines to write
 		 * @return a new {@link ZipEntryContentWriter} instance
 		 */
 		static ZipEntryContentWriter fromLines(String encoding, Collection<String> lines) {
@@ -471,8 +468,7 @@ class BootZipCopyAction implements CopyAction {
 		CrcAndSize(InputStream inputStream) throws IOException {
 			try {
 				load(inputStream);
-			}
-			finally {
+			} finally {
 				inputStream.close();
 			}
 		}

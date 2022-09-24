@@ -70,13 +70,13 @@ class JooqExceptionTranslatorTests {
 	}
 
 	static Object[] exceptionTranslation() {
-		return new Object[] { new Object[] { SQLDialect.DERBY, sqlException("42802") },
-				new Object[] { SQLDialect.H2, sqlException(42000) },
-				new Object[] { SQLDialect.HSQLDB, sqlException(-22) },
-				new Object[] { SQLDialect.MARIADB, sqlException(1054) },
-				new Object[] { SQLDialect.MYSQL, sqlException(1054) },
-				new Object[] { SQLDialect.POSTGRES, sqlException("03000") },
-				new Object[] { SQLDialect.SQLITE, sqlException("21000") } };
+		return new Object[]{new Object[]{SQLDialect.DERBY, sqlException("42802")},
+				new Object[]{SQLDialect.H2, sqlException(42000)},
+				new Object[]{SQLDialect.HSQLDB, sqlException(-22)},
+				new Object[]{SQLDialect.MARIADB, sqlException(1054)},
+				new Object[]{SQLDialect.MYSQL, sqlException(1054)},
+				new Object[]{SQLDialect.POSTGRES, sqlException("03000")},
+				new Object[]{SQLDialect.SQLITE, sqlException("21000")}};
 	}
 
 	private static SQLException sqlException(String sqlState) {

@@ -66,13 +66,13 @@ import org.springframework.web.servlet.DispatcherServlet;
 @ConditionalOnWebApplication(type = Type.SERVLET)
 @ConditionalOnBean(HealthEndpoint.class)
 @ConditionalOnAvailableEndpoint(endpoint = HealthEndpoint.class,
-		exposure = { EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY })
+		exposure = {EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY})
 class HealthEndpointWebExtensionConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	HealthEndpointWebExtension healthEndpointWebExtension(HealthContributorRegistry healthContributorRegistry,
-			HealthEndpointGroups groups, HealthEndpointProperties properties) {
+														  HealthEndpointGroups groups, HealthEndpointProperties properties) {
 		return new HealthEndpointWebExtension(healthContributorRegistry, groups,
 				properties.getLogging().getSlowIndicatorThreshold());
 	}
@@ -146,7 +146,7 @@ class HealthEndpointWebExtensionConfiguration {
 		private final HealthEndpointGroups groups;
 
 		JerseyAdditionalHealthEndpointPathsResourcesRegistrar(ExposableWebEndpoint endpoint,
-				HealthEndpointGroups groups) {
+															  HealthEndpointGroups groups) {
 			this.endpoint = endpoint;
 			this.groups = groups;
 		}

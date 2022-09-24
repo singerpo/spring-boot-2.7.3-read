@@ -61,32 +61,34 @@ public class PrometheusPushGatewayManager {
 	/**
 	 * Create a new {@link PrometheusPushGatewayManager} instance using a single threaded
 	 * {@link TaskScheduler}.
-	 * @param pushGateway the source push gateway
-	 * @param registry the collector registry to push
-	 * @param pushRate the rate at which push operations occur
-	 * @param job the job ID for the operation
-	 * @param groupingKeys an optional set of grouping keys for the operation
+	 *
+	 * @param pushGateway       the source push gateway
+	 * @param registry          the collector registry to push
+	 * @param pushRate          the rate at which push operations occur
+	 * @param job               the job ID for the operation
+	 * @param groupingKeys      an optional set of grouping keys for the operation
 	 * @param shutdownOperation the shutdown operation that should be performed when
-	 * context is closed.
+	 *                          context is closed.
 	 */
 	public PrometheusPushGatewayManager(PushGateway pushGateway, CollectorRegistry registry, Duration pushRate,
-			String job, Map<String, String> groupingKeys, ShutdownOperation shutdownOperation) {
+										String job, Map<String, String> groupingKeys, ShutdownOperation shutdownOperation) {
 		this(pushGateway, registry, new PushGatewayTaskScheduler(), pushRate, job, groupingKeys, shutdownOperation);
 	}
 
 	/**
 	 * Create a new {@link PrometheusPushGatewayManager} instance.
-	 * @param pushGateway the source push gateway
-	 * @param registry the collector registry to push
-	 * @param scheduler the scheduler used for operations
-	 * @param pushRate the rate at which push operations occur
-	 * @param job the job ID for the operation
-	 * @param groupingKey an optional set of grouping keys for the operation
+	 *
+	 * @param pushGateway       the source push gateway
+	 * @param registry          the collector registry to push
+	 * @param scheduler         the scheduler used for operations
+	 * @param pushRate          the rate at which push operations occur
+	 * @param job               the job ID for the operation
+	 * @param groupingKey       an optional set of grouping keys for the operation
 	 * @param shutdownOperation the shutdown operation that should be performed when
-	 * context is closed.
+	 *                          context is closed.
 	 */
 	public PrometheusPushGatewayManager(PushGateway pushGateway, CollectorRegistry registry, TaskScheduler scheduler,
-			Duration pushRate, String job, Map<String, String> groupingKey, ShutdownOperation shutdownOperation) {
+										Duration pushRate, String job, Map<String, String> groupingKey, ShutdownOperation shutdownOperation) {
 		Assert.notNull(pushGateway, "PushGateway must not be null");
 		Assert.notNull(registry, "Registry must not be null");
 		Assert.notNull(scheduler, "Scheduler must not be null");
@@ -104,8 +106,7 @@ public class PrometheusPushGatewayManager {
 	private void push() {
 		try {
 			this.pushGateway.pushAdd(this.registry, this.job, this.groupingKey);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			logger.warn("Unexpected exception thrown while pushing metrics to Prometheus Pushgateway", ex);
 		}
 	}
@@ -113,8 +114,7 @@ public class PrometheusPushGatewayManager {
 	private void delete() {
 		try {
 			this.pushGateway.delete(this.job, this.groupingKey);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			logger.warn("Unexpected exception thrown while deleting metrics from Prometheus Pushgateway", ex);
 		}
 	}

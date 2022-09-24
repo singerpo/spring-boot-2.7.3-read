@@ -29,8 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 2.0.0
  * @see DefaultErrorAttributes
+ * @since 2.0.0
  */
 public interface ErrorAttributes {
 
@@ -38,6 +38,7 @@ public interface ErrorAttributes {
 	 * Name of the {@link javax.servlet.http.HttpServletRequest#getAttribute(String)
 	 * request attribute} holding the error resolved by the {@code ErrorAttributes}
 	 * implementation.
+	 *
 	 * @since 2.5.0
 	 */
 	String ERROR_ATTRIBUTE = ErrorAttributes.class.getName() + ".error";
@@ -46,8 +47,9 @@ public interface ErrorAttributes {
 	 * Returns a {@link Map} of the error attributes. The map can be used as the model of
 	 * an error page {@link ModelAndView}, or returned as a
 	 * {@link ResponseBody @ResponseBody}.
+	 *
 	 * @param webRequest the source request
-	 * @param options options for error attribute contents
+	 * @param options    options for error attribute contents
 	 * @return a map of error attributes
 	 * @since 2.3.0
 	 */
@@ -58,6 +60,7 @@ public interface ErrorAttributes {
 	/**
 	 * Return the underlying cause of the error or {@code null} if the error cannot be
 	 * extracted.
+	 *
 	 * @param webRequest the source request
 	 * @return the {@link Exception} that caused the error or {@code null}
 	 */

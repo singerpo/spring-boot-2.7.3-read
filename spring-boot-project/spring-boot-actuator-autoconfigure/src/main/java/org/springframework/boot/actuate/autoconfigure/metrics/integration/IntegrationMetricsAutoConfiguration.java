@@ -32,7 +32,7 @@ import org.springframework.boot.autoconfigure.integration.IntegrationAutoConfigu
  *
  * @author Andy Wilkinson
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class },
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class},
 		before = IntegrationAutoConfiguration.class)
 class IntegrationMetricsAutoConfiguration {
 

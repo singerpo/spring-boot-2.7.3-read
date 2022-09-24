@@ -2,16 +2,16 @@ import groovy.util.XmlSlurper
 
 private String format(String input) {
 	input.replace("<code>", "`")
-		.replace("</code>", "`")
-		.replace("&lt;", "<")
-		.replace("&gt;", ">")
-		.replace("<br>", " ")
-		.replace("\n", " ")
-		.replace("&quot;", '"')
-		.replaceAll('\\{@code (.*?)\\}', '`$1`')
-		.replaceAll('\\{@link (.*?)\\}', '`$1`')
-		.replaceAll('\\{@literal (.*?)\\}', '`$1`')
-		.replaceAll('<a href=."(.*?)".>(.*?)</a>', '\$1[\$2]')
+			.replace("</code>", "`")
+			.replace("&lt;", "<")
+			.replace("&gt;", ">")
+			.replace("<br>", " ")
+			.replace("\n", " ")
+			.replace("&quot;", '"')
+			.replaceAll('\\{@code (.*?)\\}', '`$1`')
+			.replaceAll('\\{@link (.*?)\\}', '`$1`')
+			.replaceAll('\\{@literal (.*?)\\}', '`$1`')
+			.replaceAll('<a href=."(.*?)".>(.*?)</a>', '\$1[\$2]')
 }
 
 private writeParametersTable(PrintWriter writer, def goal, def parameters, def configuration) {
@@ -30,8 +30,7 @@ private writeParametersTable(PrintWriter writer, def goal, def parameters, def c
 		def defaultValue = "${configuration[name].@'default-value'}"
 		if (defaultValue) {
 			writer.println("| `$defaultValue`")
-		}
-		else {
+		} else {
 			writer.println("|")
 		}
 		writer.println()
@@ -106,7 +105,7 @@ plugin.mojos.mojo.each { mojo ->
 		writer.println(format(mojo.description.text()))
 		writer.println()
 		def parameters = mojo.parameters.parameter.findAll { it.editable.text() == 'true' }
-		def requiredParameters =  parameters.findAll { it.required.text() == 'true' }
+		def requiredParameters = parameters.findAll { it.required.text() == 'true' }
 		if (requiredParameters.size()) {
 			writer.println("[[$sectionId-parameters-required]]")
 			writer.println("=== Required parameters")

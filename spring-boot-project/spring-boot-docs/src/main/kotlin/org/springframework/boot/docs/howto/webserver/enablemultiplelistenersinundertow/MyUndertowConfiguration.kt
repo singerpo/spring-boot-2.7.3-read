@@ -30,7 +30,7 @@ class MyUndertowConfiguration {
 	fun undertowListenerCustomizer(): WebServerFactoryCustomizer<UndertowServletWebServerFactory> {
 		return WebServerFactoryCustomizer { factory: UndertowServletWebServerFactory ->
 			factory.addBuilderCustomizers(
-				UndertowBuilderCustomizer { builder: Undertow.Builder -> addHttpListener(builder) })
+					UndertowBuilderCustomizer { builder: Undertow.Builder -> addHttpListener(builder) })
 		}
 	}
 

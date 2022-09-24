@@ -49,7 +49,7 @@ class ConfigDataLocationResolverTests {
 
 		@Override
 		public List<ConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location) {
+												ConfigDataLocation location) {
 			return null;
 		}
 

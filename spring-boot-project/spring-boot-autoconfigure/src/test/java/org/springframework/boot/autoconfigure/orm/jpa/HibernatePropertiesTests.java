@@ -165,7 +165,7 @@ class HibernatePropertiesTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@EnableConfigurationProperties({ JpaProperties.class, HibernateProperties.class })
+	@EnableConfigurationProperties({JpaProperties.class, HibernateProperties.class})
 	static class TestConfiguration {
 
 	}

@@ -26,8 +26,9 @@ public interface GitHub {
 	/**
 	 * Returns a {@link GitHubRepository} with the given {@code name} in the given
 	 * {@code organization}.
+	 *
 	 * @param organization the organization
-	 * @param name the name of the repository
+	 * @param name         the name of the repository
 	 * @return the repository
 	 */
 	GitHubRepository getRepository(String organization, String name);
@@ -35,6 +36,7 @@ public interface GitHub {
 	/**
 	 * Creates a new {@code GitHub} that will authenticate with given {@code username} and
 	 * {@code password}.
+	 *
 	 * @param username username for authentication
 	 * @param password password for authentication
 	 * @return the new {@code GitHub} instance

@@ -81,10 +81,10 @@ import org.springframework.util.StringUtils;
  * @author Madhura Bhave
  * @since 1.1.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class, JmxAutoConfiguration.class,
-		TaskSchedulingAutoConfiguration.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class, JmxAutoConfiguration.class,
+		TaskSchedulingAutoConfiguration.class})
 @ConditionalOnClass(EnableIntegration.class)
-@EnableConfigurationProperties({ IntegrationProperties.class, JmxProperties.class })
+@EnableConfigurationProperties({IntegrationProperties.class, JmxProperties.class})
 public class IntegrationAutoConfiguration {
 
 	@Bean(name = IntegrationContextUtils.INTEGRATION_GLOBAL_PROPERTIES_BEAN_NAME)
@@ -237,10 +237,10 @@ public class IntegrationAutoConfiguration {
 
 		@Bean
 		@SuppressWarnings("deprecation")
-		@ConditionalOnMissingBean({ IntegrationDataSourceScriptDatabaseInitializer.class,
-				IntegrationDataSourceInitializer.class })
+		@ConditionalOnMissingBean({IntegrationDataSourceScriptDatabaseInitializer.class,
+				IntegrationDataSourceInitializer.class})
 		public IntegrationDataSourceScriptDatabaseInitializer integrationDataSourceInitializer(DataSource dataSource,
-				IntegrationProperties properties) {
+																							   IntegrationProperties properties) {
 			return new IntegrationDataSourceScriptDatabaseInitializer(dataSource, properties.getJdbc());
 		}
 
@@ -250,7 +250,7 @@ public class IntegrationAutoConfiguration {
 	 * Integration RSocket configuration.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ IntegrationRSocketEndpoint.class, RSocketRequester.class, io.rsocket.RSocket.class })
+	@ConditionalOnClass({IntegrationRSocketEndpoint.class, RSocketRequester.class, io.rsocket.RSocket.class})
 	@Conditional(IntegrationRSocketConfiguration.AnyRSocketChannelAdapterAvailable.class)
 	protected static class IntegrationRSocketConfiguration {
 
@@ -284,7 +284,7 @@ public class IntegrationAutoConfiguration {
 			@Bean
 			@ConditionalOnMissingBean(ServerRSocketMessageHandler.class)
 			public RSocketMessageHandler serverRSocketMessageHandler(RSocketStrategies rSocketStrategies,
-					IntegrationProperties integrationProperties) {
+																	 IntegrationProperties integrationProperties) {
 
 				RSocketMessageHandler messageHandler = new ServerRSocketMessageHandler(
 						integrationProperties.getRsocket().getServer().isMessageMappingEnabled());
@@ -307,7 +307,7 @@ public class IntegrationAutoConfiguration {
 			@ConditionalOnMissingBean
 			@Conditional(RemoteRSocketServerAddressConfigured.class)
 			public ClientRSocketConnector clientRSocketConnector(IntegrationProperties integrationProperties,
-					RSocketStrategies rSocketStrategies) {
+																 RSocketStrategies rSocketStrategies) {
 
 				IntegrationProperties.RSocket.Client client = integrationProperties.getRsocket().getClient();
 				ClientRSocketConnector clientRSocketConnector = (client.getUri() != null)
@@ -331,7 +331,7 @@ public class IntegrationAutoConfiguration {
 
 				}
 
-				@ConditionalOnProperty(prefix = "spring.integration.rsocket.client", name = { "host", "port" })
+				@ConditionalOnProperty(prefix = "spring.integration.rsocket.client", name = {"host", "port"})
 				static class TcpAddressConfigured {
 
 				}

@@ -38,7 +38,7 @@ import static org.mockito.Mockito.mock;
  * @author Stephane Nicoll
  * @author Andy Wilkinson
  */
-@ClassPathExclusions({ "h2-*.jar", "hsqldb-*.jar", "derby-*.jar" })
+@ClassPathExclusions({"h2-*.jar", "hsqldb-*.jar", "derby-*.jar"})
 class TestDatabaseAutoConfigurationNoEmbeddedTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()

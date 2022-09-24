@@ -88,10 +88,10 @@ class RSocketServerAutoConfigurationTests {
 	void shouldSetLocalServerPortWhenRSocketServerPortIsSet() {
 		reactiveWebContextRunner().withPropertyValues("spring.rsocket.server.port=0")
 				.withInitializer(new RSocketPortInfoApplicationContextInitializer()).run((context) -> {
-					assertThat(context).hasSingleBean(RSocketServerFactory.class)
-							.hasSingleBean(RSocketServerBootstrap.class).hasSingleBean(RSocketServerCustomizer.class);
-					assertThat(context.getEnvironment().getProperty("local.rsocket.server.port")).isNotNull();
-				});
+			assertThat(context).hasSingleBean(RSocketServerFactory.class)
+					.hasSingleBean(RSocketServerBootstrap.class).hasSingleBean(RSocketServerCustomizer.class);
+			assertThat(context.getEnvironment().getProperty("local.rsocket.server.port")).isNotNull();
+		});
 	}
 
 	@Test

@@ -103,13 +103,11 @@ abstract class AbstractDeploymentTests {
 					try {
 						consumer.accept(rest);
 						return true;
-					}
-					catch (Throwable ex) {
+					} catch (Throwable ex) {
 						return false;
 					}
 				});
-			}
-			catch (ConditionTimeoutException ex) {
+			} catch (ConditionTimeoutException ex) {
 				System.out.println(this.container.getLogs());
 				throw ex;
 			}

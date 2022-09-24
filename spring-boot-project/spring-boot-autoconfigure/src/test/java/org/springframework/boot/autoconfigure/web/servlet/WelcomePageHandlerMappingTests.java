@@ -155,9 +155,9 @@ class WelcomePageHandlerMappingTests {
 
 		@Bean
 		WelcomePageHandlerMapping handlerMapping(ApplicationContext applicationContext,
-				ObjectProvider<TemplateAvailabilityProviders> templateAvailabilityProviders,
-				ObjectProvider<Resource> staticIndexPage,
-				@Value("${static-path-pattern:/**}") String staticPathPattern) {
+												 ObjectProvider<TemplateAvailabilityProviders> templateAvailabilityProviders,
+												 ObjectProvider<Resource> staticIndexPage,
+												 @Value("${static-path-pattern:/**}") String staticPathPattern) {
 			return new WelcomePageHandlerMapping(
 					templateAvailabilityProviders
 							.getIfAvailable(() -> new TemplateAvailabilityProviders(applicationContext)),
@@ -195,7 +195,7 @@ class WelcomePageHandlerMappingTests {
 
 					@Override
 					protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
-							HttpServletResponse response) throws Exception {
+														   HttpServletResponse response) throws Exception {
 						response.getWriter().print(name + " template");
 					}
 

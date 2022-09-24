@@ -43,6 +43,7 @@ public final class AdditionalHealthEndpointPath {
 
 	/**
 	 * Returns the {@link WebServerNamespace} associated with this path.
+	 *
 	 * @return the server namespace
 	 */
 	public WebServerNamespace getNamespace() {
@@ -51,6 +52,7 @@ public final class AdditionalHealthEndpointPath {
 
 	/**
 	 * Returns the value corresponding to this path.
+	 *
 	 * @return the path
 	 */
 	public String getValue() {
@@ -59,6 +61,7 @@ public final class AdditionalHealthEndpointPath {
 
 	/**
 	 * Returns {@code true} if this path has the given {@link WebServerNamespace}.
+	 *
 	 * @param webServerNamespace the server namespace
 	 * @return the new instance
 	 */
@@ -99,6 +102,7 @@ public final class AdditionalHealthEndpointPath {
 	 * Creates an {@link AdditionalHealthEndpointPath} from the given input. The input
 	 * must contain a prefix and value separated by a `:`. The value must be limited to
 	 * one path segment. For example, `server:/healthz`.
+	 *
 	 * @param value the value to parse
 	 * @return the new instance
 	 */
@@ -115,8 +119,9 @@ public final class AdditionalHealthEndpointPath {
 	/**
 	 * Creates an {@link AdditionalHealthEndpointPath} from the given
 	 * {@link WebServerNamespace} and value.
+	 *
 	 * @param webServerNamespace the server namespace
-	 * @param value the value
+	 * @param value              the value
 	 * @return the new instance
 	 */
 	public static AdditionalHealthEndpointPath of(WebServerNamespace webServerNamespace, String value) {

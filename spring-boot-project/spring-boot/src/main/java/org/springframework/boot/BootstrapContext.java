@@ -36,7 +36,8 @@ public interface BootstrapContext {
 	/**
 	 * Return an instance from the context if the type has been registered. The instance
 	 * will be created it if it hasn't been accessed previously.
-	 * @param <T> the instance type
+	 *
+	 * @param <T>  the instance type
 	 * @param type the instance type
 	 * @return the instance managed by the context
 	 * @throws IllegalStateException if the type has not been registered
@@ -46,8 +47,9 @@ public interface BootstrapContext {
 	/**
 	 * Return an instance from the context if the type has been registered. The instance
 	 * will be created it if it hasn't been accessed previously.
-	 * @param <T> the instance type
-	 * @param type the instance type
+	 *
+	 * @param <T>   the instance type
+	 * @param type  the instance type
 	 * @param other the instance to use if the type has not been registered
 	 * @return the instance
 	 */
@@ -56,8 +58,9 @@ public interface BootstrapContext {
 	/**
 	 * Return an instance from the context if the type has been registered. The instance
 	 * will be created it if it hasn't been accessed previously.
-	 * @param <T> the instance type
-	 * @param type the instance type
+	 *
+	 * @param <T>   the instance type
+	 * @param type  the instance type
 	 * @param other a supplier for the instance to use if the type has not been registered
 	 * @return the instance
 	 */
@@ -66,19 +69,21 @@ public interface BootstrapContext {
 	/**
 	 * Return an instance from the context if the type has been registered. The instance
 	 * will be created it if it hasn't been accessed previously.
-	 * @param <T> the instance type
-	 * @param <X> the exception to throw if the type is not registered
-	 * @param type the instance type
+	 *
+	 * @param <T>               the instance type
+	 * @param <X>               the exception to throw if the type is not registered
+	 * @param type              the instance type
 	 * @param exceptionSupplier the supplier which will return the exception to be thrown
 	 * @return the instance managed by the context
-	 * @throws X if the type has not been registered
+	 * @throws X                     if the type has not been registered
 	 * @throws IllegalStateException if the type has not been registered
 	 */
 	<T, X extends Throwable> T getOrElseThrow(Class<T> type, Supplier<? extends X> exceptionSupplier) throws X;
 
 	/**
 	 * Return if a registration exists for the given type.
-	 * @param <T> the instance type
+	 *
+	 * @param <T>  the instance type
 	 * @param type the instance type
 	 * @return {@code true} if the type has already been registered
 	 */

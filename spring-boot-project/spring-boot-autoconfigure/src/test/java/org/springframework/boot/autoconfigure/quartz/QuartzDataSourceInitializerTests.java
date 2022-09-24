@@ -96,7 +96,7 @@ class QuartzDataSourceInitializerTests {
 
 		@Bean
 		QuartzDataSourceInitializer initializer(DataSource dataSource, ResourceLoader resourceLoader,
-				QuartzProperties properties) {
+												QuartzProperties properties) {
 			return new QuartzDataSourceInitializer(dataSource, resourceLoader, properties);
 		}
 

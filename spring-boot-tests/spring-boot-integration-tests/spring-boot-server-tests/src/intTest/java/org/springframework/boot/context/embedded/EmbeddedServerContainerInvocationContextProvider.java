@@ -106,7 +106,7 @@ class EmbeddedServerContainerInvocationContextProvider
 	}
 
 	private AbstractApplicationLauncher getAbstractApplicationLauncher(Application application,
-			Class<? extends AbstractApplicationLauncher> launcherClass) {
+																	   Class<? extends AbstractApplicationLauncher> launcherClass) {
 		String cacheKey = application.getContainer() + ":" + application.getPackaging() + ":" + launcherClass.getName();
 		if (this.launcherCache.containsKey(cacheKey)) {
 			return this.launcherCache.get(cacheKey);

@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile({ "hello", "default" })
+@Profile({"hello", "default"})
 public class HelloWorldService implements MessageService {
 
 	@Value("${test.name:World}")

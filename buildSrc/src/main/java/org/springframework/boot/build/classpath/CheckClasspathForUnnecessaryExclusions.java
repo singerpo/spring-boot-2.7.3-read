@@ -64,7 +64,7 @@ public class CheckClasspathForUnnecessaryExclusions extends DefaultTask {
 
 	@Inject
 	public CheckClasspathForUnnecessaryExclusions(DependencyHandler dependencyHandler,
-			ConfigurationContainer configurations) {
+												  ConfigurationContainer configurations) {
 		this.dependencyHandler = getProject().getDependencies();
 		this.configurations = getProject().getConfigurations();
 		this.platform = this.dependencyHandler.create(

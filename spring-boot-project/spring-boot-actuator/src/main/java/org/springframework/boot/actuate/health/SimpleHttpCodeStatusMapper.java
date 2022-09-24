@@ -35,6 +35,7 @@ import org.springframework.util.CollectionUtils;
 public class SimpleHttpCodeStatusMapper implements HttpCodeStatusMapper {
 
 	private static final Map<String, Integer> DEFAULT_MAPPINGS;
+
 	static {
 		Map<String, Integer> defaultMappings = new HashMap<>();
 		defaultMappings.put(Status.DOWN.getCode(), WebEndpointResponse.STATUS_SERVICE_UNAVAILABLE);
@@ -53,6 +54,7 @@ public class SimpleHttpCodeStatusMapper implements HttpCodeStatusMapper {
 
 	/**
 	 * Create a new {@link SimpleHttpCodeStatusMapper} with the specified mappings.
+	 *
 	 * @param mappings the mappings to use or {@code null} to use the default mappings
 	 */
 	public SimpleHttpCodeStatusMapper(Map<String, Integer> mappings) {

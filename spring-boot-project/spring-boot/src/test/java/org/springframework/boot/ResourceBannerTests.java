@@ -127,7 +127,7 @@ class ResourceBannerTests {
 	}
 
 	private String printBanner(Resource resource, String bootVersion, String applicationVersion,
-			String applicationTitle) {
+							   String applicationTitle) {
 		ResourceBanner banner = new MockResourceBanner(resource, bootVersion, applicationVersion, applicationTitle);
 		ConfigurableEnvironment environment = new MockEnvironment();
 		Map<String, Object> source = Collections.singletonMap("a", "1");

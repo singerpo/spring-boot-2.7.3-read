@@ -60,10 +60,10 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Stephane Nicoll
  * @author Artsiom Yudovin
- * @since 1.5.0
  * @see AutoConfigureJdbc
  * @see AutoConfigureTestDatabase
  * @see AutoConfigureCache
+ * @since 1.5.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -83,6 +83,7 @@ public @interface JdbcTest {
 	/**
 	 * Properties in form {@literal key=value} that should be added to the Spring
 	 * {@link Environment} before the test runs.
+	 *
 	 * @return the properties to add
 	 * @since 2.1.0
 	 */
@@ -92,15 +93,17 @@ public @interface JdbcTest {
 	 * Determines if default filtering should be used with
 	 * {@link SpringBootApplication @SpringBootApplication}. By default no beans are
 	 * included.
+	 *
+	 * @return if default filters should be used
 	 * @see #includeFilters()
 	 * @see #excludeFilters()
-	 * @return if default filters should be used
 	 */
 	boolean useDefaultFilters() default true;
 
 	/**
 	 * A set of include filters which can be used to add otherwise filtered beans to the
 	 * application context.
+	 *
 	 * @return include filters to apply
 	 */
 	ComponentScan.Filter[] includeFilters() default {};
@@ -108,12 +111,14 @@ public @interface JdbcTest {
 	/**
 	 * A set of exclude filters which can be used to filter beans that would otherwise be
 	 * added to the application context.
+	 *
 	 * @return exclude filters to apply
 	 */
 	ComponentScan.Filter[] excludeFilters() default {};
 
 	/**
 	 * Auto-configuration exclusions that should be applied for this test.
+	 *
 	 * @return auto-configuration exclusions to apply
 	 */
 	@AliasFor(annotation = ImportAutoConfiguration.class, attribute = "exclude")

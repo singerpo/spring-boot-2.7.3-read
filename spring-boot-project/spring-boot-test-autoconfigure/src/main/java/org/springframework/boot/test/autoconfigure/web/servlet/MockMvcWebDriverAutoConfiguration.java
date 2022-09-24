@@ -49,7 +49,7 @@ public class MockMvcWebDriverAutoConfiguration {
 	private static final String SECURITY_CONTEXT_EXECUTOR = "org.springframework.security.concurrent.DelegatingSecurityContextExecutor";
 
 	@Bean
-	@ConditionalOnMissingBean({ WebDriver.class, MockMvcHtmlUnitDriverBuilder.class })
+	@ConditionalOnMissingBean({WebDriver.class, MockMvcHtmlUnitDriverBuilder.class})
 	@ConditionalOnBean(MockMvc.class)
 	public MockMvcHtmlUnitDriverBuilder mockMvcHtmlUnitDriverBuilder(MockMvc mockMvc, Environment environment) {
 		return MockMvcHtmlUnitDriverBuilder.mockMvcSetup(mockMvc)

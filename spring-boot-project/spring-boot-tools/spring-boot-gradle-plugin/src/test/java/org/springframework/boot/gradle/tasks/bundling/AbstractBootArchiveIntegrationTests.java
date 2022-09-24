@@ -76,7 +76,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 	GradleBuild gradleBuild;
 
 	protected AbstractBootArchiveIntegrationTests(String taskName, String libPath, String classesPath,
-			String indexPath) {
+												  String indexPath) {
 		this.taskName = taskName;
 		this.libPath = libPath;
 		this.classesPath = classesPath;
@@ -465,8 +465,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 			writer.println("package example;");
 			writer.println();
 			writer.println("public class Secondary {}");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		BuildResult build = this.gradleBuild.build(this.taskName);
@@ -514,8 +513,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 		try (PrintWriter writer = new PrintWriter(
 				new FileWriter(new File(this.gradleBuild.getProjectDir(), "settings.gradle")))) {
 			writer.println("include 'alpha', 'bravo', 'charlie'");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -535,8 +533,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 			writer.println("    }");
 			writer.println();
 			writer.println("}");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -547,8 +544,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 					.resolve(Paths.get("src", "main", "resources", "static", "file.txt"));
 			Files.createDirectories(path.getParent());
 			Files.createFile(path);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -562,8 +558,7 @@ abstract class AbstractBootArchiveIntegrationTests {
 			while (line != null) {
 				if (line.startsWith("- ")) {
 					layer = line.substring(3, line.length() - 2);
-				}
-				else if (line.startsWith("  - ")) {
+				} else if (line.startsWith("  - ")) {
 					index.computeIfAbsent(layer, (key) -> new ArrayList<>()).add(line.substring(5, line.length() - 1));
 				}
 				line = reader.readLine();

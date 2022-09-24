@@ -41,13 +41,14 @@ public class InvocationContext {
 	/**
 	 * Creates a new context for an operation being invoked by the given
 	 * {@code securityContext} with the given available {@code arguments}.
-	 * @param securityContext the current security context. Never {@code null}
-	 * @param arguments the arguments available to the operation. Never {@code null}
+	 *
+	 * @param securityContext   the current security context. Never {@code null}
+	 * @param arguments         the arguments available to the operation. Never {@code null}
 	 * @param argumentResolvers resolvers for additional arguments should be available to
-	 * the operation.
+	 *                          the operation.
 	 */
 	public InvocationContext(SecurityContext securityContext, Map<String, Object> arguments,
-			OperationArgumentResolver... argumentResolvers) {
+							 OperationArgumentResolver... argumentResolvers) {
 		Assert.notNull(securityContext, "SecurityContext must not be null");
 		Assert.notNull(arguments, "Arguments must not be null");
 		this.arguments = arguments;
@@ -62,6 +63,7 @@ public class InvocationContext {
 
 	/**
 	 * Return the invocation arguments.
+	 *
 	 * @return the arguments
 	 */
 	public Map<String, Object> getArguments() {
@@ -70,11 +72,12 @@ public class InvocationContext {
 
 	/**
 	 * Resolves an argument with the given {@code argumentType}.
-	 * @param <T> type of the argument
+	 *
+	 * @param <T>          type of the argument
 	 * @param argumentType type of the argument
 	 * @return resolved argument of the required type or {@code null}
-	 * @since 2.5.0
 	 * @see #canResolve(Class)
+	 * @since 2.5.0
 	 */
 	public <T> T resolveArgument(Class<T> argumentType) {
 		for (OperationArgumentResolver argumentResolver : this.argumentResolvers) {
@@ -93,11 +96,12 @@ public class InvocationContext {
 	 * {@code type}. Note that, even when {@code true} is returned,
 	 * {@link #resolveArgument argument resolution} will return {@code null} if no
 	 * argument of the required type is available.
+	 *
 	 * @param type argument type
 	 * @return {@code true} if resolution of arguments of the given type is possible,
 	 * otherwise {@code false}.
-	 * @since 2.5.0
 	 * @see #resolveArgument(Class)
+	 * @since 2.5.0
 	 */
 	public boolean canResolve(Class<?> type) {
 		for (OperationArgumentResolver argumentResolver : this.argumentResolvers) {

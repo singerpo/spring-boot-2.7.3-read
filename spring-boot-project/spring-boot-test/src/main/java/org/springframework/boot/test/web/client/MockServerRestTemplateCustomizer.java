@@ -47,9 +47,9 @@ import org.springframework.web.client.RestTemplate;
  * the related server.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see #getServer()
  * @see #getServer(RestTemplate)
+ * @since 1.4.0
  */
 public class MockServerRestTemplateCustomizer implements RestTemplateCustomizer {
 
@@ -73,6 +73,7 @@ public class MockServerRestTemplateCustomizer implements RestTemplateCustomizer 
 	/**
 	 * Set if root URIs from {@link RootUriRequestExpectationManager} should be detected
 	 * and applied to the {@link MockRestServiceServer}.
+	 *
 	 * @param detectRootUri if root URIs should be detected
 	 */
 	public void setDetectRootUri(boolean detectRootUri) {

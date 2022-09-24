@@ -70,10 +70,10 @@ class JdbcRepositoriesAutoConfigurationTests {
 		this.contextRunner.with(database())
 				.withConfiguration(AutoConfigurations.of(JdbcTemplateAutoConfiguration.class))
 				.withUserConfiguration(TestConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(DataSource.class);
-					assertThat(context).hasSingleBean(NamedParameterJdbcOperations.class);
-					assertThat(context).doesNotHaveBean(AbstractJdbcConfiguration.class);
-				});
+			assertThat(context).hasSingleBean(DataSource.class);
+			assertThat(context).hasSingleBean(NamedParameterJdbcOperations.class);
+			assertThat(context).doesNotHaveBean(AbstractJdbcConfiguration.class);
+		});
 	}
 
 	@Test
@@ -82,10 +82,10 @@ class JdbcRepositoriesAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(JdbcTemplateAutoConfiguration.class,
 						DataSourceTransactionManagerAutoConfiguration.class))
 				.withUserConfiguration(TestConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
-					assertThat(context).hasSingleBean(CityRepository.class);
-					assertThat(context.getBean(CityRepository.class).findById(2000L)).isPresent();
-				});
+			assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
+			assertThat(context).hasSingleBean(CityRepository.class);
+			assertThat(context.getBean(CityRepository.class).findById(2000L)).isPresent();
+		});
 	}
 
 	@Test
@@ -94,9 +94,9 @@ class JdbcRepositoriesAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(JdbcTemplateAutoConfiguration.class,
 						DataSourceTransactionManagerAutoConfiguration.class))
 				.withUserConfiguration(EmptyConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
-					assertThat(context).doesNotHaveBean(Repository.class);
-				});
+			assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
+			assertThat(context).doesNotHaveBean(Repository.class);
+		});
 	}
 
 	@Test
@@ -105,10 +105,10 @@ class JdbcRepositoriesAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(JdbcTemplateAutoConfiguration.class,
 						DataSourceTransactionManagerAutoConfiguration.class))
 				.withUserConfiguration(EnableRepositoriesConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
-					assertThat(context).hasSingleBean(CityRepository.class);
-					assertThat(context.getBean(CityRepository.class).findById(2000L)).isPresent();
-				});
+			assertThat(context).hasSingleBean(AbstractJdbcConfiguration.class);
+			assertThat(context).hasSingleBean(CityRepository.class);
+			assertThat(context.getBean(CityRepository.class).findById(2000L)).isPresent();
+		});
 	}
 
 	private Function<ApplicationContextRunner, ApplicationContextRunner> database() {

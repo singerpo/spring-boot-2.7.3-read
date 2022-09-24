@@ -37,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Scott Frederick
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		properties = { "server.error.include-message=always" })
+		properties = {"server.error.include-message=always"})
 class SampleActuatorCustomSecurityApplicationTests extends AbstractSampleActuatorCustomSecurityTests {
 
 	@LocalServerPort
@@ -62,7 +62,7 @@ class SampleActuatorCustomSecurityApplicationTests extends AbstractSampleActuato
 	}
 
 	@Test
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	void testInsecureApplicationPath() {
 		ResponseEntity<Map> entity = restTemplate().getForEntity(getPath() + "/foo", Map.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);

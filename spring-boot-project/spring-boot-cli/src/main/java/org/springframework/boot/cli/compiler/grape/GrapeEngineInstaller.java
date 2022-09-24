@@ -35,8 +35,7 @@ public abstract class GrapeEngineInstaller {
 				Field field = Grape.class.getDeclaredField("instance");
 				field.setAccessible(true);
 				field.set(null, engine);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Failed to install GrapeEngine", ex);
 			}
 		}

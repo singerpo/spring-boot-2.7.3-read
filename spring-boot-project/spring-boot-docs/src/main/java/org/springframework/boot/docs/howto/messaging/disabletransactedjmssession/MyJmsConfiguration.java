@@ -28,7 +28,7 @@ public class MyJmsConfiguration {
 
 	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory connectionFactory,
-			DefaultJmsListenerContainerFactoryConfigurer configurer) {
+																		  DefaultJmsListenerContainerFactoryConfigurer configurer) {
 		DefaultJmsListenerContainerFactory listenerFactory = new DefaultJmsListenerContainerFactory();
 		configurer.configure(listenerFactory, connectionFactory);
 		listenerFactory.setTransactionManager(null);

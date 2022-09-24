@@ -34,10 +34,10 @@ import org.springframework.util.ObjectUtils;
  * {@link WritableResource}.
  *
  * @author Phillip Webb
- * @since 2.4.0
  * @see #of(Resource, Origin)
  * @see #of(WritableResource, Origin)
  * @see OriginProvider
+ * @since 2.4.0
  */
 public class OriginTrackedResource implements Resource, OriginProvider {
 
@@ -47,8 +47,9 @@ public class OriginTrackedResource implements Resource, OriginProvider {
 
 	/**
 	 * Create a new {@link OriginTrackedResource} instance.
+	 *
 	 * @param resource the resource to track
-	 * @param origin the origin of the resource
+	 * @param origin   the origin of the resource
 	 */
 	OriginTrackedResource(Resource resource, Origin origin) {
 		Assert.notNull(resource, "Resource must not be null");
@@ -163,8 +164,9 @@ public class OriginTrackedResource implements Resource, OriginProvider {
 	/**
 	 * Return a new {@link OriginProvider origin tracked} version the given
 	 * {@link WritableResource}.
+	 *
 	 * @param resource the tracked resource
-	 * @param origin the origin of the resource
+	 * @param origin   the origin of the resource
 	 * @return an {@link OriginTrackedWritableResource} instance
 	 */
 	public static OriginTrackedWritableResource of(WritableResource resource, Origin origin) {
@@ -174,8 +176,9 @@ public class OriginTrackedResource implements Resource, OriginProvider {
 	/**
 	 * Return a new {@link OriginProvider origin tracked} version the given
 	 * {@link Resource}.
+	 *
 	 * @param resource the tracked resource
-	 * @param origin the origin of the resource
+	 * @param origin   the origin of the resource
 	 * @return an {@link OriginTrackedResource} instance
 	 */
 	public static OriginTrackedResource of(Resource resource, Origin origin) {
@@ -192,8 +195,9 @@ public class OriginTrackedResource implements Resource, OriginProvider {
 
 		/**
 		 * Create a new {@link OriginTrackedWritableResource} instance.
+		 *
 		 * @param resource the resource to track
-		 * @param origin the origin of the resource
+		 * @param origin   the origin of the resource
 		 */
 		OriginTrackedWritableResource(WritableResource resource, Origin origin) {
 			super(resource, origin);

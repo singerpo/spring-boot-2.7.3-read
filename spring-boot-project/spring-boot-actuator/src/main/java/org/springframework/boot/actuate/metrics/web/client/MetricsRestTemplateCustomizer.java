@@ -44,14 +44,15 @@ public class MetricsRestTemplateCustomizer implements RestTemplateCustomizer {
 	 * is set to {@code true}, the interceptor records metrics using the given
 	 * {@code meterRegistry} with tags provided by the given {@code tagProvider} and with
 	 * {@link AutoTimer auto-timed configuration}.
+	 *
 	 * @param meterRegistry the meter registry
-	 * @param tagProvider the tag provider
-	 * @param metricName the name of the recorded metric
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param tagProvider   the tag provider
+	 * @param metricName    the name of the recorded metric
+	 * @param autoTimer     the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.2.0
 	 */
 	public MetricsRestTemplateCustomizer(MeterRegistry meterRegistry, RestTemplateExchangeTagsProvider tagProvider,
-			String metricName, AutoTimer autoTimer) {
+										 String metricName, AutoTimer autoTimer) {
 		this.interceptor = new MetricsClientHttpRequestInterceptor(meterRegistry, tagProvider, metricName, autoTimer);
 	}
 

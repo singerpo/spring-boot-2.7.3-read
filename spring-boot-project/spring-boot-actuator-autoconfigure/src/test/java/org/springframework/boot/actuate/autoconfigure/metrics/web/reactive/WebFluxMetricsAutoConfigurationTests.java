@@ -84,10 +84,10 @@ class WebFluxMetricsAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(WebFluxAutoConfiguration.class))
 				.withUserConfiguration(TestController.class)
 				.withPropertyValues("management.metrics.web.server.max-uri-tags=2").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					assertThat(registry.get("http.server.requests").meters()).hasSize(2);
-					assertThat(output).contains("Reached the maximum number of URI tags for 'http.server.requests'");
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			assertThat(registry.get("http.server.requests").meters()).hasSize(2);
+			assertThat(output).contains("Reached the maximum number of URI tags for 'http.server.requests'");
+		});
 	}
 
 	@Test
@@ -95,11 +95,11 @@ class WebFluxMetricsAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(WebFluxAutoConfiguration.class))
 				.withUserConfiguration(TestController.class)
 				.withPropertyValues("management.metrics.web.server.max-uri-tags=5").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					assertThat(registry.get("http.server.requests").meters()).hasSize(3);
-					assertThat(output)
-							.doesNotContain("Reached the maximum number of URI tags for 'http.server.requests'");
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			assertThat(registry.get("http.server.requests").meters()).hasSize(3);
+			assertThat(output)
+					.doesNotContain("Reached the maximum number of URI tags for 'http.server.requests'");
+		});
 	}
 
 	@Test
@@ -107,9 +107,9 @@ class WebFluxMetricsAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(WebFluxAutoConfiguration.class))
 				.withUserConfiguration(TestController.class)
 				.withPropertyValues("management.metrics.web.server.request.autotime.enabled=false").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					assertThat(registry.find("http.server.requests").meter()).isNull();
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			assertThat(registry.find("http.server.requests").meter()).isNull();
+		});
 	}
 
 	@Test

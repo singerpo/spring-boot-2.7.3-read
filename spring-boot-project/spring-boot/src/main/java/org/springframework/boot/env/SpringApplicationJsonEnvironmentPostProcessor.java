@@ -107,6 +107,7 @@ public class SpringApplicationJsonEnvironmentPostProcessor implements Environmen
 
 	/**
 	 * Flatten the map keys using period separator.
+	 *
 	 * @param map the map that should be flattened
 	 * @return the flattened map
 	 */
@@ -129,8 +130,7 @@ public class SpringApplicationJsonEnvironmentPostProcessor implements Environmen
 				return;
 			}
 			flatten(name, result, (Map<String, Object>) value);
-		}
-		else if (value instanceof Collection) {
+		} else if (value instanceof Collection) {
 			if (CollectionUtils.isEmpty((Collection<?>) value)) {
 				result.put(name, value);
 				return;
@@ -140,8 +140,7 @@ public class SpringApplicationJsonEnvironmentPostProcessor implements Environmen
 				extract(name + "[" + index + "]", result, object);
 				index++;
 			}
-		}
-		else {
+		} else {
 			result.put(name, value);
 		}
 	}
@@ -151,8 +150,7 @@ public class SpringApplicationJsonEnvironmentPostProcessor implements Environmen
 		String name = findPropertySource(sources);
 		if (sources.contains(name)) {
 			sources.addBefore(name, source);
-		}
-		else {
+		} else {
 			sources.addFirst(source);
 		}
 	}
@@ -187,8 +185,8 @@ public class SpringApplicationJsonEnvironmentPostProcessor implements Environmen
 
 	private static class JsonPropertyValue {
 
-		private static final String[] CANDIDATES = { SPRING_APPLICATION_JSON_PROPERTY,
-				SPRING_APPLICATION_JSON_ENVIRONMENT_VARIABLE };
+		private static final String[] CANDIDATES = {SPRING_APPLICATION_JSON_PROPERTY,
+				SPRING_APPLICATION_JSON_ENVIRONMENT_VARIABLE};
 
 		private final PropertySource<?> propertySource;
 

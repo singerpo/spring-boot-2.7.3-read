@@ -35,8 +35,8 @@ import org.springframework.jmx.export.MBeanExporter;
  *
  * @author Stephane Nicoll
  * @author Andy Wilkinson
- * @since 1.3.0
  * @see SpringApplicationAdminMXBean
+ * @since 1.3.0
  */
 @AutoConfiguration(after = JmxAutoConfiguration.class)
 @ConditionalOnProperty(prefix = "spring.application.admin", value = "enabled", havingValue = "true",

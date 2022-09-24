@@ -54,12 +54,12 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0.0
  */
 @AutoConfiguration(before = ServletWebServerFactoryAutoConfiguration.class)
-@ConditionalOnClass({ Servlet.class, ServerContainer.class })
+@ConditionalOnClass({Servlet.class, ServerContainer.class})
 @ConditionalOnWebApplication(type = Type.SERVLET)
 public class WebSocketServletAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Tomcat.class, WsSci.class })
+	@ConditionalOnClass({Tomcat.class, WsSci.class})
 	static class TomcatWebSocketConfiguration {
 
 		@Bean
@@ -83,8 +83,8 @@ public class WebSocketServletAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass(name = { Jetty10WebSocketServletWebServerCustomizer.JAVAX_WEB_SOCKET_SERVER_CONTAINER,
-			Jetty10WebSocketServletWebServerCustomizer.JETTY_WEB_SOCKET_SERVER_CONTAINER })
+	@ConditionalOnClass(name = {Jetty10WebSocketServletWebServerCustomizer.JAVAX_WEB_SOCKET_SERVER_CONTAINER,
+			Jetty10WebSocketServletWebServerCustomizer.JETTY_WEB_SOCKET_SERVER_CONTAINER})
 	static class Jetty10WebSocketConfiguration {
 
 		@Bean

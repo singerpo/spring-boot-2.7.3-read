@@ -50,8 +50,7 @@ public class JsonMarshaller {
 			object.put("properties", converter.toJsonArray(metadata, ItemType.PROPERTY));
 			object.put("hints", converter.toJsonArray(metadata.getHints()));
 			outputStream.write(object.toString(2).getBytes(StandardCharsets.UTF_8));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (ex instanceof IOException) {
 				throw (IOException) ex;
 			}
@@ -140,7 +139,7 @@ public class JsonMarshaller {
 		Map<String, Object> parameters = new HashMap<>();
 		if (object.has("parameters")) {
 			JSONObject parametersObject = object.getJSONObject("parameters");
-			for (Iterator<?> iterator = parametersObject.keys(); iterator.hasNext();) {
+			for (Iterator<?> iterator = parametersObject.keys(); iterator.hasNext(); ) {
 				String key = (String) iterator.next();
 				Object value = readItemValue(parametersObject.get(key));
 				parameters.put(key, value);

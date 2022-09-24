@@ -151,10 +151,10 @@ class ConditionalOnBeanTests {
 	void conditionEvaluationConsidersChangeInTypeWhenBeanIsOverridden() {
 		this.contextRunner.withAllowBeanDefinitionOverriding(true).withUserConfiguration(OriginalDefinition.class,
 				OverridingDefinition.class, ConsumingConfiguration.class).run((context) -> {
-					assertThat(context).hasBean("testBean");
-					assertThat(context).hasSingleBean(Integer.class);
-					assertThat(context).doesNotHaveBean(ConsumingConfiguration.class);
-				});
+			assertThat(context).hasBean("testBean");
+			assertThat(context).hasSingleBean(Integer.class);
+			assertThat(context).doesNotHaveBean(ConsumingConfiguration.class);
+		});
 	}
 
 	@Test
@@ -355,7 +355,7 @@ class ConditionalOnBeanTests {
 
 		@Override
 		public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
-				BeanDefinitionRegistry registry) {
+											BeanDefinitionRegistry registry) {
 			RootBeanDefinition bd = new RootBeanDefinition();
 			bd.setBeanClassName("${mybeanclass}");
 			registry.registerBeanDefinition("mybean", bd);

@@ -40,7 +40,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
  *
  * @author Phillip Webb
  */
-@RestClientTest({ RemoteVehicleDetailsService.class, ServiceProperties.class })
+@RestClientTest({RemoteVehicleDetailsService.class, ServiceProperties.class})
 class RemoteVehicleDetailsServiceTests {
 
 	private static final String VIN = "00000000000000000";

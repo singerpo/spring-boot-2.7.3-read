@@ -31,6 +31,7 @@ public interface IOBiConsumer<T, U> {
 
 	/**
 	 * Performs this operation on the given argument.
+	 *
 	 * @param t the first instance to consume
 	 * @param u the second instance to consumer
 	 * @throws IOException on IO error

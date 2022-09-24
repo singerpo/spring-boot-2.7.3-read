@@ -64,8 +64,7 @@ class PomCondition extends Condition<File> {
 					return false;
 				}
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		return true;

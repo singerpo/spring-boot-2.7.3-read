@@ -140,7 +140,7 @@ class InvalidConfigDataPropertyExceptionTests {
 	}
 
 	private ConfigDataEnvironmentContributor createInvalidProfileSpecificPropertyContributor(String name,
-			ConfigData.Option... configDataOptions) {
+																							 ConfigData.Option... configDataOptions) {
 		MockPropertySource propertySource = new MockPropertySource();
 		propertySource.setProperty(name, "a");
 		ConfigDataEnvironmentContributor contributor = new ConfigDataEnvironmentContributor(Kind.BOUND_IMPORT, null,

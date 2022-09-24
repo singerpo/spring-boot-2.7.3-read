@@ -42,7 +42,7 @@ class ContentTests {
 
 	@Test
 	void ofWhenStreamReturnsWritable() throws Exception {
-		byte[] bytes = { 1, 2, 3, 4 };
+		byte[] bytes = {1, 2, 3, 4};
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes);
 		Content writable = Content.of(4, () -> inputStream);
 		assertThat(writeToAndGetBytes(writable)).isEqualTo(bytes);
@@ -68,7 +68,7 @@ class ContentTests {
 
 	@Test
 	void ofWhenBytesReturnsWritable() throws Exception {
-		byte[] bytes = { 1, 2, 3, 4 };
+		byte[] bytes = {1, 2, 3, 4};
 		Content writable = Content.of(bytes);
 		assertThat(writeToAndGetBytes(writable)).isEqualTo(bytes);
 	}

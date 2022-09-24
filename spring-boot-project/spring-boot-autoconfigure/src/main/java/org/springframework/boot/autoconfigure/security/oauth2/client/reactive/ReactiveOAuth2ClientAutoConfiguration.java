@@ -41,9 +41,9 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 @AutoConfiguration(before = ReactiveSecurityAutoConfiguration.class)
 @EnableConfigurationProperties(OAuth2ClientProperties.class)
 @Conditional(ReactiveOAuth2ClientAutoConfiguration.NonServletApplicationCondition.class)
-@ConditionalOnClass({ Flux.class, EnableWebFluxSecurity.class, ClientRegistration.class })
-@Import({ ReactiveOAuth2ClientConfigurations.ReactiveClientRegistrationRepositoryConfiguration.class,
-		ReactiveOAuth2ClientConfigurations.ReactiveOAuth2ClientConfiguration.class })
+@ConditionalOnClass({Flux.class, EnableWebFluxSecurity.class, ClientRegistration.class})
+@Import({ReactiveOAuth2ClientConfigurations.ReactiveClientRegistrationRepositoryConfiguration.class,
+		ReactiveOAuth2ClientConfigurations.ReactiveOAuth2ClientConfiguration.class})
 public class ReactiveOAuth2ClientAutoConfiguration {
 
 	static class NonServletApplicationCondition extends NoneNestedConditions {

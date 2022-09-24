@@ -50,13 +50,14 @@ public final class WebOperationRequestPredicate {
 
 	/**
 	 * Creates a new {@code OperationRequestPredicate}.
-	 * @param path the path for the operation
+	 *
+	 * @param path       the path for the operation
 	 * @param httpMethod the HTTP method that the operation supports
-	 * @param produces the media types that the operation produces
-	 * @param consumes the media types that the operation consumes
+	 * @param produces   the media types that the operation produces
+	 * @param consumes   the media types that the operation consumes
 	 */
 	public WebOperationRequestPredicate(String path, WebEndpointHttpMethod httpMethod, Collection<String> consumes,
-			Collection<String> produces) {
+										Collection<String> produces) {
 		this.path = path;
 		this.canonicalPath = extractCanonicalPath(path);
 		this.matchAllRemainingPathSegmentsVariable = extractMatchAllRemainingPathSegmentsVariable(path);
@@ -77,6 +78,7 @@ public final class WebOperationRequestPredicate {
 
 	/**
 	 * Returns the path for the operation.
+	 *
 	 * @return the path
 	 */
 	public String getPath() {
@@ -86,6 +88,7 @@ public final class WebOperationRequestPredicate {
 	/**
 	 * Returns the name of the variable used to catch all remaining path segments
 	 * {@code null}.
+	 *
 	 * @return the variable name
 	 * @since 2.2.0
 	 */
@@ -95,6 +98,7 @@ public final class WebOperationRequestPredicate {
 
 	/**
 	 * Returns the HTTP method for the operation.
+	 *
 	 * @return the HTTP method
 	 */
 	public WebEndpointHttpMethod getHttpMethod() {
@@ -103,6 +107,7 @@ public final class WebOperationRequestPredicate {
 
 	/**
 	 * Returns the media types that the operation consumes.
+	 *
 	 * @return the consumed media types
 	 */
 	public Collection<String> getConsumes() {
@@ -111,6 +116,7 @@ public final class WebOperationRequestPredicate {
 
 	/**
 	 * Returns the media types that the operation produces.
+	 *
 	 * @return the produced media types
 	 */
 	public Collection<String> getProduces() {

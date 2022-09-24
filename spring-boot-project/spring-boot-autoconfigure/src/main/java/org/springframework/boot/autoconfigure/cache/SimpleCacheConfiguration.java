@@ -37,7 +37,7 @@ class SimpleCacheConfiguration {
 
 	@Bean
 	ConcurrentMapCacheManager cacheManager(CacheProperties cacheProperties,
-			CacheManagerCustomizers cacheManagerCustomizers) {
+										   CacheManagerCustomizers cacheManagerCustomizers) {
 		ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();
 		List<String> cacheNames = cacheProperties.getCacheNames();
 		if (!cacheNames.isEmpty()) {

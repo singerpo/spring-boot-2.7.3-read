@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(MyService::class)
 @EnableConfigurationProperties(
-	UserProperties::class
+		UserProperties::class
 )
 class MyServiceAutoConfiguration {
 

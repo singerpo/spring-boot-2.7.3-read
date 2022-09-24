@@ -146,10 +146,10 @@ class MixedMongoRepositoriesAutoConfigurationTests {
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
 			List<String> names = new ArrayList<>();
-			for (Class<?> type : new Class<?>[] { DataSourceAutoConfiguration.class,
+			for (Class<?> type : new Class<?>[]{DataSourceAutoConfiguration.class,
 					HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class,
 					MongoAutoConfiguration.class, MongoDataAutoConfiguration.class,
-					MongoRepositoriesAutoConfiguration.class }) {
+					MongoRepositoriesAutoConfiguration.class}) {
 				names.add(type.getName());
 			}
 			return StringUtils.toStringArray(names);

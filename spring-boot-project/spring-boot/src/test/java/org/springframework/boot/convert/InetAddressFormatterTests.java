@@ -65,8 +65,7 @@ class InetAddressFormatterTests {
 		try {
 			InetAddress.getByName(host);
 			return true;
-		}
-		catch (UnknownHostException ex) {
+		} catch (UnknownHostException ex) {
 			return false;
 		}
 	}

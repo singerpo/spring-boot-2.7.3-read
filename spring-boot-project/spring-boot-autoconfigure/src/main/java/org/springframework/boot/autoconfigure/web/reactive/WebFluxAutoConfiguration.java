@@ -97,12 +97,12 @@ import org.springframework.web.server.session.WebSessionManager;
  * @author Weix Sun
  * @since 2.0.0
  */
-@AutoConfiguration(after = { ReactiveWebServerFactoryAutoConfiguration.class, CodecsAutoConfiguration.class,
+@AutoConfiguration(after = {ReactiveWebServerFactoryAutoConfiguration.class, CodecsAutoConfiguration.class,
 		ReactiveMultipartAutoConfiguration.class, ValidationAutoConfiguration.class,
-		WebSessionIdResolverAutoConfiguration.class })
+		WebSessionIdResolverAutoConfiguration.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnClass(WebFluxConfigurer.class)
-@ConditionalOnMissingBean({ WebFluxConfigurationSupport.class })
+@ConditionalOnMissingBean({WebFluxConfigurationSupport.class})
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
 public class WebFluxAutoConfiguration {
 
@@ -118,7 +118,7 @@ public class WebFluxAutoConfiguration {
 
 		@Bean
 		public RouterFunctionMapping welcomePageRouterFunctionMapping(ApplicationContext applicationContext,
-				WebFluxProperties webFluxProperties, WebProperties webProperties) {
+																	  WebFluxProperties webFluxProperties, WebProperties webProperties) {
 			String[] staticLocations = webProperties.getResources().getStaticLocations();
 			WelcomePageRouterFunctionFactory factory = new WelcomePageRouterFunctionFactory(
 					new TemplateAvailabilityProviders(applicationContext), applicationContext, staticLocations,
@@ -135,8 +135,8 @@ public class WebFluxAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@EnableConfigurationProperties({ WebProperties.class, WebFluxProperties.class })
-	@Import({ EnableWebFluxConfiguration.class })
+	@EnableConfigurationProperties({WebProperties.class, WebFluxProperties.class})
+	@Import({EnableWebFluxConfiguration.class})
 	@Order(0)
 	public static class WebFluxConfig implements WebFluxConfigurer {
 
@@ -157,10 +157,10 @@ public class WebFluxAutoConfiguration {
 		private final ObjectProvider<ViewResolver> viewResolvers;
 
 		public WebFluxConfig(WebProperties webProperties, WebFluxProperties webFluxProperties,
-				ListableBeanFactory beanFactory, ObjectProvider<HandlerMethodArgumentResolver> resolvers,
-				ObjectProvider<CodecCustomizer> codecCustomizers,
-				ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizer,
-				ObjectProvider<ViewResolver> viewResolvers) {
+							 ListableBeanFactory beanFactory, ObjectProvider<HandlerMethodArgumentResolver> resolvers,
+							 ObjectProvider<CodecCustomizer> codecCustomizers,
+							 ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizer,
+							 ObjectProvider<ViewResolver> viewResolvers) {
 			this.resourceProperties = webProperties.getResources();
 			this.webFluxProperties = webFluxProperties;
 			this.beanFactory = beanFactory;
@@ -234,7 +234,7 @@ public class WebFluxAutoConfiguration {
 	 * Configuration equivalent to {@code @EnableWebFlux}.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@EnableConfigurationProperties({ WebProperties.class, ServerProperties.class })
+	@EnableConfigurationProperties({WebProperties.class, ServerProperties.class})
 	public static class EnableWebFluxConfiguration extends DelegatingWebFluxConfiguration {
 
 		private final WebFluxProperties webFluxProperties;
@@ -246,7 +246,7 @@ public class WebFluxAutoConfiguration {
 		private final WebFluxRegistrations webFluxRegistrations;
 
 		public EnableWebFluxConfiguration(WebFluxProperties webFluxProperties, WebProperties webProperties,
-				ServerProperties serverProperties, ObjectProvider<WebFluxRegistrations> webFluxRegistrations) {
+										  ServerProperties serverProperties, ObjectProvider<WebFluxRegistrations> webFluxRegistrations) {
 			this.webFluxProperties = webFluxProperties;
 			this.webProperties = webProperties;
 			this.serverProperties = serverProperties;

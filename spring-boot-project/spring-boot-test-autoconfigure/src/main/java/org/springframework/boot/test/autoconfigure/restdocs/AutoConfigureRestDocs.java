@@ -46,11 +46,11 @@ import org.springframework.test.web.servlet.MockMvc;
  * {@link RestDocsRestAssuredConfigurationCustomizer} bean can be used.
  *
  * @author Andy Wilkinson
- * @since 1.4.0
  * @see RestDocsAutoConfiguration
  * @see RestDocsMockMvcConfigurationCustomizer
  * @see RestDocsWebTestClientConfigurationCustomizer
  * @see RestDocsRestAssuredConfigurationCustomizer
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -64,6 +64,7 @@ public @interface AutoConfigureRestDocs {
 	/**
 	 * The output directory to which generated snippets will be written. An alias for
 	 * {@link #outputDir}.
+	 *
 	 * @return the output directory
 	 */
 	@AliasFor("outputDir")
@@ -72,6 +73,7 @@ public @interface AutoConfigureRestDocs {
 	/**
 	 * The output directory to which generated snippets will be written. An alias for
 	 * {@link #value}.
+	 *
 	 * @return the output directory
 	 */
 	@AliasFor("value")
@@ -80,18 +82,21 @@ public @interface AutoConfigureRestDocs {
 	/**
 	 * The scheme (typically {@code http} or {@code https}) to be used in documented URIs.
 	 * Defaults to {@code http}.
+	 *
 	 * @return the scheme
 	 */
 	String uriScheme() default "http";
 
 	/**
 	 * The host to be used in documented URIs. Defaults to {@code localhost}.
+	 *
 	 * @return the host
 	 */
 	String uriHost() default "localhost";
 
 	/**
 	 * The port to be used in documented URIs. Defaults to {@code 8080}.
+	 *
 	 * @return the port
 	 */
 	int uriPort() default 8080;

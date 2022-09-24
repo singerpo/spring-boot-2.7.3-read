@@ -21,7 +21,7 @@ import org.eclipse.jgit.api.Git
 
 
 class TestCommand extends OptionHandler {
-	
+
 	String name = "foo"
 
 	void options() {

@@ -55,13 +55,14 @@ class ConfigDataImporter {
 
 	/**
 	 * Create a new {@link ConfigDataImporter} instance.
-	 * @param logFactory the log factory
+	 *
+	 * @param logFactory     the log factory
 	 * @param notFoundAction the action to take when a location cannot be found
-	 * @param resolvers the config data location resolvers
-	 * @param loaders the config data loaders
+	 * @param resolvers      the config data location resolvers
+	 * @param loaders        the config data loaders
 	 */
 	ConfigDataImporter(DeferredLogFactory logFactory, ConfigDataNotFoundAction notFoundAction,
-			ConfigDataLocationResolvers resolvers, ConfigDataLoaders loaders) {
+					   ConfigDataLocationResolvers resolvers, ConfigDataLoaders loaders) {
 		this.logger = logFactory.getLog(getClass());
 		this.resolvers = resolvers;
 		this.loaders = loaders;
@@ -71,27 +72,27 @@ class ConfigDataImporter {
 	/**
 	 * Resolve and load the given list of locations, filtering any that have been
 	 * previously loaded.
-	 * @param activationContext the activation context
+	 *
+	 * @param activationContext       the activation context
 	 * @param locationResolverContext the location resolver context
-	 * @param loaderContext the loader context
-	 * @param locations the locations to resolve
+	 * @param loaderContext           the loader context
+	 * @param locations               the locations to resolve
 	 * @return a map of the loaded locations and data
 	 */
 	Map<ConfigDataResolutionResult, ConfigData> resolveAndLoad(ConfigDataActivationContext activationContext,
-			ConfigDataLocationResolverContext locationResolverContext, ConfigDataLoaderContext loaderContext,
-			List<ConfigDataLocation> locations) {
+															   ConfigDataLocationResolverContext locationResolverContext, ConfigDataLoaderContext loaderContext,
+															   List<ConfigDataLocation> locations) {
 		try {
 			Profiles profiles = (activationContext != null) ? activationContext.getProfiles() : null;
 			List<ConfigDataResolutionResult> resolved = resolve(locationResolverContext, profiles, locations);
 			return load(loaderContext, resolved);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("IO error on loading imports from " + locations, ex);
 		}
 	}
 
 	private List<ConfigDataResolutionResult> resolve(ConfigDataLocationResolverContext locationResolverContext,
-			Profiles profiles, List<ConfigDataLocation> locations) {
+													 Profiles profiles, List<ConfigDataLocation> locations) {
 		List<ConfigDataResolutionResult> resolved = new ArrayList<>(locations.size());
 		for (ConfigDataLocation location : locations) {
 			resolved.addAll(resolve(locationResolverContext, profiles, location));
@@ -100,18 +101,17 @@ class ConfigDataImporter {
 	}
 
 	private List<ConfigDataResolutionResult> resolve(ConfigDataLocationResolverContext locationResolverContext,
-			Profiles profiles, ConfigDataLocation location) {
+													 Profiles profiles, ConfigDataLocation location) {
 		try {
 			return this.resolvers.resolve(locationResolverContext, location, profiles);
-		}
-		catch (ConfigDataNotFoundException ex) {
+		} catch (ConfigDataNotFoundException ex) {
 			handle(ex, location, null);
 			return Collections.emptyList();
 		}
 	}
 
 	private Map<ConfigDataResolutionResult, ConfigData> load(ConfigDataLoaderContext loaderContext,
-			List<ConfigDataResolutionResult> candidates) throws IOException {
+															 List<ConfigDataResolutionResult> candidates) throws IOException {
 		Map<ConfigDataResolutionResult, ConfigData> result = new LinkedHashMap<>();
 		for (int i = candidates.size() - 1; i >= 0; i--) {
 			ConfigDataResolutionResult candidate = candidates.get(i);
@@ -122,8 +122,7 @@ class ConfigDataImporter {
 			}
 			if (this.loaded.contains(resource)) {
 				this.loadedLocations.add(location);
-			}
-			else {
+			} else {
 				try {
 					ConfigData loaded = this.loaders.load(loaderContext, resource);
 					if (loaded != null) {
@@ -131,8 +130,7 @@ class ConfigDataImporter {
 						this.loadedLocations.add(location);
 						result.put(candidate, loaded);
 					}
-				}
-				catch (ConfigDataNotFoundException ex) {
+				} catch (ConfigDataNotFoundException ex) {
 					handle(ex, location, resource);
 				}
 			}

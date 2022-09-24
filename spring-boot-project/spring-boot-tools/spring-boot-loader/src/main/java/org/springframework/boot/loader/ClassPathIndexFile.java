@@ -73,8 +73,7 @@ final class ClassPathIndexFile {
 	private URL asUrl(String line) {
 		try {
 			return new File(this.root, line).toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -115,8 +114,7 @@ final class ClassPathIndexFile {
 		}
 		try {
 			return new File(url.toURI());
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			return new File(url.getPath());
 		}
 	}

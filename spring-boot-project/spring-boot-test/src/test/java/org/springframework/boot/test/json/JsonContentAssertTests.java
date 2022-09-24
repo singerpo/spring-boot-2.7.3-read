@@ -1281,8 +1281,7 @@ class JsonContentAssertTests {
 		try {
 			ClassPathResource resource = new ClassPathResource(path, JsonContentAssertTests.class);
 			return new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 

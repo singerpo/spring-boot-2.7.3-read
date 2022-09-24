@@ -59,8 +59,7 @@ class UpgradeApplicator {
 		if (version.startsWith("${") && version.endsWith("}")) {
 			updateGradleProperties(upgrade, version);
 			return this.gradleProperties;
-		}
-		else {
+		} else {
 			updateBuildFile(upgrade, buildFileContents, matcher.start(1), matcher.end(1));
 			return this.buildFile;
 		}

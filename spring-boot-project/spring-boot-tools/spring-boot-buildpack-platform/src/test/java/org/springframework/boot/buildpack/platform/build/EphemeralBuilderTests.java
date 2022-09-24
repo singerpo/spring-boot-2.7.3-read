@@ -190,8 +190,7 @@ class EphemeralBuilderTests extends AbstractJsonTests {
 			File file = new File(directory, entry.getName());
 			if (entry.isDirectory()) {
 				file.mkdirs();
-			}
-			else {
+			} else {
 				file.getParentFile().mkdirs();
 				try (OutputStream out = new FileOutputStream(file)) {
 					IOUtils.copy(archive, out);

@@ -54,7 +54,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 
 	private static final String SHARED_PACKAGE = "org.springframework.boot.groovy";
 
-	private static final URL[] NO_URLS = new URL[] {};
+	private static final URL[] NO_URLS = new URL[]{};
 
 	private final Map<String, byte[]> classResources = new HashMap<>();
 
@@ -75,7 +75,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 	}
 
 	private ExtendedGroovyClassLoader(GroovyCompilerScope scope, ClassLoader parent,
-			CompilerConfiguration configuration) {
+									  CompilerConfiguration configuration) {
 		super(parent, configuration);
 		this.configuration = configuration;
 		this.scope = scope;
@@ -85,8 +85,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 	protected Class<?> findClass(String name) throws ClassNotFoundException {
 		try {
 			return super.findClass(name);
-		}
-		catch (ClassNotFoundException ex) {
+		} catch (ClassNotFoundException ex) {
 			if (this.scope == GroovyCompilerScope.DEFAULT && name.startsWith(SHARED_PACKAGE)) {
 				Class<?> sharedClass = findSharedClass(name);
 				if (sharedClass != null) {
@@ -106,8 +105,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 				}
 			}
 			return null;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -169,7 +167,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 	 */
 	private static class DefaultScopeParentClassLoader extends ClassLoader {
 
-		private static final String[] GROOVY_JARS_PREFIXES = { "groovy", "antlr", "asm" };
+		private static final String[] GROOVY_JARS_PREFIXES = {"groovy", "antlr", "asm"};
 
 		private final URLClassLoader groovyOnlyClassLoader;
 
@@ -211,8 +209,7 @@ public class ExtendedGroovyClassLoader extends GroovyClassLoader {
 					if (file.canRead()) {
 						try {
 							urls.add(file.toURI().toURL());
-						}
-						catch (MalformedURLException ex) {
+						} catch (MalformedURLException ex) {
 							// Swallow and continue
 						}
 					}

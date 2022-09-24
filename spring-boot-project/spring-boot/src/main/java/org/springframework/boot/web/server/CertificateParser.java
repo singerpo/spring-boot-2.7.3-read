@@ -55,6 +55,7 @@ final class CertificateParser {
 
 	/**
 	 * Load certificates from the specified resource.
+	 *
 	 * @param path the certificate to parse
 	 * @return the parsed certificates
 	 */
@@ -68,14 +69,13 @@ final class CertificateParser {
 	private static CertificateFactory getCertificateFactory() {
 		try {
 			return CertificateFactory.getInstance("X.509");
-		}
-		catch (CertificateException ex) {
+		} catch (CertificateException ex) {
 			throw new IllegalStateException("Unable to get X.509 certificate factory", ex);
 		}
 	}
 
 	private static void readCertificates(String resource, CertificateFactory factory,
-			Consumer<X509Certificate> consumer) {
+										 Consumer<X509Certificate> consumer) {
 		try {
 			String text = readText(resource);
 			Matcher matcher = PATTERN.matcher(text);
@@ -87,8 +87,7 @@ final class CertificateParser {
 					consumer.accept((X509Certificate) factory.generateCertificate(inputStream));
 				}
 			}
-		}
-		catch (CertificateException | IOException ex) {
+		} catch (CertificateException | IOException ex) {
 			throw new IllegalStateException("Error reading certificate from '" + resource + "' : " + ex.getMessage(),
 					ex);
 		}

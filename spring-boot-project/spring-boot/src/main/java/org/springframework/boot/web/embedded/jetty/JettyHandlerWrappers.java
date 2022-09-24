@@ -49,8 +49,7 @@ final class JettyHandlerWrappers {
 		if (compression.getExcludedUserAgents() != null) {
 			try {
 				handler.setExcludedAgentPatterns(compression.getExcludedUserAgents());
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Jetty 10 does not support User-Agent-based exclusions
 			}
 		}

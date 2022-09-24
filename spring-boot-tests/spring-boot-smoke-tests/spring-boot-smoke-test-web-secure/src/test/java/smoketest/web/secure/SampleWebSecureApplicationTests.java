@@ -46,7 +46,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Scott Frederick
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		classes = { SampleWebSecureApplicationTests.SecurityConfiguration.class, SampleWebSecureApplication.class })
+		classes = {SampleWebSecureApplicationTests.SecurityConfiguration.class, SampleWebSecureApplication.class})
 class SampleWebSecureApplicationTests {
 
 	@Autowired

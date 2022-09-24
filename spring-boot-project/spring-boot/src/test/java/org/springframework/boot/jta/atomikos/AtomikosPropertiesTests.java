@@ -109,8 +109,7 @@ class AtomikosPropertiesTests {
 		try {
 
 			return PropertiesLoaderUtils.loadProperties(new ClassPathResource("transactions-defaults.properties"));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Failed to get default from Atomikos", ex);
 		}
 	}

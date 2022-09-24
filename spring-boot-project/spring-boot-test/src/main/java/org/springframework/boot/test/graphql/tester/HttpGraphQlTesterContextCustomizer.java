@@ -175,8 +175,7 @@ class HttpGraphQlTesterContextCustomizer implements ContextCustomizer {
 			if (webApplicationType == WebApplicationType.REACTIVE) {
 				serverBasePath = this.applicationContext.getEnvironment().getProperty("spring.webflux.base-path");
 
-			}
-			else if (webApplicationType == WebApplicationType.SERVLET) {
+			} else if (webApplicationType == WebApplicationType.SERVLET) {
 				serverBasePath = ((WebApplicationContext) this.applicationContext).getServletContext().getContextPath();
 			}
 			return (serverBasePath != null) ? serverBasePath : "";
@@ -195,8 +194,7 @@ class HttpGraphQlTesterContextCustomizer implements ContextCustomizer {
 		private static boolean isAssignable(String target, Class<?> type) {
 			try {
 				return ClassUtils.resolveClassName(target, null).isAssignableFrom(type);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				return false;
 			}
 		}
@@ -206,8 +204,7 @@ class HttpGraphQlTesterContextCustomizer implements ContextCustomizer {
 				AbstractConfigurableWebServerFactory webServerFactory = context
 						.getBean(AbstractConfigurableWebServerFactory.class);
 				return webServerFactory.getSsl() != null && webServerFactory.getSsl().isEnabled();
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return false;
 			}
 		}

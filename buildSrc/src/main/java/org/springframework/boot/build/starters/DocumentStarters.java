@@ -97,8 +97,7 @@ public class DocumentStarters extends DefaultTask {
 			properties.load(reader);
 			return new Starter(properties.getProperty("name"), properties.getProperty("description"),
 					StringUtils.commaDelimitedListToSet(properties.getProperty("dependencies")));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
@@ -115,8 +114,7 @@ public class DocumentStarters extends DefaultTask {
 				writer.printf("| %s%n", postProcessDescription(starter.description));
 			});
 			writer.println("|===");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

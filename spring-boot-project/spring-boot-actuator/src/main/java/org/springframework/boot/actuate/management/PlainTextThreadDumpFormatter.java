@@ -78,20 +78,18 @@ class PlainTextThreadDumpFormatter {
 	}
 
 	private void writeStackTraceElement(PrintWriter writer, StackTraceElement element, ThreadInfo info,
-			List<MonitorInfo> lockedMonitors, boolean firstElement) {
+										List<MonitorInfo> lockedMonitors, boolean firstElement) {
 		writer.printf("\tat %s%n", element.toString());
 		LockInfo lockInfo = info.getLockInfo();
 		if (firstElement && lockInfo != null) {
 			if (element.getClassName().equals(Object.class.getName()) && element.getMethodName().equals("wait")) {
 				writer.printf("\t- waiting on %s%n", format(lockInfo));
-			}
-			else {
+			} else {
 				String lockOwner = info.getLockOwnerName();
 				if (lockOwner != null) {
 					writer.printf("\t- waiting to lock %s owned by \"%s\" t@%d%n", format(lockInfo), lockOwner,
 							info.getLockOwnerId());
-				}
-				else {
+				} else {
 					writer.printf("\t- parking to wait for %s%n", format(lockInfo));
 				}
 			}
@@ -114,8 +112,7 @@ class PlainTextThreadDumpFormatter {
 		LockInfo[] lockedSynchronizers = info.getLockedSynchronizers();
 		if (lockedSynchronizers == null || lockedSynchronizers.length == 0) {
 			writer.println("\t- None");
-		}
-		else {
+		} else {
 			for (LockInfo lockedSynchronizer : lockedSynchronizers) {
 				writer.printf("\t- Locked %s%n", format(lockedSynchronizer));
 			}

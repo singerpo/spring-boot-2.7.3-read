@@ -326,12 +326,12 @@ class ConfigurationPropertiesBeanTests {
 	}
 
 	private void getWithoutBeanMetadataCaching(Class<?> configuration, String beanName,
-			ThrowingConsumer<ConfigurationPropertiesBean> consumer) throws Throwable {
+											   ThrowingConsumer<ConfigurationPropertiesBean> consumer) throws Throwable {
 		get(configuration, beanName, false, consumer);
 	}
 
 	private void get(Class<?> configuration, String beanName, boolean cacheBeanMetadata,
-			ThrowingConsumer<ConfigurationPropertiesBean> consumer) throws Throwable {
+					 ThrowingConsumer<ConfigurationPropertiesBean> consumer) throws Throwable {
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
 			context.getBeanFactory().setCacheBeanMetadata(cacheBeanMetadata);
 			context.register(configuration);
@@ -550,7 +550,7 @@ class ConfigurationPropertiesBeanTests {
 
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-			return new String[] { NonAnnotatedBeanConfiguration.class.getName() };
+			return new String[]{NonAnnotatedBeanConfiguration.class.getName()};
 		}
 
 	}

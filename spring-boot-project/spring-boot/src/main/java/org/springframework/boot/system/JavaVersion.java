@@ -107,6 +107,7 @@ public enum JavaVersion {
 
 	/**
 	 * Returns the {@link JavaVersion} of the current runtime.
+	 *
 	 * @return the {@link JavaVersion}
 	 */
 	public static JavaVersion getJavaVersion() {
@@ -122,6 +123,7 @@ public enum JavaVersion {
 
 	/**
 	 * Return if this version is equal to or newer than a given version.
+	 *
 	 * @param version the version to compare
 	 * @return {@code true} if this version is equal to or newer than {@code version}
 	 */
@@ -131,6 +133,7 @@ public enum JavaVersion {
 
 	/**
 	 * Return if this version is older than a given version.
+	 *
 	 * @param version the version to compare
 	 * @return {@code true} if this version is older than {@code version}
 	 */

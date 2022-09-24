@@ -32,8 +32,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * directly.
  *
  * @author Eddú Meléndez
- * @since 2.7.0
  * @see DataElasticsearchTest
+ * @since 2.7.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

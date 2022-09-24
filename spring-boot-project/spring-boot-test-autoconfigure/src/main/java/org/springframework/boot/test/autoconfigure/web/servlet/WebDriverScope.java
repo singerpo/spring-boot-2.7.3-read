@@ -45,8 +45,8 @@ class WebDriverScope implements Scope {
 
 	private static final String WEB_DRIVER_CLASS = "org.openqa.selenium.WebDriver";
 
-	private static final String[] BEAN_CLASSES = { WEB_DRIVER_CLASS,
-			"org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder" };
+	private static final String[] BEAN_CLASSES = {WEB_DRIVER_CLASS,
+			"org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder"};
 
 	private final Map<String, Object> instances = new HashMap<>();
 
@@ -85,6 +85,7 @@ class WebDriverScope implements Scope {
 
 	/**
 	 * Reset all instances in the scope.
+	 *
 	 * @return {@code true} if items were reset
 	 */
 	boolean reset() {
@@ -104,6 +105,7 @@ class WebDriverScope implements Scope {
 	/**
 	 * Register this scope with the specified context and reassign appropriate bean
 	 * definitions to used it.
+	 *
 	 * @param context the application context
 	 */
 	static void registerWith(ConfigurableApplicationContext context) {
@@ -130,6 +132,7 @@ class WebDriverScope implements Scope {
 
 	/**
 	 * Return the {@link WebDriverScope} being used by the specified context (if any).
+	 *
 	 * @param context the application context
 	 * @return the web driver scope or {@code null}
 	 */

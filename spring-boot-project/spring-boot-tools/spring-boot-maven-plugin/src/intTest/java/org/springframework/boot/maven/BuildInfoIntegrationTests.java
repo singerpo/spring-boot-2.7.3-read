@@ -136,8 +136,7 @@ class BuildInfoIntegrationTests {
 				Properties properties = new Properties();
 				properties.load(reader);
 				return properties;
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
 		}

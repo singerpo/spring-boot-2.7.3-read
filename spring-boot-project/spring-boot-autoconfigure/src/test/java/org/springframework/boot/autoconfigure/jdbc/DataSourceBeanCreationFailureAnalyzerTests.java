@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Andy Wilkinson
  * @author Stephane Nicoll
  */
-@ClassPathExclusions({ "h2-*.jar", "hsqldb-*.jar" })
+@ClassPathExclusions({"h2-*.jar", "hsqldb-*.jar"})
 class DataSourceBeanCreationFailureAnalyzerTests {
 
 	private final MockEnvironment environment = new MockEnvironment();
@@ -73,8 +73,7 @@ class DataSourceBeanCreationFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanCreationException ex) {
+		} catch (BeanCreationException ex) {
 			return ex;
 		}
 	}

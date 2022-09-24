@@ -66,8 +66,7 @@ class SpringBootExceptionHandler implements UncaughtExceptionHandler {
 			if (isPassedToParent(ex) && this.parent != null) {
 				this.parent.uncaughtException(thread, ex);
 			}
-		}
-		finally {
+		} finally {
 			this.loggedExceptions.clear();
 			if (this.exitCode != 0) {
 				System.exit(this.exitCode);
@@ -82,6 +81,7 @@ class SpringBootExceptionHandler implements UncaughtExceptionHandler {
 	/**
 	 * Check if the exception is a log configuration message, i.e. the log call might not
 	 * have actually output anything.
+	 *
 	 * @param ex the source exception
 	 * @return {@code true} if the exception contains a log configuration message
 	 */

@@ -26,8 +26,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
  *
  * @author Andy Wilkinson
  */
-@SpringBootApplication(exclude = { CassandraAutoConfiguration.class, SecurityAutoConfiguration.class,
-		ManagementWebSecurityAutoConfiguration.class })
+@SpringBootApplication(exclude = {CassandraAutoConfiguration.class, SecurityAutoConfiguration.class,
+		ManagementWebSecurityAutoConfiguration.class})
 public class RestDocsTestApplication {
 
 }

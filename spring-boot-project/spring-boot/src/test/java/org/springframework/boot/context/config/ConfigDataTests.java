@@ -67,7 +67,7 @@ class ConfigDataTests {
 	@Deprecated
 	void getDeprecatedOptionsReturnsCopyOfOptions() {
 		MapPropertySource source = new MapPropertySource("test", Collections.emptyMap());
-		Option[] options = { Option.IGNORE_IMPORTS };
+		Option[] options = {Option.IGNORE_IMPORTS};
 		ConfigData configData = new ConfigData(Collections.singleton(source), options);
 		options[0] = null;
 		assertThat(configData.getOptions()).containsExactly(Option.IGNORE_IMPORTS);
@@ -119,7 +119,7 @@ class ConfigDataTests {
 
 	@Test
 	void optionsOfUsesCopyOfOptions() {
-		Option[] array = { Option.IGNORE_IMPORTS, Option.IGNORE_PROFILES };
+		Option[] array = {Option.IGNORE_IMPORTS, Option.IGNORE_PROFILES};
 		Options options = Options.of(array);
 		array[0] = Option.PROFILE_SPECIFIC;
 		assertThat(options.asSet()).containsExactly(Option.IGNORE_IMPORTS, Option.IGNORE_PROFILES);

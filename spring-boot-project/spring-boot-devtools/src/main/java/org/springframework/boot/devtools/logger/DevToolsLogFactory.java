@@ -42,6 +42,7 @@ public final class DevToolsLogFactory {
 	 * Get a {@link Log} instance for the specified source that will be automatically
 	 * {@link DeferredLog#switchTo(Class) switched} when the
 	 * {@link ApplicationPreparedEvent context is prepared}.
+	 *
 	 * @param source the source for logging
 	 * @return a {@link DeferredLog} instance
 	 */

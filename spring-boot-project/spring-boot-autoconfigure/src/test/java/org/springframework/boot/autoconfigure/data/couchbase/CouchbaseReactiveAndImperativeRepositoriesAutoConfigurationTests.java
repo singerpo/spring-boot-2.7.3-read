@@ -61,7 +61,7 @@ class CouchbaseReactiveAndImperativeRepositoriesAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ CouchbaseMockConfiguration.class, Registrar.class })
+	@Import({CouchbaseMockConfiguration.class, Registrar.class})
 	static class BaseConfiguration {
 
 	}
@@ -71,10 +71,10 @@ class CouchbaseReactiveAndImperativeRepositoriesAutoConfigurationTests {
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
 			List<String> names = new ArrayList<>();
-			for (Class<?> type : new Class<?>[] { CouchbaseAutoConfiguration.class,
+			for (Class<?> type : new Class<?>[]{CouchbaseAutoConfiguration.class,
 					CouchbaseDataAutoConfiguration.class, CouchbaseRepositoriesAutoConfiguration.class,
 					CouchbaseReactiveDataAutoConfiguration.class,
-					CouchbaseReactiveRepositoriesAutoConfiguration.class }) {
+					CouchbaseReactiveRepositoriesAutoConfiguration.class}) {
 				names.add(type.getName());
 			}
 			return StringUtils.toStringArray(names);

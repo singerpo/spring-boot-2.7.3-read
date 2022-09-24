@@ -20,8 +20,8 @@ import org.springframework.boot.groovy.DependencyManagementBom
 
 // tag::code[]
 @DependencyManagementBom([
-	"com.example.custom-bom:1.0.0",
-	"com.example.another-bom:1.0.0"])
+		"com.example.custom-bom:1.0.0",
+		"com.example.another-bom:1.0.0"])
 // end::code[]
 class CustomDependencyManagement {
 

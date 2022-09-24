@@ -37,6 +37,7 @@ public class CouchbaseReactiveHealthIndicator extends AbstractReactiveHealthIndi
 
 	/**
 	 * Create a new {@link CouchbaseReactiveHealthIndicator} instance.
+	 *
 	 * @param cluster the Couchbase cluster
 	 */
 	public CouchbaseReactiveHealthIndicator(Cluster cluster) {

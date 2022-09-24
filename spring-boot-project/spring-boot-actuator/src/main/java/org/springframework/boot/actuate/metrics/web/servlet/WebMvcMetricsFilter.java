@@ -66,14 +66,15 @@ public class WebMvcMetricsFilter extends OncePerRequestFilter {
 
 	/**
 	 * Create a new {@link WebMvcMetricsFilter} instance.
-	 * @param registry the meter registry
+	 *
+	 * @param registry     the meter registry
 	 * @param tagsProvider the tags provider
-	 * @param metricName the metric name
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param metricName   the metric name
+	 * @param autoTimer    the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.2.0
 	 */
 	public WebMvcMetricsFilter(MeterRegistry registry, WebMvcTagsProvider tagsProvider, String metricName,
-			AutoTimer autoTimer) {
+							   AutoTimer autoTimer) {
 		this.registry = registry;
 		this.tagsProvider = tagsProvider;
 		this.metricName = metricName;
@@ -102,8 +103,7 @@ public class WebMvcMetricsFilter extends OncePerRequestFilter {
 				Throwable exception = fetchException(request);
 				record(timingContext, request, response, exception);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			record(timingContext, request, response, unwrapNestedServletException(ex));
 			throw ex;
@@ -130,15 +130,14 @@ public class WebMvcMetricsFilter extends OncePerRequestFilter {
 	}
 
 	private void record(TimingContext timingContext, HttpServletRequest request, HttpServletResponse response,
-			Throwable exception) {
+						Throwable exception) {
 		try {
 			Object handler = getHandler(request);
 			Set<Timed> annotations = getTimedAnnotations(handler);
 			Timer.Sample timerSample = timingContext.getTimerSample();
 			AutoTimer.apply(this.autoTimer, this.metricName, annotations,
 					(builder) -> timerSample.stop(getTimer(builder, handler, request, response, exception)));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn("Failed to record timer metrics", ex);
 			// Allow request-response exchange to continue, unaffected by metrics problem
 		}
@@ -157,7 +156,7 @@ public class WebMvcMetricsFilter extends OncePerRequestFilter {
 	}
 
 	private Timer getTimer(Builder builder, Object handler, HttpServletRequest request, HttpServletResponse response,
-			Throwable exception) {
+						   Throwable exception) {
 		return builder.description("Duration of HTTP server request handling")
 				.tags(this.tagsProvider.getTags(request, response, handler, exception)).register(this.registry);
 	}

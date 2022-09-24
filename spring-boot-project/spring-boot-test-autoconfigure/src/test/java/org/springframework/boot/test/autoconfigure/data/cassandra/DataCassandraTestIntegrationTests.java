@@ -43,10 +43,10 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
  *
  * @author Artsiom Yudovin
  */
-@DataCassandraTest(properties = { "spring.data.cassandra.local-datacenter=datacenter1",
+@DataCassandraTest(properties = {"spring.data.cassandra.local-datacenter=datacenter1",
 		"spring.data.cassandra.schema-action=create-if-not-exists",
 		"spring.data.cassandra.connection.connect-timeout=60s",
-		"spring.data.cassandra.connection.init-query-timeout=60s", "spring.data.cassandra.request.timeout=60s" })
+		"spring.data.cassandra.connection.init-query-timeout=60s", "spring.data.cassandra.request.timeout=60s"})
 @Testcontainers(disabledWithoutDocker = true)
 class DataCassandraTestIntegrationTests {
 

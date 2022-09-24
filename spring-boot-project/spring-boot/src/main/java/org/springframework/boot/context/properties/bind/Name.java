@@ -31,12 +31,13 @@ import java.lang.annotation.Target;
  * @since 2.4.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.PARAMETER })
+@Target({ElementType.PARAMETER})
 @Documented
 public @interface Name {
 
 	/**
 	 * The name of the property to use for binding.
+	 *
 	 * @return the property name
 	 */
 	String value();

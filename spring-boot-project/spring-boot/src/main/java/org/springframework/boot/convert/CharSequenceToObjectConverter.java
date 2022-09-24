@@ -66,8 +66,7 @@ class CharSequenceToObjectConverter implements ConditionalGenericConverter {
 				return false;
 			}
 			return this.conversionService.canConvert(STRING, targetType);
-		}
-		finally {
+		} finally {
 			this.disable.set(null);
 		}
 	}
@@ -75,6 +74,7 @@ class CharSequenceToObjectConverter implements ConditionalGenericConverter {
 	/**
 	 * Return if String based conversion is better based on the target type. This is
 	 * required when ObjectTo... conversion produces incorrect results.
+	 *
 	 * @param sourceType the source type to test
 	 * @param targetType the target type to test
 	 * @return if string conversion is better

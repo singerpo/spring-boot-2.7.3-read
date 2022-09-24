@@ -49,8 +49,8 @@ class MeterRegistryPostProcessor implements BeanPostProcessor {
 	private final ApplicationContext applicationContext;
 
 	MeterRegistryPostProcessor(ObjectProvider<MeterBinder> meterBinders, ObjectProvider<MeterFilter> meterFilters,
-			ObjectProvider<MeterRegistryCustomizer<?>> meterRegistryCustomizers,
-			ObjectProvider<MetricsProperties> metricsProperties, ApplicationContext applicationContext) {
+							   ObjectProvider<MeterRegistryCustomizer<?>> meterRegistryCustomizers,
+							   ObjectProvider<MetricsProperties> metricsProperties, ApplicationContext applicationContext) {
 		this.meterBinders = meterBinders;
 		this.meterFilters = meterFilters;
 		this.meterRegistryCustomizers = meterRegistryCustomizers;

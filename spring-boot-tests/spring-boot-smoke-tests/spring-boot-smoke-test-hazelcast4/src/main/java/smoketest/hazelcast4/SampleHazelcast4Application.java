@@ -35,7 +35,7 @@ public class SampleHazelcast4Application {
 
 	@Bean
 	public ApplicationRunner registerCache(CountryRepository repository, HazelcastCacheManager cacheManager,
-			CacheMetricsRegistrar registrar) {
+										   CacheMetricsRegistrar registrar) {
 		return (args) -> {
 			repository.findByCode("BE");
 			registrar.bindCacheToRegistry(cacheManager.getCache("countries"));

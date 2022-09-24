@@ -20,5 +20,5 @@
 		</plugins>
 	</build>
 </project>
-<!-- end::docker-registry-authentication[] -->
+		<!-- end::docker-registry-authentication[] -->
 

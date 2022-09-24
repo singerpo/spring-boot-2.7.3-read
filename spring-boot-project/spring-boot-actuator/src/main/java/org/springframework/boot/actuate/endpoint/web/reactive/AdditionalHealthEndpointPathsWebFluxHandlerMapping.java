@@ -46,7 +46,7 @@ public class AdditionalHealthEndpointPathsWebFluxHandlerMapping extends Abstract
 	private final Set<HealthEndpointGroup> groups;
 
 	public AdditionalHealthEndpointPathsWebFluxHandlerMapping(EndpointMapping endpointMapping,
-			ExposableWebEndpoint endpoint, Set<HealthEndpointGroup> groups) {
+															  ExposableWebEndpoint endpoint, Set<HealthEndpointGroup> groups) {
 		super(endpointMapping, Collections.singletonList(endpoint), null, null, false);
 		this.endpointMapping = endpointMapping;
 		this.groups = groups;

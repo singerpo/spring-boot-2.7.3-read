@@ -97,8 +97,7 @@ class JooqPropertiesTests {
 			Connection connection = mock(Connection.class);
 			given(connection.getMetaData()).willReturn(metadata);
 			given(ds.getConnection()).willReturn(connection);
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 			// Do nothing
 		}
 		return ds;

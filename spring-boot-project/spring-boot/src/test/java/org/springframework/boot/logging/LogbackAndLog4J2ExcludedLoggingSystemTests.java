@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Andy Wilkinson
  */
-@ClassPathExclusions({ "log4j-*.jar", "logback-*.jar" })
+@ClassPathExclusions({"log4j-*.jar", "logback-*.jar"})
 class LogbackAndLog4J2ExcludedLoggingSystemTests {
 
 	@Test

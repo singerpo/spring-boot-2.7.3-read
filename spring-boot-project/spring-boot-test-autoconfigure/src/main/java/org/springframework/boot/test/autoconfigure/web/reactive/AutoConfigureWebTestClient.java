@@ -33,10 +33,10 @@ import org.springframework.test.web.reactive.server.WebTestClient;
  * the moment, only WebFlux applications are supported.
  *
  * @author Stephane Nicoll
- * @since 2.0.0
  * @see WebTestClientAutoConfiguration
+ * @since 2.0.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
@@ -47,6 +47,7 @@ public @interface AutoConfigureWebTestClient {
 	/**
 	 * The timeout duration for the client (in any format handled by
 	 * {@link Duration#parse(CharSequence)}).
+	 *
 	 * @return the web client timeout
 	 */
 	String timeout() default "";

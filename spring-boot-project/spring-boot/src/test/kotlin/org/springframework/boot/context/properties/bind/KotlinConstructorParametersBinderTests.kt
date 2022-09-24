@@ -238,7 +238,7 @@ class KotlinConstructorParametersBinderTests {
 	data class ExampleNamedParameterBean(@Name("stringValue") val stringDataValue: String)
 
 	data class GenericValue<T>(
-		val value: T
+			val value: T
 	)
 
 	object ExampleSingletonBean {

@@ -51,7 +51,7 @@ class MockDefinition extends Definition {
 	private final boolean serializable;
 
 	MockDefinition(String name, ResolvableType typeToMock, Class<?>[] extraInterfaces, Answers answer,
-			boolean serializable, MockReset reset, QualifierDefinition qualifier) {
+				   boolean serializable, MockReset reset, QualifierDefinition qualifier) {
 		super(name, reset, false, qualifier);
 		Assert.notNull(typeToMock, "TypeToMock must not be null");
 		this.typeToMock = typeToMock;
@@ -70,6 +70,7 @@ class MockDefinition extends Definition {
 
 	/**
 	 * Return the type that should be mocked.
+	 *
 	 * @return the type to mock; never {@code null}
 	 */
 	ResolvableType getTypeToMock() {
@@ -78,6 +79,7 @@ class MockDefinition extends Definition {
 
 	/**
 	 * Return the extra interfaces.
+	 *
 	 * @return the extra interfaces or an empty set
 	 */
 	Set<Class<?>> getExtraInterfaces() {
@@ -86,6 +88,7 @@ class MockDefinition extends Definition {
 
 	/**
 	 * Return the answers mode.
+	 *
 	 * @return the answers mode; never {@code null}
 	 */
 	Answers getAnswer() {
@@ -94,6 +97,7 @@ class MockDefinition extends Definition {
 
 	/**
 	 * Return if the mock is serializable.
+	 *
 	 * @return if the mock is serializable
 	 */
 	boolean isSerializable() {

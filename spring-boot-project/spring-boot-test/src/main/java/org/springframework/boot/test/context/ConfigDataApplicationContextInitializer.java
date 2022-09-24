@@ -32,8 +32,8 @@ import org.springframework.test.context.ContextConfiguration;
  * such as {@literal application.properties}.
  *
  * @author Phillip Webb
- * @since 2.4.0
  * @see ConfigDataEnvironmentPostProcessor
+ * @since 2.4.0
  */
 public class ConfigDataApplicationContextInitializer
 		implements ApplicationContextInitializer<ConfigurableApplicationContext> {

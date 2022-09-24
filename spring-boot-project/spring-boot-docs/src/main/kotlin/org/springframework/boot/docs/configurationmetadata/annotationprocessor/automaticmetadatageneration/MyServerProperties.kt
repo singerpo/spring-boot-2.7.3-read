@@ -21,17 +21,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties(prefix = "my.server")
 class MyServerProperties(
 
-	/**
-	 * Name of the server.
-	 */
-	var name: String,
+		/**
+		 * Name of the server.
+		 */
+		var name: String,
 
-	/**
-	 * IP address to listen to.
-	 */
-	var ip: String = "127.0.0.1",
+		/**
+		 * IP address to listen to.
+		 */
+		var ip: String = "127.0.0.1",
 
-	/**
-	 * Port to listen to.
-	 */
-	var port: Int = 9797)
+		/**
+		 * Port to listen to.
+		 */
+		var port: Int = 9797)

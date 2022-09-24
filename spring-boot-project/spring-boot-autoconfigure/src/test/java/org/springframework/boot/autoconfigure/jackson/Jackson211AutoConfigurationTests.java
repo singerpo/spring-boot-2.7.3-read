@@ -29,9 +29,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Stephane Nicoll
  */
-@ClassPathExclusions({ "jackson-databind*.jar", "jackson-dataformat-xml*.jar" })
-@ClassPathOverrides({ "com.fasterxml.jackson.core:jackson-databind:2.11.3",
-		"com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.3" })
+@ClassPathExclusions({"jackson-databind*.jar", "jackson-dataformat-xml*.jar"})
+@ClassPathOverrides({"com.fasterxml.jackson.core:jackson-databind:2.11.3",
+		"com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.11.3"})
 class Jackson211AutoConfigurationTests extends JacksonAutoConfigurationTests {
 
 	public static final String STRATEGY_CLASS_NAME = "com.fasterxml.jackson.databind.PropertyNamingStrategy$SnakeCaseStrategy";

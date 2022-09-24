@@ -53,6 +53,7 @@ public class InMemoryAuditEventRepository implements AuditEventRepository {
 
 	/**
 	 * Set the capacity of this event repository.
+	 *
 	 * @param capacity the capacity
 	 */
 	public void setCapacity(int capacity) {

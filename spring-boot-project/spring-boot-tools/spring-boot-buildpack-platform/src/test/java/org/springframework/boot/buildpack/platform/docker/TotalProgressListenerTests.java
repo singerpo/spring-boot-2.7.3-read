@@ -68,7 +68,7 @@ class TotalProgressListenerTests extends AbstractJsonTests {
 	private static class TestTotalProgressListener extends TotalProgressListener<TestImageUpdateEvent> {
 
 		TestTotalProgressListener(Consumer<TotalProgressEvent> consumer) {
-			super(consumer, new String[] { "Pulling", "Downloading", "Extracting" });
+			super(consumer, new String[]{"Pulling", "Downloading", "Extracting"});
 		}
 
 		@Override
@@ -76,8 +76,7 @@ class TotalProgressListenerTests extends AbstractJsonTests {
 			super.onUpdate(event);
 			try {
 				Thread.sleep(10);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 			}
 		}
 

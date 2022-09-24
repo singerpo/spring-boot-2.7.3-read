@@ -25,8 +25,8 @@ import org.springframework.util.StringUtils;
  * A single file that has changed.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see ChangedFiles
+ * @since 1.3.0
  */
 public final class ChangedFile {
 
@@ -38,9 +38,10 @@ public final class ChangedFile {
 
 	/**
 	 * Create a new {@link ChangedFile} instance.
+	 *
 	 * @param sourceDirectory the source directory
-	 * @param file the file
-	 * @param type the type of change
+	 * @param file            the file
+	 * @param type            the type of change
 	 */
 	public ChangedFile(File sourceDirectory, File file, Type type) {
 		Assert.notNull(sourceDirectory, "SourceDirectory must not be null");
@@ -53,6 +54,7 @@ public final class ChangedFile {
 
 	/**
 	 * Return the file that was changed.
+	 *
 	 * @return the file
 	 */
 	public File getFile() {
@@ -61,6 +63,7 @@ public final class ChangedFile {
 
 	/**
 	 * Return the type of change.
+	 *
 	 * @return the type of change
 	 */
 	public Type getType() {
@@ -69,6 +72,7 @@ public final class ChangedFile {
 
 	/**
 	 * Return the name of the file relative to the source directory.
+	 *
 	 * @return the relative name
 	 */
 	public String getRelativeName() {

@@ -36,8 +36,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @WebMvcTest
 @WithMockUser
-@TestPropertySource(properties = { "spring.mvc.throw-exception-if-no-handler-found=true",
-		"spring.mvc.static-path-pattern=/static/**" })
+@TestPropertySource(properties = {"spring.mvc.throw-exception-if-no-handler-found=true",
+		"spring.mvc.static-path-pattern=/static/**"})
 class WebMvcTestCustomDispatcherServletIntegrationTests {
 
 	@Autowired

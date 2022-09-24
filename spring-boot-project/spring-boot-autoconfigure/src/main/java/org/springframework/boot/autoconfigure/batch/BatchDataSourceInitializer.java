@@ -39,7 +39,7 @@ public class BatchDataSourceInitializer extends org.springframework.boot.jdbc.Ab
 	private final Jdbc jdbcProperties;
 
 	public BatchDataSourceInitializer(DataSource dataSource, ResourceLoader resourceLoader,
-			BatchProperties properties) {
+									  BatchProperties properties) {
 		super(dataSource, resourceLoader);
 		Assert.notNull(properties, "BatchProperties must not be null");
 		this.jdbcProperties = properties.getJdbc();

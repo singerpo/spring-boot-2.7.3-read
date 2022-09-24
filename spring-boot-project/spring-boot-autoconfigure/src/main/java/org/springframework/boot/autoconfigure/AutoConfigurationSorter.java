@@ -46,7 +46,7 @@ class AutoConfigurationSorter {
 	private final AutoConfigurationMetadata autoConfigurationMetadata;
 
 	AutoConfigurationSorter(MetadataReaderFactory metadataReaderFactory,
-			AutoConfigurationMetadata autoConfigurationMetadata) {
+							AutoConfigurationMetadata autoConfigurationMetadata) {
 		Assert.notNull(metadataReaderFactory, "MetadataReaderFactory must not be null");
 		this.metadataReaderFactory = metadataReaderFactory;
 		this.autoConfigurationMetadata = autoConfigurationMetadata;
@@ -82,7 +82,7 @@ class AutoConfigurationSorter {
 	}
 
 	private void doSortByAfterAnnotation(AutoConfigurationClasses classes, List<String> toSort, Set<String> sorted,
-			Set<String> processing, String current) {
+										 Set<String> processing, String current) {
 		if (current == null) {
 			current = toSort.remove(0);
 		}
@@ -107,7 +107,7 @@ class AutoConfigurationSorter {
 		private final Map<String, AutoConfigurationClass> classes = new HashMap<>();
 
 		AutoConfigurationClasses(MetadataReaderFactory metadataReaderFactory,
-				AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames) {
+								 AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames) {
 			addToClasses(metadataReaderFactory, autoConfigurationMetadata, classNames, true);
 		}
 
@@ -116,7 +116,7 @@ class AutoConfigurationSorter {
 		}
 
 		private void addToClasses(MetadataReaderFactory metadataReaderFactory,
-				AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames, boolean required) {
+								  AutoConfigurationMetadata autoConfigurationMetadata, Collection<String> classNames, boolean required) {
 			for (String className : classNames) {
 				if (!this.classes.containsKey(className)) {
 					AutoConfigurationClass autoConfigurationClass = new AutoConfigurationClass(className,
@@ -166,7 +166,7 @@ class AutoConfigurationSorter {
 		private volatile Set<String> after;
 
 		AutoConfigurationClass(String className, MetadataReaderFactory metadataReaderFactory,
-				AutoConfigurationMetadata autoConfigurationMetadata) {
+							   AutoConfigurationMetadata autoConfigurationMetadata) {
 			this.className = className;
 			this.metadataReaderFactory = metadataReaderFactory;
 			this.autoConfigurationMetadata = autoConfigurationMetadata;
@@ -178,8 +178,7 @@ class AutoConfigurationSorter {
 					getAnnotationMetadata();
 				}
 				return true;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return false;
 			}
 		}
@@ -232,8 +231,7 @@ class AutoConfigurationSorter {
 				try {
 					MetadataReader metadataReader = this.metadataReaderFactory.getMetadataReader(this.className);
 					this.annotationMetadata = metadataReader.getAnnotationMetadata();
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					throw new IllegalStateException("Unable to read meta-data for class " + this.className, ex);
 				}
 			}

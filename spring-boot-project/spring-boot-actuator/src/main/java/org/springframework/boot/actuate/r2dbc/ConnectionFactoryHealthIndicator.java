@@ -48,6 +48,7 @@ public class ConnectionFactoryHealthIndicator extends AbstractReactiveHealthIndi
 	/**
 	 * Create a new {@link ConnectionFactoryHealthIndicator} using the specified
 	 * {@link ConnectionFactory} and no validation query.
+	 *
 	 * @param connectionFactory the connection factory
 	 * @see Connection#validate(ValidationDepth)
 	 */
@@ -58,9 +59,10 @@ public class ConnectionFactoryHealthIndicator extends AbstractReactiveHealthIndi
 	/**
 	 * Create a new {@link ConnectionFactoryHealthIndicator} using the specified
 	 * {@link ConnectionFactory} and validation query.
+	 *
 	 * @param connectionFactory the connection factory
-	 * @param validationQuery the validation query, can be {@code null} to use connection
-	 * validation
+	 * @param validationQuery   the validation query, can be {@code null} to use connection
+	 *                          validation
 	 */
 	public ConnectionFactoryHealthIndicator(ConnectionFactory connectionFactory, String validationQuery) {
 		Assert.notNull(connectionFactory, "ConnectionFactory must not be null");

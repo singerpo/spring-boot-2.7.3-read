@@ -51,6 +51,7 @@ public class Issue {
 
 	/**
 	 * Labels the issue with the given {@code labels}. Any existing labels are removed.
+	 *
 	 * @param labels the labels to apply to the issue
 	 */
 	public void label(List<String> labels) {

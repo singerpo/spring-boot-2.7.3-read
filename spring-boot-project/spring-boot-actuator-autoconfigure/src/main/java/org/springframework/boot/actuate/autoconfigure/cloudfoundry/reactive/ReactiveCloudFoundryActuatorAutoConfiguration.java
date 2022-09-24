@@ -75,7 +75,7 @@ import org.springframework.web.server.WebFilter;
  * @author Madhura Bhave
  * @since 2.0.0
  */
-@AutoConfiguration(after = { HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class })
+@AutoConfiguration(after = {HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class})
 @ConditionalOnProperty(prefix = "management.cloudfoundry", name = "enabled", matchIfMissing = true)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnCloudPlatform(CloudPlatform.CLOUD_FOUNDRY)
@@ -84,7 +84,7 @@ public class ReactiveCloudFoundryActuatorAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnAvailableEndpoint
-	@ConditionalOnBean({ HealthEndpoint.class, ReactiveHealthEndpointWebExtension.class })
+	@ConditionalOnBean({HealthEndpoint.class, ReactiveHealthEndpointWebExtension.class})
 	public CloudFoundryReactiveHealthEndpointWebExtension cloudFoundryReactiveHealthEndpointWebExtension(
 			ReactiveHealthEndpointWebExtension reactiveHealthEndpointWebExtension) {
 		return new CloudFoundryReactiveHealthEndpointWebExtension(reactiveHealthEndpointWebExtension);
@@ -93,9 +93,9 @@ public class ReactiveCloudFoundryActuatorAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnAvailableEndpoint
-	@ConditionalOnBean({ InfoEndpoint.class, GitProperties.class })
+	@ConditionalOnBean({InfoEndpoint.class, GitProperties.class})
 	public CloudFoundryInfoEndpointWebExtension cloudFoundryInfoEndpointWebExtension(GitProperties properties,
-			ObjectProvider<InfoContributor> infoContributors) {
+																					 ObjectProvider<InfoContributor> infoContributors) {
 		List<InfoContributor> contributors = infoContributors.orderedStream()
 				.map((infoContributor) -> (infoContributor instanceof GitInfoContributor)
 						? new GitInfoContributor(properties, InfoPropertiesInfoContributor.Mode.FULL) : infoContributor)
@@ -122,7 +122,7 @@ public class ReactiveCloudFoundryActuatorAutoConfiguration {
 	}
 
 	private CloudFoundrySecurityInterceptor getSecurityInterceptor(WebClient.Builder webClientBuilder,
-			Environment environment) {
+																   Environment environment) {
 		ReactiveCloudFoundrySecurityService cloudfoundrySecurityService = getCloudFoundrySecurityService(
 				webClientBuilder, environment);
 		ReactiveTokenValidator tokenValidator = new ReactiveTokenValidator(cloudfoundrySecurityService);
@@ -131,7 +131,7 @@ public class ReactiveCloudFoundryActuatorAutoConfiguration {
 	}
 
 	private ReactiveCloudFoundrySecurityService getCloudFoundrySecurityService(WebClient.Builder webClientBuilder,
-			Environment environment) {
+																			   Environment environment) {
 		String cloudControllerUrl = environment.getProperty("vcap.application.cf_api");
 		boolean skipSslValidation = environment.getProperty("management.cloudfoundry.skip-ssl-validation",
 				Boolean.class, false);

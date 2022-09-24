@@ -60,6 +60,7 @@ public class RabbitConnectionFactoryBeanConfigurer {
 	 * further tuned and default settings can be overridden. It is the responsibility of
 	 * the caller to invoke {@link RabbitConnectionFactoryBean#afterPropertiesSet()}
 	 * though.
+	 *
 	 * @param factory the {@link RabbitConnectionFactoryBean} instance to configure
 	 */
 	public void configure(RabbitConnectionFactoryBean factory) {

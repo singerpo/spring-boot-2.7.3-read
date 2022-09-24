@@ -59,8 +59,8 @@ import org.springframework.util.StringUtils;
  * @author Evgeniy Cheban
  * @since 1.1.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
-@ConditionalOnClass({ SpringLiquibase.class, DatabaseChange.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@ConditionalOnClass({SpringLiquibase.class, DatabaseChange.class})
 @ConditionalOnProperty(prefix = "spring.liquibase", name = "enabled", matchIfMissing = true)
 @Conditional(LiquibaseDataSourceCondition.class)
 @Import(DatabaseInitializationDependencyConfigurer.class)
@@ -86,7 +86,7 @@ public class LiquibaseAutoConfiguration {
 
 		@Bean
 		public SpringLiquibase liquibase(ObjectProvider<DataSource> dataSource,
-				@LiquibaseDataSource ObjectProvider<DataSource> liquibaseDataSource) {
+										 @LiquibaseDataSource ObjectProvider<DataSource> liquibaseDataSource) {
 			SpringLiquibase liquibase = createSpringLiquibase(liquibaseDataSource.getIfAvailable(),
 					dataSource.getIfUnique());
 			liquibase.setChangeLog(this.properties.getChangeLog());
@@ -112,13 +112,13 @@ public class LiquibaseAutoConfiguration {
 			DataSource migrationDataSource = getMigrationDataSource(liquibaseDataSource, dataSource, properties);
 			SpringLiquibase liquibase = (migrationDataSource == liquibaseDataSource
 					|| migrationDataSource == dataSource) ? new SpringLiquibase()
-							: new DataSourceClosingSpringLiquibase();
+					: new DataSourceClosingSpringLiquibase();
 			liquibase.setDataSource(migrationDataSource);
 			return liquibase;
 		}
 
 		private DataSource getMigrationDataSource(DataSource liquibaseDataSource, DataSource dataSource,
-				LiquibaseProperties properties) {
+												  LiquibaseProperties properties) {
 			if (liquibaseDataSource != null) {
 				return liquibaseDataSource;
 			}

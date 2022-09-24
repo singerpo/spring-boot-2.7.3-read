@@ -41,7 +41,7 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration
 @ConditionalOnClass(Mustache.class)
 @EnableConfigurationProperties(MustacheProperties.class)
-@Import({ MustacheServletWebConfiguration.class, MustacheReactiveWebConfiguration.class })
+@Import({MustacheServletWebConfiguration.class, MustacheReactiveWebConfiguration.class})
 public class MustacheAutoConfiguration {
 
 	private static final Log logger = LogFactory.getLog(MustacheAutoConfiguration.class);

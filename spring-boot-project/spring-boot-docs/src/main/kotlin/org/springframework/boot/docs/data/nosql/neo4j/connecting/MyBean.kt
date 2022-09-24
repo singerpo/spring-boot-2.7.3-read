@@ -28,8 +28,8 @@ class MyBean(private val driver: Driver) {
 		driver.session().use { session ->
 			return@someMethod session.writeTransaction { transaction: Transaction ->
 				transaction.run(
-					"CREATE (a:Greeting) SET a.message = \$message RETURN a.message + ', from node ' + id(a)",
-					Values.parameters("message", message)
+						"CREATE (a:Greeting) SET a.message = \$message RETURN a.message + ', from node ' + id(a)",
+						Values.parameters("message", message)
 				).single()[0].asString()
 			}
 		}

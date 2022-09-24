@@ -33,18 +33,21 @@ public interface HealthEndpointGroups {
 
 	/**
 	 * Return the primary group used by the endpoint.
+	 *
 	 * @return the primary group (never {@code null})
 	 */
 	HealthEndpointGroup getPrimary();
 
 	/**
 	 * Return the names of any additional groups.
+	 *
 	 * @return the additional group names
 	 */
 	Set<String> getNames();
 
 	/**
 	 * Return the group with the specified name or {@code null} if the name is not known.
+	 *
 	 * @param name the name of the group
 	 * @return the {@link HealthEndpointGroup} or {@code null}
 	 */
@@ -53,6 +56,7 @@ public interface HealthEndpointGroups {
 	/**
 	 * Return the group with the specified additional path or {@code null} if no group
 	 * with that path is found.
+	 *
 	 * @param path the additional path
 	 * @return the matching {@link HealthEndpointGroup} or {@code null}
 	 * @since 2.6.0
@@ -71,6 +75,7 @@ public interface HealthEndpointGroups {
 	/**
 	 * Return all the groups with an additional path on the specified
 	 * {@link WebServerNamespace}.
+	 *
 	 * @param namespace the {@link WebServerNamespace}
 	 * @return the matching groups
 	 * @since 2.6.0
@@ -86,7 +91,8 @@ public interface HealthEndpointGroups {
 
 	/**
 	 * Factory method to create a {@link HealthEndpointGroups} instance.
-	 * @param primary the primary group
+	 *
+	 * @param primary    the primary group
 	 * @param additional the additional groups
 	 * @return a new {@link HealthEndpointGroups} instance
 	 */

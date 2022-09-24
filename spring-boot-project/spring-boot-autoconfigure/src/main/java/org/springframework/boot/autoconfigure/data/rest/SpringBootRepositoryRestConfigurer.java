@@ -41,7 +41,7 @@ class SpringBootRepositoryRestConfigurer implements RepositoryRestConfigurer {
 	private final RepositoryRestProperties properties;
 
 	SpringBootRepositoryRestConfigurer(Jackson2ObjectMapperBuilder objectMapperBuilder,
-			RepositoryRestProperties properties) {
+									   RepositoryRestProperties properties) {
 		this.objectMapperBuilder = objectMapperBuilder;
 		this.properties = properties;
 	}

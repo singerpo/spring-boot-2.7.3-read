@@ -111,7 +111,6 @@ class ProducibleOperationArgumentResolverTests {
 		ONE("one/one"),
 
 		TWO("two/two") {
-
 			@Override
 			public boolean isDefault() {
 				return true;

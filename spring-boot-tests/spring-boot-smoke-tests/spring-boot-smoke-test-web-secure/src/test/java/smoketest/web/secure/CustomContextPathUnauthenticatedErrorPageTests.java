@@ -24,10 +24,10 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		classes = { AbstractErrorPageTests.TestConfiguration.class,
-				UnauthenticatedErrorPageTests.SecurityConfiguration.class, SampleWebSecureApplication.class },
-		properties = { "server.error.include-message=always", "spring.security.user.name=username",
-				"spring.security.user.password=password", "server.servlet.context-path=/example" })
+		classes = {AbstractErrorPageTests.TestConfiguration.class,
+				UnauthenticatedErrorPageTests.SecurityConfiguration.class, SampleWebSecureApplication.class},
+		properties = {"server.error.include-message=always", "spring.security.user.name=username",
+				"spring.security.user.password=password", "server.servlet.context-path=/example"})
 class CustomContextPathUnauthenticatedErrorPageTests extends AbstractUnauthenticatedErrorPageTests {
 
 	CustomContextPathUnauthenticatedErrorPageTests() {

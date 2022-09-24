@@ -59,7 +59,7 @@ import org.springframework.boot.configurationprocessor.metadata.ItemMetadata;
  * @author Jonas Keßler
  * @since 1.2.0
  */
-@SupportedAnnotationTypes({ ConfigurationMetadataAnnotationProcessor.AUTO_CONFIGURATION_ANNOTATION,
+@SupportedAnnotationTypes({ConfigurationMetadataAnnotationProcessor.AUTO_CONFIGURATION_ANNOTATION,
 		ConfigurationMetadataAnnotationProcessor.CONFIGURATION_PROPERTIES_ANNOTATION,
 		ConfigurationMetadataAnnotationProcessor.CONTROLLER_ENDPOINT_ANNOTATION,
 		ConfigurationMetadataAnnotationProcessor.ENDPOINT_ANNOTATION,
@@ -67,7 +67,7 @@ import org.springframework.boot.configurationprocessor.metadata.ItemMetadata;
 		ConfigurationMetadataAnnotationProcessor.REST_CONTROLLER_ENDPOINT_ANNOTATION,
 		ConfigurationMetadataAnnotationProcessor.SERVLET_ENDPOINT_ANNOTATION,
 		ConfigurationMetadataAnnotationProcessor.WEB_ENDPOINT_ANNOTATION,
-		"org.springframework.context.annotation.Configuration" })
+		"org.springframework.context.annotation.Configuration"})
 public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor {
 
 	static final String ADDITIONAL_METADATA_LOCATIONS_OPTION = "org.springframework.boot.configurationprocessor.additionalMetadataLocations";
@@ -181,8 +181,7 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 		if (roundEnv.processingOver()) {
 			try {
 				writeMetadata();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Failed to write metadata", ex);
 			}
 		}
@@ -190,7 +189,7 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 	}
 
 	private Map<Element, List<Element>> getElementsAnnotatedOrMetaAnnotatedWith(RoundEnvironment roundEnv,
-			TypeElement annotation) {
+																				TypeElement annotation) {
 		Map<Element, List<Element>> result = new LinkedHashMap<>();
 		for (Element element : roundEnv.getRootElements()) {
 			List<Element> annotations = this.metadataEnv.getElementsAnnotatedOrMetaAnnotatedWith(element, annotation);
@@ -208,13 +207,11 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 				String prefix = getPrefix(annotation);
 				if (element instanceof TypeElement) {
 					processAnnotatedTypeElement(prefix, (TypeElement) element, new Stack<>());
-				}
-				else if (element instanceof ExecutableElement) {
+				} else if (element instanceof ExecutableElement) {
 					processExecutableElement(prefix, (ExecutableElement) element, new Stack<>());
 				}
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Error processing configuration meta-data on " + element, ex);
 		}
 	}
@@ -237,8 +234,7 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 				if (this.metadataCollector.hasSimilarGroup(group)) {
 					this.processingEnv.getMessager().printMessage(Kind.ERROR,
 							"Duplicate @ConfigurationProperties definition for prefix '" + prefix + "'", element);
-				}
-				else {
+				} else {
 					this.metadataCollector.add(group);
 					processTypeElement(prefix, (TypeElement) returns, element, seen);
 				}
@@ -247,7 +243,7 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 	}
 
 	private void processTypeElement(String prefix, TypeElement element, ExecutableElement source,
-			Stack<TypeElement> seen) {
+									Stack<TypeElement> seen) {
 		if (!seen.contains(element)) {
 			seen.push(element);
 			new PropertyDescriptorResolver(this.metadataEnv).resolve(element, source).forEach((descriptor) -> {
@@ -270,8 +266,7 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 			if (element instanceof TypeElement) {
 				processEndpoint(annotation, (TypeElement) element);
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Error processing configuration meta-data on " + element, ex);
 		}
 	}
@@ -342,14 +337,11 @@ public class ConfigurationMetadataAnnotationProcessor extends AbstractProcessor 
 			ConfigurationMetadata merged = new ConfigurationMetadata(metadata);
 			merged.merge(this.metadataStore.readAdditionalMetadata());
 			return merged;
-		}
-		catch (FileNotFoundException ex) {
+		} catch (FileNotFoundException ex) {
 			// No additional metadata
-		}
-		catch (InvalidConfigurationMetadataException ex) {
+		} catch (InvalidConfigurationMetadataException ex) {
 			log(ex.getKind(), ex.getMessage());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logWarning("Unable to merge additional metadata");
 			logWarning(getStackTrace(ex));
 		}

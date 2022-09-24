@@ -161,9 +161,9 @@ class IntegrationAutoConfigurationTests {
 	void primaryExporterIsAllowed() {
 		this.contextRunner.withPropertyValues("spring.jmx.enabled=true")
 				.withUserConfiguration(CustomMBeanExporter.class).run((context) -> {
-					assertThat(context).getBeans(MBeanExporter.class).hasSize(2);
-					assertThat(context.getBean(MBeanExporter.class)).isSameAs(context.getBean("myMBeanExporter"));
-				});
+			assertThat(context).getBeans(MBeanExporter.class).hasSize(2);
+			assertThat(context.getBean(MBeanExporter.class)).isSameAs(context.getBean("myMBeanExporter"));
+		});
 	}
 
 	@Test
@@ -228,12 +228,12 @@ class IntegrationAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(DataSourceTransactionManagerAutoConfiguration.class,
 						JdbcTemplateAutoConfiguration.class, IntegrationAutoConfiguration.class))
 				.withPropertyValues("spring.datasource.generate-unique-name=true").run((context) -> {
-					IntegrationProperties properties = context.getBean(IntegrationProperties.class);
-					assertThat(properties.getJdbc().getInitializeSchema())
-							.isEqualTo(DatabaseInitializationMode.EMBEDDED);
-					JdbcOperations jdbc = context.getBean(JdbcOperations.class);
-					assertThat(jdbc.queryForList("select * from INT_MESSAGE")).isEmpty();
-				});
+			IntegrationProperties properties = context.getBean(IntegrationProperties.class);
+			assertThat(properties.getJdbc().getInitializeSchema())
+					.isEqualTo(DatabaseInitializationMode.EMBEDDED);
+			JdbcOperations jdbc = context.getBean(JdbcOperations.class);
+			assertThat(jdbc.queryForList("select * from INT_MESSAGE")).isEmpty();
+		});
 	}
 
 	@Test
@@ -463,30 +463,30 @@ class IntegrationAutoConfigurationTests {
 	void whenFixedDelayPollerPropertyIsSetThenItIsReflectedAsFixedDelayPropertyOfPeriodicTrigger() {
 		this.contextRunner.withUserConfiguration(PollingConsumerConfiguration.class)
 				.withPropertyValues("spring.integration.poller.fixed-delay=5000").run((context) -> {
-					assertThat(context).hasSingleBean(PollerMetadata.class);
-					PollerMetadata metadata = context.getBean(PollerMetadata.DEFAULT_POLLER, PollerMetadata.class);
-					assertThat(metadata.getTrigger())
-							.asInstanceOf(InstanceOfAssertFactories.type(PeriodicTrigger.class))
-							.satisfies((trigger) -> {
-								assertThat(trigger.getPeriod()).isEqualTo(5000L);
-								assertThat(trigger.isFixedRate()).isFalse();
-							});
-				});
+			assertThat(context).hasSingleBean(PollerMetadata.class);
+			PollerMetadata metadata = context.getBean(PollerMetadata.DEFAULT_POLLER, PollerMetadata.class);
+			assertThat(metadata.getTrigger())
+					.asInstanceOf(InstanceOfAssertFactories.type(PeriodicTrigger.class))
+					.satisfies((trigger) -> {
+						assertThat(trigger.getPeriod()).isEqualTo(5000L);
+						assertThat(trigger.isFixedRate()).isFalse();
+					});
+		});
 	}
 
 	@Test
 	void whenFixedRatePollerPropertyIsSetThenItIsReflectedAsFixedRatePropertyOfPeriodicTrigger() {
 		this.contextRunner.withUserConfiguration(PollingConsumerConfiguration.class)
 				.withPropertyValues("spring.integration.poller.fixed-rate=5000").run((context) -> {
-					assertThat(context).hasSingleBean(PollerMetadata.class);
-					PollerMetadata metadata = context.getBean(PollerMetadata.DEFAULT_POLLER, PollerMetadata.class);
-					assertThat(metadata.getTrigger())
-							.asInstanceOf(InstanceOfAssertFactories.type(PeriodicTrigger.class))
-							.satisfies((trigger) -> {
-								assertThat(trigger.getPeriod()).isEqualTo(5000L);
-								assertThat(trigger.isFixedRate()).isTrue();
-							});
-				});
+			assertThat(context).hasSingleBean(PollerMetadata.class);
+			PollerMetadata metadata = context.getBean(PollerMetadata.DEFAULT_POLLER, PollerMetadata.class);
+			assertThat(metadata.getTrigger())
+					.asInstanceOf(InstanceOfAssertFactories.type(PeriodicTrigger.class))
+					.satisfies((trigger) -> {
+						assertThat(trigger.getPeriod()).isEqualTo(5000L);
+						assertThat(trigger.isFixedRate()).isTrue();
+					});
+		});
 	}
 
 	@Test
@@ -499,7 +499,7 @@ class IntegrationAutoConfigurationTests {
 	void integrationManagementLoggingCanBeDisabled() {
 		this.contextRunner.withPropertyValues("spring.integration.management.defaultLoggingEnabled=false")
 				.withBean(DirectChannel.class, DirectChannel::new).run((context) -> assertThat(context)
-						.getBean(DirectChannel.class).extracting(DirectChannel::isLoggingEnabled).isEqualTo(false));
+				.getBean(DirectChannel.class).extracting(DirectChannel::isLoggingEnabled).isEqualTo(false));
 
 	}
 
@@ -549,7 +549,7 @@ class IntegrationAutoConfigurationTests {
 
 				@Override
 				public String[] getPath() {
-					return new String[] { "/rsocketTestPath" };
+					return new String[]{"/rsocketTestPath"};
 				}
 
 			};
@@ -562,7 +562,7 @@ class IntegrationAutoConfigurationTests {
 
 		@Bean
 		IntegrationDataSourceScriptDatabaseInitializer customInitializer(DataSource dataSource,
-				IntegrationProperties properties) {
+																		 IntegrationProperties properties) {
 			return new IntegrationDataSourceScriptDatabaseInitializer(dataSource, properties.getJdbc());
 		}
 
@@ -584,7 +584,7 @@ class IntegrationAutoConfigurationTests {
 
 		@Bean
 		IntegrationDataSourceInitializer customInitializer(DataSource dataSource, ResourceLoader resourceLoader,
-				IntegrationProperties properties) {
+														   IntegrationProperties properties) {
 			return new IntegrationDataSourceInitializer(dataSource, resourceLoader, properties);
 		}
 

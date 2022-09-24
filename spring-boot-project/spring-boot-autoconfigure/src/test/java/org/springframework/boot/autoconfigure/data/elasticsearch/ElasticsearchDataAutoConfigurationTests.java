@@ -81,7 +81,7 @@ class ElasticsearchDataAutoConfigurationTests {
 			SimpleElasticsearchMappingContext mappingContext = context.getBean(SimpleElasticsearchMappingContext.class);
 			assertThat(mappingContext)
 					.extracting("simpleTypeHolder", InstanceOfAssertFactories.type(SimpleTypeHolder.class)).satisfies(
-							(simpleTypeHolder) -> assertThat(simpleTypeHolder.isSimpleType(BigDecimal.class)).isTrue());
+					(simpleTypeHolder) -> assertThat(simpleTypeHolder.isSimpleType(BigDecimal.class)).isTrue());
 		});
 	}
 

@@ -45,7 +45,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 
 	private static final String DEFAULT_FILE_NAME = "application.port";
 
-	private static final String[] PROPERTY_VARIABLES = { "PORTFILE", "portfile" };
+	private static final String[] PROPERTY_VARIABLES = {"PORTFILE", "portfile"};
 
 	private static final Log logger = LogFactory.getLog(WebServerPortFileWriter.class);
 
@@ -61,6 +61,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 
 	/**
 	 * Create a new {@link WebServerPortFileWriter} instance with a specified filename.
+	 *
 	 * @param filename the name of file containing port
 	 */
 	public WebServerPortFileWriter(String filename) {
@@ -69,6 +70,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 
 	/**
 	 * Create a new {@link WebServerPortFileWriter} instance with a specified file.
+	 *
 	 * @param file the file containing port
 	 */
 	public WebServerPortFileWriter(File file) {
@@ -76,8 +78,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 		String override = SystemProperties.get(PROPERTY_VARIABLES);
 		if (override != null) {
 			this.file = new File(override);
-		}
-		else {
+		} else {
 			this.file = file;
 		}
 	}
@@ -90,8 +91,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 			createParentDirectory(portFile);
 			FileCopyUtils.copy(port.getBytes(), portFile);
 			portFile.deleteOnExit();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn(LogMessage.format("Cannot create port file %s", this.file));
 		}
 	}
@@ -100,6 +100,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 	 * Return the actual port file that should be written for the given application
 	 * context. The default implementation builds a file from the source file and the
 	 * application context namespace if available.
+	 *
 	 * @param applicationContext the source application context
 	 * @return the file that should be written
 	 */
@@ -113,8 +114,7 @@ public class WebServerPortFileWriter implements ApplicationListener<WebServerIni
 		name = name.substring(0, name.length() - extension.length() - 1);
 		if (isUpperCase(name)) {
 			name = name + "-" + namespace.toUpperCase(Locale.ENGLISH);
-		}
-		else {
+		} else {
 			name = name + "-" + namespace.toLowerCase(Locale.ENGLISH);
 		}
 		if (StringUtils.hasLength(extension)) {

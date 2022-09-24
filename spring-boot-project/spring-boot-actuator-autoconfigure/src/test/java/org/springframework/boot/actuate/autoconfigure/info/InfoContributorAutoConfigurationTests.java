@@ -102,14 +102,14 @@ class InfoContributorAutoConfigurationTests {
 	void gitPropertiesFullMode() {
 		this.contextRunner.withPropertyValues("management.info.git.mode=full")
 				.withUserConfiguration(GitPropertiesConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(GitInfoContributor.class);
-					Map<String, Object> content = invokeContributor(context.getBean(GitInfoContributor.class));
-					Object git = content.get("git");
-					assertThat(git).isInstanceOf(Map.class);
-					Map<String, Object> gitInfo = (Map<String, Object>) git;
-					assertThat(gitInfo).containsOnlyKeys("branch", "commit", "foo");
-					assertThat(gitInfo.get("foo")).isEqualTo("bar");
-				});
+			assertThat(context).hasSingleBean(GitInfoContributor.class);
+			Map<String, Object> content = invokeContributor(context.getBean(GitInfoContributor.class));
+			Object git = content.get("git");
+			assertThat(git).isInstanceOf(Map.class);
+			Map<String, Object> gitInfo = (Map<String, Object>) git;
+			assertThat(gitInfo).containsOnlyKeys("branch", "commit", "foo");
+			assertThat(gitInfo.get("foo")).isEqualTo("bar");
+		});
 	}
 
 	@Test

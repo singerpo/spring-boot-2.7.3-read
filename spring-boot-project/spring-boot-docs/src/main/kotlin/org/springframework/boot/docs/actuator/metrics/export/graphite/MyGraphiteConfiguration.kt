@@ -32,6 +32,7 @@ class MyGraphiteConfiguration {
 	fun graphiteMeterRegistry(config: GraphiteConfig, clock: Clock): GraphiteMeterRegistry {
 		return GraphiteMeterRegistry(config, clock, this::toHierarchicalName)
 	}
+
 	private fun toHierarchicalName(id: Meter.Id, convention: NamingConvention): String {
 		return  /**/ HierarchicalNameMapper.DEFAULT.toHierarchicalName(id, convention)
 	}

@@ -62,8 +62,7 @@ class SpringBootDependencyInjectionTestExecutionListenerTests {
 		given(testContext.getApplicationContext()).willReturn(applicationContext);
 		try {
 			this.reportListener.prepareTestInstance(testContext);
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			// Expected
 		}
 		assertThat(output).contains("CONDITIONS EVALUATION REPORT").contains("Positive matches")

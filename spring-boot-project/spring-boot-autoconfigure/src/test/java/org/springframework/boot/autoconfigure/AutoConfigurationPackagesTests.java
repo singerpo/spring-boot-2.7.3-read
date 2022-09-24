@@ -86,13 +86,13 @@ class AutoConfigurationPackagesTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@AutoConfigurationPackage(basePackages = { "com.example.alpha", "com.example.bravo" })
+	@AutoConfigurationPackage(basePackages = {"com.example.alpha", "com.example.bravo"})
 	static class ConfigWithAutoConfigurationBasePackages {
 
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@AutoConfigurationPackage(basePackageClasses = { FirstConfiguration.class, SecondConfiguration.class })
+	@AutoConfigurationPackage(basePackageClasses = {FirstConfiguration.class, SecondConfiguration.class})
 	static class ConfigWithAutoConfigurationBasePackageClasses {
 
 	}

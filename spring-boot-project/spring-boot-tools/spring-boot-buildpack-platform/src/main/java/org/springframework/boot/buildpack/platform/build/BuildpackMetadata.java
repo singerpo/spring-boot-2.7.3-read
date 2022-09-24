@@ -52,6 +52,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Return the buildpack ID.
+	 *
 	 * @return the ID
 	 */
 	String getId() {
@@ -60,6 +61,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Return the buildpack version.
+	 *
 	 * @return the version
 	 */
 	String getVersion() {
@@ -68,6 +70,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Return the buildpack homepage address.
+	 *
 	 * @return the homepage
 	 */
 	String getHomepage() {
@@ -76,6 +79,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Factory method to extract {@link BuildpackMetadata} from an image.
+	 *
 	 * @param image the source image
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -87,6 +91,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Factory method to extract {@link BuildpackMetadata} from image config.
+	 *
 	 * @param imageConfig the source image config
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -101,6 +106,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Factory method create {@link BuildpackMetadata} from JSON.
+	 *
 	 * @param json the source JSON
 	 * @return the builder metadata
 	 * @throws IOException on IO error
@@ -111,6 +117,7 @@ final class BuildpackMetadata extends MappedObject {
 
 	/**
 	 * Factory method create {@link BuildpackMetadata} from JSON.
+	 *
 	 * @param node the source JSON
 	 * @return the builder metadata
 	 */

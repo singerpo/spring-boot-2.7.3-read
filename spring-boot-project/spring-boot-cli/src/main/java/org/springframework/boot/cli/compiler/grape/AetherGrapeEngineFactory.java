@@ -47,8 +47,8 @@ import org.eclipse.aether.transport.http.HttpTransporterFactory;
 public abstract class AetherGrapeEngineFactory {
 
 	public static AetherGrapeEngine create(GroovyClassLoader classLoader,
-			List<RepositoryConfiguration> repositoryConfigurations,
-			DependencyResolutionContext dependencyResolutionContext, boolean quiet) {
+										   List<RepositoryConfiguration> repositoryConfigurations,
+										   DependencyResolutionContext dependencyResolutionContext, boolean quiet) {
 		RepositorySystem repositorySystem = createServiceLocator().getService(RepositorySystem.class);
 		DefaultRepositorySystemSession repositorySystemSession = MavenRepositorySystemUtils.newSession();
 		ServiceLoader<RepositorySystemSessionAutoConfiguration> autoConfigurations = ServiceLoader

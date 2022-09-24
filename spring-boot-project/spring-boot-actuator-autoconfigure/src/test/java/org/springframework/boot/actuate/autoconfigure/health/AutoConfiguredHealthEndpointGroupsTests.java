@@ -65,9 +65,9 @@ class AutoConfiguredHealthEndpointGroupsTests {
 	void getNamesReturnsGroupNames() {
 		this.contextRunner.withPropertyValues("management.endpoint.health.group.a.include=*",
 				"management.endpoint.health.group.b.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					assertThat(groups.getNames()).containsExactlyInAnyOrder("a", "b");
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			assertThat(groups.getNames()).containsExactlyInAnyOrder("a", "b");
+		});
 	}
 
 	@Test
@@ -93,14 +93,14 @@ class AutoConfiguredHealthEndpointGroupsTests {
 		this.contextRunner.withPropertyValues("management.endpoint.health.show-components=always",
 				"management.endpoint.health.show-details=never", "management.endpoint.health.status.order=up,down",
 				"management.endpoint.health.status.http-mapping.down=200").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup primary = groups.getPrimary();
-					assertThat(primary.showComponents(SecurityContext.NONE)).isTrue();
-					assertThat(primary.showDetails(SecurityContext.NONE)).isFalse();
-					assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
-							.isEqualTo(Status.UP);
-					assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(200);
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup primary = groups.getPrimary();
+			assertThat(primary.showComponents(SecurityContext.NONE)).isTrue();
+			assertThat(primary.showDetails(SecurityContext.NONE)).isFalse();
+			assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
+					.isEqualTo(Status.UP);
+			assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(200);
+		});
 	}
 
 	@Test
@@ -143,14 +143,14 @@ class AutoConfiguredHealthEndpointGroupsTests {
 	void createWhenHasStatusAggregatorPropertyReturnsInstanceWithPropertyUsedForAllGroups() {
 		this.contextRunner.withPropertyValues("management.endpoint.health.status.order=up,down",
 				"management.endpoint.health.group.a.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup primary = groups.getPrimary();
-					HealthEndpointGroup groupA = groups.get("a");
-					assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
-							.isEqualTo(Status.UP);
-					assertThat(groupA.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
-							.isEqualTo(Status.UP);
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup primary = groups.getPrimary();
+			HealthEndpointGroup groupA = groups.get("a");
+			assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
+					.isEqualTo(Status.UP);
+			assertThat(groupA.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN))
+					.isEqualTo(Status.UP);
+		});
 	}
 
 	@Test
@@ -159,17 +159,17 @@ class AutoConfiguredHealthEndpointGroupsTests {
 				"management.endpoint.health.group.a.include=*",
 				"management.endpoint.health.group.a.status.order=unknown,up,down",
 				"management.endpoint.health.group.b.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup primary = groups.getPrimary();
-					HealthEndpointGroup groupA = groups.get("a");
-					HealthEndpointGroup groupB = groups.get("b");
-					assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
-							.isEqualTo(Status.UP);
-					assertThat(groupA.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
-							.isEqualTo(Status.UNKNOWN);
-					assertThat(groupB.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
-							.isEqualTo(Status.UP);
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup primary = groups.getPrimary();
+			HealthEndpointGroup groupA = groups.get("a");
+			HealthEndpointGroup groupB = groups.get("b");
+			assertThat(primary.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
+					.isEqualTo(Status.UP);
+			assertThat(groupA.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
+					.isEqualTo(Status.UNKNOWN);
+			assertThat(groupB.getStatusAggregator().getAggregateStatus(Status.UP, Status.DOWN, Status.UNKNOWN))
+					.isEqualTo(Status.UP);
+		});
 	}
 
 	@Test
@@ -249,12 +249,12 @@ class AutoConfiguredHealthEndpointGroupsTests {
 	void createWhenHasHttpCodeStatusMapperPropertyReturnsInstanceWithPropertyUsedForAllGroups() {
 		this.contextRunner.withPropertyValues("management.endpoint.health.status.http-mapping.down=201",
 				"management.endpoint.health.group.a.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup primary = groups.getPrimary();
-					HealthEndpointGroup groupA = groups.get("a");
-					assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
-					assertThat(groupA.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup primary = groups.getPrimary();
+			HealthEndpointGroup groupA = groups.get("a");
+			assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
+			assertThat(groupA.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
+		});
 	}
 
 	@Test
@@ -263,14 +263,14 @@ class AutoConfiguredHealthEndpointGroupsTests {
 				"management.endpoint.health.group.a.include=*",
 				"management.endpoint.health.group.a.status.http-mapping.down=202",
 				"management.endpoint.health.group.b.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup primary = groups.getPrimary();
-					HealthEndpointGroup groupA = groups.get("a");
-					HealthEndpointGroup groupB = groups.get("b");
-					assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
-					assertThat(groupA.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(202);
-					assertThat(groupB.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup primary = groups.getPrimary();
+			HealthEndpointGroup groupA = groups.get("a");
+			HealthEndpointGroup groupB = groups.get("b");
+			assertThat(primary.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
+			assertThat(groupA.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(202);
+			assertThat(groupB.getHttpCodeStatusMapper().getStatusCode(Status.DOWN)).isEqualTo(201);
+		});
 	}
 
 	@Test
@@ -313,10 +313,10 @@ class AutoConfiguredHealthEndpointGroupsTests {
 	void createWhenGroupWithNoShowDetailsOverrideInheritsShowDetails() {
 		this.contextRunner.withPropertyValues("management.endpoint.health.show-details=always",
 				"management.endpoint.health.group.a.include=*").run((context) -> {
-					HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
-					HealthEndpointGroup groupA = groups.get("a");
-					assertThat(groupA.showDetails(SecurityContext.NONE)).isTrue();
-				});
+			HealthEndpointGroups groups = context.getBean(HealthEndpointGroups.class);
+			HealthEndpointGroup groupA = groups.get("a");
+			assertThat(groupA.showDetails(SecurityContext.NONE)).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)
@@ -325,7 +325,7 @@ class AutoConfiguredHealthEndpointGroupsTests {
 
 		@Bean
 		AutoConfiguredHealthEndpointGroups healthEndpointGroups(ConfigurableApplicationContext applicationContext,
-				HealthEndpointProperties properties) {
+																HealthEndpointProperties properties) {
 			return new AutoConfiguredHealthEndpointGroups(applicationContext, properties);
 		}
 

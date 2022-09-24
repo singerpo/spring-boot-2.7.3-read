@@ -49,6 +49,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 
 	/**
 	 * Creates a new configurer.
+	 *
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #AbstractRabbitListenerContainerFactoryConfigurer(RabbitProperties)}
 	 */
@@ -59,6 +60,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 
 	/**
 	 * Creates a new configurer that will use the given {@code rabbitProperties}.
+	 *
 	 * @param rabbitProperties properties to use
 	 * @since 2.6.0
 	 */
@@ -69,6 +71,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 	/**
 	 * Set the {@link MessageConverter} to use or {@code null} if the out-of-the-box
 	 * converter should be used.
+	 *
 	 * @param messageConverter the {@link MessageConverter}
 	 */
 	protected void setMessageConverter(MessageConverter messageConverter) {
@@ -77,6 +80,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 
 	/**
 	 * Set the {@link MessageRecoverer} to use or {@code null} to rely on the default.
+	 *
 	 * @param messageRecoverer the {@link MessageRecoverer}
 	 */
 	protected void setMessageRecoverer(MessageRecoverer messageRecoverer) {
@@ -85,6 +89,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 
 	/**
 	 * Set the {@link RabbitRetryTemplateCustomizer} instances to use.
+	 *
 	 * @param retryTemplateCustomizers the retry template customizers
 	 */
 	protected void setRetryTemplateCustomizers(List<RabbitRetryTemplateCustomizer> retryTemplateCustomizers) {
@@ -93,6 +98,7 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 
 	/**
 	 * Set the {@link RabbitProperties} to use.
+	 *
 	 * @param rabbitProperties the {@link RabbitProperties}
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #AbstractRabbitListenerContainerFactoryConfigurer(RabbitProperties)}
@@ -109,14 +115,15 @@ public abstract class AbstractRabbitListenerContainerFactoryConfigurer<T extends
 	/**
 	 * Configure the specified rabbit listener container factory. The factory can be
 	 * further tuned and default settings can be overridden.
-	 * @param factory the {@link AbstractRabbitListenerContainerFactory} instance to
-	 * configure
+	 *
+	 * @param factory           the {@link AbstractRabbitListenerContainerFactory} instance to
+	 *                          configure
 	 * @param connectionFactory the {@link ConnectionFactory} to use
 	 */
 	public abstract void configure(T factory, ConnectionFactory connectionFactory);
 
 	protected void configure(T factory, ConnectionFactory connectionFactory,
-			RabbitProperties.AmqpContainer configuration) {
+							 RabbitProperties.AmqpContainer configuration) {
 		Assert.notNull(factory, "Factory must not be null");
 		Assert.notNull(connectionFactory, "ConnectionFactory must not be null");
 		Assert.notNull(configuration, "Configuration must not be null");

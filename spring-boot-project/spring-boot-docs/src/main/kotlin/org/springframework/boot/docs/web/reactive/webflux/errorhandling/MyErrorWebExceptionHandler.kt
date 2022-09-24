@@ -32,7 +32,7 @@ import reactor.core.publisher.Mono
 @Suppress("UNUSED_PARAMETER")
 @Component
 class MyErrorWebExceptionHandler(errorAttributes: ErrorAttributes?, resources: WebProperties.Resources?,
-	applicationContext: ApplicationContext?) : AbstractErrorWebExceptionHandler(errorAttributes, resources, applicationContext) {
+								 applicationContext: ApplicationContext?) : AbstractErrorWebExceptionHandler(errorAttributes, resources, applicationContext) {
 
 	override fun getRoutingFunction(errorAttributes: ErrorAttributes): RouterFunction<ServerResponse> {
 		return RouterFunctions.route(this::acceptsXml, this::handleErrorAsXml)

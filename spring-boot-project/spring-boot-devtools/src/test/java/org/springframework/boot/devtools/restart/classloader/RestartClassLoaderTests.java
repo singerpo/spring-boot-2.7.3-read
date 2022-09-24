@@ -76,7 +76,7 @@ class RestartClassLoaderTests {
 		this.sampleJarFile = createSampleJarFile(tempDir);
 		URL url = this.sampleJarFile.toURI().toURL();
 		ClassLoader classLoader = getClass().getClassLoader();
-		URL[] urls = new URL[] { url };
+		URL[] urls = new URL[]{url};
 		this.parentClassLoader = new URLClassLoader(urls, classLoader);
 		this.updatedFiles = new ClassLoaderFiles();
 		this.reloadClassLoader = new RestartClassLoader(this.parentClassLoader, urls, this.updatedFiles);
@@ -103,14 +103,14 @@ class RestartClassLoaderTests {
 
 	@Test
 	void parentMustNotBeNull() {
-		assertThatIllegalArgumentException().isThrownBy(() -> new RestartClassLoader(null, new URL[] {}))
+		assertThatIllegalArgumentException().isThrownBy(() -> new RestartClassLoader(null, new URL[]{}))
 				.withMessageContaining("Parent must not be null");
 	}
 
 	@Test
 	void updatedFilesMustNotBeNull() {
 		assertThatIllegalArgumentException()
-				.isThrownBy(() -> new RestartClassLoader(this.parentClassLoader, new URL[] {}, null))
+				.isThrownBy(() -> new RestartClassLoader(this.parentClassLoader, new URL[]{}, null))
 				.withMessageContaining("UpdatedFiles must not be null");
 	}
 
@@ -220,15 +220,15 @@ class RestartClassLoaderTests {
 	@Test
 	void packagePrivateClassLoadedByParentClassLoaderCanBeProxied() throws IOException {
 		try (RestartClassLoader restartClassLoader = new RestartClassLoader(ExampleTransactional.class.getClassLoader(),
-				new URL[] { this.sampleJarFile.toURI().toURL() }, this.updatedFiles)) {
+				new URL[]{this.sampleJarFile.toURI().toURL()}, this.updatedFiles)) {
 			new ApplicationContextRunner().withClassLoader(restartClassLoader)
 					.withUserConfiguration(ProxyConfiguration.class).run((context) -> {
-						assertThat(context).hasNotFailed();
-						ExampleTransactional transactional = context.getBean(ExampleTransactional.class);
-						assertThat(AopUtils.isCglibProxy(transactional)).isTrue();
-						assertThat(transactional.getClass().getClassLoader())
-								.isEqualTo(ExampleTransactional.class.getClassLoader());
-					});
+				assertThat(context).hasNotFailed();
+				ExampleTransactional transactional = context.getBean(ExampleTransactional.class);
+				assertThat(AopUtils.isCglibProxy(transactional)).isTrue();
+				assertThat(transactional.getClass().getClassLoader())
+						.isEqualTo(ExampleTransactional.class.getClassLoader());
+			});
 		}
 	}
 

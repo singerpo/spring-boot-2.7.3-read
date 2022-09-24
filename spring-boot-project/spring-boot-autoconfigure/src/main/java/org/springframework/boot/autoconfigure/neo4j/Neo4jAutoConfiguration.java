@@ -63,7 +63,7 @@ public class Neo4jAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public Driver neo4jDriver(Neo4jProperties properties, Environment environment,
-			ObjectProvider<ConfigBuilderCustomizer> configBuilderCustomizers) {
+							  ObjectProvider<ConfigBuilderCustomizer> configBuilderCustomizers) {
 		AuthToken authToken = mapAuthToken(properties.getAuthentication(), environment);
 		Config config = mapDriverConfig(properties,
 				configBuilderCustomizers.orderedStream().collect(Collectors.toList()));
@@ -125,8 +125,7 @@ public class Neo4jAutoConfiguration {
 		String lowerCaseScheme = scheme.toLowerCase(Locale.ENGLISH);
 		try {
 			Scheme.validateScheme(lowerCaseScheme);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			throw new IllegalArgumentException(String.format("'%s' is not a supported scheme.", scheme));
 		}
 		return lowerCaseScheme.equals("bolt") || lowerCaseScheme.equals("neo4j");
@@ -146,14 +145,13 @@ public class Neo4jAutoConfiguration {
 				TimeUnit.MILLISECONDS);
 		if (pool.isMetricsEnabled()) {
 			builder.withDriverMetrics();
-		}
-		else {
+		} else {
 			builder.withoutDriverMetrics();
 		}
 	}
 
 	private void configureDriverSettings(Config.ConfigBuilder builder, Neo4jProperties properties,
-			boolean withEncryptionAndTrustSettings) {
+										 boolean withEncryptionAndTrustSettings) {
 		if (withEncryptionAndTrustSettings) {
 			applyEncryptionAndTrustSettings(builder, properties.getSecurity());
 		}
@@ -162,11 +160,10 @@ public class Neo4jAutoConfiguration {
 	}
 
 	private void applyEncryptionAndTrustSettings(Config.ConfigBuilder builder,
-			Neo4jProperties.Security securityProperties) {
+												 Neo4jProperties.Security securityProperties) {
 		if (securityProperties.isEncrypted()) {
 			builder.withEncryption();
-		}
-		else {
+		} else {
 			builder.withoutEncryption();
 		}
 		builder.withTrustStrategy(mapTrustStrategy(securityProperties));
@@ -178,15 +175,14 @@ public class Neo4jAutoConfiguration {
 		TrustStrategy trustStrategy = createTrustStrategy(securityProperties, propertyName, strategy);
 		if (securityProperties.isHostnameVerificationEnabled()) {
 			trustStrategy.withHostnameVerification();
-		}
-		else {
+		} else {
 			trustStrategy.withoutHostnameVerification();
 		}
 		return trustStrategy;
 	}
 
 	private TrustStrategy createTrustStrategy(Neo4jProperties.Security securityProperties, String propertyName,
-			Security.TrustStrategy strategy) {
+											  Security.TrustStrategy strategy) {
 		switch (strategy) {
 			case TRUST_ALL_CERTIFICATES:
 				return TrustStrategy.trustAllCertificates();

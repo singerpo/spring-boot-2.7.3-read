@@ -36,8 +36,9 @@ class ConfigDataActivationContext {
 	/**
 	 * Create a new {@link ConfigDataActivationContext} instance before any profiles have
 	 * been activated.
+	 *
 	 * @param environment the source environment
-	 * @param binder a binder providing access to relevant config data contributions
+	 * @param binder      a binder providing access to relevant config data contributions
 	 */
 	ConfigDataActivationContext(Environment environment, Binder binder) {
 		this.cloudPlatform = deduceCloudPlatform(environment, binder);
@@ -47,8 +48,9 @@ class ConfigDataActivationContext {
 	/**
 	 * Create a new {@link ConfigDataActivationContext} instance with the given
 	 * {@link CloudPlatform} and {@link Profiles}.
+	 *
 	 * @param cloudPlatform the cloud platform
-	 * @param profiles the profiles
+	 * @param profiles      the profiles
 	 */
 	ConfigDataActivationContext(CloudPlatform cloudPlatform, Profiles profiles) {
 		this.cloudPlatform = cloudPlatform;
@@ -66,6 +68,7 @@ class ConfigDataActivationContext {
 
 	/**
 	 * Return a new {@link ConfigDataActivationContext} with specific profiles.
+	 *
 	 * @param profiles the profiles
 	 * @return a new {@link ConfigDataActivationContext} with specific profiles
 	 */
@@ -75,6 +78,7 @@ class ConfigDataActivationContext {
 
 	/**
 	 * Return the active {@link CloudPlatform} or {@code null}.
+	 *
 	 * @return the active cloud platform
 	 */
 	CloudPlatform getCloudPlatform() {
@@ -83,6 +87,7 @@ class ConfigDataActivationContext {
 
 	/**
 	 * Return profile information if it is available.
+	 *
 	 * @return profile information or {@code null}
 	 */
 	Profiles getProfiles() {

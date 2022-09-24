@@ -61,7 +61,7 @@ import org.springframework.retry.backoff.SleepingBackOffPolicy;
 @AutoConfiguration
 @ConditionalOnClass(KafkaTemplate.class)
 @EnableConfigurationProperties(KafkaProperties.class)
-@Import({ KafkaAnnotationDrivenConfiguration.class, KafkaStreamsAnnotationDrivenConfiguration.class })
+@Import({KafkaAnnotationDrivenConfiguration.class, KafkaStreamsAnnotationDrivenConfiguration.class})
 public class KafkaAutoConfiguration {
 
 	private final KafkaProperties properties;
@@ -73,8 +73,8 @@ public class KafkaAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(KafkaTemplate.class)
 	public KafkaTemplate<?, ?> kafkaTemplate(ProducerFactory<Object, Object> kafkaProducerFactory,
-			ProducerListener<Object, Object> kafkaProducerListener,
-			ObjectProvider<RecordMessageConverter> messageConverter) {
+											 ProducerListener<Object, Object> kafkaProducerListener,
+											 ObjectProvider<RecordMessageConverter> messageConverter) {
 		PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
 		KafkaTemplate<Object, Object> kafkaTemplate = new KafkaTemplate<>(kafkaProducerFactory);
 		messageConverter.ifUnique(kafkaTemplate::setMessageConverter);
@@ -167,8 +167,7 @@ public class KafkaAutoConfiguration {
 			map.from(retryTopic.getMultiplier()).to(backOffPolicy::multiplier);
 			map.from(retryTopic.isRandomBackOff()).to(backOffPolicy::random);
 			builder.customBackoff((SleepingBackOffPolicy<?>) backOffPolicy.build());
-		}
-		else {
+		} else {
 			builder.noBackoff();
 		}
 	}

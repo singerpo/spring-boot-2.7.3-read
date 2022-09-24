@@ -29,8 +29,8 @@ import org.springframework.util.Assert;
  *
  * @author Eddú Meléndez
  * @author Edson Chávez
- * @since 2.3.0
  * @see Period
+ * @since 2.3.0
  */
 public enum PeriodStyle {
 
@@ -39,7 +39,6 @@ public enum PeriodStyle {
 	 */
 	SIMPLE("^" + "(?:([-+]?[0-9]+)Y)?" + "(?:([-+]?[0-9]+)M)?" + "(?:([-+]?[0-9]+)W)?" + "(?:([-+]?[0-9]+)D)?" + "$",
 			Pattern.CASE_INSENSITIVE) {
-
 		@Override
 		public Period parse(String value, ChronoUnit unit) {
 			try {
@@ -54,8 +53,7 @@ public enum PeriodStyle {
 				int weeks = parseInt(matcher, 3);
 				int days = parseInt(matcher, 4);
 				return Period.of(years, months, Math.addExact(Math.multiplyExact(weeks, 7), days));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalArgumentException("'" + value + "' is not a valid simple period", ex);
 			}
 		}
@@ -103,13 +101,11 @@ public enum PeriodStyle {
 	 * ISO-8601 formatting.
 	 */
 	ISO8601("^[+-]?P.*$", 0) {
-
 		@Override
 		public Period parse(String value, ChronoUnit unit) {
 			try {
 				return Period.parse(value);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalArgumentException("'" + value + "' is not a valid ISO-8601 period", ex);
 			}
 		}
@@ -139,6 +135,7 @@ public enum PeriodStyle {
 
 	/**
 	 * Parse the given value to a Period.
+	 *
 	 * @param value the value to parse
 	 * @return a period
 	 */
@@ -148,15 +145,17 @@ public enum PeriodStyle {
 
 	/**
 	 * Parse the given value to a period.
+	 *
 	 * @param value the value to parse
-	 * @param unit the period unit to use if the value doesn't specify one ({@code null}
-	 * will default to d)
+	 * @param unit  the period unit to use if the value doesn't specify one ({@code null}
+	 *              will default to d)
 	 * @return a period
 	 */
 	public abstract Period parse(String value, ChronoUnit unit);
 
 	/**
 	 * Print the specified period.
+	 *
 	 * @param value the value to print
 	 * @return the printed result
 	 */
@@ -166,18 +165,20 @@ public enum PeriodStyle {
 
 	/**
 	 * Print the specified period using the given unit.
+	 *
 	 * @param value the value to print
-	 * @param unit the value to use for printing
+	 * @param unit  the value to use for printing
 	 * @return the printed result
 	 */
 	public abstract String print(Period value, ChronoUnit unit);
 
 	/**
 	 * Detect the style then parse the value to return a period.
+	 *
 	 * @param value the value to parse
 	 * @return the parsed period
 	 * @throws IllegalArgumentException if the value is not a known style or cannot be
-	 * parsed
+	 *                                  parsed
 	 */
 	public static Period detectAndParse(String value) {
 		return detectAndParse(value, null);
@@ -185,12 +186,13 @@ public enum PeriodStyle {
 
 	/**
 	 * Detect the style then parse the value to return a period.
+	 *
 	 * @param value the value to parse
-	 * @param unit the period unit to use if the value doesn't specify one ({@code null}
-	 * will default to ms)
+	 * @param unit  the period unit to use if the value doesn't specify one ({@code null}
+	 *              will default to ms)
 	 * @return the parsed period
 	 * @throws IllegalArgumentException if the value is not a known style or cannot be
-	 * parsed
+	 *                                  parsed
 	 */
 	public static Period detectAndParse(String value, ChronoUnit unit) {
 		return detect(value).parse(value, unit);
@@ -198,6 +200,7 @@ public enum PeriodStyle {
 
 	/**
 	 * Detect the style from the given source value.
+	 *
 	 * @param value the source value
 	 * @return the period style
 	 * @throws IllegalArgumentException if the value is not a known style
@@ -243,7 +246,7 @@ public enum PeriodStyle {
 		private final Function<Integer, Period> factory;
 
 		Unit(ChronoUnit chronoUnit, String suffix, Function<Period, Integer> intValue,
-				Function<Integer, Period> factory) {
+			 Function<Integer, Period> factory) {
 			this.chronoUnit = chronoUnit;
 			this.suffix = suffix;
 			this.intValue = intValue;

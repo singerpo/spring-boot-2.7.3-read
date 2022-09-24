@@ -35,7 +35,7 @@ import org.springframework.web.reactive.function.server.ServerResponse.BodyBuild
 public class MyErrorWebExceptionHandler extends AbstractErrorWebExceptionHandler {
 
 	public MyErrorWebExceptionHandler(ErrorAttributes errorAttributes, Resources resources,
-			ApplicationContext applicationContext) {
+									  ApplicationContext applicationContext) {
 		super(errorAttributes, resources, applicationContext);
 	}
 

@@ -263,12 +263,12 @@ class ConditionEvaluationReportTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Conditional({ ConditionEvaluationReportTests.MatchParseCondition.class,
-			ConditionEvaluationReportTests.NoMatchBeanCondition.class })
+	@Conditional({ConditionEvaluationReportTests.MatchParseCondition.class,
+			ConditionEvaluationReportTests.NoMatchBeanCondition.class})
 	static class NegativeOuterConfig {
 
 		@Configuration(proxyBeanMethods = false)
-		@Conditional({ ConditionEvaluationReportTests.MatchParseCondition.class })
+		@Conditional({ConditionEvaluationReportTests.MatchParseCondition.class})
 		static class PositiveInnerConfig {
 
 			@Bean

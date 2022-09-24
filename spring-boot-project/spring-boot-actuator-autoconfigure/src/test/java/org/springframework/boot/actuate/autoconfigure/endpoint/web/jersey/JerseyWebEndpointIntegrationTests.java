@@ -54,12 +54,12 @@ class JerseyWebEndpointIntegrationTests {
 				.withUserConfiguration(ResourceConfigConfiguration.class)
 				.withClassLoader(new FilteredClassLoader(DispatcherServlet.class))
 				.withPropertyValues("spring.jersey.type=filter", "server.port=0").run((context) -> {
-					assertThat(context).hasNotFailed();
-					Set<Resource> resources = context.getBean(ResourceConfig.class).getResources();
-					assertThat(resources).hasSize(1);
-					Resource resource = resources.iterator().next();
-					assertThat(resource.getPath()).isEqualTo("/actuator");
-				});
+			assertThat(context).hasNotFailed();
+			Set<Resource> resources = context.getBean(ResourceConfig.class).getResources();
+			assertThat(resources).hasSize(1);
+			Resource resource = resources.iterator().next();
+			assertThat(resource.getPath()).isEqualTo("/actuator");
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

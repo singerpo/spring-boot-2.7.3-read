@@ -36,7 +36,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile;
  * <li>Suppress version warnings
  * </ul>
  * </ul>
- *
+ * <p>
  * <p/>
  *
  * @author Andy Wilkinson

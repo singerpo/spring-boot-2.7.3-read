@@ -32,7 +32,8 @@ class Neo4jHealthDetailsHandler {
 
 	/**
 	 * Add health details for the specified {@link ResultSummary} and {@code edition}.
-	 * @param builder the {@link Builder} to use
+	 *
+	 * @param builder       the {@link Builder} to use
 	 * @param healthDetails the health details of the server
 	 */
 	void addHealthDetails(Builder builder, Neo4jHealthDetails healthDetails) {

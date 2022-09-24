@@ -34,8 +34,7 @@ class JavaCompilerFieldValuesProcessorTests extends AbstractFieldValuesProcessor
 	protected FieldValuesParser createProcessor(ProcessingEnvironment env) {
 		try {
 			return new JavaCompilerFieldValuesParser(env);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			throw new TestAbortedException();
 		}
 	}

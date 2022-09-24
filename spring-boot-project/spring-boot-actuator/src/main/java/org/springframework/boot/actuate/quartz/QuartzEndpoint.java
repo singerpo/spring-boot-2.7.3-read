@@ -74,6 +74,7 @@ public class QuartzEndpoint {
 	/**
 	 * Create an instance for the specified {@link Scheduler} using a default
 	 * {@link Sanitizer}.
+	 *
 	 * @param scheduler the scheduler to use to retrieve jobs and triggers details
 	 */
 	public QuartzEndpoint(Scheduler scheduler) {
@@ -82,6 +83,7 @@ public class QuartzEndpoint {
 
 	/**
 	 * Create an instance for the specified {@link Scheduler} and {@link Sanitizer}.
+	 *
 	 * @param scheduler the scheduler to use to retrieve jobs and triggers details
 	 * @param sanitizer the sanitizer to use to sanitize data maps
 	 */
@@ -94,6 +96,7 @@ public class QuartzEndpoint {
 
 	/**
 	 * Return the available job and trigger group names.
+	 *
 	 * @return a report of the available group names
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
 	 */
@@ -105,6 +108,7 @@ public class QuartzEndpoint {
 
 	/**
 	 * Return the available job names, identified by group name.
+	 *
 	 * @return the available job names
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
 	 */
@@ -120,6 +124,7 @@ public class QuartzEndpoint {
 
 	/**
 	 * Return the available trigger names, identified by group name.
+	 *
 	 * @return the available trigger names
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
 	 */
@@ -139,6 +144,7 @@ public class QuartzEndpoint {
 	/**
 	 * Return a summary of the jobs group with the specified name or {@code null} if no
 	 * such group exists.
+	 *
 	 * @param group the name of a jobs group
 	 * @return a summary of the jobs in the given {@code group}
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
@@ -167,6 +173,7 @@ public class QuartzEndpoint {
 	/**
 	 * Return a summary of the triggers group with the specified name or {@code null} if
 	 * no such group exists.
+	 *
 	 * @param group the name of a triggers group
 	 * @return a summary of the triggers in the given {@code group}
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
@@ -199,8 +206,9 @@ public class QuartzEndpoint {
 	/**
 	 * Return the {@link QuartzJobDetails details of the job} identified with the given
 	 * group name and job name.
+	 *
 	 * @param groupName the name of the group
-	 * @param jobName the name of the job
+	 * @param jobName   the name of the job
 	 * @return the details of the job or {@code null} if such job does not exist
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
 	 */
@@ -234,7 +242,8 @@ public class QuartzEndpoint {
 	/**
 	 * Return the details of the trigger identified by the given group name and trigger
 	 * name.
-	 * @param groupName the name of the group
+	 *
+	 * @param groupName   the name of the group
 	 * @param triggerName the name of the trigger
 	 * @return the details of the trigger or {@code null} if such trigger does not exist
 	 * @throws SchedulerException if retrieving the information from the scheduler failed
@@ -414,7 +423,7 @@ public class QuartzEndpoint {
 		private final List<Map<String, Object>> triggers;
 
 		QuartzJobDetails(String group, String name, String description, String className, boolean durable,
-				boolean requestRecovery, Map<String, Object> data, List<Map<String, Object>> triggers) {
+						 boolean requestRecovery, Map<String, Object> data, List<Map<String, Object>> triggers) {
 			this.group = group;
 			this.name = name;
 			this.description = description;
@@ -471,7 +480,7 @@ public class QuartzEndpoint {
 		private final Triggers triggers;
 
 		private QuartzTriggerGroupSummary(String group, boolean paused,
-				Map<TriggerType, Map<String, Object>> descriptionsByType) {
+										  Map<TriggerType, Map<String, Object>> descriptionsByType) {
 			this.group = group;
 			this.paused = paused;
 			this.triggers = new Triggers(descriptionsByType);
@@ -593,8 +602,9 @@ public class QuartzEndpoint {
 
 		/**
 		 * Build the summary of the trigger.
+		 *
 		 * @param addTriggerSpecificSummary whether to add trigger-implementation specific
-		 * summary.
+		 *                                  summary.
 		 * @return basic properties of the trigger
 		 */
 		public Map<String, Object> buildSummary(boolean addTriggerSpecificSummary) {
@@ -611,13 +621,15 @@ public class QuartzEndpoint {
 		/**
 		 * Append trigger-implementation specific summary items to the specified
 		 * {@code content}.
+		 *
 		 * @param content the summary of the trigger
 		 */
 		protected abstract void appendSummary(Map<String, Object> content);
 
 		/**
 		 * Build the full details of the trigger.
-		 * @param triggerState the current state of the trigger
+		 *
+		 * @param triggerState     the current state of the trigger
 		 * @param sanitizedDataMap a sanitized data map or {@code null}
 		 * @return all properties of the trigger
 		 */
@@ -645,6 +657,7 @@ public class QuartzEndpoint {
 		/**
 		 * Append trigger-implementation specific details to the specified
 		 * {@code content}.
+		 *
 		 * @param content the details of the trigger
 		 */
 		protected abstract void appendDetails(Map<String, Object> content);

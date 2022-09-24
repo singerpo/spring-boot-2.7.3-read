@@ -33,7 +33,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
  *
  * @author Phillip Webb
  */
-@RestClientTest({ ExampleRestClient.class, AnotherExampleRestClient.class })
+@RestClientTest({ExampleRestClient.class, AnotherExampleRestClient.class})
 class RestClientTestTwoComponentsIntegrationTests {
 
 	@Autowired

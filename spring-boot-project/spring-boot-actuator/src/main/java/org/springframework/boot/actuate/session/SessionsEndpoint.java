@@ -42,6 +42,7 @@ public class SessionsEndpoint {
 
 	/**
 	 * Create a new {@link SessionsEndpoint} instance.
+	 *
 	 * @param sessionRepository the session repository
 	 */
 	public SessionsEndpoint(FindByIndexNameSessionRepository<? extends Session> sessionRepository) {

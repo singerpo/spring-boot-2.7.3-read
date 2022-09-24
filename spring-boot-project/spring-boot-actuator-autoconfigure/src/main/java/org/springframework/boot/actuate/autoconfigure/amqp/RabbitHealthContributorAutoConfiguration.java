@@ -45,7 +45,7 @@ public class RabbitHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<RabbitHealthIndicator, RabbitTemplate> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "rabbitHealthIndicator", "rabbitHealthContributor" })
+	@ConditionalOnMissingBean(name = {"rabbitHealthIndicator", "rabbitHealthContributor"})
 	public HealthContributor rabbitHealthContributor(Map<String, RabbitTemplate> rabbitTemplates) {
 		return createContributor(rabbitTemplates);
 	}

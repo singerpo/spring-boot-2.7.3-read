@@ -31,7 +31,7 @@ class MyService(rsocketRequesterBuilder: RSocketRequester.Builder) {
 
 	fun someRSocketCall(name: String): Mono<User> {
 		return rsocketRequester.route("user").data(name).retrieveMono(
-			User::class.java
+				User::class.java
 		)
 	}
 

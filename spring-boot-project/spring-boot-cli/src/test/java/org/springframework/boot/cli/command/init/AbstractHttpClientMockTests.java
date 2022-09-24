@@ -112,8 +112,7 @@ public abstract class AbstractHttpClientMockTests {
 			given(entity.getContentType()).willReturn(contentTypeHeader);
 			given(response.getEntity()).willReturn(entity);
 			return entity;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Should not happen", ex);
 		}
 	}
@@ -159,10 +158,10 @@ public abstract class AbstractHttpClientMockTests {
 
 		String fileName;
 
-		byte[] content = new byte[] { 0, 0, 0, 0 };
+		byte[] content = new byte[]{0, 0, 0, 0};
 
 		MockHttpProjectGenerationRequest(String contentType, String fileName) {
-			this(contentType, fileName, new byte[] { 0, 0, 0, 0 });
+			this(contentType, fileName, new byte[]{0, 0, 0, 0});
 		}
 
 		MockHttpProjectGenerationRequest(String contentType, String fileName, byte[] content) {

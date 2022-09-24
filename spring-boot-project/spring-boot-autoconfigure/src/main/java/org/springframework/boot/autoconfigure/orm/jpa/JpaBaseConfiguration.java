@@ -84,7 +84,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 	private ConfigurableListableBeanFactory beanFactory;
 
 	protected JpaBaseConfiguration(DataSource dataSource, JpaProperties properties,
-			ObjectProvider<JtaTransactionManager> jtaTransactionManager) {
+								   ObjectProvider<JtaTransactionManager> jtaTransactionManager) {
 		this.dataSource = dataSource;
 		this.properties = properties;
 		this.jtaTransactionManager = jtaTransactionManager.getIfAvailable();
@@ -117,8 +117,8 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 	@Bean
 	@ConditionalOnMissingBean
 	public EntityManagerFactoryBuilder entityManagerFactoryBuilder(JpaVendorAdapter jpaVendorAdapter,
-			ObjectProvider<PersistenceUnitManager> persistenceUnitManager,
-			ObjectProvider<EntityManagerFactoryBuilderCustomizer> customizers) {
+																   ObjectProvider<PersistenceUnitManager> persistenceUnitManager,
+																   ObjectProvider<EntityManagerFactoryBuilderCustomizer> customizers) {
 		EntityManagerFactoryBuilder builder = new EntityManagerFactoryBuilder(jpaVendorAdapter,
 				this.properties.getProperties(), persistenceUnitManager.getIfAvailable());
 		customizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
@@ -127,7 +127,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 
 	@Bean
 	@Primary
-	@ConditionalOnMissingBean({ LocalContainerEntityManagerFactoryBean.class, EntityManagerFactory.class })
+	@ConditionalOnMissingBean({LocalContainerEntityManagerFactoryBean.class, EntityManagerFactory.class})
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder factoryBuilder) {
 		Map<String, Object> vendorProperties = getVendorProperties();
 		customizeVendorProperties(vendorProperties);
@@ -142,6 +142,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 	/**
 	 * Customize vendor properties before they are used. Allows for post-processing (for
 	 * example to configure JTA specific settings).
+	 *
 	 * @param vendorProperties the vendor properties to customize
 	 */
 	protected void customizeVendorProperties(Map<String, Object> vendorProperties) {
@@ -162,6 +163,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 
 	/**
 	 * Return the JTA transaction manager.
+	 *
 	 * @return the transaction manager or {@code null}
 	 */
 	protected JtaTransactionManager getJtaTransactionManager() {
@@ -170,6 +172,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 
 	/**
 	 * Returns if a JTA {@link PlatformTransactionManager} is being used.
+	 *
 	 * @return if a JTA transaction manager is being used
 	 */
 	protected final boolean isJta() {
@@ -178,6 +181,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 
 	/**
 	 * Return the {@link JpaProperties}.
+	 *
 	 * @return the properties
 	 */
 	protected final JpaProperties getProperties() {
@@ -186,6 +190,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 
 	/**
 	 * Return the {@link DataSource}.
+	 *
 	 * @return the data source
 	 */
 	protected final DataSource getDataSource() {
@@ -200,7 +205,7 @@ public abstract class JpaBaseConfiguration implements BeanFactoryAware {
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnWebApplication(type = Type.SERVLET)
 	@ConditionalOnClass(WebMvcConfigurer.class)
-	@ConditionalOnMissingBean({ OpenEntityManagerInViewInterceptor.class, OpenEntityManagerInViewFilter.class })
+	@ConditionalOnMissingBean({OpenEntityManagerInViewInterceptor.class, OpenEntityManagerInViewFilter.class})
 	@ConditionalOnMissingFilterBean(OpenEntityManagerInViewFilter.class)
 	@ConditionalOnProperty(prefix = "spring.jpa", name = "open-in-view", havingValue = "true", matchIfMissing = true)
 	protected static class JpaWebConfiguration {

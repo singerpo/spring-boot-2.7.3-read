@@ -35,8 +35,7 @@ final class Versions {
 		try (FileInputStream input = new FileInputStream("../../gradle.properties")) {
 			gradleProperties.load(input);
 			return gradleProperties.getProperty("version");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

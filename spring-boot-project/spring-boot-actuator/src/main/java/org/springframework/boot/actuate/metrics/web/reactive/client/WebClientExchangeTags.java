@@ -53,6 +53,7 @@ public final class WebClientExchangeTags {
 	/**
 	 * Creates a {@code method} {@code Tag} for the {@link ClientHttpRequest#getMethod()
 	 * method} of the given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the method tag
 	 */
@@ -62,6 +63,7 @@ public final class WebClientExchangeTags {
 
 	/**
 	 * Creates a {@code uri} {@code Tag} for the URI path of the given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the uri tag
 	 */
@@ -79,7 +81,8 @@ public final class WebClientExchangeTags {
 	 * Creates a {@code status} {@code Tag} derived from the
 	 * {@link ClientResponse#statusCode()} of the given {@code response} if available, the
 	 * thrown exception otherwise, or considers the request as Cancelled as a last resort.
-	 * @param response the response
+	 *
+	 * @param response  the response
 	 * @param throwable the exception
 	 * @return the status tag
 	 * @since 2.3.0
@@ -98,6 +101,7 @@ public final class WebClientExchangeTags {
 	 * Create a {@code client.name} {@code Tag} derived from the
 	 * {@link java.net.URI#getHost host} of the {@link ClientRequest#url() URL} of the
 	 * given {@code request}.
+	 *
 	 * @param request the request
 	 * @return the client.name tag
 	 */
@@ -112,6 +116,7 @@ public final class WebClientExchangeTags {
 	/**
 	 * Creates an {@code outcome} {@code Tag} derived from the
 	 * {@link ClientResponse#rawStatusCode() status} of the given {@code response}.
+	 *
 	 * @param response the response
 	 * @return the outcome tag
 	 * @since 2.2.0

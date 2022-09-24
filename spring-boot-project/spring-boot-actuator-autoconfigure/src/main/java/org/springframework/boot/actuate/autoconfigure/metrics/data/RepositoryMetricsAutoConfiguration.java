@@ -42,8 +42,8 @@ import org.springframework.util.function.SingletonSupplier;
  * @author Phillip Webb
  * @since 2.5.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
 @ConditionalOnClass(org.springframework.data.repository.Repository.class)
 @ConditionalOnBean(MeterRegistry.class)
 @EnableConfigurationProperties(MetricsProperties.class)

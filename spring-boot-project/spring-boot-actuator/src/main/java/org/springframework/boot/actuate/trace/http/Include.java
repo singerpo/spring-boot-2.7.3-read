@@ -83,6 +83,7 @@ public enum Include {
 
 	/**
 	 * Return the default {@link Include}.
+	 *
 	 * @return the default include.
 	 */
 	public static Set<Include> defaultIncludes() {

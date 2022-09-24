@@ -118,7 +118,7 @@ class CertificateFileSslStoreProviderTests {
 		assertThat(keyStore.getType()).isEqualTo(keyStoreType);
 		assertThat(keyStore.containsAlias(keyAlias)).isTrue();
 		assertThat(keyStore.getCertificate(keyAlias)).isNotNull();
-		assertThat(keyStore.getKey(keyAlias, new char[] {})).isNotNull();
+		assertThat(keyStore.getKey(keyAlias, new char[]{})).isNotNull();
 	}
 
 	private void assertStoreContainsCert(KeyStore keyStore, String keyStoreType, String keyAlias)
@@ -127,7 +127,7 @@ class CertificateFileSslStoreProviderTests {
 		assertThat(keyStore.getType()).isEqualTo(keyStoreType);
 		assertThat(keyStore.containsAlias(keyAlias)).isTrue();
 		assertThat(keyStore.getCertificate(keyAlias)).isNotNull();
-		assertThat(keyStore.getKey(keyAlias, new char[] {})).isNull();
+		assertThat(keyStore.getKey(keyAlias, new char[]{})).isNull();
 	}
 
 }

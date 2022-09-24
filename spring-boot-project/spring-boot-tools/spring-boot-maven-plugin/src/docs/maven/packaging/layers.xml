@@ -7,16 +7,16 @@
 		<into layer="spring-boot-loader">
 			<include>org/springframework/boot/loader/**</include>
 		</into>
-		<into layer="application" />
+		<into layer="application"/>
 	</application>
 	<dependencies>
 		<into layer="application">
-			<includeModuleDependencies />
+			<includeModuleDependencies/>
 		</into>
 		<into layer="snapshot-dependencies">
 			<include>*:*:*SNAPSHOT</include>
 		</into>
-		<into layer="dependencies" />
+		<into layer="dependencies"/>
 	</dependencies>
 	<layerOrder>
 		<layer>dependencies</layer>
@@ -25,4 +25,4 @@
 		<layer>application</layer>
 	</layerOrder>
 </layers>
-<!-- end::layers[] -->
+		<!-- end::layers[] -->

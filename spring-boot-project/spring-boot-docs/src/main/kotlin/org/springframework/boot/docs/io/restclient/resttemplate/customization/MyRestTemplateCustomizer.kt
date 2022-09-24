@@ -44,7 +44,7 @@ class MyRestTemplateCustomizer : RestTemplateCustomizer {
 			if (target.hostName == "192.168.0.5") {
 				return null
 			}
-			return  super.determineProxy(target, request, context)
+			return super.determineProxy(target, request, context)
 		}
 
 	}

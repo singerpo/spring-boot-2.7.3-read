@@ -25,13 +25,14 @@ import java.util.stream.StreamSupport;
  *
  * @param <C> the contributor type
  * @author Phillip Webb
- * @since 2.0.0
  * @see NamedContributor
+ * @since 2.0.0
  */
 public interface NamedContributors<C> extends Iterable<NamedContributor<C>> {
 
 	/**
 	 * Return the contributor with the given name.
+	 *
 	 * @param name the name of the contributor
 	 * @return a contributor instance or {@code null}
 	 */
@@ -39,6 +40,7 @@ public interface NamedContributors<C> extends Iterable<NamedContributor<C>> {
 
 	/**
 	 * Return a stream of the {@link NamedContributor named contributors}.
+	 *
 	 * @return the stream of named contributors
 	 */
 	default Stream<NamedContributor<C>> stream() {

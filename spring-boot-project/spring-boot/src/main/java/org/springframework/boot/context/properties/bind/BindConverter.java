@@ -58,7 +58,7 @@ final class BindConverter {
 	private final List<ConversionService> delegates;
 
 	private BindConverter(List<ConversionService> conversionServices,
-			Consumer<PropertyEditorRegistry> propertyEditorInitializer) {
+						  Consumer<PropertyEditorRegistry> propertyEditorInitializer) {
 		List<ConversionService> delegates = new ArrayList<>();
 		delegates.add(new TypeConverterConversionService(propertyEditorInitializer));
 		boolean hasApplication = false;
@@ -108,8 +108,7 @@ final class BindConverter {
 				if (delegate.canConvert(sourceType, targetType)) {
 					return delegate.convert(source, sourceType, targetType);
 				}
-			}
-			catch (ConversionException ex) {
+			} catch (ConversionException ex) {
 				if (failure == null && ex instanceof ConversionFailedException) {
 					failure = ex;
 				}
@@ -119,7 +118,7 @@ final class BindConverter {
 	}
 
 	static BindConverter get(List<ConversionService> conversionServices,
-			Consumer<PropertyEditorRegistry> propertyEditorInitializer) {
+							 Consumer<PropertyEditorRegistry> propertyEditorInitializer) {
 		boolean sharedApplicationConversionService = (conversionServices == null) || (conversionServices.size() == 1
 				&& conversionServices.get(0) == ApplicationConversionService.getSharedInstance());
 		if (propertyEditorInitializer == null && sharedApplicationConversionService) {
@@ -175,6 +174,7 @@ final class BindConverter {
 	private static class TypeConverterConverter implements ConditionalGenericConverter {
 
 		private static final Set<Class<?>> EXCLUDED_EDITORS;
+
 		static {
 			Set<Class<?>> excluded = new HashSet<>();
 			excluded.add(CustomNumberEditor.class);

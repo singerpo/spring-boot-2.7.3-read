@@ -211,7 +211,7 @@ class FreeMarkerAutoConfigurationServletIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ FreeMarkerAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+	@ImportAutoConfiguration({FreeMarkerAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	static class BaseConfiguration {
 
 	}

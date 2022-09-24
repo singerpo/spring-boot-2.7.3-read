@@ -88,7 +88,7 @@ class ConfigDataEnvironmentPostProcessorImportCombinedWithProfileSpecificIntegra
 
 		@Override
 		public List<Resource> resolveProfileSpecific(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location, Profiles profiles) {
+													 ConfigDataLocation location, Profiles profiles) {
 			return Collections.singletonList(new Resource(profiles));
 		}
 

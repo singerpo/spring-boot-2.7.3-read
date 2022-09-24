@@ -38,8 +38,8 @@ class MyEntityManagerFactoryConfiguration {
 
 	@Bean
 	fun firstEntityManagerFactory(
-		firstDataSource: DataSource?,
-		firstJpaProperties: JpaProperties
+			firstDataSource: DataSource?,
+			firstJpaProperties: JpaProperties
 	): LocalContainerEntityManagerFactoryBean {
 		val builder = createEntityManagerFactoryBuilder(firstJpaProperties)
 		return builder.dataSource(firstDataSource).packages(Order::class.java).persistenceUnit("firstDs").build()

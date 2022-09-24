@@ -41,7 +41,7 @@ class WebServletHandler extends ServletComponentHandler {
 
 	@Override
 	public void doHandle(Map<String, Object> attributes, AnnotatedBeanDefinition beanDefinition,
-			BeanDefinitionRegistry registry) {
+						 BeanDefinitionRegistry registry) {
 		BeanDefinitionBuilder builder = BeanDefinitionBuilder.rootBeanDefinition(ServletRegistrationBean.class);
 		builder.addPropertyValue("asyncSupported", attributes.get("asyncSupported"));
 		builder.addPropertyValue("initParameters", extractInitParameters(attributes));

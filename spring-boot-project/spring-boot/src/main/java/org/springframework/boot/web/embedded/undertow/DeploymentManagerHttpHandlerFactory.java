@@ -64,8 +64,7 @@ class DeploymentManagerHttpHandlerFactory implements HttpHandlerFactory {
 			this.deploymentManager = deploymentManager;
 			try {
 				this.handler = deploymentManager.start();
-			}
-			catch (ServletException ex) {
+			} catch (ServletException ex) {
 				throw new RuntimeException(ex);
 			}
 		}
@@ -80,8 +79,7 @@ class DeploymentManagerHttpHandlerFactory implements HttpHandlerFactory {
 			try {
 				this.deploymentManager.stop();
 				this.deploymentManager.undeploy();
-			}
-			catch (ServletException ex) {
+			} catch (ServletException ex) {
 				throw new RuntimeException(ex);
 			}
 		}

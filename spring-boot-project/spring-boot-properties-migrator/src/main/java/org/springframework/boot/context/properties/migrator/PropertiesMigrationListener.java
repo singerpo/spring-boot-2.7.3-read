@@ -69,8 +69,7 @@ public class PropertiesMigrationListener implements ApplicationListener<SpringAp
 	private ConfigurationMetadataRepository loadRepository() {
 		try {
 			return loadRepository(ConfigurationMetadataRepositoryJsonBuilder.create());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to load metadata", ex);
 		}
 	}

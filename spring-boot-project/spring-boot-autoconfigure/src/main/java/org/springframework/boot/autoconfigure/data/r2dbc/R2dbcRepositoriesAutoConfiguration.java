@@ -34,11 +34,11 @@ import org.springframework.r2dbc.core.DatabaseClient;
  * {@link EnableAutoConfiguration Auto-configuration} for Spring Data R2DBC Repositories.
  *
  * @author Mark Paluch
- * @since 2.3.0
  * @see EnableR2dbcRepositories
+ * @since 2.3.0
  */
 @AutoConfiguration(after = R2dbcDataAutoConfiguration.class)
-@ConditionalOnClass({ ConnectionFactory.class, R2dbcRepository.class })
+@ConditionalOnClass({ConnectionFactory.class, R2dbcRepository.class})
 @ConditionalOnBean(DatabaseClient.class)
 @ConditionalOnProperty(prefix = "spring.data.r2dbc.repositories", name = "enabled", havingValue = "true",
 		matchIfMissing = true)

@@ -47,6 +47,7 @@ public final class AutoConfigurationImportedCondition extends Condition<Applicat
 	/**
 	 * Returns a {@link Condition} that verifies that the given
 	 * {@code autoConfigurationClass} has been imported.
+	 *
 	 * @param autoConfigurationClass the auto-configuration class
 	 * @return the condition
 	 */

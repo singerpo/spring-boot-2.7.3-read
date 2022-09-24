@@ -198,8 +198,10 @@ class TestRestTemplateExtensionsTests {
 		val var1 = "var1"
 		val var2 = "var2"
 		template.exchange<List<Foo>>(url, method, entity, var1, var2)
-		verify(exactly = 1) { template.exchange(url, method, entity,
-				object : ParameterizedTypeReference<List<Foo>>() {}, var1, var2) }
+		verify(exactly = 1) {
+			template.exchange(url, method, entity,
+					object : ParameterizedTypeReference<List<Foo>>() {}, var1, var2)
+		}
 	}
 
 	@Test
@@ -209,8 +211,10 @@ class TestRestTemplateExtensionsTests {
 		val entity = mockk<HttpEntity<Foo>>()
 		val vars = mapOf(Pair("key1", "value1"), Pair("key2", "value2"))
 		template.exchange<List<Foo>>(url, method, entity, vars)
-		verify(exactly = 1) { template.exchange(url, method, entity,
-				object : ParameterizedTypeReference<List<Foo>>() {}, vars) }
+		verify(exactly = 1) {
+			template.exchange(url, method, entity,
+					object : ParameterizedTypeReference<List<Foo>>() {}, vars)
+		}
 	}
 
 	@Test
@@ -219,16 +223,20 @@ class TestRestTemplateExtensionsTests {
 		val method = HttpMethod.GET
 		val entity = mockk<HttpEntity<Foo>>()
 		template.exchange<List<Foo>>(url, method, entity)
-		verify(exactly = 1) { template.exchange(url, method, entity,
-				object : ParameterizedTypeReference<List<Foo>>() {}) }
+		verify(exactly = 1) {
+			template.exchange(url, method, entity,
+					object : ParameterizedTypeReference<List<Foo>>() {})
+		}
 	}
 
 	@Test
 	fun `exchange with reified type parameters and HttpEntity`() {
 		val entity = mockk<RequestEntity<Foo>>()
 		template.exchange<List<Foo>>(entity)
-		verify(exactly = 1) { template.exchange(entity,
-				object : ParameterizedTypeReference<List<Foo>>() {}) }
+		verify(exactly = 1) {
+			template.exchange(entity,
+					object : ParameterizedTypeReference<List<Foo>>() {})
+		}
 	}
 
 	@Test
@@ -236,8 +244,10 @@ class TestRestTemplateExtensionsTests {
 		val url = "https://spring.io"
 		val method = HttpMethod.GET
 		template.exchange<List<Foo>>(url, method)
-		verify(exactly = 1) { template.exchange(url, method, null,
-				object : ParameterizedTypeReference<List<Foo>>() {}) }
+		verify(exactly = 1) {
+			template.exchange(url, method, null,
+					object : ParameterizedTypeReference<List<Foo>>() {})
+		}
 	}
 
 	@Test

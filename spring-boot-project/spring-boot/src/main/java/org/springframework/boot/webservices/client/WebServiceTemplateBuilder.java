@@ -90,10 +90,10 @@ public class WebServiceTemplateBuilder {
 	}
 
 	private WebServiceTemplateBuilder(boolean detectHttpMessageSender, Set<ClientInterceptor> interceptors,
-			Set<WebServiceTemplateCustomizer> internalCustomizers, Set<WebServiceTemplateCustomizer> customizers,
-			WebServiceMessageSenders messageSenders, Marshaller marshaller, Unmarshaller unmarshaller,
-			DestinationProvider destinationProvider, Class<? extends TransformerFactory> transformerFactoryClass,
-			WebServiceMessageFactory messageFactory) {
+									  Set<WebServiceTemplateCustomizer> internalCustomizers, Set<WebServiceTemplateCustomizer> customizers,
+									  WebServiceMessageSenders messageSenders, Marshaller marshaller, Unmarshaller unmarshaller,
+									  DestinationProvider destinationProvider, Class<? extends TransformerFactory> transformerFactoryClass,
+									  WebServiceMessageFactory messageFactory) {
 		this.detectHttpMessageSender = detectHttpMessageSender;
 		this.interceptors = interceptors;
 		this.internalCustomizers = internalCustomizers;
@@ -109,8 +109,9 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Set if a suitable HTTP-based {@link WebServiceMessageSender} should be detected
 	 * based on the classpath. Default is {@code true}.
+	 *
 	 * @param detectHttpMessageSender if an HTTP-based {@link WebServiceMessageSender}
-	 * should be detected
+	 *                                should be detected
 	 * @return a new builder instance
 	 * @see HttpWebServiceMessageSenderBuilder
 	 */
@@ -126,6 +127,7 @@ public class WebServiceTemplateBuilder {
 	 * previously defined message senders, including the HTTP-based message sender, if
 	 * any. Consider using {@link #additionalMessageSenders(WebServiceMessageSender...)}
 	 * to keep it with user-defined message senders.
+	 *
 	 * @param messageSenders the message senders to set
 	 * @return a new builder instance.
 	 * @see #additionalMessageSenders(WebServiceMessageSender...)
@@ -142,6 +144,7 @@ public class WebServiceTemplateBuilder {
 	 * previously defined message senders, including the HTTP-based message sender, if
 	 * any. Consider using {@link #additionalMessageSenders(Collection)} to keep it with
 	 * user-defined message senders.
+	 *
 	 * @param messageSenders the message senders to set
 	 * @return a new builder instance.
 	 * @see #additionalMessageSenders(Collection)
@@ -157,6 +160,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Add additional {@link WebServiceMessageSender WebServiceMessageSenders} that should
 	 * be used with the {@link WebServiceTemplate}.
+	 *
 	 * @param messageSenders the message senders to add
 	 * @return a new builder instance.
 	 * @see #messageSenders(WebServiceMessageSender...)
@@ -169,6 +173,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Add additional {@link WebServiceMessageSender WebServiceMessageSenders} that should
 	 * be used with the {@link WebServiceTemplate}.
+	 *
 	 * @param messageSenders the message senders to add
 	 * @return a new builder instance.
 	 * @see #messageSenders(Collection)
@@ -185,6 +190,7 @@ public class WebServiceTemplateBuilder {
 	 * Set the {@link ClientInterceptor ClientInterceptors} that should be used with the
 	 * {@link WebServiceTemplate}. Setting this value will replace any previously defined
 	 * interceptors.
+	 *
 	 * @param interceptors the interceptors to set
 	 * @return a new builder instance
 	 * @see #additionalInterceptors(ClientInterceptor...)
@@ -198,6 +204,7 @@ public class WebServiceTemplateBuilder {
 	 * Set the {@link ClientInterceptor ClientInterceptors} that should be used with the
 	 * {@link WebServiceTemplate}. Setting this value will replace any previously defined
 	 * interceptors.
+	 *
 	 * @param interceptors the interceptors to set
 	 * @return a new builder instance
 	 * @see #additionalInterceptors(Collection)
@@ -213,6 +220,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Add additional {@link ClientInterceptor ClientInterceptors} that should be used
 	 * with the {@link WebServiceTemplate}.
+	 *
 	 * @param interceptors the interceptors to add
 	 * @return a new builder instance
 	 * @see #interceptors(ClientInterceptor...)
@@ -225,6 +233,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Add additional {@link ClientInterceptor ClientInterceptors} that should be used
 	 * with the {@link WebServiceTemplate}.
+	 *
 	 * @param interceptors the interceptors to add
 	 * @return a new builder instance
 	 * @see #interceptors(Collection)
@@ -241,6 +250,7 @@ public class WebServiceTemplateBuilder {
 	 * be applied to the {@link WebServiceTemplate}. Customizers are applied in the order
 	 * that they were added after builder configuration has been applied. Setting this
 	 * value will replace any previously configured customizers.
+	 *
 	 * @param customizers the customizers to set
 	 * @return a new builder instance
 	 * @see #additionalCustomizers(WebServiceTemplateCustomizer...)
@@ -255,6 +265,7 @@ public class WebServiceTemplateBuilder {
 	 * be applied to the {@link WebServiceTemplate}. Customizers are applied in the order
 	 * that they were added after builder configuration has been applied. Setting this
 	 * value will replace any previously configured customizers.
+	 *
 	 * @param customizers the customizers to set
 	 * @return a new builder instance
 	 * @see #additionalCustomizers(Collection)
@@ -271,6 +282,7 @@ public class WebServiceTemplateBuilder {
 	 * Add additional {@link WebServiceTemplateCustomizer WebServiceTemplateCustomizers}
 	 * that should be applied to the {@link WebServiceTemplate}. Customizers are applied
 	 * in the order that they were added after builder configuration has been applied.
+	 *
 	 * @param customizers the customizers to add
 	 * @return a new builder instance
 	 * @see #customizers(WebServiceTemplateCustomizer...)
@@ -284,6 +296,7 @@ public class WebServiceTemplateBuilder {
 	 * Add additional {@link WebServiceTemplateCustomizer WebServiceTemplateCustomizers}
 	 * that should be applied to the {@link WebServiceTemplate}. Customizers are applied
 	 * in the order that they were added after builder configuration has been applied.
+	 *
 	 * @param customizers the customizers to add
 	 * @return a new builder instance
 	 * @see #customizers(Collection)
@@ -299,6 +312,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Indicates whether the connection should be checked for fault indicators
 	 * ({@code true}), or whether we should rely on the message only ({@code false}).
+	 *
 	 * @param checkConnectionForFault whether to check for fault indicators
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setCheckConnectionForFault(boolean)
@@ -313,6 +327,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Indicates whether the connection should be checked for error indicators
 	 * ({@code true}), or whether these should be ignored ({@code false}).
+	 *
 	 * @param checkConnectionForError whether to check for error indicators
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setCheckConnectionForError(boolean)
@@ -326,6 +341,7 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Sets the {@link WebServiceMessageFactory} to use for creating messages.
+	 *
 	 * @param messageFactory the message factory to use for creating messages
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setMessageFactory(WebServiceMessageFactory)
@@ -339,6 +355,7 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Set the {@link Unmarshaller} to use to deserialize messages.
+	 *
 	 * @param unmarshaller the message unmarshaller
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setUnmarshaller(Unmarshaller)
@@ -351,6 +368,7 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Set the {@link Marshaller} to use to serialize messages.
+	 *
 	 * @param marshaller the message marshaller
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setMarshaller(Marshaller)
@@ -363,6 +381,7 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Set the {@link FaultMessageResolver} to use.
+	 *
 	 * @param faultMessageResolver the fault message resolver to use
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setFaultMessageResolver(FaultMessageResolver)
@@ -376,6 +395,7 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Set the {@link TransformerFactory} implementation to use.
+	 *
 	 * @param transformerFactoryClass the transformer factory implementation to use
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setTransformerFactoryClass(Class)
@@ -391,8 +411,9 @@ public class WebServiceTemplateBuilder {
 	 * Set the default URI to be used on operations that do not have a URI parameter.
 	 * Typically, either this property is set, or
 	 * {@link #setDestinationProvider(DestinationProvider)}, but not both.
+	 *
 	 * @param defaultUri the destination provider URI to be used on operations that do not
-	 * have a URI parameter.
+	 *                   have a URI parameter.
 	 * @return a new builder instance.
 	 * @see #setDestinationProvider(DestinationProvider)
 	 */
@@ -404,8 +425,9 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Set the {@link DestinationProvider} to use. Typically, either this property is set,
 	 * or {@link #setDefaultUri(String)}, but not both.
+	 *
 	 * @param destinationProvider the destination provider to be used on operations that
-	 * do not have a URI parameter.
+	 *                            do not have a URI parameter.
 	 * @return a new builder instance.
 	 * @see WebServiceTemplate#setDestinationProvider(DestinationProvider)
 	 */
@@ -419,6 +441,7 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Build a new {@link WebServiceTemplate} instance and configure it using this
 	 * builder.
+	 *
 	 * @return a configured {@link WebServiceTemplate} instance.
 	 * @see #build(Class)
 	 * @see #configure(WebServiceTemplate)
@@ -430,7 +453,8 @@ public class WebServiceTemplateBuilder {
 	/**
 	 * Build a new {@link WebServiceTemplate} instance of the specified type and configure
 	 * it using this builder.
-	 * @param <T> the type of web service template
+	 *
+	 * @param <T>                     the type of web service template
 	 * @param webServiceTemplateClass the template type to create
 	 * @return a configured {@link WebServiceTemplate} instance.
 	 * @see WebServiceTemplateBuilder#build()
@@ -443,7 +467,8 @@ public class WebServiceTemplateBuilder {
 
 	/**
 	 * Configure the provided {@link WebServiceTemplate} instance using this builder.
-	 * @param <T> the type of web service template
+	 *
+	 * @param <T>                the type of web service template
 	 * @param webServiceTemplate the {@link WebServiceTemplate} to configure
 	 * @return the web service template instance
 	 * @see #build()
@@ -471,7 +496,7 @@ public class WebServiceTemplateBuilder {
 	}
 
 	private void applyCustomizers(WebServiceTemplate webServiceTemplate,
-			Set<WebServiceTemplateCustomizer> customizers) {
+								  Set<WebServiceTemplateCustomizer> customizers) {
 		if (!CollectionUtils.isEmpty(customizers)) {
 			for (WebServiceTemplateCustomizer customizer : customizers) {
 				customizer.customize(webServiceTemplate);
@@ -484,8 +509,7 @@ public class WebServiceTemplateBuilder {
 			Set<WebServiceMessageSender> merged = append(this.messageSenders.getMessageSenders(),
 					new HttpWebServiceMessageSenderBuilder().build());
 			webServiceTemplate.setMessageSenders(merged.toArray(new WebServiceMessageSender[0]));
-		}
-		else if (!CollectionUtils.isEmpty(this.messageSenders.getMessageSenders())) {
+		} else if (!CollectionUtils.isEmpty(this.messageSenders.getMessageSenders())) {
 			webServiceTemplate
 					.setMessageSenders(this.messageSenders.getMessageSenders().toArray(new WebServiceMessageSender[0]));
 		}

@@ -43,7 +43,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@ConditionalOnClass({ Servlet.class, FreeMarkerConfigurer.class })
+@ConditionalOnClass({Servlet.class, FreeMarkerConfigurer.class})
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 class FreeMarkerServletWebConfiguration extends AbstractFreeMarkerConfiguration {
 

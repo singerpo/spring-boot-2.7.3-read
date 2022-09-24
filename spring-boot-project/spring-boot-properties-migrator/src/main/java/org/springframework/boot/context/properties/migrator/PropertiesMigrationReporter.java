@@ -49,7 +49,7 @@ class PropertiesMigrationReporter {
 	private final ConfigurableEnvironment environment;
 
 	PropertiesMigrationReporter(ConfigurationMetadataRepository metadataRepository,
-			ConfigurableEnvironment environment) {
+								ConfigurableEnvironment environment) {
 		this.allProperties = Collections.unmodifiableMap(metadataRepository.getAllProperties());
 		this.environment = environment;
 	}
@@ -57,6 +57,7 @@ class PropertiesMigrationReporter {
 	/**
 	 * Analyse the {@link ConfigurableEnvironment environment} and attempt to rename
 	 * legacy properties if a replacement exists.
+	 *
 	 * @return a report of the migration
 	 */
 	PropertiesMigrationReport getReport() {
@@ -76,7 +77,7 @@ class PropertiesMigrationReporter {
 	}
 
 	private PropertySource<?> mapPropertiesWithReplacement(PropertiesMigrationReport report, String name,
-			List<PropertyMigration> properties) {
+														   List<PropertyMigration> properties) {
 		report.add(name, properties);
 		List<PropertyMigration> renamed = properties.stream().filter(PropertyMigration::isCompatibleType)
 				.collect(Collectors.toList());

@@ -55,7 +55,7 @@ class ReactiveCloudFoundrySecurityService {
 	private Mono<String> uaaUrl;
 
 	ReactiveCloudFoundrySecurityService(WebClient.Builder webClientBuilder, String cloudControllerUrl,
-			boolean skipSslValidation) {
+										boolean skipSslValidation) {
 		Assert.notNull(webClientBuilder, "Webclient must not be null");
 		Assert.notNull(cloudControllerUrl, "CloudControllerUrl must not be null");
 		if (skipSslValidation) {
@@ -77,7 +77,8 @@ class ReactiveCloudFoundrySecurityService {
 
 	/**
 	 * Return a Mono of the access level that should be granted to the given token.
-	 * @param token the token
+	 *
+	 * @param token         the token
 	 * @param applicationId the cloud foundry application ID
 	 * @return a Mono of the access level that should be granted
 	 * @throws CloudFoundryAuthorizationException if the token is not authorized
@@ -114,6 +115,7 @@ class ReactiveCloudFoundrySecurityService {
 
 	/**
 	 * Return a Mono of all token keys known by the UAA.
+	 *
 	 * @return a Mono of token keys
 	 */
 	Mono<Map<String, String>> fetchTokenKeys() {
@@ -137,6 +139,7 @@ class ReactiveCloudFoundrySecurityService {
 
 	/**
 	 * Return a Mono of URL of the UAA.
+	 *
 	 * @return the UAA url Mono
 	 */
 	Mono<String> getUaaUrl() {

@@ -33,6 +33,7 @@ public interface DownloadConfigBuilderCustomizer {
 
 	/**
 	 * Customize the {@link Builder}.
+	 *
 	 * @param downloadConfigBuilder the {@link Builder} to customize
 	 */
 	void customize(ImmutableDownloadConfig.Builder downloadConfigBuilder);

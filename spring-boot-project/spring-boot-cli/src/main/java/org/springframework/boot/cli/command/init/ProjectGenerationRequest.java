@@ -75,6 +75,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The URL of the service to use.
+	 *
 	 * @return the service URL
 	 * @see #DEFAULT_SERVICE_URL
 	 */
@@ -88,6 +89,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The location of the generated project.
+	 *
 	 * @return the location of the generated project
 	 */
 	String getOutput() {
@@ -98,8 +100,7 @@ class ProjectGenerationRequest {
 		if (output != null && output.endsWith("/")) {
 			this.output = output.substring(0, output.length() - 1);
 			this.extract = true;
-		}
-		else {
+		} else {
 			this.output = output;
 		}
 	}
@@ -107,6 +108,7 @@ class ProjectGenerationRequest {
 	/**
 	 * Whether the project archive should be extracted in the output location. If the
 	 * {@link #getOutput() output} ends with "/", the project is extracted automatically.
+	 *
 	 * @return {@code true} if the archive should be extracted, otherwise {@code false}
 	 */
 	boolean isExtract() {
@@ -119,6 +121,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The groupId to use or {@code null} if it should not be customized.
+	 *
 	 * @return the groupId or {@code null}
 	 */
 	String getGroupId() {
@@ -131,6 +134,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The artifactId to use or {@code null} if it should not be customized.
+	 *
 	 * @return the artifactId or {@code null}
 	 */
 	String getArtifactId() {
@@ -143,6 +147,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The artifact version to use or {@code null} if it should not be customized.
+	 *
 	 * @return the artifact version or {@code null}
 	 */
 	String getVersion() {
@@ -155,6 +160,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The name to use or {@code null} if it should not be customized.
+	 *
 	 * @return the name or {@code null}
 	 */
 	String getName() {
@@ -167,6 +173,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The description to use or {@code null} if it should not be customized.
+	 *
 	 * @return the description or {@code null}
 	 */
 	String getDescription() {
@@ -179,6 +186,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * Return the package name or {@code null} if it should not be customized.
+	 *
 	 * @return the package name or {@code null}
 	 */
 	String getPackageName() {
@@ -192,6 +200,7 @@ class ProjectGenerationRequest {
 	/**
 	 * The type of project to generate. Should match one of the advertised type that the
 	 * service supports. If not set, the default is retrieved from the service metadata.
+	 *
 	 * @return the project type
 	 */
 	String getType() {
@@ -204,6 +213,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The packaging type or {@code null} if it should not be customized.
+	 *
 	 * @return the packaging type or {@code null}
 	 */
 	String getPackaging() {
@@ -217,6 +227,7 @@ class ProjectGenerationRequest {
 	/**
 	 * The build type to use. Ignored if a type is set. Can be used alongside the
 	 * {@link #getFormat() format} to identify the type to use.
+	 *
 	 * @return the build type
 	 */
 	String getBuild() {
@@ -230,6 +241,7 @@ class ProjectGenerationRequest {
 	/**
 	 * The project format to use. Ignored if a type is set. Can be used alongside the
 	 * {@link #getBuild() build} to identify the type to use.
+	 *
 	 * @return the project format
 	 */
 	String getFormat() {
@@ -242,6 +254,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * Whether the type should be detected based on the build and format value.
+	 *
 	 * @return {@code true} if type detection will be performed, otherwise {@code false}
 	 */
 	boolean isDetectType() {
@@ -254,6 +267,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The Java version to use or {@code null} if it should not be customized.
+	 *
 	 * @return the Java version or {@code null}
 	 */
 	String getJavaVersion() {
@@ -266,6 +280,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The programming language to use or {@code null} if it should not be customized.
+	 *
 	 * @return the programming language or {@code null}
 	 */
 	String getLanguage() {
@@ -278,6 +293,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The Spring Boot version to use or {@code null} if it should not be customized.
+	 *
 	 * @return the Spring Boot version or {@code null}
 	 */
 	String getBootVersion() {
@@ -290,6 +306,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * The identifiers of the dependencies to include in the project.
+	 *
 	 * @return the dependency identifiers
 	 */
 	List<String> getDependencies() {
@@ -298,6 +315,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * Generates the URI to use to generate a project represented by this request.
+	 *
 	 * @param metadata the metadata that describes the service
 	 * @return the project generation URI
 	 */
@@ -354,8 +372,7 @@ class ProjectGenerationRequest {
 			}
 
 			return builder.build();
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new ReportableException("Invalid service URL (" + ex.getMessage() + ")");
 		}
 	}
@@ -368,8 +385,7 @@ class ProjectGenerationRequest {
 						("No project type with id '" + this.type + "' - check the service capabilities (--list)"));
 			}
 			return result;
-		}
-		else if (isDetectType()) {
+		} else if (isDetectType()) {
 			Map<String, ProjectType> types = new HashMap<>(metadata.getProjectTypes());
 			if (this.build != null) {
 				filter(types, "build", this.build);
@@ -379,17 +395,14 @@ class ProjectGenerationRequest {
 			}
 			if (types.size() == 1) {
 				return types.values().iterator().next();
-			}
-			else if (types.isEmpty()) {
+			} else if (types.isEmpty()) {
 				throw new ReportableException("No type found with build '" + this.build + "' and format '" + this.format
 						+ "' check the service capabilities (--list)");
-			}
-			else {
+			} else {
 				throw new ReportableException("Multiple types found with build '" + this.build + "' and format '"
 						+ this.format + "' use --type with a more specific value " + types.keySet());
 			}
-		}
-		else {
+		} else {
 			ProjectType defaultType = metadata.getDefaultType();
 			if (defaultType == null) {
 				throw new ReportableException(("No project type is set and no default is defined. "
@@ -401,6 +414,7 @@ class ProjectGenerationRequest {
 
 	/**
 	 * Resolve the artifactId to use or {@code null} if it should not be customized.
+	 *
 	 * @return the artifactId
 	 */
 	protected String resolveArtifactId() {

@@ -59,7 +59,7 @@ class ClientHttpConnectorConfiguration {
 		@Bean
 		@Lazy
 		ReactorClientHttpConnector reactorClientHttpConnector(ReactorResourceFactory reactorResourceFactory,
-				ObjectProvider<ReactorNettyHttpClientMapper> mapperProvider) {
+															  ObjectProvider<ReactorNettyHttpClientMapper> mapperProvider) {
 			ReactorNettyHttpClientMapper mapper = mapperProvider.orderedStream()
 					.reduce((before, after) -> (client) -> after.configure(before.configure(client)))
 					.orElse((client) -> client);
@@ -90,7 +90,7 @@ class ClientHttpConnectorConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ HttpAsyncClients.class, AsyncRequestProducer.class })
+	@ConditionalOnClass({HttpAsyncClients.class, AsyncRequestProducer.class})
 	@ConditionalOnMissingBean(ClientHttpConnector.class)
 	static class HttpClient5 {
 

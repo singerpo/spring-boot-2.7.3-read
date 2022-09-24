@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Andy Wilkinson
  */
-@ClassPathExclusions({ "reactor-netty*.jar", "jetty-client*.jar" })
+@ClassPathExclusions({"reactor-netty*.jar", "jetty-client*.jar"})
 class WebTestClientContextCustomizerWithoutSupportedHttpClientTests {
 
 	@Test

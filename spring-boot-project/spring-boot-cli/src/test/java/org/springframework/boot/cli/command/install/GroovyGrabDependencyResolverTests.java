@@ -73,7 +73,7 @@ class GroovyGrabDependencyResolverTests {
 
 			@Override
 			public String[] getClasspath() {
-				return new String[] { "." };
+				return new String[]{"."};
 			}
 
 			@Override

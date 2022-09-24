@@ -177,7 +177,7 @@ class PrometheusPushGatewayManagerTests {
 		givenScheduleAtFixedRateWillReturnFuture(this.scheduler);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private <T extends TaskScheduler> T givenScheduleAtFixedRateWillReturnFuture(T scheduler) {
 		given(scheduler.scheduleAtFixedRate(isA(Runnable.class), isA(Duration.class)))
 				.willReturn((ScheduledFuture) this.future);

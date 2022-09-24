@@ -53,6 +53,7 @@ final class CertificateParser {
 
 	/**
 	 * Load certificates from the specified file paths.
+	 *
 	 * @param paths one or more paths to certificate files
 	 * @return certificates parsed from specified file paths
 	 */
@@ -68,8 +69,7 @@ final class CertificateParser {
 	private static CertificateFactory getCertificateFactory() {
 		try {
 			return CertificateFactory.getInstance("X.509");
-		}
-		catch (CertificateException ex) {
+		} catch (CertificateException ex) {
 			throw new IllegalStateException("Unable to get X.509 certificate factory", ex);
 		}
 	}
@@ -86,8 +86,7 @@ final class CertificateParser {
 					consumer.accept((X509Certificate) factory.generateCertificate(inputStream));
 				}
 			}
-		}
-		catch (CertificateException | IOException ex) {
+		} catch (CertificateException | IOException ex) {
 			throw new IllegalStateException("Error reading certificate from '" + path + "' : " + ex.getMessage(), ex);
 		}
 	}

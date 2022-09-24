@@ -26,13 +26,13 @@ class RSocketGraphQlClientExample(private val builder: RSocketGraphQlClient.Buil
 // end::builder[]
 
 	val graphQlClient = builder.tcp("example.spring.io", 8181)
-		.route("graphql")
-		.build()
+			.route("graphql")
+			.build()
 
 	fun rsocketOverTcp() {
 		// tag::request[]
 		val book = graphQlClient.document(
-			"""
+				"""
 			{
 				bookById(id: "book-1"){
 					id
@@ -43,7 +43,7 @@ class RSocketGraphQlClientExample(private val builder: RSocketGraphQlClient.Buil
 			}				
 			"""
 		)
-			.retrieve("bookById").toEntity(Book::class.java)
+				.retrieve("bookById").toEntity(Book::class.java)
 		// end::request[]
 		book.block(Duration.ofSeconds(5))
 	}

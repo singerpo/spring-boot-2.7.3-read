@@ -37,8 +37,8 @@ import org.springframework.web.server.ServerWebExchange;
  * locations. Returned by {@link PathRequest#toStaticResources()}.
  *
  * @author Madhura Bhave
- * @since 2.0.0
  * @see PathRequest
+ * @since 2.0.0
  */
 public final class StaticResourceRequest {
 
@@ -55,6 +55,7 @@ public final class StaticResourceRequest {
 	 * example: <pre class="code">
 	 * PathRequest.toStaticResources().atCommonLocations().excluding(StaticResourceLocation.CSS)
 	 * </pre>
+	 *
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
 	public StaticResourceServerWebExchange atCommonLocations() {
@@ -66,8 +67,9 @@ public final class StaticResourceRequest {
 	 * Locations}. For example: <pre class="code">
 	 * PathRequest.toStaticResources().at(StaticResourceLocation.CSS, StaticResourceLocation.JAVA_SCRIPT)
 	 * </pre>
+	 *
 	 * @param first the first location to include
-	 * @param rest additional locations to include
+	 * @param rest  additional locations to include
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
 	public StaticResourceServerWebExchange at(StaticResourceLocation first, StaticResourceLocation... rest) {
@@ -79,6 +81,7 @@ public final class StaticResourceRequest {
 	 * Locations}. For example: <pre class="code">
 	 * PathRequest.toStaticResources().at(locations)
 	 * </pre>
+	 *
 	 * @param locations the locations to include
 	 * @return the configured {@link ServerWebExchangeMatcher}
 	 */
@@ -102,8 +105,9 @@ public final class StaticResourceRequest {
 		/**
 		 * Return a new {@link StaticResourceServerWebExchange} based on this one but
 		 * excluding the specified locations.
+		 *
 		 * @param first the first location to exclude
-		 * @param rest additional locations to exclude
+		 * @param rest  additional locations to exclude
 		 * @return a new {@link StaticResourceServerWebExchange}
 		 */
 		public StaticResourceServerWebExchange excluding(StaticResourceLocation first, StaticResourceLocation... rest) {
@@ -113,6 +117,7 @@ public final class StaticResourceRequest {
 		/**
 		 * Return a new {@link StaticResourceServerWebExchange} based on this one but
 		 * excluding the specified locations.
+		 *
 		 * @param locations the locations to exclude
 		 * @return a new {@link StaticResourceServerWebExchange}
 		 */

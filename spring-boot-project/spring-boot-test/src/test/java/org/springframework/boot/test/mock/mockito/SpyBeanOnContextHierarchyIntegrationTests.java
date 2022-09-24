@@ -41,8 +41,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Phillip Webb
  */
 @ExtendWith(SpringExtension.class)
-@ContextHierarchy({ @ContextConfiguration(classes = ParentConfig.class),
-		@ContextConfiguration(classes = ChildConfig.class) })
+@ContextHierarchy({@ContextConfiguration(classes = ParentConfig.class),
+		@ContextConfiguration(classes = ChildConfig.class)})
 class SpyBeanOnContextHierarchyIntegrationTests {
 
 	@Autowired

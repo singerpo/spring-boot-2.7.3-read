@@ -64,30 +64,30 @@ class OAuth2WebSecurityConfigurationTests {
 	void securityConfigurerConfiguresOAuth2Login() {
 		this.contextRunner.withUserConfiguration(ClientRegistrationRepositoryConfiguration.class,
 				OAuth2WebSecurityConfiguration.class).run((context) -> {
-					ClientRegistrationRepository expected = context.getBean(ClientRegistrationRepository.class);
-					ClientRegistrationRepository actual = (ClientRegistrationRepository) ReflectionTestUtils.getField(
-							getFilters(context, OAuth2LoginAuthenticationFilter.class).get(0),
-							"clientRegistrationRepository");
-					assertThat(isEqual(expected.findByRegistrationId("first"), actual.findByRegistrationId("first")))
-							.isTrue();
-					assertThat(isEqual(expected.findByRegistrationId("second"), actual.findByRegistrationId("second")))
-							.isTrue();
-				});
+			ClientRegistrationRepository expected = context.getBean(ClientRegistrationRepository.class);
+			ClientRegistrationRepository actual = (ClientRegistrationRepository) ReflectionTestUtils.getField(
+					getFilters(context, OAuth2LoginAuthenticationFilter.class).get(0),
+					"clientRegistrationRepository");
+			assertThat(isEqual(expected.findByRegistrationId("first"), actual.findByRegistrationId("first")))
+					.isTrue();
+			assertThat(isEqual(expected.findByRegistrationId("second"), actual.findByRegistrationId("second")))
+					.isTrue();
+		});
 	}
 
 	@Test
 	void securityConfigurerConfiguresAuthorizationCode() {
 		this.contextRunner.withUserConfiguration(ClientRegistrationRepositoryConfiguration.class,
 				OAuth2WebSecurityConfiguration.class).run((context) -> {
-					ClientRegistrationRepository expected = context.getBean(ClientRegistrationRepository.class);
-					ClientRegistrationRepository actual = (ClientRegistrationRepository) ReflectionTestUtils.getField(
-							getFilters(context, OAuth2AuthorizationCodeGrantFilter.class).get(0),
-							"clientRegistrationRepository");
-					assertThat(isEqual(expected.findByRegistrationId("first"), actual.findByRegistrationId("first")))
-							.isTrue();
-					assertThat(isEqual(expected.findByRegistrationId("second"), actual.findByRegistrationId("second")))
-							.isTrue();
-				});
+			ClientRegistrationRepository expected = context.getBean(ClientRegistrationRepository.class);
+			ClientRegistrationRepository actual = (ClientRegistrationRepository) ReflectionTestUtils.getField(
+					getFilters(context, OAuth2AuthorizationCodeGrantFilter.class).get(0),
+					"clientRegistrationRepository");
+			assertThat(isEqual(expected.findByRegistrationId("first"), actual.findByRegistrationId("first")))
+					.isTrue();
+			assertThat(isEqual(expected.findByRegistrationId("second"), actual.findByRegistrationId("second")))
+					.isTrue();
+		});
 	}
 
 	@Test
@@ -143,27 +143,27 @@ class OAuth2WebSecurityConfigurationTests {
 				.withUserConfiguration(ClientRegistrationRepositoryConfiguration.class,
 						OAuth2WebSecurityConfiguration.class)
 				.withClassLoader(new FilteredClassLoader(SecurityFilterChain.class)).run((context) -> {
-					assertThat(getFilters(context, OAuth2LoginAuthenticationFilter.class)).isEmpty();
-					assertThat(getFilters(context, OAuth2AuthorizationCodeGrantFilter.class)).isEmpty();
-				});
+			assertThat(getFilters(context, OAuth2LoginAuthenticationFilter.class)).isEmpty();
+			assertThat(getFilters(context, OAuth2AuthorizationCodeGrantFilter.class)).isEmpty();
+		});
 	}
 
 	@Test
 	void authorizedClientServiceBeanIsConditionalOnMissingBean() {
 		this.contextRunner.withUserConfiguration(OAuth2AuthorizedClientServiceConfiguration.class,
 				OAuth2WebSecurityConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(OAuth2AuthorizedClientService.class);
-					assertThat(context).hasBean("testAuthorizedClientService");
-				});
+			assertThat(context).hasSingleBean(OAuth2AuthorizedClientService.class);
+			assertThat(context).hasBean("testAuthorizedClientService");
+		});
 	}
 
 	@Test
 	void authorizedClientRepositoryBeanIsConditionalOnMissingBean() {
 		this.contextRunner.withUserConfiguration(OAuth2AuthorizedClientRepositoryConfiguration.class,
 				OAuth2WebSecurityConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(OAuth2AuthorizedClientRepository.class);
-					assertThat(context).hasBean("testAuthorizedClientRepository");
-				});
+			assertThat(context).hasSingleBean(OAuth2AuthorizedClientRepository.class);
+			assertThat(context).hasBean("testAuthorizedClientRepository");
+		});
 	}
 
 	private List<Filter> getFilters(AssertableApplicationContext context, Class<? extends Filter> filter) {

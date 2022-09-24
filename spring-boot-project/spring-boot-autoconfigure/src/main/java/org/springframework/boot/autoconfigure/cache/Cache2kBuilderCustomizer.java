@@ -30,6 +30,7 @@ public interface Cache2kBuilderCustomizer {
 
 	/**
 	 * Customize the default cache settings.
+	 *
 	 * @param builder the builder to customize
 	 */
 	void customize(Cache2kBuilder<?, ?> builder);

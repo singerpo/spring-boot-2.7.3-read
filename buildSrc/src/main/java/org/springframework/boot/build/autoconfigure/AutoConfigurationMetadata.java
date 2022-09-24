@@ -122,6 +122,7 @@ public class AutoConfigurationMetadata extends DefaultTask {
 
 	/**
 	 * Reads auto-configurations from META-INF/spring.factories.
+	 *
 	 * @return auto-configurations
 	 */
 	private Set<String> readSpringFactories() throws IOException {
@@ -138,6 +139,7 @@ public class AutoConfigurationMetadata extends DefaultTask {
 	/**
 	 * Reads auto-configurations from
 	 * META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports.
+	 *
 	 * @return auto-configurations
 	 */
 	private List<String> readAutoConfigurationsFile() throws IOException {

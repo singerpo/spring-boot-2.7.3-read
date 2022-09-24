@@ -38,12 +38,14 @@ public @interface DeleteOperation {
 
 	/**
 	 * The media type of the result of the operation.
+	 *
 	 * @return the media type
 	 */
 	String[] produces() default {};
 
 	/**
 	 * The media types of the result of the operation.
+	 *
 	 * @return the media types
 	 */
 	@SuppressWarnings("rawtypes")

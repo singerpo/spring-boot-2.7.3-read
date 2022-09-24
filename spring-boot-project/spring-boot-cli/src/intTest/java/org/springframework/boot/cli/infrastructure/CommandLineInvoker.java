@@ -91,8 +91,7 @@ public final class CommandLineInvoker {
 					File file = new File(unpacked, entry.getName());
 					if (entry.isDirectory()) {
 						file.mkdirs();
-					}
-					else {
+					} else {
 						file.getParentFile().mkdirs();
 						try (FileOutputStream output = new FileOutputStream(file)) {
 							StreamUtils.copy(input, output);
@@ -205,8 +204,7 @@ public final class CommandLineInvoker {
 							output.append(new String(this.buffer, 0, read));
 						}
 					}
-				}
-				catch (IOException ex) {
+				} catch (IOException ex) {
 					// Allow thread to die
 				}
 			}

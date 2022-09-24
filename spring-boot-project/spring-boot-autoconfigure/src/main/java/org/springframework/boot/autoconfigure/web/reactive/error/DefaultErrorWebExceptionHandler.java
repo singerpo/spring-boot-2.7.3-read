@@ -93,14 +93,15 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Create a new {@code DefaultErrorWebExceptionHandler} instance.
-	 * @param errorAttributes the error attributes
-	 * @param resources the resources configuration properties
-	 * @param errorProperties the error configuration properties
+	 *
+	 * @param errorAttributes    the error attributes
+	 * @param resources          the resources configuration properties
+	 * @param errorProperties    the error configuration properties
 	 * @param applicationContext the current application context
 	 * @since 2.4.0
 	 */
 	public DefaultErrorWebExceptionHandler(ErrorAttributes errorAttributes, Resources resources,
-			ErrorProperties errorProperties, ApplicationContext applicationContext) {
+										   ErrorProperties errorProperties, ApplicationContext applicationContext) {
 		super(errorAttributes, resources, applicationContext);
 		this.errorProperties = errorProperties;
 	}
@@ -112,6 +113,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Render the error information as an HTML view.
+	 *
 	 * @param request the current request
 	 * @return a {@code Publisher} of the HTTP response
 	 */
@@ -119,7 +121,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 		Map<String, Object> error = getErrorAttributes(request, getErrorAttributeOptions(request, MediaType.TEXT_HTML));
 		int errorStatus = getHttpStatus(error);
 		ServerResponse.BodyBuilder responseBody = ServerResponse.status(errorStatus).contentType(TEXT_HTML_UTF8);
-		return Flux.just(getData(errorStatus).toArray(new String[] {}))
+		return Flux.just(getData(errorStatus).toArray(new String[]{}))
 				.flatMap((viewName) -> renderErrorView(viewName, responseBody, error))
 				.switchIfEmpty(this.errorProperties.getWhitelabel().isEnabled()
 						? renderDefaultErrorView(responseBody, error) : Mono.error(getError(request)))
@@ -139,6 +141,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Render the error information as a JSON payload.
+	 *
 	 * @param request the current request
 	 * @return a {@code Publisher} of the HTTP response
 	 */
@@ -167,7 +170,8 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Determine if the stacktrace attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the stacktrace attribute should be included
 	 */
@@ -184,7 +188,8 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Determine if the message attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the message attribute should be included
 	 */
@@ -201,7 +206,8 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Determine if the errors attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the errors attribute should be included
 	 */
@@ -218,6 +224,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 
 	/**
 	 * Get the HTTP error status information from the error map.
+	 *
 	 * @param errorAttributes the current error information
 	 * @return the error HTTP status
 	 */
@@ -230,6 +237,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 	 * {@code "text/html"} media type.
 	 * <p>
 	 * The "match-all" media type is not considered here.
+	 *
 	 * @return the request predicate
 	 */
 	protected RequestPredicate acceptsTextHtml() {
@@ -239,8 +247,7 @@ public class DefaultErrorWebExceptionHandler extends AbstractErrorWebExceptionHa
 				acceptedMediaTypes.removeIf(MediaType.ALL::equalsTypeAndSubtype);
 				MediaType.sortBySpecificityAndQuality(acceptedMediaTypes);
 				return acceptedMediaTypes.stream().anyMatch(MediaType.TEXT_HTML::isCompatibleWith);
-			}
-			catch (InvalidMediaTypeException ex) {
+			} catch (InvalidMediaTypeException ex) {
 				return false;
 			}
 		};

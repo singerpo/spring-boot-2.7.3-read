@@ -116,7 +116,7 @@ public class LocalDevToolsAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		ClassPathFileSystemWatcher classPathFileSystemWatcher(FileSystemWatcherFactory fileSystemWatcherFactory,
-				ClassPathRestartStrategy classPathRestartStrategy) {
+															  ClassPathRestartStrategy classPathRestartStrategy) {
 			URL[] urls = Restarter.getInstance().getInitialUrls();
 			ClassPathFileSystemWatcher watcher = new ClassPathFileSystemWatcher(fileSystemWatcherFactory,
 					classPathRestartStrategy, urls);

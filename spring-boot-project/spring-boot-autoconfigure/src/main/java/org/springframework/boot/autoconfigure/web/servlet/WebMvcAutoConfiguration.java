@@ -138,10 +138,10 @@ import org.springframework.web.util.pattern.PathPatternParser;
  * @author Scott Frederick
  * @since 2.0.0
  */
-@AutoConfiguration(after = { DispatcherServletAutoConfiguration.class, TaskExecutionAutoConfiguration.class,
-		ValidationAutoConfiguration.class })
+@AutoConfiguration(after = {DispatcherServletAutoConfiguration.class, TaskExecutionAutoConfiguration.class,
+		ValidationAutoConfiguration.class})
 @ConditionalOnWebApplication(type = Type.SERVLET)
-@ConditionalOnClass({ Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })
+@ConditionalOnClass({Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class})
 @ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
 public class WebMvcAutoConfiguration {
@@ -182,7 +182,7 @@ public class WebMvcAutoConfiguration {
 	@SuppressWarnings("deprecation")
 	@Configuration(proxyBeanMethods = false)
 	@Import(EnableWebMvcConfiguration.class)
-	@EnableConfigurationProperties({ WebMvcProperties.class, WebProperties.class })
+	@EnableConfigurationProperties({WebMvcProperties.class, WebProperties.class})
 	@Order(0)
 	public static class WebMvcAutoConfigurationAdapter implements WebMvcConfigurer, ServletContextAware {
 
@@ -205,10 +205,10 @@ public class WebMvcAutoConfiguration {
 		private ServletContext servletContext;
 
 		public WebMvcAutoConfigurationAdapter(WebProperties webProperties, WebMvcProperties mvcProperties,
-				ListableBeanFactory beanFactory, ObjectProvider<HttpMessageConverters> messageConvertersProvider,
-				ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
-				ObjectProvider<DispatcherServletPath> dispatcherServletPath,
-				ObjectProvider<ServletRegistrationBean<?>> servletRegistrations) {
+											  ListableBeanFactory beanFactory, ObjectProvider<HttpMessageConverters> messageConvertersProvider,
+											  ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
+											  ObjectProvider<DispatcherServletPath> dispatcherServletPath,
+											  ObjectProvider<ServletRegistrationBean<?>> servletRegistrations) {
 			this.resourceProperties = webProperties.getResources();
 			this.mvcProperties = mvcProperties;
 			this.beanFactory = beanFactory;
@@ -347,7 +347,7 @@ public class WebMvcAutoConfiguration {
 		}
 
 		private void addResourceHandler(ResourceHandlerRegistry registry, String pattern,
-				Consumer<ResourceHandlerRegistration> customizer) {
+										Consumer<ResourceHandlerRegistration> customizer) {
 			if (registry.hasMappingForPattern(pattern)) {
 				return;
 			}
@@ -370,7 +370,7 @@ public class WebMvcAutoConfiguration {
 		}
 
 		@Bean
-		@ConditionalOnMissingBean({ RequestContextListener.class, RequestContextFilter.class })
+		@ConditionalOnMissingBean({RequestContextListener.class, RequestContextFilter.class})
 		@ConditionalOnMissingFilterBean(RequestContextFilter.class)
 		public static RequestContextFilter requestContextFilter() {
 			return new OrderedRequestContextFilter();
@@ -398,9 +398,9 @@ public class WebMvcAutoConfiguration {
 		private ResourceLoader resourceLoader;
 
 		public EnableWebMvcConfiguration(WebMvcProperties mvcProperties, WebProperties webProperties,
-				ObjectProvider<WebMvcRegistrations> mvcRegistrationsProvider,
-				ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
-				ListableBeanFactory beanFactory) {
+										 ObjectProvider<WebMvcRegistrations> mvcRegistrationsProvider,
+										 ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
+										 ListableBeanFactory beanFactory) {
 			this.resourceProperties = webProperties.getResources();
 			this.mvcProperties = mvcProperties;
 			this.webProperties = webProperties;
@@ -434,7 +434,7 @@ public class WebMvcAutoConfiguration {
 
 		@Bean
 		public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext,
-				FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
+																   FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
 			WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(
 					new TemplateAvailabilityProviders(applicationContext), applicationContext, getWelcomePage(),
 					this.mvcProperties.getStaticPathPattern());
@@ -493,8 +493,7 @@ public class WebMvcAutoConfiguration {
 				if (resource.exists() && (resource.getURL() != null)) {
 					return resource;
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 			return null;
 		}
@@ -534,8 +533,7 @@ public class WebMvcAutoConfiguration {
 				FormattingConversionService mvcConversionService, Validator mvcValidator) {
 			try {
 				return this.beanFactory.getBean(ConfigurableWebBindingInitializer.class);
-			}
-			catch (NoSuchBeanDefinitionException ex) {
+			} catch (NoSuchBeanDefinitionException ex) {
 				return super.getConfigurableWebBindingInitializer(mvcConversionService, mvcValidator);
 			}
 		}

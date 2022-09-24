@@ -34,11 +34,11 @@ import org.springframework.context.annotation.Import;
  * @author Nishant Raut
  * @since 1.2.0
  */
-@AutoConfiguration(before = { XADataSourceAutoConfiguration.class, ActiveMQAutoConfiguration.class,
-		ArtemisAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
+@AutoConfiguration(before = {XADataSourceAutoConfiguration.class, ActiveMQAutoConfiguration.class,
+		ArtemisAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @ConditionalOnClass(javax.transaction.Transaction.class)
 @ConditionalOnProperty(prefix = "spring.jta", value = "enabled", matchIfMissing = true)
-@Import({ JndiJtaConfiguration.class, AtomikosJtaConfiguration.class })
+@Import({JndiJtaConfiguration.class, AtomikosJtaConfiguration.class})
 public class JtaAutoConfiguration {
 
 }

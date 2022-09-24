@@ -34,12 +34,12 @@ import org.springframework.context.annotation.Import;
  * @author Stephane Nicoll
  * @since 2.3.0
  */
-@AutoConfiguration(before = { DataSourceAutoConfiguration.class, SqlInitializationAutoConfiguration.class })
+@AutoConfiguration(before = {DataSourceAutoConfiguration.class, SqlInitializationAutoConfiguration.class})
 @ConditionalOnClass(ConnectionFactory.class)
 @ConditionalOnResource(resources = "classpath:META-INF/services/io.r2dbc.spi.ConnectionFactoryProvider")
 @EnableConfigurationProperties(R2dbcProperties.class)
-@Import({ ConnectionFactoryConfigurations.PoolConfiguration.class,
-		ConnectionFactoryConfigurations.GenericConfiguration.class, ConnectionFactoryDependentConfiguration.class })
+@Import({ConnectionFactoryConfigurations.PoolConfiguration.class,
+		ConnectionFactoryConfigurations.GenericConfiguration.class, ConnectionFactoryDependentConfiguration.class})
 public class R2dbcAutoConfiguration {
 
 }

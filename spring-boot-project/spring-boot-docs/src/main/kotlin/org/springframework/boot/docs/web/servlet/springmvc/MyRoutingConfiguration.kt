@@ -30,10 +30,10 @@ class MyRoutingConfiguration {
 	@Bean
 	fun routerFunction(userHandler: MyUserHandler): RouterFunction<ServerResponse> {
 		return RouterFunctions.route()
-			.GET("/{user}", ACCEPT_JSON, userHandler::getUser)
-			.GET("/{user}/customers", ACCEPT_JSON, userHandler::getUserCustomers)
-			.DELETE("/{user}", ACCEPT_JSON, userHandler::deleteUser)
-			.build()
+				.GET("/{user}", ACCEPT_JSON, userHandler::getUser)
+				.GET("/{user}/customers", ACCEPT_JSON, userHandler::getUserCustomers)
+				.DELETE("/{user}", ACCEPT_JSON, userHandler::deleteUser)
+				.build()
 	}
 
 	companion object {

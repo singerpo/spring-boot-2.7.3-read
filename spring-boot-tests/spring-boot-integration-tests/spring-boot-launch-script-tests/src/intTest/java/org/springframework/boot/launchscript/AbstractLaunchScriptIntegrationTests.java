@@ -59,7 +59,7 @@ abstract class AbstractLaunchScriptIntegrationTests {
 		for (File os : new File("src/intTest/resources/conf").listFiles()) {
 			if (osFilter.test(os)) {
 				for (File version : os.listFiles()) {
-					parameters.add(new Object[] { os.getName(), version.getName() });
+					parameters.add(new Object[]{os.getName(), version.getName()});
 				}
 			}
 		}

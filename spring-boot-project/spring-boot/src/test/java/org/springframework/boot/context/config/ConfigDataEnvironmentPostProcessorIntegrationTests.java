@@ -242,8 +242,7 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 			ConfigurableApplicationContext context = this.application.run();
 			String property = context.getEnvironment().getProperty("my.property");
 			assertThat(property).isEqualTo("fromlocalfile");
-		}
-		finally {
+		} finally {
 			localFile.delete();
 		}
 	}
@@ -611,7 +610,8 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 		assertThat(context.getEnvironment().getProperty("my.value")).isEqualTo("iwasimported");
 	}
 
-	@Test // gh-26858
+	@Test
+		// gh-26858
 	void runWhenImportWithProfileVariantOrdersPropertySourcesCorrectly() {
 		this.application.setAdditionalProfiles("dev");
 		ConfigurableApplicationContext context = this.application
@@ -636,14 +636,16 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 				.withCauseInstanceOf(InactiveConfigDataAccessException.class);
 	}
 
-	@Test // gh-29386
+	@Test
+		// gh-29386
 	void runWhenHasPropertyInEarlierProfileDocumentThrowsException() {
 		assertThatExceptionOfType(BindException.class).isThrownBy(() -> this.application.run(
 				"--spring.config.location=classpath:application-import-with-placeholder-in-earlier-profile-document.properties"))
 				.withCauseInstanceOf(InactiveConfigDataAccessException.class);
 	}
 
-	@Test // gh-29386
+	@Test
+		// gh-29386
 	void runWhenHasPropertyInEarlierDocumentLoads() {
 		ConfigurableApplicationContext context = this.application.run(
 				"--spring.config.location=classpath:application-import-with-placeholder-in-earlier-document.properties");
@@ -702,7 +704,7 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 
 			@Override
 			public Object onSuccess(ConfigurationPropertyName name, Bindable<?> target, BindContext context,
-					Object result) {
+									Object result) {
 				properties.add(context.getConfigurationProperty());
 				return result;
 			}
@@ -768,7 +770,8 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 				.run("--spring.config.location=optional:file:src/test/resources/config/0-empty/*/"));
 	}
 
-	@Test // gh-24990
+	@Test
+		// gh-24990
 	void runWhenHasProfileSpecificFileWithActiveOnProfileProperty() {
 		ConfigurableApplicationContext context = this.application
 				.run("--spring.config.name=application-activate-on-profile-in-profile-specific-file");
@@ -777,7 +780,8 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 		assertThat(environment.getProperty("test2")).isEqualTo("test2");
 	}
 
-	@Test // gh-26960
+	@Test
+		// gh-26960
 	void runWhenHasProfileSpecificImportWithImportImportsSecondProfileSpecificFile() {
 		ConfigurableApplicationContext context = this.application
 				.run("--spring.config.name=application-profile-specific-import-with-import");
@@ -790,7 +794,8 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 		assertThat(environment.containsProperty("application-profile-specific-import-with-import-import-p2")).isTrue();
 	}
 
-	@Test // gh-26960
+	@Test
+		// gh-26960
 	void runWhenHasProfileSpecificImportWithCustomImportResolvesProfileSpecific() {
 		ConfigurableApplicationContext context = this.application
 				.run("--spring.config.name=application-profile-specific-import-with-custom-import");
@@ -799,7 +804,8 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 		assertThat(environment.containsProperty("test:boot:ps")).isTrue();
 	}
 
-	@Test // gh-26593
+	@Test
+		// gh-26593
 	void runWhenHasFilesInRootAndConfigWithProfiles() {
 		ConfigurableApplicationContext context = this.application
 				.run("--spring.config.name=file-in-root-and-config-with-profile", "--spring.profiles.active=p1,p2");
@@ -849,14 +855,14 @@ class ConfigDataEnvironmentPostProcessorIntegrationTests {
 
 		@Override
 		public List<TestConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location)
+													ConfigDataLocation location)
 				throws ConfigDataLocationNotFoundException, ConfigDataResourceNotFoundException {
 			return Collections.singletonList(new TestConfigDataResource(location, false));
 		}
 
 		@Override
 		public List<TestConfigDataResource> resolveProfileSpecific(ConfigDataLocationResolverContext context,
-				ConfigDataLocation location, org.springframework.boot.context.config.Profiles profiles)
+																   ConfigDataLocation location, org.springframework.boot.context.config.Profiles profiles)
 				throws ConfigDataLocationNotFoundException {
 			return Collections.singletonList(new TestConfigDataResource(location, true));
 		}

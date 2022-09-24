@@ -61,7 +61,7 @@ class MockDefinitionTests {
 	void createExplicit() {
 		QualifierDefinition qualifier = mock(QualifierDefinition.class);
 		MockDefinition definition = new MockDefinition("name", EXAMPLE_SERVICE_TYPE,
-				new Class<?>[] { ExampleExtraInterface.class }, Answers.RETURNS_SMART_NULLS, true, MockReset.BEFORE,
+				new Class<?>[]{ExampleExtraInterface.class}, Answers.RETURNS_SMART_NULLS, true, MockReset.BEFORE,
 				qualifier);
 		assertThat(definition.getName()).isEqualTo("name");
 		assertThat(definition.getTypeToMock()).isEqualTo(EXAMPLE_SERVICE_TYPE);
@@ -76,7 +76,7 @@ class MockDefinitionTests {
 	@Test
 	void createMock() {
 		MockDefinition definition = new MockDefinition("name", EXAMPLE_SERVICE_TYPE,
-				new Class<?>[] { ExampleExtraInterface.class }, Answers.RETURNS_SMART_NULLS, true, MockReset.BEFORE,
+				new Class<?>[]{ExampleExtraInterface.class}, Answers.RETURNS_SMART_NULLS, true, MockReset.BEFORE,
 				null);
 		ExampleService mock = definition.createMock();
 		MockCreationSettings<?> settings = Mockito.mockingDetails(mock).getMockCreationSettings();

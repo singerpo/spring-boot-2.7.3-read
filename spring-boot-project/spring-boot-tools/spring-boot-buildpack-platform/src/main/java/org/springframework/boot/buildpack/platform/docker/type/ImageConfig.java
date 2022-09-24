@@ -77,6 +77,7 @@ public class ImageConfig extends MappedObject {
 	/**
 	 * Return the image labels. If the image has no labels, an empty {@code Map} is
 	 * returned.
+	 *
 	 * @return the image labels, never {@code null}
 	 */
 	public Map<String, String> getLabels() {
@@ -86,6 +87,7 @@ public class ImageConfig extends MappedObject {
 	/**
 	 * Return the image environment variables. If the image has no environment variables,
 	 * an empty {@code Map} is returned.
+	 *
 	 * @return the env, never {@code null}
 	 */
 	public Map<String, String> getEnv() {
@@ -94,6 +96,7 @@ public class ImageConfig extends MappedObject {
 
 	/**
 	 * Create an updated copy of this image config.
+	 *
 	 * @param update consumer to apply updates
 	 * @return an updated image config
 	 */
@@ -120,6 +123,7 @@ public class ImageConfig extends MappedObject {
 
 		/**
 		 * Update the image config with an additional label.
+		 *
 		 * @param label the label name
 		 * @param value the label value
 		 */

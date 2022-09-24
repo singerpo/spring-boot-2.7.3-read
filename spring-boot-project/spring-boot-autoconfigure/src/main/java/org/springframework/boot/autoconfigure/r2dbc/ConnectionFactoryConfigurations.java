@@ -56,7 +56,7 @@ import org.springframework.util.StringUtils;
 abstract class ConnectionFactoryConfigurations {
 
 	protected static ConnectionFactory createConnectionFactory(R2dbcProperties properties, ClassLoader classLoader,
-			List<ConnectionFactoryOptionsBuilderCustomizer> optionsCustomizers) {
+															   List<ConnectionFactoryOptionsBuilderCustomizer> optionsCustomizers) {
 		try {
 			return org.springframework.boot.r2dbc.ConnectionFactoryBuilder
 					.withOptions(new ConnectionFactoryOptionsInitializer().initialize(properties,
@@ -66,8 +66,7 @@ abstract class ConnectionFactoryConfigurations {
 							optionsCustomizer.customize(options);
 						}
 					}).build();
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			String message = ex.getMessage();
 			if (message != null && message.contains("driver=pool")
 					&& !ClassUtils.isPresent("io.r2dbc.pool.ConnectionPool", classLoader)) {
@@ -88,7 +87,7 @@ abstract class ConnectionFactoryConfigurations {
 
 			@Bean(destroyMethod = "dispose")
 			ConnectionPool connectionFactory(R2dbcProperties properties, ResourceLoader resourceLoader,
-					ObjectProvider<ConnectionFactoryOptionsBuilderCustomizer> customizers) {
+											 ObjectProvider<ConnectionFactoryOptionsBuilderCustomizer> customizers) {
 				ConnectionFactory connectionFactory = createConnectionFactory(properties,
 						resourceLoader.getClassLoader(), customizers.orderedStream().collect(Collectors.toList()));
 				R2dbcProperties.Pool pool = properties.getPool();
@@ -117,7 +116,7 @@ abstract class ConnectionFactoryConfigurations {
 
 		@Bean
 		ConnectionFactory connectionFactory(R2dbcProperties properties, ResourceLoader resourceLoader,
-				ObjectProvider<ConnectionFactoryOptionsBuilderCustomizer> customizers) {
+											ObjectProvider<ConnectionFactoryOptionsBuilderCustomizer> customizers) {
 			return createConnectionFactory(properties, resourceLoader.getClassLoader(),
 					customizers.orderedStream().collect(Collectors.toList()));
 		}

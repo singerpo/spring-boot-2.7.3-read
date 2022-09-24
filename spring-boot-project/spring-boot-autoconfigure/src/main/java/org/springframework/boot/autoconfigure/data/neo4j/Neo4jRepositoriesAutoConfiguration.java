@@ -46,12 +46,12 @@ import org.springframework.data.neo4j.repository.support.Neo4jRepositoryFactoryB
  * @author Oliver Gierke
  * @author Josh Long
  * @author Michael J. Simons
- * @since 1.4.0
  * @see EnableNeo4jRepositories
+ * @since 1.4.0
  */
 @AutoConfiguration(after = Neo4jDataAutoConfiguration.class)
-@ConditionalOnClass({ Driver.class, Neo4jRepository.class })
-@ConditionalOnMissingBean({ Neo4jRepositoryFactoryBean.class, Neo4jRepositoryConfigurationExtension.class })
+@ConditionalOnClass({Driver.class, Neo4jRepository.class})
+@ConditionalOnMissingBean({Neo4jRepositoryFactoryBean.class, Neo4jRepositoryConfigurationExtension.class})
 @ConditionalOnRepositoryType(store = "neo4j", type = RepositoryType.IMPERATIVE)
 @Import(Neo4jRepositoriesRegistrar.class)
 public class Neo4jRepositoriesAutoConfiguration {

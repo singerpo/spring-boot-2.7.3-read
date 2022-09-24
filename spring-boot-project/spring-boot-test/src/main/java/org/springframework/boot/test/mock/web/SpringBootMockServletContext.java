@@ -37,8 +37,8 @@ import org.springframework.mock.web.MockServletContext;
  */
 public class SpringBootMockServletContext extends MockServletContext {
 
-	private static final String[] SPRING_BOOT_RESOURCE_LOCATIONS = new String[] { "classpath:META-INF/resources",
-			"classpath:resources", "classpath:static", "classpath:public" };
+	private static final String[] SPRING_BOOT_RESOURCE_LOCATIONS = new String[]{"classpath:META-INF/resources",
+			"classpath:resources", "classpath:static", "classpath:public"};
 
 	private final ResourceLoader resourceLoader;
 
@@ -79,8 +79,7 @@ public class SpringBootMockServletContext extends MockServletContext {
 		try {
 			Resource resource = this.resourceLoader.getResource(resourceLocation);
 			return resource.exists();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}
@@ -100,8 +99,7 @@ public class SpringBootMockServletContext extends MockServletContext {
 					}
 				}
 				return this.emptyRootDirectory.toURI().toURL();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				// Ignore
 			}
 		}

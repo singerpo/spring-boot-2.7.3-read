@@ -46,9 +46,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @EnabledForJreRange(min = JRE.JAVA_11)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "server.http2.enabled=true", "server.ssl.enabled=true",
+		properties = {"server.http2.enabled=true", "server.ssl.enabled=true",
 				"server.ssl.keystore=classpath:sample.jks", "server.ssl.key-store-password=secret",
-				"server.ssl.key-password=password" })
+				"server.ssl.key-password=password"})
 class Jetty10Http2OverTlsTests {
 
 	@LocalServerPort

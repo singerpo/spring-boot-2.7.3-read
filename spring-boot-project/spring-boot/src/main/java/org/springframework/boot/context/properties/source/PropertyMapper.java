@@ -48,6 +48,7 @@ interface PropertyMapper {
 	/**
 	 * Provide mappings from a {@link ConfigurationPropertySource}
 	 * {@link ConfigurationPropertyName}.
+	 *
 	 * @param configurationPropertyName the name to map
 	 * @return the mapped names or an empty list
 	 */
@@ -55,6 +56,7 @@ interface PropertyMapper {
 
 	/**
 	 * Provide mappings from a {@link PropertySource} property name.
+	 *
 	 * @param propertySourceName the name to map
 	 * @return the mapped configuration property name or
 	 * {@link ConfigurationPropertyName#EMPTY}
@@ -64,6 +66,7 @@ interface PropertyMapper {
 	/**
 	 * Returns a {@link BiPredicate} that can be used to check if one name is an ancestor
 	 * of another when considering the mapping rules.
+	 *
 	 * @return a predicate that can be used to check if one name is an ancestor of another
 	 */
 	default BiPredicate<ConfigurationPropertyName, ConfigurationPropertyName> getAncestorOfCheck() {

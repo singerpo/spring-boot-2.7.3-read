@@ -45,6 +45,7 @@ public class BindException extends RuntimeException implements OriginProvider {
 
 	/**
 	 * Return the name of the configuration property being bound.
+	 *
 	 * @return the configuration property name
 	 */
 	public ConfigurationPropertyName getName() {
@@ -53,6 +54,7 @@ public class BindException extends RuntimeException implements OriginProvider {
 
 	/**
 	 * Return the target being bound.
+	 *
 	 * @return the bind target
 	 */
 	public Bindable<?> getTarget() {
@@ -61,6 +63,7 @@ public class BindException extends RuntimeException implements OriginProvider {
 
 	/**
 	 * Return the configuration property name of the item that was being bound.
+	 *
 	 * @return the configuration property name
 	 */
 	public ConfigurationProperty getProperty() {

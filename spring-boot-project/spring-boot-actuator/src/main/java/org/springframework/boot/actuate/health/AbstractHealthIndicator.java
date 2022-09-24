@@ -57,6 +57,7 @@ public abstract class AbstractHealthIndicator implements HealthIndicator {
 	/**
 	 * Create a new {@link AbstractHealthIndicator} instance with a specific message to
 	 * log when the health check fails.
+	 *
 	 * @param healthCheckFailedMessage the message to log on health check failure
 	 * @since 2.0.0
 	 */
@@ -67,6 +68,7 @@ public abstract class AbstractHealthIndicator implements HealthIndicator {
 	/**
 	 * Create a new {@link AbstractHealthIndicator} instance with a specific message to
 	 * log when the health check fails.
+	 *
 	 * @param healthCheckFailedMessage the message to log on health check failure
 	 * @since 2.0.0
 	 */
@@ -80,8 +82,7 @@ public abstract class AbstractHealthIndicator implements HealthIndicator {
 		Health.Builder builder = new Health.Builder();
 		try {
 			doHealthCheck(builder);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			builder.down(ex);
 		}
 		logExceptionIfPresent(builder.getException());
@@ -97,9 +98,10 @@ public abstract class AbstractHealthIndicator implements HealthIndicator {
 
 	/**
 	 * Actual health check logic.
+	 *
 	 * @param builder the {@link Builder} to report health status and details
 	 * @throws Exception any {@link Exception} that should create a {@link Status#DOWN}
-	 * system status.
+	 *                   system status.
 	 */
 	protected abstract void doHealthCheck(Health.Builder builder) throws Exception;
 

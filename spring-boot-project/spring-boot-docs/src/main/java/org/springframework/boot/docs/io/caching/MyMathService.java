@@ -24,7 +24,8 @@ public class MyMathService {
 
 	@Cacheable("piDecimals")
 	public int computePiDecimal(int precision) {
-		/**/ return 0;
+		/**/
+		return 0;
 	}
 
 }

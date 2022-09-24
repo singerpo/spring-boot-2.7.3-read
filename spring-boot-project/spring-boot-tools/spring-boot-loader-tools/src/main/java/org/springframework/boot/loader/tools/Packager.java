@@ -67,7 +67,7 @@ public abstract class Packager {
 
 	private static final String BOOT_LAYERS_INDEX_ATTRIBUTE = "Spring-Boot-Layers-Index";
 
-	private static final byte[] ZIP_FILE_HEADER = new byte[] { 'P', 'K', 3, 4 };
+	private static final byte[] ZIP_FILE_HEADER = new byte[]{'P', 'K', 3, 4};
 
 	private static final long FIND_WARNING_TIMEOUT = TimeUnit.SECONDS.toMillis(10);
 
@@ -93,6 +93,7 @@ public abstract class Packager {
 
 	/**
 	 * Create a new {@link Packager} instance.
+	 *
 	 * @param source the source archive file to package
 	 */
 	protected Packager(File source) {
@@ -101,7 +102,8 @@ public abstract class Packager {
 
 	/**
 	 * Create a new {@link Packager} instance.
-	 * @param source the source archive file to package
+	 *
+	 * @param source        the source archive file to package
 	 * @param layoutFactory the layout factory to use or {@code null}
 	 * @deprecated since 2.3.10 for removal in 2.5 in favor of {@link #Packager(File)} and
 	 * {@link #setLayoutFactory(LayoutFactory)}
@@ -118,6 +120,7 @@ public abstract class Packager {
 	/**
 	 * Add a listener that will be triggered to display a warning if searching for the
 	 * main class takes too long.
+	 *
 	 * @param listener the listener to add
 	 */
 	public void addMainClassTimeoutWarningListener(MainClassTimeoutWarningListener listener) {
@@ -128,6 +131,7 @@ public abstract class Packager {
 	 * Sets the main class that should be run. If not specified the value from the
 	 * MANIFEST will be used, or if no manifest entry is found the archive will be
 	 * searched for a suitable class.
+	 *
 	 * @param mainClass the main class name
 	 */
 	public void setMainClass(String mainClass) {
@@ -136,6 +140,7 @@ public abstract class Packager {
 
 	/**
 	 * Sets the layout to use for the jar. Defaults to {@link Layouts#forFile(File)}.
+	 *
 	 * @param layout the layout
 	 */
 	public void setLayout(Layout layout) {
@@ -146,6 +151,7 @@ public abstract class Packager {
 	/**
 	 * Sets the layout factory for the jar. The factory can be used when no specific
 	 * layout is specified.
+	 *
 	 * @param layoutFactory the layout factory to set
 	 */
 	public void setLayoutFactory(LayoutFactory layoutFactory) {
@@ -154,6 +160,7 @@ public abstract class Packager {
 
 	/**
 	 * Sets the layers that should be used in the jar.
+	 *
 	 * @param layers the jar layers
 	 */
 	public void setLayers(Layers layers) {
@@ -164,6 +171,7 @@ public abstract class Packager {
 
 	/**
 	 * Sets the {@link File} to use to back up the original source.
+	 *
 	 * @param backupFile the file to use to back up the original source
 	 */
 	protected void setBackupFile(File backupFile) {
@@ -172,6 +180,7 @@ public abstract class Packager {
 
 	/**
 	 * Sets if jarmode jars relevant for the packaging should be automatically included.
+	 *
 	 * @param includeRelevantJarModeJars if relevant jars are included
 	 */
 	public void setIncludeRelevantJarModeJars(boolean includeRelevantJarModeJars) {
@@ -186,8 +195,7 @@ public abstract class Packager {
 		try (JarFile jarFile = new JarFile(file)) {
 			Manifest manifest = jarFile.getManifest();
 			return (manifest != null && manifest.getMainAttributes().getValue(BOOT_VERSION_ATTRIBUTE) != null);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Error reading archive file", ex);
 		}
 	}
@@ -197,7 +205,7 @@ public abstract class Packager {
 	}
 
 	protected final void write(JarFile sourceJar, Libraries libraries, AbstractJarWriter writer,
-			boolean ensureReproducibleBuild) throws IOException {
+							   boolean ensureReproducibleBuild) throws IOException {
 		Assert.notNull(libraries, "Libraries must not be null");
 		write(sourceJar, writer, new PackagedLibraries(libraries, ensureReproducibleBuild));
 	}
@@ -220,8 +228,7 @@ public abstract class Packager {
 		Layout layout = getLayout();
 		if (layout instanceof CustomLoaderLayout) {
 			((CustomLoaderLayout) getLayout()).writeLoadedClasses(writer);
-		}
-		else if (layout.isExecutable()) {
+		} else if (layout.isExecutable()) {
 			writer.writeLoaderClasses();
 		}
 	}
@@ -247,8 +254,7 @@ public abstract class Packager {
 			try (InputStream inputStream = supplier.openStream()) {
 				return isZip(inputStream);
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return false;
 		}
 	}
@@ -285,8 +291,7 @@ public abstract class Packager {
 			Assert.state(mainClass != null, "Unable to find main class");
 			manifest.getMainAttributes().putValue(MAIN_CLASS_ATTRIBUTE, launcherClass);
 			manifest.getMainAttributes().putValue(START_CLASS_ATTRIBUTE, mainClass);
-		}
-		else if (mainClass != null) {
+		} else if (mainClass != null) {
 			manifest.getMainAttributes().putValue(MAIN_CLASS_ATTRIBUTE, mainClass);
 		}
 	}
@@ -321,6 +326,7 @@ public abstract class Packager {
 
 	/**
 	 * Return the {@link File} to use to back up the original source.
+	 *
 	 * @return the file to use to back up the original source
 	 */
 	public final File getBackupFile() {
@@ -364,8 +370,7 @@ public abstract class Packager {
 		Layout layout = getLayout();
 		if (layout instanceof RepackagingLayout) {
 			attributes.putValue(BOOT_CLASSES_ATTRIBUTE, ((RepackagingLayout) layout).getRepackagedClassesLocation());
-		}
-		else {
+		} else {
 			attributes.putValue(BOOT_CLASSES_ATTRIBUTE, layout.getClassesLocation());
 		}
 		putIfHasLength(attributes, BOOT_LIB_ATTRIBUTE, getLayout().getLibraryLocation("", LibraryScope.COMPILE));
@@ -394,7 +399,8 @@ public abstract class Packager {
 
 		/**
 		 * Handle a timeout warning.
-		 * @param duration the amount of time it took to find the main method
+		 *
+		 * @param duration   the amount of time it took to find the main method
 		 * @param mainMethod the main method that was actually found
 		 */
 		void handleTimeoutWarning(long duration, String mainMethod);

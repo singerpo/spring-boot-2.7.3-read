@@ -271,7 +271,7 @@ class SysVinitLaunchScriptIntegrationTests extends AbstractLaunchScriptIntegrati
 	@ParameterizedTest(name = "{0} {1}")
 	@MethodSource("parameters")
 	void whenLaunchedUsingNonRootUserWithRunAsUserSpecifiedLaunchFailsWithInsufficientPrivilege(String os,
-			String version) throws Exception {
+																								String version) throws Exception {
 		String output = doTest(os, version, "launch-with-run-as-user-root-required.sh");
 		assertThat(output).contains("Status: 4");
 		assertThat(output).has(coloredString(AnsiColor.RED, "Cannot run as 'wagner': current user is not root"));

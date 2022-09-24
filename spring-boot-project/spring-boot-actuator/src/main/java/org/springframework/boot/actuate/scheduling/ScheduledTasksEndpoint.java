@@ -278,8 +278,7 @@ public class ScheduledTasksEndpoint {
 			if (runnable instanceof ScheduledMethodRunnable) {
 				Method method = ((ScheduledMethodRunnable) runnable).getMethod();
 				this.target = method.getDeclaringClass().getName() + "." + method.getName();
-			}
-			else {
+			} else {
 				this.target = runnable.getClass().getName();
 			}
 		}

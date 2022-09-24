@@ -77,6 +77,7 @@ class JarEntry extends java.util.jar.JarEntry implements FileHeader {
 
 	/**
 	 * Return a {@link URL} for this {@link JarEntry}.
+	 *
 	 * @return the URL for the entry
 	 * @throws MalformedURLException if the URL is not valid
 	 */

@@ -40,8 +40,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  *
  * @author Dave Syer
  * @author Josh Long
- * @since 1.0.0
  * @see EnableAspectJAutoProxy
+ * @since 1.0.0
  */
 @AutoConfiguration
 @ConditionalOnProperty(prefix = "spring.aop", name = "auto", havingValue = "true", matchIfMissing = true)

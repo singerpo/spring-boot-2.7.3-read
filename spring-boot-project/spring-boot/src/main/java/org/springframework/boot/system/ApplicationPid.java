@@ -42,8 +42,8 @@ public class ApplicationPid {
 
 	private static final Log logger = LogFactory.getLog(ApplicationPid.class);
 
-	private static final PosixFilePermission[] WRITE_PERMISSIONS = { PosixFilePermission.OWNER_WRITE,
-			PosixFilePermission.GROUP_WRITE, PosixFilePermission.OTHERS_WRITE };
+	private static final PosixFilePermission[] WRITE_PERMISSIONS = {PosixFilePermission.OWNER_WRITE,
+			PosixFilePermission.GROUP_WRITE, PosixFilePermission.OTHERS_WRITE};
 
 	private static final long JVM_NAME_RESOLVE_THRESHOLD = 200;
 
@@ -61,8 +61,7 @@ public class ApplicationPid {
 		try {
 			String jvmName = resolveJvmName();
 			return jvmName.split("@")[0];
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return null;
 		}
 	}
@@ -112,9 +111,10 @@ public class ApplicationPid {
 
 	/**
 	 * Write the PID to the specified file.
+	 *
 	 * @param file the PID file
 	 * @throws IllegalStateException if no PID is available.
-	 * @throws IOException if the file cannot be written
+	 * @throws IOException           if the file cannot be written
 	 */
 	public void write(File file) throws IOException {
 		Assert.state(this.pid != null, "No PID available");
@@ -149,8 +149,7 @@ public class ApplicationPid {
 				}
 			}
 			return false;
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			// Assume that we can
 			return true;
 		}

@@ -174,8 +174,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 	protected void loadDefaults(LoggingInitializationContext initializationContext, LogFile logFile) {
 		if (logFile != null) {
 			loadConfiguration(getPackagedConfigFile("log4j2-file.xml"), logFile, getOverrides(initializationContext));
-		}
-		else {
+		} else {
 			loadConfiguration(getPackagedConfigFile("log4j2.xml"), logFile, getOverrides(initializationContext));
 		}
 	}
@@ -188,15 +187,16 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 
 	@Override
 	protected void loadConfiguration(LoggingInitializationContext initializationContext, String location,
-			LogFile logFile) {
+									 LogFile logFile) {
 		super.loadConfiguration(initializationContext, location, logFile);
 		loadConfiguration(location, logFile, getOverrides(initializationContext));
 	}
 
 	/**
 	 * Load the configuration from the given {@code location}.
+	 *
 	 * @param location the location
-	 * @param logFile log file configuration
+	 * @param logFile  log file configuration
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #loadConfiguration(String, LogFile, List)}
 	 */
@@ -208,8 +208,9 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 	/**
 	 * Load the configuration from the given {@code location}, creating a composite using
 	 * the configuration from the given {@code overrides}.
-	 * @param location the location
-	 * @param logFile log file configuration
+	 *
+	 * @param location  the location
+	 * @param logFile   log file configuration
 	 * @param overrides the overriding locations
 	 * @since 2.6.0
 	 */
@@ -225,8 +226,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 			Configuration configuration = (configurations.size() > 1) ? createComposite(configurations)
 					: configurations.iterator().next();
 			context.start(configuration);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Could not initialize Log4J2 logging from " + location, ex);
 		}
 	}
@@ -255,8 +255,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 		List<String> overrides = getOverrides(initializationContext);
 		if (!CollectionUtils.isEmpty(overrides)) {
 			reinitializeWithOverrides(overrides);
-		}
-		else {
+		} else {
 			LoggerContext context = getLoggerContext();
 			context.reconfigure();
 		}
@@ -270,8 +269,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 		for (String override : overrides) {
 			try {
 				configurations.add((AbstractConfiguration) load(override, context));
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException("Failed to load overriding configuration from '" + override + "'", ex);
 			}
 		}
@@ -293,8 +291,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 		LoggerConfig logger = getLogger(loggerName);
 		if (level == null) {
 			clearLogLevel(loggerName, logger);
-		}
-		else {
+		} else {
 			setLogLevel(loggerName, logger, level);
 		}
 		getLoggerContext().updateLoggers();
@@ -303,8 +300,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 	private void clearLogLevel(String loggerName, LoggerConfig logger) {
 		if (logger instanceof LevelSetLoggerConfig) {
 			getLoggerContext().getConfiguration().removeLogger(loggerName);
-		}
-		else {
+		} else {
 			logger.setLevel(null);
 		}
 	}
@@ -313,8 +309,7 @@ public class Log4J2LoggingSystem extends Slf4JLoggingSystem {
 		if (logger == null) {
 			getLoggerContext().getConfiguration().addLogger(loggerName,
 					new LevelSetLoggerConfig(loggerName, level, true));
-		}
-		else {
+		} else {
 			logger.setLevel(level);
 		}
 	}

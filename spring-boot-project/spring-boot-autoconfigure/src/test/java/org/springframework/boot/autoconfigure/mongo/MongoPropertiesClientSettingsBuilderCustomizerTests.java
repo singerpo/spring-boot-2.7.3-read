@@ -205,7 +205,7 @@ class MongoPropertiesClientSettingsBuilderCustomizerTests {
 	}
 
 	protected void assertMongoCredential(MongoCredential credentials, String expectedUsername, String expectedPassword,
-			String expectedSource) {
+										 String expectedSource) {
 		assertThat(credentials.getUserName()).isEqualTo(expectedUsername);
 		assertThat(credentials.getPassword()).isEqualTo(expectedPassword.toCharArray());
 		assertThat(credentials.getSource()).isEqualTo(expectedSource);

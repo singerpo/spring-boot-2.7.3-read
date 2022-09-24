@@ -51,8 +51,7 @@ class JSON {
 		if (value instanceof String) {
 			try {
 				return Double.valueOf((String) value);
-			}
-			catch (NumberFormatException ignored) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 		return null;
@@ -68,8 +67,7 @@ class JSON {
 		if (value instanceof String) {
 			try {
 				return (int) Double.parseDouble((String) value);
-			}
-			catch (NumberFormatException ignored) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 		return null;
@@ -85,8 +83,7 @@ class JSON {
 		if (value instanceof String) {
 			try {
 				return (long) Double.parseDouble((String) value);
-			}
-			catch (NumberFormatException ignored) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 		return null;

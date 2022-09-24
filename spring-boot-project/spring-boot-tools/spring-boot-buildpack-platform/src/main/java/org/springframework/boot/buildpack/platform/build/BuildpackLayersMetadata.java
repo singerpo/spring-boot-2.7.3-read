@@ -48,7 +48,8 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 	/**
 	 * Return the metadata details of a buildpack with the given ID and version.
-	 * @param id the buildpack ID
+	 *
+	 * @param id      the buildpack ID
 	 * @param version the buildpack version
 	 * @return the buildpack details or {@code null} if a buildpack with the given ID and
 	 * version does not exist in the metadata
@@ -59,6 +60,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 	/**
 	 * Create a {@link BuildpackLayersMetadata} from an image.
+	 *
 	 * @param image the source image
 	 * @return the buildpack layers metadata
 	 * @throws IOException on IO error
@@ -70,6 +72,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 	/**
 	 * Create a {@link BuildpackLayersMetadata} from image config.
+	 *
 	 * @param imageConfig the source image config
 	 * @return the buildpack layers metadata
 	 * @throws IOException on IO error
@@ -84,6 +87,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 	/**
 	 * Create a {@link BuildpackLayersMetadata} from JSON.
+	 *
 	 * @param json the source JSON
 	 * @return the buildpack layers metadata
 	 * @throws IOException on IO error
@@ -94,6 +98,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 	/**
 	 * Create a {@link BuildpackLayersMetadata} from JSON.
+	 *
 	 * @param node the source JSON
 	 * @return the buildpack layers metadata
 	 */
@@ -163,6 +168,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 		/**
 		 * Return the buildpack name.
+		 *
 		 * @return the name
 		 */
 		String getName() {
@@ -171,6 +177,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 		/**
 		 * Return the buildpack homepage address.
+		 *
 		 * @return the homepage address
 		 */
 		String getHomepage() {
@@ -179,6 +186,7 @@ final class BuildpackLayersMetadata extends MappedObject {
 
 		/**
 		 * Return the buildpack layer {@code diffID}.
+		 *
 		 * @return the layer {@code diffID}
 		 */
 		String getLayerDiffId() {

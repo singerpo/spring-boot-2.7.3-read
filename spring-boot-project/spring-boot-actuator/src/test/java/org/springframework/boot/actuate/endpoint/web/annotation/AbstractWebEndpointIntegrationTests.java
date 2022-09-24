@@ -77,7 +77,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 	private final Consumer<T> authenticatedContextCustomizer;
 
 	protected AbstractWebEndpointIntegrationTests(Supplier<T> applicationContextSupplier,
-			Consumer<T> authenticatedContextCustomizer) {
+												  Consumer<T> authenticatedContextCustomizer) {
 		this.applicationContextSupplier = applicationContextSupplier;
 		this.authenticatedContextCustomizer = authenticatedContextCustomizer;
 	}
@@ -398,7 +398,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 	protected abstract int getPort(T context);
 
 	protected void validateErrorBody(WebTestClient.BodyContentSpec body, HttpStatus status, String path,
-			String message) {
+									 String message) {
 		body.jsonPath("status").isEqualTo(status.value()).jsonPath("error").isEqualTo(status.getReasonPhrase())
 				.jsonPath("path").isEqualTo(path).jsonPath("message").isEqualTo(message);
 	}
@@ -422,7 +422,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 	}
 
 	private void load(Consumer<T> contextCustomizer, String endpointPath,
-			BiConsumer<ApplicationContext, WebTestClient> consumer) {
+					  BiConsumer<ApplicationContext, WebTestClient> consumer) {
 		T applicationContext = this.applicationContextSupplier.get();
 		contextCustomizer.accept(applicationContext);
 		Map<String, Object> properties = new HashMap<>();
@@ -435,8 +435,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 			String url = "http://" + address.getHostString() + ":" + address.getPort() + endpointPath;
 			consumer.accept(applicationContext,
 					WebTestClient.bindToServer().baseUrl(url).responseTimeout(TIMEOUT).build());
-		}
-		finally {
+		} finally {
 			applicationContext.close();
 		}
 	}
@@ -801,7 +800,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 
 		@ReadOperation
 		Resource read() {
-			return new ByteArrayResource(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+			return new ByteArrayResource(new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
 		}
 
 	}
@@ -811,7 +810,7 @@ public abstract class AbstractWebEndpointIntegrationTests<T extends Configurable
 
 		@ReadOperation
 		WebEndpointResponse<Resource> read() {
-			return new WebEndpointResponse<>(new ByteArrayResource(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }), 200);
+			return new WebEndpointResponse<>(new ByteArrayResource(new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}), 200);
 		}
 
 	}

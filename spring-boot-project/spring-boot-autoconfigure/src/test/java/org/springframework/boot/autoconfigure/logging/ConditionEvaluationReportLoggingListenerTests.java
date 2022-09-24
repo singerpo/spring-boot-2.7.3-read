@@ -153,15 +153,14 @@ class ConditionEvaluationReportLoggingListenerTests {
 		logger.setLevel(Level.DEBUG);
 		try {
 			runnable.run();
-		}
-		finally {
+		} finally {
 			logger.setLevel(currentLevel);
 		}
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@Import({WebMvcAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	static class Config {
 
 	}

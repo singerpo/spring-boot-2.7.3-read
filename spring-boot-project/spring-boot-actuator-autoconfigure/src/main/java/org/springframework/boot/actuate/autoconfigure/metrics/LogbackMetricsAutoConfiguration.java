@@ -42,8 +42,8 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  * @author Stephane Nicoll
  * @since 2.1.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class })
-@ConditionalOnClass({ MeterRegistry.class, LoggerContext.class, LoggerFactory.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class})
+@ConditionalOnClass({MeterRegistry.class, LoggerContext.class, LoggerFactory.class})
 @ConditionalOnBean(MeterRegistry.class)
 @Conditional(LogbackLoggingCondition.class)
 public class LogbackMetricsAutoConfiguration {

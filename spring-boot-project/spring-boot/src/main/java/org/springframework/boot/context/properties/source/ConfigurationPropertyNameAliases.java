@@ -31,8 +31,8 @@ import org.springframework.util.MultiValueMap;
  *
  * @author Phillip Webb
  * @author Madhura Bhave
- * @since 2.0.0
  * @see ConfigurationPropertySource#withAliases(ConfigurationPropertyNameAliases)
+ * @since 2.0.0
  */
 public final class ConfigurationPropertyNameAliases implements Iterable<ConfigurationPropertyName> {
 

@@ -51,8 +51,9 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Create a new {@link DeferredLog} instance managed by a {@link DeferredLogFactory}.
+	 *
 	 * @param destination the switch-over destination
-	 * @param lines the lines backing all related deferred logs
+	 * @param lines       the lines backing all related deferred logs
 	 * @since 2.4.0
 	 */
 	DeferredLog(Supplier<Log> destination, Lines lines) {
@@ -167,8 +168,7 @@ public class DeferredLog implements Log {
 		synchronized (this.lines) {
 			if (this.destination != null) {
 				logTo(this.destination, level, message, t);
-			}
-			else {
+			} else {
 				this.lines.add(this.destinationSupplier, level, message, t);
 			}
 		}
@@ -180,6 +180,7 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Switch from deferred logging to immediate logging to the specified destination.
+	 *
 	 * @param destination the new log destination
 	 * @since 2.1.0
 	 */
@@ -189,6 +190,7 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Switch from deferred logging to immediate logging to the specified destination.
+	 *
 	 * @param destination the new log destination
 	 * @since 2.1.0
 	 */
@@ -201,6 +203,7 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Replay deferred logging to the specified destination.
+	 *
 	 * @param destination the destination for the deferred log messages
 	 */
 	public void replayTo(Class<?> destination) {
@@ -209,6 +212,7 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Replay deferred logging to the specified destination.
+	 *
 	 * @param destination the destination for the deferred log messages
 	 */
 	public void replayTo(Log destination) {
@@ -222,7 +226,8 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Replay from a source log to a destination log when the source is deferred.
-	 * @param source the source logger
+	 *
+	 * @param source      the source logger
 	 * @param destination the destination logger class
 	 * @return the destination
 	 */
@@ -232,7 +237,8 @@ public class DeferredLog implements Log {
 
 	/**
 	 * Replay from a source log to a destination log when the source is deferred.
-	 * @param source the source logger
+	 *
+	 * @param source      the source logger
 	 * @param destination the destination logger
 	 * @return the destination
 	 */

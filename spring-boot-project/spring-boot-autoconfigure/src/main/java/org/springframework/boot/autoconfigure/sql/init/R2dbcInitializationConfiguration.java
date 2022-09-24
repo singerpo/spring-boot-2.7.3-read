@@ -34,21 +34,21 @@ import org.springframework.util.StringUtils;
  * @author Andy Wilkinson
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ ConnectionFactory.class, DatabasePopulator.class })
+@ConditionalOnClass({ConnectionFactory.class, DatabasePopulator.class})
 @ConditionalOnSingleCandidate(ConnectionFactory.class)
-@ConditionalOnMissingBean({ SqlR2dbcScriptDatabaseInitializer.class, SqlDataSourceScriptDatabaseInitializer.class })
+@ConditionalOnMissingBean({SqlR2dbcScriptDatabaseInitializer.class, SqlDataSourceScriptDatabaseInitializer.class})
 class R2dbcInitializationConfiguration {
 
 	@Bean
 	SqlR2dbcScriptDatabaseInitializer r2dbcScriptDatabaseInitializer(ConnectionFactory connectionFactory,
-			SqlInitializationProperties properties) {
+																	 SqlInitializationProperties properties) {
 		return new SqlR2dbcScriptDatabaseInitializer(
 				determineConnectionFactory(connectionFactory, properties.getUsername(), properties.getPassword()),
 				properties);
 	}
 
 	private static ConnectionFactory determineConnectionFactory(ConnectionFactory connectionFactory, String username,
-			String password) {
+																String password) {
 		if (StringUtils.hasText(username) && StringUtils.hasText(password)) {
 			return ConnectionFactoryBuilder.derivedFrom(connectionFactory).username(username).password(password)
 					.build();

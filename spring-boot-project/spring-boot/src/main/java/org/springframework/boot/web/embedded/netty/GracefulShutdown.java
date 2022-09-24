@@ -61,12 +61,10 @@ final class GracefulShutdown {
 			server.disposeNow(Duration.ofNanos(Long.MAX_VALUE));
 			logger.info("Graceful shutdown complete");
 			callback.shutdownComplete(GracefulShutdownResult.IDLE);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.info("Graceful shutdown aborted with one or more requests still active");
 			callback.shutdownComplete(GracefulShutdownResult.REQUESTS_ACTIVE);
-		}
-		finally {
+		} finally {
 			this.shutdownThread = null;
 			this.shuttingDown = false;
 		}
@@ -85,8 +83,7 @@ final class GracefulShutdown {
 	private void sleep(long millis) {
 		try {
 			Thread.sleep(millis);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 	}

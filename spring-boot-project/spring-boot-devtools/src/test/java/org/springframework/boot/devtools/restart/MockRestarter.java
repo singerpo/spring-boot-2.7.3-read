@@ -57,7 +57,7 @@ public class MockRestarter implements BeforeEachCallback, AfterEachCallback, Par
 	@Override
 	public void beforeEach(ExtensionContext context) throws Exception {
 		Restarter.setInstance(this.mock);
-		given(this.mock.getInitialUrls()).willReturn(new URL[] {});
+		given(this.mock.getInitialUrls()).willReturn(new URL[]{});
 		given(this.mock.getOrAddAttribute(anyString(), any(ObjectFactory.class))).willAnswer((invocation) -> {
 			String name = invocation.getArgument(0);
 			ObjectFactory<?> factory = invocation.getArgument(1);

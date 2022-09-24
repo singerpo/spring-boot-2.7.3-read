@@ -170,11 +170,11 @@ class ConditionalOnAvailableEndpointTests {
 	void outcomeWithNoEndpointReferenceShouldFail() {
 		this.contextRunner.withUserConfiguration(ComponentWithNoEndpointReferenceConfiguration.class)
 				.withPropertyValues("management.endpoints.web.exposure.include=*").run((context) -> {
-					assertThat(context).hasFailed();
-					assertThat(context.getStartupFailure().getCause().getMessage())
-							.contains("No endpoint is specified and the return type of the @Bean method "
-									+ "is neither an @Endpoint, nor an @EndpointExtension");
-				});
+			assertThat(context).hasFailed();
+			assertThat(context.getStartupFailure().getCause().getMessage())
+					.contains("No endpoint is specified and the return type of the @Bean method "
+							+ "is neither an @Endpoint, nor an @EndpointExtension");
+		});
 	}
 
 	@Test
@@ -183,14 +183,16 @@ class ConditionalOnAvailableEndpointTests {
 				(context) -> assertThat(context).hasBean("info").hasBean("health").hasBean("spring").hasBean("test"));
 	}
 
-	@Test // gh-21044
+	@Test
+		// gh-21044
 	void outcomeWhenIncludeAllShouldMatchDashedEndpoint() {
 		this.contextRunner.withUserConfiguration(DashedEndpointConfiguration.class)
 				.withPropertyValues("management.endpoints.web.exposure.include=*")
 				.run((context) -> assertThat(context).hasSingleBean(DashedEndpoint.class));
 	}
 
-	@Test // gh-21044
+	@Test
+		// gh-21044
 	void outcomeWhenIncludeDashedShouldMatchDashedEndpoint() {
 		this.contextRunner.withUserConfiguration(DashedEndpointConfiguration.class)
 				.withPropertyValues("management.endpoints.web.exposure.include=test-dashed")
@@ -328,7 +330,7 @@ class ConditionalOnAvailableEndpointTests {
 
 		@Bean
 		@ConditionalOnAvailableEndpoint(endpoint = TestEndpoint.class,
-				exposure = { EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY })
+				exposure = {EndpointExposure.WEB, EndpointExposure.CLOUD_FOUNDRY})
 		String unexposed() {
 			return "unexposed";
 		}

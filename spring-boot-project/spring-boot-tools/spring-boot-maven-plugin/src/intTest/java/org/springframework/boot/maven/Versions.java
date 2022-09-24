@@ -43,8 +43,7 @@ class Versions {
 			Map<String, String> versions = new HashMap<>();
 			properties.forEach((key, value) -> versions.put((String) key, (String) value));
 			return versions;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

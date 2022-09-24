@@ -58,7 +58,7 @@ public final class InteractiveUpgradeResolver implements UpgradeResolver {
 	private final UserInputHandler userInputHandler;
 
 	InteractiveUpgradeResolver(VersionResolver versionResolver, UpgradePolicy upgradePolicy,
-			UserInputHandler userInputHandler) {
+							   UserInputHandler userInputHandler) {
 		this.versionResolver = versionResolver;
 		this.upgradePolicy = upgradePolicy;
 		this.userInputHandler = userInputHandler;
@@ -180,7 +180,7 @@ public final class InteractiveUpgradeResolver implements UpgradeResolver {
 	}
 
 	private List<String> getMissingModules(Map<String, SortedSet<DependencyVersion>> moduleVersions,
-			DependencyVersion version) {
+										   DependencyVersion version) {
 		List<String> missingModules = new ArrayList<>();
 		moduleVersions.forEach((name, versions) -> {
 			if (!versions.contains(version)) {
@@ -191,7 +191,7 @@ public final class InteractiveUpgradeResolver implements UpgradeResolver {
 	}
 
 	private SortedSet<DependencyVersion> getLaterVersionsForModule(String groupId, String artifactId,
-			DependencyVersion currentVersion) {
+																   DependencyVersion currentVersion) {
 		SortedSet<DependencyVersion> versions = this.versionResolver.resolveVersions(groupId, artifactId);
 		versions.removeIf((candidate) -> !this.upgradePolicy.test(candidate, currentVersion));
 		return versions;

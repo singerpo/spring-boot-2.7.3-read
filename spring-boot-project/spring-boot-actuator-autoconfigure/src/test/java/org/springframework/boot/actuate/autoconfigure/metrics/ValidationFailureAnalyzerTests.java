@@ -54,8 +54,7 @@ class ValidationFailureAnalyzerTests {
 		try (ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(configuration)) {
 			fail("Expected failure did not occur");
 			return null;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return ex;
 		}
 	}

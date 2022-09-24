@@ -177,8 +177,7 @@ public class ValidationBindHandler extends AbstractBindHandler {
 			}
 			try {
 				return super.getActualFieldValue(field);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				if (isPropertyNotReadable(ex)) {
 					return null;
 				}
@@ -210,8 +209,7 @@ public class ValidationBindHandler extends AbstractBindHandler {
 						}
 					}
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 			return null;
 		}

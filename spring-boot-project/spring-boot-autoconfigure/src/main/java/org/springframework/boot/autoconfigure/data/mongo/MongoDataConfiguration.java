@@ -44,7 +44,7 @@ class MongoDataConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	MongoMappingContext mongoMappingContext(ApplicationContext applicationContext, MongoProperties properties,
-			MongoCustomConversions conversions) throws ClassNotFoundException {
+											MongoCustomConversions conversions) throws ClassNotFoundException {
 		PropertyMapper mapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
 		MongoMappingContext context = new MongoMappingContext();
 		mapper.from(properties.isAutoIndexCreation()).to(context::setAutoIndexCreation);

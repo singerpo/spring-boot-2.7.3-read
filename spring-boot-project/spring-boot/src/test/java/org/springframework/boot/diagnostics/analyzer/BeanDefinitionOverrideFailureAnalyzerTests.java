@@ -72,8 +72,7 @@ class BeanDefinitionOverrideFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanDefinitionOverrideException ex) {
+		} catch (BeanDefinitionOverrideException ex) {
 			return ex;
 		}
 	}
@@ -94,14 +93,13 @@ class BeanDefinitionOverrideFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (BeanDefinitionOverrideException ex) {
+		} catch (BeanDefinitionOverrideException ex) {
 			return ex;
 		}
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ FirstConfiguration.class, SecondConfiguration.class })
+	@Import({FirstConfiguration.class, SecondConfiguration.class})
 	static class BeanOverrideConfiguration {
 
 	}

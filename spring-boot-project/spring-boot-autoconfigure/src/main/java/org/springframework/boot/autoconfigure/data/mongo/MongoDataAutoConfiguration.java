@@ -47,10 +47,10 @@ import org.springframework.data.mongodb.gridfs.GridFsTemplate;
  * @since 1.1.0
  */
 @AutoConfiguration(after = MongoAutoConfiguration.class)
-@ConditionalOnClass({ MongoClient.class, MongoTemplate.class })
+@ConditionalOnClass({MongoClient.class, MongoTemplate.class})
 @EnableConfigurationProperties(MongoProperties.class)
-@Import({ MongoDataConfiguration.class, MongoDatabaseFactoryConfiguration.class,
-		MongoDatabaseFactoryDependentConfiguration.class })
+@Import({MongoDataConfiguration.class, MongoDatabaseFactoryConfiguration.class,
+		MongoDatabaseFactoryDependentConfiguration.class})
 public class MongoDataAutoConfiguration {
 
 }

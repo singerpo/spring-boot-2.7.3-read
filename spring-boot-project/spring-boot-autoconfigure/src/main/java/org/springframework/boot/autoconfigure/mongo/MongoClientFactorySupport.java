@@ -39,7 +39,7 @@ public abstract class MongoClientFactorySupport<T> {
 	private final BiFunction<MongoClientSettings, MongoDriverInformation, T> clientCreator;
 
 	protected MongoClientFactorySupport(List<MongoClientSettingsBuilderCustomizer> builderCustomizers,
-			BiFunction<MongoClientSettings, MongoDriverInformation, T> clientCreator) {
+										BiFunction<MongoClientSettings, MongoDriverInformation, T> clientCreator) {
 		this.builderCustomizers = (builderCustomizers != null) ? builderCustomizers : Collections.emptyList();
 		this.clientCreator = clientCreator;
 	}

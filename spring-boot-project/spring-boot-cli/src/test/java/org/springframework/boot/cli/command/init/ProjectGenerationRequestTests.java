@@ -208,8 +208,7 @@ class ProjectGenerationRequestTests {
 	private static URI createUrl(String actionAndParam) {
 		try {
 			return new URI(ProjectGenerationRequest.DEFAULT_SERVICE_URL + actionAndParam);
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -239,8 +238,7 @@ class ProjectGenerationRequestTests {
 			String content = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
 			JSONObject json = new JSONObject(content);
 			return new InitializrServiceMetadata(json);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to read metadata", ex);
 		}
 	}

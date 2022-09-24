@@ -52,7 +52,7 @@ class BufferedStartupStep implements StartupStep {
 	private final AtomicBoolean ended = new AtomicBoolean();
 
 	BufferedStartupStep(BufferedStartupStep parent, String name, long id, Instant startTime,
-			Consumer<BufferedStartupStep> recorder) {
+						Consumer<BufferedStartupStep> recorder) {
 		this.parent = parent;
 		this.name = name;
 		this.id = id;

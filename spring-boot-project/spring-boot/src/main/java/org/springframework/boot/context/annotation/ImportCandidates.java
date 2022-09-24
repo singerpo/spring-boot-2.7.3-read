@@ -32,7 +32,7 @@ import org.springframework.util.Assert;
 
 /**
  * Contains {@code @Configuration} import candidates, usually auto-configurations.
- *
+ * <p>
  * The {@link #load(Class, ClassLoader)} method can be used to discover the import
  * candidates.
  *
@@ -59,12 +59,13 @@ public final class ImportCandidates implements Iterable<String> {
 
 	/**
 	 * Loads the names of import candidates from the classpath.
-	 *
+	 * <p>
 	 * The names of the import candidates are stored in files named
 	 * {@code META-INF/spring/full-qualified-annotation-name.imports} on the classpath.
 	 * Every line contains the full qualified name of the candidate class. Comments are
 	 * supported using the # character.
-	 * @param annotation annotation to load
+	 *
+	 * @param annotation  annotation to load
 	 * @param classLoader class loader to use for loading
 	 * @return list of names of annotated classes
 	 */
@@ -91,8 +92,7 @@ public final class ImportCandidates implements Iterable<String> {
 	private static Enumeration<URL> findUrlsInClasspath(ClassLoader classLoader, String location) {
 		try {
 			return classLoader.getResources(location);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalArgumentException("Failed to load autoconfigurations from location [" + location + "]",
 					ex);
 		}
@@ -112,8 +112,7 @@ public final class ImportCandidates implements Iterable<String> {
 				autoConfigurations.add(line);
 			}
 			return autoConfigurations;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalArgumentException("Unable to load autoconfigurations from location [" + url + "]", ex);
 		}
 	}

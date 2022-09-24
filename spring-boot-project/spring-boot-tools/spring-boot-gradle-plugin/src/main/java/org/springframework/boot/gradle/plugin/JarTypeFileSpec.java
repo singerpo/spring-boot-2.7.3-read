@@ -42,8 +42,7 @@ class JarTypeFileSpec implements Spec<File> {
 			if (jarType != null && EXCLUDED_JAR_TYPES.contains(jarType)) {
 				return false;
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Continue
 		}
 		return true;

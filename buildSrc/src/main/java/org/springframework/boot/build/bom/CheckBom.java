@@ -75,8 +75,7 @@ public class CheckBom extends DefaultTask {
 					if (resolved.stream().noneMatch((candidate) -> candidate.startsWith(group))) {
 						unused.add(exclusion);
 					}
-				}
-				else {
+				} else {
 					unused.add(exclusion);
 				}
 			}

@@ -46,8 +46,9 @@ public abstract class TotalProgressListener<E extends ImageProgressUpdateEvent> 
 	/**
 	 * Create a new {@link TotalProgressListener} that sends {@link TotalProgressEvent
 	 * events} to the given consumer.
-	 * @param consumer the consumer that receives {@link TotalProgressEvent progress
-	 * events}
+	 *
+	 * @param consumer          the consumer that receives {@link TotalProgressEvent progress
+	 *                          events}
 	 * @param trackedStatusKeys a list of status event keys to track the progress of
 	 */
 	protected TotalProgressListener(Consumer<TotalProgressEvent> consumer, String[] trackedStatusKeys) {

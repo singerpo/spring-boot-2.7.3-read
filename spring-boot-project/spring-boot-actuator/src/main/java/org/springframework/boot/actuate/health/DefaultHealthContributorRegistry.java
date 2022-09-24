@@ -36,7 +36,7 @@ public class DefaultHealthContributorRegistry extends DefaultContributorRegistry
 	}
 
 	public DefaultHealthContributorRegistry(Map<String, HealthContributor> contributors,
-			Function<String, String> nameFactory) {
+											Function<String, String> nameFactory) {
 		super(contributors, nameFactory);
 	}
 

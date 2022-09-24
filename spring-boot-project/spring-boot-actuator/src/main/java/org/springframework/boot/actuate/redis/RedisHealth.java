@@ -45,8 +45,7 @@ final class RedisHealth {
 
 		if ("fail".equalsIgnoreCase(clusterInfo.getState())) {
 			return builder.down();
-		}
-		else {
+		} else {
 			return builder.up();
 		}
 	}

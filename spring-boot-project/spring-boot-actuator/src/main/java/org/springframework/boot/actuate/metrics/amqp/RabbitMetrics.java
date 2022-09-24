@@ -41,8 +41,9 @@ public class RabbitMetrics implements MeterBinder {
 
 	/**
 	 * Create a new meter binder recording the specified {@link ConnectionFactory}.
+	 *
 	 * @param connectionFactory the {@link ConnectionFactory} to instrument
-	 * @param tags tags to apply to all recorded metrics
+	 * @param tags              tags to apply to all recorded metrics
 	 */
 	public RabbitMetrics(ConnectionFactory connectionFactory, Iterable<Tag> tags) {
 		Assert.notNull(connectionFactory, "ConnectionFactory must not be null");

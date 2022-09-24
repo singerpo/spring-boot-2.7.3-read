@@ -78,7 +78,7 @@ import org.springframework.web.filter.RequestContextFilter;
  * @since 1.2.0
  */
 @AutoConfiguration(before = DispatcherServletAutoConfiguration.class, after = JacksonAutoConfiguration.class)
-@ConditionalOnClass({ SpringComponentProvider.class, ServletRegistration.class })
+@ConditionalOnClass({SpringComponentProvider.class, ServletRegistration.class})
 @ConditionalOnBean(type = "org.glassfish.jersey.server.ResourceConfig")
 @ConditionalOnWebApplication(type = Type.SERVLET)
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
@@ -92,7 +92,7 @@ public class JerseyAutoConfiguration implements ServletContextAware {
 	private final ResourceConfig config;
 
 	public JerseyAutoConfiguration(JerseyProperties jersey, ResourceConfig config,
-			ObjectProvider<ResourceConfigCustomizer> customizers) {
+								   ObjectProvider<ResourceConfigCustomizer> customizers) {
 		this.jersey = jersey;
 		this.config = config;
 		customizers.orderedStream().forEach((customizer) -> customizer.customize(this.config));
@@ -194,7 +194,7 @@ public class JerseyAutoConfiguration implements ServletContextAware {
 		}
 
 		@Configuration(proxyBeanMethods = false)
-		@ConditionalOnClass({ JaxbAnnotationIntrospector.class, XmlElement.class })
+		@ConditionalOnClass({JaxbAnnotationIntrospector.class, XmlElement.class})
 		static class JaxbObjectMapperCustomizer {
 
 			@Autowired
@@ -207,7 +207,7 @@ public class JerseyAutoConfiguration implements ServletContextAware {
 			}
 
 			private AnnotationIntrospector createPair(MapperConfig<?> config,
-					JaxbAnnotationIntrospector jaxbAnnotationIntrospector) {
+													  JaxbAnnotationIntrospector jaxbAnnotationIntrospector) {
 				return AnnotationIntrospector.pair(config.getAnnotationIntrospector(), jaxbAnnotationIntrospector);
 			}
 

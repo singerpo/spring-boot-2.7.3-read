@@ -67,8 +67,7 @@ class GrapeRootRepositorySystemSessionAutoConfigurationTests {
 		System.setProperty("grape.root", "foo");
 		try {
 			new GrapeRootRepositorySystemSessionAutoConfiguration().apply(this.session, this.repositorySystem);
-		}
-		finally {
+		} finally {
 			System.clearProperty("grape.root");
 		}
 

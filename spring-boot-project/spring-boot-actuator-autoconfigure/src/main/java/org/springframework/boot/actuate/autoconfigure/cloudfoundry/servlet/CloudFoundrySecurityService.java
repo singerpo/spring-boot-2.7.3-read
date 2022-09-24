@@ -48,7 +48,7 @@ class CloudFoundrySecurityService {
 	private String uaaUrl;
 
 	CloudFoundrySecurityService(RestTemplateBuilder restTemplateBuilder, String cloudControllerUrl,
-			boolean skipSslValidation) {
+								boolean skipSslValidation) {
 		Assert.notNull(restTemplateBuilder, "RestTemplateBuilder must not be null");
 		Assert.notNull(cloudControllerUrl, "CloudControllerUrl must not be null");
 		if (skipSslValidation) {
@@ -60,7 +60,8 @@ class CloudFoundrySecurityService {
 
 	/**
 	 * Return the access level that should be granted to the given token.
-	 * @param token the token
+	 *
+	 * @param token         the token
 	 * @param applicationId the cloud foundry application ID
 	 * @return the access level that should be granted
 	 * @throws CloudFoundryAuthorizationException if the token is not authorized
@@ -74,14 +75,12 @@ class CloudFoundrySecurityService {
 				return AccessLevel.FULL;
 			}
 			return AccessLevel.RESTRICTED;
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 			if (ex.getStatusCode().equals(HttpStatus.FORBIDDEN)) {
 				throw new CloudFoundryAuthorizationException(Reason.ACCESS_DENIED, "Access denied");
 			}
 			throw new CloudFoundryAuthorizationException(Reason.INVALID_TOKEN, "Invalid token", ex);
-		}
-		catch (HttpServerErrorException ex) {
+		} catch (HttpServerErrorException ex) {
 			throw new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE, "Cloud controller not reachable");
 		}
 	}
@@ -89,21 +88,20 @@ class CloudFoundrySecurityService {
 	private URI getPermissionsUri(String applicationId) {
 		try {
 			return new URI(this.cloudControllerUrl + "/v2/apps/" + applicationId + "/permissions");
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
 
 	/**
 	 * Return all token keys known by the UAA.
+	 *
 	 * @return a list of token keys
 	 */
 	Map<String, String> fetchTokenKeys() {
 		try {
 			return extractTokenKeys(this.restTemplate.getForObject(getUaaUrl() + "/token_keys", Map.class));
-		}
-		catch (HttpStatusCodeException ex) {
+		} catch (HttpStatusCodeException ex) {
 			throw new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE, "UAA not reachable");
 		}
 	}
@@ -119,6 +117,7 @@ class CloudFoundrySecurityService {
 
 	/**
 	 * Return the URL of the UAA.
+	 *
 	 * @return the UAA url
 	 */
 	String getUaaUrl() {
@@ -126,8 +125,7 @@ class CloudFoundrySecurityService {
 			try {
 				Map<?, ?> response = this.restTemplate.getForObject(this.cloudControllerUrl + "/info", Map.class);
 				this.uaaUrl = (String) response.get("token_endpoint");
-			}
-			catch (HttpStatusCodeException ex) {
+			} catch (HttpStatusCodeException ex) {
 				throw new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE,
 						"Unable to fetch token keys from UAA");
 			}

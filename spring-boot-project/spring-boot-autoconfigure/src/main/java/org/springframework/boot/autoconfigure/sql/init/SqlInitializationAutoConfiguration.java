@@ -34,10 +34,10 @@ import org.springframework.context.annotation.Import;
  * @author Andy Wilkinson
  * @since 2.5.0
  */
-@AutoConfiguration(after = { R2dbcAutoConfiguration.class, DataSourceAutoConfiguration.class })
+@AutoConfiguration(after = {R2dbcAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @EnableConfigurationProperties(SqlInitializationProperties.class)
-@Import({ DatabaseInitializationDependencyConfigurer.class, R2dbcInitializationConfiguration.class,
-		DataSourceInitializationConfiguration.class })
+@Import({DatabaseInitializationDependencyConfigurer.class, R2dbcInitializationConfiguration.class,
+		DataSourceInitializationConfiguration.class})
 @ConditionalOnProperty(prefix = "spring.sql.init", name = "enabled", matchIfMissing = true)
 @Conditional(SqlInitializationModeCondition.class)
 public class SqlInitializationAutoConfiguration {

@@ -66,7 +66,7 @@ public abstract class AbstractExecutableArchiveLauncherTests {
 
 	@SuppressWarnings("resource")
 	protected File createJarArchive(String name, Manifest manifest, String entryPrefix, boolean indexed,
-			List<String> extraLibs) throws IOException {
+									List<String> extraLibs) throws IOException {
 		File archive = new File(this.tempDir, name);
 		JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream(archive));
 		if (manifest != null) {
@@ -120,8 +120,7 @@ public abstract class AbstractExecutableArchiveLauncherTests {
 			File entryFile = new File(exploded, entry.getName());
 			if (entry.isDirectory()) {
 				entryFile.mkdirs();
-			}
-			else {
+			} else {
 				FileCopyUtils.copy(jarFile.getInputStream(entry), new FileOutputStream(entryFile));
 			}
 		}
@@ -140,8 +139,7 @@ public abstract class AbstractExecutableArchiveLauncherTests {
 	protected final URL toUrl(File file) {
 		try {
 			return file.toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

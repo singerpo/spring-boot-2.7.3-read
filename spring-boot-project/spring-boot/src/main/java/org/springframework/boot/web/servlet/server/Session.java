@@ -57,6 +57,7 @@ public class Session {
 
 	/**
 	 * Return the {@link SessionTrackingMode session tracking modes}.
+	 *
 	 * @return the session tracking modes
 	 */
 	public Set<Session.SessionTrackingMode> getTrackingModes() {
@@ -69,6 +70,7 @@ public class Session {
 
 	/**
 	 * Return whether to persist session data between restarts.
+	 *
 	 * @return {@code true} to persist session data between restarts.
 	 */
 	public boolean isPersistent() {
@@ -81,6 +83,7 @@ public class Session {
 
 	/**
 	 * Return the directory used to store session data.
+	 *
 	 * @return the session data store directory
 	 */
 	public File getStoreDir() {
@@ -112,6 +115,7 @@ public class Session {
 
 		/**
 		 * Return the comment for the session cookie.
+		 *
 		 * @return the session cookie comment
 		 */
 		public String getComment() {

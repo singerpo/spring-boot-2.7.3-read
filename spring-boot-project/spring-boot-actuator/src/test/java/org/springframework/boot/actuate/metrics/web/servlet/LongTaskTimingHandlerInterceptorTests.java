@@ -105,8 +105,7 @@ class LongTaskTimingHandlerInterceptorTests {
 			try {
 				result.set(
 						this.mvc.perform(get("/api/c1/callable/10")).andExpect(request().asyncStarted()).andReturn());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				fail("Failed to execute async request", ex);
 			}
 		});
@@ -129,8 +128,7 @@ class LongTaskTimingHandlerInterceptorTests {
 			try {
 				result.set(
 						this.mvc.perform(get("/api/c1/callable/10")).andExpect(request().asyncStarted()).andReturn());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				fail("Failed to execute async request", ex);
 			}
 		});
@@ -188,15 +186,14 @@ class LongTaskTimingHandlerInterceptorTests {
 		private CyclicBarrier callableBarrier;
 
 		@Timed
-		@Timed(value = "my.long.request", extraTags = { "region", "test" }, longTask = true)
+		@Timed(value = "my.long.request", extraTags = {"region", "test"}, longTask = true)
 		@GetMapping("/callable/{id}")
 		Callable<String> asyncCallable(@PathVariable Long id) throws Exception {
 			this.callableBarrier.await();
 			return () -> {
 				try {
 					this.callableBarrier.await();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					throw new RuntimeException(ex);
 				}
 				return id.toString();

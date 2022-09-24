@@ -26,8 +26,8 @@ import java.io.InputStream;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 1.1.2
  * @see Libraries
+ * @since 1.1.2
  */
 public class Library {
 
@@ -47,7 +47,8 @@ public class Library {
 
 	/**
 	 * Create a new {@link Library}.
-	 * @param file the source file
+	 *
+	 * @param file  the source file
 	 * @param scope the scope of the library
 	 */
 	public Library(File file, LibraryScope scope) {
@@ -56,19 +57,20 @@ public class Library {
 
 	/**
 	 * Create a new {@link Library}.
-	 * @param name the name of the library as it should be written or {@code null} to use
-	 * the file name
-	 * @param file the source file
-	 * @param scope the scope of the library
-	 * @param coordinates the library coordinates or {@code null}
+	 *
+	 * @param name           the name of the library as it should be written or {@code null} to use
+	 *                       the file name
+	 * @param file           the source file
+	 * @param scope          the scope of the library
+	 * @param coordinates    the library coordinates or {@code null}
 	 * @param unpackRequired if the library needs to be unpacked before it can be used
-	 * @param local if the library is local (part of the same build) to the application
-	 * that is being packaged
-	 * @param included if the library is included in the fat jar
+	 * @param local          if the library is local (part of the same build) to the application
+	 *                       that is being packaged
+	 * @param included       if the library is included in the fat jar
 	 * @since 2.4.8
 	 */
 	public Library(String name, File file, LibraryScope scope, LibraryCoordinates coordinates, boolean unpackRequired,
-			boolean local, boolean included) {
+				   boolean local, boolean included) {
 		this.name = (name != null) ? name : file.getName();
 		this.file = file;
 		this.scope = scope;
@@ -80,6 +82,7 @@ public class Library {
 
 	/**
 	 * Return the name of file as it should be written.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -88,6 +91,7 @@ public class Library {
 
 	/**
 	 * Return the library file.
+	 *
 	 * @return the file
 	 */
 	public File getFile() {
@@ -96,6 +100,7 @@ public class Library {
 
 	/**
 	 * Open a stream that provides the content of the source file.
+	 *
 	 * @return the file content
 	 * @throws IOException on error
 	 */
@@ -105,6 +110,7 @@ public class Library {
 
 	/**
 	 * Return the scope of the library.
+	 *
 	 * @return the scope
 	 */
 	public LibraryScope getScope() {
@@ -113,6 +119,7 @@ public class Library {
 
 	/**
 	 * Return the {@linkplain LibraryCoordinates coordinates} of the library.
+	 *
 	 * @return the coordinates
 	 */
 	public LibraryCoordinates getCoordinates() {
@@ -122,6 +129,7 @@ public class Library {
 	/**
 	 * Return if the file cannot be used directly as a nested jar and needs to be
 	 * unpacked.
+	 *
 	 * @return if unpack is required
 	 */
 	public boolean isUnpackRequired() {
@@ -135,6 +143,7 @@ public class Library {
 	/**
 	 * Return if the library is local (part of the same build) to the application that is
 	 * being packaged.
+	 *
 	 * @return if the library is local
 	 */
 	public boolean isLocal() {
@@ -143,6 +152,7 @@ public class Library {
 
 	/**
 	 * Return if the library is included in the fat jar.
+	 *
 	 * @return if the library is included
 	 */
 	public boolean isIncluded() {

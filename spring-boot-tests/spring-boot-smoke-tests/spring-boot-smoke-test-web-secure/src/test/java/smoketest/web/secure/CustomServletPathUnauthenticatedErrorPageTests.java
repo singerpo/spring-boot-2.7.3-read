@@ -27,11 +27,11 @@ import org.springframework.security.web.SecurityFilterChain;
  * @author Andy Wilkinson
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		classes = { AbstractErrorPageTests.TestConfiguration.class,
+		classes = {AbstractErrorPageTests.TestConfiguration.class,
 				CustomServletPathUnauthenticatedErrorPageTests.SecurityConfiguration.class,
-				SampleWebSecureApplication.class },
-		properties = { "server.error.include-message=always", "spring.security.user.name=username",
-				"spring.security.user.password=password", "spring.mvc.servlet.path=/custom/servlet/path" })
+				SampleWebSecureApplication.class},
+		properties = {"server.error.include-message=always", "spring.security.user.name=username",
+				"spring.security.user.password=password", "spring.mvc.servlet.path=/custom/servlet/path"})
 class CustomServletPathUnauthenticatedErrorPageTests extends AbstractUnauthenticatedErrorPageTests {
 
 	CustomServletPathUnauthenticatedErrorPageTests() {

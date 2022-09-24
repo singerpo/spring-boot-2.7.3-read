@@ -41,14 +41,14 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
  * @since 2.1.0
  */
 @AutoConfiguration(after = MongoReactiveDataAutoConfiguration.class)
-@ConditionalOnClass({ ReactiveMongoTemplate.class, Flux.class })
+@ConditionalOnClass({ReactiveMongoTemplate.class, Flux.class})
 @ConditionalOnBean(ReactiveMongoTemplate.class)
 @ConditionalOnEnabledHealthIndicator("mongo")
 public class MongoReactiveHealthContributorAutoConfiguration
 		extends CompositeReactiveHealthContributorConfiguration<MongoReactiveHealthIndicator, ReactiveMongoTemplate> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "mongoHealthIndicator", "mongoHealthContributor" })
+	@ConditionalOnMissingBean(name = {"mongoHealthIndicator", "mongoHealthContributor"})
 	public ReactiveHealthContributor mongoHealthContributor(Map<String, ReactiveMongoTemplate> reactiveMongoTemplates) {
 		return createContributor(reactiveMongoTemplates);
 	}

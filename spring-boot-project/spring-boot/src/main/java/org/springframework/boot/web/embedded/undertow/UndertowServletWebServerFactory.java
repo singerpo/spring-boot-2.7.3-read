@@ -85,8 +85,8 @@ import org.springframework.util.CollectionUtils;
  * @author Andy Wilkinson
  * @author Marcos Barbero
  * @author Eddú Meléndez
- * @since 2.0.0
  * @see UndertowServletWebServer
+ * @since 2.0.0
  */
 public class UndertowServletWebServerFactory extends AbstractServletWebServerFactory
 		implements ConfigurableUndertowWebServerFactory, ResourceLoaderAware {
@@ -115,6 +115,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	/**
 	 * Create a new {@link UndertowServletWebServerFactory} that listens for requests
 	 * using the specified port.
+	 *
 	 * @param port the port to listen on
 	 */
 	public UndertowServletWebServerFactory(int port) {
@@ -125,8 +126,9 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	/**
 	 * Create a new {@link UndertowServletWebServerFactory} with the specified context
 	 * path and port.
+	 *
 	 * @param contextPath the root context path
-	 * @param port the port to listen on
+	 * @param port        the port to listen on
 	 */
 	public UndertowServletWebServerFactory(String contextPath, int port) {
 		super(contextPath, port);
@@ -146,6 +148,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	/**
 	 * Returns a mutable collection of the {@link UndertowBuilderCustomizer}s that will be
 	 * applied to the Undertow {@link Builder}.
+	 *
 	 * @return the customizers that will be applied
 	 */
 	public Collection<UndertowBuilderCustomizer> getBuilderCustomizers() {
@@ -223,6 +226,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	 * Set {@link UndertowDeploymentInfoCustomizer}s that should be applied to the
 	 * Undertow {@link DeploymentInfo}. Calling this method will replace any existing
 	 * customizers.
+	 *
 	 * @param customizers the customizers to set
 	 */
 	public void setDeploymentInfoCustomizers(Collection<? extends UndertowDeploymentInfoCustomizer> customizers) {
@@ -233,6 +237,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	/**
 	 * Add {@link UndertowDeploymentInfoCustomizer}s that should be used to customize the
 	 * Undertow {@link DeploymentInfo}.
+	 *
 	 * @param customizers the customizers to add
 	 */
 	public void addDeploymentInfoCustomizers(UndertowDeploymentInfoCustomizer... customizers) {
@@ -243,6 +248,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	/**
 	 * Returns a mutable collection of the {@link UndertowDeploymentInfoCustomizer}s that
 	 * will be applied to the Undertow {@link DeploymentInfo}.
+	 *
 	 * @return the customizers that will be applied
 	 */
 	public Collection<UndertowDeploymentInfoCustomizer> getDeploymentInfoCustomizers() {
@@ -256,6 +262,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 
 	/**
 	 * Return if filters should be eagerly initialized.
+	 *
 	 * @return {@code true} if filters are eagerly initialized, otherwise {@code false}.
 	 * @since 2.4.0
 	 */
@@ -265,8 +272,9 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 
 	/**
 	 * Set whether filters should be eagerly initialized.
+	 *
 	 * @param eagerFilterInit {@code true} if filters are eagerly initialized, otherwise
-	 * {@code false}.
+	 *                        {@code false}.
 	 * @since 2.4.0
 	 */
 	public void setEagerFilterInit(boolean eagerFilterInit) {
@@ -275,6 +283,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 
 	/**
 	 * Return whether the request path should be preserved on forward.
+	 *
 	 * @return {@code true} if the path should be preserved when a request is forwarded,
 	 * otherwise {@code false}.
 	 * @since 2.4.0
@@ -285,8 +294,9 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 
 	/**
 	 * Set whether the request path should be preserved on forward.
+	 *
 	 * @param preservePathOnForward {@code true} if the path should be preserved when a
-	 * request is forwarded, otherwise {@code false}.
+	 *                              request is forwarded, otherwise {@code false}.
 	 * @since 2.4.0
 	 */
 	public void setPreservePathOnForward(boolean preservePathOnForward) {
@@ -342,8 +352,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 		for (String className : getWebListenerClassNames()) {
 			try {
 				deployment.addListener(new ListenerInfo(loadWebListenerClass(className)));
-			}
-			catch (ClassNotFoundException ex) {
+			} catch (ClassNotFoundException ex) {
 				throw new IllegalStateException("Failed to load web listener class '" + className + "'", ex);
 			}
 		}
@@ -364,7 +373,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	}
 
 	private void registerServletContainerInitializerToDriveServletContextInitializers(DeploymentInfo deployment,
-			ServletContextInitializer... initializers) {
+																					  ServletContextInitializer... initializers) {
 		ServletContextInitializer[] mergedInitializers = mergeInitializers(initializers);
 		Initializer initializer = new Initializer(mergedInitializers);
 		deployment.addServletContainerInitializer(new ServletContainerInitializerInfo(Initializer.class,
@@ -396,16 +405,13 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 					File file = new File(url.toURI());
 					if (file.isFile()) {
 						resourceJarUrls.add(new URL("jar:" + url + "!/"));
-					}
-					else {
+					} else {
 						managers.add(new FileResourceManager(new File(file, "META-INF/resources"), 0));
 					}
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new RuntimeException(ex);
 				}
-			}
-			else {
+			} else {
 				resourceJarUrls.add(url);
 			}
 		}
@@ -417,8 +423,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 		try {
 			File root = (docBase != null) ? docBase : createTempDir("undertow-docbase");
 			return root.getCanonicalFile();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Cannot get canonical document root", ex);
 		}
 	}
@@ -460,9 +465,10 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 	 * can override this method to return a different {@link UndertowServletWebServer} or
 	 * apply additional processing to the {@link Builder} and {@link DeploymentManager}
 	 * used to bootstrap Undertow
+	 *
 	 * @param builder the builder
 	 * @param manager the deployment manager
-	 * @param port the port that Undertow should listen on
+	 * @param port    the port that Undertow should listen on
 	 * @return a new {@link UndertowServletWebServer} instance
 	 */
 	protected UndertowServletWebServer getUndertowWebServer(Builder builder, DeploymentManager manager, int port) {
@@ -561,8 +567,7 @@ public class UndertowServletWebServerFactory extends AbstractServletWebServerFac
 					return null;
 				}
 				return resource;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return null;
 			}
 		}

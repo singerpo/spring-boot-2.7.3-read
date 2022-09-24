@@ -94,8 +94,7 @@ public abstract class MockServletWebServer {
 			for (Initializer initializer : this.initializers) {
 				initializer.onStartup(this.servletContext);
 			}
-		}
-		catch (ServletException ex) {
+		} catch (ServletException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

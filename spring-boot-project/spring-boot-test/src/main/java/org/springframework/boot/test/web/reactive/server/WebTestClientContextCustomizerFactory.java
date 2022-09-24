@@ -53,12 +53,12 @@ class WebTestClientContextCustomizerFactory implements ContextCustomizerFactory 
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		SpringBootTest springBootTest = TestContextAnnotationUtils.findMergedAnnotation(testClass,
 				SpringBootTest.class);
 		return (springBootTest != null && webClientPresent
 				&& (reactorClientPresent || jettyClientPresent || httpComponentsClientPresent))
-						? new WebTestClientContextCustomizer() : null;
+				? new WebTestClientContextCustomizer() : null;
 	}
 
 }

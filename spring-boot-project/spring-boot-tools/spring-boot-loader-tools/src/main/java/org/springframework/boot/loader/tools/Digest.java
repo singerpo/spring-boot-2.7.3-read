@@ -33,6 +33,7 @@ final class Digest {
 
 	/**
 	 * Return the SHA-1 digest from the supplied stream.
+	 *
 	 * @param supplier the stream supplier
 	 * @return the SHA-1 digest
 	 * @throws IOException on IO error
@@ -47,8 +48,7 @@ final class Digest {
 				}
 				return bytesToHex(inputStream.getMessageDigest().digest());
 			}
-		}
-		catch (NoSuchAlgorithmException ex) {
+		} catch (NoSuchAlgorithmException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

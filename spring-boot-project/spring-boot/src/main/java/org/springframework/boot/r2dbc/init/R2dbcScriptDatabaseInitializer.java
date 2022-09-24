@@ -43,11 +43,12 @@ public class R2dbcScriptDatabaseInitializer extends AbstractScriptDatabaseInitia
 	 * Creates a new {@code R2dbcScriptDatabaseInitializer} that will initialize the
 	 * database recognized by the given {@code connectionFactory} using the given
 	 * {@code settings}.
+	 *
 	 * @param connectionFactory connectionFactory for the database
-	 * @param settings initialization settings
+	 * @param settings          initialization settings
 	 */
 	public R2dbcScriptDatabaseInitializer(ConnectionFactory connectionFactory,
-			DatabaseInitializationSettings settings) {
+										  DatabaseInitializationSettings settings) {
 		super(settings);
 		this.connectionFactory = connectionFactory;
 	}

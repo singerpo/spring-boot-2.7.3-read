@@ -44,8 +44,8 @@ class ConfigDataEnvironmentContributorPlaceholdersResolver implements Placeholde
 	private final ConfigDataEnvironmentContributor activeContributor;
 
 	ConfigDataEnvironmentContributorPlaceholdersResolver(Iterable<ConfigDataEnvironmentContributor> contributors,
-			ConfigDataActivationContext activationContext, ConfigDataEnvironmentContributor activeContributor,
-			boolean failOnResolveFromInactiveContributor) {
+														 ConfigDataActivationContext activationContext, ConfigDataEnvironmentContributor activeContributor,
+														 boolean failOnResolveFromInactiveContributor) {
 		this.contributors = contributors;
 		this.activationContext = activationContext;
 		this.activeContributor = activeContributor;

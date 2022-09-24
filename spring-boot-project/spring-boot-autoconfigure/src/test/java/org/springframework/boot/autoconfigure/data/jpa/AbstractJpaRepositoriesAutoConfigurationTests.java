@@ -95,7 +95,7 @@ abstract class AbstractJpaRepositoriesAutoConfigurationTests {
 				.withPropertyValues("spring.data.jpa.repositories.bootstrap-mode=lazy")
 				.run((context) -> assertThat(
 						context.getBean(LocalContainerEntityManagerFactoryBean.class).getBootstrapExecutor())
-								.isEqualTo(context.getBean("applicationTaskExecutor")));
+						.isEqualTo(context.getBean("applicationTaskExecutor")));
 	}
 
 	@Test
@@ -104,7 +104,7 @@ abstract class AbstractJpaRepositoriesAutoConfigurationTests {
 				.withPropertyValues("spring.data.jpa.repositories.bootstrap-mode=lazy")
 				.run((context) -> assertThat(
 						context.getBean(LocalContainerEntityManagerFactoryBean.class).getBootstrapExecutor())
-								.isEqualTo(context.getBean("testAsyncTaskExecutor")));
+						.isEqualTo(context.getBean("testAsyncTaskExecutor")));
 	}
 
 	@Test
@@ -115,7 +115,7 @@ abstract class AbstractJpaRepositoriesAutoConfigurationTests {
 				.withPropertyValues("spring.data.jpa.repositories.bootstrap-mode=deferred")
 				.run((context) -> assertThat(
 						context.getBean(LocalContainerEntityManagerFactoryBean.class).getBootstrapExecutor())
-								.isEqualTo(context.getBean("applicationTaskExecutor")));
+						.isEqualTo(context.getBean("applicationTaskExecutor")));
 	}
 
 	@Test
@@ -124,7 +124,7 @@ abstract class AbstractJpaRepositoriesAutoConfigurationTests {
 				.withConfiguration(AutoConfigurations.of(TaskExecutionAutoConfiguration.class,
 						TaskSchedulingAutoConfiguration.class))
 				.withPropertyValues("spring.data.jpa.repositories.bootstrap-mode=default").run((context) -> assertThat(
-						context.getBean(LocalContainerEntityManagerFactoryBean.class).getBootstrapExecutor()).isNull());
+				context.getBean(LocalContainerEntityManagerFactoryBean.class).getBootstrapExecutor()).isNull());
 	}
 
 	@Test
@@ -163,8 +163,8 @@ abstract class AbstractJpaRepositoriesAutoConfigurationTests {
 	@Configuration(proxyBeanMethods = false)
 	@EnableJpaRepositories(
 			basePackageClasses = org.springframework.boot.autoconfigure.data.alt.jpa.CityJpaRepository.class,
-			excludeFilters = { @Filter(type = FilterType.ASSIGNABLE_TYPE, value = CityMongoDbRepository.class),
-					@Filter(type = FilterType.ASSIGNABLE_TYPE, value = CityElasticsearchDbRepository.class) })
+			excludeFilters = {@Filter(type = FilterType.ASSIGNABLE_TYPE, value = CityMongoDbRepository.class),
+					@Filter(type = FilterType.ASSIGNABLE_TYPE, value = CityElasticsearchDbRepository.class)})
 	@TestAutoConfigurationPackage(City.class)
 	static class CustomConfiguration {
 

@@ -54,15 +54,15 @@ import org.springframework.util.StringUtils;
  * @author Kazuki Shimizu
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties({ AtomikosProperties.class, JtaProperties.class })
-@ConditionalOnClass({ JtaTransactionManager.class, UserTransactionManager.class })
+@EnableConfigurationProperties({AtomikosProperties.class, JtaProperties.class})
+@ConditionalOnClass({JtaTransactionManager.class, UserTransactionManager.class})
 @ConditionalOnMissingBean(org.springframework.transaction.TransactionManager.class)
 class AtomikosJtaConfiguration {
 
 	@Bean(initMethod = "init", destroyMethod = "shutdownWait")
 	@ConditionalOnMissingBean(UserTransactionService.class)
 	UserTransactionServiceImp userTransactionService(AtomikosProperties atomikosProperties,
-			JtaProperties jtaProperties) {
+													 JtaProperties jtaProperties) {
 		Properties properties = new Properties();
 		if (StringUtils.hasText(jtaProperties.getTransactionManagerId())) {
 			properties.setProperty("com.atomikos.icatch.tm_unique_name", jtaProperties.getTransactionManagerId());
@@ -103,7 +103,7 @@ class AtomikosJtaConfiguration {
 
 	@Bean
 	JtaTransactionManager transactionManager(UserTransaction userTransaction, TransactionManager transactionManager,
-			ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
+											 ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
 		JtaTransactionManager jtaTransactionManager = new JtaTransactionManager(userTransaction, transactionManager);
 		transactionManagerCustomizers.ifAvailable((customizers) -> customizers.customize(jtaTransactionManager));
 		return jtaTransactionManager;

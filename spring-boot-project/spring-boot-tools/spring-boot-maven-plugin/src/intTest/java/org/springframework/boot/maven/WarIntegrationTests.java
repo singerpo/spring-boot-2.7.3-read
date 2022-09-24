@@ -104,8 +104,7 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 				assertThat(unreproducibleEntries).isEmpty();
 				warHash.set(FileUtils.sha1Hash(repackaged));
 				FileSystemUtils.deleteRecursively(project);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
 		});
@@ -145,7 +144,7 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 			assertThat(jar(repackaged)).hasEntryWithNameStartingWith("WEB-INF/classes/")
 					.hasEntryWithNameStartingWith("WEB-INF/lib/jar-release")
 					.hasEntryWithNameStartingWith("WEB-INF/lib/jar-snapshot").hasEntryWithNameStartingWith(
-							"WEB-INF/lib/" + JarModeLibrary.LAYER_TOOLS.getCoordinates().getArtifactId());
+					"WEB-INF/lib/" + JarModeLibrary.LAYER_TOOLS.getCoordinates().getArtifactId());
 			try (JarFile jarFile = new JarFile(repackaged)) {
 				Map<String, List<String>> layerIndex = readLayerIndex(jarFile);
 				assertThat(layerIndex.keySet()).containsExactly("dependencies", "spring-boot-loader",
@@ -159,8 +158,7 @@ class WarIntegrationTests extends AbstractArchiveIntegrationTests {
 						.anyMatch((dependency) -> dependency.startsWith("WEB-INF/lib/spring-context"));
 				assertThat(layerIndex.get("dependencies"))
 						.anyMatch((dependency) -> dependency.startsWith("WEB-INF/lib-provided/"));
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		});
 	}

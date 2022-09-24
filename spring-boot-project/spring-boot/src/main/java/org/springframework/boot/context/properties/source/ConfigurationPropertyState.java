@@ -49,8 +49,9 @@ public enum ConfigurationPropertyState {
 	/**
 	 * Search the given iterable using a predicate to determine if content is
 	 * {@link #PRESENT} or {@link #ABSENT}.
-	 * @param <T> the data type
-	 * @param source the source iterable to search
+	 *
+	 * @param <T>       the data type
+	 * @param source    the source iterable to search
 	 * @param predicate the predicate used to test for presence
 	 * @return {@link #PRESENT} if the iterable contains a matching item, otherwise
 	 * {@link #ABSENT}.

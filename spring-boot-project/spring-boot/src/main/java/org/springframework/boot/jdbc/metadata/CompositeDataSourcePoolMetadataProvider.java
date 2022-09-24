@@ -37,6 +37,7 @@ public class CompositeDataSourcePoolMetadataProvider implements DataSourcePoolMe
 	/**
 	 * Create a {@link CompositeDataSourcePoolMetadataProvider} instance with an initial
 	 * collection of delegates to use.
+	 *
 	 * @param providers the data source pool metadata providers
 	 */
 	public CompositeDataSourcePoolMetadataProvider(Collection<? extends DataSourcePoolMetadataProvider> providers) {

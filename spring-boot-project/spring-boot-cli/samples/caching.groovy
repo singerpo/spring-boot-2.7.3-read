@@ -6,7 +6,8 @@ import java.util.concurrent.atomic.AtomicLong
 @EnableCaching
 class Sample {
 
-	@Bean CacheManager cacheManager() {
+	@Bean
+	CacheManager cacheManager() {
 		new ConcurrentMapCacheManager()
 	}
 

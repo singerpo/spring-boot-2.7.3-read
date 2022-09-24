@@ -95,8 +95,7 @@ public class EndpointMBean implements DynamicMBean {
 		ClassLoader previousClassLoader = overrideThreadContextClassLoader(this.classLoader);
 		try {
 			return invoke(operation, params);
-		}
-		finally {
+		} finally {
 			overrideThreadContextClassLoader(previousClassLoader);
 		}
 	}
@@ -105,8 +104,7 @@ public class EndpointMBean implements DynamicMBean {
 		if (classLoader != null) {
 			try {
 				return ClassUtils.overrideThreadContextClassLoader(classLoader);
-			}
-			catch (SecurityException ex) {
+			} catch (SecurityException ex) {
 				// can't set class loader, ignore it and proceed
 			}
 		}
@@ -124,11 +122,9 @@ public class EndpointMBean implements DynamicMBean {
 				result = ReactiveHandler.handle(result);
 			}
 			return this.responseMapper.mapResponse(result);
-		}
-		catch (InvalidEndpointRequestException ex) {
+		} catch (InvalidEndpointRequestException ex) {
 			throw new ReflectionException(new IllegalArgumentException(ex.getMessage()), ex.getMessage());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new MBeanException(translateIfNecessary(ex), ex.getMessage());
 		}
 	}

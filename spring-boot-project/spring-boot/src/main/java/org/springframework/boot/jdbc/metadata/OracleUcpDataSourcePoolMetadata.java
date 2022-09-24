@@ -40,8 +40,7 @@ public class OracleUcpDataSourcePoolMetadata extends AbstractDataSourcePoolMetad
 	public Integer getActive() {
 		try {
 			return getDataSource().getBorrowedConnectionsCount();
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 			return null;
 		}
 	}
@@ -50,8 +49,7 @@ public class OracleUcpDataSourcePoolMetadata extends AbstractDataSourcePoolMetad
 	public Integer getIdle() {
 		try {
 			return getDataSource().getAvailableConnectionsCount();
-		}
-		catch (SQLException ex) {
+		} catch (SQLException ex) {
 			return null;
 		}
 	}

@@ -56,10 +56,10 @@ class OracleUcpDataSourceConfigurationTests {
 	void testDataSourcePropertiesOverridden() {
 		this.contextRunner.withPropertyValues("spring.datasource.oracleucp.url=jdbc:foo//bar/spam",
 				"spring.datasource.oracleucp.max-idle-time=1234").run((context) -> {
-					PoolDataSourceImpl ds = context.getBean(PoolDataSourceImpl.class);
-					assertThat(ds.getURL()).isEqualTo("jdbc:foo//bar/spam");
-					assertThat(ds.getMaxIdleTime()).isEqualTo(1234);
-				});
+			PoolDataSourceImpl ds = context.getBean(PoolDataSourceImpl.class);
+			assertThat(ds.getURL()).isEqualTo("jdbc:foo//bar/spam");
+			assertThat(ds.getMaxIdleTime()).isEqualTo(1234);
+		});
 	}
 
 	@Test
@@ -99,9 +99,9 @@ class OracleUcpDataSourceConfigurationTests {
 	void poolNameTakesPrecedenceOverName() {
 		this.contextRunner.withPropertyValues("spring.datasource.name=myDS",
 				"spring.datasource.oracleucp.connection-pool-name=myOracleUcpDS").run((context) -> {
-					PoolDataSourceImpl ds = context.getBean(PoolDataSourceImpl.class);
-					assertThat(ds.getConnectionPoolName()).isEqualTo("myOracleUcpDS");
-				});
+			PoolDataSourceImpl ds = context.getBean(PoolDataSourceImpl.class);
+			assertThat(ds.getConnectionPoolName()).isEqualTo("myOracleUcpDS");
+		});
 	}
 
 }

@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
  * @author Phillip Webb
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE })
+@Target({ElementType.TYPE})
 @Documented
 public @interface TestAutoConfigureBefore {
 

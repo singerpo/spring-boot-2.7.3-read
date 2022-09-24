@@ -36,13 +36,13 @@ import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHa
  * @since 2.2.0
  */
 @AutoConfiguration(after = RSocketStrategiesAutoConfiguration.class)
-@ConditionalOnClass({ RSocketRequester.class, io.rsocket.RSocket.class, TcpServerTransport.class })
+@ConditionalOnClass({RSocketRequester.class, io.rsocket.RSocket.class, TcpServerTransport.class})
 public class RSocketMessagingAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	public RSocketMessageHandler messageHandler(RSocketStrategies rSocketStrategies,
-			ObjectProvider<RSocketMessageHandlerCustomizer> customizers) {
+												ObjectProvider<RSocketMessageHandlerCustomizer> customizers) {
 		RSocketMessageHandler messageHandler = new RSocketMessageHandler();
 		messageHandler.setRSocketStrategies(rSocketStrategies);
 		customizers.orderedStream().forEach((customizer) -> customizer.customize(messageHandler));

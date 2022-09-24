@@ -62,9 +62,9 @@ class CloudFoundryWebEndpointServletHandlerMapping extends AbstractWebMvcEndpoin
 	private final EndpointLinksResolver linksResolver;
 
 	CloudFoundryWebEndpointServletHandlerMapping(EndpointMapping endpointMapping,
-			Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
-			CorsConfiguration corsConfiguration, CloudFoundrySecurityInterceptor securityInterceptor,
-			EndpointLinksResolver linksResolver) {
+												 Collection<ExposableWebEndpoint> endpoints, EndpointMediaTypes endpointMediaTypes,
+												 CorsConfiguration corsConfiguration, CloudFoundrySecurityInterceptor securityInterceptor,
+												 EndpointLinksResolver linksResolver) {
 		super(endpointMapping, endpoints, endpointMediaTypes, corsConfiguration, true,
 				WebMvcAutoConfiguration.pathPatternParser);
 		this.securityInterceptor = securityInterceptor;
@@ -73,7 +73,7 @@ class CloudFoundryWebEndpointServletHandlerMapping extends AbstractWebMvcEndpoin
 
 	@Override
 	protected ServletWebOperation wrapServletWebOperation(ExposableWebEndpoint endpoint, WebOperation operation,
-			ServletWebOperation servletWebOperation) {
+														  ServletWebOperation servletWebOperation) {
 		return new SecureServletWebOperation(servletWebOperation, this.securityInterceptor, endpoint.getEndpointId());
 	}
 
@@ -113,8 +113,7 @@ class CloudFoundryWebEndpointServletHandlerMapping extends AbstractWebMvcEndpoin
 		private void sendFailureResponse(HttpServletResponse response, SecurityResponse securityResponse) {
 			try {
 				response.sendError(securityResponse.getStatus().value(), securityResponse.getMessage());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				logger.debug("Failed to send error response", ex);
 			}
 		}
@@ -133,7 +132,7 @@ class CloudFoundryWebEndpointServletHandlerMapping extends AbstractWebMvcEndpoin
 		private final EndpointId endpointId;
 
 		SecureServletWebOperation(ServletWebOperation delegate, CloudFoundrySecurityInterceptor securityInterceptor,
-				EndpointId endpointId) {
+								  EndpointId endpointId) {
 			this.delegate = delegate;
 			this.securityInterceptor = securityInterceptor;
 			this.endpointId = endpointId;

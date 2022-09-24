@@ -35,7 +35,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Dave Syer
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "management.endpoints.web.base-path=/admin" })
+		properties = {"management.endpoints.web.base-path=/admin"})
 class ManagementPathSampleActuatorApplicationTests {
 
 	@Autowired
@@ -56,7 +56,7 @@ class ManagementPathSampleActuatorApplicationTests {
 		assertThat(entity.getHeaders()).doesNotContainKey("Set-Cookie");
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

@@ -34,5 +34,5 @@ class MyApplication {
 
 fun main(args: Array<String>) {
 	exitProcess(SpringApplication.exit(
-		runApplication<MyApplication>(*args)))
+			runApplication<MyApplication>(*args)))
 }

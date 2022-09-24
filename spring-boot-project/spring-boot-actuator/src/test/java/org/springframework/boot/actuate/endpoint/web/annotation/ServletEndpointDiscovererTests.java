@@ -145,7 +145,7 @@ class ServletEndpointDiscovererTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ TestEndpoint.class, TestServletEndpoint.class })
+	@Import({TestEndpoint.class, TestServletEndpoint.class})
 	static class WithRegularEndpointConfiguration {
 
 	}

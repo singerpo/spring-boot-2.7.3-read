@@ -238,7 +238,8 @@ class DockerApiTests {
 					.withMessage("Listener must not be null");
 		}
 
-		@Test // gh-23130
+		@Test
+			// gh-23130
 		void loadWithEmptyResponseThrowsException() throws Exception {
 			Image image = Image.of(getClass().getResourceAsStream("type/image.json"));
 			ImageArchive archive = ImageArchive.from(image);

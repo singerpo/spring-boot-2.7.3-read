@@ -53,6 +53,7 @@ final class BuildpackCoordinates {
 
 	/**
 	 * Return the buildpack ID with all "/" replaced by "_".
+	 *
 	 * @return the ID
 	 */
 	String getSanitizedId() {
@@ -93,8 +94,9 @@ final class BuildpackCoordinates {
 	 * Create {@link BuildpackCoordinates} from a <a href=
 	 * "https://github.com/buildpacks/spec/blob/main/buildpack.md#buildpacktoml-toml">{@code buildpack.toml}</a>
 	 * file.
+	 *
 	 * @param inputStream an input stream containing {@code buildpack.toml} content
-	 * @param path the path to the buildpack containing the {@code buildpack.toml} file
+	 * @param path        the path to the buildpack containing the {@code buildpack.toml} file
 	 * @return a new {@link BuildpackCoordinates} instance
 	 * @throws IOException on IO error
 	 */
@@ -119,6 +121,7 @@ final class BuildpackCoordinates {
 	/**
 	 * Create {@link BuildpackCoordinates} by extracting values from
 	 * {@link BuildpackMetadata}.
+	 *
 	 * @param buildpackMetadata the buildpack metadata
 	 * @return a new {@link BuildpackCoordinates} instance
 	 */
@@ -129,7 +132,8 @@ final class BuildpackCoordinates {
 
 	/**
 	 * Create {@link BuildpackCoordinates} from an ID and version.
-	 * @param id the buildpack ID
+	 *
+	 * @param id      the buildpack ID
 	 * @param version the buildpack version
 	 * @return a new {@link BuildpackCoordinates} instance
 	 */

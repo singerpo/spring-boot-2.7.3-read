@@ -104,12 +104,12 @@ class MetricsRepositoryMethodInvocationListenerTests {
 
 	interface TimedMethodRepository extends Repository<Example, Long> {
 
-		@Timed(extraTags = { "tag1", "value1" })
+		@Timed(extraTags = {"tag1", "value1"})
 		Example findById(long id);
 
 	}
 
-	@Timed(extraTags = { "taga", "valuea" })
+	@Timed(extraTags = {"taga", "valuea"})
 	interface TimedClassRepository extends Repository<Example, Long> {
 
 		Example findById(long id);

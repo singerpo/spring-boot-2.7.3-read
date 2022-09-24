@@ -30,6 +30,7 @@ public interface EntryWriter {
 
 	/**
 	 * Write entry data to the specified output stream.
+	 *
 	 * @param outputStream the destination for the data
 	 * @throws IOException in case of I/O errors
 	 */
@@ -38,6 +39,7 @@ public interface EntryWriter {
 	/**
 	 * Return the size of the content that will be written, or {@code -1} if the size is
 	 * not known.
+	 *
 	 * @return the size of the content
 	 */
 	default int size() {

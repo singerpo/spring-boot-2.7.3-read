@@ -54,8 +54,8 @@ class RestartServerTests {
 		URL url2 = new URL("file:/proj/module-b.jar!/");
 		URL url3 = new URL("file:/proj/module-c.jar!/");
 		URL url4 = new URL("file:/proj/module-d.jar!/");
-		URLClassLoader classLoaderA = new URLClassLoader(new URL[] { url1, url2 });
-		URLClassLoader classLoaderB = new URLClassLoader(new URL[] { url3, url4 }, classLoaderA);
+		URLClassLoader classLoaderA = new URLClassLoader(new URL[]{url1, url2});
+		URLClassLoader classLoaderB = new URLClassLoader(new URL[]{url3, url4}, classLoaderA);
 		SourceDirectoryUrlFilter filter = new DefaultSourceDirectoryUrlFilter();
 		MockRestartServer server = new MockRestartServer(filter, classLoaderB);
 		ClassLoaderFiles files = new ClassLoaderFiles();
@@ -76,7 +76,7 @@ class RestartServerTests {
 		new FileOutputStream(jarFile).close();
 		jarFile.setLastModified(0);
 		URL url = jarFile.toURI().toURL();
-		URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+		URLClassLoader classLoader = new URLClassLoader(new URL[]{url});
 		SourceDirectoryUrlFilter filter = new DefaultSourceDirectoryUrlFilter();
 		MockRestartServer server = new MockRestartServer(filter, classLoader);
 		ClassLoaderFiles files = new ClassLoaderFiles();
@@ -94,7 +94,7 @@ class RestartServerTests {
 		File classFile = new File(directory, "ClassA.class");
 		FileCopyUtils.copy("abc".getBytes(), classFile);
 		URL url = directory.toURI().toURL();
-		URLClassLoader classLoader = new URLClassLoader(new URL[] { url });
+		URLClassLoader classLoader = new URLClassLoader(new URL[]{url});
 		SourceDirectoryUrlFilter filter = new DefaultSourceDirectoryUrlFilter();
 		MockRestartServer server = new MockRestartServer(filter, classLoader);
 		ClassLoaderFiles files = new ClassLoaderFiles();

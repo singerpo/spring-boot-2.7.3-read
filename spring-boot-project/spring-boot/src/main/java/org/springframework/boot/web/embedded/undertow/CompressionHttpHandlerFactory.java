@@ -99,8 +99,7 @@ class CompressionHttpHandlerFactory implements HttpHandlerFactory {
 							return true;
 						}
 					}
-				}
-				catch (InvalidMimeTypeException ex) {
+				} catch (InvalidMimeTypeException ex) {
 					return false;
 				}
 			}

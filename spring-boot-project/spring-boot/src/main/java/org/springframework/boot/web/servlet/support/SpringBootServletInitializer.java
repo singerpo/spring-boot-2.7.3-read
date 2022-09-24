@@ -70,8 +70,8 @@ import org.springframework.web.context.WebApplicationContext;
  * @author Dave Syer
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 2.0.0
  * @see #configure(SpringApplicationBuilder)
+ * @since 2.0.0
  */
 public abstract class SpringBootServletInitializer implements WebApplicationInitializer {
 
@@ -82,6 +82,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 	/**
 	 * Set if the {@link ErrorPageFilter} should be registered. Set to {@code false} if
 	 * error page mappings should be handled via the server and not Spring Boot.
+	 *
 	 * @param registerErrorPageFilter if the {@link ErrorPageFilter} should be registered.
 	 */
 	protected final void setRegisterErrorPageFilter(boolean registerErrorPageFilter) {
@@ -97,8 +98,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 		WebApplicationContext rootApplicationContext = createRootApplicationContext(servletContext);
 		if (rootApplicationContext != null) {
 			servletContext.addListener(new SpringBootContextLoaderListener(rootApplicationContext, servletContext));
-		}
-		else {
+		} else {
 			this.logger.debug("No ContextLoaderListener registered, as createRootApplicationContext() did not "
 					+ "return an application context");
 		}
@@ -110,6 +110,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 	 * {@link DriverManager#deregisterDriver(Driver) deregisters} every {@link Driver}
 	 * that was loaded by the {@link ServletContext#getClassLoader web application's class
 	 * loader}.
+	 *
 	 * @param servletContext the web application's servlet context
 	 * @since 2.3.0
 	 */
@@ -118,8 +119,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 			if (driver.getClass().getClassLoader() == servletContext.getClassLoader()) {
 				try {
 					DriverManager.deregisterDriver(driver);
-				}
-				catch (SQLException ex) {
+				} catch (SQLException ex) {
 					// Continue
 				}
 			}
@@ -159,6 +159,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 	 * Returns the {@code SpringApplicationBuilder} that is used to configure and create
 	 * the {@link SpringApplication}. The default implementation returns a new
 	 * {@code SpringApplicationBuilder} in its default state.
+	 *
 	 * @return the {@code SpringApplicationBuilder}.
 	 * @since 1.3.0
 	 */
@@ -168,6 +169,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 
 	/**
 	 * Called to run a fully configured {@link SpringApplication}.
+	 *
 	 * @param application the application to run
 	 * @return the {@link WebApplicationContext}
 	 */
@@ -188,6 +190,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 	 * (e.g. config classes) because other settings have sensible defaults. You might
 	 * choose (for instance) to add default command line arguments, or set an active
 	 * Spring profile.
+	 *
 	 * @param builder a builder for the application context
 	 * @return the application builder
 	 * @see SpringApplicationBuilder
@@ -245,8 +248,7 @@ public abstract class SpringBootServletInitializer implements WebApplicationInit
 		public void contextDestroyed(ServletContextEvent event) {
 			try {
 				super.contextDestroyed(event);
-			}
-			finally {
+			} finally {
 				// Use original context so that the classloader can be accessed
 				deregisterJdbcDrivers(this.servletContext);
 			}

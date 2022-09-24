@@ -54,7 +54,7 @@ class ColorConverterTests {
 	}
 
 	private ColorConverter newConverter(String styling) {
-		return ColorConverter.newInstance(null, new String[] { this.in, styling });
+		return ColorConverter.newInstance(null, new String[]{this.in, styling});
 	}
 
 	@Test

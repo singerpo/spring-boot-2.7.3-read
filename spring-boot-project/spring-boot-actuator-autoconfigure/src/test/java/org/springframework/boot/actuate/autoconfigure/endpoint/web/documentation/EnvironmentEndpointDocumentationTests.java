@@ -119,8 +119,7 @@ class EnvironmentEndpointDocumentationTests extends MockMvcEndpointDocumentation
 				properties.keySet().retainAll(filteredKeys);
 			}
 			return objectMapper.writeValueAsBytes(payload);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

@@ -27,6 +27,7 @@ public interface JarMode {
 
 	/**
 	 * Returns if this accepts and can run the given mode.
+	 *
 	 * @param mode the mode to check
 	 * @return if this instance accepts the mode
 	 */
@@ -34,6 +35,7 @@ public interface JarMode {
 
 	/**
 	 * Run the jar in the given mode.
+	 *
 	 * @param mode the mode to use
 	 * @param args any program arguments
 	 */

@@ -135,7 +135,7 @@ public class JacksonAutoConfiguration {
 		@Scope("prototype")
 		@ConditionalOnMissingBean
 		Jackson2ObjectMapperBuilder jacksonObjectMapperBuilder(ApplicationContext applicationContext,
-				List<Jackson2ObjectMapperBuilderCustomizer> customizers) {
+															   List<Jackson2ObjectMapperBuilderCustomizer> customizers) {
 			Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
 			builder.applicationContext(applicationContext);
 			customize(builder, customizers);
@@ -143,7 +143,7 @@ public class JacksonAutoConfiguration {
 		}
 
 		private void customize(Jackson2ObjectMapperBuilder builder,
-				List<Jackson2ObjectMapperBuilderCustomizer> customizers) {
+							   List<Jackson2ObjectMapperBuilderCustomizer> customizers) {
 			for (Jackson2ObjectMapperBuilderCustomizer customizer : customizers) {
 				customizer.customize(builder);
 			}
@@ -170,7 +170,7 @@ public class JacksonAutoConfiguration {
 			private final JacksonProperties jacksonProperties;
 
 			StandardJackson2ObjectMapperBuilderCustomizer(ApplicationContext applicationContext,
-					JacksonProperties jacksonProperties) {
+														  JacksonProperties jacksonProperties) {
 				this.applicationContext = applicationContext;
 				this.jacksonProperties = jacksonProperties;
 			}
@@ -208,8 +208,7 @@ public class JacksonAutoConfiguration {
 					if (value != null) {
 						if (value) {
 							builder.featuresToEnable(feature);
-						}
-						else {
+						} else {
 							builder.featuresToDisable(feature);
 						}
 					}
@@ -217,7 +216,7 @@ public class JacksonAutoConfiguration {
 			}
 
 			private void configureVisibility(Jackson2ObjectMapperBuilder builder,
-					Map<PropertyAccessor, JsonAutoDetect.Visibility> visibilities) {
+											 Map<PropertyAccessor, JsonAutoDetect.Visibility> visibilities) {
 				visibilities.forEach(builder::visibility);
 			}
 
@@ -229,8 +228,7 @@ public class JacksonAutoConfiguration {
 					try {
 						Class<?> dateFormatClass = ClassUtils.forName(dateFormat, null);
 						builder.dateFormat((DateFormat) BeanUtils.instantiateClass(dateFormatClass));
-					}
-					catch (ClassNotFoundException ex) {
+					} catch (ClassNotFoundException ex) {
 						SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
 						// Since Jackson 2.6.3 we always need to set a TimeZone (see
 						// gh-4170). If none in our properties fallback to the Jackson's
@@ -254,15 +252,14 @@ public class JacksonAutoConfiguration {
 				if (strategy != null) {
 					try {
 						configurePropertyNamingStrategyClass(builder, ClassUtils.forName(strategy, null));
-					}
-					catch (ClassNotFoundException ex) {
+					} catch (ClassNotFoundException ex) {
 						configurePropertyNamingStrategyField(builder, strategy);
 					}
 				}
 			}
 
 			private void configurePropertyNamingStrategyClass(Jackson2ObjectMapperBuilder builder,
-					Class<?> propertyNamingStrategyClass) {
+															  Class<?> propertyNamingStrategyClass) {
 				builder.propertyNamingStrategy(
 						(PropertyNamingStrategy) BeanUtils.instantiateClass(propertyNamingStrategyClass));
 			}
@@ -274,8 +271,7 @@ public class JacksonAutoConfiguration {
 				Assert.notNull(field, () -> "Constant named '" + fieldName + "' not found");
 				try {
 					builder.propertyNamingStrategy((PropertyNamingStrategy) field.get(null));
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new IllegalStateException(ex);
 				}
 			}
@@ -284,8 +280,7 @@ public class JacksonAutoConfiguration {
 				try {
 					return ReflectionUtils.findField(com.fasterxml.jackson.databind.PropertyNamingStrategies.class,
 							fieldName, PropertyNamingStrategy.class);
-				}
-				catch (NoClassDefFoundError ex) { // Fallback pre Jackson 2.12
+				} catch (NoClassDefFoundError ex) { // Fallback pre Jackson 2.12
 					return ReflectionUtils.findField(PropertyNamingStrategy.class, fieldName,
 							PropertyNamingStrategy.class);
 				}

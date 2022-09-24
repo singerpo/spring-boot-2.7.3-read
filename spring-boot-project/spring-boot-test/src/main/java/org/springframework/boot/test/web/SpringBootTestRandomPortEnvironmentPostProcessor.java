@@ -55,8 +55,7 @@ class SpringBootTestRandomPortEnvironmentPostProcessor implements EnvironmentPos
 		Integer serverPort = getPropertyAsInteger(environment, SERVER_PORT_PROPERTY, 8080);
 		if (!managementPort.equals(serverPort)) {
 			source.getSource().put(MANAGEMENT_PORT_PROPERTY, "0");
-		}
-		else {
+		} else {
 			source.getSource().put(MANAGEMENT_PORT_PROPERTY, "");
 		}
 	}
@@ -77,7 +76,7 @@ class SpringBootTestRandomPortEnvironmentPostProcessor implements EnvironmentPos
 	}
 
 	private Integer getPropertyAsInteger(PropertySource<?> source, String property,
-			ConfigurableEnvironment environment) {
+										 ConfigurableEnvironment environment) {
 		Object value = source.getProperty(property);
 		if (value == null) {
 			return null;
@@ -87,8 +86,7 @@ class SpringBootTestRandomPortEnvironmentPostProcessor implements EnvironmentPos
 		}
 		try {
 			return environment.getConversionService().convert(value, Integer.class);
-		}
-		catch (ConversionFailedException ex) {
+		} catch (ConversionFailedException ex) {
 			if (value instanceof String) {
 				return getResolvedValueIfPossible(environment, (String) value);
 			}

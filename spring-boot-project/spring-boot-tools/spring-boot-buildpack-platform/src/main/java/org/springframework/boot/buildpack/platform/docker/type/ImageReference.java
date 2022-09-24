@@ -28,8 +28,8 @@ import org.springframework.util.ObjectUtils;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 2.3.0
  * @see ImageName
+ * @since 2.3.0
  */
 public final class ImageReference {
 
@@ -55,6 +55,7 @@ public final class ImageReference {
 
 	/**
 	 * Return the domain for this image name.
+	 *
 	 * @return the domain
 	 * @see ImageName#getDomain()
 	 */
@@ -64,6 +65,7 @@ public final class ImageReference {
 
 	/**
 	 * Return the name of this image.
+	 *
 	 * @return the image name
 	 * @see ImageName#getName()
 	 */
@@ -73,6 +75,7 @@ public final class ImageReference {
 
 	/**
 	 * Return the tag from the reference or {@code null}.
+	 *
 	 * @return the referenced tag
 	 */
 	public String getTag() {
@@ -81,6 +84,7 @@ public final class ImageReference {
 
 	/**
 	 * Return the digest from the reference or {@code null}.
+	 *
 	 * @return the referenced digest
 	 */
 	public String getDigest() {
@@ -135,6 +139,7 @@ public final class ImageReference {
 
 	/**
 	 * Create a new {@link ImageReference} with an updated digest.
+	 *
 	 * @param digest the new digest
 	 * @return an updated image reference
 	 */
@@ -145,6 +150,7 @@ public final class ImageReference {
 	/**
 	 * Return an {@link ImageReference} in the form {@code "imagename:tag"}. If the tag
 	 * has not been defined then {@code latest} is used.
+	 *
 	 * @return the image reference in tagged form
 	 * @throws IllegalStateException if the image reference contains a digest
 	 */
@@ -156,6 +162,7 @@ public final class ImageReference {
 	/**
 	 * Return an {@link ImageReference} containing either a tag or a digest. If neither
 	 * the digest nor the tag has been defined then tag {@code latest} is used.
+	 *
 	 * @return the image reference in tagged or digest form
 	 */
 	public ImageReference inTaggedOrDigestForm() {
@@ -168,6 +175,7 @@ public final class ImageReference {
 	/**
 	 * Create a new {@link ImageReference} instance deduced from a source JAR file that
 	 * follows common Java naming conventions.
+	 *
 	 * @param jarFile the source jar file
 	 * @return an {@link ImageName} for the jar file.
 	 */
@@ -191,6 +199,7 @@ public final class ImageReference {
 
 	/**
 	 * Generate an image name with a random suffix.
+	 *
 	 * @param prefix the name prefix
 	 * @return a random image reference
 	 */
@@ -200,7 +209,8 @@ public final class ImageReference {
 
 	/**
 	 * Generate an image name with a random suffix.
-	 * @param prefix the name prefix
+	 *
+	 * @param prefix       the name prefix
 	 * @param randomLength the number of chars in the random part of the name
 	 * @return a random image reference
 	 */
@@ -218,6 +228,7 @@ public final class ImageReference {
 	 * <li>{@code domain:port/name:tag}</li>
 	 * <li>{@code domain:port/name@digest}</li>
 	 * </ul>
+	 *
 	 * @param value the value to parse
 	 * @return an {@link ImageName} instance
 	 */
@@ -257,6 +268,7 @@ public final class ImageReference {
 
 	/**
 	 * Create a new {@link ImageReference} from the given {@link ImageName}.
+	 *
 	 * @param name the image name
 	 * @return a new image reference
 	 */
@@ -266,8 +278,9 @@ public final class ImageReference {
 
 	/**
 	 * Create a new {@link ImageReference} from the given {@link ImageName} and tag.
+	 *
 	 * @param name the image name
-	 * @param tag the referenced tag
+	 * @param tag  the referenced tag
 	 * @return a new image reference
 	 */
 	public static ImageReference of(ImageName name, String tag) {
@@ -277,8 +290,9 @@ public final class ImageReference {
 	/**
 	 * Create a new {@link ImageReference} from the given {@link ImageName}, tag and
 	 * digest.
-	 * @param name the image name
-	 * @param tag the referenced tag
+	 *
+	 * @param name   the image name
+	 * @param tag    the referenced tag
 	 * @param digest the referenced digest
 	 * @return a new image reference
 	 */

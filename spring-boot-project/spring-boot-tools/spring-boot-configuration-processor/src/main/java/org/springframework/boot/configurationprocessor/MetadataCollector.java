@@ -51,8 +51,9 @@ public class MetadataCollector {
 
 	/**
 	 * Creates a new {@code MetadataProcessor} instance.
+	 *
 	 * @param processingEnvironment the processing environment of the build
-	 * @param previousMetadata any previous metadata or {@code null}
+	 * @param previousMetadata      any previous metadata or {@code null}
 	 */
 	public MetadataCollector(ProcessingEnvironment processingEnvironment, ConfigurationMetadata previousMetadata) {
 		this.processingEnvironment = processingEnvironment;

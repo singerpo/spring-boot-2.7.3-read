@@ -61,8 +61,7 @@ public abstract class DomainSocket extends AbstractSocket {
 			this.fileDescriptor = open(path);
 			this.inputStream = new DomainSocketInputStream();
 			this.outputStream = new DomainSocketOutputStream();
-		}
-		catch (LastErrorException ex) {
+		} catch (LastErrorException ex) {
 			throw new IOException(ex);
 		}
 	}
@@ -80,8 +79,7 @@ public abstract class DomainSocket extends AbstractSocket {
 			}
 			try {
 				return read(handle.intValue(), buffer, buffer.remaining());
-			}
-			catch (LastErrorException ex) {
+			} catch (LastErrorException ex) {
 				throw new IOException(ex);
 			}
 		}
@@ -92,8 +90,7 @@ public abstract class DomainSocket extends AbstractSocket {
 			if (!handle.isClosed()) {
 				try {
 					write(handle.intValue(), buffer, buffer.remaining());
-				}
-				catch (LastErrorException ex) {
+				} catch (LastErrorException ex) {
 					throw new IOException(ex);
 				}
 			}
@@ -115,8 +112,7 @@ public abstract class DomainSocket extends AbstractSocket {
 		super.close();
 		try {
 			this.fileDescriptor.close();
-		}
-		catch (LastErrorException ex) {
+		} catch (LastErrorException ex) {
 			throw new IOException(ex);
 		}
 	}
@@ -133,6 +129,7 @@ public abstract class DomainSocket extends AbstractSocket {
 
 	/**
 	 * Return a new {@link DomainSocket} for the given path.
+	 *
 	 * @param path the path to the domain socket
 	 * @return a {@link DomainSocket} instance
 	 * @throws IOException if the socket cannot be opened

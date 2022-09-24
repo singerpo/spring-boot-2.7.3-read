@@ -44,6 +44,7 @@ public class StartupTimeline {
 
 	/**
 	 * Return the start time of this timeline.
+	 *
 	 * @return the start time
 	 */
 	public Instant getStartTime() {
@@ -52,6 +53,7 @@ public class StartupTimeline {
 
 	/**
 	 * Return the recorded events.
+	 *
 	 * @return the events
 	 */
 	public List<TimelineEvent> getEvents() {
@@ -79,6 +81,7 @@ public class StartupTimeline {
 
 		/**
 		 * Return the start time of this event.
+		 *
 		 * @return the start time
 		 */
 		public Instant getStartTime() {
@@ -87,6 +90,7 @@ public class StartupTimeline {
 
 		/**
 		 * Return the end time of this event.
+		 *
 		 * @return the end time
 		 */
 		public Instant getEndTime() {
@@ -96,6 +100,7 @@ public class StartupTimeline {
 		/**
 		 * Return the duration of this event, i.e. the processing time of the associated
 		 * {@link StartupStep} with nanoseconds precision.
+		 *
 		 * @return the event duration
 		 */
 		public Duration getDuration() {
@@ -104,6 +109,7 @@ public class StartupTimeline {
 
 		/**
 		 * Return the {@link StartupStep} information for this event.
+		 *
 		 * @return the step information.
 		 */
 		public StartupStep getStartupStep() {

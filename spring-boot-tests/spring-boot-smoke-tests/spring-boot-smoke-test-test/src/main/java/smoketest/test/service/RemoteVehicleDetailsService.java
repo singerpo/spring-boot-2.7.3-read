@@ -50,8 +50,7 @@ public class RemoteVehicleDetailsService implements VehicleDetailsService {
 		logger.debug("Retrieving vehicle data for: " + vin);
 		try {
 			return this.restTemplate.getForObject("/vehicle/{vin}/details", VehicleDetails.class, vin);
-		}
-		catch (HttpStatusCodeException ex) {
+		} catch (HttpStatusCodeException ex) {
 			if (HttpStatus.NOT_FOUND.equals(ex.getStatusCode())) {
 				throw new VehicleIdentificationNumberNotFoundException(vin, ex);
 			}

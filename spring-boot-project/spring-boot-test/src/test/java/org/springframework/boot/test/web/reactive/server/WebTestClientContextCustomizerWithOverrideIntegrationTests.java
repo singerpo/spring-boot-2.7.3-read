@@ -56,7 +56,7 @@ class WebTestClientContextCustomizerWithOverrideIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ TestHandler.class, NoWebTestClientBeanChecker.class })
+	@Import({TestHandler.class, NoWebTestClientBeanChecker.class})
 	static class TestConfig {
 
 		@Bean

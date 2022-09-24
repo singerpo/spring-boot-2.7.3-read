@@ -32,8 +32,8 @@ class MyService(webServiceTemplateBuilder: WebServiceTemplateBuilder) {
 
 	fun someWsCall(detailsReq: SomeRequest?): SomeResponse {
 		return webServiceTemplate.marshalSendAndReceive(
-			detailsReq,
-			SoapActionCallback("https://ws.example.com/action")
+				detailsReq,
+				SoapActionCallback("https://ws.example.com/action")
 		) as SomeResponse
 	}
 

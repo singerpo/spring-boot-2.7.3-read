@@ -40,7 +40,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
  * @since 2.0.0
  */
 @AutoConfiguration(after = RedisAutoConfiguration.class)
-@ConditionalOnClass({ ReactiveRedisConnectionFactory.class, ReactiveRedisTemplate.class, Flux.class })
+@ConditionalOnClass({ReactiveRedisConnectionFactory.class, ReactiveRedisTemplate.class, Flux.class})
 public class RedisReactiveAutoConfiguration {
 
 	@Bean

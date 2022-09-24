@@ -85,6 +85,7 @@ public abstract class AbstractDataSourceInitializer implements InitializingBean 
 
 	/**
 	 * Customize the {@link ResourceDatabasePopulator}.
+	 *
 	 * @param populator the configured database populator
 	 */
 	protected void customize(ResourceDatabasePopulator populator) {
@@ -103,8 +104,7 @@ public abstract class AbstractDataSourceInitializer implements InitializingBean 
 				throw new IllegalStateException("Unable to detect database type");
 			}
 			return databaseDriver.getId();
-		}
-		catch (MetaDataAccessException ex) {
+		} catch (MetaDataAccessException ex) {
 			throw new IllegalStateException("Unable to detect database type", ex);
 		}
 	}

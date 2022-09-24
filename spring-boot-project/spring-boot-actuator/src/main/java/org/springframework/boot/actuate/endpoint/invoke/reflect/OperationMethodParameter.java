@@ -43,7 +43,8 @@ class OperationMethodParameter implements OperationParameter {
 
 	/**
 	 * Create a new {@link OperationMethodParameter} instance.
-	 * @param name the parameter name
+	 *
+	 * @param name      the parameter name
 	 * @param parameter the parameter
 	 */
 	OperationMethodParameter(String name, Parameter parameter) {

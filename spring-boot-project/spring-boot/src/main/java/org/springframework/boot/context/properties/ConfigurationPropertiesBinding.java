@@ -32,7 +32,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @since 1.3.0
  */
 @Qualifier(ConfigurationPropertiesBinding.VALUE)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface ConfigurationPropertiesBinding {

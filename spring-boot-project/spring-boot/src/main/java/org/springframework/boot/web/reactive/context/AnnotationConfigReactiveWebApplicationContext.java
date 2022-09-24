@@ -37,8 +37,8 @@ import org.springframework.stereotype.Component;
  *
  * @author Phillip Webb
  * @author Stephane Nicoll
- * @since 2.0.0
  * @see AnnotationConfigApplicationContext
+ * @since 2.0.0
  */
 public class AnnotationConfigReactiveWebApplicationContext extends AnnotationConfigApplicationContext
 		implements ConfigurableReactiveWebApplicationContext {
@@ -54,6 +54,7 @@ public class AnnotationConfigReactiveWebApplicationContext extends AnnotationCon
 	/**
 	 * Create a new AnnotationConfigApplicationContext with the given
 	 * DefaultListableBeanFactory.
+	 *
 	 * @param beanFactory the DefaultListableBeanFactory instance to use for this context
 	 * @since 2.2.0
 	 */
@@ -64,8 +65,9 @@ public class AnnotationConfigReactiveWebApplicationContext extends AnnotationCon
 	/**
 	 * Create a new AnnotationConfigApplicationContext, deriving bean definitions from the
 	 * given annotated classes and automatically refreshing the context.
+	 *
 	 * @param annotatedClasses one or more annotated classes, e.g.
-	 * {@link Configuration @Configuration} classes
+	 *                         {@link Configuration @Configuration} classes
 	 * @since 2.2.0
 	 */
 	public AnnotationConfigReactiveWebApplicationContext(Class<?>... annotatedClasses) {
@@ -75,6 +77,7 @@ public class AnnotationConfigReactiveWebApplicationContext extends AnnotationCon
 	/**
 	 * Create a new AnnotationConfigApplicationContext, scanning for bean definitions in
 	 * the given packages and automatically refreshing the context.
+	 *
 	 * @param basePackages the packages to check for annotated classes
 	 * @since 2.2.0
 	 */

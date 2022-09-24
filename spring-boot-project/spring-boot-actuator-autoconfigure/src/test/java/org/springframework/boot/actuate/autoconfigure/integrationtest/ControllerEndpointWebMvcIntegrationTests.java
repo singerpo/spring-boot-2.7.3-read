@@ -104,18 +104,18 @@ class ControllerEndpointWebMvcIntegrationTests {
 		return builder.build();
 	}
 
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class,
 			ServletManagementContextAutoConfiguration.class, AuditAutoConfiguration.class,
 			PropertyPlaceholderAutoConfiguration.class, WebMvcAutoConfiguration.class,
 			ManagementContextAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
-			BeansEndpointAutoConfiguration.class })
+			BeansEndpointAutoConfiguration.class})
 	static class DefaultConfiguration {
 
 	}
 
 	@Import(DefaultConfiguration.class)
-	@ImportAutoConfiguration({ SecurityAutoConfiguration.class })
+	@ImportAutoConfiguration({SecurityAutoConfiguration.class})
 	static class SecureConfiguration {
 
 	}

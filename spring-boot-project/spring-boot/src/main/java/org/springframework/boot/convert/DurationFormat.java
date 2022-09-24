@@ -30,13 +30,14 @@ import java.time.Duration;
  * @author Phillip Webb
  * @since 2.0.0
  */
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DurationFormat {
 
 	/**
 	 * The duration format style.
+	 *
 	 * @return the duration format style.
 	 */
 	DurationStyle value();

@@ -50,7 +50,7 @@ import org.springframework.util.StringUtils;
 public class JndiConnectionFactoryAutoConfiguration {
 
 	// Keep these in sync with the condition below
-	private static final String[] JNDI_LOCATIONS = { "java:/JmsXA", "java:/XAConnectionFactory" };
+	private static final String[] JNDI_LOCATIONS = {"java:/JmsXA", "java:/XAConnectionFactory"};
 
 	@Bean
 	public ConnectionFactory jmsConnectionFactory(JmsProperties properties) throws NamingException {
@@ -65,8 +65,7 @@ public class JndiConnectionFactoryAutoConfiguration {
 		for (String name : JNDI_LOCATIONS) {
 			try {
 				return jndiLocatorDelegate.lookup(name, ConnectionFactory.class);
-			}
-			catch (NamingException ex) {
+			} catch (NamingException ex) {
 				// Swallow and continue
 			}
 		}
@@ -83,7 +82,7 @@ public class JndiConnectionFactoryAutoConfiguration {
 			super(ConfigurationPhase.PARSE_CONFIGURATION);
 		}
 
-		@ConditionalOnJndi({ "java:/JmsXA", "java:/XAConnectionFactory" })
+		@ConditionalOnJndi({"java:/JmsXA", "java:/XAConnectionFactory"})
 		static class Jndi {
 
 		}

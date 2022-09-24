@@ -169,15 +169,15 @@ class JooqAutoConfigurationTests {
 				.withBean(VisitListenerProvider.class, () -> visitListenerProvider)
 				.withBean(TransactionListenerProvider.class, () -> transactionListenerProvider)
 				.withBean(ExecutorProvider.class, () -> executorProvider).run((context) -> {
-					DSLContext dsl = context.getBean(DSLContext.class);
-					assertThat(dsl.configuration().recordMapperProvider()).isSameAs(recordMapperProvider);
-					assertThat(dsl.configuration().recordUnmapperProvider()).isSameAs(recordUnmapperProvider);
-					assertThat(dsl.configuration().executorProvider()).isSameAs(executorProvider);
-					assertThat(dsl.configuration().recordListenerProviders()).containsExactly(recordListenerProvider);
-					assertThat(dsl.configuration().visitListenerProviders()).containsExactly(visitListenerProvider);
-					assertThat(dsl.configuration().transactionListenerProviders())
-							.containsExactly(transactionListenerProvider);
-				});
+			DSLContext dsl = context.getBean(DSLContext.class);
+			assertThat(dsl.configuration().recordMapperProvider()).isSameAs(recordMapperProvider);
+			assertThat(dsl.configuration().recordUnmapperProvider()).isSameAs(recordUnmapperProvider);
+			assertThat(dsl.configuration().executorProvider()).isSameAs(executorProvider);
+			assertThat(dsl.configuration().recordListenerProviders()).containsExactly(recordListenerProvider);
+			assertThat(dsl.configuration().visitListenerProviders()).containsExactly(visitListenerProvider);
+			assertThat(dsl.configuration().transactionListenerProviders())
+					.containsExactly(transactionListenerProvider);
+		});
 	}
 
 	@Test

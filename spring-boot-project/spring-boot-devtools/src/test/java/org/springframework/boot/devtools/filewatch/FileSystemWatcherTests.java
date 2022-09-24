@@ -203,8 +203,7 @@ class FileSystemWatcherTests {
 			if (changedFiles.getSourceDirectory().equals(directory1)) {
 				ChangedFile file = new ChangedFile(directory1, file1, Type.ADD);
 				assertThat(changedFiles.getFiles()).containsOnly(file);
-			}
-			else {
+			} else {
 				ChangedFile file = new ChangedFile(directory2, file2, Type.ADD);
 				assertThat(changedFiles.getFiles()).containsOnly(file);
 			}

@@ -147,8 +147,7 @@ class MessageSourceMessageInterpolatorIntegrationTests {
 		try {
 			Locale.setDefault(Locale.ENGLISH);
 			return supplier.get();
-		}
-		finally {
+		} finally {
 			Locale.setDefault(defaultLocale);
 		}
 	}

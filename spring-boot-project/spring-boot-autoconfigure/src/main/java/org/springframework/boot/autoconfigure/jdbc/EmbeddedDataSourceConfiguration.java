@@ -29,8 +29,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
  *
  * @author Phillip Webb
  * @author Stephane Nicoll
- * @since 1.0.0
  * @see DataSourceAutoConfiguration
+ * @since 1.0.0
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(DataSourceProperties.class)

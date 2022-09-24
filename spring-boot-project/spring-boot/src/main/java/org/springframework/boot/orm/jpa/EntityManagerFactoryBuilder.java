@@ -64,29 +64,31 @@ public class EntityManagerFactoryBuilder {
 	/**
 	 * Create a new instance passing in the common pieces that will be shared if multiple
 	 * EntityManagerFactory instances are created.
-	 * @param jpaVendorAdapter a vendor adapter
-	 * @param jpaProperties the JPA properties to be passed to the persistence provider
+	 *
+	 * @param jpaVendorAdapter       a vendor adapter
+	 * @param jpaProperties          the JPA properties to be passed to the persistence provider
 	 * @param persistenceUnitManager optional source of persistence unit information (can
-	 * be null)
+	 *                               be null)
 	 */
 	public EntityManagerFactoryBuilder(JpaVendorAdapter jpaVendorAdapter, Map<String, ?> jpaProperties,
-			PersistenceUnitManager persistenceUnitManager) {
+									   PersistenceUnitManager persistenceUnitManager) {
 		this(jpaVendorAdapter, jpaProperties, persistenceUnitManager, null);
 	}
 
 	/**
 	 * Create a new instance passing in the common pieces that will be shared if multiple
 	 * EntityManagerFactory instances are created.
-	 * @param jpaVendorAdapter a vendor adapter
-	 * @param jpaProperties the JPA properties to be passed to the persistence provider
-	 * @param persistenceUnitManager optional source of persistence unit information (can
-	 * be null)
+	 *
+	 * @param jpaVendorAdapter            a vendor adapter
+	 * @param jpaProperties               the JPA properties to be passed to the persistence provider
+	 * @param persistenceUnitManager      optional source of persistence unit information (can
+	 *                                    be null)
 	 * @param persistenceUnitRootLocation the persistence unit root location to use as a
-	 * fallback (can be null)
+	 *                                    fallback (can be null)
 	 * @since 1.4.1
 	 */
 	public EntityManagerFactoryBuilder(JpaVendorAdapter jpaVendorAdapter, Map<String, ?> jpaProperties,
-			PersistenceUnitManager persistenceUnitManager, URL persistenceUnitRootLocation) {
+									   PersistenceUnitManager persistenceUnitManager, URL persistenceUnitRootLocation) {
 		this.jpaVendorAdapter = jpaVendorAdapter;
 		this.persistenceUnitManager = persistenceUnitManager;
 		this.jpaProperties = new LinkedHashMap<>(jpaProperties);
@@ -100,6 +102,7 @@ public class EntityManagerFactoryBuilder {
 	/**
 	 * Configure the bootstrap executor to be used by the
 	 * {@link LocalContainerEntityManagerFactoryBean}.
+	 *
 	 * @param bootstrapExecutor the executor
 	 * @since 2.1.0
 	 */
@@ -111,6 +114,7 @@ public class EntityManagerFactoryBuilder {
 	 * Set the {@linkplain PersistenceUnitPostProcessor persistence unit post processors}
 	 * to be applied to the PersistenceUnitInfo used for creating the
 	 * {@link LocalContainerEntityManagerFactoryBean}.
+	 *
 	 * @param persistenceUnitPostProcessors the persistence unit post processors to use
 	 * @since 2.5.0
 	 */
@@ -141,6 +145,7 @@ public class EntityManagerFactoryBuilder {
 
 		/**
 		 * The names of packages to scan for {@code @Entity} annotations.
+		 *
 		 * @param packagesToScan packages to scan
 		 * @return the builder for fluent usage
 		 */
@@ -151,6 +156,7 @@ public class EntityManagerFactoryBuilder {
 
 		/**
 		 * The classes whose packages should be scanned for {@code @Entity} annotations.
+		 *
 		 * @param basePackageClasses the classes to use
 		 * @return the builder for fluent usage
 		 */
@@ -167,6 +173,7 @@ public class EntityManagerFactoryBuilder {
 		 * The name of the persistence unit. If only building one EntityManagerFactory you
 		 * can omit this, but if there are more than one in the same application you
 		 * should give them distinct names.
+		 *
 		 * @param persistenceUnit the name of the persistence unit
 		 * @return the builder for fluent usage
 		 */
@@ -178,6 +185,7 @@ public class EntityManagerFactoryBuilder {
 		/**
 		 * Generic properties for standard JPA or vendor-specific configuration. These
 		 * properties override any values provided in the constructor.
+		 *
 		 * @param properties the properties to use
 		 * @return the builder for fluent usage
 		 */
@@ -193,6 +201,7 @@ public class EntityManagerFactoryBuilder {
 		 * Note that mapping resources must be relative to the classpath root, e.g.
 		 * "META-INF/mappings.xml" or "com/mycompany/repository/mappings.xml", so that
 		 * they can be loaded through {@code ClassLoader.getResource()}.
+		 *
 		 * @param mappingResources the mapping resources to use
 		 * @return the builder for fluent usage
 		 */
@@ -208,6 +217,7 @@ public class EntityManagerFactoryBuilder {
 		 * {@link LocalContainerEntityManagerFactoryBean#setJtaDataSource(DataSource)
 		 * setJtaDataSource} should be called on the
 		 * {@link LocalContainerEntityManagerFactoryBean}.
+		 *
 		 * @param jta if the data source is JTA
 		 * @return the builder for fluent usage
 		 */
@@ -229,8 +239,7 @@ public class EntityManagerFactoryBuilder {
 
 			if (this.jta) {
 				entityManagerFactoryBean.setJtaDataSource(this.dataSource);
-			}
-			else {
+			} else {
 				entityManagerFactoryBean.setDataSource(this.dataSource);
 			}
 			entityManagerFactoryBean.setPackagesToScan(this.packagesToScan);

@@ -39,9 +39,10 @@ public final class SanitizableData {
 
 	/**
 	 * Create a new {@link SanitizableData} instance.
+	 *
 	 * @param propertySource the property source that provided the data or {@code null}.
-	 * @param key the data key
-	 * @param value the data value
+	 * @param key            the data key
+	 * @param value          the data value
 	 */
 	public SanitizableData(PropertySource<?> propertySource, String key, Object value) {
 		this.propertySource = propertySource;
@@ -52,6 +53,7 @@ public final class SanitizableData {
 	/**
 	 * Return the property source that provided the data or {@code null} If the data was
 	 * not from a {@link PropertySource}.
+	 *
 	 * @return the property source that provided the data
 	 */
 	public PropertySource<?> getPropertySource() {
@@ -60,6 +62,7 @@ public final class SanitizableData {
 
 	/**
 	 * Return the key of the data.
+	 *
 	 * @return the data key
 	 */
 	public String getKey() {
@@ -68,6 +71,7 @@ public final class SanitizableData {
 
 	/**
 	 * Return the value of the data.
+	 *
 	 * @return the data value
 	 */
 	public Object getValue() {
@@ -76,6 +80,7 @@ public final class SanitizableData {
 
 	/**
 	 * Return a new {@link SanitizableData} instance with a different value.
+	 *
 	 * @param value the new value (often {@link #SANITIZED_VALUE}
 	 * @return a new sanitizable data instance
 	 */

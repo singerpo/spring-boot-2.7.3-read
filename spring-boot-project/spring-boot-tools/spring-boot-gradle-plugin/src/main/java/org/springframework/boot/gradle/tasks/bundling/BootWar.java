@@ -146,6 +146,7 @@ public class BootWar extends War implements BootArchive {
 	/**
 	 * Returns the provided classpath, the contents of which will be included in the
 	 * {@code WEB-INF/lib-provided} directory of the war.
+	 *
 	 * @return the provided classpath
 	 */
 	@Optional
@@ -158,6 +159,7 @@ public class BootWar extends War implements BootArchive {
 	 * Adds files to the provided classpath to include in the {@code WEB-INF/lib-provided}
 	 * directory of the war. The given {@code classpath} is evaluated as per
 	 * {@link Project#files(Object...)}.
+	 *
 	 * @param classpath the additions to the classpath
 	 */
 	public void providedClasspath(Object... classpath) {
@@ -169,6 +171,7 @@ public class BootWar extends War implements BootArchive {
 	/**
 	 * Sets the provided classpath to include in the {@code WEB-INF/lib-provided}
 	 * directory of the war.
+	 *
 	 * @param classpath the classpath
 	 * @since 2.0.7
 	 */
@@ -180,6 +183,7 @@ public class BootWar extends War implements BootArchive {
 	 * Sets the provided classpath to include in the {@code WEB-INF/lib-provided}
 	 * directory of the war. The given {@code classpath} is evaluated as per
 	 * {@link Project#files(Object...)}.
+	 *
 	 * @param classpath the classpath
 	 * @since 2.0.7
 	 */
@@ -192,6 +196,7 @@ public class BootWar extends War implements BootArchive {
 	 * represented by the given {@code details} to the jar. By default, any
 	 * {@link #isLibrary(FileCopyDetails) library} is {@link ZipCompression#STORED stored}
 	 * and all other files are {@link ZipCompression#DEFLATED deflated}.
+	 *
 	 * @param details the file copy details
 	 * @return the compression to use
 	 */
@@ -201,6 +206,7 @@ public class BootWar extends War implements BootArchive {
 
 	/**
 	 * Returns the spec that describes the layers in a layered jar.
+	 *
 	 * @return the spec for the layers
 	 * @since 2.5.0
 	 */
@@ -211,6 +217,7 @@ public class BootWar extends War implements BootArchive {
 
 	/**
 	 * Configures the war's layering using the given {@code action}.
+	 *
 	 * @param action the action to apply
 	 * @since 2.5.0
 	 */
@@ -221,6 +228,7 @@ public class BootWar extends War implements BootArchive {
 	/**
 	 * Return if the {@link FileCopyDetails} are for a library. By default any file in
 	 * {@code WEB-INF/lib} or {@code WEB-INF/lib-provided} is considered to be a library.
+	 *
 	 * @param details the file copy details
 	 * @return {@code true} if the details are for a library
 	 */
@@ -245,7 +253,8 @@ public class BootWar extends War implements BootArchive {
 
 	/**
 	 * Syntactic sugar that makes {@link CopySpec#into} calls a little easier to read.
-	 * @param <T> the result type
+	 *
+	 * @param <T>      the result type
 	 * @param callable the callable
 	 * @return an action to add the callable to the spec
 	 */
@@ -255,7 +264,8 @@ public class BootWar extends War implements BootArchive {
 
 	/**
 	 * Syntactic sugar that makes {@link CopySpec#from} calls a little easier to read.
-	 * @param <T> the result type
+	 *
+	 * @param <T>      the result type
 	 * @param callable the callable
 	 * @return the callable
 	 */

@@ -53,8 +53,7 @@ class RunProcessCommand extends AbstractCommand {
 		int code = this.process.run(true, StringUtils.toStringArray(args));
 		if (code == 0) {
 			return ExitStatus.OK;
-		}
-		else {
+		} else {
 			return new ExitStatus(code, "EXTERNAL_ERROR");
 		}
 	}

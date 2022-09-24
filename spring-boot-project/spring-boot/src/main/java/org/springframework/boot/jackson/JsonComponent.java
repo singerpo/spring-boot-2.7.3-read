@@ -54,10 +54,10 @@ import org.springframework.stereotype.Component;
  *
  * </pre>
  *
- * @see JsonComponentModule
- * @since 1.4.0
  * @author Phillip Webb
  * @author Paul Aly
+ * @see JsonComponentModule
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -68,6 +68,7 @@ public @interface JsonComponent {
 	/**
 	 * The value may indicate a suggestion for a logical component name, to be turned into
 	 * a Spring bean in case of an autodetected component.
+	 *
 	 * @return the component name
 	 */
 	@AliasFor(annotation = Component.class)
@@ -78,6 +79,7 @@ public @interface JsonComponent {
 	 * is mandatory for a {@link KeyDeserializer}, as the type cannot be inferred. For a
 	 * {@link JsonSerializer} or {@link JsonDeserializer} it can be used to limit handling
 	 * to a subclasses of type inferred from the generic.
+	 *
 	 * @return the types that should be handled by the component
 	 * @since 2.2.0
 	 */
@@ -86,6 +88,7 @@ public @interface JsonComponent {
 	/**
 	 * The scope under which the serializer/deserializer should be registered with the
 	 * module.
+	 *
 	 * @return the component's handle type
 	 * @since 2.2.0
 	 */
@@ -98,6 +101,7 @@ public @interface JsonComponent {
 
 		/**
 		 * A serializer/deserializer for regular value content.
+		 *
 		 * @see JsonSerializer
 		 * @see JsonDeserializer
 		 */
@@ -105,6 +109,7 @@ public @interface JsonComponent {
 
 		/**
 		 * A serializer/deserializer for keys.
+		 *
 		 * @see JsonSerializer
 		 * @see KeyDeserializer
 		 */

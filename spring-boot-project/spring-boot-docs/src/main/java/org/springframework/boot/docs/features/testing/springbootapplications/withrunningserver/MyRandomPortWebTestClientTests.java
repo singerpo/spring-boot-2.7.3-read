@@ -30,10 +30,10 @@ class MyRandomPortWebTestClientTests {
 	void exampleTest(@Autowired WebTestClient webClient) {
 		// @formatter:off
 		webClient
-			.get().uri("/")
-			.exchange()
-			.expectStatus().isOk()
-			.expectBody(String.class).isEqualTo("Hello World");
+				.get().uri("/")
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody(String.class).isEqualTo("Hello World");
 		// @formatter:on
 	}
 

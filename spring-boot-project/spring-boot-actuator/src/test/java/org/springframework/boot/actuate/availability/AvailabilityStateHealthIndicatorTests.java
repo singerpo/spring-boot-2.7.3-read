@@ -74,9 +74,9 @@ class AvailabilityStateHealthIndicatorTests {
 	void healthReturnsMappedStatus() {
 		AvailabilityStateHealthIndicator indicator = new AvailabilityStateHealthIndicator(this.applicationAvailability,
 				LivenessState.class, (statusMappings) -> {
-					statusMappings.add(LivenessState.CORRECT, Status.UP);
-					statusMappings.add(LivenessState.BROKEN, Status.DOWN);
-				});
+			statusMappings.add(LivenessState.CORRECT, Status.UP);
+			statusMappings.add(LivenessState.BROKEN, Status.DOWN);
+		});
 		given(this.applicationAvailability.getState(LivenessState.class)).willReturn(LivenessState.BROKEN);
 		assertThat(indicator.getHealth(false).getStatus()).isEqualTo(Status.DOWN);
 	}
@@ -85,9 +85,9 @@ class AvailabilityStateHealthIndicatorTests {
 	void healthReturnsDefaultStatus() {
 		AvailabilityStateHealthIndicator indicator = new AvailabilityStateHealthIndicator(this.applicationAvailability,
 				LivenessState.class, (statusMappings) -> {
-					statusMappings.add(LivenessState.CORRECT, Status.UP);
-					statusMappings.addDefaultStatus(Status.UNKNOWN);
-				});
+			statusMappings.add(LivenessState.CORRECT, Status.UP);
+			statusMappings.addDefaultStatus(Status.UNKNOWN);
+		});
 		given(this.applicationAvailability.getState(LivenessState.class)).willReturn(LivenessState.BROKEN);
 		assertThat(indicator.getHealth(false).getStatus()).isEqualTo(Status.UNKNOWN);
 	}
@@ -96,9 +96,9 @@ class AvailabilityStateHealthIndicatorTests {
 	void healthWhenNotEnumReturnsMappedStatus() {
 		AvailabilityStateHealthIndicator indicator = new AvailabilityStateHealthIndicator(this.applicationAvailability,
 				TestAvailabilityState.class, (statusMappings) -> {
-					statusMappings.add(TestAvailabilityState.ONE, Status.UP);
-					statusMappings.addDefaultStatus(Status.DOWN);
-				});
+			statusMappings.add(TestAvailabilityState.ONE, Status.UP);
+			statusMappings.addDefaultStatus(Status.DOWN);
+		});
 		given(this.applicationAvailability.getState(TestAvailabilityState.class)).willReturn(TestAvailabilityState.TWO);
 		assertThat(indicator.getHealth(false).getStatus()).isEqualTo(Status.DOWN);
 	}

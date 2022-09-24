@@ -44,8 +44,7 @@ class OnJndiCondition extends SpringBootCondition {
 		String[] locations = annotationAttributes.getStringArray("value");
 		try {
 			return getMatchOutcome(locations);
-		}
-		catch (NoClassDefFoundError ex) {
+		} catch (NoClassDefFoundError ex) {
 			return ConditionOutcome
 					.noMatch(ConditionMessage.forCondition(ConditionalOnJndi.class).because("JNDI class not found"));
 		}
@@ -92,8 +91,7 @@ class OnJndiCondition extends SpringBootCondition {
 				try {
 					lookup(location);
 					return location;
-				}
-				catch (NamingException ex) {
+				} catch (NamingException ex) {
 					// Swallow and continue
 				}
 			}

@@ -64,7 +64,7 @@ import org.springframework.util.StringUtils;
  * @since 2.0.0
  */
 @AutoConfiguration(
-		before = { CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class },
+		before = {CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class},
 		after = MetricsAutoConfiguration.class)
 @ConditionalOnBean(Clock.class)
 @ConditionalOnClass(PrometheusMeterRegistry.class)
@@ -81,7 +81,7 @@ public class PrometheusMetricsExportAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public PrometheusMeterRegistry prometheusMeterRegistry(PrometheusConfig prometheusConfig,
-			CollectorRegistry collectorRegistry, Clock clock, ObjectProvider<ExemplarSampler> exemplarSamplerProvider) {
+														   CollectorRegistry collectorRegistry, Clock clock, ObjectProvider<ExemplarSampler> exemplarSamplerProvider) {
 		return new PrometheusMeterRegistry(prometheusConfig, collectorRegistry, clock,
 				exemplarSamplerProvider.getIfAvailable());
 	}
@@ -132,7 +132,7 @@ public class PrometheusMetricsExportAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		public PrometheusPushGatewayManager prometheusPushGatewayManager(CollectorRegistry collectorRegistry,
-				PrometheusProperties prometheusProperties, Environment environment) {
+																		 PrometheusProperties prometheusProperties, Environment environment) {
 			PrometheusProperties.Pushgateway properties = prometheusProperties.getPushgateway();
 			Duration pushRate = properties.getPushRate();
 			String job = getJob(properties, environment);
@@ -150,8 +150,7 @@ public class PrometheusMetricsExportAutoConfiguration {
 		private PushGateway initializePushGateway(String url) {
 			try {
 				return new PushGateway(new URL(url));
-			}
-			catch (MalformedURLException ex) {
+			} catch (MalformedURLException ex) {
 				logger.warn(LogMessage
 						.format("Invalid PushGateway base url '%s': update your configuration to a valid URL", url));
 				return new PushGateway(url);

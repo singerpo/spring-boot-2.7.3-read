@@ -67,6 +67,7 @@ public class Shell {
 
 	/**
 	 * Create a new {@link Shell} instance.
+	 *
 	 * @throws IOException in case of I/O errors
 	 */
 	Shell() throws IOException {
@@ -124,14 +125,14 @@ public class Shell {
 
 	/**
 	 * Run the shell until the user exists.
+	 *
 	 * @throws Exception on error
 	 */
 	public void run() throws Exception {
 		printBanner();
 		try {
 			runInputLoop();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			if (!(ex instanceof ShellExitException)) {
 				throw ex;
 			}

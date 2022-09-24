@@ -53,7 +53,8 @@ class ConfigDataProperties {
 
 	/**
 	 * Create a new {@link ConfigDataProperties} instance.
-	 * @param imports the imports requested
+	 *
+	 * @param imports  the imports requested
 	 * @param activate the activate properties
 	 */
 	ConfigDataProperties(@Name("import") List<ConfigDataLocation> imports, Activate activate) {
@@ -63,6 +64,7 @@ class ConfigDataProperties {
 
 	/**
 	 * Return any additional imports requested.
+	 *
 	 * @return the requested imports
 	 */
 	List<ConfigDataLocation> getImports() {
@@ -72,6 +74,7 @@ class ConfigDataProperties {
 	/**
 	 * Return {@code true} if the properties indicate that the config data property source
 	 * is active for the given activation context.
+	 *
 	 * @param activationContext the activation context
 	 * @return {@code true} if the config data property source is active
 	 */
@@ -81,6 +84,7 @@ class ConfigDataProperties {
 
 	/**
 	 * Return a new variant of these properties without any imports.
+	 *
 	 * @return a new {@link ConfigDataProperties} instance
 	 */
 	ConfigDataProperties withoutImports() {
@@ -97,6 +101,7 @@ class ConfigDataProperties {
 	/**
 	 * Factory method used to create {@link ConfigDataProperties} from the given
 	 * {@link Binder}.
+	 *
 	 * @param binder the binder used to bind the properties
 	 * @return a {@link ConfigDataProperties} instance or {@code null}
 	 */
@@ -123,7 +128,7 @@ class ConfigDataProperties {
 
 		@Override
 		public Object onSuccess(ConfigurationPropertyName name, Bindable<?> target, BindContext context,
-				Object result) {
+								Object result) {
 			this.property = context.getConfigurationProperty();
 			return result;
 		}
@@ -145,8 +150,9 @@ class ConfigDataProperties {
 
 		/**
 		 * Create a new {@link Activate} instance.
+		 *
 		 * @param onCloudPlatform the cloud platform required for activation
-		 * @param onProfile the profile expression required for activation
+		 * @param onProfile       the profile expression required for activation
 		 */
 		Activate(CloudPlatform onCloudPlatform, String[] onProfile) {
 			this.onProfile = onProfile;
@@ -156,6 +162,7 @@ class ConfigDataProperties {
 		/**
 		 * Return {@code true} if the properties indicate that the config data property
 		 * source is active for the given activation context.
+		 *
 		 * @param activationContext the activation context
 		 * @return {@code true} if the config data property source is active
 		 */

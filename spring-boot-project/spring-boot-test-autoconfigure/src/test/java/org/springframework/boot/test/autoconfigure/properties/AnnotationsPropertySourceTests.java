@@ -294,8 +294,8 @@ class AnnotationsPropertySourceTests {
 
 	}
 
-	@ArraysAnnotation(strings = { "a", "b" }, classes = { Integer.class, Long.class }, ints = { 1, 2 },
-			longs = { 1, 2 }, floats = { 1.0f, 2.0f }, doubles = { 1.0, 2.0 }, booleans = { false, true })
+	@ArraysAnnotation(strings = {"a", "b"}, classes = {Integer.class, Long.class}, ints = {1, 2},
+			longs = {1, 2}, floats = {1.0f, 2.0f}, doubles = {1.0, 2.0}, booleans = {false, true})
 	static class Arrays {
 
 	}
@@ -453,7 +453,7 @@ class AnnotationsPropertySourceTests {
 
 	}
 
-	@NestedAnnotations(entries = { @Entry("one"), @Entry("two") })
+	@NestedAnnotations(entries = {@Entry("one"), @Entry("two")})
 	static class PropertyMappedWithNestedAnnotations {
 
 	}

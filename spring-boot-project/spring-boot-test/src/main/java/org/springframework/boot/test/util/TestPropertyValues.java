@@ -62,6 +62,7 @@ public final class TestPropertyValues {
 	/**
 	 * Return a new {@link TestPropertyValues} instance with additional entries.
 	 * Name-value pairs can be specified with colon (":") or equals ("=") separators.
+	 *
 	 * @param pairs the property pairs to add
 	 * @return a new {@link TestPropertyValues} instance
 	 */
@@ -72,6 +73,7 @@ public final class TestPropertyValues {
 	/**
 	 * Return a new {@link TestPropertyValues} instance with additional entries.
 	 * Name-value pairs can be specified with colon (":") or equals ("=") separators.
+	 *
 	 * @param pairs the property pairs to add
 	 * @return a new {@link TestPropertyValues} instance
 	 * @since 2.4.0
@@ -83,6 +85,7 @@ public final class TestPropertyValues {
 	/**
 	 * Return a new {@link TestPropertyValues} instance with additional entries.
 	 * Name-value pairs can be specified with colon (":") or equals ("=") separators.
+	 *
 	 * @param pairs the property pairs to add
 	 * @return a new {@link TestPropertyValues} instance
 	 * @since 2.4.0
@@ -93,6 +96,7 @@ public final class TestPropertyValues {
 
 	/**
 	 * Return a new {@link TestPropertyValues} instance with additional entries.
+	 *
 	 * @param map the map of properties that need to be added to the environment
 	 * @return a new {@link TestPropertyValues} instance
 	 * @since 2.4.0
@@ -103,10 +107,11 @@ public final class TestPropertyValues {
 
 	/**
 	 * Return a new {@link TestPropertyValues} instance with additional entries.
-	 * @param <T> the stream element type
+	 *
+	 * @param <T>    the stream element type
 	 * @param stream the elements that need to be added to the environment
 	 * @param mapper a mapper function to convert an element from the stream into a
-	 * {@link Pair}
+	 *               {@link Pair}
 	 * @return a new {@link TestPropertyValues} instance
 	 * @since 2.4.0
 	 */
@@ -122,6 +127,7 @@ public final class TestPropertyValues {
 	/**
 	 * Add the properties from the underlying map to the environment owned by an
 	 * {@link ApplicationContext}.
+	 *
 	 * @param context the context with an environment to modify
 	 */
 	public void applyTo(ConfigurableApplicationContext context) {
@@ -131,6 +137,7 @@ public final class TestPropertyValues {
 	/**
 	 * Add the properties from the underlying map to the environment. The default property
 	 * source used is {@link MapPropertySource}.
+	 *
 	 * @param environment the environment that needs to be modified
 	 */
 	public void applyTo(ConfigurableEnvironment environment) {
@@ -140,8 +147,9 @@ public final class TestPropertyValues {
 	/**
 	 * Add the properties from the underlying map to the environment using the specified
 	 * property source type.
+	 *
 	 * @param environment the environment that needs to be modified
-	 * @param type the type of {@link PropertySource} to be added. See {@link Type}
+	 * @param type        the type of {@link PropertySource} to be added. See {@link Type}
 	 */
 	public void applyTo(ConfigurableEnvironment environment, Type type) {
 		applyTo(environment, type, type.applySuffix("test"));
@@ -150,9 +158,10 @@ public final class TestPropertyValues {
 	/**
 	 * Add the properties from the underlying map to the environment using the specified
 	 * property source type and name.
+	 *
 	 * @param environment the environment that needs to be modified
-	 * @param type the type of {@link PropertySource} to be added. See {@link Type}
-	 * @param name the name for the property source
+	 * @param type        the type of {@link PropertySource} to be added. See {@link Type}
+	 * @param name        the name for the property source
 	 */
 	public void applyTo(ConfigurableEnvironment environment, Type type, String name) {
 		Assert.notNull(environment, "Environment must not be null");
@@ -166,15 +175,15 @@ public final class TestPropertyValues {
 	/**
 	 * Add the properties to the {@link System#getProperties() system properties} for the
 	 * duration of the {@code call}, restoring previous values when the call completes.
-	 * @param <T> the result type
+	 *
+	 * @param <T>  the result type
 	 * @param call the call to make
 	 * @return the result of the call
 	 */
 	public <T> T applyToSystemProperties(Callable<T> call) {
 		try (SystemPropertiesHandler handler = new SystemPropertiesHandler()) {
 			return call.call();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			rethrow(ex);
 			throw new IllegalStateException("Original cause not rethrown", ex);
 		}
@@ -203,8 +212,9 @@ public final class TestPropertyValues {
 	 * Return a new {@link TestPropertyValues} with the underlying map populated with the
 	 * given property pairs. Name-value pairs can be specified with colon (":") or equals
 	 * ("=") separators.
+	 *
 	 * @param pairs the name-value pairs for properties that need to be added to the
-	 * environment
+	 *              environment
 	 * @return the new instance
 	 */
 	public static TestPropertyValues of(String... pairs) {
@@ -215,8 +225,9 @@ public final class TestPropertyValues {
 	 * Return a new {@link TestPropertyValues} with the underlying map populated with the
 	 * given property pairs. Name-value pairs can be specified with colon (":") or equals
 	 * ("=") separators.
+	 *
 	 * @param pairs the name-value pairs for properties that need to be added to the
-	 * environment
+	 *              environment
 	 * @return the new instance
 	 */
 	public static TestPropertyValues of(Iterable<String> pairs) {
@@ -227,8 +238,9 @@ public final class TestPropertyValues {
 	 * Return a new {@link TestPropertyValues} with the underlying map populated with the
 	 * given property pairs. Name-value pairs can be specified with colon (":") or equals
 	 * ("=") separators.
+	 *
 	 * @param pairs the name-value pairs for properties that need to be added to the
-	 * environment
+	 *              environment
 	 * @return the new instance
 	 */
 	public static TestPropertyValues of(Stream<String> pairs) {
@@ -238,6 +250,7 @@ public final class TestPropertyValues {
 	/**
 	 * Return a new {@link TestPropertyValues} with the underlying map populated with the
 	 * given map entries.
+	 *
 	 * @param map the map of properties that need to be added to the environment
 	 * @return the new instance
 	 */
@@ -248,10 +261,11 @@ public final class TestPropertyValues {
 	/**
 	 * Return a new {@link TestPropertyValues} with the underlying map populated with the
 	 * given stream.
-	 * @param <T> the stream element type
+	 *
+	 * @param <T>    the stream element type
 	 * @param stream the elements that need to be added to the environment
 	 * @param mapper a mapper function to convert an element from the stream into a
-	 * {@link Pair}
+	 *               {@link Pair}
 	 * @return the new instance
 	 */
 	public static <T> TestPropertyValues of(Stream<T> stream, Function<T, Pair> mapper) {
@@ -260,6 +274,7 @@ public final class TestPropertyValues {
 
 	/**
 	 * Return an empty {@link TestPropertyValues} instance.
+	 *
 	 * @return an empty instance
 	 */
 	public static TestPropertyValues empty() {
@@ -341,6 +356,7 @@ public final class TestPropertyValues {
 
 		/**
 		 * Factory method to create a {@link Pair} from a {@code Map.Entry}.
+		 *
 		 * @param entry the map entry
 		 * @return the {@link Pair} instance or {@code null}
 		 * @since 2.4.0
@@ -351,7 +367,8 @@ public final class TestPropertyValues {
 
 		/**
 		 * Factory method to create a {@link Pair} from a name and value.
-		 * @param name the name
+		 *
+		 * @param name  the name
 		 * @param value the value
 		 * @return the {@link Pair} instance or {@code null}
 		 * @since 2.4.0

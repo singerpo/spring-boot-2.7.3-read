@@ -107,13 +107,13 @@ class RepositoryMetricsAutoConfigurationTests {
 	void autoTimeRequestsCanBeConfigured() {
 		this.contextRunner.withPropertyValues("management.metrics.data.repository.autotime.enabled=true",
 				"management.metrics.data.repository.autotime.percentiles=0.5,0.7").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context, ExampleRepository.class);
-					Timer timer = registry.get("spring.data.repository.invocations").timer();
-					HistogramSnapshot snapshot = timer.takeSnapshot();
-					assertThat(snapshot.percentileValues()).hasSize(2);
-					assertThat(snapshot.percentileValues()[0].percentile()).isEqualTo(0.5);
-					assertThat(snapshot.percentileValues()[1].percentile()).isEqualTo(0.7);
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context, ExampleRepository.class);
+			Timer timer = registry.get("spring.data.repository.invocations").timer();
+			HistogramSnapshot snapshot = timer.takeSnapshot();
+			assertThat(snapshot.percentileValues()).hasSize(2);
+			assertThat(snapshot.percentileValues()[0].percentile()).isEqualTo(0.5);
+			assertThat(snapshot.percentileValues()[1].percentile()).isEqualTo(0.7);
+		});
 	}
 
 	@Test
@@ -136,7 +136,7 @@ class RepositoryMetricsAutoConfigurationTests {
 	}
 
 	private MeterRegistry getInitializedMeterRegistry(AssertableApplicationContext context,
-			Class<?> repositoryInterface) {
+													  Class<?> repositoryInterface) {
 		MetricsRepositoryMethodInvocationListener listener = context
 				.getBean(MetricsRepositoryMethodInvocationListener.class);
 		ReflectionUtils.doWithLocalMethods(repositoryInterface, (method) -> {
@@ -192,7 +192,7 @@ class RepositoryMetricsAutoConfigurationTests {
 	static class TestMetricsRepositoryMethodInvocationListener extends MetricsRepositoryMethodInvocationListener {
 
 		TestMetricsRepositoryMethodInvocationListener(Supplier<MeterRegistry> registrySupplier,
-				RepositoryTagsProvider tagsProvider) {
+													  RepositoryTagsProvider tagsProvider) {
 			super(registrySupplier, tagsProvider, "test", AutoTimer.DISABLED);
 		}
 

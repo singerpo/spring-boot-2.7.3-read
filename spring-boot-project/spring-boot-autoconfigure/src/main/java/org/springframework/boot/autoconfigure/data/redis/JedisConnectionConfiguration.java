@@ -44,15 +44,15 @@ import org.springframework.util.StringUtils;
  * @author Stephane Nicoll
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ GenericObjectPool.class, JedisConnection.class, Jedis.class })
+@ConditionalOnClass({GenericObjectPool.class, JedisConnection.class, Jedis.class})
 @ConditionalOnMissingBean(RedisConnectionFactory.class)
 @ConditionalOnProperty(name = "spring.redis.client-type", havingValue = "jedis", matchIfMissing = true)
 class JedisConnectionConfiguration extends RedisConnectionConfiguration {
 
 	JedisConnectionConfiguration(RedisProperties properties,
-			ObjectProvider<RedisStandaloneConfiguration> standaloneConfigurationProvider,
-			ObjectProvider<RedisSentinelConfiguration> sentinelConfiguration,
-			ObjectProvider<RedisClusterConfiguration> clusterConfiguration) {
+								 ObjectProvider<RedisStandaloneConfiguration> standaloneConfigurationProvider,
+								 ObjectProvider<RedisSentinelConfiguration> sentinelConfiguration,
+								 ObjectProvider<RedisClusterConfiguration> clusterConfiguration) {
 		super(properties, standaloneConfigurationProvider, sentinelConfiguration, clusterConfiguration);
 	}
 
@@ -98,7 +98,7 @@ class JedisConnectionConfiguration extends RedisConnectionConfiguration {
 	}
 
 	private void applyPooling(RedisProperties.Pool pool,
-			JedisClientConfiguration.JedisClientConfigurationBuilder builder) {
+							  JedisClientConfiguration.JedisClientConfigurationBuilder builder) {
 		builder.usePooling().poolConfig(jedisPoolConfig(pool));
 	}
 

@@ -46,7 +46,7 @@ import org.springframework.context.annotation.Bean;
  * @since 2.0.0
  */
 @AutoConfiguration(
-		before = { CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class },
+		before = {CompositeMeterRegistryAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class},
 		after = MetricsAutoConfiguration.class)
 @ConditionalOnBean(Clock.class)
 @ConditionalOnClass(NewRelicMeterRegistry.class)
@@ -80,7 +80,7 @@ public class NewRelicMetricsExportAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public NewRelicMeterRegistry newRelicMeterRegistry(NewRelicConfig newRelicConfig, Clock clock,
-			NewRelicClientProvider newRelicClientProvider) {
+													   NewRelicClientProvider newRelicClientProvider) {
 		return NewRelicMeterRegistry.builder(newRelicConfig).clock(clock).clientProvider(newRelicClientProvider)
 				.build();
 	}

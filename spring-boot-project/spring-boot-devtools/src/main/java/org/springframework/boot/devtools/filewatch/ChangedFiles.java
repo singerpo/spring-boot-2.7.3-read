@@ -25,9 +25,9 @@ import java.util.Set;
  * A collections of files from a specific source directory that have changed.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see FileChangeListener
  * @see ChangedFiles
+ * @since 1.3.0
  */
 public final class ChangedFiles implements Iterable<ChangedFile> {
 
@@ -42,6 +42,7 @@ public final class ChangedFiles implements Iterable<ChangedFile> {
 
 	/**
 	 * The source directory being watched.
+	 *
 	 * @return the source directory
 	 */
 	public File getSourceDirectory() {
@@ -55,6 +56,7 @@ public final class ChangedFiles implements Iterable<ChangedFile> {
 
 	/**
 	 * The files that have been changed.
+	 *
 	 * @return the changed files
 	 */
 	public Set<ChangedFile> getFiles() {

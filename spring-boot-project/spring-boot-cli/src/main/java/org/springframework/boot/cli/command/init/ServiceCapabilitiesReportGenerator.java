@@ -41,6 +41,7 @@ class ServiceCapabilitiesReportGenerator {
 
 	/**
 	 * Creates an instance using the specified {@link InitializrService}.
+	 *
 	 * @param initializrService the initializr service
 	 */
 	ServiceCapabilitiesReportGenerator(InitializrService initializrService) {
@@ -50,6 +51,7 @@ class ServiceCapabilitiesReportGenerator {
 	/**
 	 * Generate a report for the specified service. The report contains the available
 	 * capabilities as advertised by the root endpoint.
+	 *
 	 * @param url the url of the service
 	 * @return the report that describes the service
 	 * @throws IOException if the report cannot be generated

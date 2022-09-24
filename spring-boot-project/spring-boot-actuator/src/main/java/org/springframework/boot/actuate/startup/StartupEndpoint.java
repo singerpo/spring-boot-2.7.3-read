@@ -40,6 +40,7 @@ public class StartupEndpoint {
 	/**
 	 * Creates a new {@code StartupEndpoint} that will describe the timeline of buffered
 	 * application startup events.
+	 *
 	 * @param applicationStartup the application startup
 	 */
 	public StartupEndpoint(BufferingApplicationStartup applicationStartup) {

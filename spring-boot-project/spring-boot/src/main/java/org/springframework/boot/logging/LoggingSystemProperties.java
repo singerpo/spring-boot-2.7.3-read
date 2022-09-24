@@ -102,6 +102,7 @@ public class LoggingSystemProperties {
 
 	/**
 	 * Create a new {@link LoggingSystemProperties} instance.
+	 *
 	 * @param environment the source environment
 	 */
 	public LoggingSystemProperties(Environment environment) {
@@ -110,8 +111,9 @@ public class LoggingSystemProperties {
 
 	/**
 	 * Create a new {@link LoggingSystemProperties} instance.
+	 *
 	 * @param environment the source environment
-	 * @param setter setter used to apply the property
+	 * @param setter      setter used to apply the property
 	 * @since 2.4.2
 	 */
 	public LoggingSystemProperties(Environment environment, BiConsumer<String, String> setter) {
@@ -164,7 +166,7 @@ public class LoggingSystemProperties {
 	}
 
 	protected final void setSystemProperty(PropertyResolver resolver, String systemPropertyName, String propertyName,
-			String defaultValue) {
+										   String defaultValue) {
 		String value = resolver.getProperty(propertyName);
 		value = (value != null) ? value : defaultValue;
 		setSystemProperty(systemPropertyName, value);

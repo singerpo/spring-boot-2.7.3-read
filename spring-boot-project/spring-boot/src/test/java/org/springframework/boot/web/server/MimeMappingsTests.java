@@ -128,8 +128,7 @@ class MimeMappingsTests {
 		MimeMappings unmodifiable = MimeMappings.unmodifiableMappings(mappings);
 		try {
 			unmodifiable.remove("foo");
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			// Expected
 		}
 		mappings.remove("foo");

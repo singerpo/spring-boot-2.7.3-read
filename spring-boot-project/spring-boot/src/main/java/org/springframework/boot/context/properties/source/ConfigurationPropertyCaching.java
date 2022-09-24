@@ -42,6 +42,7 @@ public interface ConfigurationPropertyCaching {
 	/**
 	 * Set amount of time that an item can live in the cache. Calling this method will
 	 * also enable the cache.
+	 *
 	 * @param timeToLive the time to live value.
 	 */
 	void setTimeToLive(Duration timeToLive);
@@ -53,6 +54,7 @@ public interface ConfigurationPropertyCaching {
 
 	/**
 	 * Get for all configuration property sources in the environment.
+	 *
 	 * @param environment the spring environment
 	 * @return a caching instance that controls all sources in the environment
 	 */
@@ -62,10 +64,11 @@ public interface ConfigurationPropertyCaching {
 
 	/**
 	 * Get for a specific configuration property source in the environment.
-	 * @param environment the spring environment
+	 *
+	 * @param environment      the spring environment
 	 * @param underlyingSource the
-	 * {@link ConfigurationPropertySource#getUnderlyingSource() underlying source} that
-	 * must match
+	 *                         {@link ConfigurationPropertySource#getUnderlyingSource() underlying source} that
+	 *                         must match
 	 * @return a caching instance that controls the matching source
 	 */
 	static ConfigurationPropertyCaching get(Environment environment, Object underlyingSource) {
@@ -75,6 +78,7 @@ public interface ConfigurationPropertyCaching {
 
 	/**
 	 * Get for all specified configuration property sources.
+	 *
 	 * @param sources the configuration property sources
 	 * @return a caching instance that controls the sources
 	 */
@@ -85,10 +89,11 @@ public interface ConfigurationPropertyCaching {
 	/**
 	 * Get for a specific configuration property source in the specified configuration
 	 * property sources.
-	 * @param sources the configuration property sources
+	 *
+	 * @param sources          the configuration property sources
 	 * @param underlyingSource the
-	 * {@link ConfigurationPropertySource#getUnderlyingSource() underlying source} that
-	 * must match
+	 *                         {@link ConfigurationPropertySource#getUnderlyingSource() underlying source} that
+	 *                         must match
 	 * @return a caching instance that controls the matching source
 	 */
 	static ConfigurationPropertyCaching get(Iterable<ConfigurationPropertySource> sources, Object underlyingSource) {

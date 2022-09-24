@@ -107,6 +107,7 @@ public class GroovyBeansTransformation implements ASTTransformation {
 		/**
 		 * Extract a top-level <code>beans{}</code> closure from inside this block if
 		 * there is one. Removes it from the block at the same time.
+		 *
 		 * @param block a block statement (class definition)
 		 * @return a beans Closure if one can be found, null otherwise
 		 */

@@ -45,6 +45,7 @@ public @interface AutoConfigureMockWebServiceServer {
 	/**
 	 * If {@link MockWebServiceServer} bean should be registered. Defaults to
 	 * {@code true}.
+	 *
 	 * @return if mock support is enabled
 	 */
 	boolean enabled() default true;

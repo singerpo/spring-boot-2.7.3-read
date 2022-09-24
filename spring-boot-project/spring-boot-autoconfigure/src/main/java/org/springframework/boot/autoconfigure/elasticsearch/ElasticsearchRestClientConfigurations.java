@@ -59,7 +59,7 @@ class ElasticsearchRestClientConfigurations {
 
 		@SuppressWarnings("deprecation")
 		RestClientBuilderConfiguration(ElasticsearchProperties properties,
-				DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
+									   DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
 			this.properties = new ConsolidatedProperties(properties, deprecatedProperties);
 		}
 
@@ -91,8 +91,7 @@ class ElasticsearchRestClientConfigurations {
 		private HttpHost createHttpHost(String uri) {
 			try {
 				return createHttpHost(URI.create(uri));
-			}
-			catch (IllegalArgumentException ex) {
+			} catch (IllegalArgumentException ex) {
 				return HttpHost.create(uri);
 			}
 		}
@@ -104,8 +103,7 @@ class ElasticsearchRestClientConfigurations {
 			try {
 				return HttpHost.create(new URI(uri.getScheme(), null, uri.getHost(), uri.getPort(), uri.getPath(),
 						uri.getQuery(), uri.getFragment()).toString());
-			}
-			catch (URISyntaxException ex) {
+			} catch (URISyntaxException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -115,7 +113,7 @@ class ElasticsearchRestClientConfigurations {
 	@SuppressWarnings("deprecation")
 	@Configuration(proxyBeanMethods = false)
 	@ConditionalOnClass(org.elasticsearch.client.RestHighLevelClient.class)
-	@ConditionalOnMissingBean({ org.elasticsearch.client.RestHighLevelClient.class, RestClient.class })
+	@ConditionalOnMissingBean({org.elasticsearch.client.RestHighLevelClient.class, RestClient.class})
 	static class RestHighLevelClientConfiguration {
 
 		@Bean
@@ -161,7 +159,7 @@ class ElasticsearchRestClientConfigurations {
 		@ConditionalOnMissingBean
 		@SuppressWarnings("deprecation")
 		Sniffer elasticsearchSniffer(RestClient client, ElasticsearchRestClientProperties properties,
-				DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
+									 DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
 			SnifferBuilder builder = Sniffer.builder(client);
 			PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
 			Duration interval = deprecatedProperties.isCustomized() ? deprecatedProperties.getSniffer().getInterval()
@@ -220,8 +218,7 @@ class ElasticsearchRestClientConfigurations {
 		private URI toUri(String uri) {
 			try {
 				return URI.create(uri);
-			}
-			catch (IllegalArgumentException ex) {
+			} catch (IllegalArgumentException ex) {
 				return null;
 			}
 		}
@@ -256,7 +253,7 @@ class ElasticsearchRestClientConfigurations {
 		private final DeprecatedElasticsearchRestClientProperties deprecatedProperties;
 
 		private ConsolidatedProperties(ElasticsearchProperties properties,
-				DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
+									   DeprecatedElasticsearchRestClientProperties deprecatedProperties) {
 			this.properties = properties;
 			this.deprecatedProperties = deprecatedProperties;
 		}

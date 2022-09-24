@@ -64,9 +64,9 @@ class MappingsEndpointAutoConfigurationTests {
 						EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class,
 						WebMvcEndpointManagementContextConfiguration.class, PropertyPlaceholderAutoConfiguration.class))
 				.withPropertyValues("management.endpoints.web.exposure.include=mappings").run((context) -> {
-					assertThat(context).hasSingleBean(MappingsEndpoint.class);
-					assertThat(context.getBeansOfType(MappingDescriptionProvider.class)).hasSize(3);
-				});
+			assertThat(context).hasSingleBean(MappingsEndpoint.class);
+			assertThat(context.getBeansOfType(MappingDescriptionProvider.class)).hasSize(3);
+		});
 
 	}
 

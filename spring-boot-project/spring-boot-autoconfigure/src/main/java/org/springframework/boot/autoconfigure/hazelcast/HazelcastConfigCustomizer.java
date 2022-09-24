@@ -31,6 +31,7 @@ public interface HazelcastConfigCustomizer {
 
 	/**
 	 * Customize the configuration.
+	 *
 	 * @param config the {@link Config} to customize
 	 */
 	void customize(Config config);

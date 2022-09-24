@@ -137,7 +137,7 @@ class EntityScannerTests {
 		private final ClassPathScanningCandidateComponentProvider candidateComponentProvider;
 
 		TestEntityScanner(ApplicationContext context,
-				ClassPathScanningCandidateComponentProvider candidateComponentProvider) {
+						  ClassPathScanningCandidateComponentProvider candidateComponentProvider) {
 			super(context);
 			this.candidateComponentProvider = candidateComponentProvider;
 		}

@@ -154,7 +154,7 @@ class PrometheusMetricsExportAutoConfigurationTests {
 	void allowsCustomScrapeEndpointToBeUsed() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(ManagementContextAutoConfiguration.class))
 				.withUserConfiguration(CustomEndpointConfiguration.class).run((context) -> assertThat(context)
-						.hasBean("customEndpoint").hasSingleBean(PrometheusScrapeEndpoint.class));
+				.hasBean("customEndpoint").hasSingleBean(PrometheusScrapeEndpoint.class));
 	}
 
 	@Test
@@ -168,9 +168,9 @@ class PrometheusMetricsExportAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(ManagementContextAutoConfiguration.class))
 				.withPropertyValues("management.metrics.export.prometheus.pushgateway.enabled=true")
 				.withUserConfiguration(BaseConfiguration.class).run((context) -> {
-					assertThat(output).doesNotContain("Invalid PushGateway base url");
-					hasGatewayURL(context, "http://localhost:9091/metrics/");
-				});
+			assertThat(output).doesNotContain("Invalid PushGateway base url");
+			hasGatewayURL(context, "http://localhost:9091/metrics/");
+		});
 	}
 
 	@Test
@@ -189,9 +189,9 @@ class PrometheusMetricsExportAutoConfigurationTests {
 				.withPropertyValues("management.metrics.export.prometheus.pushgateway.enabled=true",
 						"management.metrics.export.prometheus.pushgateway.base-url=localhost:9090")
 				.withUserConfiguration(BaseConfiguration.class).run((context) -> {
-					assertThat(output).contains("Invalid PushGateway base url").contains("localhost:9090");
-					hasGatewayURL(context, "http://localhost:9090/metrics/");
-				});
+			assertThat(output).contains("Invalid PushGateway base url").contains("localhost:9090");
+			hasGatewayURL(context, "http://localhost:9090/metrics/");
+		});
 	}
 
 	@Test
@@ -260,7 +260,7 @@ class PrometheusMetricsExportAutoConfigurationTests {
 
 		@Bean
 		PrometheusMeterRegistry customRegistry(PrometheusConfig config, CollectorRegistry collectorRegistry,
-				Clock clock) {
+											   Clock clock) {
 			return new PrometheusMeterRegistry(config, collectorRegistry, clock);
 		}
 

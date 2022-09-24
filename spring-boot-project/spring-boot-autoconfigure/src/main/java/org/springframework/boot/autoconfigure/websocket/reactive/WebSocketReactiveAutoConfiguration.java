@@ -42,12 +42,12 @@ import org.springframework.context.annotation.Configuration;
  * @since 2.0.0
  */
 @AutoConfiguration(before = ReactiveWebServerFactoryAutoConfiguration.class)
-@ConditionalOnClass({ Servlet.class, ServerContainer.class })
+@ConditionalOnClass({Servlet.class, ServerContainer.class})
 @ConditionalOnWebApplication(type = Type.REACTIVE)
 public class WebSocketReactiveAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ Tomcat.class, WsSci.class })
+	@ConditionalOnClass({Tomcat.class, WsSci.class})
 	static class TomcatWebSocketConfiguration {
 
 		@Bean

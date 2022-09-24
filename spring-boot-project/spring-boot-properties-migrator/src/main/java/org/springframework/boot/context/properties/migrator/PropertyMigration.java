@@ -48,7 +48,7 @@ class PropertyMigration {
 	private final boolean compatibleType;
 
 	PropertyMigration(ConfigurationProperty property, ConfigurationMetadataProperty metadata,
-			ConfigurationMetadataProperty replacementMetadata) {
+					  ConfigurationMetadataProperty replacementMetadata) {
 		this.property = property;
 		this.lineNumber = determineLineNumber(property);
 		this.metadata = metadata;
@@ -68,7 +68,7 @@ class PropertyMigration {
 	}
 
 	private static boolean determineCompatibleType(ConfigurationMetadataProperty metadata,
-			ConfigurationMetadataProperty replacementMetadata) {
+												   ConfigurationMetadataProperty replacementMetadata) {
 		String currentType = metadata.getType();
 		String replacementType = determineReplacementType(replacementMetadata);
 		if (replacementType == null || currentType == null) {

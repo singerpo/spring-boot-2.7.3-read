@@ -42,8 +42,7 @@ class JarResourceManager implements ResourceManager {
 	JarResourceManager(File jarFile) {
 		try {
 			this.jarPath = jarFile.getAbsoluteFile().toURI().toURL().toString();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalArgumentException(ex);
 		}
 	}

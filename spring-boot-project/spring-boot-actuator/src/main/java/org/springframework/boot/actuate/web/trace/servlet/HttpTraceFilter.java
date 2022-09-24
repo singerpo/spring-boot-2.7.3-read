@@ -57,8 +57,9 @@ public class HttpTraceFilter extends OncePerRequestFilter implements Ordered {
 
 	/**
 	 * Create a new {@link HttpTraceFilter} instance.
+	 *
 	 * @param repository the trace repository
-	 * @param tracer used to trace exchanges
+	 * @param tracer     used to trace exchanges
 	 */
 	public HttpTraceFilter(HttpTraceRepository repository, HttpExchangeTracer tracer) {
 		this.repository = repository;
@@ -87,8 +88,7 @@ public class HttpTraceFilter extends OncePerRequestFilter implements Ordered {
 		try {
 			filterChain.doFilter(request, response);
 			status = response.getStatus();
-		}
-		finally {
+		} finally {
 			TraceableHttpServletResponse traceableResponse = new TraceableHttpServletResponse(
 					(status != response.getStatus()) ? new CustomStatusResponseWrapper(response, status) : response);
 			this.tracer.sendingResponse(trace, traceableResponse, request::getUserPrincipal,
@@ -101,8 +101,7 @@ public class HttpTraceFilter extends OncePerRequestFilter implements Ordered {
 		try {
 			new URI(request.getRequestURL().toString());
 			return true;
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			return false;
 		}
 	}

@@ -52,8 +52,8 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketMessagingAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnBean({ DelegatingWebSocketMessageBrokerConfiguration.class, ObjectMapper.class })
-	@ConditionalOnClass({ ObjectMapper.class, AbstractMessageBrokerConfiguration.class })
+	@ConditionalOnBean({DelegatingWebSocketMessageBrokerConfiguration.class, ObjectMapper.class})
+	@ConditionalOnClass({ObjectMapper.class, AbstractMessageBrokerConfiguration.class})
 	static class WebSocketMessageConverterConfiguration implements WebSocketMessageBrokerConfigurer {
 
 		private final ObjectMapper objectMapper;

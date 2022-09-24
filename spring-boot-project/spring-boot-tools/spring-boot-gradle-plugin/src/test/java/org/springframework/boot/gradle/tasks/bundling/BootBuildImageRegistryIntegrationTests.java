@@ -96,8 +96,7 @@ class BootBuildImageRegistryIntegrationTests {
 			writer.println("    }");
 			writer.println();
 			writer.println("}");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

@@ -27,6 +27,7 @@ public interface VehicleDetailsService {
 
 	/**
 	 * Get vehicle details for a given {@link VehicleIdentificationNumber}.
+	 *
 	 * @param vin the vehicle identification number
 	 * @return vehicle details
 	 * @throws VehicleIdentificationNumberNotFoundException if the VIN is not known

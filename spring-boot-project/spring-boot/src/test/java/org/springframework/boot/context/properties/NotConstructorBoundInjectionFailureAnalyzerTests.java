@@ -60,8 +60,7 @@ class NotConstructorBoundInjectionFailureAnalyzerTests {
 			context.register(config);
 			context.refresh();
 			return null;
-		}
-		catch (FatalBeanException ex) {
+		} catch (FatalBeanException ex) {
 			return ex;
 		}
 	}

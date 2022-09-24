@@ -55,10 +55,10 @@ import org.springframework.util.StringUtils;
  * @author Stephane Nicoll
  * @since 2.0.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, DataSourceAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
-@ConditionalOnClass({ DataSource.class, MeterRegistry.class })
-@ConditionalOnBean({ DataSource.class, MeterRegistry.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, DataSourceAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
+@ConditionalOnClass({DataSource.class, MeterRegistry.class})
+@ConditionalOnBean({DataSource.class, MeterRegistry.class})
 public class DataSourcePoolMetricsAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
@@ -69,7 +69,7 @@ public class DataSourcePoolMetricsAutoConfiguration {
 
 		@Bean
 		DataSourcePoolMetadataMeterBinder dataSourcePoolMetadataMeterBinder(Map<String, DataSource> dataSources,
-				ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders) {
+																			ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders) {
 			return new DataSourcePoolMetadataMeterBinder(dataSources, metadataProviders);
 		}
 
@@ -80,7 +80,7 @@ public class DataSourcePoolMetricsAutoConfiguration {
 			private final ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders;
 
 			DataSourcePoolMetadataMeterBinder(Map<String, DataSource> dataSources,
-					ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders) {
+											  ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders) {
 				this.dataSources = dataSources;
 				this.metadataProviders = metadataProviders;
 			}
@@ -94,7 +94,7 @@ public class DataSourcePoolMetricsAutoConfiguration {
 			}
 
 			private void bindDataSourceToRegistry(String beanName, DataSource dataSource,
-					Collection<DataSourcePoolMetadataProvider> metadataProviders, MeterRegistry registry) {
+												  Collection<DataSourcePoolMetadataProvider> metadataProviders, MeterRegistry registry) {
 				String dataSourceName = getDataSourceName(beanName);
 				new DataSourcePoolMetrics(dataSource, metadataProviders, dataSourceName, Collections.emptyList())
 						.bindTo(registry);
@@ -102,6 +102,7 @@ public class DataSourcePoolMetricsAutoConfiguration {
 
 			/**
 			 * Get the name of a DataSource based on its {@code beanName}.
+			 *
 			 * @param beanName the name of the data source bean
 			 * @return a name for the given data source
 			 */
@@ -151,8 +152,7 @@ public class DataSourcePoolMetricsAutoConfiguration {
 				if (hikari.getMetricRegistry() == null && hikari.getMetricsTrackerFactory() == null) {
 					try {
 						hikari.setMetricsTrackerFactory(new MicrometerMetricsTrackerFactory(registry));
-					}
-					catch (Exception ex) {
+					} catch (Exception ex) {
 						logger.warn(LogMessage.format("Failed to bind Hikari metrics: %s", ex.getMessage()));
 					}
 				}

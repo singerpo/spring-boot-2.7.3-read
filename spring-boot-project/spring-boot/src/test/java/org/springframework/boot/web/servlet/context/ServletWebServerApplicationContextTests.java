@@ -93,7 +93,7 @@ import static org.mockito.Mockito.withSettings;
  * @author Phillip Webb
  * @author Stephane Nicoll
  */
-@ExtendWith({ OutputCaptureExtension.class, MockitoExtension.class })
+@ExtendWith({OutputCaptureExtension.class, MockitoExtension.class})
 class ServletWebServerApplicationContextTests {
 
 	private ServletWebServerApplicationContext context = new ServletWebServerApplicationContext();

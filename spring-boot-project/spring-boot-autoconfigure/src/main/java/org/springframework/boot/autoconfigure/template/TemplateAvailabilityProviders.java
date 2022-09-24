@@ -71,6 +71,7 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Create a new {@link TemplateAvailabilityProviders} instance.
+	 *
 	 * @param applicationContext the source application context
 	 */
 	public TemplateAvailabilityProviders(ApplicationContext applicationContext) {
@@ -79,6 +80,7 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Create a new {@link TemplateAvailabilityProviders} instance.
+	 *
 	 * @param classLoader the source class loader
 	 */
 	public TemplateAvailabilityProviders(ClassLoader classLoader) {
@@ -88,6 +90,7 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Create a new {@link TemplateAvailabilityProviders} instance.
+	 *
 	 * @param providers the underlying providers
 	 */
 	protected TemplateAvailabilityProviders(Collection<? extends TemplateAvailabilityProvider> providers) {
@@ -97,6 +100,7 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Return the underlying providers being used.
+	 *
 	 * @return the providers being used
 	 */
 	public List<TemplateAvailabilityProvider> getProviders() {
@@ -105,7 +109,8 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Get the provider that can be used to render the given view.
-	 * @param view the view to render
+	 *
+	 * @param view               the view to render
 	 * @param applicationContext the application context
 	 * @return a {@link TemplateAvailabilityProvider} or null
 	 */
@@ -117,14 +122,15 @@ public class TemplateAvailabilityProviders {
 
 	/**
 	 * Get the provider that can be used to render the given view.
-	 * @param view the view to render
-	 * @param environment the environment
-	 * @param classLoader the class loader
+	 *
+	 * @param view           the view to render
+	 * @param environment    the environment
+	 * @param classLoader    the class loader
 	 * @param resourceLoader the resource loader
 	 * @return a {@link TemplateAvailabilityProvider} or null
 	 */
 	public TemplateAvailabilityProvider getProvider(String view, Environment environment, ClassLoader classLoader,
-			ResourceLoader resourceLoader) {
+													ResourceLoader resourceLoader) {
 		Assert.notNull(view, "View must not be null");
 		Assert.notNull(environment, "Environment must not be null");
 		Assert.notNull(classLoader, "ClassLoader must not be null");
@@ -146,7 +152,7 @@ public class TemplateAvailabilityProviders {
 	}
 
 	private TemplateAvailabilityProvider findProvider(String view, Environment environment, ClassLoader classLoader,
-			ResourceLoader resourceLoader) {
+													  ResourceLoader resourceLoader) {
 		for (TemplateAvailabilityProvider candidate : this.providers) {
 			if (candidate.isTemplateAvailable(view, environment, classLoader, resourceLoader)) {
 				return candidate;
@@ -159,7 +165,7 @@ public class TemplateAvailabilityProviders {
 
 		@Override
 		public boolean isTemplateAvailable(String view, Environment environment, ClassLoader classLoader,
-				ResourceLoader resourceLoader) {
+										   ResourceLoader resourceLoader) {
 			return false;
 		}
 

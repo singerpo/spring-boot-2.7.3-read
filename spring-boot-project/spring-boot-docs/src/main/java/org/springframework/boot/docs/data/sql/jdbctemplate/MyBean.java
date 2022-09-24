@@ -29,7 +29,8 @@ public class MyBean {
 	}
 
 	public void doSomething() {
-		/* @chomp:line this.jdbcTemplate ... */ this.jdbcTemplate.execute("delete from customer");
+		/* @chomp:line this.jdbcTemplate ... */
+		this.jdbcTemplate.execute("delete from customer");
 	}
 
 }

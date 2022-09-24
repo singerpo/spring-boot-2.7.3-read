@@ -46,6 +46,7 @@ public final class MeterValue {
 
 	/**
 	 * Return the underlying value in form suitable to apply to the given meter type.
+	 *
 	 * @param meterType the meter type
 	 * @return the value or {@code null} if the value cannot be applied
 	 */
@@ -82,6 +83,7 @@ public final class MeterValue {
 	/**
 	 * Return a new {@link MeterValue} instance for the given String value. The value may
 	 * contain a simple number, or a {@link DurationStyle duration style string}.
+	 *
 	 * @param value the source value
 	 * @return a {@link MeterValue} instance
 	 */
@@ -95,6 +97,7 @@ public final class MeterValue {
 
 	/**
 	 * Return a new {@link MeterValue} instance for the given double value.
+	 *
 	 * @param value the source value
 	 * @return a {@link MeterValue} instance
 	 * @since 2.3.0
@@ -106,8 +109,7 @@ public final class MeterValue {
 	private static Duration safeParseDuration(String value) {
 		try {
 			return DurationStyle.detectAndParse(value);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			return null;
 		}
 	}

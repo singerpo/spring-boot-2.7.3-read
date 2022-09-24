@@ -41,7 +41,7 @@ class ImportsContextCustomizerFactory implements ContextCustomizerFactory {
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		AnnotationDescriptor<Import> descriptor = TestContextAnnotationUtils.findAnnotationDescriptor(testClass,
 				Import.class);
 		if (descriptor != null) {

@@ -34,10 +34,10 @@ class MyControllerTests(@Autowired val webClient: WebTestClient) {
 	@Test
 	fun testExample() {
 		given(userVehicleService.getVehicleDetails("sboot"))
-			.willReturn(VehicleDetails("Honda", "Civic"))
+				.willReturn(VehicleDetails("Honda", "Civic"))
 		webClient.get().uri("/sboot/vehicle").accept(MediaType.TEXT_PLAIN).exchange()
-			.expectStatus().isOk
-			.expectBody<String>().isEqualTo("Honda Civic")
+				.expectStatus().isOk
+				.expectBody<String>().isEqualTo("Honda Civic")
 	}
 
 }

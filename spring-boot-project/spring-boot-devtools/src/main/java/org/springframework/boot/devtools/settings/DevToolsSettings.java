@@ -113,8 +113,7 @@ public class DevToolsSettings {
 				logger.debug("Excluded patterns for restart : " + settings.restartExcludePatterns);
 			}
 			return settings;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to load devtools settings from location [" + location + "]", ex);
 		}
 	}

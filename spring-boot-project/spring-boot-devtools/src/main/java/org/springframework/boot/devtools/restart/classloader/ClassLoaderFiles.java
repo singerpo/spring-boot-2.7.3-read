@@ -33,9 +33,9 @@ import org.springframework.util.Assert;
  * {@link ClassLoaderFile} items grouped by source directories.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see ClassLoaderFile
  * @see ClassLoaderRepository
+ * @since 1.3.0
  */
 public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable {
 
@@ -52,6 +52,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 	/**
 	 * Create a new {@link ClassLoaderFiles} instance.
+	 *
 	 * @param classLoaderFiles the source classloader files.
 	 */
 	public ClassLoaderFiles(ClassLoaderFiles classLoaderFiles) {
@@ -62,6 +63,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 	/**
 	 * Add all elements items from the specified {@link ClassLoaderFiles} to this
 	 * instance.
+	 *
 	 * @param files the files to add
 	 */
 	public void addAll(ClassLoaderFiles files) {
@@ -75,6 +77,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 	/**
 	 * Add a single {@link ClassLoaderFile} to the collection.
+	 *
 	 * @param name the name of the file
 	 * @param file the file to add
 	 */
@@ -84,9 +87,10 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 	/**
 	 * Add a single {@link ClassLoaderFile} to the collection.
+	 *
 	 * @param sourceDirectory the source directory of the file
-	 * @param name the name of the file
-	 * @param file the file to add
+	 * @param name            the name of the file
+	 * @param file            the file to add
 	 */
 	public void addFile(String sourceDirectory, String name, ClassLoaderFile file) {
 		Assert.notNull(sourceDirectory, "SourceDirectory must not be null");
@@ -104,6 +108,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 	/**
 	 * Get or create a {@link SourceDirectory} with the given name.
+	 *
 	 * @param name the name of the directory
 	 * @return an existing or newly added {@link SourceDirectory}
 	 */
@@ -119,6 +124,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 	/**
 	 * Return all {@link SourceDirectory SourceDirectories} that have been added to the
 	 * collection.
+	 *
 	 * @return a collection of {@link SourceDirectory} items
 	 */
 	public Collection<SourceDirectory> getSourceDirectories() {
@@ -127,6 +133,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 	/**
 	 * Return the size of the collection.
+	 *
 	 * @return the size of the collection
 	 */
 	public int size() {
@@ -181,6 +188,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 
 		/**
 		 * Return the name of the source directory.
+		 *
 		 * @return the name of the source directory
 		 */
 		public String getName() {
@@ -190,6 +198,7 @@ public class ClassLoaderFiles implements ClassLoaderFileRepository, Serializable
 		/**
 		 * Return all {@link ClassLoaderFile ClassLoaderFiles} in the collection that are
 		 * contained in this source directory.
+		 *
 		 * @return the files contained in the source directory
 		 */
 		public Collection<ClassLoaderFile> getFiles() {

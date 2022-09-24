@@ -53,14 +53,14 @@ class LauncherJarModeTests {
 	@Test
 	void launchWhenJarModePropertyIsSetLaunchesJarMode(CapturedOutput out) throws Exception {
 		System.setProperty("jarmode", "test");
-		new TestLauncher().launch(new String[] { "boot" });
+		new TestLauncher().launch(new String[]{"boot"});
 		assertThat(out).contains("running in test jar mode [boot]");
 	}
 
 	@Test
 	void launchWhenJarModePropertyIsNotAcceptedThrowsException(CapturedOutput out) throws Exception {
 		System.setProperty("jarmode", "idontexist");
-		new TestLauncher().launch(new String[] { "boot" });
+		new TestLauncher().launch(new String[]{"boot"});
 		assertThat(out).contains("Unsupported jarmode 'idontexist'");
 	}
 

@@ -150,8 +150,7 @@ public class ApplicationRunner extends DefaultTask {
 		Path outputPath = this.output.get().getAsFile().toPath();
 		try {
 			return Files.readAllLines(outputPath);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to read lines of output from '" + outputPath + "'", ex);
 		}
 	}
@@ -162,8 +161,7 @@ public class ApplicationRunner extends DefaultTask {
 		Path outputPath = this.output.get().getAsFile().toPath();
 		try {
 			Files.write(outputPath, normalizedLines);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to write normalized lines of output to '" + outputPath + "'", ex);
 		}
 	}

@@ -130,6 +130,7 @@ public class JSONStringer {
 	/**
 	 * Begins encoding a new array. Each call to this method must be paired with a call to
 	 * {@link #endArray}.
+	 *
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -139,6 +140,7 @@ public class JSONStringer {
 
 	/**
 	 * Ends encoding the current array.
+	 *
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -149,6 +151,7 @@ public class JSONStringer {
 	/**
 	 * Begins encoding a new object. Each call to this method must be paired with a call
 	 * to {@link #endObject}.
+	 *
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -158,6 +161,7 @@ public class JSONStringer {
 
 	/**
 	 * Ends encoding the current object.
+	 *
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -167,7 +171,8 @@ public class JSONStringer {
 
 	/**
 	 * Enters a new scope by appending any necessary whitespace and the given bracket.
-	 * @param empty any necessary whitespace
+	 *
+	 * @param empty       any necessary whitespace
 	 * @param openBracket the open bracket
 	 * @return this object
 	 * @throws JSONException if processing of json failed
@@ -185,8 +190,9 @@ public class JSONStringer {
 	/**
 	 * Closes the current scope by appending any necessary whitespace and the given
 	 * bracket.
-	 * @param empty any necessary whitespace
-	 * @param nonempty the current scope
+	 *
+	 * @param empty        any necessary whitespace
+	 * @param nonempty     the current scope
 	 * @param closeBracket the close bracket
 	 * @return the JSON stringer
 	 * @throws JSONException if processing of json failed
@@ -207,6 +213,7 @@ public class JSONStringer {
 
 	/**
 	 * Returns the value on the top of the stack.
+	 *
 	 * @return the scope
 	 * @throws JSONException if processing of json failed
 	 */
@@ -219,6 +226,7 @@ public class JSONStringer {
 
 	/**
 	 * Replace the value on the top of the stack with the given value.
+	 *
 	 * @param topOfStack the scope at the top of the stack
 	 */
 	private void replaceTop(Scope topOfStack) {
@@ -227,9 +235,10 @@ public class JSONStringer {
 
 	/**
 	 * Encodes {@code value}.
+	 *
 	 * @param value a {@link JSONObject}, {@link JSONArray}, String, Boolean, Integer,
-	 * Long, Double or null. May not be {@link Double#isNaN() NaNs} or
-	 * {@link Double#isInfinite() infinities}.
+	 *              Long, Double or null. May not be {@link Double#isNaN() NaNs} or
+	 *              {@link Double#isInfinite() infinities}.
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -241,8 +250,7 @@ public class JSONStringer {
 		if (value instanceof JSONArray) {
 			((JSONArray) value).writeTo(this);
 			return this;
-		}
-		else if (value instanceof JSONObject) {
+		} else if (value instanceof JSONObject) {
 			((JSONObject) value).writeTo(this);
 			return this;
 		}
@@ -252,12 +260,10 @@ public class JSONStringer {
 		if (value == null || value instanceof Boolean || value == JSONObject.NULL) {
 			this.out.append(value);
 
-		}
-		else if (value instanceof Number) {
+		} else if (value instanceof Number) {
 			this.out.append(JSONObject.numberToString((Number) value));
 
-		}
-		else {
+		} else {
 			string(value.toString());
 		}
 
@@ -266,6 +272,7 @@ public class JSONStringer {
 
 	/**
 	 * Encodes {@code value} to this stringer.
+	 *
 	 * @param value the value to encode
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
@@ -281,8 +288,9 @@ public class JSONStringer {
 
 	/**
 	 * Encodes {@code value} to this stringer.
+	 *
 	 * @param value a finite value. May not be {@link Double#isNaN() NaNs} or
-	 * {@link Double#isInfinite() infinities}.
+	 *              {@link Double#isInfinite() infinities}.
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
 	 */
@@ -297,6 +305,7 @@ public class JSONStringer {
 
 	/**
 	 * Encodes {@code value} to this stringer.
+	 *
 	 * @param value the value to encode
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
@@ -350,8 +359,7 @@ public class JSONStringer {
 				default:
 					if (c <= 0x1F) {
 						this.out.append(String.format("\\u%04x", (int) c));
-					}
-					else {
+					} else {
 						this.out.append(c);
 					}
 					break;
@@ -374,6 +382,7 @@ public class JSONStringer {
 
 	/**
 	 * Encodes the key (property name) to this stringer.
+	 *
 	 * @param name the name of the forthcoming value. May not be null.
 	 * @return this stringer.
 	 * @throws JSONException if processing of json failed
@@ -390,14 +399,14 @@ public class JSONStringer {
 	/**
 	 * Inserts any necessary separators and whitespace before a name. Also adjusts the
 	 * stack to expect the key's value.
+	 *
 	 * @throws JSONException if processing of json failed
 	 */
 	private void beforeKey() throws JSONException {
 		Scope context = peek();
 		if (context == Scope.NONEMPTY_OBJECT) { // first in object
 			this.out.append(',');
-		}
-		else if (context != Scope.EMPTY_OBJECT) { // not in an object!
+		} else if (context != Scope.EMPTY_OBJECT) { // not in an object!
 			throw new JSONException("Nesting problem");
 		}
 		newline();
@@ -408,6 +417,7 @@ public class JSONStringer {
 	 * Inserts any necessary separators and whitespace before a literal value, inline
 	 * array, or inline object. Also adjusts the stack to expect either a closing bracket
 	 * or another element.
+	 *
 	 * @throws JSONException if processing of json failed
 	 */
 	private void beforeValue() throws JSONException {
@@ -419,16 +429,13 @@ public class JSONStringer {
 		if (context == Scope.EMPTY_ARRAY) { // first in array
 			replaceTop(Scope.NONEMPTY_ARRAY);
 			newline();
-		}
-		else if (context == Scope.NONEMPTY_ARRAY) { // another in array
+		} else if (context == Scope.NONEMPTY_ARRAY) { // another in array
 			this.out.append(',');
 			newline();
-		}
-		else if (context == Scope.DANGLING_KEY) { // value for key
+		} else if (context == Scope.DANGLING_KEY) { // value for key
 			this.out.append(this.indent == null ? ":" : ": ");
 			replaceTop(Scope.NONEMPTY_OBJECT);
-		}
-		else if (context != Scope.NULL) {
+		} else if (context != Scope.NULL) {
 			throw new JSONException("Nesting problem");
 		}
 	}
@@ -441,6 +448,7 @@ public class JSONStringer {
 	 * <p>
 	 * <strong>Warning:</strong> although it contradicts the general contract of
 	 * {@link Object#toString}, this method returns null if the stringer contains no data.
+	 *
 	 * @return the encoded JSON string.
 	 */
 	@Override

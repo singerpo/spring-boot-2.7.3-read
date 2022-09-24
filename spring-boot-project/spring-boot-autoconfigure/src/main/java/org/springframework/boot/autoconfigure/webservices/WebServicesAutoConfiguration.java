@@ -121,7 +121,7 @@ public class WebServicesAutoConfiguration {
 		}
 
 		private <T> void registerBeans(String location, String pattern, Class<T> type,
-				Function<Resource, T> beanSupplier, BeanDefinitionRegistry registry) {
+									   Function<Resource, T> beanSupplier, BeanDefinitionRegistry registry) {
 			for (Resource resource : getResources(location, pattern)) {
 				BeanDefinition beanDefinition = BeanDefinitionBuilder
 						.genericBeanDefinition(type, () -> beanSupplier.apply(resource)).getBeanDefinition();
@@ -133,8 +133,7 @@ public class WebServicesAutoConfiguration {
 		private Resource[] getResources(String location, String pattern) {
 			try {
 				return this.applicationContext.getResources(ensureTrailingSlash(location) + pattern);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				return new Resource[0];
 			}
 		}

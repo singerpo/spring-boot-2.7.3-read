@@ -23,8 +23,8 @@ import org.springframework.boot.actuate.autoconfigure.OnEndpointElementCondition
  * contributor is enabled is not set.
  *
  * @author Andy Wilkinson
- * @since 2.6.0
  * @see OnEndpointElementCondition
+ * @since 2.6.0
  */
 public enum InfoContributorFallback {
 

@@ -327,7 +327,7 @@ class LifecycleTests {
 	static class TestLifecycle extends Lifecycle {
 
 		TestLifecycle(BuildLog log, DockerApi docker, ResolvedDockerHost dockerHost, BuildRequest request,
-				EphemeralBuilder builder) {
+					  EphemeralBuilder builder) {
 			super(log, docker, dockerHost, request, builder);
 		}
 

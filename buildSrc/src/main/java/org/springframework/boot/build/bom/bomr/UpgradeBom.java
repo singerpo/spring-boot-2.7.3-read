@@ -117,7 +117,7 @@ public class UpgradeBom extends DefaultTask {
 		List<Issue> existingUpgradeIssues = repository.findIssues(issueLabels, milestone);
 		List<Upgrade> upgrades = new InteractiveUpgradeResolver(new MavenMetadataVersionResolver(this.repositoryUrls),
 				this.bom.getUpgrade().getPolicy(), getServices().get(UserInputHandler.class))
-						.resolveUpgrades(matchingLibraries(this.libraries), this.bom.getLibraries());
+				.resolveUpgrades(matchingLibraries(this.libraries), this.bom.getLibraries());
 		Path buildFile = getProject().getBuildFile().toPath();
 		Path gradleProperties = new File(getProject().getRootProject().getProjectDir(), "gradle.properties").toPath();
 		UpgradeApplicator upgradeApplicator = new UpgradeApplicator(buildFile, gradleProperties);
@@ -127,8 +127,7 @@ public class UpgradeBom extends DefaultTask {
 			if (existingUpgradeIssue != null) {
 				System.out.println(title + " (supersedes #" + existingUpgradeIssue.getNumber() + " "
 						+ existingUpgradeIssue.getTitle() + ")");
-			}
-			else {
+			} else {
 				System.out.println(title);
 			}
 			try {
@@ -147,11 +146,9 @@ public class UpgradeBom extends DefaultTask {
 						.waitFor() != 0) {
 					throw new IllegalStateException("git commit failed");
 				}
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new TaskExecutionException(this, ex);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}
@@ -188,8 +185,7 @@ public class UpgradeBom extends DefaultTask {
 			String username = bomrProperties.getProperty("bomr.github.username");
 			String password = bomrProperties.getProperty("bomr.github.password");
 			return GitHub.withCredentials(username, password);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new InvalidUserDataException("Failed to load .bomr.properties from user home", ex);
 		}
 	}

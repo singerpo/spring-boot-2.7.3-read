@@ -29,8 +29,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author Phillip Webb
  * @author Stephane Nicoll
- * @since 1.2.0
  * @see #asProperties()
+ * @since 1.2.0
  */
 @ConfigurationProperties(prefix = "spring.jta.atomikos.properties")
 public class AtomikosProperties {
@@ -118,6 +118,7 @@ public class AtomikosProperties {
 	 * no default value and this must be set. Generally,
 	 * {@literal com.atomikos.icatch.standalone.UserTransactionServiceFactory} is the
 	 * value you should set.
+	 *
 	 * @param service the service
 	 */
 	public void setService(String service) {
@@ -132,6 +133,7 @@ public class AtomikosProperties {
 	 * Specifies the maximum timeout that can be allowed for transactions. Defaults to
 	 * {@literal 300000}. This means that calls to UserTransaction.setTransactionTimeout()
 	 * with a value higher than configured here will be max'ed to this value.
+	 *
 	 * @param maxTimeout the max timeout
 	 */
 	public void setMaxTimeout(Duration maxTimeout) {
@@ -145,6 +147,7 @@ public class AtomikosProperties {
 	/**
 	 * The default timeout for JTA transactions (optional, defaults to {@literal 10000}
 	 * ms).
+	 *
 	 * @param defaultJtaTimeout the default JTA timeout
 	 */
 	public void setDefaultJtaTimeout(Duration defaultJtaTimeout) {
@@ -161,6 +164,7 @@ public class AtomikosProperties {
 	 * with error message "Max number of active transactions reached" if you call
 	 * {@code UserTransaction.begin()} while there are already n concurrent transactions
 	 * running, n being this value.
+	 *
 	 * @param maxActives the max activities
 	 */
 	public void setMaxActives(int maxActives) {
@@ -176,6 +180,7 @@ public class AtomikosProperties {
 	 * for JUnit testing, or to profile code without seeing the transaction manager's
 	 * activity as a hot spot but this should never be disabled on production or data
 	 * integrity cannot be guaranteed.
+	 *
 	 * @param enableLogging if logging is enabled
 	 */
 	public void setEnableLogging(boolean enableLogging) {
@@ -195,6 +200,7 @@ public class AtomikosProperties {
 	 * multiple instances need to use the same properties file then the easiest way to
 	 * ensure uniqueness for this property is by referencing a system property specified
 	 * at VM startup.
+	 *
 	 * @param uniqueName the unique name
 	 */
 	public void setTransactionManagerUniqueName(String uniqueName) {
@@ -211,6 +217,7 @@ public class AtomikosProperties {
 	 * different but related subtransactions. This setting has no effect on resource
 	 * access within one and the same transaction. If you don't use subtransactions then
 	 * this setting can be ignored.
+	 *
 	 * @param serialJtaTransactions if serial JTA transactions are supported
 	 */
 	public void setSerialJtaTransactions(boolean serialJtaTransactions) {
@@ -232,6 +239,7 @@ public class AtomikosProperties {
 	/**
 	 * Specifies whether VM shutdown should trigger forced shutdown of the transaction
 	 * core. Defaults to false.
+	 *
 	 * @param forceShutdownOnVmExit if VM shutdown should be forced
 	 */
 	public void setForceShutdownOnVmExit(boolean forceShutdownOnVmExit) {
@@ -245,6 +253,7 @@ public class AtomikosProperties {
 	/**
 	 * Specifies how long should a normal shutdown (no-force) wait for transactions to
 	 * complete. Defaults to {@literal Long.MAX_VALUE}.
+	 *
 	 * @param defaultMaxWaitTimeOnShutdown the default max wait time on shutdown
 	 */
 	public void setDefaultMaxWaitTimeOnShutdown(long defaultMaxWaitTimeOnShutdown) {
@@ -260,6 +269,7 @@ public class AtomikosProperties {
 	 * transactions logs are stored in files using this name appended with a number and
 	 * the extension {@literal .log}. At checkpoint, a new transactions log file is
 	 * created and the number is incremented.
+	 *
 	 * @param logBaseName the log base name
 	 */
 	public void setLogBaseName(String logBaseName) {
@@ -275,6 +285,7 @@ public class AtomikosProperties {
 	 * current working directory. This directory should be a stable storage like a SAN,
 	 * RAID or at least backed up location. The transactions logs files are as important
 	 * as the data themselves to guarantee consistency in case of failures.
+	 *
 	 * @param logBaseDir the log base dir
 	 */
 	public void setLogBaseDir(String logBaseDir) {
@@ -288,6 +299,7 @@ public class AtomikosProperties {
 	/**
 	 * Specifies the interval between checkpoints. A checkpoint reduces the log file size
 	 * at the expense of adding some overhead in the runtime. Defaults to {@literal 500}.
+	 *
 	 * @param checkpointInterval the checkpoint interval
 	 */
 	public void setCheckpointInterval(long checkpointInterval) {
@@ -305,6 +317,7 @@ public class AtomikosProperties {
 	 * parallel. Defaults to {@literal true}. If you set this to {@literal false}, then
 	 * commits will happen in the order that resources are accessed within the
 	 * transaction.
+	 *
 	 * @param threadedTwoPhaseCommit if threaded two phase commits should be used
 	 */
 	public void setThreadedTwoPhaseCommit(boolean threadedTwoPhaseCommit) {
@@ -322,6 +335,7 @@ public class AtomikosProperties {
 	/**
 	 * Returns the properties as a {@link Properties} object that can be used with
 	 * Atomikos.
+	 *
 	 * @return the properties
 	 */
 	public Properties asProperties() {

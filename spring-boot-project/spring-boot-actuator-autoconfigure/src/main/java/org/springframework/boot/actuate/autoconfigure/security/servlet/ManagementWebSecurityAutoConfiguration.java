@@ -48,9 +48,9 @@ import org.springframework.util.ClassUtils;
  * @since 2.1.0
  */
 @AutoConfiguration(before = SecurityAutoConfiguration.class,
-		after = { HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class,
+		after = {HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class,
 				WebEndpointAutoConfiguration.class, OAuth2ClientAutoConfiguration.class,
-				OAuth2ResourceServerAutoConfiguration.class, Saml2RelyingPartyAutoConfiguration.class })
+				OAuth2ResourceServerAutoConfiguration.class, Saml2RelyingPartyAutoConfiguration.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnDefaultWebSecurity
 public class ManagementWebSecurityAutoConfiguration {

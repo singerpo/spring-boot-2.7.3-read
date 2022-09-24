@@ -40,18 +40,18 @@ import org.springframework.http.codec.json.Jackson2JsonEncoder;
  * @author Brian Clozel
  * @since 2.7.0
  */
-@AutoConfiguration(after = { JacksonAutoConfiguration.class, GraphQlAutoConfiguration.class })
-@ConditionalOnClass({ GraphQL.class, GraphQlTester.class })
+@AutoConfiguration(after = {JacksonAutoConfiguration.class, GraphQlAutoConfiguration.class})
+@ConditionalOnClass({GraphQL.class, GraphQlTester.class})
 public class GraphQlTesterAutoConfiguration {
 
 	@Bean
 	@ConditionalOnBean(ExecutionGraphQlService.class)
 	@ConditionalOnMissingBean
 	public ExecutionGraphQlServiceTester graphQlTester(ExecutionGraphQlService graphQlService,
-			ObjectProvider<ObjectMapper> objectMapperProvider) {
+													   ObjectProvider<ObjectMapper> objectMapperProvider) {
 		ExecutionGraphQlServiceTester.Builder<?> builder = ExecutionGraphQlServiceTester.builder(graphQlService);
 		objectMapperProvider.ifAvailable((objectMapper) -> {
-			MediaType[] mediaTypes = new MediaType[] { MediaType.APPLICATION_JSON, MediaType.APPLICATION_GRAPHQL };
+			MediaType[] mediaTypes = new MediaType[]{MediaType.APPLICATION_JSON, MediaType.APPLICATION_GRAPHQL};
 			builder.encoder(new Jackson2JsonEncoder(objectMapper, mediaTypes));
 			builder.decoder(new Jackson2JsonDecoder(objectMapper, mediaTypes));
 		});

@@ -67,16 +67,16 @@ import org.springframework.web.filter.ForwardedHeaderFilter;
 @ConditionalOnClass(ServletRequest.class)
 @ConditionalOnWebApplication(type = Type.SERVLET)
 @EnableConfigurationProperties(ServerProperties.class)
-@Import({ ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class,
+@Import({ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class,
 		ServletWebServerFactoryConfiguration.EmbeddedTomcat.class,
 		ServletWebServerFactoryConfiguration.EmbeddedJetty.class,
-		ServletWebServerFactoryConfiguration.EmbeddedUndertow.class })
+		ServletWebServerFactoryConfiguration.EmbeddedUndertow.class})
 public class ServletWebServerFactoryAutoConfiguration {
 
 	@Bean
 	public ServletWebServerFactoryCustomizer servletWebServerFactoryCustomizer(ServerProperties serverProperties,
-			ObjectProvider<WebListenerRegistrar> webListenerRegistrars,
-			ObjectProvider<CookieSameSiteSupplier> cookieSameSiteSuppliers) {
+																			   ObjectProvider<WebListenerRegistrar> webListenerRegistrars,
+																			   ObjectProvider<CookieSameSiteSupplier> cookieSameSiteSuppliers) {
 		return new ServletWebServerFactoryCustomizer(serverProperties,
 				webListenerRegistrars.orderedStream().collect(Collectors.toList()),
 				cookieSameSiteSuppliers.orderedStream().collect(Collectors.toList()));
@@ -136,7 +136,7 @@ public class ServletWebServerFactoryAutoConfiguration {
 
 		@Override
 		public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
-				BeanDefinitionRegistry registry) {
+											BeanDefinitionRegistry registry) {
 			if (this.beanFactory == null) {
 				return;
 			}
@@ -148,7 +148,7 @@ public class ServletWebServerFactoryAutoConfiguration {
 		}
 
 		private <T> void registerSyntheticBeanIfMissing(BeanDefinitionRegistry registry, String name,
-				Class<T> beanClass, Supplier<T> instanceSupplier) {
+														Class<T> beanClass, Supplier<T> instanceSupplier) {
 			if (ObjectUtils.isEmpty(this.beanFactory.getBeanNamesForType(beanClass, true, false))) {
 				RootBeanDefinition beanDefinition = new RootBeanDefinition(beanClass, instanceSupplier);
 				beanDefinition.setSynthetic(true);

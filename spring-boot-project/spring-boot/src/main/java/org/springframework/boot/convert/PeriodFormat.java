@@ -31,13 +31,14 @@ import java.time.Period;
  * @author Edson Chávez
  * @since 2.3.0
  */
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface PeriodFormat {
 
 	/**
 	 * The {@link Period} format style.
+	 *
 	 * @return the period format style.
 	 */
 	PeriodStyle value();

@@ -38,7 +38,7 @@ import org.springframework.ws.client.core.WebServiceTemplate;
  * @since 2.1.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ WebServiceTemplate.class, Unmarshaller.class, Marshaller.class })
+@ConditionalOnClass({WebServiceTemplate.class, Unmarshaller.class, Marshaller.class})
 public class WebServiceTemplateAutoConfiguration {
 
 	@Bean

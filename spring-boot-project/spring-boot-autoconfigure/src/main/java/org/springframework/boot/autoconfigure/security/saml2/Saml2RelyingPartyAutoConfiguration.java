@@ -35,7 +35,7 @@ import org.springframework.security.saml2.provider.service.registration.RelyingP
 @AutoConfiguration(before = SecurityAutoConfiguration.class)
 @ConditionalOnClass(RelyingPartyRegistrationRepository.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@Import({ Saml2RelyingPartyRegistrationConfiguration.class, Saml2LoginConfiguration.class })
+@Import({Saml2RelyingPartyRegistrationConfiguration.class, Saml2LoginConfiguration.class})
 @EnableConfigurationProperties(Saml2RelyingPartyProperties.class)
 public class Saml2RelyingPartyAutoConfiguration {
 

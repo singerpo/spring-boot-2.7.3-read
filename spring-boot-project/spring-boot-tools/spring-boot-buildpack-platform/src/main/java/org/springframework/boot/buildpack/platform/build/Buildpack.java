@@ -31,12 +31,14 @@ interface Buildpack {
 
 	/**
 	 * Return the coordinates of the builder.
+	 *
 	 * @return the builder coordinates
 	 */
 	BuildpackCoordinates getCoordinates();
 
 	/**
 	 * Apply the necessary buildpack layers.
+	 *
 	 * @param layers a consumer that should accept the layers
 	 * @throws IOException on IO error
 	 */

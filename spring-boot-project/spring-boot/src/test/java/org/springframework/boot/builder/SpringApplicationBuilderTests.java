@@ -95,7 +95,7 @@ class SpringApplicationBuilderTests {
 	void propertiesAsProperties() {
 		SpringApplicationBuilder application = new SpringApplicationBuilder().sources(ExampleConfig.class)
 				.contextFactory(ApplicationContextFactory.ofContextClass(StaticApplicationContext.class))
-				.properties(StringUtils.splitArrayElementsIntoProperties(new String[] { "bar=foo" }, "="));
+				.properties(StringUtils.splitArrayElementsIntoProperties(new String[]{"bar=foo"}, "="));
 		this.context = application.run();
 		assertThat(this.context.getEnvironment().getProperty("bar")).isEqualTo("foo");
 	}

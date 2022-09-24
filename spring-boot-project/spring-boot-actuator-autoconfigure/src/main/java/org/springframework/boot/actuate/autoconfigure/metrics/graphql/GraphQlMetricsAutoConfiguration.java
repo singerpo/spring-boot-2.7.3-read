@@ -46,10 +46,10 @@ import org.springframework.graphql.execution.GraphQlSource;
  * @author Brian Clozel
  * @since 2.7.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
 @ConditionalOnBean(MeterRegistry.class)
-@ConditionalOnClass({ GraphQL.class, GraphQlSource.class })
+@ConditionalOnClass({GraphQL.class, GraphQlSource.class})
 @EnableConfigurationProperties(MetricsProperties.class)
 public class GraphQlMetricsAutoConfiguration {
 
@@ -61,7 +61,7 @@ public class GraphQlMetricsAutoConfiguration {
 
 	@Bean
 	public GraphQlMetricsInstrumentation graphQlMetricsInstrumentation(MeterRegistry meterRegistry,
-			GraphQlTagsProvider tagsProvider, MetricsProperties properties) {
+																	   GraphQlTagsProvider tagsProvider, MetricsProperties properties) {
 		return new GraphQlMetricsInstrumentation(meterRegistry, tagsProvider, properties.getGraphql().getAutotime());
 	}
 

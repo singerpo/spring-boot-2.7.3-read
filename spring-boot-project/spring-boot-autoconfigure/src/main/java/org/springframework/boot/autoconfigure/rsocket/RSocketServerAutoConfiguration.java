@@ -57,7 +57,7 @@ import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHa
  * @since 2.2.0
  */
 @AutoConfiguration(after = RSocketStrategiesAutoConfiguration.class)
-@ConditionalOnClass({ RSocketServer.class, RSocketStrategies.class, HttpServer.class, TcpServerTransport.class })
+@ConditionalOnClass({RSocketServer.class, RSocketStrategies.class, HttpServer.class, TcpServerTransport.class})
 @ConditionalOnBean(RSocketMessageHandler.class)
 @EnableConfigurationProperties(RSocketProperties.class)
 public class RSocketServerAutoConfiguration {
@@ -69,7 +69,7 @@ public class RSocketServerAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		RSocketWebSocketNettyRouteProvider rSocketWebsocketRouteProvider(RSocketProperties properties,
-				RSocketMessageHandler messageHandler, ObjectProvider<RSocketServerCustomizer> customizers) {
+																		 RSocketMessageHandler messageHandler, ObjectProvider<RSocketServerCustomizer> customizers) {
 			return new RSocketWebSocketNettyRouteProvider(properties.getServer().getMappingPath(),
 					messageHandler.responder(), customizers.orderedStream());
 		}
@@ -90,7 +90,7 @@ public class RSocketServerAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		RSocketServerFactory rSocketServerFactory(RSocketProperties properties, ReactorResourceFactory resourceFactory,
-				ObjectProvider<RSocketServerCustomizer> customizers) {
+												  ObjectProvider<RSocketServerCustomizer> customizers) {
 			NettyRSocketServerFactory factory = new NettyRSocketServerFactory();
 			factory.setResourceFactory(resourceFactory);
 			factory.setTransport(properties.getServer().getTransport());
@@ -106,7 +106,7 @@ public class RSocketServerAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		RSocketServerBootstrap rSocketServerBootstrap(RSocketServerFactory rSocketServerFactory,
-				RSocketMessageHandler rSocketMessageHandler) {
+													  RSocketMessageHandler rSocketMessageHandler) {
 			return new RSocketServerBootstrap(rSocketServerFactory, rSocketMessageHandler.responder());
 		}
 

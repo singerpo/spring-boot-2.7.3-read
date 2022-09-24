@@ -178,11 +178,11 @@ class HttpMessageConvertersAutoConfigurationTests {
 	void typeConstrainedConverterDoesNotPreventAutoConfigurationOfJacksonConverter() {
 		this.contextRunner.withUserConfiguration(JacksonObjectMapperBuilderConfig.class,
 				TypeConstrainedConverterConfiguration.class).run((context) -> {
-					BeanDefinition beanDefinition = ((GenericApplicationContext) context.getSourceApplicationContext())
-							.getBeanDefinition("mappingJackson2HttpMessageConverter");
-					assertThat(beanDefinition.getFactoryBeanName())
-							.isEqualTo(MappingJackson2HttpMessageConverterConfiguration.class.getName());
-				});
+			BeanDefinition beanDefinition = ((GenericApplicationContext) context.getSourceApplicationContext())
+					.getBeanDefinition("mappingJackson2HttpMessageConverter");
+			assertThat(beanDefinition.getFactoryBeanName())
+					.isEqualTo(MappingJackson2HttpMessageConverterConfiguration.class.getName());
+		});
 	}
 
 	@Test
@@ -256,13 +256,14 @@ class HttpMessageConvertersAutoConfigurationTests {
 		new WebApplicationContextRunner()
 				.withConfiguration(AutoConfigurations.of(HttpMessageConvertersAutoConfiguration.class))
 				.withPropertyValues("server.servlet.encoding.charset=UTF-16").run((context) -> {
-					assertThat(context).hasSingleBean(StringHttpMessageConverter.class);
-					assertThat(context.getBean(StringHttpMessageConverter.class).getDefaultCharset())
-							.isEqualTo(StandardCharsets.UTF_16);
-				});
+			assertThat(context).hasSingleBean(StringHttpMessageConverter.class);
+			assertThat(context.getBean(StringHttpMessageConverter.class).getDefaultCharset())
+					.isEqualTo(StandardCharsets.UTF_16);
+		});
 	}
 
-	@Test // gh-21789
+	@Test
+		// gh-21789
 	void whenAutoConfigurationIsActiveThenServerPropertiesConfigurationPropertiesAreNotEnabled() {
 		new WebApplicationContextRunner()
 				.withConfiguration(AutoConfigurations.of(HttpMessageConvertersAutoConfiguration.class))
@@ -291,7 +292,7 @@ class HttpMessageConvertersAutoConfigurationTests {
 	}
 
 	private void assertConverterBeanRegisteredWithHttpMessageConverters(AssertableApplicationContext context,
-			Class<? extends HttpMessageConverter<?>> type) {
+																		Class<? extends HttpMessageConverter<?>> type) {
 		HttpMessageConverter<?> converter = context.getBean(type);
 		HttpMessageConverters converters = context.getBean(HttpMessageConverters.class);
 		assertThat(converters.getConverters()).contains(converter);

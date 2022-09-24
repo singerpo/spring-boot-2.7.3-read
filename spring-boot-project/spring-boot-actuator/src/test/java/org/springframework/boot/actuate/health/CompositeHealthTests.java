@@ -82,7 +82,8 @@ class CompositeHealthTests {
 				+ "\"db2\":{\"status\":\"DOWN\",\"details\":{\"a\":\"b\"}}}}");
 	}
 
-	@Test // gh-26797
+	@Test
+		// gh-26797
 	void serializeV2WithJacksonAndDisabledCanOverrideAccessModifiersReturnsValidJson() throws Exception {
 		Map<String, HealthComponent> components = new LinkedHashMap<>();
 		components.put("db1", Health.up().build());

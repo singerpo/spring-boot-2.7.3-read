@@ -53,6 +53,7 @@ public @interface ImportAutoConfiguration {
 	/**
 	 * The auto-configuration classes that should be imported. This is an alias for
 	 * {@link #classes()}.
+	 *
 	 * @return the classes to import
 	 */
 	@AliasFor("classes")
@@ -62,6 +63,7 @@ public @interface ImportAutoConfiguration {
 	 * The auto-configuration classes that should be imported. When empty, the classes are
 	 * specified using a file in {@code META-INF/spring} where the file name is the
 	 * fully-qualified name of the annotated class, suffixed with '.imports'.
+	 *
 	 * @return the classes to import
 	 */
 	@AliasFor("value")
@@ -69,6 +71,7 @@ public @interface ImportAutoConfiguration {
 
 	/**
 	 * Exclude specific auto-configuration classes such that they will never be applied.
+	 *
 	 * @return the classes to exclude
 	 */
 	Class<?>[] exclude() default {};

@@ -63,15 +63,14 @@ class ApplicationHomeTests {
 				new ByteArrayInputStream(
 						new ByteBuddy().subclass(Object.class).name("com.example.Source").make().getBytes()),
 				new FileOutputStream(new File(examplePackage, "Source.class")));
-		try (URLClassLoader classLoader = new URLClassLoader(new URL[] { location.toURI().toURL() })) {
+		try (URLClassLoader classLoader = new URLClassLoader(new URL[]{location.toURI().toURL()})) {
 			Class<?> sourceClass = classLoader.loadClass("com.example.Source");
 			// Separate thread to bypass stack-based unit test detection in
 			// ApplicationHome
 			ExecutorService executor = Executors.newSingleThreadExecutor();
 			try {
 				return executor.submit(() -> new ApplicationHome(sourceClass)).get();
-			}
-			finally {
+			} finally {
 				executor.shutdown();
 			}
 		}

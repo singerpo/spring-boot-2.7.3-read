@@ -47,6 +47,7 @@ public final class WebApplicationContextRunner extends
 	 * Create a new {@link WebApplicationContextRunner} instance using an
 	 * {@link AnnotationConfigServletWebApplicationContext} with a
 	 * {@link MockServletContext} as the underlying source.
+	 *
 	 * @see #withMockServletContext(Supplier)
 	 */
 	public WebApplicationContextRunner() {
@@ -56,6 +57,7 @@ public final class WebApplicationContextRunner extends
 	/**
 	 * Create a new {@link WebApplicationContextRunner} instance using the specified
 	 * {@code contextFactory} as the underlying source.
+	 *
 	 * @param contextFactory a supplier that returns a new instance on each call
 	 */
 	public WebApplicationContextRunner(Supplier<ConfigurableWebApplicationContext> contextFactory) {
@@ -68,11 +70,11 @@ public final class WebApplicationContextRunner extends
 
 	@Deprecated
 	private WebApplicationContextRunner(Supplier<ConfigurableWebApplicationContext> contextFactory,
-			boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super ConfigurableWebApplicationContext>> initializers,
-			TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
-			ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
-			List<Configurations> configurations) {
+										boolean allowBeanDefinitionOverriding,
+										List<ApplicationContextInitializer<? super ConfigurableWebApplicationContext>> initializers,
+										TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
+										ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
+										List<Configurations> configurations) {
 		super(contextFactory, allowBeanDefinitionOverriding, initializers, environmentProperties, systemProperties,
 				classLoader, parent, beanRegistrations, configurations);
 	}
@@ -80,11 +82,11 @@ public final class WebApplicationContextRunner extends
 	@Override
 	@Deprecated
 	protected WebApplicationContextRunner newInstance(Supplier<ConfigurableWebApplicationContext> contextFactory,
-			boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super ConfigurableWebApplicationContext>> initializers,
-			TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
-			ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
-			List<Configurations> configurations) {
+													  boolean allowBeanDefinitionOverriding,
+													  List<ApplicationContextInitializer<? super ConfigurableWebApplicationContext>> initializers,
+													  TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
+													  ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
+													  List<Configurations> configurations) {
 		return new WebApplicationContextRunner(contextFactory, allowBeanDefinitionOverriding, initializers,
 				environmentProperties, systemProperties, classLoader, parent, beanRegistrations, configurations);
 	}
@@ -92,6 +94,7 @@ public final class WebApplicationContextRunner extends
 	/**
 	 * Decorate the specified {@code contextFactory} to set a {@link MockServletContext}
 	 * on each newly created {@link WebApplicationContext}.
+	 *
 	 * @param contextFactory the context factory to decorate
 	 * @return an updated supplier that will set the {@link MockServletContext}
 	 */

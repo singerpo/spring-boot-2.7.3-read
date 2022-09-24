@@ -25,8 +25,8 @@ import org.springframework.util.Assert;
  *
  * @author Madhura Bhave
  * @author Phillip Webb
- * @since 2.3.0
  * @see Layers
+ * @since 2.3.0
  */
 public class Layer {
 
@@ -36,6 +36,7 @@ public class Layer {
 
 	/**
 	 * Create a new {@link Layer} instance with the specified name.
+	 *
 	 * @param name the name of the layer.
 	 */
 	public Layer(String name) {

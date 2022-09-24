@@ -79,8 +79,7 @@ class ExtractCommand extends Command {
 					entry = zip.getNextEntry();
 				}
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -100,8 +99,7 @@ class ExtractCommand extends Command {
 		try {
 			Files.getFileAttributeView(file.toPath(), BasicFileAttributeView.class)
 					.setTimes(entry.getLastModifiedTime(), entry.getLastAccessTime(), entry.getCreationTime());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// File system does not support setting time attributes. Continue.
 		}
 	}

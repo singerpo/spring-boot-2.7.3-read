@@ -61,7 +61,7 @@ class ControllerEndpointHandlerMappingIntegrationTests {
 
 	private final WebApplicationContextRunner contextRunner = new WebApplicationContextRunner(
 			AnnotationConfigServletWebServerApplicationContext::new).withUserConfiguration(EndpointConfiguration.class,
-					ExampleMvcEndpoint.class);
+			ExampleMvcEndpoint.class);
 
 	@Test
 	void get() {
@@ -100,8 +100,8 @@ class ControllerEndpointHandlerMappingIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
-			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class })
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+			WebMvcAutoConfiguration.class, DispatcherServletAutoConfiguration.class})
 	static class EndpointConfiguration {
 
 		@Bean

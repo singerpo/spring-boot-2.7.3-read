@@ -74,7 +74,7 @@ abstract class AbstractJsonMarshalTesterTests {
 	@Test
 	void writeArrayShouldReturnJsonContent() throws Exception {
 		ResolvableType type = ResolvableTypes.get("arrayOfExampleObject");
-		ExampleObject[] value = new ExampleObject[] { OBJECT };
+		ExampleObject[] value = new ExampleObject[]{OBJECT};
 		JsonContent<Object> content = createTester(type).write(value);
 		assertThat(content).isEqualToJson(ARRAY_JSON);
 	}

@@ -80,7 +80,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractHttp11Protocol<?>) server.getTomcat().getConnector().getProtocolHandler())
 						.getMaxSwallowSize())
-								.isEqualTo(this.serverProperties.getTomcat().getMaxSwallowSize().toBytes()));
+				.isEqualTo(this.serverProperties.getTomcat().getMaxSwallowSize().toBytes()));
 	}
 
 	@Test
@@ -88,7 +88,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.accept-count=10");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getAcceptCount())
-						.isEqualTo(10));
+				.isEqualTo(10));
 	}
 
 	@Test
@@ -96,7 +96,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.processor-cache=100");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getProcessorCache())
-						.isEqualTo(100));
+				.isEqualTo(100));
 	}
 
 	@Test
@@ -104,7 +104,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.keep-alive-timeout=30ms");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getKeepAliveTimeout())
-						.isEqualTo(30));
+				.isEqualTo(30));
 	}
 
 	@Test
@@ -112,7 +112,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.http2.enabled=true");
 		customizeAndRunServer((server) -> assertThat(
 				((Http2Protocol) server.getTomcat().getConnector().findUpgradeProtocols()[0]).getKeepAliveTimeout())
-						.isEqualTo(20000L));
+				.isEqualTo(20000L));
 	}
 
 	@Test
@@ -120,7 +120,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.keep-alive-timeout=30s", "server.http2.enabled=true");
 		customizeAndRunServer((server) -> assertThat(
 				((Http2Protocol) server.getTomcat().getConnector().findUpgradeProtocols()[0]).getKeepAliveTimeout())
-						.isEqualTo(30000L));
+				.isEqualTo(30000L));
 	}
 
 	@Test
@@ -143,7 +143,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.processor-cache=-1");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getProcessorCache())
-						.isEqualTo(-1));
+				.isEqualTo(-1));
 	}
 
 	@Test
@@ -164,7 +164,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.max-connections=5");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getMaxConnections())
-						.isEqualTo(5));
+				.isEqualTo(5));
 	}
 
 	@Test
@@ -383,7 +383,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		bind("server.tomcat.connection-timeout=30s");
 		customizeAndRunServer((server) -> assertThat(
 				((AbstractProtocol<?>) server.getTomcat().getConnector().getProtocolHandler()).getConnectionTimeout())
-						.isEqualTo(30000));
+				.isEqualTo(30000));
 	}
 
 	@Test
@@ -539,8 +539,7 @@ class TomcatWebServerFactoryCustomizerTests {
 		server.start();
 		try {
 			consumer.accept(server);
-		}
-		finally {
+		} finally {
 			server.stop();
 		}
 	}

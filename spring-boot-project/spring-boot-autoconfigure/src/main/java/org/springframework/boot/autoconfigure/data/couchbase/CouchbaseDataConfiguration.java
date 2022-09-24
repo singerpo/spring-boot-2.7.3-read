@@ -44,7 +44,7 @@ class CouchbaseDataConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	MappingCouchbaseConverter couchbaseMappingConverter(CouchbaseDataProperties properties,
-			CouchbaseMappingContext couchbaseMappingContext, CouchbaseCustomConversions couchbaseCustomConversions) {
+														CouchbaseMappingContext couchbaseMappingContext, CouchbaseCustomConversions couchbaseCustomConversions) {
 		MappingCouchbaseConverter converter = new MappingCouchbaseConverter(couchbaseMappingContext,
 				properties.getTypeKey());
 		converter.setCustomConversions(couchbaseCustomConversions);
@@ -60,7 +60,7 @@ class CouchbaseDataConfiguration {
 	@Bean(name = BeanNames.COUCHBASE_MAPPING_CONTEXT)
 	@ConditionalOnMissingBean(name = BeanNames.COUCHBASE_MAPPING_CONTEXT)
 	CouchbaseMappingContext couchbaseMappingContext(CouchbaseDataProperties properties,
-			ApplicationContext applicationContext, CouchbaseCustomConversions couchbaseCustomConversions)
+													ApplicationContext applicationContext, CouchbaseCustomConversions couchbaseCustomConversions)
 			throws Exception {
 		CouchbaseMappingContext mappingContext = new CouchbaseMappingContext();
 		mappingContext.setInitialEntitySet(new EntityScanner(applicationContext).scan(Document.class));

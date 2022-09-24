@@ -35,6 +35,7 @@ public class PropertiesConfigAdapter<T> {
 
 	/**
 	 * Create a new {@link PropertiesConfigAdapter} instance.
+	 *
 	 * @param properties the source properties
 	 */
 	public PropertiesConfigAdapter(T properties) {
@@ -44,9 +45,10 @@ public class PropertiesConfigAdapter<T> {
 
 	/**
 	 * Get the value from the properties or use a fallback from the {@code defaults}.
-	 * @param getter the getter for the properties
+	 *
+	 * @param getter   the getter for the properties
 	 * @param fallback the fallback method, usually super interface method reference
-	 * @param <V> the value type
+	 * @param <V>      the value type
 	 * @return the property or fallback value
 	 */
 	protected final <V> V get(Function<T, V> getter, Supplier<V> fallback) {

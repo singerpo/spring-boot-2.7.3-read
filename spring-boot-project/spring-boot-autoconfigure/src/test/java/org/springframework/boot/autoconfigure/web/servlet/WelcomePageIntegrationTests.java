@@ -41,8 +41,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-		properties = { "spring.web.resources.chain.strategy.content.enabled=true",
-				"spring.thymeleaf.prefix=classpath:/templates/thymeleaf/" })
+		properties = {"spring.web.resources.chain.strategy.content.enabled=true",
+				"spring.thymeleaf.prefix=classpath:/templates/thymeleaf/"})
 class WelcomePageIntegrationTests {
 
 	@LocalServerPort
@@ -59,9 +59,9 @@ class WelcomePageIntegrationTests {
 	}
 
 	@Configuration
-	@Import({ PropertyPlaceholderAutoConfiguration.class, WebMvcAutoConfiguration.class,
+	@Import({PropertyPlaceholderAutoConfiguration.class, WebMvcAutoConfiguration.class,
 			HttpMessageConvertersAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class,
-			DispatcherServletAutoConfiguration.class, ThymeleafAutoConfiguration.class })
+			DispatcherServletAutoConfiguration.class, ThymeleafAutoConfiguration.class})
 	static class TestConfiguration {
 
 		static void main(String[] args) {

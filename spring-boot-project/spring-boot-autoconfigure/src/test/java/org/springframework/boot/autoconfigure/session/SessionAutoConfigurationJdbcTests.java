@@ -188,15 +188,15 @@ class SessionAutoConfigurationJdbcTests extends AbstractSessionAutoConfiguration
 	void sessionDataSourceIsUsedWhenAvailable() {
 		this.contextRunner.withUserConfiguration(SessionDataSourceConfiguration.class)
 				.withPropertyValues("spring.session.store-type=jdbc").run((context) -> {
-					JdbcIndexedSessionRepository repository = validateSessionRepository(context,
-							JdbcIndexedSessionRepository.class);
-					DataSource sessionDataSource = context.getBean("sessionDataSource", DataSource.class);
-					assertThat(repository).extracting("jdbcOperations.dataSource").isEqualTo(sessionDataSource);
-					assertThat(context.getBean(JdbcSessionDataSourceScriptDatabaseInitializer.class))
-							.hasFieldOrPropertyWithValue("dataSource", sessionDataSource);
-					assertThatExceptionOfType(BadSqlGrammarException.class).isThrownBy(
-							() -> context.getBean(JdbcOperations.class).queryForList("select * from SPRING_SESSION"));
-				});
+			JdbcIndexedSessionRepository repository = validateSessionRepository(context,
+					JdbcIndexedSessionRepository.class);
+			DataSource sessionDataSource = context.getBean("sessionDataSource", DataSource.class);
+			assertThat(repository).extracting("jdbcOperations.dataSource").isEqualTo(sessionDataSource);
+			assertThat(context.getBean(JdbcSessionDataSourceScriptDatabaseInitializer.class))
+					.hasFieldOrPropertyWithValue("dataSource", sessionDataSource);
+			assertThatExceptionOfType(BadSqlGrammarException.class).isThrownBy(
+					() -> context.getBean(JdbcOperations.class).queryForList("select * from SPRING_SESSION"));
+		});
 	}
 
 	@Test
@@ -310,7 +310,7 @@ class SessionAutoConfigurationJdbcTests extends AbstractSessionAutoConfiguration
 
 		@Bean
 		JdbcSessionDataSourceScriptDatabaseInitializer customInitializer(DataSource dataSource,
-				JdbcSessionProperties properties) {
+																		 JdbcSessionProperties properties) {
 			return new JdbcSessionDataSourceScriptDatabaseInitializer(dataSource, properties);
 		}
 
@@ -332,7 +332,7 @@ class SessionAutoConfigurationJdbcTests extends AbstractSessionAutoConfiguration
 
 		@Bean
 		JdbcSessionDataSourceInitializer customInitializer(DataSource dataSource, ResourceLoader resourceLoader,
-				JdbcSessionProperties properties) {
+														   JdbcSessionProperties properties) {
 			return new JdbcSessionDataSourceInitializer(dataSource, resourceLoader, properties);
 		}
 

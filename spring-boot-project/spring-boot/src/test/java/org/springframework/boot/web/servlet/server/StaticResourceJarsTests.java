@@ -92,8 +92,7 @@ class StaticResourceJarsTests {
 			try {
 				output.putNextEntry(jarEntry);
 				output.closeEntry();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException(ex);
 			}
 		});

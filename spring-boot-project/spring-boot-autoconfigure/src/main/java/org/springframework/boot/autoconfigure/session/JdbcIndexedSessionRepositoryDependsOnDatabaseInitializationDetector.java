@@ -24,7 +24,6 @@ import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitializat
 import org.springframework.session.jdbc.JdbcIndexedSessionRepository;
 
 /**
- *
  * {@link DependsOnDatabaseInitializationDetector} for
  * {@link JdbcIndexedSessionRepository}.
  *

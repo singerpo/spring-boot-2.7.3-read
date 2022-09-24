@@ -44,6 +44,7 @@ public class BeansEndpoint {
 	/**
 	 * Creates a new {@code BeansEndpoint} that will describe the beans in the given
 	 * {@code context} and all of its ancestors.
+	 *
 	 * @param context the application context
 	 * @see ConfigurableApplicationContext#getParent()
 	 */
@@ -131,7 +132,7 @@ public class BeansEndpoint {
 		}
 
 		private static BeanDescriptor describeBean(String name, BeanDefinition definition,
-				ConfigurableListableBeanFactory factory) {
+												   ConfigurableListableBeanFactory factory) {
 			return new BeanDescriptor(factory.getAliases(name), definition.getScope(), factory.getType(name),
 					definition.getResourceDescription(), factory.getDependenciesForBean(name));
 		}

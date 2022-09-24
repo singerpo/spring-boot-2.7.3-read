@@ -48,6 +48,7 @@ public class SslContextFactory {
 	/**
 	 * Create an {@link SSLContext} from files in the specified directory. The directory
 	 * must contain files with the names 'key.pem', 'cert.pem', and 'ca.pem'.
+	 *
 	 * @param directory the path to a directory containing certificate and key files
 	 * @return the {@code SSLContext}
 	 */
@@ -63,11 +64,9 @@ public class SslContextFactory {
 			SSLContext sslContext = SSLContext.getInstance("TLS");
 			sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null);
 			return sslContext;
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			throw ex;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex.getMessage(), ex);
 		}
 	}

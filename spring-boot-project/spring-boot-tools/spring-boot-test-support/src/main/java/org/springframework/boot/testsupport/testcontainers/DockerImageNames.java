@@ -45,6 +45,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running Cassandra.
+	 *
 	 * @return a docker image name for running cassandra
 	 */
 	public static DockerImageName cassandra() {
@@ -53,6 +54,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running Couchbase.
+	 *
 	 * @return a docker image name for running couchbase
 	 */
 	public static DockerImageName couchbase() {
@@ -62,6 +64,7 @@ public final class DockerImageNames {
 	/**
 	 * Return a {@link DockerImageName} suitable for running Elasticsearch according to
 	 * the version available on the classpath.
+	 *
 	 * @return a docker image name for running elasticsearch
 	 */
 	public static DockerImageName elasticsearch() {
@@ -71,6 +74,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running Mongo.
+	 *
 	 * @return a docker image name for running mongo
 	 */
 	public static DockerImageName mongo() {
@@ -79,6 +83,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running Neo4j.
+	 *
 	 * @return a docker image name for running neo4j
 	 */
 	public static DockerImageName neo4j() {
@@ -87,6 +92,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running PostgreSQL.
+	 *
 	 * @return a docker image name for running postgresql
 	 */
 	public static DockerImageName postgresql() {
@@ -95,6 +101,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running Redis.
+	 *
 	 * @return a docker image name for running redis
 	 */
 	public static DockerImageName redis() {
@@ -103,6 +110,7 @@ public final class DockerImageNames {
 
 	/**
 	 * Return a {@link DockerImageName} suitable for running a Docker registry.
+	 *
 	 * @return a docker image name for running a registry
 	 * @since 2.4.0
 	 */

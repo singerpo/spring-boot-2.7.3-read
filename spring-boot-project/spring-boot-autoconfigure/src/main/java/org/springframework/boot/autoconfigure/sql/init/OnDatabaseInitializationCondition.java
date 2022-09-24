@@ -32,8 +32,8 @@ import org.springframework.util.StringUtils;
  * be considered.
  *
  * @author Stephane Nicoll
- * @since 2.6.2
  * @see DatabaseInitializationMode
+ * @since 2.6.2
  */
 public class OnDatabaseInitializationCondition extends SpringBootCondition {
 
@@ -45,7 +45,8 @@ public class OnDatabaseInitializationCondition extends SpringBootCondition {
 	 * Create a new instance with the name of the component and the property names to
 	 * check, in order. If a property is set, its value is used to determine the outcome
 	 * and remaining properties are not tested.
-	 * @param name the name of the component
+	 *
+	 * @param name          the name of the component
 	 * @param propertyNames the properties to check (in order)
 	 */
 	public OnDatabaseInitializationCondition(String name, String... propertyNames) {

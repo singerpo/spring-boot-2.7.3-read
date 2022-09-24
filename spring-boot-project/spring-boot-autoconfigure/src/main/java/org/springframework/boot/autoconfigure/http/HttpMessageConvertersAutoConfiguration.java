@@ -55,11 +55,11 @@ import org.springframework.http.converter.StringHttpMessageConverter;
  * @since 2.0.0
  */
 @AutoConfiguration(
-		after = { GsonAutoConfiguration.class, JacksonAutoConfiguration.class, JsonbAutoConfiguration.class })
+		after = {GsonAutoConfiguration.class, JacksonAutoConfiguration.class, JsonbAutoConfiguration.class})
 @ConditionalOnClass(HttpMessageConverter.class)
 @Conditional(NotReactiveWebApplicationCondition.class)
-@Import({ JacksonHttpMessageConvertersConfiguration.class, GsonHttpMessageConvertersConfiguration.class,
-		JsonbHttpMessageConvertersConfiguration.class })
+@Import({JacksonHttpMessageConvertersConfiguration.class, GsonHttpMessageConvertersConfiguration.class,
+		JsonbHttpMessageConvertersConfiguration.class})
 public class HttpMessageConvertersAutoConfiguration {
 
 	static final String PREFERRED_MAPPER_PROPERTY = "spring.mvc.converters.preferred-json-mapper";

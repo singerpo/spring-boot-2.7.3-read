@@ -31,8 +31,8 @@ import org.springframework.context.annotation.Import;
  * package of the annotated class is registered.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see AutoConfigurationPackages
+ * @since 1.3.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -46,6 +46,7 @@ public @interface AutoConfigurationPackage {
 	 * <p>
 	 * Use {@link #basePackageClasses} for a type-safe alternative to String-based package
 	 * names.
+	 *
 	 * @return the back package names
 	 * @since 2.3.0
 	 */
@@ -57,6 +58,7 @@ public @interface AutoConfigurationPackage {
 	 * <p>
 	 * Consider creating a special no-op marker class or interface in each package that
 	 * serves no purpose other than being referenced by this attribute.
+	 *
 	 * @return the base package classes
 	 * @since 2.3.0
 	 */

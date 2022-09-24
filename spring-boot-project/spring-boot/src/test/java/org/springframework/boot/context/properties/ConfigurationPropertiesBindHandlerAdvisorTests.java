@@ -79,7 +79,7 @@ class ConfigurationPropertiesBindHandlerAdvisorTests {
 	}
 
 	private AnnotationConfigApplicationContext load(Class<?> configuration, String... inlinedProperties) {
-		return load(new Class<?>[] { configuration }, inlinedProperties);
+		return load(new Class<?>[]{configuration}, inlinedProperties);
 	}
 
 	private AnnotationConfigApplicationContext load(Class<?>[] configuration, String... inlinedProperties) {

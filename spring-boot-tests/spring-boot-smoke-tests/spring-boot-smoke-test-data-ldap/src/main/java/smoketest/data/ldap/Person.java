@@ -22,7 +22,7 @@ import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
-@Entry(objectClasses = { "person", "top" })
+@Entry(objectClasses = {"person", "top"})
 public class Person {
 
 	@Id

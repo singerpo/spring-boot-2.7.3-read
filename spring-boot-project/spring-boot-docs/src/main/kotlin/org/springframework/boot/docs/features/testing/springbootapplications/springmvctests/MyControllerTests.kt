@@ -35,10 +35,10 @@ class MyControllerTests(@Autowired val mvc: MockMvc) {
 	@Test
 	fun testExample() {
 		given(userVehicleService.getVehicleDetails("sboot"))
-			.willReturn(VehicleDetails("Honda", "Civic"))
+				.willReturn(VehicleDetails("Honda", "Civic"))
 		mvc.perform(MockMvcRequestBuilders.get("/sboot/vehicle").accept(MediaType.TEXT_PLAIN))
-			.andExpect(MockMvcResultMatchers.status().isOk)
-			.andExpect(MockMvcResultMatchers.content().string("Honda Civic"))
+				.andExpect(MockMvcResultMatchers.status().isOk)
+				.andExpect(MockMvcResultMatchers.content().string("Honda Civic"))
 	}
 
 }

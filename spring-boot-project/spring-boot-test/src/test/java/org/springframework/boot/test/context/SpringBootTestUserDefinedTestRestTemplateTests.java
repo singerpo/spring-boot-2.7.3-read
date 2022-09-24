@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Andy Wilkinson
  */
 @DirtiesContext
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = { "value=123" })
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"value=123"})
 class SpringBootTestUserDefinedTestRestTemplateTests extends AbstractSpringBootTestWebServerWebEnvironmentTests {
 
 	@Test

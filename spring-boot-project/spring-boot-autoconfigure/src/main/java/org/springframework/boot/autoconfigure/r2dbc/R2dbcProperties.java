@@ -125,6 +125,7 @@ public class R2dbcProperties {
 	/**
 	 * Provide a unique name specific to this instance. Calling this method several times
 	 * return the same unique name.
+	 *
 	 * @return a unique name for this instance
 	 */
 	public String determineUniqueName() {

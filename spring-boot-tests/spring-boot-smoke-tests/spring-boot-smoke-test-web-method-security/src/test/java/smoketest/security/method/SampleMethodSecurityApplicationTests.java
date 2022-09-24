@@ -108,8 +108,7 @@ class SampleMethodSecurityApplicationTests {
 		try {
 			ResponseEntity<String> entity = this.restTemplate.getForEntity("/actuator/beans", String.class);
 			assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		}
-		finally {
+		} finally {
 			this.restTemplate.getRestTemplate().getInterceptors().remove(basicAuthInterceptor);
 		}
 	}

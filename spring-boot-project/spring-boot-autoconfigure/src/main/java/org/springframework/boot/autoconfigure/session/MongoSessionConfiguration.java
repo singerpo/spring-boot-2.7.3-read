@@ -38,7 +38,7 @@ import org.springframework.session.data.mongo.config.annotation.web.http.MongoHt
  * @author Stephane Nicoll
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ MongoOperations.class, MongoIndexedSessionRepository.class })
+@ConditionalOnClass({MongoOperations.class, MongoIndexedSessionRepository.class})
 @ConditionalOnMissingBean(SessionRepository.class)
 @ConditionalOnBean(MongoOperations.class)
 @Conditional(ServletSessionCondition.class)
@@ -50,7 +50,7 @@ class MongoSessionConfiguration {
 
 		@Autowired
 		public void customize(SessionProperties sessionProperties, MongoSessionProperties mongoSessionProperties,
-				ServerProperties serverProperties) {
+							  ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getServlet().getSession().getTimeout());
 			if (timeout != null) {

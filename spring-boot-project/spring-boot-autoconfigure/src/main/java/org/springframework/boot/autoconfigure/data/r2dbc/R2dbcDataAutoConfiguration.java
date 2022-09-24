@@ -47,7 +47,7 @@ import org.springframework.r2dbc.core.DatabaseClient;
  * @since 2.3.0
  */
 @AutoConfiguration(after = R2dbcAutoConfiguration.class)
-@ConditionalOnClass({ DatabaseClient.class, R2dbcEntityTemplate.class })
+@ConditionalOnClass({DatabaseClient.class, R2dbcEntityTemplate.class})
 @ConditionalOnSingleCandidate(DatabaseClient.class)
 public class R2dbcDataAutoConfiguration {
 
@@ -69,7 +69,7 @@ public class R2dbcDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public R2dbcMappingContext r2dbcMappingContext(ObjectProvider<NamingStrategy> namingStrategy,
-			R2dbcCustomConversions r2dbcCustomConversions) {
+												   R2dbcCustomConversions r2dbcCustomConversions) {
 		R2dbcMappingContext relationalMappingContext = new R2dbcMappingContext(
 				namingStrategy.getIfAvailable(() -> NamingStrategy.INSTANCE));
 		relationalMappingContext.setSimpleTypeHolder(r2dbcCustomConversions.getSimpleTypeHolder());
@@ -79,7 +79,7 @@ public class R2dbcDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public MappingR2dbcConverter r2dbcConverter(R2dbcMappingContext mappingContext,
-			R2dbcCustomConversions r2dbcCustomConversions) {
+												R2dbcCustomConversions r2dbcCustomConversions) {
 		return new MappingR2dbcConverter(mappingContext, r2dbcCustomConversions);
 	}
 

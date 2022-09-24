@@ -145,8 +145,7 @@ class DependencyFilterMojoTests {
 		}
 		try {
 			new JarOutputStream(new FileOutputStream(jarPath.toFile()), manifest).close();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		return jarPath.toFile();
@@ -157,7 +156,7 @@ class DependencyFilterMojoTests {
 		private final ArtifactsFilter[] additionalFilters;
 
 		private TestableDependencyFilterMojo(List<Exclude> excludes, String excludeGroupIds,
-				ArtifactsFilter... additionalFilters) {
+											 ArtifactsFilter... additionalFilters) {
 			setExcludes(excludes);
 			setExcludeGroupIds(excludeGroupIds);
 			this.additionalFilters = additionalFilters;

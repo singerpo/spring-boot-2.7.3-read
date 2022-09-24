@@ -186,8 +186,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 					if (retry) {
 						try {
 							Thread.sleep(200);
-						}
-						catch (InterruptedException ex) {
+						} catch (InterruptedException ex) {
 							Thread.currentThread().interrupt();
 						}
 					}
@@ -201,8 +200,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		if (this.webServer != null) {
 			try {
 				this.webServer.stop();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -287,8 +285,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 			try {
 				Thread.sleep(500);
 				date[0] = new Date();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				throw new ServletException(ex);
 			}
 		});
@@ -613,7 +610,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		AbstractServletWebServerFactory factory = getFactory();
 		addTestTxtFile(factory);
 		factory.setSsl(
-				getSsl(ClientAuth.WANT, "password", "classpath:test.jks", null, new String[] { "TLSv1.2" }, null));
+				getSsl(ClientAuth.WANT, "password", "classpath:test.jks", null, new String[]{"TLSv1.2"}, null));
 		this.webServer = factory.getWebServer();
 		this.webServer.start();
 		KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -693,12 +690,12 @@ public abstract class AbstractServletWebServerFactoryTests {
 	}
 
 	private Ssl getSsl(ClientAuth clientAuth, String keyPassword, String keyStore, String trustStore,
-			String[] supportedProtocols, String[] ciphers) {
+					   String[] supportedProtocols, String[] ciphers) {
 		return getSsl(clientAuth, keyPassword, null, keyStore, trustStore, supportedProtocols, ciphers);
 	}
 
 	private Ssl getSsl(ClientAuth clientAuth, String keyPassword, String keyAlias, String keyStore, String trustStore,
-			String[] supportedProtocols, String[] ciphers) {
+					   String[] supportedProtocols, String[] ciphers) {
 		Ssl ssl = new Ssl();
 		ssl.setClientAuth(clientAuth);
 		if (keyPassword != null) {
@@ -920,13 +917,13 @@ public abstract class AbstractServletWebServerFactoryTests {
 
 	@Test
 	void noCompressionForMimeType() throws Exception {
-		String[] mimeTypes = new String[] { "text/html", "text/xml", "text/css" };
+		String[] mimeTypes = new String[]{"text/html", "text/xml", "text/css"};
 		assertThat(doTestCompression(10000, mimeTypes, null)).isFalse();
 	}
 
 	@Test
 	protected void noCompressionForUserAgent() throws Exception {
-		assertThat(doTestCompression(10000, null, new String[] { "testUserAgent" })).isFalse();
+		assertThat(doTestCompression(10000, null, new String[]{"testUserAgent"})).isFalse();
 	}
 
 	@Test
@@ -965,8 +962,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		this.webServer = factory.getWebServer((servletContext) -> {
 			try {
 				rootResource.set(servletContext.getResource("/"));
-			}
-			catch (MalformedURLException ex) {
+			} catch (MalformedURLException ex) {
 				throw new ServletException(ex);
 			}
 		});
@@ -1198,8 +1194,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		this.webServer.stop();
 		try {
 			blockingServlet.admitOne();
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 
 		}
 	}
@@ -1219,8 +1214,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 			ContentResponse response = client.GET("http://localhost:" + this.webServer.getPort() + "/hello");
 			assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
 			assertThat(response.getContentAsString()).isEqualTo("Hello World");
-		}
-		finally {
+		} finally {
 			client.stop();
 		}
 	}
@@ -1254,8 +1248,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 				.isEqualTo(GracefulShutdownResult.REQUESTS_ACTIVE);
 		try {
 			blockingServlet.admitOne();
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 
 		}
 	}
@@ -1270,8 +1263,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 				HttpResponse response = httpClient.execute(new HttpGet("http://localhost:" + port + path));
 				response.getEntity().getContent().close();
 				return response;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return ex;
 			}
 		});
@@ -1295,7 +1287,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 	protected abstract void handleExceptionCausedByBlockedPortOnPrimaryConnector(RuntimeException ex, int blockedPort);
 
 	protected abstract void handleExceptionCausedByBlockedPortOnSecondaryConnector(RuntimeException ex,
-			int blockedPort);
+																				   int blockedPort);
 
 	private boolean doTestCompression(int contentSize, String[] mimeTypes, String[] excludedUserAgents)
 			throws Exception {
@@ -1303,7 +1295,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 	}
 
 	private boolean doTestCompression(int contentSize, String[] mimeTypes, String[] excludedUserAgents,
-			HttpMethod method) throws Exception {
+									  HttpMethod method) throws Exception {
 		String testContent = setUpFactoryForCompression(contentSize, mimeTypes, excludedUserAgents);
 		TestGzipInputStreamFactory inputStreamFactory = new TestGzipInputStreamFactory();
 		Map<String, InputStreamFactory> contentDecoderMap = Collections.singletonMap("gzip", inputStreamFactory);
@@ -1383,7 +1375,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 	}
 
 	protected String getResponse(String url, HttpMethod method, HttpComponentsClientHttpRequestFactory requestFactory,
-			String... headers) throws IOException, URISyntaxException {
+								 String... headers) throws IOException, URISyntaxException {
 		try (ClientHttpResponse response = getClientResponse(url, method, requestFactory, headers)) {
 			return StreamUtils.copyToString(response.getBody(), StandardCharsets.UTF_8);
 		}
@@ -1408,7 +1400,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 	}
 
 	protected ClientHttpResponse getClientResponse(String url, HttpMethod method,
-			HttpComponentsClientHttpRequestFactory requestFactory, String... headers)
+												   HttpComponentsClientHttpRequestFactory requestFactory, String... headers)
 			throws IOException, URISyntaxException {
 		ClientHttpRequest request = requestFactory.createRequest(new URI(url), method);
 		for (String header : headers) {
@@ -1470,8 +1462,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		for (int i = 0; i < 10; i++) {
 			try {
 				return action.call();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				lastFailure = ex;
 			}
 		}
@@ -1486,8 +1477,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 		});
 		try {
 			action.run(blockedPort);
-		}
-		finally {
+		} finally {
 			serverSocket.close();
 		}
 	}
@@ -1668,8 +1658,7 @@ public abstract class AbstractServletWebServerFactoryTests {
 				while (this.block) {
 					try {
 						this.monitor.wait();
-					}
-					catch (InterruptedException ex) {
+					} catch (InterruptedException ex) {
 						System.out.println("Interrupted!");
 						// Keep waiting
 					}

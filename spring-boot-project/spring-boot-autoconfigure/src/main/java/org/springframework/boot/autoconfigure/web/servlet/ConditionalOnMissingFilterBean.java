@@ -59,7 +59,7 @@ import org.springframework.core.annotation.AliasFor;
  * @author Phillip Webb
  * @since 2.1.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @ConditionalOnMissingBean(parameterizedContainer = FilterRegistrationBean.class)
@@ -67,6 +67,7 @@ public @interface ConditionalOnMissingFilterBean {
 
 	/**
 	 * The filter bean type that must not be present.
+	 *
 	 * @return the bean type
 	 */
 	@AliasFor(annotation = ConditionalOnMissingBean.class)

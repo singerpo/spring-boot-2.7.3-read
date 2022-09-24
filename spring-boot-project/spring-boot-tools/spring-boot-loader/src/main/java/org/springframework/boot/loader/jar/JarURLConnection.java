@@ -59,8 +59,7 @@ final class JarURLConnection extends java.net.JarURLConnection {
 					return null;
 				}
 			});
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -128,8 +127,7 @@ final class JarURLConnection extends java.net.JarURLConnection {
 				return new URL(spec);
 			}
 			return new URL("jar:" + spec);
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -195,8 +193,7 @@ final class JarURLConnection extends java.net.JarURLConnection {
 			}
 			java.util.jar.JarEntry entry = getJarEntry();
 			return (entry != null) ? (int) entry.getSize() : -1;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return -1;
 		}
 	}
@@ -231,8 +228,7 @@ final class JarURLConnection extends java.net.JarURLConnection {
 		try {
 			java.util.jar.JarEntry entry = getJarEntry();
 			return (entry != null) ? entry.getTime() : 0;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return 0;
 		}
 	}
@@ -277,8 +273,7 @@ final class JarURLConnection extends java.net.JarURLConnection {
 	private static JarURLConnection notFound() {
 		try {
 			return notFound(null, null);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -321,12 +316,10 @@ final class JarURLConnection extends java.net.JarURLConnection {
 					try {
 						String encoded = URLEncoder.encode(String.valueOf((char) c), "UTF-8");
 						write(encoded, outputStream);
-					}
-					catch (UnsupportedEncodingException ex) {
+					} catch (UnsupportedEncodingException ex) {
 						throw new IllegalStateException(ex);
 					}
-				}
-				else {
+				} else {
 					if (c == '%') {
 						if ((i + 2) >= length) {
 							throw new IllegalArgumentException(

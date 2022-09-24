@@ -30,7 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Justin Griffin
  * @author Stephane Nicoll
  */
-@SpringBootTest(args = { "--option.foo=foo-value", "other.bar=other-bar-value" })
+@SpringBootTest(args = {"--option.foo=foo-value", "other.bar=other-bar-value"})
 class SpringBootTestArgsTests {
 
 	@Autowired

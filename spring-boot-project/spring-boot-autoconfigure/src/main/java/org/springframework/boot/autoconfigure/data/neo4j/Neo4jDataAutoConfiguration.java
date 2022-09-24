@@ -58,7 +58,7 @@ import org.springframework.transaction.TransactionManager;
  * @since 1.4.0
  */
 @AutoConfiguration(before = TransactionAutoConfiguration.class, after = Neo4jAutoConfiguration.class)
-@ConditionalOnClass({ Driver.class, Neo4jTransactionManager.class, PlatformTransactionManager.class })
+@ConditionalOnClass({Driver.class, Neo4jTransactionManager.class, PlatformTransactionManager.class})
 @EnableConfigurationProperties(Neo4jDataProperties.class)
 @ConditionalOnBean(Driver.class)
 public class Neo4jDataAutoConfiguration {
@@ -72,7 +72,7 @@ public class Neo4jDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public Neo4jMappingContext neo4jMappingContext(ApplicationContext applicationContext,
-			Neo4jConversions neo4jConversions) throws ClassNotFoundException {
+												   Neo4jConversions neo4jConversions) throws ClassNotFoundException {
 		Set<Class<?>> initialEntityClasses = new EntityScanner(applicationContext).scan(Node.class,
 				RelationshipProperties.class);
 		Neo4jMappingContext context = new Neo4jMappingContext(neo4jConversions);
@@ -103,7 +103,7 @@ public class Neo4jDataAutoConfiguration {
 	@Bean(Neo4jRepositoryConfigurationExtension.DEFAULT_TRANSACTION_MANAGER_BEAN_NAME)
 	@ConditionalOnMissingBean(TransactionManager.class)
 	public Neo4jTransactionManager transactionManager(Driver driver, DatabaseSelectionProvider databaseNameProvider,
-			ObjectProvider<TransactionManagerCustomizers> optionalCustomizers) {
+													  ObjectProvider<TransactionManagerCustomizers> optionalCustomizers) {
 		Neo4jTransactionManager transactionManager = new Neo4jTransactionManager(driver, databaseNameProvider);
 		optionalCustomizers.ifAvailable((customizer) -> customizer.customize(transactionManager));
 		return transactionManager;

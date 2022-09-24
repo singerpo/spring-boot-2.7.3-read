@@ -36,7 +36,7 @@ class ArrayToDelimitedStringConverterTests {
 
 	@ConversionServiceTest
 	void convertListToStringShouldConvert(ConversionService conversionService) {
-		String[] list = { "a", "b", "c" };
+		String[] list = {"a", "b", "c"};
 		String converted = conversionService.convert(list, String.class);
 		assertThat(converted).isEqualTo("a,b,c");
 	}
@@ -44,7 +44,7 @@ class ArrayToDelimitedStringConverterTests {
 	@ConversionServiceTest
 	void convertWhenHasDelimiterNoneShouldConvert(ConversionService conversionService) {
 		Data data = new Data();
-		data.none = new String[] { "1", "2", "3" };
+		data.none = new String[]{"1", "2", "3"};
 		String converted = (String) conversionService.convert(data.none,
 				TypeDescriptor.nested(ReflectionUtils.findField(Data.class, "none"), 0),
 				TypeDescriptor.valueOf(String.class));
@@ -54,7 +54,7 @@ class ArrayToDelimitedStringConverterTests {
 	@ConversionServiceTest
 	void convertWhenHasDelimiterDashShouldConvert(ConversionService conversionService) {
 		Data data = new Data();
-		data.dash = new String[] { "1", "2", "3" };
+		data.dash = new String[]{"1", "2", "3"};
 		String converted = (String) conversionService.convert(data.dash,
 				TypeDescriptor.nested(ReflectionUtils.findField(Data.class, "dash"), 0),
 				TypeDescriptor.valueOf(String.class));
@@ -71,7 +71,7 @@ class ArrayToDelimitedStringConverterTests {
 	@Test
 	void convertShouldConvertElements() {
 		Data data = new Data();
-		data.type = new int[] { 1, 2, 3 };
+		data.type = new int[]{1, 2, 3};
 		String converted = (String) new ApplicationConversionService().convert(data.type,
 				TypeDescriptor.nested(ReflectionUtils.findField(Data.class, "type"), 0),
 				TypeDescriptor.valueOf(String.class));

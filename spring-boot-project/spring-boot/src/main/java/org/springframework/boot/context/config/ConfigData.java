@@ -36,9 +36,9 @@ import org.springframework.util.Assert;
  *
  * @author Phillip Webb
  * @author Madhura Bhave
- * @since 2.4.0
  * @see ConfigDataLocationResolver
  * @see ConfigDataLoader
+ * @since 2.4.0
  */
 public final class ConfigData {
 
@@ -54,9 +54,10 @@ public final class ConfigData {
 	/**
 	 * Create a new {@link ConfigData} instance with the same options applied to each
 	 * source.
+	 *
 	 * @param propertySources the config data property sources in ascending priority
-	 * order.
-	 * @param options the config data options applied to each source
+	 *                        order.
+	 * @param options         the config data options applied to each source
 	 * @see #ConfigData(Collection, PropertySourceOptions)
 	 */
 	public ConfigData(Collection<? extends PropertySource<?>> propertySources, Option... options) {
@@ -65,13 +66,14 @@ public final class ConfigData {
 
 	/**
 	 * Create a new {@link ConfigData} instance with specific property source options.
-	 * @param propertySources the config data property sources in ascending priority
-	 * order.
+	 *
+	 * @param propertySources       the config data property sources in ascending priority
+	 *                              order.
 	 * @param propertySourceOptions the property source options
 	 * @since 2.4.5
 	 */
 	public ConfigData(Collection<? extends PropertySource<?>> propertySources,
-			PropertySourceOptions propertySourceOptions) {
+					  PropertySourceOptions propertySourceOptions) {
 		Assert.notNull(propertySources, "PropertySources must not be null");
 		Assert.notNull(propertySourceOptions, "PropertySourceOptions must not be null");
 		this.propertySources = Collections.unmodifiableList(new ArrayList<>(propertySources));
@@ -82,6 +84,7 @@ public final class ConfigData {
 	 * Return the configuration data property sources in ascending priority order. If the
 	 * same key is contained in more than one of the sources, then the later source will
 	 * win.
+	 *
 	 * @return the config data property sources
 	 */
 	public List<PropertySource<?>> getPropertySources() {
@@ -90,6 +93,7 @@ public final class ConfigData {
 
 	/**
 	 * Return a set of {@link Option config data options} for this source.
+	 *
 	 * @return the config data options
 	 * @deprecated since 2.4.5 in favor of {@link #getOptions(PropertySource)}
 	 */
@@ -101,6 +105,7 @@ public final class ConfigData {
 
 	/**
 	 * Return the {@link Options config data options} that apply to the given source.
+	 *
 	 * @param propertySource the property source to check
 	 * @return the options that apply
 	 * @since 2.4.5
@@ -122,12 +127,14 @@ public final class ConfigData {
 		/**
 		 * {@link PropertySourceOptions} instance that always returns
 		 * {@link Options#NONE}.
+		 *
 		 * @since 2.4.6
 		 */
 		PropertySourceOptions ALWAYS_NONE = new AlwaysPropertySourceOptions(Options.NONE);
 
 		/**
 		 * Return the options that should apply for the given property source.
+		 *
 		 * @param propertySource the property source
 		 * @return the options to apply
 		 */
@@ -136,6 +143,7 @@ public final class ConfigData {
 		/**
 		 * Create a new {@link PropertySourceOptions} instance that always returns the
 		 * same options regardless of the property source.
+		 *
 		 * @param options the options to return
 		 * @return a new {@link PropertySourceOptions} instance
 		 */
@@ -146,6 +154,7 @@ public final class ConfigData {
 		/**
 		 * Create a new {@link PropertySourceOptions} instance that always returns the
 		 * same options regardless of the property source.
+		 *
 		 * @param options the options to return
 		 * @return a new {@link PropertySourceOptions} instance
 		 */
@@ -200,6 +209,7 @@ public final class ConfigData {
 
 		/**
 		 * Returns if the given option is contained in this set.
+		 *
 		 * @param option the option to check
 		 * @return {@code true} of the option is present
 		 */
@@ -232,6 +242,7 @@ public final class ConfigData {
 		/**
 		 * Create a new {@link Options} instance that contains the options in this set
 		 * excluding the given option.
+		 *
 		 * @param option the option to exclude
 		 * @return a new {@link Options} instance
 		 */
@@ -242,6 +253,7 @@ public final class ConfigData {
 		/**
 		 * Create a new {@link Options} instance that contains the options in this set
 		 * including the given option.
+		 *
 		 * @param option the option to include
 		 * @return a new {@link Options} instance
 		 */
@@ -258,6 +270,7 @@ public final class ConfigData {
 
 		/**
 		 * Create a new instance with the given {@link Option} values.
+		 *
 		 * @param options the options to include
 		 * @return a new {@link Options} instance
 		 */
@@ -283,6 +296,7 @@ public final class ConfigData {
 
 		/**
 		 * Ignore all profile activation and include properties.
+		 *
 		 * @since 2.4.3
 		 */
 		IGNORE_PROFILES,
@@ -290,6 +304,7 @@ public final class ConfigData {
 		/**
 		 * Indicates that the source is "profile specific" and should be included after
 		 * profile specific sibling imports.
+		 *
 		 * @since 2.4.5
 		 */
 		PROFILE_SPECIFIC;

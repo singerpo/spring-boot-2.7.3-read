@@ -50,7 +50,7 @@ class OnWebApplicationCondition extends FilteringSpringBootCondition {
 
 	@Override
 	protected ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses,
-			AutoConfigurationMetadata autoConfigurationMetadata) {
+											 AutoConfigurationMetadata autoConfigurationMetadata) {
 		ConditionOutcome[] outcomes = new ConditionOutcome[autoConfigurationClasses.length];
 		for (int i = 0; i < outcomes.length; i++) {
 			String autoConfigurationClass = autoConfigurationClasses[i];
@@ -98,7 +98,7 @@ class OnWebApplicationCondition extends FilteringSpringBootCondition {
 	}
 
 	private ConditionOutcome isWebApplication(ConditionContext context, AnnotatedTypeMetadata metadata,
-			boolean required) {
+											  boolean required) {
 		switch (deduceType(metadata)) {
 			case SERVLET:
 				return isServletWebApplication(context);

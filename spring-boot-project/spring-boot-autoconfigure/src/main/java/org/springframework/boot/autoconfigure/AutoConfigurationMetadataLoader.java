@@ -51,8 +51,7 @@ final class AutoConfigurationMetadataLoader {
 				properties.putAll(PropertiesLoaderUtils.loadProperties(new UrlResource(urls.nextElement())));
 			}
 			return loadMetadata(properties);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalArgumentException("Unable to load @ConditionalOnClass location [" + path + "]", ex);
 		}
 	}

@@ -38,6 +38,7 @@ public interface HttpHandlerFactory {
 
 	/**
 	 * Create the {@link HttpHandler} instance that should be added.
+	 *
 	 * @param next the next handler in the chain
 	 * @return the new HTTP handler instance
 	 */

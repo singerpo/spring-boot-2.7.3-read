@@ -81,10 +81,10 @@ class LiquibaseEndpointTests {
 	void invokeWithCustomSchema() {
 		this.contextRunner.withUserConfiguration(Config.class, DataSourceWithSchemaConfiguration.class)
 				.withPropertyValues("spring.liquibase.default-schema=CUSTOMSCHEMA").run((context) -> {
-					Map<String, LiquibaseBean> liquibaseBeans = context.getBean(LiquibaseEndpoint.class)
-							.liquibaseBeans().getContexts().get(context.getId()).getLiquibaseBeans();
-					assertThat(liquibaseBeans.get("liquibase").getChangeSets()).hasSize(1);
-				});
+			Map<String, LiquibaseBean> liquibaseBeans = context.getBean(LiquibaseEndpoint.class)
+					.liquibaseBeans().getContexts().get(context.getId()).getLiquibaseBeans();
+			assertThat(liquibaseBeans.get("liquibase").getChangeSets()).hasSize(1);
+		});
 	}
 
 	@Test

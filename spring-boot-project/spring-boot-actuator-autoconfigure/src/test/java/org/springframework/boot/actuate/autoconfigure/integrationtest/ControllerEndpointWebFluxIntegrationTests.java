@@ -67,11 +67,11 @@ class ControllerEndpointWebFluxIntegrationTests {
 		webClient.get().uri("/actuator/example").exchange().expectStatus().isOk();
 	}
 
-	@ImportAutoConfiguration({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@ImportAutoConfiguration({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class,
 			ReactiveManagementContextAutoConfiguration.class, AuditAutoConfiguration.class,
 			PropertyPlaceholderAutoConfiguration.class, WebFluxAutoConfiguration.class,
-			ManagementContextAutoConfiguration.class, BeansEndpointAutoConfiguration.class })
+			ManagementContextAutoConfiguration.class, BeansEndpointAutoConfiguration.class})
 	static class DefaultConfiguration {
 
 	}

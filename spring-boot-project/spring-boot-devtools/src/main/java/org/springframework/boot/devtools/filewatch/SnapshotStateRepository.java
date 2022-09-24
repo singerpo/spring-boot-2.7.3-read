@@ -49,12 +49,14 @@ public interface SnapshotStateRepository {
 
 	/**
 	 * Save the given state in the repository.
+	 *
 	 * @param state the state to save
 	 */
 	void save(Object state);
 
 	/**
 	 * Restore any previously saved state.
+	 *
 	 * @return the previously saved state or {@code null}
 	 */
 	Object restore();

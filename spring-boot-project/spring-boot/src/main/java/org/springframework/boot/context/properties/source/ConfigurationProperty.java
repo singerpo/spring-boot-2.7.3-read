@@ -47,7 +47,7 @@ public final class ConfigurationProperty implements OriginProvider, Comparable<C
 	}
 
 	private ConfigurationProperty(ConfigurationPropertySource source, ConfigurationPropertyName name, Object value,
-			Origin origin) {
+								  Origin origin) {
 		Assert.notNull(name, "Name must not be null");
 		Assert.notNull(value, "Value must not be null");
 		this.source = source;
@@ -59,6 +59,7 @@ public final class ConfigurationProperty implements OriginProvider, Comparable<C
 	/**
 	 * Return the {@link ConfigurationPropertySource} that provided the property or
 	 * {@code null} if the source is unknown.
+	 *
 	 * @return the configuration property source
 	 * @since 2.6.0
 	 */
@@ -68,6 +69,7 @@ public final class ConfigurationProperty implements OriginProvider, Comparable<C
 
 	/**
 	 * Return the name of the configuration property.
+	 *
 	 * @return the configuration property name
 	 */
 	public ConfigurationPropertyName getName() {
@@ -76,6 +78,7 @@ public final class ConfigurationProperty implements OriginProvider, Comparable<C
 
 	/**
 	 * Return the value of the configuration property.
+	 *
 	 * @return the configuration property value
 	 */
 	public Object getValue() {
@@ -128,7 +131,7 @@ public final class ConfigurationProperty implements OriginProvider, Comparable<C
 	}
 
 	static ConfigurationProperty of(ConfigurationPropertySource source, ConfigurationPropertyName name, Object value,
-			Origin origin) {
+									Origin origin) {
 		if (value == null) {
 			return null;
 		}

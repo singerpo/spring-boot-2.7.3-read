@@ -93,8 +93,7 @@ public class ConditionEvaluationReportLoggingListener
 			if (((ApplicationContextEvent) event).getApplicationContext() == initializerApplicationContext) {
 				logAutoConfigurationReport();
 			}
-		}
-		else if (event instanceof ApplicationFailedEvent
+		} else if (event instanceof ApplicationFailedEvent
 				&& ((ApplicationFailedEvent) event).getApplicationContext() == initializerApplicationContext) {
 			logAutoConfigurationReport(true);
 		}
@@ -116,16 +115,13 @@ public class ConditionEvaluationReportLoggingListener
 			if (getLogLevelForReport().equals(LogLevel.INFO)) {
 				if (this.logger.isInfoEnabled()) {
 					this.logger.info(new ConditionEvaluationReportMessage(this.report));
-				}
-				else if (isCrashReport) {
+				} else if (isCrashReport) {
 					logMessage("info");
 				}
-			}
-			else {
+			} else {
 				if (this.logger.isDebugEnabled()) {
 					this.logger.debug(new ConditionEvaluationReportMessage(this.report));
-				}
-				else if (isCrashReport) {
+				} else if (isCrashReport) {
 					logMessage("debug");
 				}
 			}

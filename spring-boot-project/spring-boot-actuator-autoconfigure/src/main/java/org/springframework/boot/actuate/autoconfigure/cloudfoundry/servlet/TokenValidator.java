@@ -92,8 +92,7 @@ class TokenValidator {
 			signature.initVerify(publicKey);
 			signature.update(token.getContent());
 			return signature.verify(token.getSignature());
-		}
-		catch (GeneralSecurityException ex) {
+		} catch (GeneralSecurityException ex) {
 			return false;
 		}
 	}

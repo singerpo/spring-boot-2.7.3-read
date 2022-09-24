@@ -162,7 +162,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 	}
 
 	private CopySpec copyIntTestMavenRepositoryFiles(Project project,
-			RuntimeClasspathMavenRepository runtimeClasspathMavenRepository) {
+													 RuntimeClasspathMavenRepository runtimeClasspathMavenRepository) {
 		CopySpec copySpec = project.copySpec();
 		copySpec.from(project.getConfigurations().getByName(MavenRepositoryPlugin.MAVEN_REPOSITORY_CONFIGURATION_NAME));
 		copySpec.from(new File(project.getBuildDir(), "maven-repository"));
@@ -235,7 +235,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 	}
 
 	private FormatHelpMojoSource createFormatHelpMojoSource(Project project, MavenExec generateHelpMojoTask,
-			File generatedHelpMojoDir) {
+															File generatedHelpMojoDir) {
 		FormatHelpMojoSource formatHelpMojoSource = project.getTasks().create("formatHelpMojoSource",
 				FormatHelpMojoSource.class);
 		formatHelpMojoSource.setGenerator(generateHelpMojoTask);
@@ -327,8 +327,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 			try {
 				Files.createDirectories(outputLocation.getParent());
 				Files.write(outputLocation, edit.getFormattedContent().getBytes(StandardCharsets.UTF_8));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new TaskExecutionException(this, ex);
 			}
 		}
@@ -402,8 +401,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 					try {
 						Files.copy(result.getFile().toPath(), repositoryLocation.toPath(),
 								StandardCopyOption.REPLACE_EXISTING);
-					}
-					catch (IOException ex) {
+					} catch (IOException ex) {
 						throw new RuntimeException("Failed to copy artifact '" + result + "'", ex);
 					}
 				}
@@ -449,8 +447,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 			outputFile.getParentFile().mkdirs();
 			try (Writer writer = new FileWriter(outputFile)) {
 				versions.store(writer, null);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new GradleException("Failed to write extracted version properties", ex);
 			}
 		}
@@ -488,8 +485,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 					DocumentBuilder builder = builderFactory.newDocumentBuilder();
 					return builder.parse(inputStream);
 				}
-			}
-			catch (ParserConfigurationException | SAXException | IOException ex) {
+			} catch (ParserConfigurationException | SAXException | IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -509,8 +505,7 @@ public class MavenPluginPlugin implements Plugin<Project> {
 				String text = (node != null) ? node.getTextContent() : null;
 				Assert.hasLength(text, () -> "No result for expression " + expression);
 				return text;
-			}
-			catch (XPathExpressionException ex) {
+			} catch (XPathExpressionException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

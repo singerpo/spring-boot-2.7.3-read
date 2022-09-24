@@ -29,7 +29,8 @@ public interface Layout {
 
 	/**
 	 * Add a directory to the content.
-	 * @param name the full name of the directory to add
+	 *
+	 * @param name  the full name of the directory to add
 	 * @param owner the owner of the directory
 	 * @throws IOException on IO error
 	 */
@@ -39,17 +40,19 @@ public interface Layout {
 
 	/**
 	 * Add a directory to the content.
-	 * @param name the full name of the directory to add
+	 *
+	 * @param name  the full name of the directory to add
 	 * @param owner the owner of the directory
-	 * @param mode the permissions for the file
+	 * @param mode  the permissions for the file
 	 * @throws IOException on IO error
 	 */
 	void directory(String name, Owner owner, int mode) throws IOException;
 
 	/**
 	 * Write a file to the content.
-	 * @param name the full name of the file to add
-	 * @param owner the owner of the file
+	 *
+	 * @param name    the full name of the file to add
+	 * @param owner   the owner of the file
 	 * @param content the content to add
 	 * @throws IOException on IO error
 	 */
@@ -59,9 +62,10 @@ public interface Layout {
 
 	/**
 	 * Write a file to the content.
-	 * @param name the full name of the file to add
-	 * @param owner the owner of the file
-	 * @param mode the permissions for the file
+	 *
+	 * @param name    the full name of the file to add
+	 * @param owner   the owner of the file
+	 * @param mode    the permissions for the file
 	 * @param content the content to add
 	 * @throws IOException on IO error
 	 */

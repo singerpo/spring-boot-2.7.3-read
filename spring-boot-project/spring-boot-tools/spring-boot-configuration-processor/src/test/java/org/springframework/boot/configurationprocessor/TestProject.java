@@ -49,8 +49,8 @@ import org.springframework.util.FileSystemUtils;
  */
 public class TestProject {
 
-	private static final Class<?>[] ALWAYS_INCLUDE = { ConfigurationProperties.class,
-			NestedConfigurationProperty.class };
+	private static final Class<?>[] ALWAYS_INCLUDE = {ConfigurationProperties.class,
+			NestedConfigurationProperty.class};
 
 	/**
 	 * Contains copies of the original source so we can modify it safely to test
@@ -119,6 +119,7 @@ public class TestProject {
 
 	/**
 	 * Retrieve File relative to project's output directory.
+	 *
 	 * @param relativePath the relative path
 	 * @return the output file
 	 */
@@ -129,7 +130,8 @@ public class TestProject {
 
 	/**
 	 * Add source code at the end of file, just before last '}'
-	 * @param target the target
+	 *
+	 * @param target        the target
 	 * @param snippetStream the snippet stream
 	 * @throws Exception if the source cannot be added
 	 */
@@ -144,6 +146,7 @@ public class TestProject {
 
 	/**
 	 * Delete source file for given class from project.
+	 *
 	 * @param type the class to delete
 	 */
 	public void delete(Class<?> type) {
@@ -154,6 +157,7 @@ public class TestProject {
 
 	/**
 	 * Restore source code of given class to its original contents.
+	 *
 	 * @param type the class to revert
 	 * @throws IOException on IO error
 	 */
@@ -164,6 +168,7 @@ public class TestProject {
 
 	/**
 	 * Add source code of given class to this project.
+	 *
 	 * @param type the class to add
 	 * @throws IOException on IO error
 	 */

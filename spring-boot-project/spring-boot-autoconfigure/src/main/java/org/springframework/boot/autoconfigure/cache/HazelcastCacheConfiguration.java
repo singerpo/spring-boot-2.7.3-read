@@ -41,7 +41,7 @@ import org.springframework.context.annotation.Configuration;
  * @see HazelcastConfigResourceCondition
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ HazelcastInstance.class, HazelcastCacheManager.class })
+@ConditionalOnClass({HazelcastInstance.class, HazelcastCacheManager.class})
 @ConditionalOnMissingBean(CacheManager.class)
 @Conditional(CacheCondition.class)
 @ConditionalOnSingleCandidate(HazelcastInstance.class)
@@ -49,7 +49,7 @@ class HazelcastCacheConfiguration {
 
 	@Bean
 	HazelcastCacheManager cacheManager(CacheManagerCustomizers customizers,
-			HazelcastInstance existingHazelcastInstance) {
+									   HazelcastInstance existingHazelcastInstance) {
 		HazelcastCacheManager cacheManager = new HazelcastCacheManager(existingHazelcastInstance);
 		return customizers.customize(cacheManager);
 	}

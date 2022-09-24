@@ -62,9 +62,9 @@ class R2dbcRepositoriesAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(R2dbcAutoConfiguration.class))
 				.withClassLoader(new FilteredClassLoader("org.springframework.r2dbc"))
 				.withUserConfiguration(TestConfiguration.class).run((context) -> {
-					assertThat(context).doesNotHaveBean(DatabaseClient.class);
-					assertThat(context).doesNotHaveBean(R2dbcRepositoryConfigurationExtension.class);
-				});
+			assertThat(context).doesNotHaveBean(DatabaseClient.class);
+			assertThat(context).doesNotHaveBean(R2dbcRepositoryConfigurationExtension.class);
+		});
 	}
 
 	@Test
@@ -74,10 +74,10 @@ class R2dbcRepositoriesAutoConfigurationTests {
 						AutoConfigurations.of(R2dbcAutoConfiguration.class, R2dbcDataAutoConfiguration.class))
 				.withUserConfiguration(DatabaseInitializationConfiguration.class, TestConfiguration.class)
 				.withPropertyValues("spring.r2dbc.generate-unique-name:true").run((context) -> {
-					assertThat(context).hasSingleBean(CityRepository.class);
-					context.getBean(CityRepository.class).findById(2000L).as(StepVerifier::create).expectNextCount(1)
-							.verifyComplete();
-				});
+			assertThat(context).hasSingleBean(CityRepository.class);
+			context.getBean(CityRepository.class).findById(2000L).as(StepVerifier::create).expectNextCount(1)
+					.verifyComplete();
+		});
 	}
 
 	@Test
@@ -94,10 +94,10 @@ class R2dbcRepositoriesAutoConfigurationTests {
 						AutoConfigurations.of(R2dbcAutoConfiguration.class, R2dbcDataAutoConfiguration.class))
 				.withUserConfiguration(DatabaseInitializationConfiguration.class, EnableRepositoriesConfiguration.class)
 				.withPropertyValues("spring.r2dbc.generate-unique-name:true").run((context) -> {
-					assertThat(context).hasSingleBean(CityRepository.class);
-					context.getBean(CityRepository.class).findById(2000L).as(StepVerifier::create).expectNextCount(1)
-							.verifyComplete();
-				});
+			assertThat(context).hasSingleBean(CityRepository.class);
+			context.getBean(CityRepository.class).findById(2000L).as(StepVerifier::create).expectNextCount(1)
+					.verifyComplete();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)
@@ -106,8 +106,8 @@ class R2dbcRepositoriesAutoConfigurationTests {
 		@Autowired
 		void initializeDatabase(ConnectionFactory connectionFactory) {
 			ResourceLoader resourceLoader = new DefaultResourceLoader();
-			Resource[] scripts = new Resource[] { resourceLoader.getResource("classpath:data-city-schema.sql"),
-					resourceLoader.getResource("classpath:city.sql") };
+			Resource[] scripts = new Resource[]{resourceLoader.getResource("classpath:data-city-schema.sql"),
+					resourceLoader.getResource("classpath:city.sql")};
 			new ResourceDatabasePopulator(scripts).populate(connectionFactory).block();
 		}
 

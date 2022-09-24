@@ -1,16 +1,16 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{gradle-project-version}'
+    id 'java'
+    id 'org.springframework.boot' version '{gradle-project-version}'
 }
 
 // tag::launch[]
 tasks.named("bootRun") {
-	optimizedLaunch = false
+    optimizedLaunch = false
 }
 // end::launch[]
 
 tasks.register("optimizedLaunch") {
-	doLast {
-		println bootRun.optimizedLaunch
-	}
+    doLast {
+        println bootRun.optimizedLaunch
+    }
 }

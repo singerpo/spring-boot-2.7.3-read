@@ -55,7 +55,7 @@ public final class OAuth2ClientPropertiesRegistrationAdapter {
 	}
 
 	private static ClientRegistration getClientRegistration(String registrationId,
-			OAuth2ClientProperties.Registration properties, Map<String, Provider> providers) {
+															OAuth2ClientProperties.Registration properties, Map<String, Provider> providers) {
 		Builder builder = getBuilderFromIssuerIfPossible(registrationId, properties.getProvider(), providers);
 		if (builder == null) {
 			builder = getBuilder(registrationId, properties.getProvider(), providers);
@@ -74,7 +74,7 @@ public final class OAuth2ClientPropertiesRegistrationAdapter {
 	}
 
 	private static Builder getBuilderFromIssuerIfPossible(String registrationId, String configuredProviderId,
-			Map<String, Provider> providers) {
+														  Map<String, Provider> providers) {
 		String providerId = (configuredProviderId != null) ? configuredProviderId : registrationId;
 		if (providers.containsKey(providerId)) {
 			Provider provider = providers.get(providerId);
@@ -88,7 +88,7 @@ public final class OAuth2ClientPropertiesRegistrationAdapter {
 	}
 
 	private static Builder getBuilder(String registrationId, String configuredProviderId,
-			Map<String, Provider> providers) {
+									  Map<String, Provider> providers) {
 		String providerId = (configuredProviderId != null) ? configuredProviderId : registrationId;
 		CommonOAuth2Provider provider = getCommonProvider(providerId);
 		if (provider == null && !providers.containsKey(providerId)) {
@@ -122,8 +122,7 @@ public final class OAuth2ClientPropertiesRegistrationAdapter {
 	private static CommonOAuth2Provider getCommonProvider(String providerId) {
 		try {
 			return ApplicationConversionService.getSharedInstance().convert(providerId, CommonOAuth2Provider.class);
-		}
-		catch (ConversionException ex) {
+		} catch (ConversionException ex) {
 			return null;
 		}
 	}

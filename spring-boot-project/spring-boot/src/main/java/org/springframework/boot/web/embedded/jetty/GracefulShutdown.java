@@ -68,19 +68,16 @@ final class GracefulShutdown {
 		Future<Void> result;
 		try {
 			result = connector.shutdown();
-		}
-		catch (NoSuchMethodError ex) {
+		} catch (NoSuchMethodError ex) {
 			Method shutdown = ReflectionUtils.findMethod(connector.getClass(), "shutdown");
 			result = (Future<Void>) ReflectionUtils.invokeMethod(shutdown, connector);
 		}
 		if (getResult) {
 			try {
 				result.get();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
-			}
-			catch (ExecutionException ex) {
+			} catch (ExecutionException ex) {
 				// Continue
 			}
 		}
@@ -89,8 +86,7 @@ final class GracefulShutdown {
 	private boolean isJetty10() {
 		try {
 			return CompletableFuture.class.equals(Connector.class.getMethod("shutdown").getReturnType());
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}
@@ -104,8 +100,7 @@ final class GracefulShutdown {
 		if (activeRequests == 0) {
 			logger.info("Graceful shutdown complete");
 			callback.shutdownComplete(GracefulShutdownResult.IDLE);
-		}
-		else {
+		} else {
 			logger.info(LogMessage.format("Graceful shutdown aborted with %d request(s) still active", activeRequests));
 			callback.shutdownComplete(GracefulShutdownResult.REQUESTS_ACTIVE);
 		}
@@ -114,8 +109,7 @@ final class GracefulShutdown {
 	private void sleep(long millis) {
 		try {
 			Thread.sleep(millis);
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 	}

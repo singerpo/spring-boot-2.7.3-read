@@ -29,6 +29,7 @@ public interface DefaultKafkaConsumerFactoryCustomizer {
 
 	/**
 	 * Customize the {@link DefaultKafkaConsumerFactory}.
+	 *
 	 * @param consumerFactory the consumer factory to customize
 	 */
 	void customize(DefaultKafkaConsumerFactory<?, ?> consumerFactory);

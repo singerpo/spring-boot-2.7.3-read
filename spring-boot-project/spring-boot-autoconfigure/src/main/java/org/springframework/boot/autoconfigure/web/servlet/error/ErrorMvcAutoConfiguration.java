@@ -87,8 +87,8 @@ import org.springframework.web.util.HtmlUtils;
 // Load before the main WebMvcAutoConfiguration so that the error View is available
 @AutoConfiguration(before = WebMvcAutoConfiguration.class)
 @ConditionalOnWebApplication(type = Type.SERVLET)
-@ConditionalOnClass({ Servlet.class, DispatcherServlet.class })
-@EnableConfigurationProperties({ ServerProperties.class, WebMvcProperties.class })
+@ConditionalOnClass({Servlet.class, DispatcherServlet.class})
+@EnableConfigurationProperties({ServerProperties.class, WebMvcProperties.class})
 public class ErrorMvcAutoConfiguration {
 
 	private final ServerProperties serverProperties;
@@ -106,7 +106,7 @@ public class ErrorMvcAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(value = ErrorController.class, search = SearchStrategy.CURRENT)
 	public BasicErrorController basicErrorController(ErrorAttributes errorAttributes,
-			ObjectProvider<ErrorViewResolver> errorViewResolvers) {
+													 ObjectProvider<ErrorViewResolver> errorViewResolvers) {
 		return new BasicErrorController(errorAttributes, this.serverProperties.getError(),
 				errorViewResolvers.orderedStream().collect(Collectors.toList()));
 	}
@@ -122,7 +122,7 @@ public class ErrorMvcAutoConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@EnableConfigurationProperties({ WebProperties.class, WebMvcProperties.class })
+	@EnableConfigurationProperties({WebProperties.class, WebMvcProperties.class})
 	static class DefaultErrorViewResolverConfiguration {
 
 		private final ApplicationContext applicationContext;
@@ -290,8 +290,7 @@ public class ErrorMvcAutoConfiguration {
 				try {
 					beanFactory.getBeanDefinition(errorControllerBean)
 							.setAttribute(AutoProxyUtils.PRESERVE_TARGET_CLASS_ATTRIBUTE, Boolean.TRUE);
-				}
-				catch (Throwable ex) {
+				} catch (Throwable ex) {
 					// Ignore
 				}
 			}

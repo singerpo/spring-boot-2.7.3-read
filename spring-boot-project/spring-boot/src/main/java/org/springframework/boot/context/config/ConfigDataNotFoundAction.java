@@ -32,7 +32,6 @@ public enum ConfigDataNotFoundAction {
 	 * Throw the exception to fail startup.
 	 */
 	FAIL {
-
 		@Override
 		void handle(Log logger, ConfigDataNotFoundException ex) {
 			throw ex;
@@ -44,7 +43,6 @@ public enum ConfigDataNotFoundAction {
 	 * Ignore the exception and continue processing the remaining locations.
 	 */
 	IGNORE {
-
 		@Override
 		void handle(Log logger, ConfigDataNotFoundException ex) {
 			logger.trace(LogMessage.format("Ignoring missing config data %s", ex.getReferenceDescription()));
@@ -54,8 +52,9 @@ public enum ConfigDataNotFoundAction {
 
 	/**
 	 * Handle the given exception.
+	 *
 	 * @param logger the logger used for output {@code ConfigDataLocation})
-	 * @param ex the exception to handle
+	 * @param ex     the exception to handle
 	 */
 	abstract void handle(Log logger, ConfigDataNotFoundException ex);
 

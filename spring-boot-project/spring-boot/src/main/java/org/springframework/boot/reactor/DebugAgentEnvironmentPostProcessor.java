@@ -47,8 +47,7 @@ public class DebugAgentEnvironmentPostProcessor implements EnvironmentPostProces
 				try {
 					Class<?> debugAgent = Class.forName(REACTOR_DEBUGAGENT_CLASS);
 					debugAgent.getMethod("init").invoke(null);
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new RuntimeException("Failed to init Reactor's debug agent", ex);
 				}
 			}

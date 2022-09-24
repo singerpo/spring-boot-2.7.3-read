@@ -106,8 +106,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 		doExtractUrls(classLoader).forEach((URL url) -> {
 			if (isManifestOnlyJar(url)) {
 				extractedUrls.addAll(extractUrlsFromManifestClassPath(url));
-			}
-			else {
+			} else {
 				extractedUrls.add(url);
 			}
 		});
@@ -125,8 +124,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 	private static URL toURL(String entry) {
 		try {
 			return new File(entry).toURI().toURL();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalArgumentException(ex);
 		}
 	}
@@ -143,8 +141,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 				Attributes attributes = getManifestMainAttributesFromUrl(url);
 				String createdBy = attributes.getValue("Created-By");
 				return createdBy != null && createdBy.contains("IntelliJ");
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 		}
 		return false;
@@ -156,8 +153,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 			for (String entry : getClassPath(booterJar)) {
 				urls.add(new URL(entry));
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 		return urls;
@@ -215,8 +211,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 					resolvedArtifacts.add(artifact.getArtifact().getFile().toURI().toURL());
 				}
 				return resolvedArtifacts;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				latestFailure = ex;
 			}
 		}
@@ -255,8 +250,7 @@ final class ModifiedClassPathClassLoader extends URLClassLoader {
 							return true;
 						}
 					}
-				}
-				catch (URISyntaxException ex) {
+				} catch (URISyntaxException ex) {
 				}
 			}
 			return false;

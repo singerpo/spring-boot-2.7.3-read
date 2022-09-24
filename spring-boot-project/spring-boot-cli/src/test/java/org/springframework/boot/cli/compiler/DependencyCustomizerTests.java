@@ -60,12 +60,12 @@ class DependencyCustomizerTests {
 		this.dependencyCustomizer = new DependencyCustomizer(new GroovyClassLoader(getClass().getClassLoader()),
 				this.moduleNode, new DependencyResolutionContext() {
 
-					@Override
-					public ArtifactCoordinatesResolver getArtifactCoordinatesResolver() {
-						return DependencyCustomizerTests.this.resolver;
-					}
+			@Override
+			public ArtifactCoordinatesResolver getArtifactCoordinatesResolver() {
+				return DependencyCustomizerTests.this.resolver;
+			}
 
-				});
+		});
 	}
 
 	@Test
@@ -189,20 +189,18 @@ class DependencyCustomizerTests {
 	}
 
 	private void assertGrabAnnotation(AnnotationNode annotationNode, String group, String module, String version,
-			String classifier, String type, boolean transitive) {
+									  String classifier, String type, boolean transitive) {
 		assertThat(getMemberValue(annotationNode, "group")).isEqualTo(group);
 		assertThat(getMemberValue(annotationNode, "module")).isEqualTo(module);
 		assertThat(getMemberValue(annotationNode, "version")).isEqualTo(version);
 		if (type == null) {
 			assertThat(annotationNode.getMember("type")).isNull();
-		}
-		else {
+		} else {
 			assertThat(getMemberValue(annotationNode, "type")).isEqualTo(type);
 		}
 		if (classifier == null) {
 			assertThat(annotationNode.getMember("classifier")).isNull();
-		}
-		else {
+		} else {
 			assertThat(getMemberValue(annotationNode, "classifier")).isEqualTo(classifier);
 		}
 		assertThat(getMemberValue(annotationNode, "transitive")).isEqualTo(transitive);

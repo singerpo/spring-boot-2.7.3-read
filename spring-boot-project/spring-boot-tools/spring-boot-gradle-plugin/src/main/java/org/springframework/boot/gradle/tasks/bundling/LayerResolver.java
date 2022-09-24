@@ -45,7 +45,7 @@ class LayerResolver {
 	private final Spec<FileCopyDetails> librarySpec;
 
 	LayerResolver(ResolvedDependencies resolvedDependencies, LayeredSpec layeredConfiguration,
-			Spec<FileCopyDetails> librarySpec) {
+				  Spec<FileCopyDetails> librarySpec) {
 		this.resolvedDependencies = resolvedDependencies;
 		this.layeredConfiguration = layeredConfiguration;
 		this.librarySpec = librarySpec;
@@ -57,8 +57,7 @@ class LayerResolver {
 				return getLayer(asLibrary(details));
 			}
 			return getLayer(details.getSourcePath());
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			return null;
 		}
 	}

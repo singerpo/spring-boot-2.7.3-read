@@ -47,6 +47,7 @@ public class MustacheViewResolver extends UrlBasedViewResolver {
 	/**
 	 * Create a {@code MustacheViewResolver} backed by a custom instance of a
 	 * {@link Compiler}.
+	 *
 	 * @param compiler the Mustache compiler used to compile templates
 	 */
 	public MustacheViewResolver(Compiler compiler) {
@@ -56,6 +57,7 @@ public class MustacheViewResolver extends UrlBasedViewResolver {
 
 	/**
 	 * Set the charset.
+	 *
 	 * @param charset the charset
 	 */
 	public void setCharset(String charset) {

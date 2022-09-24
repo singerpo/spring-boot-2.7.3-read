@@ -74,8 +74,8 @@ public class MavenResolverGrapeEngine implements GrapeEngine {
 	private final List<RemoteRepository> repositories;
 
 	public MavenResolverGrapeEngine(GroovyClassLoader classLoader, RepositorySystem repositorySystem,
-			DefaultRepositorySystemSession repositorySystemSession, List<RemoteRepository> remoteRepositories,
-			DependencyResolutionContext resolutionContext, boolean quiet) {
+									DefaultRepositorySystemSession repositorySystemSession, List<RemoteRepository> remoteRepositories,
+									DependencyResolutionContext resolutionContext, boolean quiet) {
 		this.classLoader = classLoader;
 		this.repositorySystem = repositorySystem;
 		this.session = repositorySystemSession;
@@ -117,8 +117,7 @@ public class MavenResolverGrapeEngine implements GrapeEngine {
 			for (File file : files) {
 				classLoader.addURL(file.toURI().toURL());
 			}
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new DependencyResolutionFailedException(ex);
 		}
 		return null;
@@ -180,8 +179,7 @@ public class MavenResolverGrapeEngine implements GrapeEngine {
 			if (type == null) {
 				type = "jar";
 			}
-		}
-		else if (ext != null && !type.equals(ext)) {
+		} else if (ext != null && !type.equals(ext)) {
 			throw new IllegalArgumentException("If both type and ext are specified they must have the same value");
 		}
 		return type;
@@ -279,8 +277,7 @@ public class MavenResolverGrapeEngine implements GrapeEngine {
 				uris.add(file.toURI());
 			}
 			return uris.toArray(new URI[0]);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new DependencyResolutionFailedException(ex);
 		}
 	}
@@ -292,11 +289,9 @@ public class MavenResolverGrapeEngine implements GrapeEngine {
 			DependencyResult result = this.repositorySystem.resolveDependencies(this.session, dependencyRequest);
 			addManagedDependencies(result);
 			return getFiles(result);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new DependencyResolutionFailedException(ex);
-		}
-		finally {
+		} finally {
 			this.progressReporter.finished();
 		}
 	}

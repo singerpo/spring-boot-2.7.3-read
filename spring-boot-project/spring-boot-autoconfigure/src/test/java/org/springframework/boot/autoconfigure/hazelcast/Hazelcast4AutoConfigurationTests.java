@@ -40,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Stephane Nicoll
  */
 @ClassPathExclusions("hazelcast*.jar")
-@ClassPathOverrides({ "com.hazelcast:hazelcast:4.2.5", "com.hazelcast:hazelcast-spring:4.2.5" })
+@ClassPathOverrides({"com.hazelcast:hazelcast:4.2.5", "com.hazelcast:hazelcast-spring:4.2.5"})
 class Hazelcast4AutoConfigurationTests {
 
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
@@ -68,8 +68,7 @@ class Hazelcast4AutoConfigurationTests {
 					.withPropertyValues("spring.hazelcast.config="
 							+ "org/springframework/boot/autoconfigure/hazelcast/hazelcast-4-client.xml")
 					.run(assertSpecificHazelcastClient("explicit-client"));
-		}
-		finally {
+		} finally {
 			hazelcastServer.shutdown();
 		}
 	}

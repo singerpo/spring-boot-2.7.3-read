@@ -20,9 +20,9 @@ package org.springframework.boot.web.server;
  * The result of a graceful shutdown request.
  *
  * @author Andy Wilkinson
- * @since 2.3.0
  * @see GracefulShutdownCallback
  * @see WebServer#shutDownGracefully(GracefulShutdownCallback)
+ * @since 2.3.0
  */
 public enum GracefulShutdownResult {
 

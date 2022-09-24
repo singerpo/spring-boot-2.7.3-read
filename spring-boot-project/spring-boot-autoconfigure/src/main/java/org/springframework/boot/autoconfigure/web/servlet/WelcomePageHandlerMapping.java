@@ -48,19 +48,18 @@ final class WelcomePageHandlerMapping extends AbstractUrlHandlerMapping {
 	private static final List<MediaType> MEDIA_TYPES_ALL = Collections.singletonList(MediaType.ALL);
 
 	WelcomePageHandlerMapping(TemplateAvailabilityProviders templateAvailabilityProviders,
-			ApplicationContext applicationContext, Resource welcomePage, String staticPathPattern) {
+							  ApplicationContext applicationContext, Resource welcomePage, String staticPathPattern) {
 		if (welcomePage != null && "/**".equals(staticPathPattern)) {
 			logger.info("Adding welcome page: " + welcomePage);
 			setRootViewName("forward:index.html");
-		}
-		else if (welcomeTemplateExists(templateAvailabilityProviders, applicationContext)) {
+		} else if (welcomeTemplateExists(templateAvailabilityProviders, applicationContext)) {
 			logger.info("Adding welcome page template: index");
 			setRootViewName("index");
 		}
 	}
 
 	private boolean welcomeTemplateExists(TemplateAvailabilityProviders templateAvailabilityProviders,
-			ApplicationContext applicationContext) {
+										  ApplicationContext applicationContext) {
 		return templateAvailabilityProviders.getProvider("index", applicationContext) != null;
 	}
 

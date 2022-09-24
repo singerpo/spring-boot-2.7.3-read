@@ -101,9 +101,9 @@ public class BuildRequest {
 	}
 
 	BuildRequest(ImageReference name, Function<Owner, TarArchive> applicationContent, ImageReference builder,
-			ImageReference runImage, Creator creator, Map<String, String> env, boolean cleanCache,
-			boolean verboseLogging, PullPolicy pullPolicy, boolean publish, List<BuildpackReference> buildpacks,
-			List<Binding> bindings, String network, List<ImageReference> tags, Cache buildCache, Cache launchCache) {
+				 ImageReference runImage, Creator creator, Map<String, String> env, boolean cleanCache,
+				 boolean verboseLogging, PullPolicy pullPolicy, boolean publish, List<BuildpackReference> buildpacks,
+				 List<Binding> bindings, String network, List<ImageReference> tags, Cache buildCache, Cache launchCache) {
 		this.name = name;
 		this.applicationContent = applicationContent;
 		this.builder = builder;
@@ -124,6 +124,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated builder.
+	 *
 	 * @param builder the new builder to use
 	 * @return an updated build request
 	 */
@@ -136,6 +137,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated run image.
+	 *
 	 * @param runImageName the run image to use
 	 * @return an updated build request
 	 */
@@ -147,6 +149,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated creator.
+	 *
 	 * @param creator the new {@code Creator} to use
 	 * @return an updated build request
 	 */
@@ -159,7 +162,8 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an additional env variable.
-	 * @param name the variable name
+	 *
+	 * @param name  the variable name
 	 * @param value the variable value
 	 * @return an updated build request
 	 */
@@ -175,6 +179,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with additional env variables.
+	 *
 	 * @param env the additional variables
 	 * @return an updated build request
 	 */
@@ -190,6 +195,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated clean cache setting.
+	 *
 	 * @param cleanCache if the cache should be cleaned
 	 * @return an updated build request
 	 */
@@ -201,6 +207,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated verbose logging setting.
+	 *
 	 * @param verboseLogging if verbose logging should be used
 	 * @return an updated build request
 	 */
@@ -212,6 +219,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with the updated image pull policy.
+	 *
 	 * @param pullPolicy image pull policy {@link PullPolicy}
 	 * @return an updated build request
 	 */
@@ -223,6 +231,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated publish setting.
+	 *
 	 * @param publish if the built image should be pushed to a registry
 	 * @return an updated build request
 	 */
@@ -234,6 +243,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated buildpacks setting.
+	 *
 	 * @param buildpacks a collection of buildpacks to use when building the image
 	 * @return an updated build request
 	 * @since 2.5.0
@@ -245,6 +255,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated buildpacks setting.
+	 *
 	 * @param buildpacks a collection of buildpacks to use when building the image
 	 * @return an updated build request
 	 * @since 2.5.0
@@ -258,6 +269,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with updated bindings.
+	 *
 	 * @param bindings a collection of bindings to mount to the build container
 	 * @return an updated build request
 	 * @since 2.5.0
@@ -269,6 +281,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with updated bindings.
+	 *
 	 * @param bindings a collection of bindings to mount to the build container
 	 * @return an updated build request
 	 * @since 2.5.0
@@ -282,6 +295,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated network setting.
+	 *
 	 * @param network the network the build container will connect to
 	 * @return an updated build request
 	 * @since 2.6.0
@@ -294,6 +308,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with updated tags.
+	 *
 	 * @param tags a collection of tags to be created for the built image
 	 * @return an updated build request
 	 */
@@ -304,6 +319,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with updated tags.
+	 *
 	 * @param tags a collection of tags to be created for the built image
 	 * @return an updated build request
 	 */
@@ -316,6 +332,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated build cache.
+	 *
 	 * @param buildCache the build cache
 	 * @return an updated build request
 	 */
@@ -328,6 +345,7 @@ public class BuildRequest {
 
 	/**
 	 * Return a new {@link BuildRequest} with an updated launch cache.
+	 *
 	 * @param launchCache the cache
 	 * @return an updated build request
 	 */
@@ -340,6 +358,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the name of the image that should be created.
+	 *
 	 * @return the name of the image
 	 */
 	public ImageReference getName() {
@@ -349,6 +368,7 @@ public class BuildRequest {
 	/**
 	 * Return a {@link TarArchive} containing the application content that the buildpack
 	 * should package. This is typically the contents of the Jar.
+	 *
 	 * @param owner the owner of the tar entries
 	 * @return the application content
 	 * @see TarArchive#fromZip(File, Owner)
@@ -359,6 +379,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the builder that should be used.
+	 *
 	 * @return the builder to use
 	 */
 	public ImageReference getBuilder() {
@@ -367,6 +388,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the run image that should be used, if provided.
+	 *
 	 * @return the run image
 	 */
 	public ImageReference getRunImage() {
@@ -375,6 +397,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the {@link Creator} the builder should use.
+	 *
 	 * @return the {@code Creator}
 	 */
 	public Creator getCreator() {
@@ -383,6 +406,7 @@ public class BuildRequest {
 
 	/**
 	 * Return any env variable that should be passed to the builder.
+	 *
 	 * @return the builder env
 	 */
 	public Map<String, String> getEnv() {
@@ -391,6 +415,7 @@ public class BuildRequest {
 
 	/**
 	 * Return if caches should be cleaned before packaging.
+	 *
 	 * @return if caches should be cleaned
 	 */
 	public boolean isCleanCache() {
@@ -399,6 +424,7 @@ public class BuildRequest {
 
 	/**
 	 * Return if verbose logging output should be used.
+	 *
 	 * @return if verbose logging should be used
 	 */
 	public boolean isVerboseLogging() {
@@ -407,6 +433,7 @@ public class BuildRequest {
 
 	/**
 	 * Return if the built image should be pushed to a registry.
+	 *
 	 * @return if the built image should be pushed to a registry
 	 */
 	public boolean isPublish() {
@@ -415,6 +442,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the image {@link PullPolicy} that the builder should use.
+	 *
 	 * @return image pull policy
 	 */
 	public PullPolicy getPullPolicy() {
@@ -423,6 +451,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the collection of buildpacks to use when building the image, if provided.
+	 *
 	 * @return the buildpacks
 	 */
 	public List<BuildpackReference> getBuildpacks() {
@@ -431,6 +460,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the collection of bindings to mount to the build container.
+	 *
 	 * @return the bindings
 	 * @since 2.5.0
 	 */
@@ -440,6 +470,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the network the build container will connect to.
+	 *
 	 * @return the network
 	 * @since 2.6.0
 	 */
@@ -449,6 +480,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the collection of tags that should be created.
+	 *
 	 * @return the tags
 	 */
 	public List<ImageReference> getTags() {
@@ -457,6 +489,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the custom build cache that should be used by the lifecycle.
+	 *
 	 * @return the build cache
 	 */
 	public Cache getBuildCache() {
@@ -465,6 +498,7 @@ public class BuildRequest {
 
 	/**
 	 * Return the custom launch cache that should be used by the lifecycle.
+	 *
 	 * @return the launch cache
 	 */
 	public Cache getLaunchCache() {
@@ -473,6 +507,7 @@ public class BuildRequest {
 
 	/**
 	 * Factory method to create a new {@link BuildRequest} from a JAR file.
+	 *
 	 * @param jarFile the source jar file
 	 * @return a new build request instance
 	 */
@@ -483,7 +518,8 @@ public class BuildRequest {
 
 	/**
 	 * Factory method to create a new {@link BuildRequest} from a JAR file.
-	 * @param name the name of the image that should be created
+	 *
+	 * @param name    the name of the image that should be created
 	 * @param jarFile the source jar file
 	 * @return a new build request instance
 	 */
@@ -494,7 +530,8 @@ public class BuildRequest {
 
 	/**
 	 * Factory method to create a new {@link BuildRequest} with specific content.
-	 * @param name the name of the image that should be created
+	 *
+	 * @param name               the name of the image that should be created
 	 * @param applicationContent function to provide the application content
 	 * @return a new build request instance
 	 */

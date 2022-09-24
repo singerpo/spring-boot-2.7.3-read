@@ -67,8 +67,7 @@ class AccessLogHttpHandlerFactory implements HttpHandlerFactory {
 			return new ClosableAccessLogHandler(next, worker,
 					new DefaultAccessLogReceiver(worker, this.directory, baseName, this.suffix, this.rotate),
 					formatString);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to create AccessLogHandler", ex);
 		}
 	}
@@ -95,7 +94,7 @@ class AccessLogHttpHandlerFactory implements HttpHandlerFactory {
 		private final XnioWorker worker;
 
 		ClosableAccessLogHandler(HttpHandler next, XnioWorker worker, DefaultAccessLogReceiver accessLogReceiver,
-				String formatString) {
+								 String formatString) {
 			super(next, accessLogReceiver, formatString, Undertow.class.getClassLoader());
 			this.worker = worker;
 			this.accessLogReceiver = accessLogReceiver;
@@ -107,11 +106,9 @@ class AccessLogHttpHandlerFactory implements HttpHandlerFactory {
 				this.accessLogReceiver.close();
 				this.worker.shutdown();
 				this.worker.awaitTermination(30, TimeUnit.SECONDS);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new RuntimeException(ex);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}

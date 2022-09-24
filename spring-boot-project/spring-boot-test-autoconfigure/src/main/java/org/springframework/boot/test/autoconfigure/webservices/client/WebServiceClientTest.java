@@ -72,6 +72,7 @@ public @interface WebServiceClientTest {
 	/**
 	 * Properties in form {@literal key=value} that should be added to the Spring
 	 * {@link Environment} before the test runs.
+	 *
 	 * @return the properties to add
 	 */
 	String[] properties() default {};
@@ -80,8 +81,9 @@ public @interface WebServiceClientTest {
 	 * Specifies the components to test. This is an alias of {@link #components()} which
 	 * can be used for brevity if no other attributes are defined. See
 	 * {@link #components()} for details.
-	 * @see #components()
+	 *
 	 * @return the components to test
+	 * @see #components()
 	 */
 	@AliasFor("components")
 	Class<?>[] value() default {};
@@ -89,8 +91,9 @@ public @interface WebServiceClientTest {
 	/**
 	 * Specifies the components to test. May be left blank if components will be manually
 	 * imported or created directly.
-	 * @see #value()
+	 *
 	 * @return the components to test
+	 * @see #value()
 	 */
 	@AliasFor("value")
 	Class<?>[] components() default {};
@@ -99,15 +102,17 @@ public @interface WebServiceClientTest {
 	 * Determines if default filtering should be used with
 	 * {@link SpringBootApplication @SpringBootApplication}. By default only
 	 * {@code @JsonComponent} and {@code Module} beans are included.
+	 *
+	 * @return if default filters should be used
 	 * @see #includeFilters()
 	 * @see #excludeFilters()
-	 * @return if default filters should be used
 	 */
 	boolean useDefaultFilters() default true;
 
 	/**
 	 * A set of include filters which can be used to add otherwise filtered beans to the
 	 * application context.
+	 *
 	 * @return include filters to apply
 	 */
 	ComponentScan.Filter[] includeFilters() default {};
@@ -115,12 +120,14 @@ public @interface WebServiceClientTest {
 	/**
 	 * A set of exclude filters which can be used to filter beans that would otherwise be
 	 * added to the application context.
+	 *
 	 * @return exclude filters to apply
 	 */
 	ComponentScan.Filter[] excludeFilters() default {};
 
 	/**
 	 * Auto-configuration exclusions that should be applied for this test.
+	 *
 	 * @return auto-configuration exclusions to apply
 	 */
 	@AliasFor(annotation = ImportAutoConfiguration.class, attribute = "exclude")

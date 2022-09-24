@@ -73,9 +73,9 @@ class WebTestClientAutoConfigurationTests {
 	void shouldCustomizeTimeout() {
 		this.contextRunner.withUserConfiguration(BaseConfiguration.class)
 				.withPropertyValues("spring.test.webtestclient.timeout=15m").run((context) -> {
-					WebTestClient webTestClient = context.getBean(WebTestClient.class);
-					assertThat(webTestClient).hasFieldOrPropertyWithValue("responseTimeout", Duration.ofMinutes(15));
-				});
+			WebTestClient webTestClient = context.getBean(WebTestClient.class);
+			assertThat(webTestClient).hasFieldOrPropertyWithValue("responseTimeout", Duration.ofMinutes(15));
+		});
 	}
 
 	@Test

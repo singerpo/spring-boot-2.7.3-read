@@ -260,7 +260,7 @@ class RemoteDevToolsAutoConfigurationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ SecurityAutoConfiguration.class, RemoteDevToolsAutoConfiguration.class })
+	@Import({SecurityAutoConfiguration.class, RemoteDevToolsAutoConfiguration.class})
 	static class Config {
 
 		@Bean

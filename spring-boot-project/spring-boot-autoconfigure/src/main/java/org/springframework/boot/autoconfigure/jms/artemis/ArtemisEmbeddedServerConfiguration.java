@@ -65,8 +65,8 @@ class ArtemisEmbeddedServerConfiguration {
 	@Bean(initMethod = "start", destroyMethod = "stop")
 	@ConditionalOnMissingBean
 	EmbeddedActiveMQ embeddedActiveMq(org.apache.activemq.artemis.core.config.Configuration configuration,
-			JMSConfiguration jmsConfiguration,
-			ObjectProvider<ArtemisConfigurationCustomizer> configurationCustomizers) {
+									  JMSConfiguration jmsConfiguration,
+									  ObjectProvider<ArtemisConfigurationCustomizer> configurationCustomizers) {
 		for (JMSQueueConfiguration queueConfiguration : jmsConfiguration.getQueueConfigurations()) {
 			String queueName = queueConfiguration.getName();
 			configuration.addAddressConfiguration(
@@ -88,7 +88,7 @@ class ArtemisEmbeddedServerConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	JMSConfiguration artemisJmsConfiguration(ObjectProvider<JMSQueueConfiguration> queuesConfiguration,
-			ObjectProvider<TopicConfiguration> topicsConfiguration) {
+											 ObjectProvider<TopicConfiguration> topicsConfiguration) {
 		JMSConfiguration configuration = new JMSConfigurationImpl();
 		addAll(configuration.getQueueConfigurations(), queuesConfiguration);
 		addAll(configuration.getTopicConfigurations(), topicsConfiguration);

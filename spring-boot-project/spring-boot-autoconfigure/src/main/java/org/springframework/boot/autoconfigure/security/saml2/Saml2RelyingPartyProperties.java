@@ -74,6 +74,7 @@ public class Saml2RelyingPartyProperties {
 
 		/**
 		 * Remote SAML Identity Provider.
+		 *
 		 * @deprecated use {@link #assertingparty}
 		 */
 		@Deprecated
@@ -105,6 +106,7 @@ public class Saml2RelyingPartyProperties {
 
 		/**
 		 * Remote SAML Identity Provider.
+		 *
 		 * @return remote SAML Identity Provider
 		 * @deprecated use {@link #getAssertingparty()}
 		 */

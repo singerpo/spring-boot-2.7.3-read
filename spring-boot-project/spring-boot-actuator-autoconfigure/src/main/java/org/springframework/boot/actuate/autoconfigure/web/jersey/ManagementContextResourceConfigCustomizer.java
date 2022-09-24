@@ -29,6 +29,7 @@ public interface ManagementContextResourceConfigCustomizer {
 
 	/**
 	 * Customize the resource config.
+	 *
 	 * @param config the {@link ResourceConfig} to customize
 	 */
 	void customize(ResourceConfig config);

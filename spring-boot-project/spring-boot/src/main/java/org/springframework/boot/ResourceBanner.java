@@ -69,8 +69,7 @@ public class ResourceBanner implements Banner {
 				banner = resolver.resolvePlaceholders(banner);
 			}
 			out.println(banner);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn(LogMessage.format("Banner not printable: %s (%s: '%s')", this.resource, ex.getClass(),
 					ex.getMessage()), ex);
 		}

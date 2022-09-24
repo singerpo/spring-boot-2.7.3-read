@@ -58,8 +58,7 @@ final class TraceableHttpServletRequest implements TraceableRequest {
 		try {
 			StringBuffer urlBuffer = appendQueryString(queryString);
 			return new URI(urlBuffer.toString());
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			String encoded = UriUtils.encodeQuery(queryString, StandardCharsets.UTF_8);
 			StringBuffer urlBuffer = appendQueryString(encoded);
 			return URI.create(urlBuffer.toString());

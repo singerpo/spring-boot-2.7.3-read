@@ -1,16 +1,16 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{gradle-project-version}'
+    id 'java'
+    id 'org.springframework.boot' version '{gradle-project-version}'
 }
 
 // tag::main[]
 tasks.named("bootRun") {
-	mainClass = 'com.example.ExampleApplication'
+    mainClass = 'com.example.ExampleApplication'
 }
 // end::main[]
 
 tasks.register("configuredMainClass") {
-	doLast {
-		println bootRun.mainClass
-	}
+    doLast {
+        println bootRun.mainClass
+    }
 }

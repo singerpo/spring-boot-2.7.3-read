@@ -77,14 +77,14 @@ class EnvironmentEndpointAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(SanitizingFunctionConfiguration.class)
 				.withPropertyValues("management.endpoints.web.exposure.include=env")
 				.withSystemProperties("custom=123456", "password=123456").run((context) -> {
-					assertThat(context).hasSingleBean(EnvironmentEndpoint.class);
-					EnvironmentEndpoint endpoint = context.getBean(EnvironmentEndpoint.class);
-					EnvironmentDescriptor env = endpoint.environment(null);
-					Map<String, PropertyValueDescriptor> systemProperties = getSource("systemProperties", env)
-							.getProperties();
-					assertThat(systemProperties.get("custom").getValue()).isEqualTo("$$$111$$$");
-					assertThat(systemProperties.get("password").getValue()).isEqualTo("$$$222$$$");
-				});
+			assertThat(context).hasSingleBean(EnvironmentEndpoint.class);
+			EnvironmentEndpoint endpoint = context.getBean(EnvironmentEndpoint.class);
+			EnvironmentDescriptor env = endpoint.environment(null);
+			Map<String, PropertyValueDescriptor> systemProperties = getSource("systemProperties", env)
+					.getProperties();
+			assertThat(systemProperties.get("custom").getValue()).isEqualTo("$$$111$$$");
+			assertThat(systemProperties.get("password").getValue()).isEqualTo("$$$222$$$");
+		});
 	}
 
 	@Test

@@ -46,6 +46,7 @@ public class RootUriTemplateHandler implements UriTemplateHandler {
 
 	/**
 	 * Create a new {@link RootUriTemplateHandler} instance.
+	 *
 	 * @param rootUri the root URI to be used to prefix relative URLs
 	 */
 	public RootUriTemplateHandler(String rootUri) {
@@ -54,6 +55,7 @@ public class RootUriTemplateHandler implements UriTemplateHandler {
 
 	/**
 	 * Create a new {@link RootUriTemplateHandler} instance.
+	 *
 	 * @param rootUri the root URI to be used to prefix relative URLs
 	 * @param handler the delegate handler
 	 */
@@ -88,6 +90,7 @@ public class RootUriTemplateHandler implements UriTemplateHandler {
 	/**
 	 * Derives a new {@code RootUriTemplateHandler} from this one, wrapping its delegate
 	 * {@link UriTemplateHandler} by applying the given {@code wrapper}.
+	 *
 	 * @param wrapper the wrapper to apply to the delegate URI template handler
 	 * @return the new handler
 	 * @since 2.3.10
@@ -98,8 +101,9 @@ public class RootUriTemplateHandler implements UriTemplateHandler {
 
 	/**
 	 * Add a {@link RootUriTemplateHandler} instance to the given {@link RestTemplate}.
+	 *
 	 * @param restTemplate the {@link RestTemplate} to add the handler to
-	 * @param rootUri the root URI
+	 * @param rootUri      the root URI
 	 * @return the added {@link RootUriTemplateHandler}.
 	 */
 	public static RootUriTemplateHandler addTo(RestTemplate restTemplate, String rootUri) {

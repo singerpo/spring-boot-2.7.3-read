@@ -82,13 +82,11 @@ public class LogUpdateEvent extends UpdateEvent {
 			while ((event = LogUpdateEvent.read(inputStream)) != null) {
 				consumer.accept(event);
 			}
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			byte[] message = ex.getMessage().getBytes(StandardCharsets.UTF_8);
 			consumer.accept(new LogUpdateEvent(StreamType.STD_ERR, message));
 			StreamUtils.drain(inputStream);
-		}
-		finally {
+		} finally {
 			inputStream.close();
 		}
 	}

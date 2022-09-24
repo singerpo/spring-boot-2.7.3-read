@@ -47,7 +47,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
  * @author Andy Wilkinson
  * @since 1.1.0
  */
-@AutoConfiguration(after = { HttpMessageConvertersAutoConfiguration.class, JacksonAutoConfiguration.class })
+@AutoConfiguration(after = {HttpMessageConvertersAutoConfiguration.class, JacksonAutoConfiguration.class})
 @ConditionalOnWebApplication(type = Type.SERVLET)
 @ConditionalOnMissingBean(RepositoryRestMvcConfiguration.class)
 @ConditionalOnClass(RepositoryRestMvcConfiguration.class)

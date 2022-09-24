@@ -63,7 +63,7 @@ class HttpHeaderInterceptorTests {
 
 	@BeforeEach
 	void setup() {
-		this.body = new byte[] {};
+		this.body = new byte[]{};
 		this.httpRequest = new MockHttpServletRequest();
 		this.request = new ServletServerHttpRequest(this.httpRequest);
 		this.name = "X-AUTH-TOKEN";

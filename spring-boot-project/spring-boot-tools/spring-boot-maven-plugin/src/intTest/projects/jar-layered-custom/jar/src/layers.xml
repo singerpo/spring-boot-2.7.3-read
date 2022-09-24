@@ -1,21 +1,21 @@
 <layers xmlns="http://www.springframework.org/schema/boot/layers"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/boot/layers
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/boot/layers
 					  https://www.springframework.org/schema/layers/layers-2.7.xsd">
 	<application>
 		<into layer="configuration">
 			<include>**/application*.*</include>
 		</into>
-		<into layer="application" />
+		<into layer="application"/>
 	</application>
 	<dependencies>
 		<into layer="application">
-			<includeModuleDependencies />
+			<includeModuleDependencies/>
 		</into>
 		<into layer="snapshot-dependencies">
 			<include>*:*:*-SNAPSHOT</include>
 		</into>
-		<into layer="my-dependencies-name" />
+		<into layer="my-dependencies-name"/>
 	</dependencies>
 	<layerOrder>
 		<layer>my-dependencies-name</layer>

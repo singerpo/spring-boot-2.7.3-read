@@ -39,7 +39,7 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
  */
 @AutoConfiguration(after = GraphQlWebFluxAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@ConditionalOnClass({ GraphQL.class, GraphQlHttpHandler.class, EnableWebFluxSecurity.class })
+@ConditionalOnClass({GraphQL.class, GraphQlHttpHandler.class, EnableWebFluxSecurity.class})
 @ConditionalOnBean(GraphQlHttpHandler.class)
 public class GraphQlWebFluxSecurityAutoConfiguration {
 

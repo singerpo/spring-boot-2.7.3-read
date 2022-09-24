@@ -78,12 +78,12 @@ class DatabaseDriverClassNameTests {
 	}
 
 	private static Stream<? extends Arguments> argumentsForType(Class<?> clazz,
-			Function<DatabaseDriver, String> classNameExtractor) {
+																Function<DatabaseDriver, String> classNameExtractor) {
 		return argumentsForType(clazz, (databaseDriver) -> true, classNameExtractor);
 	}
 
 	private static Stream<? extends Arguments> argumentsForType(Class<?> clazz, Predicate<DatabaseDriver> predicate,
-			Function<DatabaseDriver, String> classNameExtractor) {
+																Function<DatabaseDriver, String> classNameExtractor) {
 		return Stream.of(DatabaseDriver.values()).filter((databaseDriver) -> !EXCLUDED_DRIVERS.contains(databaseDriver))
 				.filter(predicate)
 				.map((databaseDriver) -> Arguments.of(databaseDriver, classNameExtractor.apply(databaseDriver), clazz));

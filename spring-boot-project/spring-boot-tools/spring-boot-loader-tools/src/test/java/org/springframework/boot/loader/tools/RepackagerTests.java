@@ -167,8 +167,7 @@ class RepackagerTests extends AbstractPackagerTests<Repackager> {
 		try {
 			assertThat(Files.getPosixFilePermissions(this.destination.toPath()))
 					.contains(PosixFilePermission.OWNER_EXECUTE);
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			// Probably running the test on Windows
 		}
 	}
@@ -183,8 +182,7 @@ class RepackagerTests extends AbstractPackagerTests<Repackager> {
 			if (entry.getName().startsWith("org/springframework/boot/loader")) {
 				if (timestamp == null) {
 					timestamp = entry.getTime();
-				}
-				else {
+				} else {
 					assertThat(entry.getTime()).withFailMessage("Expected time %d to be equal to %d for entry %s",
 							entry.getTime(), timestamp, entry.getName()).isEqualTo(timestamp);
 				}

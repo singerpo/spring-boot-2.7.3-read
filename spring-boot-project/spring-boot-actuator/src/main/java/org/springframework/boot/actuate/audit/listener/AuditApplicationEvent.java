@@ -36,9 +36,10 @@ public class AuditApplicationEvent extends ApplicationEvent {
 	/**
 	 * Create a new {@link AuditApplicationEvent} that wraps a newly created
 	 * {@link AuditEvent}.
+	 *
 	 * @param principal the principal
-	 * @param type the event type
-	 * @param data the event data
+	 * @param type      the event type
+	 * @param data      the event data
 	 * @see AuditEvent#AuditEvent(String, String, Map)
 	 */
 	public AuditApplicationEvent(String principal, String type, Map<String, Object> data) {
@@ -48,9 +49,10 @@ public class AuditApplicationEvent extends ApplicationEvent {
 	/**
 	 * Create a new {@link AuditApplicationEvent} that wraps a newly created
 	 * {@link AuditEvent}.
+	 *
 	 * @param principal the principal
-	 * @param type the event type
-	 * @param data the event data
+	 * @param type      the event type
+	 * @param data      the event data
 	 * @see AuditEvent#AuditEvent(String, String, String...)
 	 */
 	public AuditApplicationEvent(String principal, String type, String... data) {
@@ -60,10 +62,11 @@ public class AuditApplicationEvent extends ApplicationEvent {
 	/**
 	 * Create a new {@link AuditApplicationEvent} that wraps a newly created
 	 * {@link AuditEvent}.
+	 *
 	 * @param timestamp the timestamp
 	 * @param principal the principal
-	 * @param type the event type
-	 * @param data the event data
+	 * @param type      the event type
+	 * @param data      the event data
 	 * @see AuditEvent#AuditEvent(Instant, String, String, Map)
 	 */
 	public AuditApplicationEvent(Instant timestamp, String principal, String type, Map<String, Object> data) {
@@ -73,6 +76,7 @@ public class AuditApplicationEvent extends ApplicationEvent {
 	/**
 	 * Create a new {@link AuditApplicationEvent} that wraps the specified
 	 * {@link AuditEvent}.
+	 *
 	 * @param auditEvent the source of this event
 	 */
 	public AuditApplicationEvent(AuditEvent auditEvent) {
@@ -83,6 +87,7 @@ public class AuditApplicationEvent extends ApplicationEvent {
 
 	/**
 	 * Get the audit event.
+	 *
 	 * @return the audit event
 	 */
 	public AuditEvent getAuditEvent() {

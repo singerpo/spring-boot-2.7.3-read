@@ -197,13 +197,13 @@ class DiscoveredOperationsFactoryTests {
 	static class TestDiscoveredOperationsFactory extends DiscoveredOperationsFactory<TestOperation> {
 
 		TestDiscoveredOperationsFactory(ParameterValueMapper parameterValueMapper,
-				Collection<OperationInvokerAdvisor> invokerAdvisors) {
+										Collection<OperationInvokerAdvisor> invokerAdvisors) {
 			super(parameterValueMapper, invokerAdvisors);
 		}
 
 		@Override
 		protected TestOperation createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-				OperationInvoker invoker) {
+												OperationInvoker invoker) {
 			return new TestOperation(endpointId, operationMethod, invoker);
 		}
 
@@ -227,7 +227,7 @@ class DiscoveredOperationsFactoryTests {
 
 		@Override
 		public OperationInvoker apply(EndpointId endpointId, OperationType operationType,
-				OperationParameters parameters, OperationInvoker invoker) {
+									  OperationParameters parameters, OperationInvoker invoker) {
 			this.endpointId = endpointId;
 			this.operationType = operationType;
 			this.parameters = parameters;

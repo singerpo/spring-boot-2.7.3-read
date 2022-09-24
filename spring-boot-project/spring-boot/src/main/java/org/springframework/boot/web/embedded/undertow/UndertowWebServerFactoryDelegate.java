@@ -165,8 +165,7 @@ class UndertowWebServerFactoryDelegate {
 		if (ssl != null && ssl.isEnabled()) {
 			new SslBuilderCustomizer(factory.getPort(), address, ssl, factory.getOrCreateSslStoreProvider())
 					.customize(builder);
-		}
-		else {
+		} else {
 			builder.addHttpListener(port, (address != null) ? address.getHostAddress() : "0.0.0.0");
 		}
 		builder.setServerOption(UndertowOptions.SHUTDOWN_TIMEOUT, 0);
@@ -177,7 +176,7 @@ class UndertowWebServerFactoryDelegate {
 	}
 
 	List<HttpHandlerFactory> createHttpHandlerFactories(AbstractConfigurableWebServerFactory webServerFactory,
-			HttpHandlerFactory... initialHttpHandlerFactories) {
+														HttpHandlerFactory... initialHttpHandlerFactories) {
 		List<HttpHandlerFactory> factories = createHttpHandlerFactories(webServerFactory.getCompression(),
 				this.useForwardHeaders, webServerFactory.getServerHeader(), webServerFactory.getShutdown(),
 				initialHttpHandlerFactories);
@@ -189,7 +188,7 @@ class UndertowWebServerFactoryDelegate {
 	}
 
 	static List<HttpHandlerFactory> createHttpHandlerFactories(Compression compression, boolean useForwardHeaders,
-			String serverHeader, Shutdown shutdown, HttpHandlerFactory... initialHttpHandlerFactories) {
+															   String serverHeader, Shutdown shutdown, HttpHandlerFactory... initialHttpHandlerFactories) {
 		List<HttpHandlerFactory> factories = new ArrayList<>(Arrays.asList(initialHttpHandlerFactories));
 		if (compression != null && compression.getEnabled()) {
 			factories.add(new CompressionHttpHandlerFactory(compression));

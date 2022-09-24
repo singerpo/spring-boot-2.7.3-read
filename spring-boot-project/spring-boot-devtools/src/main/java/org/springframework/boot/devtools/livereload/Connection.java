@@ -62,8 +62,9 @@ class Connection {
 
 	/**
 	 * Create a new {@link Connection} instance.
-	 * @param socket the source socket
-	 * @param inputStream the socket input stream
+	 *
+	 * @param socket       the source socket
+	 * @param inputStream  the socket input stream
 	 * @param outputStream the socket output stream
 	 * @throws IOException in case of I/O errors
 	 */
@@ -78,6 +79,7 @@ class Connection {
 
 	/**
 	 * Run the connection.
+	 *
 	 * @throws Exception in case of errors
 	 */
 	void run() throws Exception {
@@ -107,18 +109,14 @@ class Connection {
 			Frame frame = Frame.read(this.inputStream);
 			if (frame.getType() == Frame.Type.PING) {
 				writeWebSocketFrame(new Frame(Frame.Type.PONG));
-			}
-			else if (frame.getType() == Frame.Type.CLOSE) {
+			} else if (frame.getType() == Frame.Type.CLOSE) {
 				throw new ConnectionClosedException();
-			}
-			else if (frame.getType() == Frame.Type.TEXT) {
+			} else if (frame.getType() == Frame.Type.TEXT) {
 				logger.debug(LogMessage.format("Received LiveReload text frame %s", frame));
-			}
-			else {
+			} else {
 				throw new IOException("Unexpected Frame Type " + frame.getType());
 			}
-		}
-		catch (SocketTimeoutException ex) {
+		} catch (SocketTimeoutException ex) {
 			writeWebSocketFrame(new Frame(Frame.Type.PING));
 			Frame frame = Frame.read(this.inputStream);
 			if (frame.getType() != Frame.Type.PONG) {
@@ -129,6 +127,7 @@ class Connection {
 
 	/**
 	 * Trigger livereload for the client using this connection.
+	 *
 	 * @throws IOException in case of I/O errors
 	 */
 	void triggerReload() throws IOException {
@@ -153,6 +152,7 @@ class Connection {
 
 	/**
 	 * Close the connection.
+	 *
 	 * @throws IOException in case of I/O errors
 	 */
 	void close() throws IOException {

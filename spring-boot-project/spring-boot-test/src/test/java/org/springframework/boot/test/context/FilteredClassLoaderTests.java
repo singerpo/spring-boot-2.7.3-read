@@ -117,7 +117,7 @@ class FilteredClassLoaderTests {
 		Class<FilteredClassLoaderTests> hiddenClass = FilteredClassLoaderTests.class;
 		try (FilteredClassLoader classLoader = new FilteredClassLoader(hiddenClass)) {
 			assertThatIllegalArgumentException()
-					.isThrownBy(() -> classLoader.publicDefineClass(hiddenClass.getName(), new byte[] {}, null));
+					.isThrownBy(() -> classLoader.publicDefineClass(hiddenClass.getName(), new byte[]{}, null));
 		}
 	}
 

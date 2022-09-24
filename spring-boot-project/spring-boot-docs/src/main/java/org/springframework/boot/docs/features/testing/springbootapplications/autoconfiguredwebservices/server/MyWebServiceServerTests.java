@@ -35,8 +35,8 @@ class MyWebServiceServerTests {
 	void mockServerCall() {
 		// @formatter:off
 		this.client
-			.sendRequest(RequestCreators.withPayload(new StringSource("<ExampleRequest/>")))
-			.andExpect(ResponseMatchers.payload(new StringSource("<ExampleResponse>42</ExampleResponse>")));
+				.sendRequest(RequestCreators.withPayload(new StringSource("<ExampleRequest/>")))
+				.andExpect(ResponseMatchers.payload(new StringSource("<ExampleResponse>42</ExampleResponse>")));
 		// @formatter:on
 	}
 

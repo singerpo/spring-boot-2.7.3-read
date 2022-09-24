@@ -49,7 +49,8 @@ public class ZipFileTarArchive implements TarArchive {
 	/**
 	 * Creates an archive from the contents of the given {@code zip}. Each entry in the
 	 * archive will be owned by the given {@code owner}.
-	 * @param zip the zip to use as a source
+	 *
+	 * @param zip   the zip to use as a source
 	 * @param owner the owner of the tar entries
 	 */
 	public ZipFileTarArchive(File zip, Owner owner) {
@@ -77,8 +78,7 @@ public class ZipFileTarArchive implements TarArchive {
 	private void assertArchiveHasEntries(File file) {
 		try (ZipFile zipFile = new ZipFile(file)) {
 			Assert.state(zipFile.getEntries().hasMoreElements(), () -> "Archive file '" + file + "' is not valid");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("File '" + file + "' is not readable", ex);
 		}
 	}

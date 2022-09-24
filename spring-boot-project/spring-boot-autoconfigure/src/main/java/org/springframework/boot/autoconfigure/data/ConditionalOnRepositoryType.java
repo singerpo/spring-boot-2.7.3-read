@@ -32,19 +32,21 @@ import org.springframework.context.annotation.Conditional;
  * @since 2.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
 @Conditional(OnRepositoryTypeCondition.class)
 public @interface ConditionalOnRepositoryType {
 
 	/**
 	 * The name of the store that backs the repositories.
+	 *
 	 * @return the store
 	 */
 	String store();
 
 	/**
 	 * The required repository type.
+	 *
 	 * @return the required repository type
 	 */
 	RepositoryType type();

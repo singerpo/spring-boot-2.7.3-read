@@ -50,8 +50,9 @@ public class HealthEndpointWebExtension extends HealthEndpointSupport<HealthCont
 
 	/**
 	 * Create a new {@link HealthEndpointWebExtension} instance.
+	 *
 	 * @param registry the health contributor registry
-	 * @param groups the health endpoint groups
+	 * @param groups   the health endpoint groups
 	 * @deprecated since 2.6.9 for removal in 3.0.0 in favor of
 	 * {@link #HealthEndpointWebExtension(HealthContributorRegistry, HealthEndpointGroups, Duration)}
 	 */
@@ -62,31 +63,32 @@ public class HealthEndpointWebExtension extends HealthEndpointSupport<HealthCont
 
 	/**
 	 * Create a new {@link HealthEndpointWebExtension} instance.
-	 * @param registry the health contributor registry
-	 * @param groups the health endpoint groups
+	 *
+	 * @param registry                      the health contributor registry
+	 * @param groups                        the health endpoint groups
 	 * @param slowIndicatorLoggingThreshold duration after which slow health indicator
-	 * logging should occur
+	 *                                      logging should occur
 	 * @since 2.6.9
 	 */
 	public HealthEndpointWebExtension(HealthContributorRegistry registry, HealthEndpointGroups groups,
-			Duration slowIndicatorLoggingThreshold) {
+									  Duration slowIndicatorLoggingThreshold) {
 		super(registry, groups, slowIndicatorLoggingThreshold);
 	}
 
 	@ReadOperation
 	public WebEndpointResponse<HealthComponent> health(ApiVersion apiVersion, WebServerNamespace serverNamespace,
-			SecurityContext securityContext) {
+													   SecurityContext securityContext) {
 		return health(apiVersion, serverNamespace, securityContext, false, NO_PATH);
 	}
 
 	@ReadOperation
 	public WebEndpointResponse<HealthComponent> health(ApiVersion apiVersion, WebServerNamespace serverNamespace,
-			SecurityContext securityContext, @Selector(match = Match.ALL_REMAINING) String... path) {
+													   SecurityContext securityContext, @Selector(match = Match.ALL_REMAINING) String... path) {
 		return health(apiVersion, serverNamespace, securityContext, false, path);
 	}
 
 	public WebEndpointResponse<HealthComponent> health(ApiVersion apiVersion, WebServerNamespace serverNamespace,
-			SecurityContext securityContext, boolean showAll, String... path) {
+													   SecurityContext securityContext, boolean showAll, String... path) {
 		HealthResult<HealthComponent> result = getHealth(apiVersion, serverNamespace, securityContext, showAll, path);
 		if (result == null) {
 			return (Arrays.equals(path, NO_PATH))
@@ -106,7 +108,7 @@ public class HealthEndpointWebExtension extends HealthEndpointSupport<HealthCont
 
 	@Override
 	protected HealthComponent aggregateContributions(ApiVersion apiVersion, Map<String, HealthComponent> contributions,
-			StatusAggregator statusAggregator, boolean showComponents, Set<String> groupNames) {
+													 StatusAggregator statusAggregator, boolean showComponents, Set<String> groupNames) {
 		return getCompositeHealth(apiVersion, contributions, statusAggregator, showComponents, groupNames);
 	}
 

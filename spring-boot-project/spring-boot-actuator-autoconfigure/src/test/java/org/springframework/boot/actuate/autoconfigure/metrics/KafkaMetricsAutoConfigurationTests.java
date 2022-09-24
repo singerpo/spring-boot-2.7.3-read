@@ -56,11 +56,11 @@ class KafkaMetricsAutoConfigurationTests {
 	void whenThereIsAMeterRegistryThenMetricsListenersAreAdded() {
 		this.contextRunner.with(MetricsRun.simple())
 				.withConfiguration(AutoConfigurations.of(KafkaAutoConfiguration.class)).run((context) -> {
-					assertThat(((DefaultKafkaProducerFactory<?, ?>) context.getBean(DefaultKafkaProducerFactory.class))
-							.getListeners()).hasSize(1).hasOnlyElementsOfTypes(MicrometerProducerListener.class);
-					assertThat(((DefaultKafkaConsumerFactory<?, ?>) context.getBean(DefaultKafkaConsumerFactory.class))
-							.getListeners()).hasSize(1).hasOnlyElementsOfTypes(MicrometerConsumerListener.class);
-				});
+			assertThat(((DefaultKafkaProducerFactory<?, ?>) context.getBean(DefaultKafkaProducerFactory.class))
+					.getListeners()).hasSize(1).hasOnlyElementsOfTypes(MicrometerProducerListener.class);
+			assertThat(((DefaultKafkaConsumerFactory<?, ?>) context.getBean(DefaultKafkaConsumerFactory.class))
+					.getListeners()).hasSize(1).hasOnlyElementsOfTypes(MicrometerConsumerListener.class);
+		});
 	}
 
 	@Test
@@ -78,11 +78,11 @@ class KafkaMetricsAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(KafkaAutoConfiguration.class))
 				.withUserConfiguration(EnableKafkaStreamsConfiguration.class)
 				.withPropertyValues("spring.application.name=my-test-app").with(MetricsRun.simple()).run((context) -> {
-					StreamsBuilderFactoryBean streamsBuilderFactoryBean = context
-							.getBean(StreamsBuilderFactoryBean.class);
-					assertThat(streamsBuilderFactoryBean.getListeners()).hasSize(1)
-							.hasOnlyElementsOfTypes(KafkaStreamsMicrometerListener.class);
-				});
+			StreamsBuilderFactoryBean streamsBuilderFactoryBean = context
+					.getBean(StreamsBuilderFactoryBean.class);
+			assertThat(streamsBuilderFactoryBean.getListeners()).hasSize(1)
+					.hasOnlyElementsOfTypes(KafkaStreamsMicrometerListener.class);
+		});
 	}
 
 	@Test
@@ -90,10 +90,10 @@ class KafkaMetricsAutoConfigurationTests {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(KafkaAutoConfiguration.class))
 				.withUserConfiguration(EnableKafkaStreamsConfiguration.class)
 				.withPropertyValues("spring.application.name=my-test-app").run((context) -> {
-					StreamsBuilderFactoryBean streamsBuilderFactoryBean = context
-							.getBean(StreamsBuilderFactoryBean.class);
-					assertThat(streamsBuilderFactoryBean.getListeners()).isEmpty();
-				});
+			StreamsBuilderFactoryBean streamsBuilderFactoryBean = context
+					.getBean(StreamsBuilderFactoryBean.class);
+			assertThat(streamsBuilderFactoryBean.getListeners()).isEmpty();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

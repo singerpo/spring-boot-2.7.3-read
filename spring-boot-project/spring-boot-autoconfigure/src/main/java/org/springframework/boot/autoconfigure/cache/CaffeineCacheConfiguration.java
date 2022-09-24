@@ -39,15 +39,15 @@ import org.springframework.util.StringUtils;
  * @author Eddú Meléndez
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ Caffeine.class, CaffeineCacheManager.class })
+@ConditionalOnClass({Caffeine.class, CaffeineCacheManager.class})
 @ConditionalOnMissingBean(CacheManager.class)
-@Conditional({ CacheCondition.class })
+@Conditional({CacheCondition.class})
 class CaffeineCacheConfiguration {
 
 	@Bean
 	CaffeineCacheManager cacheManager(CacheProperties cacheProperties, CacheManagerCustomizers customizers,
-			ObjectProvider<Caffeine<Object, Object>> caffeine, ObjectProvider<CaffeineSpec> caffeineSpec,
-			ObjectProvider<CacheLoader<Object, Object>> cacheLoader) {
+									  ObjectProvider<Caffeine<Object, Object>> caffeine, ObjectProvider<CaffeineSpec> caffeineSpec,
+									  ObjectProvider<CacheLoader<Object, Object>> cacheLoader) {
 		CaffeineCacheManager cacheManager = createCacheManager(cacheProperties, caffeine, caffeineSpec, cacheLoader);
 		List<String> cacheNames = cacheProperties.getCacheNames();
 		if (!CollectionUtils.isEmpty(cacheNames)) {
@@ -57,8 +57,8 @@ class CaffeineCacheConfiguration {
 	}
 
 	private CaffeineCacheManager createCacheManager(CacheProperties cacheProperties,
-			ObjectProvider<Caffeine<Object, Object>> caffeine, ObjectProvider<CaffeineSpec> caffeineSpec,
-			ObjectProvider<CacheLoader<Object, Object>> cacheLoader) {
+													ObjectProvider<Caffeine<Object, Object>> caffeine, ObjectProvider<CaffeineSpec> caffeineSpec,
+													ObjectProvider<CacheLoader<Object, Object>> cacheLoader) {
 		CaffeineCacheManager cacheManager = new CaffeineCacheManager();
 		setCacheBuilder(cacheProperties, caffeineSpec.getIfAvailable(), caffeine.getIfAvailable(), cacheManager);
 		cacheLoader.ifAvailable(cacheManager::setCacheLoader);
@@ -66,15 +66,13 @@ class CaffeineCacheConfiguration {
 	}
 
 	private void setCacheBuilder(CacheProperties cacheProperties, CaffeineSpec caffeineSpec,
-			Caffeine<Object, Object> caffeine, CaffeineCacheManager cacheManager) {
+								 Caffeine<Object, Object> caffeine, CaffeineCacheManager cacheManager) {
 		String specification = cacheProperties.getCaffeine().getSpec();
 		if (StringUtils.hasText(specification)) {
 			cacheManager.setCacheSpecification(specification);
-		}
-		else if (caffeineSpec != null) {
+		} else if (caffeineSpec != null) {
 			cacheManager.setCaffeineSpec(caffeineSpec);
-		}
-		else if (caffeine != null) {
+		} else if (caffeine != null) {
 			cacheManager.setCaffeine(caffeine);
 		}
 	}

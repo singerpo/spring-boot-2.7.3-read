@@ -80,6 +80,7 @@ public class InitCommand extends OptionParsingCommand {
 		 * options.
 		 */
 		private static final Map<String, String> CAMEL_CASE_OPTIONS;
+
 		static {
 			Map<String, String> options = new HashMap<>();
 			options.put("--groupId", "--group-id");
@@ -160,7 +161,7 @@ public class InitCommand extends OptionParsingCommand {
 			this.type = option(Arrays.asList("type", "t"),
 					"Project type. Not normally needed if you use --build "
 							+ "and/or --format. Check the capabilities of the service (--list) for more details")
-									.withRequiredArg();
+					.withRequiredArg();
 			this.packaging = option(Arrays.asList("packaging", "p"), "Project packaging (for example 'jar')")
 					.withRequiredArg();
 			this.build = option("build", "Build system to use (for example 'maven' or 'gradle')").withRequiredArg()
@@ -175,7 +176,7 @@ public class InitCommand extends OptionParsingCommand {
 					"Spring Boot version (for example '1.2.0.RELEASE')").withRequiredArg();
 			this.dependencies = option(Arrays.asList("dependencies", "d"),
 					"Comma-separated list of dependency identifiers to include in the generated project")
-							.withRequiredArg();
+					.withRequiredArg();
 		}
 
 		private void otherOptions() {
@@ -189,17 +190,14 @@ public class InitCommand extends OptionParsingCommand {
 			try {
 				if (options.has(this.listCapabilities)) {
 					generateReport(options);
-				}
-				else {
+				} else {
 					generateProject(options);
 				}
 				return ExitStatus.OK;
-			}
-			catch (ReportableException ex) {
+			} catch (ReportableException ex) {
 				Log.error(ex.getMessage());
 				return ExitStatus.ERROR;
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				Log.error(ex);
 				return ExitStatus.ERROR;
 			}

@@ -291,7 +291,7 @@ class OAuth2ClientPropertiesRegistrationAdapterTests {
 	}
 
 	private void testIssuerConfiguration(OAuth2ClientProperties.Registration registration, String providerId,
-			int errorResponseCount, int numberOfRequests) throws Exception {
+										 int errorResponseCount, int numberOfRequests) throws Exception {
 		this.server = new MockWebServer();
 		this.server.start();
 		String issuer = this.server.url("").toString();

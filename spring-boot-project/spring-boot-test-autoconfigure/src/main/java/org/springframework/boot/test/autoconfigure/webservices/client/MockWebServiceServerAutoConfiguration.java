@@ -28,12 +28,12 @@ import org.springframework.ws.test.client.MockWebServiceServer;
  * Auto-configuration for {@link MockWebServiceServer} support.
  *
  * @author Dmytro Nosan
- * @since 2.3.0
  * @see AutoConfigureMockWebServiceServer
+ * @since 2.3.0
  */
 @AutoConfiguration
 @ConditionalOnProperty(prefix = "spring.test.webservice.client.mockserver", name = "enabled")
-@ConditionalOnClass({ MockWebServiceServer.class, WebServiceTemplate.class })
+@ConditionalOnClass({MockWebServiceServer.class, WebServiceTemplate.class})
 public class MockWebServiceServerAutoConfiguration {
 
 	@Bean

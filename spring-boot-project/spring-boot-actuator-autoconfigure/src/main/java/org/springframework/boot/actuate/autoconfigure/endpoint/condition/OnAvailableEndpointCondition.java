@@ -75,7 +75,7 @@ class OnAvailableEndpointCondition extends SpringBootCondition {
 	}
 
 	private Class<?> getTarget(ConditionContext context, AnnotatedTypeMetadata metadata,
-			MergedAnnotation<ConditionalOnAvailableEndpoint> condition) {
+							   MergedAnnotation<ConditionalOnAvailableEndpoint> condition) {
 		Class<?> target = condition.getClass("endpoint");
 		if (target != Void.class) {
 			return target;
@@ -85,8 +85,7 @@ class OnAvailableEndpointCondition extends SpringBootCondition {
 		MethodMetadata methodMetadata = (MethodMetadata) metadata;
 		try {
 			return ClassUtils.forName(methodMetadata.getReturnTypeName(), context.getClassLoader());
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			throw new IllegalStateException("Failed to extract endpoint id for "
 					+ methodMetadata.getDeclaringClassName() + "." + methodMetadata.getMethodName(), ex);
 		}
@@ -105,8 +104,8 @@ class OnAvailableEndpointCondition extends SpringBootCondition {
 	}
 
 	private ConditionOutcome getMatchOutcome(Environment environment,
-			MergedAnnotation<ConditionalOnAvailableEndpoint> conditionAnnotation,
-			MergedAnnotation<Endpoint> endpointAnnotation) {
+											 MergedAnnotation<ConditionalOnAvailableEndpoint> conditionAnnotation,
+											 MergedAnnotation<Endpoint> endpointAnnotation) {
 		ConditionMessage.Builder message = ConditionMessage.forCondition(ConditionalOnAvailableEndpoint.class);
 		EndpointId endpointId = EndpointId.of(environment, endpointAnnotation.getString("id"));
 		ConditionOutcome enablementOutcome = getEnablementOutcome(environment, endpointAnnotation, endpointId, message);
@@ -125,7 +124,7 @@ class OnAvailableEndpointCondition extends SpringBootCondition {
 	}
 
 	private ConditionOutcome getEnablementOutcome(Environment environment,
-			MergedAnnotation<Endpoint> endpointAnnotation, EndpointId endpointId, ConditionMessage.Builder message) {
+												  MergedAnnotation<Endpoint> endpointAnnotation, EndpointId endpointId, ConditionMessage.Builder message) {
 		String key = "management.endpoint." + endpointId.toLowerCaseString() + ".enabled";
 		Boolean userDefinedEnabled = environment.getProperty(key, Boolean.class);
 		if (userDefinedEnabled != null) {
@@ -178,7 +177,7 @@ class OnAvailableEndpointCondition extends SpringBootCondition {
 
 		private final EndpointExposure exposure;
 
-		@SuppressWarnings({ "unchecked", "rawtypes" })
+		@SuppressWarnings({"unchecked", "rawtypes"})
 		private ExposureFilter(Environment environment, EndpointExposure exposure) {
 			super((Class) ExposableEndpoint.class, environment,
 					"management.endpoints." + getCanonicalName(exposure) + ".exposure", exposure.getDefaultIncludes());

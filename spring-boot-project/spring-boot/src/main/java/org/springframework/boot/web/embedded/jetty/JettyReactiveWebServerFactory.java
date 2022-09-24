@@ -88,6 +88,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Create a new {@link JettyServletWebServerFactory} that listens for requests using
 	 * the specified port.
+	 *
 	 * @param port the port to listen on
 	 */
 	public JettyReactiveWebServerFactory(int port) {
@@ -120,6 +121,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Sets {@link JettyServerCustomizer}s that will be applied to the {@link Server}
 	 * before it is started. Calling this method will replace any existing customizers.
+	 *
 	 * @param customizers the Jetty customizers to apply
 	 */
 	public void setServerCustomizers(Collection<? extends JettyServerCustomizer> customizers) {
@@ -130,6 +132,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Returns a mutable collection of Jetty {@link JettyServerCustomizer}s that will be
 	 * applied to the {@link Server} before it is created.
+	 *
 	 * @return the Jetty customizers
 	 */
 	public Collection<JettyServerCustomizer> getServerCustomizers() {
@@ -138,6 +141,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 
 	/**
 	 * Returns a Jetty {@link ThreadPool} that should be used by the {@link Server}.
+	 *
 	 * @return a Jetty {@link ThreadPool} or {@code null}
 	 */
 	public ThreadPool getThreadPool() {
@@ -156,6 +160,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 
 	/**
 	 * Set the {@link JettyResourceFactory} to get the shared resources from.
+	 *
 	 * @param resourceFactory the server resources
 	 * @since 2.1.0
 	 */
@@ -210,8 +215,7 @@ public class JettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 			connector = new ServerConnector(server, resourceFactory.getExecutor(), resourceFactory.getScheduler(),
 					resourceFactory.getByteBufferPool(), this.acceptors, this.selectors,
 					connectionFactories.toArray(new ConnectionFactory[0]));
-		}
-		else {
+		} else {
 			connector = new ServerConnector(server, this.acceptors, this.selectors,
 					connectionFactories.toArray(new ConnectionFactory[0]));
 		}

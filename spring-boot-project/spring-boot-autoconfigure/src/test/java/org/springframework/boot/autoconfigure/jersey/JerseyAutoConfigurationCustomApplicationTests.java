@@ -73,8 +73,8 @@ class JerseyAutoConfigurationCustomApplicationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	static class TestConfiguration {
 
 		@Configuration(proxyBeanMethods = false)

@@ -41,7 +41,7 @@ class SubversionConfigDataLocationResolver implements ConfigDataLocationResolver
 
 	@Override
 	public List<SubversionConfigDataResource> resolve(ConfigDataLocationResolverContext context,
-			ConfigDataLocation location)
+													  ConfigDataLocation location)
 			throws ConfigDataLocationNotFoundException, ConfigDataResourceNotFoundException {
 		String serverCertificate = context.getBinder().bind("spring.svn.server.certificate", String.class).orElse(null);
 		return Collections.singletonList(

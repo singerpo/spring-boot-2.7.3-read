@@ -38,7 +38,7 @@ public class YamlPropertySourceLoader implements PropertySourceLoader {
 
 	@Override
 	public String[] getFileExtensions() {
-		return new String[] { "yml", "yaml" };
+		return new String[]{"yml", "yaml"};
 	}
 
 	@Override

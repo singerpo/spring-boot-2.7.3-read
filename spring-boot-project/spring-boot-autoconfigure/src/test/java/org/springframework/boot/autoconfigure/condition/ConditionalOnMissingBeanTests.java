@@ -235,18 +235,18 @@ class ConditionalOnMissingBeanTests {
 	void testOnMissingBeanConditionWithIgnoredSubclass() {
 		this.contextRunner.withUserConfiguration(CustomExampleBeanConfiguration.class,
 				ConditionalOnIgnoredSubclass.class, PropertyPlaceholderAutoConfiguration.class).run((context) -> {
-					assertThat(context).getBeans(ExampleBean.class).hasSize(2);
-					assertThat(context).getBeans(CustomExampleBean.class).hasSize(1);
-				});
+			assertThat(context).getBeans(ExampleBean.class).hasSize(2);
+			assertThat(context).getBeans(CustomExampleBean.class).hasSize(1);
+		});
 	}
 
 	@Test
 	void testOnMissingBeanConditionWithIgnoredSubclassByName() {
 		this.contextRunner.withUserConfiguration(CustomExampleBeanConfiguration.class,
 				ConditionalOnIgnoredSubclassByName.class, PropertyPlaceholderAutoConfiguration.class).run((context) -> {
-					assertThat(context).getBeans(ExampleBean.class).hasSize(2);
-					assertThat(context).getBeans(CustomExampleBean.class).hasSize(1);
-				});
+			assertThat(context).getBeans(ExampleBean.class).hasSize(2);
+			assertThat(context).getBeans(CustomExampleBean.class).hasSize(1);
+		});
 	}
 
 	@Test
@@ -270,9 +270,9 @@ class ConditionalOnMissingBeanTests {
 	void beanProducedByFactoryBeanIsConsideredWhenMatchingOnAnnotation() {
 		this.contextRunner.withUserConfiguration(ConcreteFactoryBeanConfiguration.class,
 				OnAnnotationWithFactoryBeanConfiguration.class).run((context) -> {
-					assertThat(context).doesNotHaveBean("bar");
-					assertThat(context).hasSingleBean(ExampleBean.class);
-				});
+			assertThat(context).doesNotHaveBean("bar");
+			assertThat(context).hasSingleBean(ExampleBean.class);
+		});
 	}
 
 	@Test

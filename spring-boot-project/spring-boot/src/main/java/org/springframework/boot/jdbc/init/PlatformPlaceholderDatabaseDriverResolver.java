@@ -59,6 +59,7 @@ public class PlatformPlaceholderDatabaseDriverResolver {
 
 	/**
 	 * Creates a new resolver that will use the given {@code placeholder}.
+	 *
 	 * @param placeholder the placeholder to use
 	 */
 	public PlatformPlaceholderDatabaseDriverResolver(String placeholder) {
@@ -73,7 +74,8 @@ public class PlatformPlaceholderDatabaseDriverResolver {
 	/**
 	 * Creates a new {@link PlatformPlaceholderDatabaseDriverResolver} that will map the
 	 * given {@code driver} to the given {@code platform}.
-	 * @param driver the driver
+	 *
+	 * @param driver   the driver
 	 * @param platform the platform
 	 * @return the new resolver
 	 */
@@ -86,8 +88,9 @@ public class PlatformPlaceholderDatabaseDriverResolver {
 	/**
 	 * Resolves the placeholders in the given {@code values}, replacing them with the
 	 * platform derived from the {@link DatabaseDriver} of the given {@code dataSource}.
+	 *
 	 * @param dataSource the DataSource from which the {@link DatabaseDriver} is derived
-	 * @param values the values in which placeholders are resolved
+	 * @param values     the values in which placeholders are resolved
 	 * @return the values with their placeholders resolved
 	 * @see DatabaseDriver#fromDataSource(DataSource)
 	 */
@@ -99,8 +102,9 @@ public class PlatformPlaceholderDatabaseDriverResolver {
 	/**
 	 * Resolves the placeholders in the given {@code values}, replacing them with the
 	 * given platform.
+	 *
 	 * @param platform the platform to use
-	 * @param values the values in which placeholders are resolved
+	 * @param values   the values in which placeholders are resolved
 	 * @return the values with their placeholders resolved
 	 * @since 2.6.2
 	 */

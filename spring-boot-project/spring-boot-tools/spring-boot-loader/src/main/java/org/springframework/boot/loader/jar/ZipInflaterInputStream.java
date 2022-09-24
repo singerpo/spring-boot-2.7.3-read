@@ -66,8 +66,7 @@ class ZipInflaterInputStream extends InflaterInputStream {
 	protected void fill() throws IOException {
 		try {
 			super.fill();
-		}
-		catch (EOFException ex) {
+		} catch (EOFException ex) {
 			if (this.extraBytesWritten) {
 				throw ex;
 			}

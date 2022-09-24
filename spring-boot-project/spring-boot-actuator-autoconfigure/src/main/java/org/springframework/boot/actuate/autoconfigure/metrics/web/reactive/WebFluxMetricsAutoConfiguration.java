@@ -48,8 +48,8 @@ import org.springframework.core.annotation.Order;
  * @author Dmytro Nosan
  * @since 2.0.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
 @ConditionalOnBean(MeterRegistry.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 public class WebFluxMetricsAutoConfiguration {

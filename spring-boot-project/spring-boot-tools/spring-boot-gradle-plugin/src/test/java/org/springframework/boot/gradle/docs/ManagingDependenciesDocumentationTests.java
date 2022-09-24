@@ -60,14 +60,14 @@ class ManagingDependenciesDocumentationTests {
 				() -> assertThat(
 						this.gradleBuild.script("src/docs/gradle/managing-dependencies/configure-bom-with-plugins")
 								.build("dependencyManagement").getOutput())
-										.contains("org.springframework.boot:spring-boot-starter TEST-SNAPSHOT"));
+						.contains("org.springframework.boot:spring-boot-starter TEST-SNAPSHOT"));
 	}
 
 	@TestTemplate
 	void configurePlatform() {
 		assertThat(this.gradleBuild.script("src/docs/gradle/managing-dependencies/configure-platform")
 				.build("dependencies", "--configuration", "compileClasspath").getOutput())
-						.contains("org.springframework.boot:spring-boot-starter ");
+				.contains("org.springframework.boot:spring-boot-starter ");
 	}
 
 	@TestTemplate

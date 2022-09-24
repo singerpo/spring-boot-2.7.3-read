@@ -158,8 +158,7 @@ class TestRestTemplateTests {
 						.as("Method %s should have been public", equivalent).isTrue();
 				try {
 					equivalent.invoke(restTemplate, mockArguments(method.getParameterTypes()));
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					throw new IllegalStateException(ex);
 				}
 			}
@@ -366,13 +365,12 @@ class TestRestTemplateTests {
 	}
 
 	private void assertBasicAuthorizationCredentials(TestRestTemplate testRestTemplate, String username,
-			String password) {
+													 String password) {
 		ClientHttpRequest request = ReflectionTestUtils.invokeMethod(testRestTemplate.getRestTemplate(),
 				"createRequest", URI.create("http://localhost"), HttpMethod.POST);
 		if (username == null) {
 			assertThat(request.getHeaders()).doesNotContainKey(HttpHeaders.AUTHORIZATION);
-		}
-		else {
+		} else {
 			assertThat(request.getHeaders()).containsKeys(HttpHeaders.AUTHORIZATION);
 			assertThat(request.getHeaders().get(HttpHeaders.AUTHORIZATION)).containsExactly(
 					"Basic " + Base64Utils.encodeToString(String.format("%s:%s", username, password).getBytes()));

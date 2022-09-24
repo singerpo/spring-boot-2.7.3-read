@@ -59,7 +59,7 @@ public class EndpointAutoConfiguration {
 	}
 
 	private ConversionService createConversionService(List<Converter<?, ?>> converters,
-			List<GenericConverter> genericConverters) {
+													  List<GenericConverter> genericConverters) {
 		if (genericConverters.isEmpty() && converters.isEmpty()) {
 			return ApplicationConversionService.getSharedInstance();
 		}

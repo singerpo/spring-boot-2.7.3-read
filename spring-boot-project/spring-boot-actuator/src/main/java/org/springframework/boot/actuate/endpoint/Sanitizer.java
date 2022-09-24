@@ -46,7 +46,7 @@ import org.springframework.util.StringUtils;
  */
 public class Sanitizer {
 
-	private static final String[] REGEX_PARTS = { "*", "$", "^", "+" };
+	private static final String[] REGEX_PARTS = {"*", "$", "^", "+"};
 
 	private static final Set<String> DEFAULT_KEYS_TO_SANITIZE = new LinkedHashSet<>(
 			Arrays.asList("password", "secret", "key", "token", ".*credentials.*", "vcap_services",
@@ -75,6 +75,7 @@ public class Sanitizer {
 
 	/**
 	 * Create a new {@link Sanitizer} instance with specific keys to sanitize.
+	 *
 	 * @param keysToSanitize the keys to sanitize
 	 */
 	public Sanitizer(String... keysToSanitize) {
@@ -84,6 +85,7 @@ public class Sanitizer {
 	/**
 	 * Create a new {@link Sanitizer} instance with a default set of keys to sanitize and
 	 * additional sanitizing functions.
+	 *
 	 * @param sanitizingFunctions the sanitizing functions to apply
 	 * @since 2.6.0
 	 */
@@ -94,8 +96,9 @@ public class Sanitizer {
 	/**
 	 * Create a new {@link Sanitizer} instance with specific keys to sanitize and
 	 * additional sanitizing functions.
+	 *
 	 * @param sanitizingFunctions the sanitizing functions to apply
-	 * @param keysToSanitize the keys to sanitize
+	 * @param keysToSanitize      the keys to sanitize
 	 * @since 2.6.0
 	 */
 	public Sanitizer(Iterable<SanitizingFunction> sanitizingFunctions, String... keysToSanitize) {
@@ -114,6 +117,7 @@ public class Sanitizer {
 	/**
 	 * Set the keys that should be sanitized, overwriting any existing configuration. Keys
 	 * can be simple strings that the property ends with or regular expressions.
+	 *
 	 * @param keysToSanitize the keys to sanitize
 	 */
 	public void setKeysToSanitize(String... keysToSanitize) {
@@ -127,6 +131,7 @@ public class Sanitizer {
 	/**
 	 * Adds keys that should be sanitized. Keys can be simple strings that the property
 	 * ends with or regular expressions.
+	 *
 	 * @param keysToSanitize the keys to sanitize
 	 * @since 2.5.0
 	 */
@@ -157,7 +162,8 @@ public class Sanitizer {
 
 	/**
 	 * Sanitize the given value if necessary.
-	 * @param key the key to sanitize
+	 *
+	 * @param key   the key to sanitize
 	 * @param value the value
 	 * @return the potentially sanitized value
 	 */
@@ -179,6 +185,7 @@ public class Sanitizer {
 	/**
 	 * Sanitize the value from the given {@link SanitizableData} using the available
 	 * {@link SanitizingFunction}s.
+	 *
 	 * @param data the sanitizable data
 	 * @return the potentially updated data
 	 * @since 2.6.0

@@ -37,14 +37,15 @@ public class MetricsWebClientCustomizer implements WebClientCustomizer {
 	 * Create a new {@code MetricsWebClientFilterFunction} that will record metrics using
 	 * the given {@code meterRegistry} with tags provided by the given
 	 * {@code tagProvider}.
+	 *
 	 * @param meterRegistry the meter registry
-	 * @param tagProvider the tag provider
-	 * @param metricName the name of the recorded metric
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param tagProvider   the tag provider
+	 * @param metricName    the name of the recorded metric
+	 * @param autoTimer     the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.2.0
 	 */
 	public MetricsWebClientCustomizer(MeterRegistry meterRegistry, WebClientExchangeTagsProvider tagProvider,
-			String metricName, AutoTimer autoTimer) {
+									  String metricName, AutoTimer autoTimer) {
 		this.filterFunction = new MetricsWebClientFilterFunction(meterRegistry, tagProvider, metricName, autoTimer);
 	}
 

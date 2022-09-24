@@ -43,6 +43,7 @@ public interface Producible<E extends Enum<E> & Producible<E>> {
 
 	/**
 	 * Mime type that can be produced.
+	 *
 	 * @return the producible mime type
 	 */
 	MimeType getProducedMimeType();
@@ -52,6 +53,7 @@ public interface Producible<E extends Enum<E> & Producible<E>> {
 	 * of &#42;&#47;&#42; is provided, or if the {@code Accept} header is missing. Only
 	 * one value can be marked as default. If no value is marked, then the value with the
 	 * highest {@link Enum#ordinal() ordinal} is used as the default.
+	 *
 	 * @return if this value should be used as the default value
 	 * @since 2.5.6
 	 */

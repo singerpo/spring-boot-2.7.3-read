@@ -43,6 +43,7 @@ public class CassandraDriverHealthIndicator extends AbstractHealthIndicator {
 
 	/**
 	 * Create a new {@link CassandraDriverHealthIndicator} instance.
+	 *
 	 * @param session the {@link CqlSession}.
 	 */
 	public CassandraDriverHealthIndicator(CqlSession session) {

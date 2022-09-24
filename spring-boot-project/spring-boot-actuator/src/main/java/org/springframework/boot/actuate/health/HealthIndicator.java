@@ -29,6 +29,7 @@ public interface HealthIndicator extends HealthContributor {
 
 	/**
 	 * Return an indication of health.
+	 *
 	 * @param includeDetails if details should be included or removed
 	 * @return the health
 	 * @since 2.2.0
@@ -40,6 +41,7 @@ public interface HealthIndicator extends HealthContributor {
 
 	/**
 	 * Return an indication of health.
+	 *
 	 * @return the health
 	 */
 	Health health();

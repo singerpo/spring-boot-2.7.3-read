@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Dave Syer
  */
 @SpringBootTest
-@ImportAutoConfiguration({ MessageSourceAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+@ImportAutoConfiguration({MessageSourceAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 @ActiveProfiles("switch-messages")
 @DirtiesContext
 class MessageSourceAutoConfigurationProfileTests {

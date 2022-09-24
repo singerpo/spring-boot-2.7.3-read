@@ -57,8 +57,8 @@ import org.springframework.web.server.ServerWebExchange;
  * @author Stephane Nicoll
  * @author Michele Mancioppi
  * @author Scott Frederick
- * @since 2.0.0
  * @see ErrorAttributes
+ * @since 2.0.0
  */
 public class DefaultErrorAttributes implements ErrorAttributes {
 

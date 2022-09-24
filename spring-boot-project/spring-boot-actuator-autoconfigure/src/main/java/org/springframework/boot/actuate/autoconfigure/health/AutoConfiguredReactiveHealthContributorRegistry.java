@@ -35,7 +35,7 @@ class AutoConfiguredReactiveHealthContributorRegistry extends DefaultReactiveHea
 	private final Collection<String> groupNames;
 
 	AutoConfiguredReactiveHealthContributorRegistry(Map<String, ReactiveHealthContributor> contributors,
-			Collection<String> groupNames) {
+													Collection<String> groupNames) {
 		super(contributors);
 		this.groupNames = groupNames;
 		contributors.keySet().forEach(this::assertDoesNotClashWithGroup);

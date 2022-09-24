@@ -45,7 +45,7 @@ import org.springframework.context.annotation.Bean;
  * @since 2.5.0
  */
 @AutoConfiguration(before = MongoAutoConfiguration.class,
-		after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class })
+		after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class})
 @ConditionalOnClass(MongoClientSettings.class)
 @ConditionalOnBean(MeterRegistry.class)
 public class MongoMetricsAutoConfiguration {
@@ -58,7 +58,7 @@ public class MongoMetricsAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		MongoMetricsCommandListener mongoMetricsCommandListener(MeterRegistry meterRegistry,
-				MongoCommandTagsProvider mongoCommandTagsProvider) {
+																MongoCommandTagsProvider mongoCommandTagsProvider) {
 			return new MongoMetricsCommandListener(meterRegistry, mongoCommandTagsProvider);
 		}
 
@@ -84,7 +84,7 @@ public class MongoMetricsAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean
 		MongoMetricsConnectionPoolListener mongoMetricsConnectionPoolListener(MeterRegistry meterRegistry,
-				MongoConnectionPoolTagsProvider mongoConnectionPoolTagsProvider) {
+																			  MongoConnectionPoolTagsProvider mongoConnectionPoolTagsProvider) {
 			return new MongoMetricsConnectionPoolListener(meterRegistry, mongoConnectionPoolTagsProvider);
 		}
 

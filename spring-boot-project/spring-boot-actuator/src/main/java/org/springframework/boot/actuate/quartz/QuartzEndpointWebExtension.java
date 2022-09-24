@@ -54,13 +54,13 @@ public class QuartzEndpointWebExtension {
 
 	@ReadOperation
 	public WebEndpointResponse<Object> quartzJobOrTrigger(@Selector String jobsOrTriggers, @Selector String group,
-			@Selector String name) throws SchedulerException {
+														  @Selector String name) throws SchedulerException {
 		return handle(jobsOrTriggers, () -> this.delegate.quartzJob(group, name),
 				() -> this.delegate.quartzTrigger(group, name));
 	}
 
 	private <T> WebEndpointResponse<T> handle(String jobsOrTriggers, ResponseSupplier<T> jobAction,
-			ResponseSupplier<T> triggerAction) throws SchedulerException {
+											  ResponseSupplier<T> triggerAction) throws SchedulerException {
 		if ("jobs".equals(jobsOrTriggers)) {
 			return handleNull(jobAction.get());
 		}

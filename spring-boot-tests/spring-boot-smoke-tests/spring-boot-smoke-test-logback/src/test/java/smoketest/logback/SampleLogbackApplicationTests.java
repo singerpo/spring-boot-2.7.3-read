@@ -35,7 +35,7 @@ class SampleLogbackApplicationTests {
 
 	@Test
 	void testProfile(CapturedOutput output) {
-		SampleLogbackApplication.main(new String[] { "--spring.profiles.active=staging" });
+		SampleLogbackApplication.main(new String[]{"--spring.profiles.active=staging"});
 		assertThat(output).contains("Sample Debug Message").contains("Sample Trace Message");
 	}
 

@@ -29,7 +29,7 @@ class MyWebTestClientBuilderCustomizerConfiguration {
 	fun restDocumentation(): WebTestClientBuilderCustomizer {
 		return WebTestClientBuilderCustomizer { builder: WebTestClient.Builder ->
 			builder.entityExchangeResultConsumer(
-				WebTestClientRestDocumentation.document("{method-name}")
+					WebTestClientRestDocumentation.document("{method-name}")
 			)
 		}
 	}

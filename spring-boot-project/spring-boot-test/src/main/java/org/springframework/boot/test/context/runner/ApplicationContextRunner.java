@@ -52,6 +52,7 @@ public class ApplicationContextRunner extends
 	/**
 	 * Create a new {@link ApplicationContextRunner} instance using the specified
 	 * {@code contextFactory} as the underlying source.
+	 *
 	 * @param contextFactory a supplier that returns a new instance on each call
 	 */
 	public ApplicationContextRunner(Supplier<ConfigurableApplicationContext> contextFactory) {
@@ -64,11 +65,11 @@ public class ApplicationContextRunner extends
 
 	@Deprecated
 	private ApplicationContextRunner(Supplier<ConfigurableApplicationContext> contextFactory,
-			boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super ConfigurableApplicationContext>> initializers,
-			TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
-			ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
-			List<Configurations> configurations) {
+									 boolean allowBeanDefinitionOverriding,
+									 List<ApplicationContextInitializer<? super ConfigurableApplicationContext>> initializers,
+									 TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
+									 ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
+									 List<Configurations> configurations) {
 		super(contextFactory, allowBeanDefinitionOverriding, initializers, environmentProperties, systemProperties,
 				classLoader, parent, beanRegistrations, configurations);
 	}
@@ -76,11 +77,11 @@ public class ApplicationContextRunner extends
 	@Override
 	@Deprecated
 	protected ApplicationContextRunner newInstance(Supplier<ConfigurableApplicationContext> contextFactory,
-			boolean allowBeanDefinitionOverriding,
-			List<ApplicationContextInitializer<? super ConfigurableApplicationContext>> initializers,
-			TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
-			ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
-			List<Configurations> configurations) {
+												   boolean allowBeanDefinitionOverriding,
+												   List<ApplicationContextInitializer<? super ConfigurableApplicationContext>> initializers,
+												   TestPropertyValues environmentProperties, TestPropertyValues systemProperties, ClassLoader classLoader,
+												   ApplicationContext parent, List<BeanRegistration<?>> beanRegistrations,
+												   List<Configurations> configurations) {
 		return new ApplicationContextRunner(contextFactory, allowBeanDefinitionOverriding, initializers,
 				environmentProperties, systemProperties, classLoader, parent, beanRegistrations, configurations);
 	}

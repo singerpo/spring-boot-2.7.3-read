@@ -102,9 +102,9 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
 		contextRunner().withPropertyValues("spring.sql.init.data-locations:classpath:/city.sql",
 				// Missing:
 				"spring.sql.init.schema-locations:classpath:/ddl.sql").run((context) -> {
-					assertThat(context).hasFailed();
-					assertThat(context.getStartupFailure()).hasMessageContaining("ddl.sql");
-				});
+			assertThat(context).hasFailed();
+			assertThat(context.getStartupFailure()).hasMessageContaining("ddl.sql");
+		});
 	}
 
 	@Test
@@ -213,10 +213,10 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
 	void jtaCustomTransactionManagerUsingProperties() {
 		contextRunner().withPropertyValues("spring.transaction.default-timeout:30",
 				"spring.transaction.rollback-on-commit-failure:true").run((context) -> {
-					JpaTransactionManager transactionManager = context.getBean(JpaTransactionManager.class);
-					assertThat(transactionManager.getDefaultTimeout()).isEqualTo(30);
-					assertThat(transactionManager.isRollbackOnCommitFailure()).isTrue();
-				});
+			JpaTransactionManager transactionManager = context.getBean(JpaTransactionManager.class);
+			assertThat(transactionManager.getDefaultTimeout()).isEqualTo(30);
+			assertThat(transactionManager.isRollbackOnCommitFailure()).isTrue();
+		});
 	}
 
 	@Test
@@ -225,30 +225,30 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
 				.withConfiguration(AutoConfigurations.of(DataSourceTransactionManagerAutoConfiguration.class,
 						XADataSourceAutoConfiguration.class, JtaAutoConfiguration.class))
 				.withUserConfiguration(TestTwoDataSourcesConfiguration.class).run((context) -> {
-					assertThat(context).hasNotFailed();
-					assertThat(context).doesNotHaveBean(EntityManagerFactory.class);
-				});
+			assertThat(context).hasNotFailed();
+			assertThat(context).doesNotHaveBean(EntityManagerFactory.class);
+		});
 	}
 
 	@Test
 	void providerDisablesAutoCommitIsConfigured() {
 		contextRunner().withPropertyValues("spring.datasource.type:" + HikariDataSource.class.getName(),
 				"spring.datasource.hikari.auto-commit:false").run((context) -> {
-					Map<String, Object> jpaProperties = context.getBean(LocalContainerEntityManagerFactoryBean.class)
-							.getJpaPropertyMap();
-					assertThat(jpaProperties)
-							.contains(entry("hibernate.connection.provider_disables_autocommit", "true"));
-				});
+			Map<String, Object> jpaProperties = context.getBean(LocalContainerEntityManagerFactoryBean.class)
+					.getJpaPropertyMap();
+			assertThat(jpaProperties)
+					.contains(entry("hibernate.connection.provider_disables_autocommit", "true"));
+		});
 	}
 
 	@Test
 	void providerDisablesAutoCommitIsNotConfiguredIfAutoCommitIsEnabled() {
 		contextRunner().withPropertyValues("spring.datasource.type:" + HikariDataSource.class.getName(),
 				"spring.datasource.hikari.auto-commit:true").run((context) -> {
-					Map<String, Object> jpaProperties = context.getBean(LocalContainerEntityManagerFactoryBean.class)
-							.getJpaPropertyMap();
-					assertThat(jpaProperties).doesNotContainKeys("hibernate.connection.provider_disables_autocommit");
-				});
+			Map<String, Object> jpaProperties = context.getBean(LocalContainerEntityManagerFactoryBean.class)
+					.getJpaPropertyMap();
+			assertThat(jpaProperties).doesNotContainKeys("hibernate.connection.provider_disables_autocommit");
+		});
 	}
 
 	@Test
@@ -445,15 +445,15 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
 	void withAsyncBootstrappingAnApplicationListenerThatUsesJpaDoesNotTriggerABeanCurrentlyInCreationException() {
 		contextRunner().withUserConfiguration(AsyncBootstrappingConfiguration.class,
 				JpaUsingApplicationListenerConfiguration.class).run((context) -> {
-					assertThat(context).hasNotFailed();
-					EventCapturingApplicationListener listener = context
-							.getBean(EventCapturingApplicationListener.class);
-					assertThat(listener.events).hasSize(1);
-					assertThat(listener.events).hasOnlyElementsOfType(ContextRefreshedEvent.class);
-					// createEntityManager requires Hibernate bootstrapping to be complete
-					assertThatNoException()
-							.isThrownBy(() -> context.getBean(EntityManagerFactory.class).createEntityManager());
-				});
+			assertThat(context).hasNotFailed();
+			EventCapturingApplicationListener listener = context
+					.getBean(EventCapturingApplicationListener.class);
+			assertThat(listener.events).hasSize(1);
+			assertThat(listener.events).hasOnlyElementsOfType(ContextRefreshedEvent.class);
+			// createEntityManager requires Hibernate bootstrapping to be complete
+			assertThatNoException()
+					.isThrownBy(() -> context.getBean(EntityManagerFactory.class).createEntityManager());
+		});
 	}
 
 	@Test

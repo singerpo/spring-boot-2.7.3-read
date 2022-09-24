@@ -60,7 +60,7 @@ class ValueObjectBinder implements DataObjectBinder {
 
 	@Override
 	public <T> T bind(ConfigurationPropertyName name, Bindable<T> target, Binder.Context context,
-			DataObjectPropertyBinder propertyBinder) {
+					  DataObjectPropertyBinder propertyBinder) {
 		ValueObject<T> valueObject = ValueObject.get(target, this.constructorProvider, context);
 		if (valueObject == null) {
 			return null;
@@ -110,11 +110,10 @@ class ValueObjectBinder implements DataObjectBinder {
 	}
 
 	private <T> T convertDefaultValue(BindConverter converter, String[] defaultValue, ResolvableType type,
-			Annotation[] annotations) {
+									  Annotation[] annotations) {
 		try {
 			return converter.convert(defaultValue, type, annotations);
-		}
-		catch (ConversionException ex) {
+		} catch (ConversionException ex) {
 			// Try again in case ArrayToObjectConverter is not in play
 			if (defaultValue.length == 1) {
 				return converter.convert(defaultValue[0], type, annotations);
@@ -167,7 +166,7 @@ class ValueObjectBinder implements DataObjectBinder {
 
 		@SuppressWarnings("unchecked")
 		static <T> ValueObject<T> get(Bindable<T> bindable, BindConstructorProvider constructorProvider,
-				Binder.Context context) {
+									  Binder.Context context) {
 			Class<T> type = (Class<T>) bindable.getType().resolve();
 			if (type == null || type.isEnum() || Modifier.isAbstract(type.getModifiers())) {
 				return null;
@@ -195,13 +194,13 @@ class ValueObjectBinder implements DataObjectBinder {
 		private final List<ConstructorParameter> constructorParameters;
 
 		private KotlinValueObject(Constructor<T> primaryConstructor, KFunction<T> kotlinConstructor,
-				ResolvableType type) {
+								  ResolvableType type) {
 			super(primaryConstructor);
 			this.constructorParameters = parseConstructorParameters(kotlinConstructor, type);
 		}
 
 		private List<ConstructorParameter> parseConstructorParameters(KFunction<T> kotlinConstructor,
-				ResolvableType type) {
+																	  ResolvableType type) {
 			List<KParameter> parameters = kotlinConstructor.getParameters();
 			List<ConstructorParameter> result = new ArrayList<>(parameters.size());
 			for (KParameter parameter : parameters) {
@@ -250,7 +249,7 @@ class ValueObjectBinder implements DataObjectBinder {
 		}
 
 		private static List<ConstructorParameter> parseConstructorParameters(Constructor<?> constructor,
-				ResolvableType type) {
+																			 ResolvableType type) {
 			String[] names = PARAMETER_NAME_DISCOVERER.getParameterNames(constructor);
 			Assert.state(names != null, () -> "Failed to extract parameter names for " + constructor);
 			Parameter[] parameters = constructor.getParameters();

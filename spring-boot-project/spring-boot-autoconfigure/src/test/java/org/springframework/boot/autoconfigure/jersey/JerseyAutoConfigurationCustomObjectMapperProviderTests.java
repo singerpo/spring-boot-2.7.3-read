@@ -118,8 +118,8 @@ class JerseyAutoConfigurationCustomObjectMapperProviderTests {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Configuration
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, JacksonAutoConfiguration.class,
-			JerseyAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, JacksonAutoConfiguration.class,
+			JerseyAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

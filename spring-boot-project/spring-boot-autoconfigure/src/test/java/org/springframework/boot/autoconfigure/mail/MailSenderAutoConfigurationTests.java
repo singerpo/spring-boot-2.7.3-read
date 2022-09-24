@@ -69,8 +69,7 @@ class MailSenderAutoConfigurationTests {
 		TestableInitialContextFactory.clearAll();
 		if (this.initialContextFactory != null) {
 			System.setProperty(Context.INITIAL_CONTEXT_FACTORY, this.initialContextFactory);
-		}
-		else {
+		} else {
 			System.clearProperty(Context.INITIAL_CONTEXT_FACTORY);
 		}
 		Thread.currentThread().setContextClassLoader(this.threadContextClassLoader);
@@ -94,15 +93,15 @@ class MailSenderAutoConfigurationTests {
 		this.contextRunner.withPropertyValues("spring.mail.host:" + host, "spring.mail.port:42",
 				"spring.mail.username:john", "spring.mail.password:secret", "spring.mail.default-encoding:US-ASCII",
 				"spring.mail.protocol:smtps").run((context) -> {
-					assertThat(context).hasSingleBean(JavaMailSenderImpl.class);
-					JavaMailSenderImpl mailSender = context.getBean(JavaMailSenderImpl.class);
-					assertThat(mailSender.getHost()).isEqualTo(host);
-					assertThat(mailSender.getPort()).isEqualTo(42);
-					assertThat(mailSender.getUsername()).isEqualTo("john");
-					assertThat(mailSender.getPassword()).isEqualTo("secret");
-					assertThat(mailSender.getDefaultEncoding()).isEqualTo("US-ASCII");
-					assertThat(mailSender.getProtocol()).isEqualTo("smtps");
-				});
+			assertThat(context).hasSingleBean(JavaMailSenderImpl.class);
+			JavaMailSenderImpl mailSender = context.getBean(JavaMailSenderImpl.class);
+			assertThat(mailSender.getHost()).isEqualTo(host);
+			assertThat(mailSender.getPort()).isEqualTo(42);
+			assertThat(mailSender.getUsername()).isEqualTo("john");
+			assertThat(mailSender.getPassword()).isEqualTo("secret");
+			assertThat(mailSender.getDefaultEncoding()).isEqualTo("US-ASCII");
+			assertThat(mailSender.getProtocol()).isEqualTo("smtps");
+		});
 	}
 
 	@Test
@@ -220,10 +219,10 @@ class MailSenderAutoConfigurationTests {
 	void connectionOnStartup() {
 		this.contextRunner.withUserConfiguration(MockMailConfiguration.class)
 				.withPropertyValues("spring.mail.host:10.0.0.23", "spring.mail.test-connection:true").run((context) -> {
-					assertThat(context).hasSingleBean(JavaMailSenderImpl.class);
-					JavaMailSenderImpl mailSender = context.getBean(JavaMailSenderImpl.class);
-					then(mailSender).should().testConnection();
-				});
+			assertThat(context).hasSingleBean(JavaMailSenderImpl.class);
+			JavaMailSenderImpl mailSender = context.getBean(JavaMailSenderImpl.class);
+			then(mailSender).should().testConnection();
+		});
 	}
 
 	@Test

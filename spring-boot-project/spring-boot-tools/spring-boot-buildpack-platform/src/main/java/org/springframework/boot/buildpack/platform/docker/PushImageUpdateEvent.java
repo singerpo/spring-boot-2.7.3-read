@@ -31,13 +31,14 @@ public class PushImageUpdateEvent extends ImageProgressUpdateEvent {
 
 	@JsonCreator
 	public PushImageUpdateEvent(String id, String status, ProgressDetail progressDetail, String progress,
-			ErrorDetail errorDetail) {
+								ErrorDetail errorDetail) {
 		super(id, status, progressDetail, progress);
 		this.errorDetail = errorDetail;
 	}
 
 	/**
 	 * Returns the details of any error encountered during processing.
+	 *
 	 * @return the error
 	 */
 	public ErrorDetail getErrorDetail() {
@@ -58,6 +59,7 @@ public class PushImageUpdateEvent extends ImageProgressUpdateEvent {
 
 		/**
 		 * Returns the message field from the error detail.
+		 *
 		 * @return the message
 		 */
 		public String getMessage() {

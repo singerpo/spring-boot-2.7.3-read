@@ -50,6 +50,7 @@ class LocationResourceLoader {
 
 	/**
 	 * Create a new {@link LocationResourceLoader} instance.
+	 *
 	 * @param resourceLoader the underlying resource loader
 	 */
 	LocationResourceLoader(ResourceLoader resourceLoader) {
@@ -58,6 +59,7 @@ class LocationResourceLoader {
 
 	/**
 	 * Returns if the location contains a pattern.
+	 *
 	 * @param location the location to check
 	 * @return if the location is a pattern
 	 */
@@ -67,6 +69,7 @@ class LocationResourceLoader {
 
 	/**
 	 * Get a single resource from a non-pattern location.
+	 *
 	 * @param location the location
 	 * @return the resource
 	 * @see #isPattern(String)
@@ -86,8 +89,9 @@ class LocationResourceLoader {
 
 	/**
 	 * Get a multiple resources from a location pattern.
+	 *
 	 * @param location the location pattern
-	 * @param type the type of resource to return
+	 * @param type     the type of resource to return
 	 * @return the resources
 	 * @see #isPattern(String)
 	 */
@@ -137,8 +141,7 @@ class LocationResourceLoader {
 	private File getFile(String patternLocation, Resource resource) {
 		try {
 			return resource.getFile();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(
 					"Unable to load config data resource from pattern '" + patternLocation + "'", ex);
 		}

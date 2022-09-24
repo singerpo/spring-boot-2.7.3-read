@@ -62,6 +62,7 @@ final class PrivateKeyParser {
 
 	/**
 	 * Load a private key from the specified resource.
+	 *
 	 * @param resource the private key to parse
 	 * @return the parsed private key
 	 */
@@ -77,8 +78,7 @@ final class PrivateKeyParser {
 				return parsePkcs8(decodeBase64(matcher.group(1)));
 			}
 			throw new IllegalStateException("Unrecognized private key format in " + resource);
-		}
-		catch (GeneralSecurityException | IOException ex) {
+		} catch (GeneralSecurityException | IOException ex) {
 			throw new IllegalStateException("Error loading private key file " + resource, ex);
 		}
 	}
@@ -109,8 +109,7 @@ final class PrivateKeyParser {
 			// PKCS1
 			result.write(pkcs1);
 			return result.toByteArray();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -128,8 +127,7 @@ final class PrivateKeyParser {
 			PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
 			KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 			return keyFactory.generatePrivate(keySpec);
-		}
-		catch (InvalidKeySpecException ex) {
+		} catch (InvalidKeySpecException ex) {
 			throw new IllegalArgumentException("Unexpected key format", ex);
 		}
 	}

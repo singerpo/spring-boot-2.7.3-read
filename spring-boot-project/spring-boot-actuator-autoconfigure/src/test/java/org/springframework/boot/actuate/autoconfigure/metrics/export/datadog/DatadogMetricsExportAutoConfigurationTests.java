@@ -92,11 +92,11 @@ class DatadogMetricsExportAutoConfigurationTests {
 	void stopsMeterRegistryWhenContextIsClosed() {
 		this.contextRunner.withUserConfiguration(BaseConfiguration.class)
 				.withPropertyValues("management.metrics.export.datadog.api-key=abcde").run((context) -> {
-					DatadogMeterRegistry registry = context.getBean(DatadogMeterRegistry.class);
-					assertThat(registry.isClosed()).isFalse();
-					context.close();
-					assertThat(registry.isClosed()).isTrue();
-				});
+			DatadogMeterRegistry registry = context.getBean(DatadogMeterRegistry.class);
+			assertThat(registry.isClosed()).isFalse();
+			context.close();
+			assertThat(registry.isClosed()).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

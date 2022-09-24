@@ -40,7 +40,8 @@ public class HttpHeaderInterceptor implements ClientHttpRequestInterceptor {
 
 	/**
 	 * Creates a new {@link HttpHeaderInterceptor} instance.
-	 * @param name the header name to populate. Cannot be null or empty.
+	 *
+	 * @param name  the header name to populate. Cannot be null or empty.
 	 * @param value the header value to populate. Cannot be null or empty.
 	 */
 	public HttpHeaderInterceptor(String name, String value) {

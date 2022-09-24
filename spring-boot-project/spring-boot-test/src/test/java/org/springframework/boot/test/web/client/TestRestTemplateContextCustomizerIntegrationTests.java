@@ -55,7 +55,7 @@ class TestRestTemplateContextCustomizerIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ TestServlet.class, NoTestRestTemplateBeanChecker.class })
+	@Import({TestServlet.class, NoTestRestTemplateBeanChecker.class})
 	static class TestConfig {
 
 		@Bean

@@ -49,7 +49,7 @@ class SpyBeanOnTestFieldForExistingCircularBeansIntegrationTests {
 		then(this.one).should().someMethod();
 	}
 
-	@Import({ One.class, Two.class })
+	@Import({One.class, Two.class})
 	static class SpyBeanOnTestFieldForExistingCircularBeansConfig {
 
 	}

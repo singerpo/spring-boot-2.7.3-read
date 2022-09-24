@@ -20,8 +20,8 @@ package org.springframework.boot.sql.init;
  * Supported database initialization modes.
  *
  * @author Andy Wilkinson
- * @since 2.5.1
  * @see AbstractScriptDatabaseInitializer
+ * @since 2.5.1
  */
 public enum DatabaseInitializationMode {
 

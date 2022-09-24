@@ -30,6 +30,7 @@ public interface RSocketMessageHandlerCustomizer {
 
 	/**
 	 * Customize the {@link RSocketMessageHandler}.
+	 *
 	 * @param messageHandler the message handler to customize
 	 */
 	void customize(RSocketMessageHandler messageHandler);

@@ -71,8 +71,7 @@ final class GracefulShutdown {
 				}
 			}
 
-		}
-		catch (InterruptedException ex) {
+		} catch (InterruptedException ex) {
 			Thread.currentThread().interrupt();
 		}
 		logger.info("Graceful shutdown complete");
@@ -103,8 +102,7 @@ final class GracefulShutdown {
 				}
 			}
 			return false;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}

@@ -51,7 +51,8 @@ class Phase {
 
 	/**
 	 * Create a new {@link Phase} instance.
-	 * @param name the name of the phase
+	 *
+	 * @param name           the name of the phase
 	 * @param verboseLogging if verbose logging is requested
 	 */
 	Phase(String name, boolean verboseLogging) {
@@ -79,6 +80,7 @@ class Phase {
 
 	/**
 	 * Update this phase with additional run arguments.
+	 *
 	 * @param args the arguments to add
 	 */
 	void withArgs(Object... args) {
@@ -87,6 +89,7 @@ class Phase {
 
 	/**
 	 * Update this phase with an addition volume binding.
+	 *
 	 * @param binding the binding
 	 */
 	void withBinding(Binding binding) {
@@ -95,7 +98,8 @@ class Phase {
 
 	/**
 	 * Update this phase with an additional environment variable.
-	 * @param name the variable name
+	 *
+	 * @param name  the variable name
 	 * @param value the variable value
 	 */
 	void withEnv(String name, String value) {
@@ -104,6 +108,7 @@ class Phase {
 
 	/**
 	 * Update this phase with the network the build container will connect to.
+	 *
 	 * @param networkMode the network
 	 */
 	void withNetworkMode(String networkMode) {
@@ -112,6 +117,7 @@ class Phase {
 
 	/**
 	 * Return the name of the phase.
+	 *
 	 * @return the phase name
 	 */
 	String getName() {
@@ -125,6 +131,7 @@ class Phase {
 
 	/**
 	 * Apply this phase settings to a {@link ContainerConfig} update.
+	 *
 	 * @param update the update to apply the phase to
 	 */
 	void apply(ContainerConfig.Update update) {

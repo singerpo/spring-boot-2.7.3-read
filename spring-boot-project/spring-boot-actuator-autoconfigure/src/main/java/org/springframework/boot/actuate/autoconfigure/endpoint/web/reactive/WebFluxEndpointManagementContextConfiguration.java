@@ -63,7 +63,7 @@ import org.springframework.web.reactive.DispatcherHandler;
  */
 @ManagementContextConfiguration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = Type.REACTIVE)
-@ConditionalOnClass({ DispatcherHandler.class, HttpHandler.class })
+@ConditionalOnClass({DispatcherHandler.class, HttpHandler.class})
 @ConditionalOnBean(WebEndpointsSupplier.class)
 @EnableConfigurationProperties(CorsEndpointProperties.class)
 public class WebFluxEndpointManagementContextConfiguration {
@@ -71,9 +71,9 @@ public class WebFluxEndpointManagementContextConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public WebFluxEndpointHandlerMapping webEndpointReactiveHandlerMapping(WebEndpointsSupplier webEndpointsSupplier,
-			ControllerEndpointsSupplier controllerEndpointsSupplier, EndpointMediaTypes endpointMediaTypes,
-			CorsEndpointProperties corsProperties, WebEndpointProperties webEndpointProperties,
-			Environment environment) {
+																		   ControllerEndpointsSupplier controllerEndpointsSupplier, EndpointMediaTypes endpointMediaTypes,
+																		   CorsEndpointProperties corsProperties, WebEndpointProperties webEndpointProperties,
+																		   Environment environment) {
 		String basePath = webEndpointProperties.getBasePath();
 		EndpointMapping endpointMapping = new EndpointMapping(basePath);
 		Collection<ExposableWebEndpoint> endpoints = webEndpointsSupplier.getEndpoints();
@@ -86,7 +86,7 @@ public class WebFluxEndpointManagementContextConfiguration {
 	}
 
 	private boolean shouldRegisterLinksMapping(WebEndpointProperties properties, Environment environment,
-			String basePath) {
+											   String basePath) {
 		return properties.getDiscovery().isEnabled() && (StringUtils.hasText(basePath)
 				|| ManagementPortType.get(environment).equals(ManagementPortType.DIFFERENT));
 	}

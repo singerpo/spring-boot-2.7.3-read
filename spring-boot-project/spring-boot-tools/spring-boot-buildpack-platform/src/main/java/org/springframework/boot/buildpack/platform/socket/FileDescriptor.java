@@ -47,6 +47,7 @@ class FileDescriptor {
 	/**
 	 * Acquire an instance of the actual {@link Handle}. The caller must
 	 * {@link Handle#close() close} the resulting handle when done.
+	 *
 	 * @return the handle
 	 */
 	synchronized Handle acquire() {
@@ -70,8 +71,7 @@ class FileDescriptor {
 			if (this.referenceCount == 0) {
 				this.closer.accept(this.openHandle.value);
 				this.status = Status.CLOSED;
-			}
-			else {
+			} else {
 				this.status = Status.CLOSE_PENDING;
 			}
 		}

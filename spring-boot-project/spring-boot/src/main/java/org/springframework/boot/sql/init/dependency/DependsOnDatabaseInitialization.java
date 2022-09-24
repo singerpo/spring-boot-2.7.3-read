@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Bean;
  * @author Andy Wilkinson
  * @since 2.5.0
  */
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DependsOnDatabaseInitialization {

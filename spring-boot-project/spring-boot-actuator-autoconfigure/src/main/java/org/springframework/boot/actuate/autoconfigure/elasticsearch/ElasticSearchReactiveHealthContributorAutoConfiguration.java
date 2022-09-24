@@ -42,14 +42,14 @@ import org.springframework.data.elasticsearch.client.reactive.ReactiveElasticsea
  * @since 2.3.2
  */
 @AutoConfiguration(after = ReactiveElasticsearchRestClientAutoConfiguration.class)
-@ConditionalOnClass({ ReactiveElasticsearchClient.class, Flux.class })
+@ConditionalOnClass({ReactiveElasticsearchClient.class, Flux.class})
 @ConditionalOnBean(ReactiveElasticsearchClient.class)
 @ConditionalOnEnabledHealthIndicator("elasticsearch")
 public class ElasticSearchReactiveHealthContributorAutoConfiguration extends
 		CompositeReactiveHealthContributorConfiguration<ElasticsearchReactiveHealthIndicator, ReactiveElasticsearchClient> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "elasticsearchHealthIndicator", "elasticsearchHealthContributor" })
+	@ConditionalOnMissingBean(name = {"elasticsearchHealthIndicator", "elasticsearchHealthContributor"})
 	public ReactiveHealthContributor elasticsearchHealthContributor(Map<String, ReactiveElasticsearchClient> clients) {
 		return createContributor(clients);
 	}

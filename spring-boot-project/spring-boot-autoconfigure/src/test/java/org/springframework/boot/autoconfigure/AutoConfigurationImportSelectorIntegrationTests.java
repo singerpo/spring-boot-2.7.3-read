@@ -86,12 +86,12 @@ class AutoConfigurationImportSelectorIntegrationTests {
 
 	}
 
-	@ImportAutoConfiguration({ ConfigD.class, ConfigB.class })
+	@ImportAutoConfiguration({ConfigD.class, ConfigB.class})
 	static class Config {
 
 	}
 
-	@ImportAutoConfiguration({ ConfigC.class, ConfigA.class })
+	@ImportAutoConfiguration({ConfigC.class, ConfigA.class})
 	static class AnotherConfig {
 
 	}

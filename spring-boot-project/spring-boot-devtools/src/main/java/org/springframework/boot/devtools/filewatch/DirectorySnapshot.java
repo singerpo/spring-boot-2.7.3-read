@@ -47,6 +47,7 @@ class DirectorySnapshot {
 
 	/**
 	 * Create a new {@link DirectorySnapshot} for the given directory.
+	 *
 	 * @param directory the source directory
 	 */
 	DirectorySnapshot(File directory) {
@@ -65,8 +66,7 @@ class DirectorySnapshot {
 			for (File child : children) {
 				if (child.isDirectory() && !DOTS.contains(child.getName())) {
 					collectFiles(child, result);
-				}
-				else if (child.isFile()) {
+				} else if (child.isFile()) {
 					result.add(new FileSnapshot(child));
 				}
 			}
@@ -85,8 +85,7 @@ class DirectorySnapshot {
 				FileSnapshot previousFile = previousFiles.remove(currentFile.getFile());
 				if (previousFile == null) {
 					changes.add(new ChangedFile(directory, currentFile.getFile(), Type.ADD));
-				}
-				else if (!previousFile.equals(currentFile)) {
+				} else if (!previousFile.equals(currentFile)) {
 					changes.add(new ChangedFile(directory, currentFile.getFile(), Type.MODIFY));
 				}
 			}
@@ -156,6 +155,7 @@ class DirectorySnapshot {
 
 	/**
 	 * Return the source directory of this snapshot.
+	 *
 	 * @return the source directory
 	 */
 	File getDirectory() {

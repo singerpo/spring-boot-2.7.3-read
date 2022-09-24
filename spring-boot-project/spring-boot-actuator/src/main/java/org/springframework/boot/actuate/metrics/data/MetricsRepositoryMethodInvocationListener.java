@@ -48,14 +48,15 @@ public class MetricsRepositoryMethodInvocationListener implements RepositoryMeth
 
 	/**
 	 * Create a new {@code MetricsRepositoryMethodInvocationListener}.
+	 *
 	 * @param registrySupplier a supplier for the registry to which metrics are recorded
-	 * @param tagsProvider provider for metrics tags
-	 * @param metricName name of the metric to record
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param tagsProvider     provider for metrics tags
+	 * @param metricName       name of the metric to record
+	 * @param autoTimer        the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.5.4
 	 */
 	public MetricsRepositoryMethodInvocationListener(Supplier<MeterRegistry> registrySupplier,
-			RepositoryTagsProvider tagsProvider, String metricName, AutoTimer autoTimer) {
+													 RepositoryTagsProvider tagsProvider, String metricName, AutoTimer autoTimer) {
 		this.registrySupplier = (registrySupplier instanceof SingletonSupplier)
 				? (SingletonSupplier<MeterRegistry>) registrySupplier : SingletonSupplier.of(registrySupplier);
 		this.tagsProvider = tagsProvider;

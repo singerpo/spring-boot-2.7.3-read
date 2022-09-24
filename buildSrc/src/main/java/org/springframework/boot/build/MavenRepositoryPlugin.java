@@ -86,11 +86,11 @@ public class MavenRepositoryPlugin implements Plugin<Project> {
 	private void addMavenRepositoryDependencies(Project project, String sourceConfigurationName, DependencySet target) {
 		project.getConfigurations().getByName(sourceConfigurationName).getDependencies()
 				.withType(ProjectDependency.class).all((dependency) -> {
-					Map<String, String> dependencyDescriptor = new HashMap<>();
-					dependencyDescriptor.put("path", dependency.getDependencyProject().getPath());
-					dependencyDescriptor.put("configuration", MAVEN_REPOSITORY_CONFIGURATION_NAME);
-					target.add(project.getDependencies().project(dependencyDescriptor));
-				});
+			Map<String, String> dependencyDescriptor = new HashMap<>();
+			dependencyDescriptor.put("path", dependency.getDependencyProject().getPath());
+			dependencyDescriptor.put("configuration", MAVEN_REPOSITORY_CONFIGURATION_NAME);
+			target.add(project.getDependencies().project(dependencyDescriptor));
+		});
 	}
 
 	private static final class CleanAction implements Action<Task> {

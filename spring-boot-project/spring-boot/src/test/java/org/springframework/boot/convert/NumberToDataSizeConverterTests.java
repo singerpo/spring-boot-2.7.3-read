@@ -56,7 +56,7 @@ class NumberToDataSizeConverterTests {
 		return conversionService.convert(source, DataSize.class);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private DataSize convert(ConversionService conversionService, Integer source, DataUnit defaultUnit) {
 		TypeDescriptor targetType = mock(TypeDescriptor.class);
 		if (defaultUnit != null) {

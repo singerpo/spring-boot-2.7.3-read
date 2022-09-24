@@ -55,7 +55,7 @@ class MockBeanOnScopedProxyTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ ExampleServiceCaller.class })
+	@Import({ExampleServiceCaller.class})
 	static class Config {
 
 		@Bean

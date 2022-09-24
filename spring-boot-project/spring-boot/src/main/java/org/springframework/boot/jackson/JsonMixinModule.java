@@ -40,8 +40,8 @@ import org.springframework.util.StringUtils;
  * {@link JsonMixin @JsonMixin}-annotated classes.
  *
  * @author Guirong Hu
- * @since 2.7.0
  * @see JsonMixin
+ * @since 2.7.0
  */
 public class JsonMixinModule extends SimpleModule implements InitializingBean {
 
@@ -51,7 +51,8 @@ public class JsonMixinModule extends SimpleModule implements InitializingBean {
 
 	/**
 	 * Create a new {@link JsonMixinModule} instance.
-	 * @param context the source application context
+	 *
+	 * @param context      the source application context
 	 * @param basePackages the packages to check for annotated classes
 	 */
 	public JsonMixinModule(ApplicationContext context, Collection<String> basePackages) {

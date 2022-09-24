@@ -132,8 +132,7 @@ class SampleIntegrationTests {
 		try {
 			String output = this.cli.run("jms.groovy");
 			assertThat(output).contains("Received Greetings from Spring Boot via Artemis");
-		}
-		finally {
+		} finally {
 			System.clearProperty("spring.artemis.embedded.queues");
 		}
 	}

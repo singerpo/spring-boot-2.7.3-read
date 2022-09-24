@@ -30,7 +30,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
  */
 @DirtiesContext
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT,
-		properties = { "spring.main.web-application-type=reactive", "server.port=0", "value=123" })
+		properties = {"spring.main.web-application-type=reactive", "server.port=0", "value=123"})
 public class SpringBootTestReactiveWebEnvironmentDefinedPortTests
 		extends AbstractSpringBootTestEmbeddedReactiveWebEnvironmentTests {
 

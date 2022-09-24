@@ -33,7 +33,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  *
  * @author Madhura Bhave
  */
-@ConditionalOnClass({ SecurityFilterChain.class, HttpSecurity.class })
+@ConditionalOnClass({SecurityFilterChain.class, HttpSecurity.class})
 @Configuration(proxyBeanMethods = false)
 class RemoteDevtoolsSecurityConfiguration {
 

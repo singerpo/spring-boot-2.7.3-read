@@ -32,8 +32,8 @@ import org.springframework.util.Assert;
  *
  * @author Brian Clozel
  * @author Phillip Webb
- * @since 2.3.0
  * @see ApplicationAvailability
+ * @since 2.3.0
  */
 public class ApplicationAvailabilityBean
 		implements ApplicationAvailability, ApplicationListener<AvailabilityChangeEvent<?>> {

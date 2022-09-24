@@ -52,7 +52,7 @@ import org.gradle.api.tasks.util.PatternSet;
  */
 class BootArchiveSupport {
 
-	private static final byte[] ZIP_FILE_HEADER = new byte[] { 'P', 'K', 3, 4 };
+	private static final byte[] ZIP_FILE_HEADER = new byte[]{'P', 'K', 3, 4};
 
 	private static final Set<String> DEFAULT_LAUNCHER_CLASSES;
 
@@ -77,7 +77,7 @@ class BootArchiveSupport {
 	private LaunchScriptConfiguration launchScript;
 
 	BootArchiveSupport(String loaderMainClass, Spec<FileCopyDetails> librarySpec,
-			Function<FileCopyDetails, ZipCompression> compressionResolver) {
+					   Function<FileCopyDetails, ZipCompression> compressionResolver) {
 		this.loaderMainClass = loaderMainClass;
 		this.librarySpec = librarySpec;
 		this.compressionResolver = compressionResolver;
@@ -85,7 +85,7 @@ class BootArchiveSupport {
 	}
 
 	void configureManifest(Manifest manifest, String mainClass, String classes, String lib, String classPathIndex,
-			String layersIndex) {
+						   String layersIndex) {
 		Attributes attributes = manifest.getAttributes();
 		attributes.putIfAbsent("Main-Class", this.loaderMainClass);
 		attributes.putIfAbsent("Start-Class", mainClass);
@@ -163,8 +163,7 @@ class BootArchiveSupport {
 			try (FileInputStream fileInputStream = new FileInputStream(file)) {
 				return isZip(fileInputStream);
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return false;
 		}
 	}

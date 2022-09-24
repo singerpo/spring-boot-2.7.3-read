@@ -31,6 +31,7 @@ public class ServletRegistrationMappingDescription extends RegistrationMappingDe
 	/**
 	 * Creates a new {@code ServletRegistrationMappingDescription} derived from the given
 	 * {@code servletRegistration}.
+	 *
 	 * @param servletRegistration the servlet registration
 	 */
 	public ServletRegistrationMappingDescription(ServletRegistration servletRegistration) {
@@ -39,6 +40,7 @@ public class ServletRegistrationMappingDescription extends RegistrationMappingDe
 
 	/**
 	 * Returns the mappings for the registered servlet.
+	 *
 	 * @return the mappings
 	 */
 	public Collection<String> getMappings() {

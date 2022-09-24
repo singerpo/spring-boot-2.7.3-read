@@ -30,6 +30,7 @@ public interface DefaultConfigurationCustomizer {
 
 	/**
 	 * Customize the {@link DefaultConfiguration jOOQ Configuration}.
+	 *
 	 * @param configuration the configuration to customize
 	 */
 	void customize(DefaultConfiguration configuration);

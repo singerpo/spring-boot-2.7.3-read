@@ -83,7 +83,8 @@ public class ConfigTreePropertySource extends EnumerablePropertySource<Path> imp
 
 	/**
 	 * Create a new {@link ConfigTreePropertySource} instance.
-	 * @param name the name of the property source
+	 *
+	 * @param name            the name of the property source
 	 * @param sourceDirectory the underlying source directory
 	 */
 	public ConfigTreePropertySource(String name, Path sourceDirectory) {
@@ -92,9 +93,10 @@ public class ConfigTreePropertySource extends EnumerablePropertySource<Path> imp
 
 	/**
 	 * Create a new {@link ConfigTreePropertySource} instance.
-	 * @param name the name of the property source
+	 *
+	 * @param name            the name of the property source
 	 * @param sourceDirectory the underlying source directory
-	 * @param options the property source options
+	 * @param options         the property source options
 	 */
 	public ConfigTreePropertySource(String name, Path sourceDirectory, Option... options) {
 		this(name, sourceDirectory, EnumSet.copyOf(Arrays.asList(options)));
@@ -215,8 +217,7 @@ public class ConfigTreePropertySource extends EnumerablePropertySource<Path> imp
 							}
 						});
 				return Collections.unmodifiableMap(propertyFiles);
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException("Unable to find files in '" + sourceDirectory + "'", ex);
 			}
 		}
@@ -268,7 +269,7 @@ public class ConfigTreePropertySource extends EnumerablePropertySource<Path> imp
 		private volatile byte[] content;
 
 		private PropertyFileContent(Path path, Resource resource, Origin origin, boolean cacheContent,
-				boolean autoTrimTrailingNewLine) {
+									boolean autoTrimTrailingNewLine) {
 			this.path = path;
 			this.resource = resource;
 			this.origin = origin;
@@ -347,8 +348,7 @@ public class ConfigTreePropertySource extends EnumerablePropertySource<Path> imp
 					}
 				}
 				return this.content;
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

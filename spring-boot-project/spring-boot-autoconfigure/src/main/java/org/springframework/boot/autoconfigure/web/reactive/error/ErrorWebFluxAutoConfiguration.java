@@ -50,7 +50,7 @@ import org.springframework.web.reactive.result.view.ViewResolver;
 @AutoConfiguration(before = WebFluxAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnClass(WebFluxConfigurer.class)
-@EnableConfigurationProperties({ ServerProperties.class, WebProperties.class })
+@EnableConfigurationProperties({ServerProperties.class, WebProperties.class})
 public class ErrorWebFluxAutoConfiguration {
 
 	private final ServerProperties serverProperties;
@@ -63,8 +63,8 @@ public class ErrorWebFluxAutoConfiguration {
 	@ConditionalOnMissingBean(value = ErrorWebExceptionHandler.class, search = SearchStrategy.CURRENT)
 	@Order(-1)
 	public ErrorWebExceptionHandler errorWebExceptionHandler(ErrorAttributes errorAttributes,
-			WebProperties webProperties, ObjectProvider<ViewResolver> viewResolvers,
-			ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext) {
+															 WebProperties webProperties, ObjectProvider<ViewResolver> viewResolvers,
+															 ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext) {
 		DefaultErrorWebExceptionHandler exceptionHandler = new DefaultErrorWebExceptionHandler(errorAttributes,
 				webProperties.getResources(), this.serverProperties.getError(), applicationContext);
 		exceptionHandler.setViewResolvers(viewResolvers.orderedStream().collect(Collectors.toList()));

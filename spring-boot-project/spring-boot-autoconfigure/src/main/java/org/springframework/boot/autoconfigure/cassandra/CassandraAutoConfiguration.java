@@ -68,11 +68,12 @@ import org.springframework.core.io.Resource;
  * @since 1.3.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ CqlSession.class })
+@ConditionalOnClass({CqlSession.class})
 @EnableConfigurationProperties(CassandraProperties.class)
 public class CassandraAutoConfiguration {
 
 	private static final Config SPRING_BOOT_DEFAULTS;
+
 	static {
 		CassandraDriverOptions options = new CassandraDriverOptions();
 		options.add(DefaultDriverOption.CONTACT_POINTS, Collections.singletonList("127.0.0.1:9042"));
@@ -92,7 +93,7 @@ public class CassandraAutoConfiguration {
 	@ConditionalOnMissingBean
 	@Scope("prototype")
 	public CqlSessionBuilder cassandraSessionBuilder(CassandraProperties properties,
-			DriverConfigLoader driverConfigLoader, ObjectProvider<CqlSessionBuilderCustomizer> builderCustomizers) {
+													 DriverConfigLoader driverConfigLoader, ObjectProvider<CqlSessionBuilderCustomizer> builderCustomizers) {
 		CqlSessionBuilder builder = CqlSession.builder().withConfigLoader(driverConfigLoader);
 		configureAuthentication(properties, builder);
 		configureSsl(properties, builder);
@@ -111,8 +112,7 @@ public class CassandraAutoConfiguration {
 		if (properties.isSsl()) {
 			try {
 				builder.withSslContext(SSLContext.getDefault());
-			}
-			catch (NoSuchAlgorithmException ex) {
+			} catch (NoSuchAlgorithmException ex) {
 				throw new IllegalStateException("Could not setup SSL default context for Cassandra", ex);
 			}
 		}
@@ -121,7 +121,7 @@ public class CassandraAutoConfiguration {
 	@Bean(destroyMethod = "")
 	@ConditionalOnMissingBean
 	public DriverConfigLoader cassandraDriverConfigLoader(CassandraProperties properties,
-			ObjectProvider<DriverConfigLoaderBuilderCustomizer> builderCustomizers) {
+														  ObjectProvider<DriverConfigLoaderBuilderCustomizer> builderCustomizers) {
 		ProgrammaticDriverConfigLoaderBuilder builder = new DefaultProgrammaticDriverConfigLoaderBuilder(
 				() -> cassandraConfiguration(properties), DefaultDriverConfigLoader.DEFAULT_ROOT_PATH);
 		builderCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
@@ -143,8 +143,7 @@ public class CassandraAutoConfiguration {
 	private Config loadConfig(Resource resource) {
 		try {
 			return ConfigFactory.parseURL(resource.getURL());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to load cassandra configuration from " + resource, ex);
 		}
 	}
@@ -240,8 +239,7 @@ public class CassandraAutoConfiguration {
 		try {
 			int i = Integer.parseInt(value.get());
 			return i > 0 && i < 65535;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}

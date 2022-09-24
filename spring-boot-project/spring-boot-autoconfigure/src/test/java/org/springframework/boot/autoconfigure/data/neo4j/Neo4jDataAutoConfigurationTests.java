@@ -86,10 +86,10 @@ class Neo4jDataAutoConfigurationTests {
 	void shouldReuseExistingDatabaseNameProvider() {
 		this.contextRunner.withPropertyValues("spring.data.neo4j.database=ignored")
 				.withUserConfiguration(CustomDatabaseSelectionProviderConfiguration.class).run((context) -> {
-					assertThat(context).hasSingleBean(DatabaseSelectionProvider.class);
-					assertThat(context.getBean(DatabaseSelectionProvider.class).getDatabaseSelection())
-							.isEqualTo(DatabaseSelection.byName("custom"));
-				});
+			assertThat(context).hasSingleBean(DatabaseSelectionProvider.class);
+			assertThat(context.getBean(DatabaseSelectionProvider.class).getDatabaseSelection())
+					.isEqualTo(DatabaseSelection.byName("custom"));
+		});
 	}
 
 	@Test

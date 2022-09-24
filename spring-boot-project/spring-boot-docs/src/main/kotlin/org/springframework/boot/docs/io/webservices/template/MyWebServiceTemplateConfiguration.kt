@@ -29,9 +29,9 @@ class MyWebServiceTemplateConfiguration {
 	@Bean
 	fun webServiceTemplate(builder: WebServiceTemplateBuilder): WebServiceTemplate {
 		val sender = HttpWebServiceMessageSenderBuilder()
-			.setConnectTimeout(Duration.ofSeconds(5))
-			.setReadTimeout(Duration.ofSeconds(2))
-			.build()
+				.setConnectTimeout(Duration.ofSeconds(5))
+				.setReadTimeout(Duration.ofSeconds(2))
+				.build()
 		return builder.messageSenders(sender).build()
 	}
 

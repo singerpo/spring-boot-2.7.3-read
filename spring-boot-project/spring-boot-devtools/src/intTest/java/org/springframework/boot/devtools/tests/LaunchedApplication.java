@@ -42,7 +42,7 @@ class LaunchedApplication {
 	private final BiFunction<Integer, File, Process> remoteProcessRestarter;
 
 	LaunchedApplication(File classesDirectory, File standardOut, File standardError, Process localProcess,
-			Process remoteProcess, BiFunction<Integer, File, Process> remoteProcessRestarter) {
+						Process remoteProcess, BiFunction<Integer, File, Process> remoteProcessRestarter) {
 		this.classesDirectory = classesDirectory;
 		this.standardOut = standardOut;
 		this.standardError = standardError;

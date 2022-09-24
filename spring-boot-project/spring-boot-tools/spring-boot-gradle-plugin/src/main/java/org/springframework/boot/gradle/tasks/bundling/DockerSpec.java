@@ -100,6 +100,7 @@ public class DockerSpec {
 	/**
 	 * Returns the {@link DockerRegistrySpec} that configures authentication to the
 	 * builder registry.
+	 *
 	 * @return the registry spec
 	 */
 	@Nested
@@ -110,6 +111,7 @@ public class DockerSpec {
 	/**
 	 * Customizes the {@link DockerRegistrySpec} that configures authentication to the
 	 * builder registry.
+	 *
 	 * @param action the action to apply
 	 */
 	public void builderRegistry(Action<DockerRegistrySpec> action) {
@@ -119,6 +121,7 @@ public class DockerSpec {
 	/**
 	 * Customizes the {@link DockerRegistrySpec} that configures authentication to the
 	 * builder registry.
+	 *
 	 * @param closure the closure to apply
 	 */
 	public void builderRegistry(Closure<?> closure) {
@@ -128,6 +131,7 @@ public class DockerSpec {
 	/**
 	 * Returns the {@link DockerRegistrySpec} that configures authentication to the
 	 * publishing registry.
+	 *
 	 * @return the registry spec
 	 */
 	@Nested
@@ -138,6 +142,7 @@ public class DockerSpec {
 	/**
 	 * Customizes the {@link DockerRegistrySpec} that configures authentication to the
 	 * publishing registry.
+	 *
 	 * @param action the action to apply
 	 */
 	public void publishRegistry(Action<DockerRegistrySpec> action) {
@@ -147,6 +152,7 @@ public class DockerSpec {
 	/**
 	 * Customizes the {@link DockerRegistrySpec} that configures authentication to the
 	 * publishing registry.
+	 *
 	 * @param closure the closure to apply
 	 */
 	public void publishRegistry(Closure<?> closure) {
@@ -157,6 +163,7 @@ public class DockerSpec {
 	 * Returns this configuration as a {@link DockerConfiguration} instance. This method
 	 * should only be called when the configuration is complete and will no longer be
 	 * changed.
+	 *
 	 * @return the Docker configuration
 	 */
 	DockerConfiguration asDockerConfiguration() {
@@ -236,6 +243,7 @@ public class DockerSpec {
 
 		/**
 		 * Returns the username to use when authenticating to the Docker registry.
+		 *
 		 * @return the registry username
 		 */
 		@Input
@@ -246,6 +254,7 @@ public class DockerSpec {
 
 		/**
 		 * Sets the username to use when authenticating to the Docker registry.
+		 *
 		 * @param username the registry username
 		 */
 		public void setUsername(String username) {
@@ -254,6 +263,7 @@ public class DockerSpec {
 
 		/**
 		 * Returns the password to use when authenticating to the Docker registry.
+		 *
 		 * @return the registry password
 		 */
 		@Input
@@ -264,6 +274,7 @@ public class DockerSpec {
 
 		/**
 		 * Sets the password to use when authenticating to the Docker registry.
+		 *
 		 * @param password the registry username
 		 */
 		public void setPassword(String password) {
@@ -272,6 +283,7 @@ public class DockerSpec {
 
 		/**
 		 * Returns the Docker registry URL.
+		 *
 		 * @return the registry URL
 		 */
 		@Input
@@ -282,6 +294,7 @@ public class DockerSpec {
 
 		/**
 		 * Sets the Docker registry URL.
+		 *
 		 * @param url the registry URL
 		 */
 		public void setUrl(String url) {
@@ -290,6 +303,7 @@ public class DockerSpec {
 
 		/**
 		 * Returns the email address associated with the Docker registry username.
+		 *
 		 * @return the registry email address
 		 */
 		@Input
@@ -300,6 +314,7 @@ public class DockerSpec {
 
 		/**
 		 * Sets the email address associated with the Docker registry username.
+		 *
 		 * @param email the registry email address
 		 */
 		public void setEmail(String email) {
@@ -308,6 +323,7 @@ public class DockerSpec {
 
 		/**
 		 * Returns the identity token to use when authenticating to the Docker registry.
+		 *
 		 * @return the registry identity token
 		 */
 		@Input
@@ -318,6 +334,7 @@ public class DockerSpec {
 
 		/**
 		 * Sets the identity token to use when authenticating to the Docker registry.
+		 *
 		 * @param token the registry identity token
 		 */
 		public void setToken(String token) {

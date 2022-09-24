@@ -54,14 +54,14 @@ import javax.tools.StandardLocation;
  * @author Moritz Halbritter
  * @since 1.5.0
  */
-@SupportedAnnotationTypes({ "org.springframework.boot.autoconfigure.condition.ConditionalOnClass",
+@SupportedAnnotationTypes({"org.springframework.boot.autoconfigure.condition.ConditionalOnClass",
 		"org.springframework.boot.autoconfigure.condition.ConditionalOnBean",
 		"org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate",
 		"org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication",
 		"org.springframework.boot.autoconfigure.AutoConfigureBefore",
 		"org.springframework.boot.autoconfigure.AutoConfigureAfter",
 		"org.springframework.boot.autoconfigure.AutoConfigureOrder",
-		"org.springframework.boot.autoconfigure.AutoConfiguration" })
+		"org.springframework.boot.autoconfigure.AutoConfiguration"})
 public class AutoConfigureAnnotationProcessor extends AbstractProcessor {
 
 	protected static final String PROPERTIES_PATH = "META-INF/spring-autoconfigure-metadata.properties";
@@ -118,8 +118,7 @@ public class AutoConfigureAnnotationProcessor extends AbstractProcessor {
 		if (roundEnv.processingOver()) {
 			try {
 				writeProperties();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Failed to write metadata", ex);
 			}
 		}
@@ -146,8 +145,7 @@ public class AutoConfigureAnnotationProcessor extends AbstractProcessor {
 				generator.applyToProperties(this.properties, qualifiedName, values);
 				this.properties.put(qualifiedName, "");
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Error processing configuration meta-data on " + element, ex);
 		}
 	}
@@ -295,7 +293,7 @@ public class AutoConfigureAnnotationProcessor extends AbstractProcessor {
 		private final Map<String, ValueExtractor> valueExtractors;
 
 		private PropertyGenerator(String annotationPackage, String propertyName, boolean omitEmptyValues,
-				Map<String, ValueExtractor> valueExtractors) {
+								  Map<String, ValueExtractor> valueExtractors) {
 			this.annotationPackage = annotationPackage;
 			this.propertyName = propertyName;
 			this.omitEmptyValues = omitEmptyValues;
@@ -332,8 +330,7 @@ public class AutoConfigureAnnotationProcessor extends AbstractProcessor {
 			String existingKey = properties.get(key);
 			if (existingKey == null || existingKey.isEmpty()) {
 				properties.put(key, value);
-			}
-			else if (!value.isEmpty()) {
+			} else if (!value.isEmpty()) {
 				properties.put(key, existingKey + "," + value);
 			}
 		}

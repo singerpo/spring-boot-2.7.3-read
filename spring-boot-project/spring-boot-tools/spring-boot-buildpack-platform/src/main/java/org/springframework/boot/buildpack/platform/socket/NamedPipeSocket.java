@@ -63,8 +63,7 @@ public class NamedPipeSocket extends Socket {
 			try {
 				return new AsynchronousFileByteChannel(AsynchronousFileChannel.open(Paths.get(path),
 						StandardOpenOption.READ, StandardOpenOption.WRITE));
-			}
-			catch (FileSystemException ex) {
+			} catch (FileSystemException ex) {
 				if (System.nanoTime() - startTime >= TIMEOUT) {
 					throw ex;
 				}
@@ -92,6 +91,7 @@ public class NamedPipeSocket extends Socket {
 
 	/**
 	 * Return a new {@link NamedPipeSocket} for the given path.
+	 *
 	 * @param path the path to the domain socket
 	 * @return a {@link NamedPipeSocket} instance
 	 * @throws IOException if the socket cannot be opened
@@ -189,8 +189,7 @@ public class NamedPipeSocket extends Socket {
 		public void accept(String path) {
 			try {
 				Thread.sleep(WAIT_INTERVAL);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
 		}

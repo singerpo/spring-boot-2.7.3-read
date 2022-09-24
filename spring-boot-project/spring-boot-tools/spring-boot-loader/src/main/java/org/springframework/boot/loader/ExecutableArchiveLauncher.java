@@ -52,8 +52,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 		try {
 			this.archive = createArchive();
 			this.classPathIndex = getClassPathIndex(this.archive);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -62,8 +61,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 		try {
 			this.archive = archive;
 			this.classPathIndex = getClassPathIndex(this.archive);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -145,6 +143,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 
 	/**
 	 * Determine if the specified entry is a candidate for further searching.
+	 *
 	 * @param entry the entry to check
 	 * @return {@code true} if the entry is a candidate for further searching
 	 * @since 2.3.0
@@ -159,6 +158,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 	/**
 	 * Determine if the specified entry is a nested item that should be added to the
 	 * classpath.
+	 *
 	 * @param entry the entry to check
 	 * @return {@code true} if the entry is a nested item (jar or directory)
 	 */
@@ -169,6 +169,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 	 * compatibility this method returns {@code true}, but subclasses that don't override
 	 * {@link #postProcessClassPathArchives(List)} should provide an implementation that
 	 * returns {@code false}.
+	 *
 	 * @return if the {@link #postProcessClassPathArchives(List)} method is implemented
 	 * @since 2.3.0
 	 */
@@ -179,6 +180,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 	/**
 	 * Called to post-process archive entries before they are used. Implementations can
 	 * add and remove entries.
+	 *
 	 * @param archives the archives
 	 * @throws Exception if the post-processing fails
 	 * @see #isPostProcessingClassPathArchives()
@@ -188,6 +190,7 @@ public abstract class ExecutableArchiveLauncher extends Launcher {
 
 	/**
 	 * Return the path prefix for entries in the archive.
+	 *
 	 * @return the path prefix
 	 */
 	protected String getArchiveEntryPathPrefix() {

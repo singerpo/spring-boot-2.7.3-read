@@ -38,7 +38,7 @@ import org.springframework.session.data.mongo.config.annotation.web.reactive.Rea
  * @author Weix Sun
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ ReactiveMongoOperations.class, ReactiveMongoSessionRepository.class })
+@ConditionalOnClass({ReactiveMongoOperations.class, ReactiveMongoSessionRepository.class})
 @ConditionalOnMissingBean(ReactiveSessionRepository.class)
 @ConditionalOnBean(ReactiveMongoOperations.class)
 @Conditional(ReactiveSessionCondition.class)
@@ -50,7 +50,7 @@ class MongoReactiveSessionConfiguration {
 
 		@Autowired
 		void customize(SessionProperties sessionProperties, MongoSessionProperties mongoSessionProperties,
-				ServerProperties serverProperties) {
+					   ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getReactive().getSession().getTimeout());
 			if (timeout != null) {

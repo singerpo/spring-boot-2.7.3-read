@@ -79,12 +79,11 @@ class ManagementContextConfigurationImportSelector implements DeferredImportSele
 	}
 
 	private void addConfiguration(SimpleMetadataReaderFactory readerFactory,
-			List<ManagementConfiguration> configurations, String className) {
+								  List<ManagementConfiguration> configurations, String className) {
 		try {
 			MetadataReader metadataReader = readerFactory.getMetadataReader(className);
 			configurations.add(new ManagementConfiguration(metadataReader));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to read annotation metadata for '" + className + "'", ex);
 		}
 	}

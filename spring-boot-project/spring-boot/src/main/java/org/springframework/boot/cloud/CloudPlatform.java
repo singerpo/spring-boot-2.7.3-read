@@ -41,7 +41,6 @@ public enum CloudPlatform {
 	 * No Cloud platform. Useful when false-positives are detected.
 	 */
 	NONE {
-
 		@Override
 		public boolean isDetected(Environment environment) {
 			return false;
@@ -53,7 +52,6 @@ public enum CloudPlatform {
 	 * Cloud Foundry platform.
 	 */
 	CLOUD_FOUNDRY {
-
 		@Override
 		public boolean isDetected(Environment environment) {
 			return environment.containsProperty("VCAP_APPLICATION") || environment.containsProperty("VCAP_SERVICES");
@@ -65,7 +63,6 @@ public enum CloudPlatform {
 	 * Heroku platform.
 	 */
 	HEROKU {
-
 		@Override
 		public boolean isDetected(Environment environment) {
 			return environment.containsProperty("DYNO");
@@ -77,7 +74,6 @@ public enum CloudPlatform {
 	 * SAP Cloud platform.
 	 */
 	SAP {
-
 		@Override
 		public boolean isDetected(Environment environment) {
 			return environment.containsProperty("HC_LANDSCAPE");
@@ -155,6 +151,7 @@ public enum CloudPlatform {
 
 	/**
 	 * Determines if the platform is active (i.e. the application is running in it).
+	 *
 	 * @param environment the environment
 	 * @return if the platform is active.
 	 */
@@ -166,6 +163,7 @@ public enum CloudPlatform {
 	/**
 	 * Determines if the platform is enforced by looking at the
 	 * {@code "spring.main.cloud-platform"} configuration property.
+	 *
 	 * @param environment the environment
 	 * @return if the platform is enforced
 	 * @since 2.3.0
@@ -177,6 +175,7 @@ public enum CloudPlatform {
 	/**
 	 * Determines if the platform is enforced by looking at the
 	 * {@code "spring.main.cloud-platform"} configuration property.
+	 *
 	 * @param binder the binder
 	 * @return if the platform is enforced
 	 * @since 2.4.0
@@ -192,6 +191,7 @@ public enum CloudPlatform {
 	/**
 	 * Determines if the platform is detected by looking for platform-specific environment
 	 * variables.
+	 *
 	 * @param environment the environment
 	 * @return if the platform is auto-detected.
 	 * @since 2.3.0
@@ -201,6 +201,7 @@ public enum CloudPlatform {
 	/**
 	 * Returns if the platform is behind a load balancer and uses
 	 * {@literal X-Forwarded-For} headers.
+	 *
 	 * @return if {@literal X-Forwarded-For} headers are used
 	 */
 	public boolean isUsingForwardHeaders() {
@@ -209,6 +210,7 @@ public enum CloudPlatform {
 
 	/**
 	 * Returns the active {@link CloudPlatform} or {@code null} if one is not active.
+	 *
 	 * @param environment the environment
 	 * @return the {@link CloudPlatform} or {@code null}
 	 */

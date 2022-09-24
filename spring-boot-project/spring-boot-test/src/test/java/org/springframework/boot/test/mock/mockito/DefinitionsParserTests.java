@@ -195,7 +195,7 @@ class DefinitionsParserTests {
 
 	}
 
-	@MockBeans({ @MockBean(ExampleService.class), @MockBean(ExampleServiceCaller.class) })
+	@MockBeans({@MockBean(ExampleService.class), @MockBean(ExampleServiceCaller.class)})
 	static class RepeatMockBean {
 
 	}
@@ -215,12 +215,12 @@ class DefinitionsParserTests {
 
 	}
 
-	@MockBean({ ExampleService.class, ExampleServiceCaller.class })
+	@MockBean({ExampleService.class, ExampleServiceCaller.class})
 	static class MockBeanMultipleClasses {
 
 	}
 
-	@MockBean(name = "name", classes = { ExampleService.class, ExampleServiceCaller.class })
+	@MockBean(name = "name", classes = {ExampleService.class, ExampleServiceCaller.class})
 	static class MockBeanMultipleClassesWithName {
 
 	}
@@ -242,7 +242,7 @@ class DefinitionsParserTests {
 
 	}
 
-	@SpyBeans({ @SpyBean(RealExampleService.class), @SpyBean(ExampleServiceCaller.class) })
+	@SpyBeans({@SpyBean(RealExampleService.class), @SpyBean(ExampleServiceCaller.class)})
 	static class RepeatSpyBean {
 
 	}
@@ -261,12 +261,12 @@ class DefinitionsParserTests {
 
 	}
 
-	@SpyBean({ RealExampleService.class, ExampleServiceCaller.class })
+	@SpyBean({RealExampleService.class, ExampleServiceCaller.class})
 	static class SpyBeanMultipleClasses {
 
 	}
 
-	@SpyBean(name = "name", classes = { RealExampleService.class, ExampleServiceCaller.class })
+	@SpyBean(name = "name", classes = {RealExampleService.class, ExampleServiceCaller.class})
 	static class SpyBeanMultipleClassesWithName {
 
 	}

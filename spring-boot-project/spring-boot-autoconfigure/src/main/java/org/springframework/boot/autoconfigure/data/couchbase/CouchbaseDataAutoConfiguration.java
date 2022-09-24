@@ -40,11 +40,11 @@ import org.springframework.data.couchbase.repository.CouchbaseRepository;
  * @author Stephane Nicoll
  * @since 1.4.0
  */
-@AutoConfiguration(after = { CouchbaseAutoConfiguration.class, ValidationAutoConfiguration.class })
-@ConditionalOnClass({ Bucket.class, CouchbaseRepository.class })
+@AutoConfiguration(after = {CouchbaseAutoConfiguration.class, ValidationAutoConfiguration.class})
+@ConditionalOnClass({Bucket.class, CouchbaseRepository.class})
 @EnableConfigurationProperties(CouchbaseDataProperties.class)
-@Import({ CouchbaseDataConfiguration.class, CouchbaseClientFactoryConfiguration.class,
-		CouchbaseClientFactoryDependentConfiguration.class })
+@Import({CouchbaseDataConfiguration.class, CouchbaseClientFactoryConfiguration.class,
+		CouchbaseClientFactoryDependentConfiguration.class})
 public class CouchbaseDataAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)

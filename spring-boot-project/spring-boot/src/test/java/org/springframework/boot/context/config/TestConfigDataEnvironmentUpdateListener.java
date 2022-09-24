@@ -30,7 +30,7 @@ class TestConfigDataEnvironmentUpdateListener implements ConfigDataEnvironmentUp
 
 	@Override
 	public void onPropertySourceAdded(PropertySource<?> propertySource, ConfigDataLocation location,
-			ConfigDataResource resource) {
+									  ConfigDataResource resource) {
 		this.addedPropertySources.add(new AddedPropertySource(propertySource, location, resource));
 	}
 
@@ -56,7 +56,7 @@ class TestConfigDataEnvironmentUpdateListener implements ConfigDataEnvironmentUp
 		private final ConfigDataResource resource;
 
 		AddedPropertySource(PropertySource<?> propertySource, ConfigDataLocation location,
-				ConfigDataResource resource) {
+							ConfigDataResource resource) {
 			this.propertySource = propertySource;
 			this.location = location;
 			this.resource = resource;

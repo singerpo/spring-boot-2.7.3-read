@@ -61,8 +61,7 @@ class AllNestedConditionsTests {
 		return (context) -> {
 			if (expected) {
 				assertThat(context).hasBean("myBean");
-			}
-			else {
+			} else {
 				assertThat(context).doesNotHaveBean("myBean");
 			}
 		};

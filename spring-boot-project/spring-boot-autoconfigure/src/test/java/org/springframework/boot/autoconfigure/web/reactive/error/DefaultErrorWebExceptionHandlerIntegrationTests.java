@@ -132,14 +132,14 @@ class DefaultErrorWebExceptionHandlerIntegrationTests {
 	void bindingResultErrorIncludeMessageAndErrors() {
 		this.contextRunner.withPropertyValues("server.error.include-message=on-param",
 				"server.error.include-binding-errors=on-param").run((context) -> {
-					WebTestClient client = getWebClient(context);
-					client.post().uri("/bind?message=true&errors=true").contentType(MediaType.APPLICATION_JSON)
-							.bodyValue("{}").exchange().expectStatus().isBadRequest().expectBody().jsonPath("status")
-							.isEqualTo("400").jsonPath("error").isEqualTo(HttpStatus.BAD_REQUEST.getReasonPhrase())
-							.jsonPath("path").isEqualTo(("/bind")).jsonPath("exception").doesNotExist()
-							.jsonPath("errors").isArray().jsonPath("message").isNotEmpty().jsonPath("requestId")
-							.isEqualTo(this.logIdFilter.getLogId());
-				});
+			WebTestClient client = getWebClient(context);
+			client.post().uri("/bind?message=true&errors=true").contentType(MediaType.APPLICATION_JSON)
+					.bodyValue("{}").exchange().expectStatus().isBadRequest().expectBody().jsonPath("status")
+					.isEqualTo("400").jsonPath("error").isEqualTo(HttpStatus.BAD_REQUEST.getReasonPhrase())
+					.jsonPath("path").isEqualTo(("/bind")).jsonPath("exception").doesNotExist()
+					.jsonPath("errors").isArray().jsonPath("message").isNotEmpty().jsonPath("requestId")
+					.isEqualTo(this.logIdFilter.getLogId());
+		});
 	}
 
 	@Test
@@ -300,32 +300,32 @@ class DefaultErrorWebExceptionHandlerIntegrationTests {
 	void whitelabelDisabled() {
 		this.contextRunner.withPropertyValues("server.error.whitelabel.enabled=false",
 				"spring.mustache.prefix=classpath:/unknown/").run((context) -> {
-					WebTestClient client = getWebClient(context);
-					client.get().uri("/notfound").accept(MediaType.TEXT_HTML).exchange().expectStatus().isNotFound()
-							.expectBody().isEmpty();
-				});
+			WebTestClient client = getWebClient(context);
+			client.get().uri("/notfound").accept(MediaType.TEXT_HTML).exchange().expectStatus().isNotFound()
+					.expectBody().isEmpty();
+		});
 	}
 
 	@Test
 	void exactStatusTemplateErrorPage() {
 		this.contextRunner.withPropertyValues("server.error.whitelabel.enabled=false",
 				"spring.mustache.prefix=" + getErrorTemplatesLocation()).run((context) -> {
-					WebTestClient client = getWebClient(context);
-					String body = client.get().uri("/notfound").accept(MediaType.TEXT_HTML).exchange().expectStatus()
-							.isNotFound().expectBody(String.class).returnResult().getResponseBody();
-					assertThat(body).contains("404 page");
-				});
+			WebTestClient client = getWebClient(context);
+			String body = client.get().uri("/notfound").accept(MediaType.TEXT_HTML).exchange().expectStatus()
+					.isNotFound().expectBody(String.class).returnResult().getResponseBody();
+			assertThat(body).contains("404 page");
+		});
 	}
 
 	@Test
 	void seriesStatusTemplateErrorPage() {
 		this.contextRunner.withPropertyValues("server.error.whitelabel.enabled=false",
 				"spring.mustache.prefix=" + getErrorTemplatesLocation()).run((context) -> {
-					WebTestClient client = getWebClient(context);
-					String body = client.get().uri("/badRequest").accept(MediaType.TEXT_HTML).exchange().expectStatus()
-							.isBadRequest().expectBody(String.class).returnResult().getResponseBody();
-					assertThat(body).contains("4xx page");
-				});
+			WebTestClient client = getWebClient(context);
+			String body = client.get().uri("/badRequest").accept(MediaType.TEXT_HTML).exchange().expectStatus()
+					.isBadRequest().expectBody(String.class).returnResult().getResponseBody();
+			assertThat(body).contains("4xx page");
+		});
 	}
 
 	@Test

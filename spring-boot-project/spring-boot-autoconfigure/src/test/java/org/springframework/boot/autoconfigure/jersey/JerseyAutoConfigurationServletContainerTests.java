@@ -63,8 +63,8 @@ class JerseyAutoConfigurationServletContainerTests {
 		assertThat(output).contains("Servlet " + Application.class.getName() + " was not registered");
 	}
 
-	@ImportAutoConfiguration({ ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@ImportAutoConfiguration({ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	@Import(ContainerConfiguration.class)
 	@Path("/hello")
 	@Configuration(proxyBeanMethods = false)

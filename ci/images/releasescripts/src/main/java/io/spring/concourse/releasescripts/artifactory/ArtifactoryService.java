@@ -65,7 +65,8 @@ public class ArtifactoryService {
 
 	/**
 	 * Move artifacts to a target repository in Artifactory.
-	 * @param targetRepo the targetRepo
+	 *
+	 * @param targetRepo  the targetRepo
 	 * @param releaseInfo the release information
 	 */
 	public void promote(String targetRepo, ReleaseInfo releaseInfo) {
@@ -79,13 +80,11 @@ public class ArtifactoryService {
 		try {
 			this.restTemplate.exchange(requestEntity, String.class);
 			logger.debug("Promotion complete");
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 			boolean isAlreadyPromoted = isAlreadyPromoted(buildName, buildNumber, request.getTargetRepo());
 			if (isAlreadyPromoted) {
 				logger.info("Already promoted.");
-			}
-			else {
+			} else {
 				logger.info("Promotion failed.");
 				throw ex;
 			}
@@ -105,8 +104,7 @@ public class ArtifactoryService {
 			}
 			logger.debug("Returned repository " + status.getRepository() + " expecting " + targetRepo);
 			return status.getRepository().equals(targetRepo);
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 			logger.debug("Client error, assuming not promoted");
 			return false;
 		}

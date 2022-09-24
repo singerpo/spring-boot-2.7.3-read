@@ -40,7 +40,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
  */
 @AutoConfiguration(after = GraphQlWebMvcAutoConfiguration.class)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-@ConditionalOnClass({ GraphQL.class, GraphQlHttpHandler.class, EnableWebSecurity.class })
+@ConditionalOnClass({GraphQL.class, GraphQlHttpHandler.class, EnableWebSecurity.class})
 @ConditionalOnBean(GraphQlHttpHandler.class)
 public class GraphQlWebMvcSecurityAutoConfiguration {
 

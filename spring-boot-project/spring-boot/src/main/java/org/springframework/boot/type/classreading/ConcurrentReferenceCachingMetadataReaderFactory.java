@@ -33,8 +33,8 @@ import org.springframework.util.ConcurrentReferenceHashMap;
  * {@link Resource} handle (i.e. per ".class" file).
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see CachingMetadataReaderFactory
+ * @since 1.4.0
  */
 public class ConcurrentReferenceCachingMetadataReaderFactory extends SimpleMetadataReaderFactory {
 
@@ -50,8 +50,9 @@ public class ConcurrentReferenceCachingMetadataReaderFactory extends SimpleMetad
 	/**
 	 * Create a new {@link ConcurrentReferenceCachingMetadataReaderFactory} instance for
 	 * the given resource loader.
+	 *
 	 * @param resourceLoader the Spring ResourceLoader to use (also determines the
-	 * ClassLoader to use)
+	 *                       ClassLoader to use)
 	 */
 	public ConcurrentReferenceCachingMetadataReaderFactory(ResourceLoader resourceLoader) {
 		super(resourceLoader);
@@ -60,6 +61,7 @@ public class ConcurrentReferenceCachingMetadataReaderFactory extends SimpleMetad
 	/**
 	 * Create a new {@link ConcurrentReferenceCachingMetadataReaderFactory} instance for
 	 * the given class loader.
+	 *
 	 * @param classLoader the ClassLoader to use
 	 */
 	public ConcurrentReferenceCachingMetadataReaderFactory(ClassLoader classLoader) {
@@ -78,6 +80,7 @@ public class ConcurrentReferenceCachingMetadataReaderFactory extends SimpleMetad
 
 	/**
 	 * Create the meta-data reader.
+	 *
 	 * @param resource the source resource.
 	 * @return the meta-data reader
 	 * @throws IOException on error

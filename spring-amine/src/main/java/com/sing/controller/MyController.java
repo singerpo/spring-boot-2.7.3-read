@@ -15,20 +15,20 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MyController {
 	@RequestMapping("hello")
-	public ModelAndView hello(){
+	public ModelAndView hello() {
 		ModelAndView modelAndView = new ModelAndView("hello");
-		modelAndView.addObject("msg","hello Spring Boot");
+		modelAndView.addObject("msg", "hello Spring Boot");
 		return modelAndView;
 	}
 
 	@RequestMapping("/login")
-	public String login(HttpServletRequest request){
+	public String login(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		return "locale";
 	}
 
 	@RequestMapping("online")
-	public String online(){
-		return "当前在线人数："+ MyHttpSessionListener.online +"人";
+	public String online() {
+		return "当前在线人数：" + MyHttpSessionListener.online + "人";
 	}
 }

@@ -38,6 +38,7 @@ public class ConfigurationPropertiesBindException extends BeanCreationException 
 
 	/**
 	 * Return the bean type that was being bound.
+	 *
 	 * @return the bean type
 	 */
 	public Class<?> getBeanType() {
@@ -46,6 +47,7 @@ public class ConfigurationPropertiesBindException extends BeanCreationException 
 
 	/**
 	 * Return the configuration properties annotation that triggered the binding.
+	 *
 	 * @return the configuration properties annotation
 	 */
 	public ConfigurationProperties getAnnotation() {

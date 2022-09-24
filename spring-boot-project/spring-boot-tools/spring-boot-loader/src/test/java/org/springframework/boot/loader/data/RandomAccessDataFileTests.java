@@ -92,7 +92,7 @@ class RandomAccessDataFileTests {
 	@Test
 	void readWithOffsetAndLengthShouldRead() throws Exception {
 		byte[] read = this.file.read(2, 3);
-		assertThat(read).isEqualTo(new byte[] { 2, 3, 4 });
+		assertThat(read).isEqualTo(new byte[]{2, 3, 4});
 	}
 
 	@Test
@@ -149,7 +149,7 @@ class RandomAccessDataFileTests {
 		byte[] b = new byte[7];
 		this.inputStream.skip(1);
 		int amountRead = this.inputStream.read(b, 2, 3);
-		assertThat(b).isEqualTo(new byte[] { 0, 0, 1, 2, 3, 0, 0 });
+		assertThat(b).isEqualTo(new byte[]{0, 0, 1, 2, 3, 0, 0});
 		assertThat(amountRead).isEqualTo(3);
 	}
 
@@ -171,9 +171,9 @@ class RandomAccessDataFileTests {
 
 	@Test
 	void inputStreamReadZeroLength() throws Exception {
-		byte[] b = new byte[] { 0x0F };
+		byte[] b = new byte[]{0x0F};
 		int amountRead = this.inputStream.read(b, 0, 0);
-		assertThat(b).isEqualTo(new byte[] { 0x0F });
+		assertThat(b).isEqualTo(new byte[]{0x0F});
 		assertThat(amountRead).isEqualTo(0);
 		assertThat(this.inputStream.read()).isEqualTo(0);
 	}
@@ -257,7 +257,7 @@ class RandomAccessDataFileTests {
 		InputStream inputStream = subsection.getInputStream();
 		byte[] b = new byte[3];
 		int amountRead = inputStream.read(b);
-		assertThat(b).isEqualTo(new byte[] { 1, 2, 0 });
+		assertThat(b).isEqualTo(new byte[]{1, 2, 0});
 		assertThat(amountRead).isEqualTo(2);
 	}
 

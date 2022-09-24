@@ -51,7 +51,7 @@ public class MongoAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(MongoClient.class)
 	public MongoClient mongo(ObjectProvider<MongoClientSettingsBuilderCustomizer> builderCustomizers,
-			MongoClientSettings settings) {
+							 MongoClientSettings settings) {
 		return new MongoClientFactory(builderCustomizers.orderedStream().collect(Collectors.toList()))
 				.createMongoClient(settings);
 	}
@@ -67,7 +67,7 @@ public class MongoAutoConfiguration {
 
 		@Bean
 		MongoPropertiesClientSettingsBuilderCustomizer mongoPropertiesCustomizer(MongoProperties properties,
-				Environment environment) {
+																				 Environment environment) {
 			return new MongoPropertiesClientSettingsBuilderCustomizer(properties, environment);
 		}
 

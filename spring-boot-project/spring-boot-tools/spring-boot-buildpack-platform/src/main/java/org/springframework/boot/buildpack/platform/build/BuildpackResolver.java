@@ -27,7 +27,8 @@ interface BuildpackResolver {
 
 	/**
 	 * Attempt to resolve the given {@link BuildpackReference}.
-	 * @param context the resolver context
+	 *
+	 * @param context   the resolver context
 	 * @param reference the reference to resolve
 	 * @return a resolved {@link Buildpack} instance or {@code null}
 	 */

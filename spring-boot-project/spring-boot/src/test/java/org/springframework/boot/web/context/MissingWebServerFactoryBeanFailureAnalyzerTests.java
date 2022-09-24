@@ -66,8 +66,7 @@ class MissingWebServerFactoryBeanFailureAnalyzerTests {
 			context.refresh();
 			context.close();
 			return null;
-		}
-		catch (ApplicationContextException ex) {
+		} catch (ApplicationContextException ex) {
 			return ex;
 		}
 	}

@@ -32,8 +32,8 @@ class MyService(restTemplateBuilder: RestTemplateBuilder) {
 
 	fun someRestCall(name: String): Details {
 		return restTemplate.getForObject(
-			"/{name}/details",
-			Details::class.java, name
+				"/{name}/details",
+				Details::class.java, name
 		)!!
 	}
 

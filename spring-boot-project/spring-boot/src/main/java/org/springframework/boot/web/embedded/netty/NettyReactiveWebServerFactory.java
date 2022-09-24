@@ -76,13 +76,14 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	}
 
 	NettyWebServer createNettyWebServer(HttpServer httpServer, ReactorHttpHandlerAdapter handlerAdapter,
-			Duration lifecycleTimeout, Shutdown shutdown) {
+										Duration lifecycleTimeout, Shutdown shutdown) {
 		return new NettyWebServer(httpServer, handlerAdapter, lifecycleTimeout, shutdown);
 	}
 
 	/**
 	 * Returns a mutable collection of the {@link NettyServerCustomizer}s that will be
 	 * applied to the Netty server builder.
+	 *
 	 * @return the customizers that will be applied
 	 */
 	public Collection<NettyServerCustomizer> getServerCustomizers() {
@@ -92,6 +93,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Set {@link NettyServerCustomizer}s that should be applied to the Netty server
 	 * builder. Calling this method will replace any existing customizers.
+	 *
 	 * @param serverCustomizers the customizers to set
 	 */
 	public void setServerCustomizers(Collection<? extends NettyServerCustomizer> serverCustomizers) {
@@ -102,6 +104,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Add {@link NettyServerCustomizer}s that should be applied while building the
 	 * server.
+	 *
 	 * @param serverCustomizers the customizers to add
 	 */
 	public void addServerCustomizers(NettyServerCustomizer... serverCustomizers) {
@@ -112,6 +115,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Add {@link NettyRouteProvider}s that should be applied, in order, before the
 	 * handler for the Spring application.
+	 *
 	 * @param routeProviders the route providers to add
 	 */
 	public void addRouteProviders(NettyRouteProvider... routeProviders) {
@@ -122,6 +126,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 	/**
 	 * Set the maximum amount of time that should be waited when starting or stopping the
 	 * server.
+	 *
 	 * @param lifecycleTimeout the lifecycle timeout
 	 */
 	public void setLifecycleTimeout(Duration lifecycleTimeout) {
@@ -130,6 +135,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 
 	/**
 	 * Set if x-forward-* headers should be processed.
+	 *
 	 * @param useForwardHeaders if x-forward headers should be used
 	 * @since 2.1.0
 	 */
@@ -139,6 +145,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 
 	/**
 	 * Set the {@link ReactorResourceFactory} to get the shared resources from.
+	 *
 	 * @param resourceFactory the server resources
 	 * @since 2.1.0
 	 */
@@ -162,8 +169,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 			LoopResources resources = this.resourceFactory.getLoopResources();
 			Assert.notNull(resources, "No LoopResources: is ReactorResourceFactory not initialized yet?");
 			server = server.runOn(resources).bindAddress(this::getListenAddress);
-		}
-		else {
+		} else {
 			server = server.bindAddress(this::getListenAddress);
 		}
 		if (getSsl() != null && getSsl().isEnabled()) {
@@ -190,8 +196,7 @@ public class NettyReactiveWebServerFactory extends AbstractReactiveWebServerFact
 		if (getHttp2() != null && getHttp2().isEnabled()) {
 			if (getSsl() != null && getSsl().isEnabled()) {
 				protocols.add(HttpProtocol.H2);
-			}
-			else {
+			} else {
 				protocols.add(HttpProtocol.H2C);
 			}
 		}

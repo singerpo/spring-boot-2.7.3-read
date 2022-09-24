@@ -50,7 +50,7 @@ public class MappingsEndpointAutoConfiguration {
 
 	@Bean
 	public MappingsEndpoint mappingsEndpoint(ApplicationContext applicationContext,
-			ObjectProvider<MappingDescriptionProvider> descriptionProviders) {
+											 ObjectProvider<MappingDescriptionProvider> descriptionProviders) {
 		return new MappingsEndpoint(descriptionProviders.orderedStream().collect(Collectors.toList()),
 				applicationContext);
 	}

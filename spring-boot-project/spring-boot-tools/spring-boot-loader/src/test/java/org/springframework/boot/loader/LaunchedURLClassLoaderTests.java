@@ -45,28 +45,28 @@ class LaunchedURLClassLoaderTests {
 	@Test
 	void resolveResourceFromArchive() throws Exception {
 		LaunchedURLClassLoader loader = new LaunchedURLClassLoader(
-				new URL[] { new URL("jar:file:src/test/resources/jars/app.jar!/") }, getClass().getClassLoader());
+				new URL[]{new URL("jar:file:src/test/resources/jars/app.jar!/")}, getClass().getClassLoader());
 		assertThat(loader.getResource("demo/Application.java")).isNotNull();
 	}
 
 	@Test
 	void resolveResourcesFromArchive() throws Exception {
 		LaunchedURLClassLoader loader = new LaunchedURLClassLoader(
-				new URL[] { new URL("jar:file:src/test/resources/jars/app.jar!/") }, getClass().getClassLoader());
+				new URL[]{new URL("jar:file:src/test/resources/jars/app.jar!/")}, getClass().getClassLoader());
 		assertThat(loader.getResources("demo/Application.java").hasMoreElements()).isTrue();
 	}
 
 	@Test
 	void resolveRootPathFromArchive() throws Exception {
 		LaunchedURLClassLoader loader = new LaunchedURLClassLoader(
-				new URL[] { new URL("jar:file:src/test/resources/jars/app.jar!/") }, getClass().getClassLoader());
+				new URL[]{new URL("jar:file:src/test/resources/jars/app.jar!/")}, getClass().getClassLoader());
 		assertThat(loader.getResource("")).isNotNull();
 	}
 
 	@Test
 	void resolveRootResourcesFromArchive() throws Exception {
 		LaunchedURLClassLoader loader = new LaunchedURLClassLoader(
-				new URL[] { new URL("jar:file:src/test/resources/jars/app.jar!/") }, getClass().getClassLoader());
+				new URL[]{new URL("jar:file:src/test/resources/jars/app.jar!/")}, getClass().getClassLoader());
 		assertThat(loader.getResources("").hasMoreElements()).isTrue();
 	}
 
@@ -76,7 +76,7 @@ class LaunchedURLClassLoaderTests {
 		TestJarCreator.createTestJar(file);
 		try (JarFile jarFile = new JarFile(file)) {
 			URL url = jarFile.getUrl();
-			try (LaunchedURLClassLoader loader = new LaunchedURLClassLoader(new URL[] { url }, null)) {
+			try (LaunchedURLClassLoader loader = new LaunchedURLClassLoader(new URL[]{url}, null)) {
 				URL resource = loader.getResource("nested.jar!/3.dat");
 				assertThat(resource.toString()).isEqualTo(url + "nested.jar!/3.dat");
 				try (InputStream input = resource.openConnection().getInputStream()) {
@@ -92,7 +92,7 @@ class LaunchedURLClassLoaderTests {
 		TestJarCreator.createTestJar(file);
 		try (JarFile jarFile = new JarFile(file)) {
 			URL url = jarFile.getUrl();
-			try (LaunchedURLClassLoader loader = new LaunchedURLClassLoader(new URL[] { url }, null)) {
+			try (LaunchedURLClassLoader loader = new LaunchedURLClassLoader(new URL[]{url}, null)) {
 				Thread.currentThread().interrupt();
 				URL resource = loader.getResource("nested.jar!/3.dat");
 				assertThat(resource.toString()).isEqualTo(url + "nested.jar!/3.dat");
@@ -101,8 +101,7 @@ class LaunchedURLClassLoaderTests {
 					assertThat(input.read()).isEqualTo(3);
 				}
 				((JarURLConnection) connection).getJarFile().close();
-			}
-			finally {
+			} finally {
 				Thread.interrupted();
 			}
 		}

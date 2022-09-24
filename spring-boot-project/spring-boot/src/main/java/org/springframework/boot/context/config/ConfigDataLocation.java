@@ -55,6 +55,7 @@ public final class ConfigDataLocation implements OriginProvider {
 	/**
 	 * Return if the location is optional and should ignore
 	 * {@link ConfigDataNotFoundException}.
+	 *
 	 * @return if the location is optional
 	 */
 	public boolean isOptional() {
@@ -64,6 +65,7 @@ public final class ConfigDataLocation implements OriginProvider {
 	/**
 	 * Return the value of the location (always excluding any user specified
 	 * {@code optional:} prefix).
+	 *
 	 * @return the location value
 	 */
 	public String getValue() {
@@ -72,6 +74,7 @@ public final class ConfigDataLocation implements OriginProvider {
 
 	/**
 	 * Return if {@link #getValue()} has the specified prefix.
+	 *
 	 * @param prefix the prefix to check
 	 * @return if the value has the prefix
 	 */
@@ -82,6 +85,7 @@ public final class ConfigDataLocation implements OriginProvider {
 	/**
 	 * Return {@link #getValue()} with the specified prefix removed. If the location does
 	 * not have the given prefix then the {@link #getValue()} is returned unchanged.
+	 *
 	 * @param prefix the prefix to check
 	 * @return the value with the prefix removed
 	 */
@@ -100,6 +104,7 @@ public final class ConfigDataLocation implements OriginProvider {
 	/**
 	 * Return an array of {@link ConfigDataLocation} elements built by splitting this
 	 * {@link ConfigDataLocation} around a delimiter of {@code ";"}.
+	 *
 	 * @return the split locations
 	 * @since 2.4.7
 	 */
@@ -110,6 +115,7 @@ public final class ConfigDataLocation implements OriginProvider {
 	/**
 	 * Return an array of {@link ConfigDataLocation} elements built by splitting this
 	 * {@link ConfigDataLocation} around the specified delimiter.
+	 *
 	 * @param delimiter the delimiter to split on
 	 * @return the split locations
 	 * @since 2.4.7
@@ -147,6 +153,7 @@ public final class ConfigDataLocation implements OriginProvider {
 
 	/**
 	 * Create a new {@link ConfigDataLocation} with a specific {@link Origin}.
+	 *
 	 * @param origin the origin to set
 	 * @return a new {@link ConfigDataLocation} instance.
 	 */
@@ -156,6 +163,7 @@ public final class ConfigDataLocation implements OriginProvider {
 
 	/**
 	 * Factory method to create a new {@link ConfigDataLocation} from a string.
+	 *
 	 * @param location the location string
 	 * @return a {@link ConfigDataLocation} instance or {@code null} if no location was
 	 * provided

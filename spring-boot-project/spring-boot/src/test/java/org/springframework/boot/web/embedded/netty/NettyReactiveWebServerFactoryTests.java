@@ -127,8 +127,7 @@ class NettyReactiveWebServerFactoryTests extends AbstractReactiveWebServerFactor
 			try {
 				webClient.get().retrieve().toBodilessEntity().block();
 				return false;
-			}
-			catch (RuntimeException ex) {
+			} catch (RuntimeException ex) {
 				return ex.getCause() instanceof ConnectException;
 			}
 		});
@@ -166,7 +165,7 @@ class NettyReactiveWebServerFactoryTests extends AbstractReactiveWebServerFactor
 
 		@Override
 		NettyWebServer createNettyWebServer(HttpServer httpServer, ReactorHttpHandlerAdapter handlerAdapter,
-				Duration lifecycleTimeout, Shutdown shutdown) {
+											Duration lifecycleTimeout, Shutdown shutdown) {
 			return new NoPortNettyWebServer(httpServer, handlerAdapter, lifecycleTimeout, shutdown);
 		}
 
@@ -175,7 +174,7 @@ class NettyReactiveWebServerFactoryTests extends AbstractReactiveWebServerFactor
 	static class NoPortNettyWebServer extends NettyWebServer {
 
 		NoPortNettyWebServer(HttpServer httpServer, ReactorHttpHandlerAdapter handlerAdapter, Duration lifecycleTimeout,
-				Shutdown shutdown) {
+							 Shutdown shutdown) {
 			super(httpServer, handlerAdapter, lifecycleTimeout, shutdown);
 		}
 

@@ -40,7 +40,7 @@ class ReactiveManagementContextFactory implements ManagementContextFactory {
 
 	@Override
 	public ConfigurableWebServerApplicationContext createManagementContext(ApplicationContext parent,
-			Class<?>... configClasses) {
+																		   Class<?>... configClasses) {
 		AnnotationConfigReactiveWebServerApplicationContext child = new AnnotationConfigReactiveWebServerApplicationContext();
 		child.setParent(parent);
 		Class<?>[] combinedClasses = ObjectUtils.addObjectToArray(configClasses,
@@ -51,7 +51,7 @@ class ReactiveManagementContextFactory implements ManagementContextFactory {
 	}
 
 	private void registerReactiveWebServerFactory(ApplicationContext parent,
-			AnnotationConfigReactiveWebServerApplicationContext childContext) {
+												  AnnotationConfigReactiveWebServerApplicationContext childContext) {
 		try {
 			ConfigurableListableBeanFactory beanFactory = childContext.getBeanFactory();
 			if (beanFactory instanceof BeanDefinitionRegistry) {
@@ -59,8 +59,7 @@ class ReactiveManagementContextFactory implements ManagementContextFactory {
 				registry.registerBeanDefinition("ReactiveWebServerFactory",
 						new RootBeanDefinition(determineReactiveWebServerFactoryClass(parent)));
 			}
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			// Ignore and assume auto-configuration
 		}
 	}

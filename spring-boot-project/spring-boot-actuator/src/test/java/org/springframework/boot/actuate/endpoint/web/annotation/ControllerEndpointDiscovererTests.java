@@ -141,7 +141,7 @@ class ControllerEndpointDiscovererTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ TestEndpoint.class, TestControllerEndpoint.class, TestRestControllerEndpoint.class })
+	@Import({TestEndpoint.class, TestControllerEndpoint.class, TestRestControllerEndpoint.class})
 	static class WithRegularEndpointConfiguration {
 
 	}

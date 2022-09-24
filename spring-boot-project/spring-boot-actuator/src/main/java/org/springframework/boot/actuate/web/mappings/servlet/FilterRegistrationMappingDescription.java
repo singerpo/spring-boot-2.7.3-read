@@ -31,6 +31,7 @@ public class FilterRegistrationMappingDescription extends RegistrationMappingDes
 	/**
 	 * Creates a new {@code FilterRegistrationMappingDescription} derived from the given
 	 * {@code filterRegistration}.
+	 *
 	 * @param filterRegistration the filter registration
 	 */
 	public FilterRegistrationMappingDescription(FilterRegistration filterRegistration) {
@@ -39,6 +40,7 @@ public class FilterRegistrationMappingDescription extends RegistrationMappingDes
 
 	/**
 	 * Returns the servlet name mappings for the registered filter.
+	 *
 	 * @return the mappings
 	 */
 	public Collection<String> getServletNameMappings() {
@@ -47,6 +49,7 @@ public class FilterRegistrationMappingDescription extends RegistrationMappingDes
 
 	/**
 	 * Returns the URL pattern mappings for the registered filter.
+	 *
 	 * @return the mappings
 	 */
 	public Collection<String> getUrlPatternMappings() {

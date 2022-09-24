@@ -22,9 +22,9 @@ package org.springframework.boot.actuate.health;
  * be either a {@link HealthIndicator} or a {@link CompositeHealthContributor}.
  *
  * @author Phillip Webb
- * @since 2.2.0
  * @see HealthIndicator
  * @see CompositeHealthContributor
+ * @since 2.2.0
  */
 public interface HealthContributor {
 

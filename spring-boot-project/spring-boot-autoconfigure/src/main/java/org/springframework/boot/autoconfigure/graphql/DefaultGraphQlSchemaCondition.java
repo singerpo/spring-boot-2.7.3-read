@@ -68,8 +68,7 @@ class DefaultGraphQlSchemaCondition extends SpringBootCondition implements Confi
 		if (!schemaResources.isEmpty()) {
 			match = true;
 			messages.add(message.found("schema", "schemas").items(ConditionMessage.Style.QUOTE, schemaResources));
-		}
-		else {
+		} else {
 			messages.add(message.didNotFind("schema files in locations").items(ConditionMessage.Style.QUOTE,
 					Arrays.asList(schema.getLocations())));
 		}
@@ -78,15 +77,14 @@ class DefaultGraphQlSchemaCondition extends SpringBootCondition implements Confi
 		if (customizerBeans.length != 0) {
 			match = true;
 			messages.add(message.found("customizer", "customizers").items(Arrays.asList(customizerBeans)));
-		}
-		else {
+		} else {
 			messages.add((message.didNotFind("GraphQlSourceBuilderCustomizer").atAll()));
 		}
 		return new ConditionOutcome(match, ConditionMessage.of(messages));
 	}
 
 	private List<Resource> resolveSchemaResources(ResourcePatternResolver resolver, String[] locations,
-			String[] extensions) {
+												  String[] extensions) {
 		List<Resource> resources = new ArrayList<>();
 		for (String location : locations) {
 			for (String extension : extensions) {
@@ -99,8 +97,7 @@ class DefaultGraphQlSchemaCondition extends SpringBootCondition implements Confi
 	private List<Resource> resolveSchemaResources(ResourcePatternResolver resolver, String pattern) {
 		try {
 			return Arrays.asList(resolver.getResources(pattern));
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			return Collections.emptyList();
 		}
 	}

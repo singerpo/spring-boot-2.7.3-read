@@ -203,11 +203,11 @@ class ReactiveElasticsearchRestClientAutoConfigurationTests {
 	void whenUriUserInfoMatchesUsernameAndPasswordPropertiesThenDefaultAuthorizationHeaderIsConfigured() {
 		this.contextRunner.withPropertyValues("spring.elasticsearch.uris=http://user:secret@localhost:9876",
 				"spring.elasticsearch.username=user", "spring.elasticsearch.password=secret").run((context) -> {
-					ClientConfiguration clientConfiguration = context.getBean(ClientConfiguration.class);
-					assertThat(clientConfiguration.getDefaultHeaders().get(HttpHeaders.AUTHORIZATION))
-							.containsExactly("Basic " + Base64.getEncoder()
-									.encodeToString("user:secret".getBytes(StandardCharsets.UTF_8)));
-				});
+			ClientConfiguration clientConfiguration = context.getBean(ClientConfiguration.class);
+			assertThat(clientConfiguration.getDefaultHeaders().get(HttpHeaders.AUTHORIZATION))
+					.containsExactly("Basic " + Base64.getEncoder()
+							.encodeToString("user:secret".getBytes(StandardCharsets.UTF_8)));
+		});
 	}
 
 	@Test
@@ -268,11 +268,11 @@ class ReactiveElasticsearchRestClientAutoConfigurationTests {
 		this.contextRunner.withPropertyValues(prefix + "username=alice", prefix + "password=secret")
 				.run((context) -> assertThat(
 						context.getBean(ClientConfiguration.class).getDefaultHeaders().get(HttpHeaders.AUTHORIZATION))
-								.containsExactly("Basic YWxpY2U6c2VjcmV0"));
+						.containsExactly("Basic YWxpY2U6c2VjcmV0"));
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { "spring.elasticsearch.webclient.", "spring.data.elasticsearch.client.reactive." })
+	@ValueSource(strings = {"spring.elasticsearch.webclient.", "spring.data.elasticsearch.client.reactive."})
 	void whenMaxInMemorySizeIsConfiguredThenUnderlyingWebClientHasCustomMaxInMemorySize(String prefix) {
 		this.contextRunner.withPropertyValues(prefix + "max-in-memory-size=1MB").run((context) -> {
 			WebClient client = configureWebClient(context.getBean(ClientConfiguration.class).getClientConfigurers());
@@ -313,7 +313,7 @@ class ReactiveElasticsearchRestClientAutoConfigurationTests {
 	@ParameterizedTest
 	@Target(ElementType.METHOD)
 	@Retention(RetentionPolicy.RUNTIME)
-	@ValueSource(strings = { "spring.data.elasticsearch.client.reactive.", "spring.elasticsearch." })
+	@ValueSource(strings = {"spring.data.elasticsearch.client.reactive.", "spring.elasticsearch."})
 	static @interface ParameterizedPropertyPrefixTest {
 
 	}

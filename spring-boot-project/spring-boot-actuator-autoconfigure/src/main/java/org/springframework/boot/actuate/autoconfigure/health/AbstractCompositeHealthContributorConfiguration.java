@@ -63,8 +63,7 @@ public abstract class AbstractCompositeHealthContributorConfiguration<C, I exten
 		try {
 			Constructor<I> constructor = (Constructor<I>) this.indicatorType.getDeclaredConstructor(this.beanType);
 			return BeanUtils.instantiateClass(constructor, bean);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(
 					"Unable to create health indicator " + this.indicatorType + " for bean type " + this.beanType, ex);
 		}

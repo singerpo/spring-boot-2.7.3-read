@@ -44,17 +44,18 @@ public class MutuallyExclusiveConfigurationPropertiesException extends RuntimeEx
 	/**
 	 * Creates a new instance for mutually exclusive configuration properties when two or
 	 * more of those properties have been configured.
-	 * @param configuredNames the names of the properties that have been configured
+	 *
+	 * @param configuredNames        the names of the properties that have been configured
 	 * @param mutuallyExclusiveNames the names of the properties that are mutually
-	 * exclusive
+	 *                               exclusive
 	 */
 	public MutuallyExclusiveConfigurationPropertiesException(Collection<String> configuredNames,
-			Collection<String> mutuallyExclusiveNames) {
+															 Collection<String> mutuallyExclusiveNames) {
 		this(asSet(configuredNames), asSet(mutuallyExclusiveNames));
 	}
 
 	private MutuallyExclusiveConfigurationPropertiesException(Set<String> configuredNames,
-			Set<String> mutuallyExclusiveNames) {
+															  Set<String> mutuallyExclusiveNames) {
 		super(buildMessage(mutuallyExclusiveNames, configuredNames));
 		this.configuredNames = configuredNames;
 		this.mutuallyExclusiveNames = mutuallyExclusiveNames;
@@ -62,6 +63,7 @@ public class MutuallyExclusiveConfigurationPropertiesException extends RuntimeEx
 
 	/**
 	 * Return the names of the properties that have been configured.
+	 *
 	 * @return the names of the configured properties
 	 */
 	public Set<String> getConfiguredNames() {
@@ -70,6 +72,7 @@ public class MutuallyExclusiveConfigurationPropertiesException extends RuntimeEx
 
 	/**
 	 * Return the names of the properties that are mutually exclusive.
+	 *
 	 * @return the names of the mutually exclusive properties
 	 */
 	public Set<String> getMutuallyExclusiveNames() {
@@ -93,6 +96,7 @@ public class MutuallyExclusiveConfigurationPropertiesException extends RuntimeEx
 	/**
 	 * Throw a new {@link MutuallyExclusiveConfigurationPropertiesException} if multiple
 	 * non-null values are defined in a set of entries.
+	 *
 	 * @param entries a consumer used to populate the entries to check
 	 */
 	public static void throwIfMultipleNonNullValuesIn(Consumer<Map<String, Object>> entries) {

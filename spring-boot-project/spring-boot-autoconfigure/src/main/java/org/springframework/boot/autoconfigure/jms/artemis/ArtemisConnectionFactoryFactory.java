@@ -42,8 +42,8 @@ class ArtemisConnectionFactoryFactory {
 
 	private static final String DEFAULT_BROKER_URL = "tcp://localhost:61616";
 
-	static final String[] EMBEDDED_JMS_CLASSES = { "org.apache.activemq.artemis.jms.server.embedded.EmbeddedJMS",
-			"org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ" };
+	static final String[] EMBEDDED_JMS_CLASSES = {"org.apache.activemq.artemis.jms.server.embedded.EmbeddedJMS",
+			"org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ"};
 
 	private final ArtemisProperties properties;
 
@@ -60,8 +60,7 @@ class ArtemisConnectionFactoryFactory {
 		try {
 			startEmbeddedJms();
 			return doCreateConnectionFactory(factoryClass);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to create ActiveMQConnectionFactory", ex);
 		}
 	}
@@ -71,8 +70,7 @@ class ArtemisConnectionFactoryFactory {
 			if (ClassUtils.isPresent(embeddedJmsClass, null)) {
 				try {
 					this.beanFactory.getBeansOfType(Class.forName(embeddedJmsClass));
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 					// Ignore
 				}
 			}
@@ -92,6 +90,7 @@ class ArtemisConnectionFactoryFactory {
 
 	/**
 	 * Deduce the {@link ArtemisMode} to use if none has been set.
+	 *
 	 * @return the mode
 	 */
 	private ArtemisMode deduceMode() {
@@ -117,8 +116,7 @@ class ArtemisConnectionFactoryFactory {
 					InVMConnectorFactory.class.getName(), this.properties.getEmbedded().generateTransportParameters());
 			ServerLocator serviceLocator = ActiveMQClient.createServerLocatorWithoutHA(transportConfiguration);
 			return factoryClass.getConstructor(ServerLocator.class).newInstance(serviceLocator);
-		}
-		catch (NoClassDefFoundError ex) {
+		} catch (NoClassDefFoundError ex) {
 			throw new IllegalStateException("Unable to create InVM "
 					+ "Artemis connection, ensure that artemis-jms-server.jar is in the classpath", ex);
 		}

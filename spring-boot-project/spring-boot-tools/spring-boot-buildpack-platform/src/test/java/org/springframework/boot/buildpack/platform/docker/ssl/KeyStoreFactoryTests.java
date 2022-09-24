@@ -56,10 +56,10 @@ class KeyStoreFactoryTests {
 		KeyStore keyStore = KeyStoreFactory.create(certPath, null, "test-alias");
 		assertThat(keyStore.containsAlias("test-alias-0")).isTrue();
 		assertThat(keyStore.getCertificate("test-alias-0")).isNotNull();
-		assertThat(keyStore.getKey("test-alias-0", new char[] {})).isNull();
+		assertThat(keyStore.getKey("test-alias-0", new char[]{})).isNull();
 		assertThat(keyStore.containsAlias("test-alias-1")).isTrue();
 		assertThat(keyStore.getCertificate("test-alias-1")).isNotNull();
-		assertThat(keyStore.getKey("test-alias-1", new char[] {})).isNull();
+		assertThat(keyStore.getKey("test-alias-1", new char[]{})).isNull();
 		Files.delete(certPath);
 	}
 
@@ -71,7 +71,7 @@ class KeyStoreFactoryTests {
 		KeyStore keyStore = KeyStoreFactory.create(certPath, keyPath, "test-alias");
 		assertThat(keyStore.containsAlias("test-alias")).isTrue();
 		assertThat(keyStore.getCertificate("test-alias")).isNotNull();
-		assertThat(keyStore.getKey("test-alias", new char[] {})).isNotNull();
+		assertThat(keyStore.getKey("test-alias", new char[]{})).isNotNull();
 		Files.delete(certPath);
 		Files.delete(keyPath);
 	}

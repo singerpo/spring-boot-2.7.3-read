@@ -68,8 +68,7 @@ class EmbeddedDataSourceConfigurationTests {
 			ResultSet catalogs = connection.getMetaData().getCatalogs();
 			if (catalogs.next()) {
 				return catalogs.getString(1);
-			}
-			else {
+			} else {
 				throw new IllegalStateException("Unable to get database name");
 			}
 		}

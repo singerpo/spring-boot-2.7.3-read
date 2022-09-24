@@ -45,6 +45,7 @@ public final class DevToolsEnablementDeducer {
 	/**
 	 * Checks if a specific {@link StackTraceElement} in the current thread's stacktrace
 	 * should cause devtools to be disabled.
+	 *
 	 * @param thread the current thread
 	 * @return {@code true} if devtools should be enabled
 	 */

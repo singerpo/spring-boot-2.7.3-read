@@ -24,9 +24,9 @@ public class MyApplication {
 	public static void main(String[] args) {
 		// @formatter:off
 		new SpringApplicationBuilder()
-			.bannerMode(Banner.Mode.OFF)
-			.sources(MyApplication.class)
-			.run(args);
+				.bannerMode(Banner.Mode.OFF)
+				.sources(MyApplication.class)
+				.run(args);
 		// @formatter:on
 	}
 

@@ -29,10 +29,10 @@ class MyRandomPortWebTestClientTests {
 	@Test
 	fun exampleTest(@Autowired webClient: WebTestClient) {
 		webClient
-			.get().uri("/")
-			.exchange()
-			.expectStatus().isOk
-			.expectBody<String>().isEqualTo("Hello World")
+				.get().uri("/")
+				.exchange()
+				.expectStatus().isOk
+				.expectBody<String>().isEqualTo("Hello World")
 	}
 
 }

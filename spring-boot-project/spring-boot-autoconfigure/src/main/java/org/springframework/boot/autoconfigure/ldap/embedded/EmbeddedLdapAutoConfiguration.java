@@ -70,7 +70,7 @@ import org.springframework.util.StringUtils;
  * @since 1.5.0
  */
 @AutoConfiguration(before = LdapAutoConfiguration.class)
-@EnableConfigurationProperties({ LdapProperties.class, EmbeddedLdapProperties.class })
+@EnableConfigurationProperties({LdapProperties.class, EmbeddedLdapProperties.class})
 @ConditionalOnClass(InMemoryDirectoryServer.class)
 @Conditional(EmbeddedLdapAutoConfiguration.EmbeddedLdapCondition.class)
 public class EmbeddedLdapAutoConfiguration {
@@ -120,8 +120,7 @@ public class EmbeddedLdapAutoConfiguration {
 			Schema defaultSchema = Schema.getDefaultStandardSchema();
 			Schema schema = Schema.getSchema(resource.getInputStream());
 			config.setSchema(Schema.mergeSchemas(defaultSchema, schema));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to load schema " + resource.getDescription(), ex);
 		}
 	}
@@ -136,8 +135,7 @@ public class EmbeddedLdapAutoConfiguration {
 						this.server.importFromLDIF(true, new LDIFReader(inputStream));
 					}
 				}
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Unable to load LDIF " + location, ex);
 			}
 		}
@@ -200,7 +198,7 @@ public class EmbeddedLdapAutoConfiguration {
 		@DependsOn("directoryServer")
 		@ConditionalOnMissingBean
 		LdapContextSource ldapContextSource(Environment environment, LdapProperties properties,
-				EmbeddedLdapProperties embeddedProperties) {
+											EmbeddedLdapProperties embeddedProperties) {
 			LdapContextSource source = new LdapContextSource();
 			if (embeddedProperties.getCredential().isAvailable()) {
 				source.setUserDn(embeddedProperties.getCredential().getUsername());

@@ -31,8 +31,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * annotation directly.
  *
  * @author Stephane Nicoll
- * @since 1.5.0
  * @see JdbcTest
+ * @since 1.5.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

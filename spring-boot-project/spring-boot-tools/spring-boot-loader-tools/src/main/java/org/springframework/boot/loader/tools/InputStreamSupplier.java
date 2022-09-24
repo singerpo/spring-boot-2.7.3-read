@@ -31,6 +31,7 @@ interface InputStreamSupplier {
 
 	/**
 	 * Returns a new open {@link InputStream} at the beginning of the content.
+	 *
 	 * @return a new {@link InputStream}
 	 * @throws IOException on IO error
 	 */
@@ -38,6 +39,7 @@ interface InputStreamSupplier {
 
 	/**
 	 * Factory method to create an {@link InputStreamSupplier} for the given {@link File}.
+	 *
 	 * @param file the source file
 	 * @return a new {@link InputStreamSupplier} instance
 	 */

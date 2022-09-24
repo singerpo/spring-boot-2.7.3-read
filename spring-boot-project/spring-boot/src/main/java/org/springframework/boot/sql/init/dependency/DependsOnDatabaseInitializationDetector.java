@@ -33,6 +33,7 @@ public interface DependsOnDatabaseInitializationDetector {
 	/**
 	 * Detect beans defined in the given {@code beanFactory} that depend on database
 	 * initialization. If no beans are detected, an empty set is returned.
+	 *
 	 * @param beanFactory bean factory to examine
 	 * @return names of any beans that depend upon database initialization
 	 */

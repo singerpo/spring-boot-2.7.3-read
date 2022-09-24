@@ -42,8 +42,7 @@ public class UseLegacyProcessing implements BeforeAllCallback, AfterAllCallback 
 	public void afterAll(ExtensionContext context) throws Exception {
 		if (this.propertyValue != null) {
 			System.setProperty(PROPERTY_NAME, this.propertyValue);
-		}
-		else {
+		} else {
 			System.clearProperty(PROPERTY_NAME);
 		}
 	}

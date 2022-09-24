@@ -90,10 +90,10 @@ class SessionAutoConfigurationRedisTests extends AbstractSessionAutoConfiguratio
 				.withPropertyValues("spring.session.store-type=redis", "spring.redis.host=" + redis.getHost(),
 						"spring.redis.port=" + redis.getFirstMappedPort(), "spring.session.timeout=1m")
 				.withConfiguration(AutoConfigurations.of(RedisAutoConfiguration.class)).run((context) -> {
-					RedisIndexedSessionRepository repository = validateSessionRepository(context,
-							RedisIndexedSessionRepository.class);
-					assertThat(repository).hasFieldOrPropertyWithValue("defaultMaxInactiveInterval", 60);
-				});
+			RedisIndexedSessionRepository repository = validateSessionRepository(context,
+					RedisIndexedSessionRepository.class);
+			assertThat(repository).hasFieldOrPropertyWithValue("defaultMaxInactiveInterval", 60);
+		});
 	}
 
 	@Test

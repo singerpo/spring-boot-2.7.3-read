@@ -17,5 +17,5 @@
 		</plugins>
 	</build>
 </project>
-<!-- end::docker-token-authentication[] -->
+		<!-- end::docker-token-authentication[] -->
 

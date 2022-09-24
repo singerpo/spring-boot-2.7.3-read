@@ -40,17 +40,17 @@ import org.springframework.graphql.execution.GraphQlSource;
  * matching return type.
  *
  * @author Rossen Stoyanchev
- * @since 2.7.0
  * @see QueryByExampleDataFetcher#autoRegistrationConfigurer(List, List)
+ * @since 2.7.0
  */
 @AutoConfiguration(after = GraphQlAutoConfiguration.class)
-@ConditionalOnClass({ GraphQL.class, QueryByExampleDataFetcher.class, QueryByExampleExecutor.class })
+@ConditionalOnClass({GraphQL.class, QueryByExampleDataFetcher.class, QueryByExampleExecutor.class})
 @ConditionalOnBean(GraphQlSource.class)
 public class GraphQlQueryByExampleAutoConfiguration {
 
 	@Bean
 	public GraphQlSourceBuilderCustomizer queryByExampleRegistrar(ObjectProvider<QueryByExampleExecutor<?>> executors,
-			ObjectProvider<ReactiveQueryByExampleExecutor<?>> reactiveExecutors) {
+																  ObjectProvider<ReactiveQueryByExampleExecutor<?>> reactiveExecutors) {
 		return new GraphQlQuerydslSourceBuilderCustomizer<>(QueryByExampleDataFetcher::autoRegistrationConfigurer,
 				executors, reactiveExecutors);
 	}

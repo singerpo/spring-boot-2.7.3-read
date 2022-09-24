@@ -107,7 +107,7 @@ public class DispatcherServletsMappingDescriptionProvider implements MappingDesc
 
 	@SuppressWarnings("unchecked")
 	private static <T> List<DispatcherServletMappingDescription> describe(T handlerMapping,
-			List<HandlerMappingDescriptionProvider<?>> descriptionProviders) {
+																		  List<HandlerMappingDescriptionProvider<?>> descriptionProviders) {
 		for (HandlerMappingDescriptionProvider<?> descriptionProvider : descriptionProviders) {
 			if (descriptionProvider.getMappingClass().isInstance(handlerMapping)) {
 				return ((HandlerMappingDescriptionProvider<T>) descriptionProvider).describe(handlerMapping);

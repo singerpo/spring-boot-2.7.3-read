@@ -61,7 +61,7 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 	}
 
 	protected abstract ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses,
-			AutoConfigurationMetadata autoConfigurationMetadata);
+													  AutoConfigurationMetadata autoConfigurationMetadata);
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
@@ -82,7 +82,7 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 	}
 
 	protected final List<String> filter(Collection<String> classNames, ClassNameFilter classNameFilter,
-			ClassLoader classLoader) {
+										ClassLoader classLoader) {
 		if (CollectionUtils.isEmpty(classNames)) {
 			return Collections.emptyList();
 		}
@@ -98,7 +98,8 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 	/**
 	 * Slightly faster variant of {@link ClassUtils#forName(String, ClassLoader)} that
 	 * doesn't deal with primitives, arrays or inner types.
-	 * @param className the class name to resolve
+	 *
+	 * @param className   the class name to resolve
 	 * @param classLoader the class loader to use
 	 * @return a resolved class
 	 * @throws ClassNotFoundException if the class cannot be found
@@ -113,7 +114,6 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 	protected enum ClassNameFilter {
 
 		PRESENT {
-
 			@Override
 			public boolean matches(String className, ClassLoader classLoader) {
 				return isPresent(className, classLoader);
@@ -122,7 +122,6 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 		},
 
 		MISSING {
-
 			@Override
 			public boolean matches(String className, ClassLoader classLoader) {
 				return !isPresent(className, classLoader);
@@ -139,8 +138,7 @@ abstract class FilteringSpringBootCondition extends SpringBootCondition
 			try {
 				resolve(className, classLoader);
 				return true;
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				return false;
 			}
 		}

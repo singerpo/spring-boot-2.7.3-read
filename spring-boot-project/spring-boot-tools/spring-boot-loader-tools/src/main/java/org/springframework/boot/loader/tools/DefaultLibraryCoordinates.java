@@ -31,9 +31,10 @@ class DefaultLibraryCoordinates implements LibraryCoordinates {
 
 	/**
 	 * Create a new instance from discrete elements.
-	 * @param groupId the group ID
+	 *
+	 * @param groupId    the group ID
 	 * @param artifactId the artifact ID
-	 * @param version the version
+	 * @param version    the version
 	 */
 	DefaultLibraryCoordinates(String groupId, String artifactId, String version) {
 		this.groupId = groupId;
@@ -43,6 +44,7 @@ class DefaultLibraryCoordinates implements LibraryCoordinates {
 
 	/**
 	 * Return the group ID of the coordinates.
+	 *
 	 * @return the group ID
 	 */
 	@Override
@@ -52,6 +54,7 @@ class DefaultLibraryCoordinates implements LibraryCoordinates {
 
 	/**
 	 * Return the artifact ID of the coordinates.
+	 *
 	 * @return the artifact ID
 	 */
 	@Override
@@ -61,6 +64,7 @@ class DefaultLibraryCoordinates implements LibraryCoordinates {
 
 	/**
 	 * Return the version of the coordinates.
+	 *
 	 * @return the version
 	 */
 	@Override

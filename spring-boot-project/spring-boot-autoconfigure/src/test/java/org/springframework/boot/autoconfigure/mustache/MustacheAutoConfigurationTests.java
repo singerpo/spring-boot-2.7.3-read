@@ -251,10 +251,10 @@ class MustacheAutoConfigurationTests {
 	}
 
 	private void assertViewResolverProperty(ViewResolverKind kind, String property, String field,
-			Object expectedValue) {
+											Object expectedValue) {
 		kind.runner().withConfiguration(AutoConfigurations.of(MustacheAutoConfiguration.class))
 				.withPropertyValues(property).run((context) -> assertThat(context.getBean(kind.viewResolverClass()))
-						.extracting(field).isEqualTo(expectedValue));
+				.extracting(field).isEqualTo(expectedValue));
 	}
 
 	private <T extends AbstractApplicationContextRunner<T, ?, ?>> T configure(T runner) {

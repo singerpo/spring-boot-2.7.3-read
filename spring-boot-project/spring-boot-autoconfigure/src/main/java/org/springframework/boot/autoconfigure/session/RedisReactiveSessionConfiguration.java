@@ -38,7 +38,7 @@ import org.springframework.session.data.redis.config.annotation.web.server.Redis
  * @author Weix Sun
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ ReactiveRedisConnectionFactory.class, ReactiveRedisSessionRepository.class })
+@ConditionalOnClass({ReactiveRedisConnectionFactory.class, ReactiveRedisSessionRepository.class})
 @ConditionalOnMissingBean(ReactiveSessionRepository.class)
 @ConditionalOnBean(ReactiveRedisConnectionFactory.class)
 @Conditional(ReactiveSessionCondition.class)
@@ -50,7 +50,7 @@ class RedisReactiveSessionConfiguration {
 
 		@Autowired
 		void customize(SessionProperties sessionProperties, RedisSessionProperties redisSessionProperties,
-				ServerProperties serverProperties) {
+					   ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getReactive().getSession().getTimeout());
 			if (timeout != null) {

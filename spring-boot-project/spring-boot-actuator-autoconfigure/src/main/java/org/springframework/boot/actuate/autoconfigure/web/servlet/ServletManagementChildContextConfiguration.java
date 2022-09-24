@@ -99,7 +99,7 @@ class ServletManagementChildContextConfiguration {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ EnableWebSecurity.class, Filter.class })
+	@ConditionalOnClass({EnableWebSecurity.class, Filter.class})
 	@ConditionalOnBean(name = BeanIds.SPRING_SECURITY_FILTER_CHAIN, search = SearchStrategy.ANCESTORS)
 	static class ServletManagementContextSecurityConfiguration {
 
@@ -129,7 +129,7 @@ class ServletManagementChildContextConfiguration {
 
 		@Override
 		protected void customize(ConfigurableServletWebServerFactory webServerFactory,
-				ManagementServerProperties managementServerProperties, ServerProperties serverProperties) {
+								 ManagementServerProperties managementServerProperties, ServerProperties serverProperties) {
 			super.customize(webServerFactory, managementServerProperties, serverProperties);
 			webServerFactory.setContextPath(getContextPath(managementServerProperties));
 		}

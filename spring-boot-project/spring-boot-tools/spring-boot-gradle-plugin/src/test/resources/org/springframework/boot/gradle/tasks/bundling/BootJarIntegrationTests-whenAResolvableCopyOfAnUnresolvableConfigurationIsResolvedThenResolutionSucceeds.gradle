@@ -1,16 +1,16 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{version}'
+    id 'java'
+    id 'org.springframework.boot' version '{version}'
 }
 
 bootJar {
-	mainClass = 'com.example.Application'
+    mainClass = 'com.example.Application'
 }
 
 task resolveResolvableCopyOfUnresolvableConfiguration {
-	doFirst {
-		def copy = configurations.implementation.copyRecursive()
-		copy.canBeResolved = true
-		copy.resolve()
-	}
+    doFirst {
+        def copy = configurations.implementation.copyRecursive()
+        copy.canBeResolved = true
+        copy.resolve()
+    }
 }

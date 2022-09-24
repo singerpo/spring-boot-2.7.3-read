@@ -29,8 +29,8 @@ package org.springframework.boot.test.system;
  * @author Madhura Bhave
  * @author Phillip Webb
  * @author Andy Wilkinson
- * @since 2.2.0
  * @see OutputCaptureExtension
+ * @since 2.2.0
  */
 public interface CapturedOutput extends CharSequence {
 
@@ -52,18 +52,21 @@ public interface CapturedOutput extends CharSequence {
 	/**
 	 * Return all content (both {@link System#out System.out} and {@link System#err
 	 * System.err}) in the order that it was captured.
+	 *
 	 * @return all captured output
 	 */
 	String getAll();
 
 	/**
 	 * Return {@link System#out System.out} content in the order that it was captured.
+	 *
 	 * @return {@link System#out System.out} captured output
 	 */
 	String getOut();
 
 	/**
 	 * Return {@link System#err System.err} content in the order that it was captured.
+	 *
 	 * @return {@link System#err System.err} captured output
 	 */
 	String getErr();

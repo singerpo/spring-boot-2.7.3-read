@@ -12,7 +12,7 @@ class MyCache2kDefaultsConfiguration {
 	fun myCache2kDefaultsCustomizer(): Cache2kBuilderCustomizer {
 		return Cache2kBuilderCustomizer { builder ->
 			builder.entryCapacity(200)
-				.expireAfterWrite(5, TimeUnit.MINUTES)
+					.expireAfterWrite(5, TimeUnit.MINUTES)
 		}
 	}
 }

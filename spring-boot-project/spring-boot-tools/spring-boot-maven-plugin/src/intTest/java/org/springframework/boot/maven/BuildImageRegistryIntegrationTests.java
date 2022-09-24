@@ -66,15 +66,15 @@ class BuildImageRegistryIntegrationTests extends AbstractArchiveIntegrationTests
 		String imageName = this.registryAddress + "/" + repoName;
 		mavenBuild.project("build-image-publish").goals("package")
 				.systemProperty("spring-boot.build-image.imageName", imageName).execute((project) -> {
-					assertThat(buildLog(project)).contains("Building image").contains("Successfully built image")
-							.contains("Pushing image '" + imageName + ":latest" + "'")
-							.contains("Pushed image '" + imageName + ":latest" + "'");
-					ImageReference imageReference = ImageReference.of(imageName);
-					DockerApi.ImageApi imageApi = new DockerApi().image();
-					Image pulledImage = imageApi.pull(imageReference, UpdateListener.none());
-					assertThat(pulledImage).isNotNull();
-					imageApi.remove(imageReference, false);
-				});
+			assertThat(buildLog(project)).contains("Building image").contains("Successfully built image")
+					.contains("Pushing image '" + imageName + ":latest" + "'")
+					.contains("Pushed image '" + imageName + ":latest" + "'");
+			ImageReference imageReference = ImageReference.of(imageName);
+			DockerApi.ImageApi imageApi = new DockerApi().image();
+			Image pulledImage = imageApi.pull(imageReference, UpdateListener.none());
+			assertThat(pulledImage).isNotNull();
+			imageApi.remove(imageReference, false);
+		});
 	}
 
 	private static class RegistryContainer extends GenericContainer<RegistryContainer> {

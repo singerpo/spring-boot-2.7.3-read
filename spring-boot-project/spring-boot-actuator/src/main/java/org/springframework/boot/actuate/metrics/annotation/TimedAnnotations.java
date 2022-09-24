@@ -44,8 +44,9 @@ public final class TimedAnnotations {
 	/**
 	 * Return {@link Timed} annotations that should be used for the given {@code method}
 	 * and {@code type}.
+	 *
 	 * @param method the source method
-	 * @param type the source type
+	 * @param type   the source type
 	 * @return the {@link Timed} annotations to use or an empty set
 	 */
 	public static Set<Timed> get(Method method, Class<?> type) {

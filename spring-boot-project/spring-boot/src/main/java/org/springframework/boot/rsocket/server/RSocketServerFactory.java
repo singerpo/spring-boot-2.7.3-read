@@ -32,6 +32,7 @@ public interface RSocketServerFactory {
 	 * should not be able to connect to the returned server until
 	 * {@link RSocketServer#start()} is called (which happens when the
 	 * {@code ApplicationContext} has been fully refreshed).
+	 *
 	 * @param socketAcceptor the socket acceptor
 	 * @return a fully configured and started {@link RSocketServer}
 	 * @see RSocketServer#stop()

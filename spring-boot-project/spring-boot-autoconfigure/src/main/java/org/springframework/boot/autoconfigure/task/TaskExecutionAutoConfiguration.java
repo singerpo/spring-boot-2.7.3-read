@@ -54,8 +54,8 @@ public class TaskExecutionAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public TaskExecutorBuilder taskExecutorBuilder(TaskExecutionProperties properties,
-			ObjectProvider<TaskExecutorCustomizer> taskExecutorCustomizers,
-			ObjectProvider<TaskDecorator> taskDecorator) {
+												   ObjectProvider<TaskExecutorCustomizer> taskExecutorCustomizers,
+												   ObjectProvider<TaskDecorator> taskDecorator) {
 		TaskExecutionProperties.Pool pool = properties.getPool();
 		TaskExecutorBuilder builder = new TaskExecutorBuilder();
 		builder = builder.queueCapacity(pool.getQueueCapacity());
@@ -73,8 +73,8 @@ public class TaskExecutionAutoConfiguration {
 	}
 
 	@Lazy
-	@Bean(name = { APPLICATION_TASK_EXECUTOR_BEAN_NAME,
-			AsyncAnnotationBeanPostProcessor.DEFAULT_TASK_EXECUTOR_BEAN_NAME })
+	@Bean(name = {APPLICATION_TASK_EXECUTOR_BEAN_NAME,
+			AsyncAnnotationBeanPostProcessor.DEFAULT_TASK_EXECUTOR_BEAN_NAME})
 	@ConditionalOnMissingBean(Executor.class)
 	public ThreadPoolTaskExecutor applicationTaskExecutor(TaskExecutorBuilder builder) {
 		return builder.build();

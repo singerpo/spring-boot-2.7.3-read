@@ -22,7 +22,7 @@ import org.springframework.boot.jackson.JsonMixin;
 import org.springframework.boot.jackson.Name;
 import org.springframework.boot.jackson.NameAndAge;
 
-@JsonMixin(type = { Name.class, NameAndAge.class })
+@JsonMixin(type = {Name.class, NameAndAge.class})
 public class RenameMixInClass {
 
 	@JsonProperty("username")

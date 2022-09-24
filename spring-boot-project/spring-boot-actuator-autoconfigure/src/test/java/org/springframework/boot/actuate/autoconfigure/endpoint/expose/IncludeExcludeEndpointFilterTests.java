@@ -144,7 +144,8 @@ class IncludeExcludeEndpointFilterTests {
 		assertThat(match(EndpointId.of("fooBar"))).isTrue();
 	}
 
-	@Test // gh-20997
+	@Test
+		// gh-20997
 	void matchWhenDashInName() {
 		setupFilter("bus-refresh", "");
 		assertThat(match(EndpointId.of("bus-refresh"))).isTrue();
@@ -161,7 +162,7 @@ class IncludeExcludeEndpointFilterTests {
 		return match(null);
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private boolean match(EndpointId id) {
 		ExposableEndpoint<?> endpoint = mock(TestExposableWebEndpoint.class);
 		if (id != null) {

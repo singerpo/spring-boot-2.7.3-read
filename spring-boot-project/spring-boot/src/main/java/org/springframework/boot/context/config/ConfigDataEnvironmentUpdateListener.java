@@ -38,16 +38,18 @@ public interface ConfigDataEnvironmentUpdateListener extends EventListener {
 
 	/**
 	 * Called when a new {@link PropertySource} is added to the {@link Environment}.
+	 *
 	 * @param propertySource the {@link PropertySource} that was added
-	 * @param location the original {@link ConfigDataLocation} of the source.
-	 * @param resource the {@link ConfigDataResource} of the source.
+	 * @param location       the original {@link ConfigDataLocation} of the source.
+	 * @param resource       the {@link ConfigDataResource} of the source.
 	 */
 	default void onPropertySourceAdded(PropertySource<?> propertySource, ConfigDataLocation location,
-			ConfigDataResource resource) {
+									   ConfigDataResource resource) {
 	}
 
 	/**
 	 * Called when {@link Environment} profiles are set.
+	 *
 	 * @param profiles the profiles being set
 	 */
 	default void onSetProfiles(Profiles profiles) {

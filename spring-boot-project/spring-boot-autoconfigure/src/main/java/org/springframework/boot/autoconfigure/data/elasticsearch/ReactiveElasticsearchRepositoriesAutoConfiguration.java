@@ -32,11 +32,11 @@ import org.springframework.data.elasticsearch.repository.support.ReactiveElastic
  * Reactive Repositories.
  *
  * @author Brian Clozel
- * @since 2.2.0
  * @see EnableReactiveElasticsearchRepositories
+ * @since 2.2.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ ReactiveElasticsearchClient.class, ReactiveElasticsearchRepository.class })
+@ConditionalOnClass({ReactiveElasticsearchClient.class, ReactiveElasticsearchRepository.class})
 @ConditionalOnProperty(prefix = "spring.data.elasticsearch.repositories", name = "enabled", havingValue = "true",
 		matchIfMissing = true)
 @ConditionalOnMissingBean(ReactiveElasticsearchRepositoryFactoryBean.class)

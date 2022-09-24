@@ -38,6 +38,7 @@ public class MultipartConfigFactory {
 
 	/**
 	 * Sets the directory location where files will be stored.
+	 *
 	 * @param location the location
 	 */
 	public void setLocation(String location) {
@@ -46,6 +47,7 @@ public class MultipartConfigFactory {
 
 	/**
 	 * Sets the maximum {@link DataSize size} allowed for uploaded files.
+	 *
 	 * @param maxFileSize the maximum file size
 	 */
 	public void setMaxFileSize(DataSize maxFileSize) {
@@ -54,6 +56,7 @@ public class MultipartConfigFactory {
 
 	/**
 	 * Sets the maximum {@link DataSize} allowed for multipart/form-data requests.
+	 *
 	 * @param maxRequestSize the maximum request size
 	 */
 	public void setMaxRequestSize(DataSize maxRequestSize) {
@@ -62,6 +65,7 @@ public class MultipartConfigFactory {
 
 	/**
 	 * Sets the {@link DataSize size} threshold after which files will be written to disk.
+	 *
 	 * @param fileSizeThreshold the file size threshold
 	 */
 	public void setFileSizeThreshold(DataSize fileSizeThreshold) {
@@ -70,6 +74,7 @@ public class MultipartConfigFactory {
 
 	/**
 	 * Create a new {@link MultipartConfigElement} instance.
+	 *
 	 * @return the multipart config element
 	 */
 	public MultipartConfigElement createMultipartConfig() {
@@ -83,7 +88,8 @@ public class MultipartConfigFactory {
 	/**
 	 * Return the amount of bytes from the specified {@link DataSize size}. If the size is
 	 * {@code null} or negative, returns {@code defaultValue}.
-	 * @param size the data size to handle
+	 *
+	 * @param size         the data size to handle
 	 * @param defaultValue the default value if the size is {@code null} or negative
 	 * @return the amount of bytes to use
 	 */

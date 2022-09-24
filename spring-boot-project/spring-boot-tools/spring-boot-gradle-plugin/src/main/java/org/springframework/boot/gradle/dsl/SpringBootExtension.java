@@ -48,6 +48,7 @@ public class SpringBootExtension {
 	/**
 	 * Creates a new {@code SpringBootPluginExtension} that is associated with the given
 	 * {@code project}.
+	 *
 	 * @param project the project
 	 */
 	public SpringBootExtension(Project project) {
@@ -57,6 +58,7 @@ public class SpringBootExtension {
 
 	/**
 	 * Returns the fully-qualified name of the application's main class.
+	 *
 	 * @return the fully-qualified name of the application's main class
 	 * @since 2.4.0
 	 */
@@ -84,6 +86,7 @@ public class SpringBootExtension {
 	 * By default, the task's destination dir will be a directory named {@code META-INF}
 	 * beneath the main source set's resources output directory, and the task's project
 	 * artifact will be the base name of the {@code bootWar} or {@code bootJar} task.
+	 *
 	 * @param configurer the task configurer
 	 */
 	public void buildInfo(Action<BuildInfo> configurer) {

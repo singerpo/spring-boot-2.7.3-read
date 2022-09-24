@@ -61,6 +61,7 @@ public class StartupTimeMetricsListener implements SmartApplicationListener {
 
 	/**
 	 * Create a new instance using default metric names.
+	 *
 	 * @param meterRegistry the registry to use
 	 * @see #APPLICATION_STARTED_TIME_METRIC_NAME
 	 * @see #APPLICATION_READY_TIME_METRIC_NAME
@@ -72,14 +73,15 @@ public class StartupTimeMetricsListener implements SmartApplicationListener {
 
 	/**
 	 * Create a new instance using the specified options.
-	 * @param meterRegistry the registry to use
+	 *
+	 * @param meterRegistry         the registry to use
 	 * @param startedTimeMetricName the name to use for the application started time
-	 * metric
-	 * @param readyTimeMetricName the name to use for the application ready time metric
-	 * @param tags the tags to associate to application startup metrics
+	 *                              metric
+	 * @param readyTimeMetricName   the name to use for the application ready time metric
+	 * @param tags                  the tags to associate to application startup metrics
 	 */
 	public StartupTimeMetricsListener(MeterRegistry meterRegistry, String startedTimeMetricName,
-			String readyTimeMetricName, Iterable<Tag> tags) {
+									  String readyTimeMetricName, Iterable<Tag> tags) {
 		this.meterRegistry = meterRegistry;
 		this.startedTimeMetricName = startedTimeMetricName;
 		this.readyTimeMetricName = readyTimeMetricName;
@@ -113,7 +115,7 @@ public class StartupTimeMetricsListener implements SmartApplicationListener {
 	}
 
 	private void registerGauge(String name, String description, Duration timeTaken,
-			SpringApplication springApplication) {
+							   SpringApplication springApplication) {
 		if (timeTaken != null) {
 			Iterable<Tag> tags = createTagsFrom(springApplication);
 			TimeGauge.builder(name, timeTaken::toMillis, TimeUnit.MILLISECONDS).tags(tags).description(description)

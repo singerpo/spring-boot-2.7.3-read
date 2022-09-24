@@ -31,7 +31,7 @@ import org.springframework.util.StringUtils;
  */
 public class DefaultSourceDirectoryUrlFilter implements SourceDirectoryUrlFilter {
 
-	private static final String[] COMMON_ENDINGS = { "/target/classes", "/bin" };
+	private static final String[] COMMON_ENDINGS = {"/target/classes", "/bin"};
 
 	private static final Pattern URL_MODULE_PATTERN = Pattern.compile(".*\\/(.+)\\.jar");
 

@@ -66,7 +66,7 @@ class HazelcastServerConfiguration {
 
 		@Bean
 		HazelcastInstance hazelcastInstance(HazelcastProperties properties, ResourceLoader resourceLoader,
-				ObjectProvider<HazelcastConfigCustomizer> hazelcastConfigCustomizers) throws IOException {
+											ObjectProvider<HazelcastConfigCustomizer> hazelcastConfigCustomizers) throws IOException {
 			Resource configLocation = properties.resolveConfigLocation();
 			Config config = (configLocation != null) ? loadConfig(configLocation) : Config.load();
 			config.setClassLoader(resourceLoader.getClassLoader());
@@ -79,8 +79,7 @@ class HazelcastServerConfiguration {
 			Config config = loadConfig(configUrl);
 			if (ResourceUtils.isFileURL(configUrl)) {
 				config.setConfigurationFile(configLocation.getFile());
-			}
-			else {
+			} else {
 				config.setConfigurationUrl(configUrl);
 			}
 			return config;

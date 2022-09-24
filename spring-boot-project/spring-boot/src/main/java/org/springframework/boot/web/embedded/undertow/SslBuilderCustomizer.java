@@ -83,8 +83,7 @@ class SslBuilderCustomizer implements UndertowBuilderCustomizer {
 			if (this.ssl.getCiphers() != null) {
 				builder.setSocketOption(Options.SSL_ENABLED_CIPHER_SUITES, Sequence.of(this.ssl.getCiphers()));
 			}
-		}
-		catch (NoSuchAlgorithmException | KeyManagementException ex) {
+		} catch (NoSuchAlgorithmException | KeyManagementException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -121,8 +120,7 @@ class SslBuilderCustomizer implements UndertowBuilderCustomizer {
 				return getConfigurableAliasKeyManagers(ssl, keyManagerFactory.getKeyManagers());
 			}
 			return keyManagerFactory.getKeyManagers();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -152,8 +150,7 @@ class SslBuilderCustomizer implements UndertowBuilderCustomizer {
 					.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 			trustManagerFactory.init(store);
 			return trustManagerFactory.getTrustManagers();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -186,8 +183,7 @@ class SslBuilderCustomizer implements UndertowBuilderCustomizer {
 				store.load(stream, (password != null) ? password.toCharArray() : null);
 			}
 			return store;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new WebServerException("Could not load key store '" + resource + "'", ex);
 		}
 	}

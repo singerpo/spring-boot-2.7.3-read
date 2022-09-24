@@ -53,14 +53,14 @@ class OnClassConditionAutoConfigurationImportFilterTests {
 
 	@Test
 	void matchShouldMatchClasses() {
-		String[] autoConfigurationClasses = new String[] { "test.match", "test.nomatch" };
+		String[] autoConfigurationClasses = new String[]{"test.match", "test.nomatch"};
 		boolean[] result = this.filter.match(autoConfigurationClasses, getAutoConfigurationMetadata());
 		assertThat(result).containsExactly(true, false);
 	}
 
 	@Test
 	void matchShouldRecordOutcome() {
-		String[] autoConfigurationClasses = new String[] { "test.match", "test.nomatch" };
+		String[] autoConfigurationClasses = new String[]{"test.match", "test.nomatch"};
 		this.filter.match(autoConfigurationClasses, getAutoConfigurationMetadata());
 		ConditionEvaluationReport report = ConditionEvaluationReport.get(this.beanFactory);
 		assertThat(report.getConditionAndOutcomesBySource()).hasSize(1).containsKey("test.nomatch");

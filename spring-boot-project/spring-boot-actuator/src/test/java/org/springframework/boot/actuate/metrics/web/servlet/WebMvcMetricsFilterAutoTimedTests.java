@@ -85,7 +85,7 @@ class WebMvcMetricsFilterAutoTimedTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@EnableWebMvc
-	@Import({ Controller.class })
+	@Import({Controller.class})
 	static class TestConfiguration {
 
 		@Bean

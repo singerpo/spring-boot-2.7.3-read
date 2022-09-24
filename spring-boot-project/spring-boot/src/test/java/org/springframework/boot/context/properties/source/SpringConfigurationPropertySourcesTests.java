@@ -162,7 +162,8 @@ class SpringConfigurationPropertySourcesTests {
 		assertThat(configurationSources.iterator().next().getConfigurationProperty(name).getValue()).isEqualTo("s2");
 	}
 
-	@Test // gh-21659
+	@Test
+		// gh-21659
 	void shouldAdaptRandomPropertySource() {
 		MutablePropertySources sources = new MutablePropertySources();
 		sources.addFirst(new RandomValuePropertySource());

@@ -44,6 +44,7 @@ public class DefaultWebFluxTagsProvider implements WebFluxTagsProvider {
 	/**
 	 * Creates a new {@link DefaultWebFluxTagsProvider} that will provide tags from the
 	 * given {@code contributors} in addition to its own.
+	 *
 	 * @param contributors the contributors that will provide additional tags
 	 * @since 2.3.0
 	 */
@@ -58,9 +59,10 @@ public class DefaultWebFluxTagsProvider implements WebFluxTagsProvider {
 	/**
 	 * Creates a new {@link DefaultWebFluxTagsProvider} that will provide tags from the
 	 * given {@code contributors} in addition to its own.
+	 *
 	 * @param ignoreTrailingSlash whether trailing slashes should be ignored when
-	 * determining the {@code uri} tag.
-	 * @param contributors the contributors that will provide additional tags
+	 *                            determining the {@code uri} tag.
+	 * @param contributors        the contributors that will provide additional tags
 	 * @since 2.3.0
 	 */
 	public DefaultWebFluxTagsProvider(boolean ignoreTrailingSlash, List<WebFluxTagsContributor> contributors) {

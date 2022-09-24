@@ -30,6 +30,7 @@ public interface OriginLookup<K> {
 	/**
 	 * Return the origin of the given key or {@code null} if the origin cannot be
 	 * determined.
+	 *
 	 * @param key the key to lookup
 	 * @return the origin of the key or {@code null}
 	 */
@@ -38,6 +39,7 @@ public interface OriginLookup<K> {
 	/**
 	 * Return {@code true} if this lookup is immutable and has contents that will never
 	 * change.
+	 *
 	 * @return if the lookup is immutable
 	 * @since 2.2.0
 	 */
@@ -51,6 +53,7 @@ public interface OriginLookup<K> {
 	 * otherwise clash. For example, if multiple applications are running on the same
 	 * machine a different prefix can be set on each application to ensure that different
 	 * environment variables are used.
+	 *
 	 * @return the prefix applied by the lookup class or {@code null}.
 	 * @since 2.5.0
 	 */
@@ -62,9 +65,10 @@ public interface OriginLookup<K> {
 	 * Attempt to look up the origin from the given source. If the source is not a
 	 * {@link OriginLookup} or if an exception occurs during lookup then {@code null} is
 	 * returned.
+	 *
 	 * @param source the source object
-	 * @param key the key to lookup
-	 * @param <K> the key type
+	 * @param key    the key to lookup
+	 * @param <K>    the key type
 	 * @return an {@link Origin} or {@code null}
 	 */
 	@SuppressWarnings("unchecked")
@@ -74,8 +78,7 @@ public interface OriginLookup<K> {
 		}
 		try {
 			return ((OriginLookup<K>) source).getOrigin(key);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return null;
 		}
 	}

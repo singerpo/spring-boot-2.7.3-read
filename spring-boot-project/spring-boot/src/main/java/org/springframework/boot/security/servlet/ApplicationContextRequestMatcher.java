@@ -34,8 +34,8 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * that is autowired in the usual way.
  *
  * @param <C> the type of the context that the match method actually needs to use. Can be
- * an {@link ApplicationContext} or a class of an {@link ApplicationContext#getBean(Class)
- * existing bean}.
+ *            an {@link ApplicationContext} or a class of an {@link ApplicationContext#getBean(Class)
+ *            existing bean}.
  * @author Phillip Webb
  * @since 2.0.0
  */
@@ -83,6 +83,7 @@ public abstract class ApplicationContextRequestMatcher<C> implements RequestMatc
 	 * Returns if the {@link WebApplicationContext} should be ignored and not used for
 	 * matching. If this method returns {@code true} then the context will not be used and
 	 * the {@link #matches(HttpServletRequest) matches} method will return {@code false}.
+	 *
 	 * @param webApplicationContext the candidate web application context
 	 * @return if the application context should be ignored
 	 * @since 2.1.8
@@ -97,6 +98,7 @@ public abstract class ApplicationContextRequestMatcher<C> implements RequestMatc
 	 * only if {@link #ignoreApplicationContext(WebApplicationContext)} returns
 	 * {@code false}. Note that the supplied context will be based on the
 	 * <strong>first</strong> request sent to the matcher.
+	 *
 	 * @param context a supplier for the initialized context (may throw an exception)
 	 * @see #ignoreApplicationContext(WebApplicationContext)
 	 */
@@ -105,6 +107,7 @@ public abstract class ApplicationContextRequestMatcher<C> implements RequestMatc
 
 	/**
 	 * Decides whether the rule implemented by the strategy matches the supplied request.
+	 *
 	 * @param request the source request
 	 * @param context a supplier for the initialized context (may throw an exception)
 	 * @return if the request matches

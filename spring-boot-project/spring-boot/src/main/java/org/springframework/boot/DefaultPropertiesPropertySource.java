@@ -45,6 +45,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 	/**
 	 * Create a new {@link DefaultPropertiesPropertySource} with the given {@code Map}
 	 * source.
+	 *
 	 * @param source the source map
 	 */
 	public DefaultPropertiesPropertySource(Map<String, Object> source) {
@@ -53,6 +54,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 
 	/**
 	 * Return {@code true} if the given source is named 'defaultProperties'.
+	 *
 	 * @param propertySource the property source to check
 	 * @return {@code true} if the name matches
 	 */
@@ -63,9 +65,10 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 	/**
 	 * Create a new {@link DefaultPropertiesPropertySource} instance if the provided
 	 * source is not empty.
+	 *
 	 * @param source the {@code Map} source
 	 * @param action the action used to consume the
-	 * {@link DefaultPropertiesPropertySource}
+	 *               {@link DefaultPropertiesPropertySource}
 	 */
 	public static void ifNotEmpty(Map<String, Object> source, Consumer<DefaultPropertiesPropertySource> action) {
 		if (!CollectionUtils.isEmpty(source) && action != null) {
@@ -75,7 +78,8 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 
 	/**
 	 * Add a new {@link DefaultPropertiesPropertySource} or merge with an existing one.
-	 * @param source the {@code Map} source
+	 *
+	 * @param source  the {@code Map} source
 	 * @param sources the existing sources
 	 * @since 2.4.4
 	 */
@@ -86,8 +90,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 			if (sources.contains(NAME)) {
 				mergeIfPossible(source, sources, resultingSource);
 				sources.replace(NAME, propertySource);
-			}
-			else {
+			} else {
 				resultingSource.putAll(source);
 				sources.addLast(propertySource);
 			}
@@ -96,7 +99,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 
 	@SuppressWarnings("unchecked")
 	private static void mergeIfPossible(Map<String, Object> source, MutablePropertySources sources,
-			Map<String, Object> resultingSource) {
+										Map<String, Object> resultingSource) {
 		PropertySource<?> existingSource = sources.get(NAME);
 		if (existingSource != null) {
 			Object underlyingSource = existingSource.getSource();
@@ -110,6 +113,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 	/**
 	 * Move the 'defaultProperties' property source so that it's the last source in the
 	 * given {@link ConfigurableEnvironment}.
+	 *
 	 * @param environment the environment to update
 	 */
 	public static void moveToEnd(ConfigurableEnvironment environment) {
@@ -119,6 +123,7 @@ public class DefaultPropertiesPropertySource extends MapPropertySource {
 	/**
 	 * Move the 'defaultProperties' property source so that it's the last source in the
 	 * given {@link MutablePropertySources}.
+	 *
 	 * @param propertySources the property sources to update
 	 */
 	public static void moveToEnd(MutablePropertySources propertySources) {

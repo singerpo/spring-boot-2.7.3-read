@@ -48,6 +48,7 @@ public class JooqProperties {
 	/**
 	 * Determine the {@link SQLDialect} to use based on this configuration and the primary
 	 * {@link DataSource}.
+	 *
 	 * @param dataSource the data source
 	 * @return the {@code SQLDialect} to use for that {@link DataSource}
 	 */

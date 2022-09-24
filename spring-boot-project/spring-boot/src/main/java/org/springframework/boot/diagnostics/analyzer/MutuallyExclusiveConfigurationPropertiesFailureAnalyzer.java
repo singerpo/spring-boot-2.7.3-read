@@ -83,7 +83,7 @@ class MutuallyExclusiveConfigurationPropertiesFailureAnalyzer
 	}
 
 	private void appendDetails(StringBuilder message, MutuallyExclusiveConfigurationPropertiesException cause,
-			List<Descriptor> descriptors) {
+							   List<Descriptor> descriptors) {
 		descriptors.sort((d1, d2) -> d1.propertyName.compareTo(d2.propertyName));
 		message.append(String.format("The following configuration properties are mutually exclusive:%n%n"));
 		sortedStrings(cause.getMutuallyExclusiveNames())

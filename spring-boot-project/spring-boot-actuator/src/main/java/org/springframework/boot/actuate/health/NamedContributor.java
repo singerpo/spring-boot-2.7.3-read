@@ -24,19 +24,21 @@ import org.springframework.util.Assert;
  *
  * @param <C> the contributor type
  * @author Phillip Webb
- * @since 2.0.0
  * @see NamedContributors
+ * @since 2.0.0
  */
 public interface NamedContributor<C> {
 
 	/**
 	 * Returns the name of the contributor.
+	 *
 	 * @return the contributor name
 	 */
 	String getName();
 
 	/**
 	 * Returns the contributor instance.
+	 *
 	 * @return the contributor instance
 	 */
 	C getContributor();

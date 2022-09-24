@@ -38,6 +38,7 @@ public class OptionalLiveReloadServer implements InitializingBean {
 
 	/**
 	 * Create a new {@link OptionalLiveReloadServer} instance.
+	 *
 	 * @param server the server to manage or {@code null}
 	 */
 	public OptionalLiveReloadServer(LiveReloadServer server) {
@@ -57,8 +58,7 @@ public class OptionalLiveReloadServer implements InitializingBean {
 					port = this.server.start();
 				}
 				logger.info(LogMessage.format("LiveReload server is running on port %s", port));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				logger.warn("Unable to start LiveReload server");
 				logger.debug("Live reload start error", ex);
 				this.server = null;

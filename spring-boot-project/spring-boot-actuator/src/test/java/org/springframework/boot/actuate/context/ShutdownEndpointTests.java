@@ -55,8 +55,7 @@ class ShutdownEndpointTests {
 			Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0], getClass().getClassLoader()));
 			try {
 				result = context.getBean(ShutdownEndpoint.class).shutdown();
-			}
-			finally {
+			} finally {
 				Thread.currentThread().setContextClassLoader(previousTccl);
 			}
 			assertThat(result.get("message")).startsWith("Shutting down");

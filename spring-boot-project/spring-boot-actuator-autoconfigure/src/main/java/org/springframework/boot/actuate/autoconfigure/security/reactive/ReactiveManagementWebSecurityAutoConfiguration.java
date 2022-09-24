@@ -47,11 +47,11 @@ import org.springframework.web.cors.reactive.PreFlightRequestWebFilter;
  * @since 2.1.0
  */
 @AutoConfiguration(before = ReactiveSecurityAutoConfiguration.class,
-		after = { HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class,
+		after = {HealthEndpointAutoConfiguration.class, InfoEndpointAutoConfiguration.class,
 				WebEndpointAutoConfiguration.class, ReactiveOAuth2ClientAutoConfiguration.class,
-				ReactiveOAuth2ResourceServerAutoConfiguration.class })
-@ConditionalOnClass({ EnableWebFluxSecurity.class, WebFilterChainProxy.class })
-@ConditionalOnMissingBean({ SecurityWebFilterChain.class, WebFilterChainProxy.class })
+				ReactiveOAuth2ResourceServerAutoConfiguration.class})
+@ConditionalOnClass({EnableWebFluxSecurity.class, WebFilterChainProxy.class})
+@ConditionalOnMissingBean({SecurityWebFilterChain.class, WebFilterChainProxy.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 public class ReactiveManagementWebSecurityAutoConfiguration {
 

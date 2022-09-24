@@ -35,8 +35,7 @@ class InputStreamSourceToByteArrayConverter implements Converter<InputStreamSour
 	public byte[] convert(InputStreamSource source) {
 		try {
 			return FileCopyUtils.copyToByteArray(source.getInputStream());
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Unable to read from " + getName(source), ex);
 		}
 	}

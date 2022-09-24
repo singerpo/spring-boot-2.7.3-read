@@ -49,8 +49,7 @@ class ProjectGenerator {
 			if (isZipArchive(response)) {
 				extractProject(response, request.getOutput(), force);
 				return;
-			}
-			else {
+			} else {
 				Log.info("Could not extract '" + response.getContentType() + "'");
 				// Use value from the server since we can't extract it
 				fileName = response.getFileName();
@@ -65,7 +64,8 @@ class ProjectGenerator {
 
 	/**
 	 * Detect if the project should be extracted.
-	 * @param request the generation request
+	 *
+	 * @param request  the generation request
 	 * @param response the generation response
 	 * @return if the project should be extracted
 	 */
@@ -81,8 +81,7 @@ class ProjectGenerator {
 		if (entity.getContentType() != null) {
 			try {
 				return ZIP_MIME_TYPE.equals(entity.getContentType().getMimeType());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				// Ignore
 			}
 		}
@@ -121,8 +120,7 @@ class ProjectGenerator {
 			}
 			if (!entry.isDirectory()) {
 				FileCopyUtils.copy(StreamUtils.nonClosing(zipStream), new FileOutputStream(file));
-			}
-			else {
+			} else {
 				file.mkdir();
 			}
 			zipStream.closeEntry();

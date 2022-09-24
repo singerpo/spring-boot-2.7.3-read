@@ -32,13 +32,14 @@ import org.springframework.util.unit.DataUnit;
  * @author Stephane Nicoll
  * @since 2.1.0
  */
-@Target({ ElementType.FIELD, ElementType.PARAMETER })
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DataSizeUnit {
 
 	/**
 	 * The {@link DataUnit} to use if one is not specified.
+	 *
 	 * @return the data unit
 	 */
 	DataUnit value();

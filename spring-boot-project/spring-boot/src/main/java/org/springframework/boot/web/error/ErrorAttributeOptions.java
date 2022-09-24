@@ -39,6 +39,7 @@ public final class ErrorAttributeOptions {
 
 	/**
 	 * Get the option for including the specified attribute in the error response.
+	 *
 	 * @param include error attribute to get
 	 * @return {@code true} if the {@code Include} attribute is included in the error
 	 * response, {@code false} otherwise
@@ -49,6 +50,7 @@ public final class ErrorAttributeOptions {
 
 	/**
 	 * Get all options for including attributes in the error response.
+	 *
 	 * @return the options
 	 */
 	public Set<Include> getIncludes() {
@@ -58,6 +60,7 @@ public final class ErrorAttributeOptions {
 	/**
 	 * Return an {@code ErrorAttributeOptions} that includes the specified attribute
 	 * {@link Include} options.
+	 *
 	 * @param includes error attributes to include
 	 * @return an {@code ErrorAttributeOptions}
 	 */
@@ -70,6 +73,7 @@ public final class ErrorAttributeOptions {
 	/**
 	 * Return an {@code ErrorAttributeOptions} that excludes the specified attribute
 	 * {@link Include} options.
+	 *
 	 * @param excludes error attributes to exclude
 	 * @return an {@code ErrorAttributeOptions}
 	 */
@@ -85,6 +89,7 @@ public final class ErrorAttributeOptions {
 
 	/**
 	 * Create an {@code ErrorAttributeOptions} with defaults.
+	 *
 	 * @return an {@code ErrorAttributeOptions}
 	 */
 	public static ErrorAttributeOptions defaults() {
@@ -94,6 +99,7 @@ public final class ErrorAttributeOptions {
 	/**
 	 * Create an {@code ErrorAttributeOptions} that includes the specified attribute
 	 * {@link Include} options.
+	 *
 	 * @param includes error attributes to include
 	 * @return an {@code ErrorAttributeOptions}
 	 */
@@ -104,6 +110,7 @@ public final class ErrorAttributeOptions {
 	/**
 	 * Create an {@code ErrorAttributeOptions} that includes the specified attribute
 	 * {@link Include} options.
+	 *
 	 * @param includes error attributes to include
 	 * @return an {@code ErrorAttributeOptions}
 	 */

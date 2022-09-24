@@ -65,8 +65,7 @@ public class PrometheusScrapeEndpoint {
 			this.nextMetricsScrapeSize = scrapePage.length() + METRICS_SCRAPE_CHARS_EXTRA;
 
 			return new WebEndpointResponse<>(scrapePage, format);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// This actually never happens since StringWriter doesn't throw an IOException
 			throw new IllegalStateException("Writing metrics failed", ex);
 		}

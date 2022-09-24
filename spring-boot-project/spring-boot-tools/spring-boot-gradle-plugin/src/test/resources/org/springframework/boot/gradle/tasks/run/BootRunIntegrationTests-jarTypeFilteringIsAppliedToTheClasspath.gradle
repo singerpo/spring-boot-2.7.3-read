@@ -1,15 +1,15 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{version}'
+    id 'java'
+    id 'org.springframework.boot' version '{version}'
 }
 
 repositories {
-	flatDir {
-		dirs 'repository'
-	}
+    flatDir {
+        dirs 'repository'
+    }
 }
 
 dependencies {
-	implementation(name: "standard")
-	implementation(name: "starter")
+    implementation(name: "standard")
+    implementation(name: "starter")
 }

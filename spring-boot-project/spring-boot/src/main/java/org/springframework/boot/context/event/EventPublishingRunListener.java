@@ -75,6 +75,7 @@ public class EventPublishingRunListener implements SpringApplicationRunListener,
 
 	/**
 	 * 事件发布监听器，主要用来发布启动事件
+	 *
 	 * @param bootstrapContext the bootstrap context
 	 */
 	@Override
@@ -85,7 +86,7 @@ public class EventPublishingRunListener implements SpringApplicationRunListener,
 
 	@Override
 	public void environmentPrepared(ConfigurableBootstrapContext bootstrapContext,
-			ConfigurableEnvironment environment) {
+									ConfigurableEnvironment environment) {
 		this.initialMulticaster.multicastEvent(
 				new ApplicationEnvironmentPreparedEvent(bootstrapContext, this.application, this.args, environment));
 	}
@@ -126,8 +127,7 @@ public class EventPublishingRunListener implements SpringApplicationRunListener,
 			// Listeners have been registered to the application context so we should
 			// use it at this point if we can
 			context.publishEvent(event);
-		}
-		else {
+		} else {
 			// An inactive context may not have a multicaster so we use our multicaster to
 			// call all the context's listeners instead
 			if (context instanceof AbstractApplicationContext) {

@@ -41,6 +41,7 @@ public class RabbitTemplateConfigurer {
 
 	/**
 	 * Creates a new configurer.
+	 *
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #RabbitTemplateConfigurer(RabbitProperties)}
 	 */
@@ -51,6 +52,7 @@ public class RabbitTemplateConfigurer {
 
 	/**
 	 * Creates a new configurer that will use the given {@code rabbitProperties}.
+	 *
 	 * @param rabbitProperties properties to use
 	 * @since 2.6.0
 	 */
@@ -62,6 +64,7 @@ public class RabbitTemplateConfigurer {
 	/**
 	 * Set the {@link MessageConverter} to use or {@code null} if the out-of-the-box
 	 * converter should be used.
+	 *
 	 * @param messageConverter the {@link MessageConverter}
 	 * @since 2.6.0
 	 */
@@ -71,6 +74,7 @@ public class RabbitTemplateConfigurer {
 
 	/**
 	 * Set the {@link RabbitRetryTemplateCustomizer} instances to use.
+	 *
 	 * @param retryTemplateCustomizers the retry template customizers
 	 * @since 2.6.0
 	 */
@@ -80,6 +84,7 @@ public class RabbitTemplateConfigurer {
 
 	/**
 	 * Set the {@link RabbitProperties} to use.
+	 *
 	 * @param rabbitProperties the {@link RabbitProperties}
 	 * @deprecated since 2.6.0 for removal in 3.0.0 in favor of
 	 * {@link #RabbitTemplateConfigurer(RabbitProperties)}
@@ -96,7 +101,8 @@ public class RabbitTemplateConfigurer {
 	/**
 	 * Configure the specified {@link RabbitTemplate}. The template can be further tuned
 	 * and default settings can be overridden.
-	 * @param template the {@link RabbitTemplate} instance to configure
+	 *
+	 * @param template          the {@link RabbitTemplate} instance to configure
 	 * @param connectionFactory the {@link ConnectionFactory} to use
 	 */
 	public void configure(RabbitTemplate template, ConnectionFactory connectionFactory) {

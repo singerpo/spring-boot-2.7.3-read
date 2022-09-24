@@ -42,8 +42,8 @@ import org.springframework.core.Ordered;
  * @author Madhura Bhave
  * @author Tyler Van Gorder
  * @author Phillip Webb
- * @since 2.2.0
  * @see LazyInitializationExcludeFilter
+ * @since 2.2.0
  */
 public final class LazyInitializationBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
 
@@ -67,8 +67,8 @@ public final class LazyInitializationBeanFactoryPostProcessor implements BeanFac
 	}
 
 	private void postProcess(ConfigurableListableBeanFactory beanFactory,
-			Collection<LazyInitializationExcludeFilter> filters, String beanName,
-			AbstractBeanDefinition beanDefinition) {
+							 Collection<LazyInitializationExcludeFilter> filters, String beanName,
+							 AbstractBeanDefinition beanDefinition) {
 		Boolean lazyInit = beanDefinition.getLazyInit();
 		if (lazyInit != null) {
 			return;
@@ -82,14 +82,13 @@ public final class LazyInitializationBeanFactoryPostProcessor implements BeanFac
 	private Class<?> getBeanType(ConfigurableListableBeanFactory beanFactory, String beanName) {
 		try {
 			return beanFactory.getType(beanName, false);
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			return null;
 		}
 	}
 
 	private boolean isExcluded(Collection<LazyInitializationExcludeFilter> filters, String beanName,
-			AbstractBeanDefinition beanDefinition, Class<?> beanType) {
+							   AbstractBeanDefinition beanDefinition, Class<?> beanType) {
 		if (beanType != null) {
 			for (LazyInitializationExcludeFilter filter : filters) {
 				if (filter.isExcluded(beanName, beanDefinition, beanType)) {

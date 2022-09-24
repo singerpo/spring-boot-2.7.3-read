@@ -44,7 +44,7 @@ import org.springframework.test.context.TestPropertySource;
  * @author Brian Clozel
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = { "spring.main.web-application-type=reactive", "spring.webflux.base-path=/test" })
+@TestPropertySource(properties = {"spring.main.web-application-type=reactive", "spring.webflux.base-path=/test"})
 class HttpGraphQlTesterContextCustomizerWithCustomBasePathTests {
 
 	@Autowired

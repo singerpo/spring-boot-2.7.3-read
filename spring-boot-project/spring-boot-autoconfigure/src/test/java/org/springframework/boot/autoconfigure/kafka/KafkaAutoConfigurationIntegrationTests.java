@@ -77,7 +77,7 @@ class KafkaAutoConfigurationIntegrationTests {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Test
 	void testEndToEnd() throws Exception {
 		load(KafkaConfig.class, "spring.kafka.bootstrap-servers:" + getEmbeddedKafkaBrokersAsString(),
@@ -124,7 +124,7 @@ class KafkaAutoConfigurationIntegrationTests {
 	}
 
 	private void load(Class<?> config, String... environment) {
-		this.context = doLoad(new Class<?>[] { config }, environment);
+		this.context = doLoad(new Class<?>[]{config}, environment);
 	}
 
 	private AnnotationConfigApplicationContext doLoad(Class<?>[] configs, String... environment) {
@@ -201,7 +201,7 @@ class KafkaAutoConfigurationIntegrationTests {
 
 		@KafkaListener(topics = TEST_RETRY_TOPIC)
 		void listen(String foo, @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
-				@Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+					@Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
 			this.received = foo;
 			this.key = key;
 			this.topics.add(topic);

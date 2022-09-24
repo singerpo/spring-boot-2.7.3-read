@@ -37,8 +37,7 @@ public class HazelcastCacheMeterBinderProvider implements CacheMeterBinderProvid
 	public MeterBinder getMeterBinder(HazelcastCache cache, Iterable<Tag> tags) {
 		try {
 			return new HazelcastCacheMetrics(cache.getNativeCache(), tags);
-		}
-		catch (NoSuchMethodError ex) {
+		} catch (NoSuchMethodError ex) {
 			// Hazelcast 4
 			return createHazelcast4CacheMetrics(cache, tags);
 		}
@@ -50,8 +49,7 @@ public class HazelcastCacheMeterBinderProvider implements CacheMeterBinderProvid
 			Object nativeCache = ReflectionUtils.invokeMethod(nativeCacheAccessor, cache);
 			return HazelcastCacheMetrics.class.getConstructor(Object.class, Iterable.class).newInstance(nativeCache,
 					tags);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Failed to create MeterBinder for Hazelcast", ex);
 		}
 	}

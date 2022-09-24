@@ -33,8 +33,8 @@ import org.springframework.web.server.ServerWebExchange;
  * that is autowired in the usual way.
  *
  * @param <C> the type of the context that the match method actually needs to use. Can be
- * an {@link ApplicationContext} or a class of an {@link ApplicationContext#getBean(Class)
- * existing bean}.
+ *            an {@link ApplicationContext} or a class of an {@link ApplicationContext#getBean(Class)
+ *            existing bean}.
  * @author Madhura Bhave
  * @since 2.0.0
  */
@@ -61,8 +61,9 @@ public abstract class ApplicationContextServerWebExchangeMatcher<C> implements S
 
 	/**
 	 * Decides whether the rule implemented by the strategy matches the supplied exchange.
+	 *
 	 * @param exchange the source exchange
-	 * @param context a supplier for the initialized context (may throw an exception)
+	 * @param context  a supplier for the initialized context (may throw an exception)
 	 * @return if the exchange matches
 	 */
 	protected abstract Mono<MatchResult> matches(ServerWebExchange exchange, Supplier<C> context);
@@ -71,6 +72,7 @@ public abstract class ApplicationContextServerWebExchangeMatcher<C> implements S
 	 * Returns if the {@link ApplicationContext} should be ignored and not used for
 	 * matching. If this method returns {@code true} then the context will not be used and
 	 * the {@link #matches(ServerWebExchange) matches} method will return {@code false}.
+	 *
 	 * @param applicationContext the candidate application context
 	 * @return if the application context should be ignored
 	 * @since 2.2.5
@@ -94,6 +96,7 @@ public abstract class ApplicationContextServerWebExchangeMatcher<C> implements S
 
 	/**
 	 * Called once the context has been initialized.
+	 *
 	 * @param context a supplier for the initialized context (may throw an exception)
 	 */
 	protected void initialized(Supplier<C> context) {

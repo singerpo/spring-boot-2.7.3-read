@@ -36,6 +36,7 @@ public class LoadImageUpdateEvent extends ProgressUpdateEvent {
 
 	/**
 	 * Return the stream response or {@code null} if no response is available.
+	 *
 	 * @return the stream response.
 	 */
 	public String getStream() {

@@ -29,7 +29,7 @@ internal open class MyServiceAutoConfigurationTests {
 
 	// tag::runner[]
 	val contextRunner = ApplicationContextRunner()
-		.withConfiguration(AutoConfigurations.of(MyServiceAutoConfiguration::class.java))
+			.withConfiguration(AutoConfigurations.of(MyServiceAutoConfiguration::class.java))
 
 	// end::runner[]
 
@@ -47,9 +47,9 @@ internal open class MyServiceAutoConfigurationTests {
 	@Test
 	fun serviceIsIgnoredIfLibraryIsNotPresent() {
 		contextRunner.withClassLoader(FilteredClassLoader(MyService::class.java))
-			.run { context: AssertableApplicationContext? ->
-				assertThat(context).doesNotHaveBean("myService")
-			}
+				.run { context: AssertableApplicationContext? ->
+					assertThat(context).doesNotHaveBean("myService")
+				}
 	}
 	// end::test-classloader[]
 
@@ -57,11 +57,11 @@ internal open class MyServiceAutoConfigurationTests {
 	@Test
 	fun defaultServiceBacksOff() {
 		contextRunner.withUserConfiguration(UserConfiguration::class.java)
-			.run { context: AssertableApplicationContext ->
-				assertThat(context).hasSingleBean(MyService::class.java)
-				assertThat(context).getBean("myCustomService")
-					.isSameAs(context.getBean(MyService::class.java))
-			}
+				.run { context: AssertableApplicationContext ->
+					assertThat(context).hasSingleBean(MyService::class.java)
+					assertThat(context).getBean("myCustomService")
+							.isSameAs(context.getBean(MyService::class.java))
+				}
 	}
 
 	@Configuration(proxyBeanMethods = false)

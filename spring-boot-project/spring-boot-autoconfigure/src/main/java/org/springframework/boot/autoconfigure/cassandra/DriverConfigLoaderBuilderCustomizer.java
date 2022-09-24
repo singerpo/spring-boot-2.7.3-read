@@ -32,6 +32,7 @@ public interface DriverConfigLoaderBuilderCustomizer {
 	/**
 	 * Customize the {@linkplain ProgrammaticDriverConfigLoaderBuilder DriverConfigLoader
 	 * builder}.
+	 *
 	 * @param builder the builder to customize
 	 */
 	void customize(ProgrammaticDriverConfigLoaderBuilder builder);

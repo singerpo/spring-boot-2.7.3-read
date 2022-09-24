@@ -93,7 +93,6 @@ class AvailabilityChangeEventTests {
 	enum SubClassedEnum implements AvailabilityState {
 
 		ONE {
-
 			@Override
 			String getDescription() {
 				return "I have been overridden";
@@ -102,7 +101,6 @@ class AvailabilityChangeEventTests {
 		},
 
 		TWO {
-
 			@Override
 			String getDescription() {
 				return "I have also been overridden";

@@ -1,27 +1,27 @@
 plugins {
-	java
-	id("org.springframework.boot") version "{gradle-project-version}"
+    java
+    id("org.springframework.boot") version "{gradle-project-version}"
 }
 
 dependencies {
-	implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
-	implementation("org.slf4j:slf4j-api")
+    implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
+    implementation("org.slf4j:slf4j-api")
 }
 
 repositories {
-	maven {
-		url = uri("file:repository")
-	}
+    maven {
+        url = uri("file:repository")
+    }
 }
 
 configurations.all {
-	resolutionStrategy {
-		eachDependency {
-			if (requested.group == "org.springframework.boot") {
-				useVersion("TEST-SNAPSHOT")
-			}
-		}
-	}
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "org.springframework.boot") {
+                useVersion("TEST-SNAPSHOT")
+            }
+        }
+    }
 }
 
 // tag::custom-version[]

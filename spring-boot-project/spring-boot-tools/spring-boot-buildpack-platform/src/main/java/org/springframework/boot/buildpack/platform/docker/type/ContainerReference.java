@@ -57,6 +57,7 @@ public final class ContainerReference {
 
 	/**
 	 * Factory method to create a {@link ContainerReference} with a specific value.
+	 *
 	 * @param value the container reference value
 	 * @return a new container reference instance
 	 */

@@ -58,7 +58,7 @@ public class DevToolsPropertyDefaultsPostProcessor implements EnvironmentPostPro
 
 	private static final String[] WEB_ENVIRONMENT_CLASSES = {
 			"org.springframework.web.context.ConfigurableWebEnvironment",
-			"org.springframework.boot.web.reactive.context.ConfigurableReactiveWebEnvironment" };
+			"org.springframework.boot.web.reactive.context.ConfigurableReactiveWebEnvironment"};
 
 	private static final Map<String, Object> PROPERTIES;
 
@@ -67,8 +67,7 @@ public class DevToolsPropertyDefaultsPostProcessor implements EnvironmentPostPro
 		try (InputStream stream = DevToolsPropertyDefaultsPostProcessor.class
 				.getResourceAsStream("devtools-property-defaults.properties")) {
 			properties.load(stream);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException("Failed to load devtools-property-defaults.properties", ex);
 		}
 		Map<String, Object> map = new HashMap<>();
@@ -109,8 +108,7 @@ public class DevToolsPropertyDefaultsPostProcessor implements EnvironmentPostPro
 		try {
 			Restarter restarter = Restarter.getInstance();
 			return (restarter != null && restarter.getInitialUrls() != null);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}
@@ -132,8 +130,7 @@ public class DevToolsPropertyDefaultsPostProcessor implements EnvironmentPostPro
 	private Class<?> resolveClassName(String candidate, ClassLoader classLoader) {
 		try {
 			return ClassUtils.resolveClassName(candidate, classLoader);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			return null;
 		}
 	}

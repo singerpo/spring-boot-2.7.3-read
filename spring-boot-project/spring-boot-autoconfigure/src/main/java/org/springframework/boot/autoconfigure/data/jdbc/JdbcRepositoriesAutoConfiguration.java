@@ -41,12 +41,12 @@ import org.springframework.transaction.PlatformTransactionManager;
  *
  * @author Andy Wilkinson
  * @author Stephane Nicoll
- * @since 2.1.0
  * @see EnableJdbcRepositories
+ * @since 2.1.0
  */
-@AutoConfiguration(after = { JdbcTemplateAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class })
-@ConditionalOnBean({ NamedParameterJdbcOperations.class, PlatformTransactionManager.class })
-@ConditionalOnClass({ NamedParameterJdbcOperations.class, AbstractJdbcConfiguration.class })
+@AutoConfiguration(after = {JdbcTemplateAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class})
+@ConditionalOnBean({NamedParameterJdbcOperations.class, PlatformTransactionManager.class})
+@ConditionalOnClass({NamedParameterJdbcOperations.class, AbstractJdbcConfiguration.class})
 @ConditionalOnProperty(prefix = "spring.data.jdbc.repositories", name = "enabled", havingValue = "true",
 		matchIfMissing = true)
 public class JdbcRepositoriesAutoConfiguration {

@@ -124,8 +124,7 @@ class NoSuchBeanDefinitionFailureAnalyzer extends AbstractInjectionFailureAnalyz
 									+ "configuration property binding.",
 							action, ConstructorBinding.class.getSimpleName(), ConstructorBinding.class.getSimpleName(),
 							constructor.getName());
-				}
-				else {
+				} else {
 					action = String.format(
 							"%s%nConsider adding @%s to %s if you intended to use constructor-based "
 									+ "configuration property binding.",
@@ -176,14 +175,14 @@ class NoSuchBeanDefinitionFailureAnalyzer extends AbstractInjectionFailureAnalyz
 	}
 
 	private void collectReportedConditionOutcomes(NoSuchBeanDefinitionException cause,
-			List<AutoConfigurationResult> results) {
+												  List<AutoConfigurationResult> results) {
 		this.report.getConditionAndOutcomesBySource()
 				.forEach((source, sourceOutcomes) -> collectReportedConditionOutcomes(cause, new Source(source),
 						sourceOutcomes, results));
 	}
 
 	private void collectReportedConditionOutcomes(NoSuchBeanDefinitionException cause, Source source,
-			ConditionAndOutcomes sourceOutcomes, List<AutoConfigurationResult> results) {
+												  ConditionAndOutcomes sourceOutcomes, List<AutoConfigurationResult> results) {
 		if (sourceOutcomes.isFullMatch()) {
 			return;
 		}
@@ -198,7 +197,7 @@ class NoSuchBeanDefinitionFailureAnalyzer extends AbstractInjectionFailureAnalyz
 	}
 
 	private void collectExcludedAutoConfiguration(NoSuchBeanDefinitionException cause,
-			List<AutoConfigurationResult> results) {
+												  List<AutoConfigurationResult> results) {
 		for (String excludedClass : this.report.getExclusions()) {
 			Source source = new Source(excludedClass);
 			BeanMethods methods = new BeanMethods(source, cause);
@@ -262,8 +261,7 @@ class NoSuchBeanDefinitionFailureAnalyzer extends AbstractInjectionFailureAnalyz
 					}
 				}
 				return Collections.unmodifiableList(result);
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return Collections.emptyList();
 			}
 		}
@@ -301,8 +299,7 @@ class NoSuchBeanDefinitionFailureAnalyzer extends AbstractInjectionFailureAnalyz
 				Class<?> returnType = ClassUtils.forName(returnTypeName,
 						NoSuchBeanDefinitionFailureAnalyzer.this.beanFactory.getBeanClassLoader());
 				return type.isAssignableFrom(returnType);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				return false;
 			}
 		}

@@ -103,7 +103,7 @@ abstract class AbstractBootArchiveTests<T extends Jar & BootArchive> {
 	private T task;
 
 	protected AbstractBootArchiveTests(Class<T> taskClass, String launcherClass, String libPath, String classesPath,
-			String indexPath) {
+									   String indexPath) {
 		this.taskClass = taskClass;
 		this.launcherClass = launcherClass;
 		this.libPath = libPath;
@@ -284,8 +284,7 @@ abstract class AbstractBootArchiveTests<T extends Jar & BootArchive> {
 		try {
 			Set<PosixFilePermission> permissions = Files.getPosixFilePermissions(archiveFile.toPath());
 			assertThat(permissions).contains(PosixFilePermission.OWNER_EXECUTE);
-		}
-		catch (UnsupportedOperationException ex) {
+		} catch (UnsupportedOperationException ex) {
 			// Windows, presumably. Continue
 		}
 	}

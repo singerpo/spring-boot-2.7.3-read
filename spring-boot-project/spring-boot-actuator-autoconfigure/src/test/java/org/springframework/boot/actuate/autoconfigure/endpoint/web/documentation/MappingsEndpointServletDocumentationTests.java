@@ -174,7 +174,7 @@ class MappingsEndpointServletDocumentationTests extends AbstractEndpointDocument
 
 		@Bean
 		MappingsEndpoint mappingsEndpoint(Collection<MappingDescriptionProvider> descriptionProviders,
-				ConfigurableApplicationContext context) {
+										  ConfigurableApplicationContext context) {
 			return new MappingsEndpoint(descriptionProviders, context);
 		}
 
@@ -188,7 +188,7 @@ class MappingsEndpointServletDocumentationTests extends AbstractEndpointDocument
 	@RestController
 	static class ExampleController {
 
-		@PostMapping(path = "/", consumes = { MediaType.APPLICATION_JSON_VALUE, "!application/xml" },
+		@PostMapping(path = "/", consumes = {MediaType.APPLICATION_JSON_VALUE, "!application/xml"},
 				produces = MediaType.TEXT_PLAIN_VALUE, headers = "X-Custom=Foo", params = "a!=alpha")
 		String example() {
 			return "Hello World";

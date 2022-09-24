@@ -109,8 +109,7 @@ class JtaAutoConfigurationTests {
 		if (jndiEntry.value instanceof UserTransaction) {
 			assertThat(transactionManager.getUserTransaction()).isEqualTo(jndiEntry.value);
 			assertThat(transactionManager.getTransactionManager()).isNull();
-		}
-		else {
+		} else {
 			assertThat(transactionManager.getUserTransaction()).isInstanceOf(UserTransactionAdapter.class);
 			assertThat(transactionManager.getTransactionManager()).isEqualTo(jndiEntry.value);
 		}
@@ -289,8 +288,7 @@ class JtaAutoConfigurationTests {
 		private InitialContext createInitialContext() {
 			try {
 				return new InitialContext();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new RuntimeException();
 			}
 		}

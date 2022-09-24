@@ -36,7 +36,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Madhura Bhave
  */
 @SpringBootTest(
-		classes = { SampleSpringXmlApplication.class, SampleSpringXmlPlaceholderBeanDefinitionTests.TestConfig.class })
+		classes = {SampleSpringXmlApplication.class, SampleSpringXmlPlaceholderBeanDefinitionTests.TestConfig.class})
 @ExtendWith(OutputCaptureExtension.class)
 class SampleSpringXmlPlaceholderBeanDefinitionTests {
 
@@ -46,7 +46,7 @@ class SampleSpringXmlPlaceholderBeanDefinitionTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@ImportResource({ "classpath:/META-INF/context.xml" })
+	@ImportResource({"classpath:/META-INF/context.xml"})
 	static class TestConfig {
 
 		@Bean

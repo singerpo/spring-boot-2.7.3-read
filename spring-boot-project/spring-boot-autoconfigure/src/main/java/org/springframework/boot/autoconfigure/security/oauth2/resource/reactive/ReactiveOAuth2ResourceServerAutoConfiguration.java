@@ -35,12 +35,12 @@ import org.springframework.security.config.annotation.web.reactive.EnableWebFlux
  * @since 2.1.0
  */
 @AutoConfiguration(
-		before = { ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class })
+		before = {ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class})
 @EnableConfigurationProperties(OAuth2ResourceServerProperties.class)
-@ConditionalOnClass({ EnableWebFluxSecurity.class })
+@ConditionalOnClass({EnableWebFluxSecurity.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@Import({ ReactiveOAuth2ResourceServerConfiguration.JwtConfiguration.class,
-		ReactiveOAuth2ResourceServerConfiguration.OpaqueTokenConfiguration.class })
+@Import({ReactiveOAuth2ResourceServerConfiguration.JwtConfiguration.class,
+		ReactiveOAuth2ResourceServerConfiguration.OpaqueTokenConfiguration.class})
 public class ReactiveOAuth2ResourceServerAutoConfiguration {
 
 }

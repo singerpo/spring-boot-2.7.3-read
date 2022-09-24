@@ -48,8 +48,8 @@ import org.springframework.transaction.support.TransactionTemplate;
  * @author Stephane Nicoll
  * @since 1.3.0
  */
-@AutoConfiguration(after = { JtaAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
-		DataSourceTransactionManagerAutoConfiguration.class, Neo4jDataAutoConfiguration.class })
+@AutoConfiguration(after = {JtaAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
+		DataSourceTransactionManagerAutoConfiguration.class, Neo4jDataAutoConfiguration.class})
 @ConditionalOnClass(PlatformTransactionManager.class)
 @EnableConfigurationProperties(TransactionProperties.class)
 public class TransactionAutoConfiguration {

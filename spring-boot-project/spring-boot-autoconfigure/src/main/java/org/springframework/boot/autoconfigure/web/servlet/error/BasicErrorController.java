@@ -49,9 +49,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Michael Stummvoll
  * @author Stephane Nicoll
  * @author Scott Frederick
- * @since 1.0.0
  * @see ErrorAttributes
  * @see ErrorProperties
+ * @since 1.0.0
  */
 @Controller
 @RequestMapping("${server.error.path:${error.path:/error}}")
@@ -61,6 +61,7 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Create a new {@link BasicErrorController} instance.
+	 *
 	 * @param errorAttributes the error attributes
 	 * @param errorProperties configuration properties
 	 */
@@ -70,12 +71,13 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Create a new {@link BasicErrorController} instance.
-	 * @param errorAttributes the error attributes
-	 * @param errorProperties configuration properties
+	 *
+	 * @param errorAttributes    the error attributes
+	 * @param errorProperties    configuration properties
 	 * @param errorViewResolvers error view resolvers
 	 */
 	public BasicErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties,
-			List<ErrorViewResolver> errorViewResolvers) {
+								List<ErrorViewResolver> errorViewResolvers) {
 		super(errorAttributes, errorViewResolvers);
 		Assert.notNull(errorProperties, "ErrorProperties must not be null");
 		this.errorProperties = errorProperties;
@@ -126,7 +128,8 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Determine if the stacktrace attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the stacktrace attribute should be included
 	 */
@@ -143,7 +146,8 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Determine if the message attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the message attribute should be included
 	 */
@@ -160,7 +164,8 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Determine if the errors attribute should be included.
-	 * @param request the source request
+	 *
+	 * @param request  the source request
 	 * @param produces the media type produced (or {@code MediaType.ALL})
 	 * @return if the errors attribute should be included
 	 */
@@ -177,6 +182,7 @@ public class BasicErrorController extends AbstractErrorController {
 
 	/**
 	 * Provide access to the error properties.
+	 *
 	 * @return the error properties
 	 */
 	protected ErrorProperties getErrorProperties() {

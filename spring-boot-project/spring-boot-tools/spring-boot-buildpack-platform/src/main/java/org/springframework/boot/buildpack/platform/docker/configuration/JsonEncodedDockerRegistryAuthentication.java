@@ -39,8 +39,7 @@ class JsonEncodedDockerRegistryAuthentication implements DockerRegistryAuthentic
 	protected void createAuthHeader() {
 		try {
 			this.authHeader = Base64Utils.encodeToUrlSafeString(SharedObjectMapper.get().writeValueAsBytes(this));
-		}
-		catch (JsonProcessingException ex) {
+		} catch (JsonProcessingException ex) {
 			throw new IllegalStateException("Error creating Docker registry authentication header", ex);
 		}
 	}

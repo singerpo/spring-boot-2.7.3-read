@@ -155,8 +155,7 @@ public class RandomValuePropertySource extends PropertySource<Random> {
 		RandomValuePropertySource randomSource = new RandomValuePropertySource(RANDOM_PROPERTY_SOURCE_NAME);
 		if (sources.get(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME) != null) {
 			sources.addAfter(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, randomSource);
-		}
-		else {
+		} else {
 			sources.addLast(randomSource);
 		}
 		logger.trace("RandomValuePropertySource add to Environment");

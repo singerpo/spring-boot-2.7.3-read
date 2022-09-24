@@ -111,6 +111,7 @@ class MavenPublishingConventions {
 	/**
 	 * Add a feature that allows maven plugins to declare optional dependencies that
 	 * appear in the POM. This is required to make m2e in Eclipse happy.
+	 *
 	 * @param project the project to add the feature to
 	 */
 	private void addMavenOptionalFeature(Project project) {

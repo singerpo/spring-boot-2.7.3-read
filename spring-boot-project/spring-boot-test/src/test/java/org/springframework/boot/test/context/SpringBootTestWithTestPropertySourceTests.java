@@ -38,9 +38,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @DirtiesContext
 @SpringBootTest(webEnvironment = WebEnvironment.NONE,
-		properties = { "boot-test-inlined=foo", "b=boot-test-inlined", "c=boot-test-inlined" })
+		properties = {"boot-test-inlined=foo", "b=boot-test-inlined", "c=boot-test-inlined"})
 @TestPropertySource(
-		properties = { "property-source-inlined=bar", "a=property-source-inlined", "c=property-source-inlined" },
+		properties = {"property-source-inlined=bar", "a=property-source-inlined", "c=property-source-inlined"},
 		locations = "classpath:/test-property-source-annotation.properties")
 class SpringBootTestWithTestPropertySourceTests {
 

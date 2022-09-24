@@ -80,7 +80,7 @@ class MBeanInfoFactoryTests {
 	}
 
 	@Test
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	void getMBeanInfoShouldUseJmxOperationResponseMapper() {
 		JmxOperationResponseMapper mapper = mock(JmxOperationResponseMapper.class);
 		given(mapper.mapResponseType(String.class)).willReturn((Class) Integer.class);
@@ -108,7 +108,7 @@ class MBeanInfoFactoryTests {
 		assertThat(signature[1].getDescription()).isNull();
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private JmxOperationParameter mockParameter(String name, Class<?> type, String description) {
 		JmxOperationParameter parameter = mock(JmxOperationParameter.class);
 		given(parameter.getName()).willReturn(name);

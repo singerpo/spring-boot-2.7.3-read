@@ -42,7 +42,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
  * @author Madhura Bhave
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {
-		SampleSecureWebFluxCustomSecurityTests.SecurityConfiguration.class, SampleSecureWebFluxApplication.class })
+		SampleSecureWebFluxCustomSecurityTests.SecurityConfiguration.class, SampleSecureWebFluxApplication.class})
 class SampleSecureWebFluxCustomSecurityTests {
 
 	@Autowired

@@ -122,7 +122,7 @@ class HazelcastAutoConfigurationClientTests {
 	void clientConfigTakesPrecedence() {
 		this.contextRunner.withUserConfiguration(HazelcastServerAndClientConfig.class)
 				.withPropertyValues("spring.hazelcast.config=this-is-ignored.xml").run((context) -> assertThat(context)
-						.getBean(HazelcastInstance.class).isInstanceOf(HazelcastClientProxy.class));
+				.getBean(HazelcastInstance.class).isInstanceOf(HazelcastClientProxy.class));
 	}
 
 	@Test
@@ -139,12 +139,12 @@ class HazelcastAutoConfigurationClientTests {
 	void autoConfiguredClientConfigUsesApplicationClassLoader() {
 		this.contextRunner.withPropertyValues("spring.hazelcast.config=org/springframework/boot/autoconfigure/"
 				+ "hazelcast/hazelcast-client-specific.xml").run((context) -> {
-					HazelcastInstance hazelcast = context.getBean(HazelcastInstance.class);
-					assertThat(hazelcast).isInstanceOf(HazelcastClientProxy.class);
-					ClientConfig clientConfig = ((HazelcastClientProxy) hazelcast).getClientConfig();
-					assertThat(clientConfig.getClassLoader())
-							.isSameAs(context.getSourceApplicationContext().getClassLoader());
-				});
+			HazelcastInstance hazelcast = context.getBean(HazelcastInstance.class);
+			assertThat(hazelcast).isInstanceOf(HazelcastClientProxy.class);
+			ClientConfig clientConfig = ((HazelcastClientProxy) hazelcast).getClientConfig();
+			assertThat(clientConfig.getClassLoader())
+					.isSameAs(context.getSourceApplicationContext().getClassLoader());
+		});
 	}
 
 	private ContextConsumer<AssertableApplicationContext> assertSpecificHazelcastClient(String label) {

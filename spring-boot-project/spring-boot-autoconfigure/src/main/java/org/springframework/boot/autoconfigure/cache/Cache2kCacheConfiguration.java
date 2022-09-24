@@ -38,14 +38,14 @@ import org.springframework.util.CollectionUtils;
  * @author Stephane Nicoll
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass({ Cache2kBuilder.class, SpringCache2kCacheManager.class })
+@ConditionalOnClass({Cache2kBuilder.class, SpringCache2kCacheManager.class})
 @ConditionalOnMissingBean(CacheManager.class)
 @Conditional(CacheCondition.class)
 class Cache2kCacheConfiguration {
 
 	@Bean
 	SpringCache2kCacheManager cacheManager(CacheProperties cacheProperties, CacheManagerCustomizers customizers,
-			ObjectProvider<Cache2kBuilderCustomizer> cache2kBuilderCustomizers) {
+										   ObjectProvider<Cache2kBuilderCustomizer> cache2kBuilderCustomizers) {
 		SpringCache2kCacheManager cacheManager = new SpringCache2kCacheManager();
 		cacheManager.defaultSetup(configureDefaults(cache2kBuilderCustomizers));
 		Collection<String> cacheNames = cacheProperties.getCacheNames();

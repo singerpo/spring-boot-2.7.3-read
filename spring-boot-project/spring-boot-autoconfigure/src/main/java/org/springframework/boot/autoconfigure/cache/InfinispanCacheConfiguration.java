@@ -51,7 +51,7 @@ public class InfinispanCacheConfiguration {
 
 	@Bean
 	public SpringEmbeddedCacheManager cacheManager(CacheManagerCustomizers customizers,
-			EmbeddedCacheManager embeddedCacheManager) {
+												   EmbeddedCacheManager embeddedCacheManager) {
 		SpringEmbeddedCacheManager cacheManager = new SpringEmbeddedCacheManager(embeddedCacheManager);
 		return customizers.customize(cacheManager);
 	}
@@ -59,7 +59,7 @@ public class InfinispanCacheConfiguration {
 	@Bean(destroyMethod = "stop")
 	@ConditionalOnMissingBean
 	public EmbeddedCacheManager infinispanCacheManager(CacheProperties cacheProperties,
-			ObjectProvider<ConfigurationBuilder> defaultConfigurationBuilder) throws IOException {
+													   ObjectProvider<ConfigurationBuilder> defaultConfigurationBuilder) throws IOException {
 		EmbeddedCacheManager cacheManager = createEmbeddedCacheManager(cacheProperties);
 		List<String> cacheNames = cacheProperties.getCacheNames();
 		if (!CollectionUtils.isEmpty(cacheNames)) {

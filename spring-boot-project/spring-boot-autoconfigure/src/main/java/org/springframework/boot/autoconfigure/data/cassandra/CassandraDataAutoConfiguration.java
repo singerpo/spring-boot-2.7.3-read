@@ -56,7 +56,7 @@ import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
  * @since 1.3.0
  */
 @AutoConfiguration(after = CassandraAutoConfiguration.class)
-@ConditionalOnClass({ CqlSession.class, CassandraAdminOperations.class })
+@ConditionalOnClass({CqlSession.class, CassandraAdminOperations.class})
 @ConditionalOnBean(CqlSession.class)
 public class CassandraDataAutoConfiguration {
 
@@ -85,7 +85,7 @@ public class CassandraDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	public CassandraConverter cassandraConverter(CassandraMappingContext mapping,
-			CassandraCustomConversions conversions) {
+												 CassandraCustomConversions conversions) {
 		MappingCassandraConverter converter = new MappingCassandraConverter(mapping);
 		converter.setCodecRegistry(this.session.getContext().getCodecRegistry());
 		converter.setCustomConversions(conversions);

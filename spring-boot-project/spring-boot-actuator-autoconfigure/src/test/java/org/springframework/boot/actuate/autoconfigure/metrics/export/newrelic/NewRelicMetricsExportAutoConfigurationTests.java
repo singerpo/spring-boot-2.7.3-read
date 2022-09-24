@@ -32,7 +32,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 /**
- *
  * Tests for {@link NewRelicMetricsExportAutoConfiguration}.
  *
  * @author Andy Wilkinson
@@ -152,11 +151,11 @@ class NewRelicMetricsExportAutoConfigurationTests {
 				.withPropertyValues("management.metrics.export.newrelic.api-key=abcde",
 						"management.metrics.export.newrelic.account-id=abcde")
 				.withUserConfiguration(BaseConfiguration.class).run((context) -> {
-					NewRelicMeterRegistry registry = context.getBean(NewRelicMeterRegistry.class);
-					assertThat(registry.isClosed()).isFalse();
-					context.close();
-					assertThat(registry.isClosed()).isTrue();
-				});
+			NewRelicMeterRegistry registry = context.getBean(NewRelicMeterRegistry.class);
+			assertThat(registry.isClosed()).isFalse();
+			context.close();
+			assertThat(registry.isClosed()).isTrue();
+		});
 	}
 
 	@Configuration(proxyBeanMethods = false)

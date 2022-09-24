@@ -175,7 +175,7 @@ class JacksonAutoConfigurationTests {
 					assertThat(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS.enabledByDefault()).isTrue();
 					assertThat(mapper.getSerializationConfig()
 							.hasSerializationFeatures(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS.getMask()))
-									.isFalse();
+							.isFalse();
 				});
 	}
 
@@ -187,7 +187,7 @@ class JacksonAutoConfigurationTests {
 					assertThat(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS.enabledByDefault()).isFalse();
 					assertThat(mapper.getDeserializationConfig()
 							.hasDeserializationFeatures(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS.getMask()))
-									.isTrue();
+							.isTrue();
 				});
 	}
 
@@ -199,7 +199,7 @@ class JacksonAutoConfigurationTests {
 					assertThat(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES.enabledByDefault()).isTrue();
 					assertThat(mapper.getDeserializationConfig()
 							.hasDeserializationFeatures(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES.getMask()))
-									.isFalse();
+							.isFalse();
 				});
 	}
 

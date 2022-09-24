@@ -44,6 +44,7 @@ public class DefaultWebMvcTagsProvider implements WebMvcTagsProvider {
 	/**
 	 * Creates a new {@link DefaultWebMvcTagsProvider} that will provide tags from the
 	 * given {@code contributors} in addition to its own.
+	 *
 	 * @param contributors the contributors that will provide additional tags
 	 * @since 2.3.0
 	 */
@@ -58,9 +59,10 @@ public class DefaultWebMvcTagsProvider implements WebMvcTagsProvider {
 	/**
 	 * Creates a new {@link DefaultWebMvcTagsProvider} that will provide tags from the
 	 * given {@code contributors} in addition to its own.
+	 *
 	 * @param ignoreTrailingSlash whether trailing slashes should be ignored when
-	 * determining the {@code uri} tag.
-	 * @param contributors the contributors that will provide additional tags
+	 *                            determining the {@code uri} tag.
+	 * @param contributors        the contributors that will provide additional tags
 	 * @since 2.3.0
 	 */
 	public DefaultWebMvcTagsProvider(boolean ignoreTrailingSlash, List<WebMvcTagsContributor> contributors) {
@@ -70,7 +72,7 @@ public class DefaultWebMvcTagsProvider implements WebMvcTagsProvider {
 
 	@Override
 	public Iterable<Tag> getTags(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Throwable exception) {
+								 Throwable exception) {
 		Tags tags = Tags.of(WebMvcTags.method(request), WebMvcTags.uri(request, response, this.ignoreTrailingSlash),
 				WebMvcTags.exception(exception), WebMvcTags.status(response), WebMvcTags.outcome(response));
 		for (WebMvcTagsContributor contributor : this.contributors) {

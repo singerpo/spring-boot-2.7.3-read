@@ -57,7 +57,7 @@ import org.springframework.util.StringUtils;
  *   "username":"urpRuqTf8Cpe6","password":"pxLsGVpsC9A5S"}
  * }]}
  * </pre>
- *
+ * <p>
  * These objects are flattened into properties. The VCAP_APPLICATION object goes straight
  * to {@code vcap.application.*} in a fairly obvious way, and the VCAP_SERVICES object is
  * unwrapped so that it is a hash of objects with key equal to the service instance name
@@ -79,7 +79,7 @@ import org.springframework.util.StringUtils;
  * vcap.services.mysql.credentials.password: pxLsGVpsC9A5S
  * ...
  * </pre>
- *
+ * <p>
  * N.B. this initializer is mainly intended for informational use (the application and
  * instance ids are particularly useful). For service binding you might find that Spring
  * Cloud is more convenient and more robust against potential changes in Cloud Foundry.
@@ -101,6 +101,7 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 
 	/**
 	 * Create a new {@link CloudFoundryVcapEnvironmentPostProcessor} instance.
+	 *
 	 * @param logger the logger to use
 	 */
 	public CloudFoundryVcapEnvironmentPostProcessor(Log logger) {
@@ -127,8 +128,7 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 			if (propertySources.contains(CommandLinePropertySource.COMMAND_LINE_PROPERTY_SOURCE_NAME)) {
 				propertySources.addAfter(CommandLinePropertySource.COMMAND_LINE_PROPERTY_SOURCE_NAME,
 						new PropertiesPropertySource("vcap", properties));
-			}
-			else {
+			} else {
 				propertySources.addFirst(new PropertiesPropertySource("vcap", properties));
 			}
 		}
@@ -147,8 +147,7 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 			String property = environment.getProperty(VCAP_APPLICATION, "{}");
 			Map<String, Object> map = parser.parseMap(property);
 			extractPropertiesFromApplication(properties, map);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			this.logger.error("Could not parse VCAP_APPLICATION", ex);
 		}
 		return properties;
@@ -160,8 +159,7 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 			String property = environment.getProperty(VCAP_SERVICES, "{}");
 			Map<String, Object> map = parser.parseMap(property);
 			extractPropertiesFromServices(properties, map);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			this.logger.error("Could not parse VCAP_SERVICES", ex);
 		}
 		return properties;
@@ -198,8 +196,7 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 			if (value instanceof Map) {
 				// Need a compound key
 				flatten(properties, (Map<String, Object>) value, name);
-			}
-			else if (value instanceof Collection) {
+			} else if (value instanceof Collection) {
 				// Need a compound key
 				Collection<Object> collection = (Collection<Object>) value;
 				properties.put(name, StringUtils.collectionToCommaDelimitedString(collection));
@@ -208,17 +205,13 @@ public class CloudFoundryVcapEnvironmentPostProcessor implements EnvironmentPost
 					String itemKey = "[" + (count++) + "]";
 					flatten(properties, Collections.singletonMap(itemKey, item), name);
 				}
-			}
-			else if (value instanceof String) {
+			} else if (value instanceof String) {
 				properties.put(name, value);
-			}
-			else if (value instanceof Number) {
+			} else if (value instanceof Number) {
 				properties.put(name, value.toString());
-			}
-			else if (value instanceof Boolean) {
+			} else if (value instanceof Boolean) {
 				properties.put(name, value.toString());
-			}
-			else {
+			} else {
 				properties.put(name, (value != null) ? value : "");
 			}
 		});

@@ -46,8 +46,9 @@ public class RestartClassLoader extends URLClassLoader implements SmartClassLoad
 
 	/**
 	 * Create a new {@link RestartClassLoader} instance.
+	 *
 	 * @param parent the parent classloader
-	 * @param urls the urls managed by the classloader
+	 * @param urls   the urls managed by the classloader
 	 */
 	public RestartClassLoader(ClassLoader parent, URL[] urls) {
 		this(parent, urls, ClassLoaderFileRepository.NONE);
@@ -55,10 +56,11 @@ public class RestartClassLoader extends URLClassLoader implements SmartClassLoad
 
 	/**
 	 * Create a new {@link RestartClassLoader} instance.
-	 * @param parent the parent classloader
+	 *
+	 * @param parent       the parent classloader
 	 * @param updatedFiles any files that have been updated since the JARs referenced in
-	 * URLs were created.
-	 * @param urls the urls managed by the classloader
+	 *                     URLs were created.
+	 * @param urls         the urls managed by the classloader
 	 */
 	public RestartClassLoader(ClassLoader parent, URL[] urls, ClassLoaderFileRepository updatedFiles) {
 		this(parent, urls, updatedFiles, LogFactory.getLog(RestartClassLoader.class));
@@ -66,11 +68,12 @@ public class RestartClassLoader extends URLClassLoader implements SmartClassLoad
 
 	/**
 	 * Create a new {@link RestartClassLoader} instance.
-	 * @param parent the parent classloader
+	 *
+	 * @param parent       the parent classloader
 	 * @param updatedFiles any files that have been updated since the JARs referenced in
-	 * URLs were created.
-	 * @param urls the urls managed by the classloader
-	 * @param logger the logger used for messages
+	 *                     URLs were created.
+	 * @param urls         the urls managed by the classloader
+	 * @param logger       the logger used for messages
 	 * @deprecated since 2.4.11 for removal in 2.7.0 in favor of
 	 * {@link #RestartClassLoader(ClassLoader, URL[], ClassLoaderFileRepository)}
 	 */
@@ -140,8 +143,7 @@ public class RestartClassLoader extends URLClassLoader implements SmartClassLoad
 			if (loadedClass == null) {
 				try {
 					loadedClass = findClass(name);
-				}
-				catch (ClassNotFoundException ex) {
+				} catch (ClassNotFoundException ex) {
 					loadedClass = Class.forName(name, false, getParent());
 				}
 			}
@@ -181,8 +183,7 @@ public class RestartClassLoader extends URLClassLoader implements SmartClassLoad
 	private URL createFileUrl(String name, ClassLoaderFile file) {
 		try {
 			return new URL("reloaded", null, -1, "/" + name, new ClassLoaderFileURLStreamHandler(file));
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

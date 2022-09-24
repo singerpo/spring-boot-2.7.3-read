@@ -39,8 +39,7 @@ public class HikariDataSourcePoolMetadata extends AbstractDataSourcePoolMetadata
 	public Integer getActive() {
 		try {
 			return getHikariPool().getActiveConnections();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -49,8 +48,7 @@ public class HikariDataSourcePoolMetadata extends AbstractDataSourcePoolMetadata
 	public Integer getIdle() {
 		try {
 			return getHikariPool().getIdleConnections();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}

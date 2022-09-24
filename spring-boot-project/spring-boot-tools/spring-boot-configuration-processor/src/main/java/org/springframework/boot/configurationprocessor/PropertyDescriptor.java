@@ -52,7 +52,7 @@ abstract class PropertyDescriptor<S extends Element> {
 	private final ExecutableElement setter;
 
 	protected PropertyDescriptor(TypeElement ownerElement, ExecutableElement factoryMethod, S source, String name,
-			TypeMirror type, VariableElement field, ExecutableElement getter, ExecutableElement setter) {
+								 TypeMirror type, VariableElement field, ExecutableElement getter, ExecutableElement setter) {
 		this.ownerElement = ownerElement;
 		this.factoryMethod = factoryMethod;
 		this.source = source;
@@ -125,8 +125,7 @@ abstract class PropertyDescriptor<S extends Element> {
 	ItemMetadata resolveItemMetadata(String prefix, MetadataGenerationEnvironment environment) {
 		if (isNested(environment)) {
 			return resolveItemMetadataGroup(prefix, environment);
-		}
-		else if (isProperty(environment)) {
+		} else if (isProperty(environment)) {
 			return resolveItemMetadataProperty(prefix, environment);
 		}
 		return null;
@@ -170,7 +169,7 @@ abstract class PropertyDescriptor<S extends Element> {
 	}
 
 	private boolean isParentTheSame(MetadataGenerationEnvironment environment, Element returnType,
-			TypeElement element) {
+									TypeElement element) {
 		if (returnType == null || element == null) {
 			return false;
 		}

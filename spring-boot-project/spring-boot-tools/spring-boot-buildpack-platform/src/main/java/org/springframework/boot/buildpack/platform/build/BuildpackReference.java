@@ -28,8 +28,8 @@ import org.springframework.util.Assert;
  *
  * @author Phillip Webb
  * @author Scott Frederick
- * @since 2.5.0
  * @see BuildpackResolver
+ * @since 2.5.0
  */
 public final class BuildpackReference {
 
@@ -54,14 +54,12 @@ public final class BuildpackReference {
 				return Paths.get(url.getPath());
 			}
 			return null;
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			// not a URL, fall through to attempting to find a plain file path
 		}
 		try {
 			return Paths.get(this.value);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return null;
 		}
 	}
@@ -89,6 +87,7 @@ public final class BuildpackReference {
 
 	/**
 	 * Create a new {@link BuildpackReference} from the given value.
+	 *
 	 * @param value the value to use
 	 * @return a new {@link BuildpackReference}
 	 */

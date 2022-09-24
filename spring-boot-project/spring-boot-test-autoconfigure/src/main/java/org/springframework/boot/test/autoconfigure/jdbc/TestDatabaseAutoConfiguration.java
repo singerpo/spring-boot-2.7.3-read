@@ -55,8 +55,8 @@ import org.springframework.util.ObjectUtils;
  * Auto-configuration for a test database.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see AutoConfigureTestDatabase
+ * @since 1.4.0
  */
 @AutoConfiguration(before = DataSourceAutoConfiguration.class)
 public class TestDatabaseAutoConfiguration {

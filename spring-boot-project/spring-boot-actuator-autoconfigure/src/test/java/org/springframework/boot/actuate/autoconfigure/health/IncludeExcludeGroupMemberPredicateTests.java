@@ -112,7 +112,8 @@ class IncludeExcludeGroupMemberPredicateTests {
 		assertThat(predicate).accepts("test/a").rejects("test/b").rejects("foo");
 	}
 
-	@Test // gh-29251
+	@Test
+		// gh-29251
 	void specifiedExcludeShouldExcludeNestedChildren() {
 		Predicate<String> predicate = include("*").exclude("test");
 		assertThat(predicate).rejects("test").rejects("test/a").rejects("test/a").accepts("other");

@@ -41,6 +41,7 @@ public @interface SpyBeans {
 
 	/**
 	 * Return the contained {@link SpyBean @SpyBean} annotations.
+	 *
 	 * @return the spy beans
 	 */
 	SpyBean[] value();

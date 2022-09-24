@@ -67,14 +67,14 @@ class StartupTimeMetricsListenerAutoConfigurationTests {
 	void startupTimeMetricsCanBeDisabled() {
 		this.contextRunner.withPropertyValues("management.metrics.enable.application.started.time:false",
 				"management.metrics.enable.application.ready.time:false").run((context) -> {
-					context.publishEvent(new ApplicationStartedEvent(new SpringApplication(), null,
-							context.getSourceApplicationContext(), Duration.ofMillis(2500)));
-					context.publishEvent(new ApplicationReadyEvent(new SpringApplication(), null,
-							context.getSourceApplicationContext(), Duration.ofMillis(3000)));
-					SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
-					assertThat(registry.find("application.started.time").timeGauge()).isNull();
-					assertThat(registry.find("application.ready.time").timeGauge()).isNull();
-				});
+			context.publishEvent(new ApplicationStartedEvent(new SpringApplication(), null,
+					context.getSourceApplicationContext(), Duration.ofMillis(2500)));
+			context.publishEvent(new ApplicationReadyEvent(new SpringApplication(), null,
+					context.getSourceApplicationContext(), Duration.ofMillis(3000)));
+			SimpleMeterRegistry registry = context.getBean(SimpleMeterRegistry.class);
+			assertThat(registry.find("application.started.time").timeGauge()).isNull();
+			assertThat(registry.find("application.ready.time").timeGauge()).isNull();
+		});
 	}
 
 	@Test

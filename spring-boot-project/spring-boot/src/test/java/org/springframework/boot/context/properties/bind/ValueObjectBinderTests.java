@@ -386,7 +386,7 @@ class ValueObjectBinderTests {
 		}
 		TestCompiler compiler = new TestCompiler(tempDir);
 		compiler.getTask(Arrays.asList(recordProperties)).call();
-		ClassLoader ucl = new URLClassLoader(new URL[] { tempDir.toURI().toURL() });
+		ClassLoader ucl = new URLClassLoader(new URL[]{tempDir.toURI().toURL()});
 		Object bean = this.binder.bind("test.record", Class.forName("RecordProperties", true, ucl)).get();
 		assertThat(bean).hasFieldOrPropertyWithValue("property1", "value-from-config-1")
 				.hasFieldOrPropertyWithValue("property2", "default-value-2");
@@ -409,7 +409,7 @@ class ValueObjectBinderTests {
 		private final ExampleEnum enumValue;
 
 		ExampleValueBean(int intValue, long longValue, boolean booleanValue, String stringValue,
-				ExampleEnum enumValue) {
+						 ExampleEnum enumValue) {
 			this.intValue = intValue;
 			this.longValue = longValue;
 			this.booleanValue = booleanValue;
@@ -538,8 +538,8 @@ class ValueObjectBinderTests {
 		private final List<String> customList;
 
 		ExampleDefaultValueBean(@DefaultValue("5") int intValue,
-				@DefaultValue({ "a", "b", "c" }) List<String> stringsList,
-				@DefaultValue("x,y,z") List<String> customList) {
+								@DefaultValue({"a", "b", "c"}) List<String> stringsList,
+								@DefaultValue("x,y,z") List<String> customList) {
 			this.intValue = intValue;
 			this.stringsList = stringsList;
 			this.customList = customList;
@@ -661,7 +661,7 @@ class ValueObjectBinderTests {
 		private final NestedJavaBean nestedJavaBean;
 
 		NestedConstructorBeanWithDefaultValue(@DefaultValue NestedImmutable nestedImmutable,
-				@DefaultValue NestedJavaBean nestedJavaBean) {
+											  @DefaultValue NestedJavaBean nestedJavaBean) {
 			this.nestedImmutable = nestedImmutable;
 			this.nestedJavaBean = nestedJavaBean;
 		}
@@ -754,7 +754,7 @@ class ValueObjectBinderTests {
 		private final String[] arrayValue;
 
 		NestedConstructorBeanWithEmptyDefaultValueForArrayTypes(@DefaultValue String[] arrayValue,
-				@DefaultValue Integer intValue) {
+																@DefaultValue Integer intValue) {
 			this.arrayValue = arrayValue;
 		}
 

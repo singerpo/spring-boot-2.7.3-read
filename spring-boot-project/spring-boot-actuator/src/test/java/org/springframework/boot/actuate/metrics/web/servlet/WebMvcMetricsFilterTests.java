@@ -191,7 +191,7 @@ class WebMvcMetricsFilterTests {
 	void unhandledServletException() {
 		assertThatCode(() -> this.mvc
 				.perform(get("/api/filterError").header(CustomBehaviorFilter.TEST_SERVLET_EXCEPTION_HEADER, "throw")))
-						.isInstanceOf(ServletException.class);
+				.isInstanceOf(ServletException.class);
 		Id meterId = this.registry.get("http.server.requests").tags("exception", "ServletException").timer().getId();
 		assertThat(meterId.getTag("status")).isEqualTo("500");
 	}
@@ -216,8 +216,7 @@ class WebMvcMetricsFilterTests {
 	void anonymousError() {
 		try {
 			this.mvc.perform(get("/api/c1/anonymousError/10"));
-		}
-		catch (Throwable ignore) {
+		} catch (Throwable ignore) {
 		}
 		Id meterId = this.registry.get("http.server.requests").tag("uri", "/api/c1/anonymousError/{id}").timer()
 				.getId();
@@ -232,8 +231,7 @@ class WebMvcMetricsFilterTests {
 			try {
 				result.set(
 						this.mvc.perform(get("/api/c1/callable/10")).andExpect(request().asyncStarted()).andReturn());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				fail("Failed to execute async request", ex);
 			}
 		});
@@ -268,8 +266,7 @@ class WebMvcMetricsFilterTests {
 			try {
 				result.set(this.mvc.perform(get("/api/c1/completableFuture/{id}", 1))
 						.andExpect(request().asyncStarted()).andReturn());
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				fail("Failed to execute async request", ex);
 			}
 		});
@@ -295,7 +292,7 @@ class WebMvcMetricsFilterTests {
 		this.mvc.perform(get("/api/c1/regex/.abc")).andExpect(status().isOk());
 		assertThat(
 				this.registry.get("http.server.requests").tags("uri", "/api/c1/regex/{id:\\.[a-z]+}").timer().count())
-						.isEqualTo(1L);
+				.isEqualTo(1L);
 	}
 
 	@Test
@@ -320,7 +317,7 @@ class WebMvcMetricsFilterTests {
 				.count()).isEqualTo(2);
 	}
 
-	@Target({ ElementType.METHOD })
+	@Target({ElementType.METHOD})
 	@Retention(RetentionPolicy.RUNTIME)
 	@Timed(percentiles = 0.95)
 	@interface Timed95 {
@@ -329,7 +326,7 @@ class WebMvcMetricsFilterTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@EnableWebMvc
-	@Import({ Controller1.class, Controller2.class })
+	@Import({Controller1.class, Controller2.class})
 	static class MetricsFilterApp {
 
 		@Bean
@@ -386,7 +383,7 @@ class WebMvcMetricsFilterTests {
 
 		@Bean
 		WebMvcMetricsFilter webMetricsFilter(MeterRegistry registry, FaultyWebMvcTagsProvider tagsProvider,
-				WebApplicationContext ctx) {
+											 WebApplicationContext ctx) {
 			return new WebMvcMetricsFilter(registry, tagsProvider, "http.server.requests", AutoTimer.ENABLED);
 		}
 
@@ -409,7 +406,7 @@ class WebMvcMetricsFilterTests {
 		@Qualifier("completableFutureBarrier")
 		private CyclicBarrier completableFutureBarrier;
 
-		@Timed(extraTags = { "public", "true" })
+		@Timed(extraTags = {"public", "true"})
 		@GetMapping("/{id}")
 		String successfulWithExtraTags(@PathVariable Long id) {
 			return id.toString();
@@ -421,15 +418,14 @@ class WebMvcMetricsFilterTests {
 		}
 
 		@Timed
-		@Timed(value = "my.long.request", extraTags = { "region", "test" }, longTask = true)
+		@Timed(value = "my.long.request", extraTags = {"region", "test"}, longTask = true)
 		@GetMapping("/callable/{id}")
 		Callable<String> asyncCallable(@PathVariable Long id) throws Exception {
 			this.callableBarrier.await();
 			return () -> {
 				try {
 					this.callableBarrier.await();
-				}
-				catch (InterruptedException ex) {
+				} catch (InterruptedException ex) {
 					throw new RuntimeException(ex);
 				}
 				return id.toString();
@@ -443,8 +439,7 @@ class WebMvcMetricsFilterTests {
 			return CompletableFuture.supplyAsync(() -> {
 				try {
 					this.completableFutureBarrier.await();
-				}
-				catch (InterruptedException | BrokenBarrierException ex) {
+				} catch (InterruptedException | BrokenBarrierException ex) {
 					throw new RuntimeException(ex);
 				}
 				return id.toString();
@@ -499,7 +494,7 @@ class WebMvcMetricsFilterTests {
 			return id;
 		}
 
-		@Timed(percentiles = { 0.50, 0.95 })
+		@Timed(percentiles = {0.50, 0.95})
 		@GetMapping("/percentiles/{id}")
 		String percentiles(@PathVariable String id) {
 			return id;
@@ -547,7 +542,7 @@ class WebMvcMetricsFilterTests {
 
 		@Override
 		protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-				FilterChain filterChain) throws ServletException, IOException {
+										FilterChain filterChain) throws ServletException, IOException {
 			String misbehaveStatus = request.getHeader(TEST_STATUS_HEADER);
 			if (misbehaveStatus != null) {
 				response.setStatus(Integer.parseInt(misbehaveStatus));

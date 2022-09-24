@@ -46,7 +46,7 @@ import static org.mockito.Mockito.reset;
  * @author Michael Stummvoll
  * @author Michael Simons
  */
-@ExtendWith({ MockitoExtension.class, OutputCaptureExtension.class })
+@ExtendWith({MockitoExtension.class, OutputCaptureExtension.class})
 class BannerTests {
 
 	private ConfigurableApplicationContext context;

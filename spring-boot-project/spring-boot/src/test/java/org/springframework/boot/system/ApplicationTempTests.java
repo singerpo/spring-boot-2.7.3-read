@@ -62,8 +62,7 @@ class ApplicationTempTests {
 			System.setProperty("user.dir", "abc");
 			File t2 = new ApplicationTemp().getDir();
 			assertThat(t1).isNotEqualTo(t2);
-		}
-		finally {
+		} finally {
 			System.setProperty("user.dir", userDir);
 		}
 	}

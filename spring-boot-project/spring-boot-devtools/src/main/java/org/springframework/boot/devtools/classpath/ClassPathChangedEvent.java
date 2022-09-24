@@ -29,8 +29,8 @@ import org.springframework.util.Assert;
  * {@link ApplicationEvent} containing details of a classpath change.
  *
  * @author Phillip Webb
- * @since 1.3.0
  * @see ClassPathFileChangeListener
+ * @since 1.3.0
  */
 public class ClassPathChangedEvent extends ApplicationEvent {
 
@@ -40,8 +40,9 @@ public class ClassPathChangedEvent extends ApplicationEvent {
 
 	/**
 	 * Create a new {@link ClassPathChangedEvent}.
-	 * @param source the source of the event
-	 * @param changeSet the changed files
+	 *
+	 * @param source          the source of the event
+	 * @param changeSet       the changed files
 	 * @param restartRequired if a restart is required due to the change
 	 */
 	public ClassPathChangedEvent(Object source, Set<ChangedFiles> changeSet, boolean restartRequired) {
@@ -53,6 +54,7 @@ public class ClassPathChangedEvent extends ApplicationEvent {
 
 	/**
 	 * Return details of the files that changed.
+	 *
 	 * @return the changed files
 	 */
 	public Set<ChangedFiles> getChangeSet() {
@@ -61,6 +63,7 @@ public class ClassPathChangedEvent extends ApplicationEvent {
 
 	/**
 	 * Return if an application restart is required due to the change.
+	 *
 	 * @return if an application restart is required
 	 */
 	public boolean isRestartRequired() {
@@ -75,6 +78,7 @@ public class ClassPathChangedEvent extends ApplicationEvent {
 
 	/**
 	 * Return an overview of the changes that triggered this event.
+	 *
 	 * @return an overview of the changes
 	 * @since 2.6.11
 	 */
@@ -87,11 +91,9 @@ public class ClassPathChangedEvent extends ApplicationEvent {
 				Type type = changedFile.getType();
 				if (type == Type.ADD) {
 					added++;
-				}
-				else if (type == Type.DELETE) {
+				} else if (type == Type.DELETE) {
 					deleted++;
-				}
-				else if (type == Type.MODIFY) {
+				} else if (type == Type.MODIFY) {
 					modified++;
 				}
 			}

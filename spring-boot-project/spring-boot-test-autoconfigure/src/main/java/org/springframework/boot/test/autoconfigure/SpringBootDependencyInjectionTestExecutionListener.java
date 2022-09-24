@@ -41,8 +41,7 @@ public class SpringBootDependencyInjectionTestExecutionListener extends Dependen
 	public void prepareTestInstance(TestContext testContext) throws Exception {
 		try {
 			super.prepareTestInstance(testContext);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			outputConditionEvaluationReport(testContext);
 			throw ex;
 		}
@@ -56,8 +55,7 @@ public class SpringBootDependencyInjectionTestExecutionListener extends Dependen
 						.get(((ConfigurableApplicationContext) context).getBeanFactory());
 				System.err.println(new ConditionEvaluationReportMessage(report));
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// Allow original failure to be reported
 		}
 	}

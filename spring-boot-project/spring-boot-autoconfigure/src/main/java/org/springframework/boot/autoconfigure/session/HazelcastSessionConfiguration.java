@@ -53,7 +53,7 @@ class HazelcastSessionConfiguration {
 
 		@Autowired
 		public void customize(SessionProperties sessionProperties,
-				HazelcastSessionProperties hazelcastSessionProperties, ServerProperties serverProperties) {
+							  HazelcastSessionProperties hazelcastSessionProperties, ServerProperties serverProperties) {
 			Duration timeout = sessionProperties
 					.determineTimeout(() -> serverProperties.getServlet().getSession().getTimeout());
 			if (timeout != null) {

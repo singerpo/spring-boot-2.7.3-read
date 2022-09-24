@@ -103,7 +103,8 @@ class CachingOperationInvokerTests {
 		assertThat(response).isSameAs(cachedResponse);
 	}
 
-	@Test // gh-28313
+	@Test
+		// gh-28313
 	void cacheWhenEachPrincipalIsUniqueDoesNotConsumeTooMuchMemory() throws Exception {
 		MonoOperationInvoker target = new MonoOperationInvoker();
 		CachingOperationInvoker invoker = new CachingOperationInvoker(target, 50L);

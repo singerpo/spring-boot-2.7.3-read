@@ -45,8 +45,7 @@ public class SpringApplicationWebApplicationInitializer extends SpringBootServle
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		try {
 			this.sources = getSources(servletContext);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException(ex);
 		}
 		super.onStartup(servletContext);
@@ -75,8 +74,7 @@ public class SpringApplicationWebApplicationInitializer extends SpringBootServle
 				sourceClasses[i] = Class.forName(this.sources[i], false, classLoader);
 			}
 			return builder.sources(sourceClasses).properties("spring.groovy.template.check-template-location=false");
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

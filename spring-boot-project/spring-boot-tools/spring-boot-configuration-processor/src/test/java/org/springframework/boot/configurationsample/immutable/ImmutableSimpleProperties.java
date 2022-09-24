@@ -50,7 +50,7 @@ public class ImmutableSimpleProperties {
 
 	@ConstructorBinding
 	public ImmutableSimpleProperties(@DefaultValue("boot") String theName, boolean flag, Comparator<?> comparator,
-			Long counter) {
+									 Long counter) {
 		this.theName = theName;
 		this.flag = flag;
 		this.comparator = comparator;

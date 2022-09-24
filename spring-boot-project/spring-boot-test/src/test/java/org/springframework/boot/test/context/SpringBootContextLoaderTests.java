@@ -115,7 +115,7 @@ class SpringBootContextLoaderTests {
 	}
 
 	@Test
-	// gh-28776
+		// gh-28776
 	void testPropertyValuesShouldTakePrecedenceWhenInlinedPropertiesPresent() {
 		TestContext context = new ExposedTestContextManager(SimpleConfig.class).getExposedTestContext();
 		StandardEnvironment environment = (StandardEnvironment) context.getApplicationContext().getEnvironment();
@@ -180,12 +180,12 @@ class SpringBootContextLoaderTests {
 		assertThat(actual.get(key)).isEqualTo(value);
 	}
 
-	@SpringBootTest(properties = { "key=myValue", "anotherKey:anotherValue" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=myValue", "anotherKey:anotherValue"}, classes = Config.class)
 	static class SimpleConfig {
 
 	}
 
-	@SpringBootTest(properties = { "key=myValue", "anotherKey:anotherValue" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=myValue", "anotherKey:anotherValue"}, classes = Config.class)
 	static class SimpleConfigNonAlias {
 
 	}
@@ -195,40 +195,40 @@ class SpringBootContextLoaderTests {
 
 	}
 
-	@SpringBootTest(properties = { "key=myValue", "otherKey=otherValue" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=myValue", "otherKey=otherValue"}, classes = Config.class)
 	static class AppendConfig {
 
 	}
 
-	@SpringBootTest(properties = { "key=my=Value", "anotherKey:another:Value" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=my=Value", "anotherKey:another:Value"}, classes = Config.class)
 	static class SameSeparatorInValue {
 
 	}
 
-	@SpringBootTest(properties = { "key=my:Value", "anotherKey:another=Value" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=my:Value", "anotherKey:another=Value"}, classes = Config.class)
 	static class AnotherSeparatorInValue {
 
 	}
 
-	@SpringBootTest(properties = { "key=myValue", "variables=foo=FOO\n bar=BAR" }, classes = Config.class)
+	@SpringBootTest(properties = {"key=myValue", "variables=foo=FOO\n bar=BAR"}, classes = Config.class)
 	static class NewLineInValue {
 
 	}
 
 	@SpringBootTest(classes = Config.class)
-	@ActiveProfiles({ "profile1", "profile2" })
+	@ActiveProfiles({"profile1", "profile2"})
 	static class MultipleActiveProfiles {
 
 	}
 
 	@SpringBootTest(classes = Config.class)
-	@ActiveProfiles({ "profile1,2" })
+	@ActiveProfiles({"profile1,2"})
 	static class ActiveProfileWithComma {
 
 	}
 
-	@SpringBootTest(properties = { "key=myValue" }, classes = Config.class)
-	@ActiveProfiles({ "profile1,2" })
+	@SpringBootTest(properties = {"key=myValue"}, classes = Config.class)
+	@ActiveProfiles({"profile1,2"})
 	static class ActiveProfileWithInlinedProperties {
 
 	}

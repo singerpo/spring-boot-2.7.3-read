@@ -39,6 +39,7 @@ import org.springframework.core.env.AbstractEnvironment;
 public class InvalidConfigDataPropertyException extends ConfigDataException {
 
 	private static final Map<ConfigurationPropertyName, ConfigurationPropertyName> WARNINGS;
+
 	static {
 		Map<ConfigurationPropertyName, ConfigurationPropertyName> warnings = new LinkedHashMap<>();
 		warnings.put(ConfigurationPropertyName.of("spring.profiles"),
@@ -49,6 +50,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	}
 
 	private static final Set<ConfigurationPropertyName> PROFILE_SPECIFIC_ERRORS;
+
 	static {
 		Set<ConfigurationPropertyName> errors = new LinkedHashSet<>();
 		errors.add(Profiles.INCLUDE_PROFILES);
@@ -67,7 +69,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	private final ConfigDataResource location;
 
 	InvalidConfigDataPropertyException(ConfigurationProperty property, boolean profileSpecific,
-			ConfigurationPropertyName replacement, ConfigDataResource location) {
+									   ConfigurationPropertyName replacement, ConfigDataResource location) {
 		super(getMessage(property, profileSpecific, replacement, location), null);
 		this.property = property;
 		this.replacement = replacement;
@@ -76,6 +78,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 
 	/**
 	 * Return source property that caused the exception.
+	 *
 	 * @return the invalid property
 	 */
 	public ConfigurationProperty getProperty() {
@@ -85,6 +88,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	/**
 	 * Return the {@link ConfigDataResource} of the invalid property or {@code null} if
 	 * the source was not loaded from {@link ConfigData}.
+	 *
 	 * @return the config data location or {@code null}
 	 */
 	public ConfigDataResource getLocation() {
@@ -94,6 +98,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	/**
 	 * Return the replacement property that should be used instead or {@code null} if not
 	 * replacement is available.
+	 *
 	 * @return the replacement property name
 	 */
 	public ConfigurationPropertyName getReplacement() {
@@ -105,7 +110,8 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	 * {@link ConfigDataEnvironmentContributor} contains any invalid property. A warning
 	 * is logged if the property is still supported, but not recommended. An error is
 	 * thrown if the property is completely unsupported.
-	 * @param logger the logger to use for warnings
+	 *
+	 * @param logger      the logger to use for warnings
 	 * @param contributor the contributor to check
 	 */
 	static void throwOrWarn(Log logger, ConfigDataEnvironmentContributor contributor) {
@@ -130,7 +136,7 @@ public class InvalidConfigDataPropertyException extends ConfigDataException {
 	}
 
 	private static String getMessage(ConfigurationProperty property, boolean profileSpecific,
-			ConfigurationPropertyName replacement, ConfigDataResource location) {
+									 ConfigurationPropertyName replacement, ConfigDataResource location) {
 		StringBuilder message = new StringBuilder("Property '");
 		message.append(property.getName());
 		if (location != null) {

@@ -93,8 +93,7 @@ abstract class AbstractApplicationContextRunnerTests<T extends AbstractApplicati
 			get().withSystemProperties(key + "=newValue")
 					.run((context) -> assertThat(System.getProperties()).containsEntry(key, "newValue"));
 			assertThat(System.getProperties().getProperty(key)).isEqualTo("value");
-		}
-		finally {
+		} finally {
 			System.clearProperty(key);
 		}
 	}
@@ -108,8 +107,7 @@ abstract class AbstractApplicationContextRunnerTests<T extends AbstractApplicati
 			get().withSystemProperties(key + "=")
 					.run((context) -> assertThat(System.getProperties()).doesNotContainKey(key));
 			assertThat(System.getProperties().getProperty(key)).isEqualTo("value");
-		}
-		finally {
+		} finally {
 			System.clearProperty(key);
 		}
 	}
@@ -216,18 +214,18 @@ abstract class AbstractApplicationContextRunnerTests<T extends AbstractApplicati
 	void runWithUserBeanShouldBeRegisteredInOrder() {
 		get().withAllowBeanDefinitionOverriding(true).withBean(String.class, () -> "one")
 				.withBean(String.class, () -> "two").withBean(String.class, () -> "three").run((context) -> {
-					assertThat(context).hasBean("string");
-					assertThat(context.getBean("string")).isEqualTo("three");
-				});
+			assertThat(context).hasBean("string");
+			assertThat(context.getBean("string")).isEqualTo("three");
+		});
 	}
 
 	@Test
 	void runWithConfigurationsAndUserBeanShouldRegisterUserBeanLast() {
 		get().withAllowBeanDefinitionOverriding(true).withUserConfiguration(FooConfig.class)
 				.withBean("foo", String.class, () -> "overridden").run((context) -> {
-					assertThat(context).hasBean("foo");
-					assertThat(context.getBean("foo")).isEqualTo("overridden");
-				});
+			assertThat(context).hasBean("foo");
+			assertThat(context.getBean("foo")).isEqualTo("overridden");
+		});
 	}
 
 	protected abstract T get();

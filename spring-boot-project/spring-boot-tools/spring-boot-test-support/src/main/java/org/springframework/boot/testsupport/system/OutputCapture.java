@@ -78,6 +78,7 @@ class OutputCapture implements CapturedOutput {
 	/**
 	 * Return all content (both {@link System#out System.out} and {@link System#err
 	 * System.err}) in the order that it was captured.
+	 *
 	 * @return all captured output
 	 */
 	@Override
@@ -87,6 +88,7 @@ class OutputCapture implements CapturedOutput {
 
 	/**
 	 * Return {@link System#out System.out} content in the order that it was captured.
+	 *
 	 * @return {@link System#out System.out} captured output
 	 */
 	@Override
@@ -96,6 +98,7 @@ class OutputCapture implements CapturedOutput {
 
 	/**
 	 * Return {@link System#err System.err} content in the order that it was captured.
+	 *
 	 * @return {@link System#err System.err} captured output
 	 */
 	@Override
@@ -217,7 +220,7 @@ class OutputCapture implements CapturedOutput {
 
 		@Override
 		public void write(int b) throws IOException {
-			write(new byte[] { (byte) (b & 0xFF) });
+			write(new byte[]{(byte) (b & 0xFF)});
 		}
 
 		@Override

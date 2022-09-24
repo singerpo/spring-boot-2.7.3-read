@@ -46,6 +46,7 @@ public class PropertiesMergingResourceTransformer implements ReproducibleResourc
 
 	/**
 	 * Return the data the properties being merged.
+	 *
 	 * @return the data
 	 */
 	public Properties getData() {

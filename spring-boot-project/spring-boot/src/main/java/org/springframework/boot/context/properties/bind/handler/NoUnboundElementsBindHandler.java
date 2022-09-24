@@ -102,14 +102,13 @@ public class NoUnboundElementsBindHandler extends AbstractBindHandler {
 	}
 
 	private void collectUnbound(ConfigurationPropertyName name, Set<ConfigurationProperty> unbound,
-			IterableConfigurationPropertySource source) {
+								IterableConfigurationPropertySource source) {
 		IterableConfigurationPropertySource filtered = source.filter((candidate) -> isUnbound(name, candidate));
 		for (ConfigurationPropertyName unboundName : filtered) {
 			try {
 				unbound.add(
 						source.filter((candidate) -> isUnbound(name, candidate)).getConfigurationProperty(unboundName));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 			}
 		}
 	}

@@ -33,9 +33,9 @@ class DevProfileSecurityConfiguration {
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	fun h2ConsoleSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
 		return http.authorizeHttpRequests(yourCustomAuthorization())
-			.csrf().disable()
-			.headers().frameOptions().sameOrigin().and()
-			.build()
+				.csrf().disable()
+				.headers().frameOptions().sameOrigin().and()
+				.build()
 	}
 
 	// tag::customizer[]

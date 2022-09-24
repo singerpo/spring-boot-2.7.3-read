@@ -60,7 +60,7 @@ class SpyBeanWithJdkProxyTests {
 		@Bean
 		ExampleRepository dateService() {
 			return (ExampleRepository) Proxy.newProxyInstance(getClass().getClassLoader(),
-					new Class<?>[] { ExampleRepository.class }, new InvocationHandler() {
+					new Class<?>[]{ExampleRepository.class}, new InvocationHandler() {
 
 						@Override
 						public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

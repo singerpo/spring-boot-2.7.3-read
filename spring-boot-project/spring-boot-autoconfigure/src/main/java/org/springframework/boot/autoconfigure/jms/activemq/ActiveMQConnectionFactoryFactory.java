@@ -44,7 +44,7 @@ class ActiveMQConnectionFactoryFactory {
 	private final List<ActiveMQConnectionFactoryCustomizer> factoryCustomizers;
 
 	ActiveMQConnectionFactoryFactory(ActiveMQProperties properties,
-			List<ActiveMQConnectionFactoryCustomizer> factoryCustomizers) {
+									 List<ActiveMQConnectionFactoryCustomizer> factoryCustomizers) {
 		Assert.notNull(properties, "Properties must not be null");
 		this.properties = properties;
 		this.factoryCustomizers = (factoryCustomizers != null) ? factoryCustomizers : Collections.emptyList();
@@ -53,8 +53,7 @@ class ActiveMQConnectionFactoryFactory {
 	<T extends ActiveMQConnectionFactory> T createConnectionFactory(Class<T> factoryClass) {
 		try {
 			return doCreateConnectionFactory(factoryClass);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to create ActiveMQConnectionFactory", ex);
 		}
 	}

@@ -87,7 +87,7 @@ class ServletComponentScanIntegrationTests {
 	void indexedComponentsAreRegistered(String serverName, Class<?> configuration) throws IOException {
 		writeIndex(this.temp);
 		this.context = new AnnotationConfigServletWebServerApplicationContext();
-		try (URLClassLoader classLoader = new URLClassLoader(new URL[] { this.temp.toURI().toURL() },
+		try (URLClassLoader classLoader = new URLClassLoader(new URL[]{this.temp.toURI().toURL()},
 				getClass().getClassLoader())) {
 			this.context.setClassLoader(classLoader);
 			this.context.register(configuration);

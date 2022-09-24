@@ -75,13 +75,13 @@ class WebEndpointsAutoConfigurationIntegrationTests {
 				.withConfiguration(UserConfigurations.of(WebEndpointTestApplication.class));
 	}
 
-	@EnableAutoConfiguration(exclude = { FlywayAutoConfiguration.class, LiquibaseAutoConfiguration.class,
+	@EnableAutoConfiguration(exclude = {FlywayAutoConfiguration.class, LiquibaseAutoConfiguration.class,
 			CassandraAutoConfiguration.class, CassandraDataAutoConfiguration.class, GraphQlAutoConfiguration.class,
 			Neo4jDataAutoConfiguration.class, Neo4jRepositoriesAutoConfiguration.class, MongoAutoConfiguration.class,
 			MongoDataAutoConfiguration.class, MongoReactiveAutoConfiguration.class,
 			MongoReactiveDataAutoConfiguration.class, RepositoryRestMvcAutoConfiguration.class,
 			HazelcastAutoConfiguration.class, ElasticsearchDataAutoConfiguration.class, SolrAutoConfiguration.class,
-			RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class, MetricsAutoConfiguration.class })
+			RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class, MetricsAutoConfiguration.class})
 	@SpringBootConfiguration
 	static class WebEndpointTestApplication {
 

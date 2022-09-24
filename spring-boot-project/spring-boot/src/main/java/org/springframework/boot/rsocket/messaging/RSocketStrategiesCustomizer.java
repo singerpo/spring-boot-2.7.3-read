@@ -30,6 +30,7 @@ public interface RSocketStrategiesCustomizer {
 
 	/**
 	 * Callback to customize a {@link RSocketStrategies#builder()} instance.
+	 *
 	 * @param strategies rSocket codec strategies to customize
 	 */
 	void customize(RSocketStrategies.Builder strategies);

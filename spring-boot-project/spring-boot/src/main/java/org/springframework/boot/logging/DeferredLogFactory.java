@@ -26,14 +26,15 @@ import org.apache.commons.logging.LogFactory;
  * switch over when appropriate.
  *
  * @author Phillip Webb
- * @since 2.4.0
  * @see DeferredLogs
+ * @since 2.4.0
  */
 @FunctionalInterface
 public interface DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.
@@ -44,6 +45,7 @@ public interface DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.
@@ -54,6 +56,7 @@ public interface DeferredLogFactory {
 
 	/**
 	 * Create a new {@link DeferredLog} for the given destination.
+	 *
 	 * @param destination the ultimate log destination
 	 * @return a deferred log instance that will switch to the destination when
 	 * appropriate.

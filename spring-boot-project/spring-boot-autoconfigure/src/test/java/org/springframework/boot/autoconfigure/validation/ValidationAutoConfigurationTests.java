@@ -137,7 +137,7 @@ class ValidationAutoConfigurationTests {
 						.containsExactly("defaultValidator");
 				assertThat(BeanFactoryUtils.beanNamesForTypeIncludingAncestors(context.getBeanFactory(),
 						org.springframework.validation.Validator.class)).containsExactly("defaultValidator",
-								"customValidator", "anotherCustomValidator");
+						"customValidator", "anotherCustomValidator");
 				assertThat(isPrimaryBean(context, "defaultValidator")).isTrue();
 			});
 		});
@@ -153,7 +153,7 @@ class ValidationAutoConfigurationTests {
 								.containsExactly("defaultValidator");
 						assertThat(BeanFactoryUtils.beanNamesForTypeIncludingAncestors(context.getBeanFactory(),
 								org.springframework.validation.Validator.class)).containsExactly("defaultValidator",
-										"customValidator", "anotherCustomValidator");
+								"customValidator", "anotherCustomValidator");
 						assertThat(isPrimaryBean(context, "defaultValidator")).isTrue();
 					});
 				});
@@ -193,13 +193,13 @@ class ValidationAutoConfigurationTests {
 	void validationCanBeConfiguredToUseJdkProxy() {
 		this.contextRunner.withUserConfiguration(AnotherSampleServiceConfiguration.class)
 				.withPropertyValues("spring.aop.proxy-target-class=false").run((context) -> {
-					assertThat(context.getBeansOfType(Validator.class)).hasSize(1);
-					assertThat(context.getBeansOfType(DefaultAnotherSampleService.class)).isEmpty();
-					AnotherSampleService service = context.getBean(AnotherSampleService.class);
-					service.doSomething(42);
-					assertThatExceptionOfType(ConstraintViolationException.class)
-							.isThrownBy(() -> service.doSomething(2));
-				});
+			assertThat(context.getBeansOfType(Validator.class)).hasSize(1);
+			assertThat(context.getBeansOfType(DefaultAnotherSampleService.class)).isEmpty();
+			AnotherSampleService service = context.getBean(AnotherSampleService.class);
+			service.doSomething(42);
+			assertThatExceptionOfType(ConstraintViolationException.class)
+					.isThrownBy(() -> service.doSomething(2));
+		});
 	}
 
 	@Test

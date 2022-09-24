@@ -120,8 +120,7 @@ class OnPropertyCondition extends SpringBootCondition {
 					if (!isMatch(resolver.getProperty(key), this.havingValue)) {
 						nonMatching.add(name);
 					}
-				}
-				else {
+				} else {
 					if (!this.matchIfMissing) {
 						missing.add(name);
 					}
@@ -143,8 +142,7 @@ class OnPropertyCondition extends SpringBootCondition {
 			result.append(this.prefix);
 			if (this.names.length == 1) {
 				result.append(this.names[0]);
-			}
-			else {
+			} else {
 				result.append("[");
 				result.append(StringUtils.arrayToCommaDelimitedString(this.names));
 				result.append("]");

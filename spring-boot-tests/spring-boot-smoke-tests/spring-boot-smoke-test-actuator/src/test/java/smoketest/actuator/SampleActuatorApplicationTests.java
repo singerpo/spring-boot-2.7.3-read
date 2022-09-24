@@ -177,7 +177,7 @@ class SampleActuatorApplicationTests {
 		assertThat(entity.getBody()).contains(entry("legacy", "legacy"));
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	static <K, V> ResponseEntity<Map<K, V>> asMapEntity(ResponseEntity<Map> entity) {
 		return (ResponseEntity) entity;
 	}

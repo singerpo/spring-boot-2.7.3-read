@@ -313,12 +313,12 @@ class EndpointDiscovererTests {
 	}
 
 	private void loadWithParent(ApplicationContext parent, Class<?> configuration,
-			Consumer<AnnotationConfigApplicationContext> consumer) {
+								Consumer<AnnotationConfigApplicationContext> consumer) {
 		load(parent, configuration, consumer);
 	}
 
 	private void load(ApplicationContext parent, Class<?> configuration,
-			Consumer<AnnotationConfigApplicationContext> consumer) {
+					  Consumer<AnnotationConfigApplicationContext> consumer) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		if (parent != null) {
 			context.setParent(parent);
@@ -327,8 +327,7 @@ class EndpointDiscovererTests {
 		context.refresh();
 		try {
 			consumer.accept(context);
-		}
-		finally {
+		} finally {
 			context.close();
 		}
 	}
@@ -401,18 +400,18 @@ class EndpointDiscovererTests {
 
 	}
 
-	@Import({ TestEndpoint.class, SpecializedTestEndpoint.class, SpecializedSuperclassTestEndpoint.class,
-			SpecializedExtension.class })
+	@Import({TestEndpoint.class, SpecializedTestEndpoint.class, SpecializedSuperclassTestEndpoint.class,
+			SpecializedExtension.class})
 	static class SpecializedEndpointsConfiguration {
 
 	}
 
-	@Import({ TestEndpoint.class, SubSpecializedTestEndpoint.class, SpecializedExtension.class })
+	@Import({TestEndpoint.class, SubSpecializedTestEndpoint.class, SpecializedExtension.class})
 	static class SubSpecializedEndpointsConfiguration {
 
 	}
 
-	@Import({ TestEndpoint.class, SpecializedTestEndpoint.class, ProxiedSpecializedTestEndpointConfiguration.class })
+	@Import({TestEndpoint.class, SpecializedTestEndpoint.class, ProxiedSpecializedTestEndpointConfiguration.class})
 	static class ProxiedSpecializedEndpointsConfiguration {
 
 	}
@@ -529,26 +528,26 @@ class EndpointDiscovererTests {
 		}
 
 		TestEndpointDiscoverer(ApplicationContext applicationContext, Function<EndpointId, Long> timeToLive,
-				Collection<EndpointFilter<TestExposableEndpoint>> filters) {
+							   Collection<EndpointFilter<TestExposableEndpoint>> filters) {
 			this(applicationContext, new ConversionServiceParameterValueMapper(),
 					Collections.singleton(new CachingOperationInvokerAdvisor(timeToLive)), filters);
 		}
 
 		TestEndpointDiscoverer(ApplicationContext applicationContext, ParameterValueMapper parameterValueMapper,
-				Collection<OperationInvokerAdvisor> invokerAdvisors,
-				Collection<EndpointFilter<TestExposableEndpoint>> filters) {
+							   Collection<OperationInvokerAdvisor> invokerAdvisors,
+							   Collection<EndpointFilter<TestExposableEndpoint>> filters) {
 			super(applicationContext, parameterValueMapper, invokerAdvisors, filters);
 		}
 
 		@Override
 		protected TestExposableEndpoint createEndpoint(Object endpointBean, EndpointId id, boolean enabledByDefault,
-				Collection<TestOperation> operations) {
+													   Collection<TestOperation> operations) {
 			return new TestExposableEndpoint(this, endpointBean, id, enabledByDefault, operations);
 		}
 
 		@Override
 		protected TestOperation createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-				OperationInvoker invoker) {
+												OperationInvoker invoker) {
 			return new TestOperation(operationMethod, invoker);
 		}
 
@@ -568,19 +567,19 @@ class EndpointDiscovererTests {
 		}
 
 		SpecializedEndpointDiscoverer(ApplicationContext applicationContext,
-				Collection<EndpointFilter<SpecializedExposableEndpoint>> filters) {
+									  Collection<EndpointFilter<SpecializedExposableEndpoint>> filters) {
 			super(applicationContext, new ConversionServiceParameterValueMapper(), Collections.emptyList(), filters);
 		}
 
 		@Override
 		protected SpecializedExposableEndpoint createEndpoint(Object endpointBean, EndpointId id,
-				boolean enabledByDefault, Collection<SpecializedOperation> operations) {
+															  boolean enabledByDefault, Collection<SpecializedOperation> operations) {
 			return new SpecializedExposableEndpoint(this, endpointBean, id, enabledByDefault, operations);
 		}
 
 		@Override
 		protected SpecializedOperation createOperation(EndpointId endpointId, DiscoveredOperationMethod operationMethod,
-				OperationInvoker invoker) {
+													   OperationInvoker invoker) {
 			return new SpecializedOperation(operationMethod, invoker);
 		}
 
@@ -595,7 +594,7 @@ class EndpointDiscovererTests {
 	static class TestExposableEndpoint extends AbstractDiscoveredEndpoint<TestOperation> {
 
 		TestExposableEndpoint(EndpointDiscoverer<?, ?> discoverer, Object endpointBean, EndpointId id,
-				boolean enabledByDefault, Collection<? extends TestOperation> operations) {
+							  boolean enabledByDefault, Collection<? extends TestOperation> operations) {
 			super(discoverer, endpointBean, id, enabledByDefault, operations);
 		}
 
@@ -604,7 +603,7 @@ class EndpointDiscovererTests {
 	static class SpecializedExposableEndpoint extends AbstractDiscoveredEndpoint<SpecializedOperation> {
 
 		SpecializedExposableEndpoint(EndpointDiscoverer<?, ?> discoverer, Object endpointBean, EndpointId id,
-				boolean enabledByDefault, Collection<? extends SpecializedOperation> operations) {
+									 boolean enabledByDefault, Collection<? extends SpecializedOperation> operations) {
 			super(discoverer, endpointBean, id, enabledByDefault, operations);
 		}
 

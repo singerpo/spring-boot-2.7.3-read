@@ -22,9 +22,9 @@ import java.util.Arrays
 @ConfigurationProperties(prefix = "my.messaging")
 class MyMessagingProperties(
 
-	val addresses: List<String> = ArrayList(Arrays.asList("a", "b")),
+		val addresses: List<String> = ArrayList(Arrays.asList("a", "b")),
 
-	var containerType: ContainerType = ContainerType.SIMPLE) {
+		var containerType: ContainerType = ContainerType.SIMPLE) {
 
 	enum class ContainerType {
 		SIMPLE, DIRECT

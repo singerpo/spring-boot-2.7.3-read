@@ -84,8 +84,7 @@ class ExplodedArchiveTests {
 			destination.getParentFile().mkdirs();
 			if (entry.isDirectory()) {
 				destination.mkdir();
-			}
-			else {
+			} else {
 				FileCopyUtils.copy(jarFile.getInputStream(entry), new FileOutputStream(destination));
 			}
 		}
@@ -162,7 +161,7 @@ class ExplodedArchiveTests {
 	void getResourceAsStream() throws Exception {
 		try (ExplodedArchive explodedArchive = new ExplodedArchive(new File("src/test/resources/root"))) {
 			assertThat(explodedArchive.getManifest()).isNotNull();
-			URLClassLoader loader = new URLClassLoader(new URL[] { explodedArchive.getUrl() });
+			URLClassLoader loader = new URLClassLoader(new URL[]{explodedArchive.getUrl()});
 			assertThat(loader.getResourceAsStream("META-INF/spring/application.xml")).isNotNull();
 			loader.close();
 		}
@@ -172,7 +171,7 @@ class ExplodedArchiveTests {
 	void getResourceAsStreamNonRecursive() throws Exception {
 		try (ExplodedArchive explodedArchive = new ExplodedArchive(new File("src/test/resources/root"), false)) {
 			assertThat(explodedArchive.getManifest()).isNotNull();
-			URLClassLoader loader = new URLClassLoader(new URL[] { explodedArchive.getUrl() });
+			URLClassLoader loader = new URLClassLoader(new URL[]{explodedArchive.getUrl()});
 			assertThat(loader.getResourceAsStream("META-INF/spring/application.xml")).isNotNull();
 			loader.close();
 		}

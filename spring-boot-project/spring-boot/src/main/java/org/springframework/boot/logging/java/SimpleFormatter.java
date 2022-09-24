@@ -72,8 +72,7 @@ public class SimpleFormatter extends Formatter {
 		String value = null;
 		try {
 			value = System.getenv(key);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			// ignore
 		}
 		if (value == null) {

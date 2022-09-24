@@ -80,10 +80,10 @@ import org.springframework.util.StringUtils;
  * @author Madhura Bhave
  * @author Fabio Grassi
  * @author Phillip Webb
- * @since 2.0.0
  * @see #create()
  * @see #create(ClassLoader)
  * @see #derivedFrom(DataSource)
+ * @since 2.0.0
  */
 public final class DataSourceBuilder<T extends DataSource> {
 
@@ -110,7 +110,8 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Set the {@link DataSource} type that should be built.
-	 * @param <D> the datasource type
+	 *
+	 * @param <D>  the datasource type
 	 * @param type the datasource type
 	 * @return this builder
 	 */
@@ -122,6 +123,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Set the URL that should be used when building the datasource.
+	 *
 	 * @param url the JDBC url
 	 * @return this builder
 	 */
@@ -132,6 +134,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Set the driver class name that should be used when building the datasource.
+	 *
 	 * @param driverClassName the driver class name
 	 * @return this builder
 	 */
@@ -142,6 +145,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Set the username that should be used when building the datasource.
+	 *
 	 * @param username the user name
 	 * @return this builder
 	 */
@@ -152,6 +156,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Set the password that should be used when building the datasource.
+	 *
 	 * @param password the password
 	 * @return this builder
 	 */
@@ -166,6 +171,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Return a newly built {@link DataSource} instance.
+	 *
 	 * @return the built datasource
 	 */
 	public T build() {
@@ -204,6 +210,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Create a new {@link DataSourceBuilder} instance.
+	 *
 	 * @return a new datasource builder instance
 	 */
 	public static DataSourceBuilder<?> create() {
@@ -212,6 +219,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Create a new {@link DataSourceBuilder} instance.
+	 *
 	 * @param classLoader the classloader used to discover preferred settings
 	 * @return a new {@link DataSource} builder instance
 	 */
@@ -225,6 +233,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 	 * {@link DataSource} with {@code username}, {@code password}, {@code url} and
 	 * {@code driverClassName} properties copied from the original when not specifically
 	 * set.
+	 *
 	 * @param dataSource the source {@link DataSource}
 	 * @return a new {@link DataSource} builder
 	 * @since 2.5.0
@@ -233,8 +242,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 		if (dataSource instanceof EmbeddedDatabase) {
 			try {
 				dataSource = dataSource.unwrap(DataSource.class);
-			}
-			catch (SQLException ex) {
+			} catch (SQLException ex) {
 				throw new IllegalStateException("Unable to unwrap embedded database", ex);
 			}
 		}
@@ -243,6 +251,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 	/**
 	 * Find the {@link DataSource} type preferred for the given classloader.
+	 *
 	 * @param classLoader the classloader used to discover preferred settings
 	 * @return the preferred {@link DataSource} type
 	 */
@@ -383,7 +392,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 		}
 
 		private static <T extends DataSource> MappedDataSourceProperties<T> lookupPooled(ClassLoader classLoader,
-				Class<T> type) {
+																						 Class<T> type) {
 			MappedDataSourceProperties<T> result = null;
 			result = lookup(classLoader, type, result, "com.zaxxer.hikari.HikariDataSource",
 					HikariDataSourceProperties::new);
@@ -399,7 +408,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 		}
 
 		private static <T extends DataSource> MappedDataSourceProperties<T> lookupBasic(ClassLoader classLoader,
-				Class<T> dataSourceType) {
+																						Class<T> dataSourceType) {
 			MappedDataSourceProperties<T> result = null;
 			result = lookup(classLoader, dataSourceType, result,
 					"org.springframework.jdbc.datasource.SimpleDriverDataSource", SimpleDataSourceProperties::new);
@@ -414,19 +423,19 @@ public final class DataSourceBuilder<T extends DataSource> {
 
 		@SuppressWarnings("unchecked")
 		private static <T extends DataSource> MappedDataSourceProperties<T> lookup(ClassLoader classLoader,
-				Class<T> dataSourceType, MappedDataSourceProperties<T> existing, String dataSourceClassName,
-				Supplier<MappedDataSourceProperties<?>> propertyMappingsSupplier, String... requiredClassNames) {
+																				   Class<T> dataSourceType, MappedDataSourceProperties<T> existing, String dataSourceClassName,
+																				   Supplier<MappedDataSourceProperties<?>> propertyMappingsSupplier, String... requiredClassNames) {
 			if (existing != null || !allPresent(classLoader, dataSourceClassName, requiredClassNames)) {
 				return existing;
 			}
 			MappedDataSourceProperties<?> propertyMappings = propertyMappingsSupplier.get();
 			return (dataSourceType == null
 					|| propertyMappings.getDataSourceInstanceType().isAssignableFrom(dataSourceType))
-							? (MappedDataSourceProperties<T>) propertyMappings : null;
+					? (MappedDataSourceProperties<T>) propertyMappings : null;
 		}
 
 		private static boolean allPresent(ClassLoader classLoader, String dataSourceClassName,
-				String[] requiredClassNames) {
+										  String[] requiredClassNames) {
 			boolean result = ClassUtils.isPresent(dataSourceClassName, classLoader);
 			for (String requiredClassName : requiredClassNames) {
 				result = result && ClassUtils.isPresent(requiredClassName, classLoader);
@@ -461,8 +470,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 					return;
 				}
 				this.setter.set(dataSource, convertFromString(value));
-			}
-			catch (SQLException ex) {
+			} catch (SQLException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -475,8 +483,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 					return null;
 				}
 				return convertToString(this.getter.get(dataSource));
-			}
-			catch (SQLException ex) {
+			} catch (SQLException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -669,8 +676,7 @@ public final class DataSourceBuilder<T extends DataSource> {
 		private void setDriverClass(ComboPooledDataSource dataSource, String driverClass) {
 			try {
 				dataSource.setDriverClass(driverClass);
-			}
-			catch (PropertyVetoException ex) {
+			} catch (PropertyVetoException ex) {
 				throw new IllegalArgumentException(ex);
 			}
 		}

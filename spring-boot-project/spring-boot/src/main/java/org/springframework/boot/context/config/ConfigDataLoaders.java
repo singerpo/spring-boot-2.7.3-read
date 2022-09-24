@@ -49,25 +49,27 @@ class ConfigDataLoaders {
 
 	/**
 	 * Create a new {@link ConfigDataLoaders} instance.
-	 * @param logFactory the deferred log factory
+	 *
+	 * @param logFactory       the deferred log factory
 	 * @param bootstrapContext the bootstrap context
-	 * @param classLoader the class loader used when loading
+	 * @param classLoader      the class loader used when loading
 	 */
 	ConfigDataLoaders(DeferredLogFactory logFactory, ConfigurableBootstrapContext bootstrapContext,
-			ClassLoader classLoader) {
+					  ClassLoader classLoader) {
 		this(logFactory, bootstrapContext, classLoader,
 				SpringFactoriesLoader.loadFactoryNames(ConfigDataLoader.class, classLoader));
 	}
 
 	/**
 	 * Create a new {@link ConfigDataLoaders} instance.
-	 * @param logFactory the deferred log factory
+	 *
+	 * @param logFactory       the deferred log factory
 	 * @param bootstrapContext the bootstrap context
-	 * @param classLoader the class loader used when loading
-	 * @param names the {@link ConfigDataLoader} class names instantiate
+	 * @param classLoader      the class loader used when loading
+	 * @param names            the {@link ConfigDataLoader} class names instantiate
 	 */
 	ConfigDataLoaders(DeferredLogFactory logFactory, ConfigurableBootstrapContext bootstrapContext,
-			ClassLoader classLoader, List<String> names) {
+					  ClassLoader classLoader, List<String> names) {
 		this.logger = logFactory.getLog(getClass());
 		Instantiator<ConfigDataLoader<?>> instantiator = new Instantiator<>(ConfigDataLoader.class,
 				(availableParameters) -> {
@@ -95,8 +97,9 @@ class ConfigDataLoaders {
 
 	/**
 	 * Load {@link ConfigData} using the first appropriate {@link ConfigDataLoader}.
-	 * @param <R> the resource type
-	 * @param context the loader context
+	 *
+	 * @param <R>      the resource type
+	 * @param context  the loader context
 	 * @param resource the resource to load
 	 * @return the loaded {@link ConfigData}
 	 * @throws IOException on IO error

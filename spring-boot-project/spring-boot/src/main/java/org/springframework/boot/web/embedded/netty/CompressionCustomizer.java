@@ -77,8 +77,7 @@ final class CompressionCustomizer implements NettyServerCustomizer {
 			try {
 				MimeType contentMimeType = MimeTypeUtils.parseMimeType(contentType);
 				return mimeTypes.stream().anyMatch((candidate) -> candidate.isCompatibleWith(contentMimeType));
-			}
-			catch (InvalidMimeTypeException ex) {
+			} catch (InvalidMimeTypeException ex) {
 				return false;
 			}
 		};

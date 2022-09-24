@@ -63,14 +63,15 @@ public class MetricsWebFilter implements WebFilter {
 
 	/**
 	 * Create a new {@code MetricsWebFilter}.
-	 * @param registry the registry to which metrics are recorded
+	 *
+	 * @param registry     the registry to which metrics are recorded
 	 * @param tagsProvider provider for metrics tags
-	 * @param metricName name of the metric to record
-	 * @param autoTimer the auto-timers to apply or {@code null} to disable auto-timing
+	 * @param metricName   name of the metric to record
+	 * @param autoTimer    the auto-timers to apply or {@code null} to disable auto-timing
 	 * @since 2.2.0
 	 */
 	public MetricsWebFilter(MeterRegistry registry, WebFluxTagsProvider tagsProvider, String metricName,
-			AutoTimer autoTimer) {
+							AutoTimer autoTimer) {
 		this.registry = registry;
 		this.tagsProvider = tagsProvider;
 		this.metricName = metricName;
@@ -92,8 +93,7 @@ public class MetricsWebFilter implements WebFilter {
 		ServerHttpResponse response = exchange.getResponse();
 		if (response.isCommitted() || cause instanceof CancelledServerWebExchangeException) {
 			record(exchange, cause, start);
-		}
-		else {
+		} else {
 			response.beforeCommit(() -> {
 				record(exchange, cause, start);
 				return Mono.empty();
@@ -111,8 +111,7 @@ public class MetricsWebFilter implements WebFilter {
 			AutoTimer.apply(this.autoTimer, this.metricName, annotations,
 					(builder) -> builder.description("Duration of HTTP server request handling").tags(tags)
 							.register(this.registry).record(duration, TimeUnit.NANOSECONDS));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn("Failed to record timer metrics", ex);
 			// Allow exchange to continue, unaffected by metrics problem
 		}

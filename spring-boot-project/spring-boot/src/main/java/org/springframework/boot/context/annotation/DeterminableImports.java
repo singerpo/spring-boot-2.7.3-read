@@ -53,6 +53,7 @@ public interface DeterminableImports {
 	 * <p>
 	 * Unlike {@link ImportSelector} and {@link ImportBeanDefinitionRegistrar} any
 	 * {@link Aware} callbacks will not be invoked before this method is called.
+	 *
 	 * @param metadata the source meta-data
 	 * @return a key representing the annotations that actually drive the import
 	 */

@@ -54,31 +54,31 @@ class JerseyEndpointIntegrationTests {
 
 	@Test
 	void linksAreProvidedToAllEndpointTypes() {
-		testJerseyEndpoints(new Class<?>[] { EndpointsConfiguration.class, ResourceConfigConfiguration.class });
+		testJerseyEndpoints(new Class<?>[]{EndpointsConfiguration.class, ResourceConfigConfiguration.class});
 	}
 
 	@Test
 	void linksPageIsNotAvailableWhenDisabled() {
-		getContextRunner(new Class<?>[] { EndpointsConfiguration.class, ResourceConfigConfiguration.class })
+		getContextRunner(new Class<?>[]{EndpointsConfiguration.class, ResourceConfigConfiguration.class})
 				.withPropertyValues("management.endpoints.web.discovery.enabled:false").run((context) -> {
-					int port = context
-							.getSourceApplicationContext(AnnotationConfigServletWebServerApplicationContext.class)
-							.getWebServer().getPort();
-					WebTestClient client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
-							.responseTimeout(Duration.ofMinutes(5)).build();
-					client.get().uri("/actuator").exchange().expectStatus().isNotFound();
-				});
+			int port = context
+					.getSourceApplicationContext(AnnotationConfigServletWebServerApplicationContext.class)
+					.getWebServer().getPort();
+			WebTestClient client = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
+					.responseTimeout(Duration.ofMinutes(5)).build();
+			client.get().uri("/actuator").exchange().expectStatus().isNotFound();
+		});
 	}
 
 	@Test
 	void actuatorEndpointsWhenUserProvidedResourceConfigBeanNotAvailable() {
-		testJerseyEndpoints(new Class<?>[] { EndpointsConfiguration.class });
+		testJerseyEndpoints(new Class<?>[]{EndpointsConfiguration.class});
 	}
 
 	@Test
 	void actuatorEndpointsWhenSecurityAvailable() {
 		WebApplicationContextRunner contextRunner = getContextRunner(
-				new Class<?>[] { EndpointsConfiguration.class, ResourceConfigConfiguration.class },
+				new Class<?>[]{EndpointsConfiguration.class, ResourceConfigConfiguration.class},
 				getAutoconfigurations(SecurityAutoConfiguration.class, ManagementWebSecurityAutoConfiguration.class));
 		contextRunner.run((context) -> {
 			int port = context.getSourceApplicationContext(AnnotationConfigServletWebServerApplicationContext.class)
@@ -103,7 +103,7 @@ class JerseyEndpointIntegrationTests {
 	}
 
 	WebApplicationContextRunner getContextRunner(Class<?>[] userConfigurations,
-			Class<?>... additionalAutoConfigurations) {
+												 Class<?>... additionalAutoConfigurations) {
 		FilteredClassLoader classLoader = new FilteredClassLoader(DispatcherServlet.class);
 		return new WebApplicationContextRunner(AnnotationConfigServletWebServerApplicationContext::new)
 				.withClassLoader(classLoader)

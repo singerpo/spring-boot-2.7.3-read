@@ -40,7 +40,7 @@ class SampleAtomikosApplicationTests {
 	@Test
 	void testTransactionRollback(CapturedOutput output) throws Exception {
 		File logDir = new File(new BuildOutput(getClass()).getRootLocation(), "atomikos-logs");
-		SampleAtomikosApplication.main(new String[] { "--spring.jta.log-dir=" + logDir });
+		SampleAtomikosApplication.main(new String[]{"--spring.jta.log-dir=" + logDir});
 		assertThat(output).satisfies(numberOfOccurrences("---->", 1));
 		assertThat(output).satisfies(numberOfOccurrences("----> josh", 1));
 		assertThat(output).satisfies(numberOfOccurrences("Count is 1", 2));

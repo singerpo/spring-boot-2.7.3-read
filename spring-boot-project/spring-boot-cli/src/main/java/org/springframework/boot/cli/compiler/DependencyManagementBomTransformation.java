@@ -88,8 +88,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 				for (AnnotationNode annotationNode : annotationNodes) {
 					handleDuplicateDependencyManagementBomAnnotation(annotationNode);
 				}
-			}
-			else {
+			} else {
 				processDependencyManagementBomAnnotation(annotationNodes.get(0));
 			}
 		}
@@ -116,8 +115,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 					dependency.put("version", components[2]);
 					dependency.put("type", "pom");
 					dependencies.add(dependency);
-				}
-				else {
+				} else {
 					handleMalformedDependency(expression);
 				}
 			}
@@ -144,8 +142,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 			if (expression instanceof ConstantExpression
 					&& ((ConstantExpression) expression).getValue() instanceof String) {
 				expressions.add((ConstantExpression) expression);
-			}
-			else {
+			} else {
 				reportError("Each entry in the array must be an inline string constant", expression);
 			}
 		}
@@ -169,8 +166,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 				request.setSystemProperties(System.getProperties());
 				Model model = modelBuilder.build(request).getEffectiveModel();
 				this.resolutionContext.addDependencyManagement(new MavenModelDependencyManagement(model));
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException("Failed to build model for '" + uri + "'. Is it a valid Maven bom?",
 						ex);
 			}
@@ -208,7 +204,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 
 		@Override
 		public org.apache.maven.model.building.ModelSource resolveModel(String groupId, String artifactId,
-				String version) throws UnresolvableModelException {
+																		String version) throws UnresolvableModelException {
 			Map<String, String> dependency = new HashMap<>();
 			dependency.put("group", groupId);
 			dependency.put("module", artifactId);
@@ -217,8 +213,7 @@ public class DependencyManagementBomTransformation extends AnnotatedNodeASTTrans
 			try {
 				return new org.apache.maven.model.building.UrlModelSource(
 						Grape.getInstance().resolve(null, dependency)[0].toURL());
-			}
-			catch (MalformedURLException ex) {
+			} catch (MalformedURLException ex) {
 				throw new UnresolvableModelException(ex.getMessage(), groupId, artifactId, version);
 			}
 		}

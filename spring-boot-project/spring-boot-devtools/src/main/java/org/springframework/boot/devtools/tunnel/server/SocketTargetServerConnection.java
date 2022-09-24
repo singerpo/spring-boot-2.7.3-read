@@ -45,6 +45,7 @@ public class SocketTargetServerConnection implements TargetServerConnection {
 
 	/**
 	 * Create a new {@link SocketTargetServerConnection}.
+	 *
 	 * @param portProvider the port provider
 	 */
 	public SocketTargetServerConnection(PortProvider portProvider) {

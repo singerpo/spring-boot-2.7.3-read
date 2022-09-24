@@ -50,7 +50,8 @@ final class BuildpackResolvers {
 	/**
 	 * Resolve a collection of {@link BuildpackReference BuildpackReferences} to a
 	 * {@link Buildpacks} instance.
-	 * @param context the resolver context
+	 *
+	 * @param context    the resolver context
 	 * @param references the references to resolve
 	 * @return a {@link Buildpacks} instance
 	 */

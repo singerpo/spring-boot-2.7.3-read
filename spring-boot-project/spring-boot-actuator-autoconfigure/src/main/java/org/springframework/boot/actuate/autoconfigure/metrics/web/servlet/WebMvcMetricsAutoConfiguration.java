@@ -59,8 +59,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author Dmytro Nosan
  * @since 2.0.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
-		SimpleMetricsExportAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, CompositeMeterRegistryAutoConfiguration.class,
+		SimpleMetricsExportAutoConfiguration.class})
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass(DispatcherServlet.class)
 @ConditionalOnBean(MeterRegistry.class)
@@ -83,7 +83,7 @@ public class WebMvcMetricsAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingFilterBean
 	public FilterRegistrationBean<WebMvcMetricsFilter> webMvcMetricsFilter(MeterRegistry registry,
-			WebMvcTagsProvider tagsProvider) {
+																		   WebMvcTagsProvider tagsProvider) {
 		ServerRequest request = this.properties.getWeb().getServer().getRequest();
 		WebMvcMetricsFilter filter = new WebMvcMetricsFilter(registry, tagsProvider, request.getMetricName(),
 				request.getAutotime());
@@ -105,7 +105,7 @@ public class WebMvcMetricsAutoConfiguration {
 
 	@Bean
 	public MetricsWebMvcConfigurer metricsWebMvcConfigurer(MeterRegistry meterRegistry,
-			WebMvcTagsProvider tagsProvider) {
+														   WebMvcTagsProvider tagsProvider) {
 		return new MetricsWebMvcConfigurer(meterRegistry, tagsProvider);
 	}
 

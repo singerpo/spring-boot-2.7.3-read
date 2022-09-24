@@ -39,9 +39,9 @@ import org.springframework.util.SystemPropertyUtils;
  * application.
  *
  * @author Phillip Webb
- * @since 1.0.0
  * @see #main(String...)
  * @see CommandRunner
+ * @since 1.0.0
  */
 public final class SpringCli {
 
@@ -88,8 +88,7 @@ public final class SpringCli {
 				if (file.getName().endsWith(".jar")) {
 					try {
 						urls.add(file.toURI().toURL());
-					}
-					catch (MalformedURLException ex) {
+					} catch (MalformedURLException ex) {
 						throw new IllegalStateException(ex);
 					}
 				}

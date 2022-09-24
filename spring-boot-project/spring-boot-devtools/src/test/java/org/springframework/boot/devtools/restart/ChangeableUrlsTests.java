@@ -93,7 +93,7 @@ class ChangeableUrlsTests {
 		new File(jarWithClassPath.getParentFile(), "project-web/target/classes").mkdirs();
 		new File(jarWithClassPath.getParentFile(), "project space/target/classes").mkdirs();
 		ChangeableUrls urls = ChangeableUrls.fromClassLoader(
-				new URLClassLoader(new URL[] { jarWithClassPath.toURI().toURL(), makeJarFileWithNoManifest() }));
+				new URLClassLoader(new URL[]{jarWithClassPath.toURI().toURL(), makeJarFileWithNoManifest()}));
 		assertThat(urls.toList()).containsExactly(
 				new URL(jarWithClassPath.toURI().toURL(), "project-core/target/classes/"),
 				new URL(jarWithClassPath.toURI().toURL(), "project-web/target/classes/"),

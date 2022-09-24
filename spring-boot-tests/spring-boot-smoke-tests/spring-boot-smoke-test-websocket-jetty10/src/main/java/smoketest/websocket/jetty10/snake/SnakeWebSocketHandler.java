@@ -67,7 +67,7 @@ public class SnakeWebSocketHandler extends TextWebSocketHandler {
 		this.snake = new Snake(this.id, session);
 		SnakeTimer.addSnake(this.snake);
 		StringBuilder sb = new StringBuilder();
-		for (Iterator<Snake> iterator = SnakeTimer.getSnakes().iterator(); iterator.hasNext();) {
+		for (Iterator<Snake> iterator = SnakeTimer.getSnakes().iterator(); iterator.hasNext(); ) {
 			Snake snake = iterator.next();
 			sb.append(String.format("{id: %d, color: '%s'}", Integer.valueOf(snake.getId()), snake.getHexColor()));
 			if (iterator.hasNext()) {
@@ -82,14 +82,11 @@ public class SnakeWebSocketHandler extends TextWebSocketHandler {
 		String payload = message.getPayload();
 		if ("west".equals(payload)) {
 			this.snake.setDirection(Direction.WEST);
-		}
-		else if ("north".equals(payload)) {
+		} else if ("north".equals(payload)) {
 			this.snake.setDirection(Direction.NORTH);
-		}
-		else if ("east".equals(payload)) {
+		} else if ("east".equals(payload)) {
 			this.snake.setDirection(Direction.EAST);
-		}
-		else if ("south".equals(payload)) {
+		} else if ("south".equals(payload)) {
 			this.snake.setDirection(Direction.SOUTH);
 		}
 	}

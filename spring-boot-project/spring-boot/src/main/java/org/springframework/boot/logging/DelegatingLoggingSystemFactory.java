@@ -30,6 +30,7 @@ class DelegatingLoggingSystemFactory implements LoggingSystemFactory {
 
 	/**
 	 * Create a new {@link DelegatingLoggingSystemFactory} instance.
+	 *
 	 * @param delegates a function that provides the delegates
 	 */
 	DelegatingLoggingSystemFactory(Function<ClassLoader, List<LoggingSystemFactory>> delegates) {

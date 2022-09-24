@@ -89,8 +89,7 @@ class ClassPathIndexFileTests {
 	private URL toUrl(File file) {
 		try {
 			return file.toURI().toURL();
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}

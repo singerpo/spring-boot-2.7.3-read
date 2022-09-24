@@ -80,6 +80,7 @@ public class DockerApi {
 
 	/**
 	 * Create a new {@link DockerApi} instance.
+	 *
 	 * @param dockerHost the Docker daemon host information
 	 * @since 2.4.0
 	 */
@@ -90,6 +91,7 @@ public class DockerApi {
 	/**
 	 * Create a new {@link DockerApi} instance backed by a specific {@link HttpTransport}
 	 * implementation.
+	 *
 	 * @param http the http implementation
 	 */
 	DockerApi(HttpTransport http) {
@@ -120,14 +122,14 @@ public class DockerApi {
 				builder.addParameter(params[param++], params[param++]);
 			}
 			return builder.build();
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
 
 	/**
 	 * Return the Docker API for image operations.
+	 *
 	 * @return the image API
 	 */
 	public ImageApi image() {
@@ -136,6 +138,7 @@ public class DockerApi {
 
 	/**
 	 * Return the Docker API for container operations.
+	 *
 	 * @return the container API
 	 */
 	public ContainerApi container() {
@@ -156,8 +159,9 @@ public class DockerApi {
 
 		/**
 		 * Pull an image from a registry.
+		 *
 		 * @param reference the image reference to pull
-		 * @param listener a pull listener to receive update events
+		 * @param listener  a pull listener to receive update events
 		 * @return the {@link ImageApi pulled image} instance
 		 * @throws IOException on IO error
 		 */
@@ -167,8 +171,9 @@ public class DockerApi {
 
 		/**
 		 * Pull an image from a registry.
-		 * @param reference the image reference to pull
-		 * @param listener a pull listener to receive update events
+		 *
+		 * @param reference    the image reference to pull
+		 * @param listener     a pull listener to receive update events
 		 * @param registryAuth registry authentication credentials
 		 * @return the {@link ImageApi pulled image} instance
 		 * @throws IOException on IO error
@@ -188,16 +193,16 @@ public class DockerApi {
 					});
 				}
 				return inspect(reference);
-			}
-			finally {
+			} finally {
 				listener.onFinish();
 			}
 		}
 
 		/**
 		 * Push an image to a registry.
-		 * @param reference the image reference to push
-		 * @param listener a push listener to receive update events
+		 *
+		 * @param reference    the image reference to push
+		 * @param listener     a push listener to receive update events
 		 * @param registryAuth registry authentication credentials
 		 * @throws IOException on IO error
 		 */
@@ -215,15 +220,15 @@ public class DockerApi {
 						listener.onUpdate(event);
 					});
 				}
-			}
-			finally {
+			} finally {
 				listener.onFinish();
 			}
 		}
 
 		/**
 		 * Load an {@link ImageArchive} into Docker.
-		 * @param archive the archive to load
+		 *
+		 * @param archive  the archive to load
 		 * @param listener a pull listener to receive update events
 		 * @throws IOException on IO error
 		 */
@@ -243,17 +248,17 @@ public class DockerApi {
 				Assert.state(StringUtils.hasText(streamListener.getCapturedStream()),
 						"Invalid response received when loading image "
 								+ ((archive.getTag() != null) ? "\"" + archive.getTag() + "\"" : ""));
-			}
-			finally {
+			} finally {
 				listener.onFinish();
 			}
 		}
 
 		/**
 		 * Export the layers of an image.
+		 *
 		 * @param reference the reference to export
-		 * @param exports a consumer to receive the layers (contents can only be accessed
-		 * during the callback)
+		 * @param exports   a consumer to receive the layers (contents can only be accessed
+		 *                  during the callback)
 		 * @throws IOException on IO error
 		 */
 		public void exportLayers(ImageReference reference, IOBiConsumer<String, TarArchive> exports)
@@ -276,8 +281,9 @@ public class DockerApi {
 
 		/**
 		 * Remove a specific image.
+		 *
 		 * @param reference the reference the remove
-		 * @param force if removal should be forced
+		 * @param force     if removal should be forced
 		 * @throws IOException on IO error
 		 */
 		public void remove(ImageReference reference, boolean force) throws IOException {
@@ -289,6 +295,7 @@ public class DockerApi {
 
 		/**
 		 * Inspect an image.
+		 *
 		 * @param reference the image reference
 		 * @return the image from the local repository
 		 * @throws IOException on IO error
@@ -320,7 +327,8 @@ public class DockerApi {
 
 		/**
 		 * Create a new container a {@link ContainerConfig}.
-		 * @param config the container config
+		 *
+		 * @param config   the container config
 		 * @param contents additional contents to include
 		 * @return a {@link ContainerReference} for the newly created container
 		 * @throws IOException on IO error
@@ -350,6 +358,7 @@ public class DockerApi {
 
 		/**
 		 * Start a specific container.
+		 *
 		 * @param reference the container reference to start
 		 * @throws IOException on IO error
 		 */
@@ -361,28 +370,29 @@ public class DockerApi {
 
 		/**
 		 * Return and follow logs for a specific container.
+		 *
 		 * @param reference the container reference
-		 * @param listener a listener to receive log update events
+		 * @param listener  a listener to receive log update events
 		 * @throws IOException on IO error
 		 */
 		public void logs(ContainerReference reference, UpdateListener<LogUpdateEvent> listener) throws IOException {
 			Assert.notNull(reference, "Reference must not be null");
 			Assert.notNull(listener, "Listener must not be null");
-			String[] params = { "stdout", "1", "stderr", "1", "follow", "1" };
+			String[] params = {"stdout", "1", "stderr", "1", "follow", "1"};
 			URI uri = buildUrl("/containers/" + reference + "/logs", params);
 			listener.onStart();
 			try {
 				try (Response response = http().get(uri)) {
 					LogUpdateEvent.readAll(response.getContent(), listener::onUpdate);
 				}
-			}
-			finally {
+			} finally {
 				listener.onFinish();
 			}
 		}
 
 		/**
 		 * Wait for a container to stop and retrieve the status.
+		 *
 		 * @param reference the container reference
 		 * @return a {@link ContainerStatus} indicating the exit status of the container
 		 * @throws IOException on IO error
@@ -396,8 +406,9 @@ public class DockerApi {
 
 		/**
 		 * Remove a specific container.
+		 *
 		 * @param reference the container to remove
-		 * @param force if removal should be forced
+		 * @param force     if removal should be forced
 		 * @throws IOException on IO error
 		 */
 		public void remove(ContainerReference reference, boolean force) throws IOException {
@@ -419,7 +430,8 @@ public class DockerApi {
 
 		/**
 		 * Delete a volume.
-		 * @param name the name of the volume to delete
+		 *
+		 * @param name  the name of the volume to delete
 		 * @param force if the deletion should be forced
 		 * @throws IOException on IO error
 		 */

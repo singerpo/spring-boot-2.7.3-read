@@ -39,8 +39,8 @@ import org.springframework.jmx.support.JmxUtils;
  * @author Andy Wilkinson
  * @since 1.2.0
  */
-@AutoConfiguration(before = { XADataSourceAutoConfiguration.class, DataSourceAutoConfiguration.class })
-@ConditionalOnClass({ DataSource.class, EmbeddedDatabaseType.class })
+@AutoConfiguration(before = {XADataSourceAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@ConditionalOnClass({DataSource.class, EmbeddedDatabaseType.class})
 @ConditionalOnProperty(prefix = "spring.datasource", name = "jndi-name")
 @EnableConfigurationProperties(DataSourceProperties.class)
 public class JndiDataSourceAutoConfiguration {

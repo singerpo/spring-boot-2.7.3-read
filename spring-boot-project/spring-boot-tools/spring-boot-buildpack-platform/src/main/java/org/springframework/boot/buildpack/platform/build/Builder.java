@@ -62,6 +62,7 @@ public class Builder {
 
 	/**
 	 * Create a new builder instance.
+	 *
 	 * @param dockerConfiguration the docker configuration
 	 * @since 2.4.0
 	 */
@@ -71,6 +72,7 @@ public class Builder {
 
 	/**
 	 * Create a new builder instance.
+	 *
 	 * @param log a logger used to record output
 	 */
 	public Builder(BuildLog log) {
@@ -79,7 +81,8 @@ public class Builder {
 
 	/**
 	 * Create a new builder instance.
-	 * @param log a logger used to record output
+	 *
+	 * @param log                 a logger used to record output
 	 * @param dockerConfiguration the docker configuration
 	 * @since 2.4.0
 	 */
@@ -118,8 +121,7 @@ public class Builder {
 			if (request.isPublish()) {
 				pushImages(request.getName(), request.getTags());
 			}
-		}
-		finally {
+		} finally {
 			this.docker.image().remove(ephemeralBuilder.getName(), true);
 		}
 	}
@@ -145,7 +147,7 @@ public class Builder {
 	}
 
 	private Buildpacks getBuildpacks(BuildRequest request, ImageFetcher imageFetcher, BuilderMetadata builderMetadata,
-			BuildpackLayersMetadata buildpackLayersMetadata) {
+									 BuildpackLayersMetadata buildpackLayersMetadata) {
 		BuildpackResolverContext resolverContext = new BuilderResolverContext(imageFetcher, builderMetadata,
 				buildpackLayersMetadata);
 		return BuildpackResolvers.resolveAll(resolverContext, request.getBuildpacks());
@@ -220,8 +222,7 @@ public class Builder {
 			}
 			try {
 				return Builder.this.docker.image().inspect(reference);
-			}
-			catch (DockerEngineException ex) {
+			} catch (DockerEngineException ex) {
 				if (this.pullPolicy == PullPolicy.IF_NOT_PRESENT && ex.getStatusCode() == 404) {
 					return pullImage(reference, type);
 				}
@@ -251,7 +252,7 @@ public class Builder {
 		private final BuildpackLayersMetadata buildpackLayersMetadata;
 
 		BuilderResolverContext(ImageFetcher imageFetcher, BuilderMetadata builderMetadata,
-				BuildpackLayersMetadata buildpackLayersMetadata) {
+							   BuildpackLayersMetadata buildpackLayersMetadata) {
 			this.imageFetcher = imageFetcher;
 			this.builderMetadata = builderMetadata;
 			this.buildpackLayersMetadata = buildpackLayersMetadata;

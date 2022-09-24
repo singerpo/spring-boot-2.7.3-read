@@ -55,7 +55,7 @@ class Installer {
 	}
 
 	private static GroovyCompilerConfiguration createCompilerConfiguration(OptionSet options,
-			CompilerOptionHandler compilerOptionHandler) {
+																		   CompilerOptionHandler compilerOptionHandler) {
 		List<RepositoryConfiguration> repositoryConfiguration = RepositoryConfigurationFactory
 				.createDefaultRepositoryConfiguration();
 		return new OptionSetGroovyCompilerConfiguration(options, compilerOptionHandler, repositoryConfiguration) {
@@ -109,8 +109,7 @@ class Installer {
 	private void setInstallCount(File file, int count) {
 		if (count == 0) {
 			this.installCounts.remove(file.getName());
-		}
-		else {
+		} else {
 			this.installCounts.setProperty(file.getName(), Integer.toString(count));
 		}
 	}

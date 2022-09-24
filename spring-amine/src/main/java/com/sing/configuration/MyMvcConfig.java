@@ -15,17 +15,17 @@ import java.util.Locale;
 
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
-    @Bean
-    public ServletListenerRegistrationBean listenerRegist(){
-        ServletListenerRegistrationBean srb = new ServletListenerRegistrationBean();
-        srb.setListener(new MyHttpSessionListener());
-        System.out.println("listener");
-        return srb;
-    }
+	@Bean
+	public ServletListenerRegistrationBean listenerRegist() {
+		ServletListenerRegistrationBean srb = new ServletListenerRegistrationBean();
+		srb.setListener(new MyHttpSessionListener());
+		System.out.println("listener");
+		return srb;
+	}
 
 
 	@Bean
-	public LocaleResolver localeResolver(){
+	public LocaleResolver localeResolver() {
 		return new NativeLocaleResolver();
 	}
 
@@ -35,9 +35,9 @@ public class MyMvcConfig implements WebMvcConfigurer {
 		public Locale resolveLocale(HttpServletRequest request) {
 			String language = request.getParameter("language");
 			Locale locale = Locale.getDefault();
-			if(!StringUtils.isEmpty(language)){
+			if (!StringUtils.isEmpty(language)) {
 				String[] split = language.split("_");
-				locale = new Locale(split[0],split[1]);
+				locale = new Locale(split[0], split[1]);
 			}
 			return locale;
 		}

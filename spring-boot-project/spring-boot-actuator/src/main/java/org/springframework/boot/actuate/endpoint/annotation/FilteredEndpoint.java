@@ -39,9 +39,10 @@ import org.springframework.boot.actuate.endpoint.EndpointFilter;
  *     boolean enableByDefault() default true;
  *
  * } </pre>
+ *
  * @author Phillip Webb
- * @since 2.0.0
  * @see DiscovererEndpointFilter
+ * @since 2.0.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -50,6 +51,7 @@ public @interface FilteredEndpoint {
 
 	/**
 	 * The filter class to use.
+	 *
 	 * @return the filter class
 	 */
 	Class<? extends EndpointFilter<?>> value();

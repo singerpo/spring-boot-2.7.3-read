@@ -81,14 +81,12 @@ final class MavenMetadataVersionResolver implements VersionResolver {
 			for (int i = 0; i < versionNodes.getLength(); i++) {
 				versions.add(versionNodes.item(i).getTextContent());
 			}
-		}
-		catch (HttpClientErrorException ex) {
+		} catch (HttpClientErrorException ex) {
 			if (ex.getStatusCode() != HttpStatus.NOT_FOUND) {
 				System.err.println("Failed to download maven-metadata.xml for " + groupId + ":" + artifactId + " from "
 						+ url + ": " + ex.getMessage());
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			System.err.println("Failed to resolve versions for module " + groupId + ":" + artifactId + " in repository "
 					+ repositoryUrl + ": " + ex.getMessage());
 		}

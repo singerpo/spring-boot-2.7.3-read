@@ -42,11 +42,11 @@ import org.springframework.util.StringUtils;
  */
 class ResourceMatcher {
 
-	private static final String[] DEFAULT_INCLUDES = { "public/**", "resources/**", "static/**", "templates/**",
-			"META-INF/**", "*" };
+	private static final String[] DEFAULT_INCLUDES = {"public/**", "resources/**", "static/**", "templates/**",
+			"META-INF/**", "*"};
 
-	private static final String[] DEFAULT_EXCLUDES = { ".*", "repository/**", "build/**", "target/**", "**/*.jar",
-			"**/*.groovy" };
+	private static final String[] DEFAULT_EXCLUDES = {".*", "repository/**", "build/**", "target/**", "**/*.jar",
+			"**/*.groovy"};
 
 	private final AntPathMatcher pathMatcher = new AntPathMatcher();
 
@@ -64,8 +64,7 @@ class ResourceMatcher {
 		for (File root : roots) {
 			if (root.isFile()) {
 				matchedResources.add(new MatchedResource(root));
-			}
-			else {
+			} else {
 				matchedResources.addAll(findInDirectory(root));
 			}
 		}
@@ -111,13 +110,11 @@ class ResourceMatcher {
 				deltasFound = true;
 				value = value.substring(1);
 				result.add(value);
-			}
-			else if (value.startsWith("-")) {
+			} else if (value.startsWith("-")) {
 				deltasFound = true;
 				value = value.substring(1);
 				minus.add(value);
-			}
-			else if (!value.trim().isEmpty()) {
+			} else if (!value.trim().isEmpty()) {
 				result.add(value);
 			}
 		}
@@ -154,7 +151,7 @@ class ResourceMatcher {
 	private static class DirectoryClassLoader extends URLClassLoader {
 
 		DirectoryClassLoader(File rootDirectory) throws MalformedURLException {
-			super(new URL[] { rootDirectory.toURI().toURL() });
+			super(new URL[]{rootDirectory.toURI().toURL()});
 		}
 
 		@Override

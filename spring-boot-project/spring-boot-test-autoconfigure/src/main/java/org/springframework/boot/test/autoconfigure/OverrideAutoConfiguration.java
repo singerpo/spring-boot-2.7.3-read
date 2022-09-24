@@ -32,8 +32,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
  * auto-configuration classes that are loaded.
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see EnableAutoConfiguration#ENABLED_OVERRIDE_PROPERTY
+ * @since 1.4.0
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -43,6 +43,7 @@ public @interface OverrideAutoConfiguration {
 	/**
 	 * The value of the {@link EnableAutoConfiguration#ENABLED_OVERRIDE_PROPERTY enabled
 	 * override property}.
+	 *
 	 * @return the override value
 	 */
 	boolean enabled();

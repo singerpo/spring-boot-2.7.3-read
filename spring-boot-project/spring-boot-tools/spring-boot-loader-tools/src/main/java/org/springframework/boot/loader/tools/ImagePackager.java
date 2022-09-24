@@ -35,7 +35,8 @@ public class ImagePackager extends Packager {
 
 	/**
 	 * Create a new {@link ImagePackager} instance.
-	 * @param source the source file to package
+	 *
+	 * @param source     the source file to package
 	 * @param backupFile the backup of the source file to package
 	 */
 	public ImagePackager(File source, File backupFile) {
@@ -51,8 +52,9 @@ public class ImagePackager extends Packager {
 
 	/**
 	 * Create a packaged image.
+	 *
 	 * @param libraries the contained libraries
-	 * @param exporter the exporter used to write the image
+	 * @param exporter  the exporter used to write the image
 	 * @throws IOException on IO error
 	 */
 	public void packageImage(Libraries libraries, BiConsumer<ZipEntry, EntryWriter> exporter) throws IOException {

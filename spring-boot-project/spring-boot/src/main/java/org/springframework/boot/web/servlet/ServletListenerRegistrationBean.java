@@ -38,7 +38,7 @@ import org.springframework.util.ClassUtils;
  * 3.0+ container. Similar to the {@link ServletContext#addListener(EventListener)
  * registration} features provided by {@link ServletContext} but with a Spring Bean
  * friendly design.
- *
+ * <p>
  * This bean can be used to register the following types of listener:
  * <ul>
  * <li>{@link ServletContextAttributeListener}</li>
@@ -81,6 +81,7 @@ public class ServletListenerRegistrationBean<T extends EventListener> extends Re
 
 	/**
 	 * Create a new {@link ServletListenerRegistrationBean} instance.
+	 *
 	 * @param listener the listener to register
 	 */
 	public ServletListenerRegistrationBean(T listener) {
@@ -91,6 +92,7 @@ public class ServletListenerRegistrationBean<T extends EventListener> extends Re
 
 	/**
 	 * Set the listener that will be registered.
+	 *
 	 * @param listener the listener to register
 	 */
 	public void setListener(T listener) {
@@ -101,6 +103,7 @@ public class ServletListenerRegistrationBean<T extends EventListener> extends Re
 
 	/**
 	 * Return the listener to be registered.
+	 *
 	 * @return the listener to be registered
 	 */
 	public T getListener() {
@@ -117,14 +120,14 @@ public class ServletListenerRegistrationBean<T extends EventListener> extends Re
 	protected void register(String description, ServletContext servletContext) {
 		try {
 			servletContext.addListener(this.listener);
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			throw new IllegalStateException("Failed to add listener '" + this.listener + "' to servlet context", ex);
 		}
 	}
 
 	/**
 	 * Returns {@code true} if the specified listener is one of the supported types.
+	 *
 	 * @param listener the listener to test
 	 * @return if the listener is of a supported type
 	 */
@@ -139,6 +142,7 @@ public class ServletListenerRegistrationBean<T extends EventListener> extends Re
 
 	/**
 	 * Return the supported types for this registration.
+	 *
 	 * @return the supported types
 	 */
 	public static Set<Class<?>> getSupportedTypes() {

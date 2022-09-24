@@ -76,15 +76,15 @@ class KafkaAnnotationDrivenConfiguration {
 	private final RecordInterceptor<Object, Object> recordInterceptor;
 
 	KafkaAnnotationDrivenConfiguration(KafkaProperties properties,
-			ObjectProvider<RecordMessageConverter> messageConverter,
-			ObjectProvider<RecordFilterStrategy<Object, Object>> recordFilterStrategy,
-			ObjectProvider<BatchMessageConverter> batchMessageConverter,
-			ObjectProvider<KafkaTemplate<Object, Object>> kafkaTemplate,
-			ObjectProvider<KafkaAwareTransactionManager<Object, Object>> kafkaTransactionManager,
-			ObjectProvider<ConsumerAwareRebalanceListener> rebalanceListener, ObjectProvider<ErrorHandler> errorHandler,
-			ObjectProvider<BatchErrorHandler> batchErrorHandler, ObjectProvider<CommonErrorHandler> commonErrorHandler,
-			ObjectProvider<AfterRollbackProcessor<Object, Object>> afterRollbackProcessor,
-			ObjectProvider<RecordInterceptor<Object, Object>> recordInterceptor) {
+									   ObjectProvider<RecordMessageConverter> messageConverter,
+									   ObjectProvider<RecordFilterStrategy<Object, Object>> recordFilterStrategy,
+									   ObjectProvider<BatchMessageConverter> batchMessageConverter,
+									   ObjectProvider<KafkaTemplate<Object, Object>> kafkaTemplate,
+									   ObjectProvider<KafkaAwareTransactionManager<Object, Object>> kafkaTransactionManager,
+									   ObjectProvider<ConsumerAwareRebalanceListener> rebalanceListener, ObjectProvider<ErrorHandler> errorHandler,
+									   ObjectProvider<BatchErrorHandler> batchErrorHandler, ObjectProvider<CommonErrorHandler> commonErrorHandler,
+									   ObjectProvider<AfterRollbackProcessor<Object, Object>> afterRollbackProcessor,
+									   ObjectProvider<RecordInterceptor<Object, Object>> recordInterceptor) {
 		this.properties = properties;
 		this.messageConverter = messageConverter.getIfUnique();
 		this.recordFilterStrategy = recordFilterStrategy.getIfUnique();

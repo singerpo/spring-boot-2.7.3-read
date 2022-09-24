@@ -329,8 +329,7 @@ class Log4J2LoggingSystemTests extends AbstractLoggingSystemTests {
 			String fileContents = contentOf(new File(tmpDir() + "/spring.log"));
 			assertThat(fileContents).contains("java.lang.RuntimeException: Expected").doesNotContain("Wrapped by:");
 			assertThat(output).contains("java.lang.RuntimeException: Expected").doesNotContain("Wrapped by:");
-		}
-		finally {
+		} finally {
 			System.clearProperty(LoggingSystemProperties.EXCEPTION_CONVERSION_WORD);
 		}
 	}
@@ -389,7 +388,7 @@ class Log4J2LoggingSystemTests extends AbstractLoggingSystemTests {
 	void shutdownHookIsDisabled() {
 		assertThat(
 				PropertiesUtil.getProperties().getBooleanProperty(ShutdownCallbackRegistry.SHUTDOWN_HOOK_ENABLED, true))
-						.isFalse();
+				.isFalse();
 	}
 
 	@Test

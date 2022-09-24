@@ -38,12 +38,12 @@ import org.springframework.context.annotation.Bean;
  */
 @AutoConfiguration(after = CompositeMeterRegistryAutoConfiguration.class)
 @ConditionalOnWebApplication
-@ConditionalOnClass({ TomcatMetrics.class, Manager.class })
+@ConditionalOnClass({TomcatMetrics.class, Manager.class})
 public class TomcatMetricsAutoConfiguration {
 
 	@Bean
 	@ConditionalOnBean(MeterRegistry.class)
-	@ConditionalOnMissingBean({ TomcatMetrics.class, TomcatMetricsBinder.class })
+	@ConditionalOnMissingBean({TomcatMetrics.class, TomcatMetricsBinder.class})
 	public TomcatMetricsBinder tomcatMetricsBinder(MeterRegistry meterRegistry) {
 		return new TomcatMetricsBinder(meterRegistry);
 	}

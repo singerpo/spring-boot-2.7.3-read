@@ -54,8 +54,8 @@ class RabbitAnnotationDrivenConfiguration {
 	private final RabbitProperties properties;
 
 	RabbitAnnotationDrivenConfiguration(ObjectProvider<MessageConverter> messageConverter,
-			ObjectProvider<MessageRecoverer> messageRecoverer,
-			ObjectProvider<RabbitRetryTemplateCustomizer> retryTemplateCustomizers, RabbitProperties properties) {
+										ObjectProvider<MessageRecoverer> messageRecoverer,
+										ObjectProvider<RabbitRetryTemplateCustomizer> retryTemplateCustomizers, RabbitProperties properties) {
 		this.messageConverter = messageConverter;
 		this.messageRecoverer = messageRecoverer;
 		this.retryTemplateCustomizers = retryTemplateCustomizers;

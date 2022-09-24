@@ -66,6 +66,7 @@ public class LayeredSpec {
 	/**
 	 * Returns whether the layer tools should be included as a dependency in the layered
 	 * archive.
+	 *
 	 * @return whether the layer tools should be included
 	 */
 	@Input
@@ -76,8 +77,9 @@ public class LayeredSpec {
 	/**
 	 * Sets whether the layer tools should be included as a dependency in the layered
 	 * archive.
+	 *
 	 * @param includeLayerTools {@code true} if the layer tools should be included,
-	 * otherwise {@code false}
+	 *                          otherwise {@code false}
 	 */
 	public void setIncludeLayerTools(boolean includeLayerTools) {
 		this.includeLayerTools = includeLayerTools;
@@ -85,6 +87,7 @@ public class LayeredSpec {
 
 	/**
 	 * Returns whether the layers.idx should be included in the archive.
+	 *
 	 * @return whether the layers.idx should be included
 	 */
 	@Input
@@ -94,8 +97,9 @@ public class LayeredSpec {
 
 	/**
 	 * Sets whether the layers.idx should be included in the archive.
+	 *
 	 * @param enabled {@code true} layers.idx should be included in the archive, otherwise
-	 * {@code false}
+	 *                {@code false}
 	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
@@ -104,6 +108,7 @@ public class LayeredSpec {
 	/**
 	 * Returns the {@link ApplicationSpec} that controls the layers to which application
 	 * classes and resources belong.
+	 *
 	 * @return the application spec
 	 */
 	@Input
@@ -114,6 +119,7 @@ public class LayeredSpec {
 	/**
 	 * Sets the {@link ApplicationSpec} that controls the layers to which application
 	 * classes are resources belong.
+	 *
 	 * @param spec the application spec
 	 */
 	public void setApplication(ApplicationSpec spec) {
@@ -122,6 +128,7 @@ public class LayeredSpec {
 
 	/**
 	 * Customizes the {@link ApplicationSpec} using the given {@code action}.
+	 *
 	 * @param action the action
 	 */
 	public void application(Action<ApplicationSpec> action) {
@@ -130,6 +137,7 @@ public class LayeredSpec {
 
 	/**
 	 * Customizes the {@link ApplicationSpec} using the given {@code closure}.
+	 *
 	 * @param closure the closure
 	 */
 	public void application(Closure<?> closure) {
@@ -139,6 +147,7 @@ public class LayeredSpec {
 	/**
 	 * Returns the {@link DependenciesSpec} that controls the layers to which dependencies
 	 * belong.
+	 *
 	 * @return the dependencies spec
 	 */
 	@Input
@@ -149,6 +158,7 @@ public class LayeredSpec {
 	/**
 	 * Sets the {@link DependenciesSpec} that controls the layers to which dependencies
 	 * belong.
+	 *
 	 * @param spec the dependencies spec
 	 */
 	public void setDependencies(DependenciesSpec spec) {
@@ -157,6 +167,7 @@ public class LayeredSpec {
 
 	/**
 	 * Customizes the {@link DependenciesSpec} using the given {@code action}.
+	 *
 	 * @param action the action
 	 */
 	public void dependencies(Action<DependenciesSpec> action) {
@@ -165,6 +176,7 @@ public class LayeredSpec {
 
 	/**
 	 * Customizes the {@link DependenciesSpec} using the given {@code closure}.
+	 *
 	 * @param closure the closure
 	 */
 	public void dependencies(Closure<?> closure) {
@@ -174,6 +186,7 @@ public class LayeredSpec {
 	/**
 	 * Returns the order of the layers in the archive from least to most frequently
 	 * changing.
+	 *
 	 * @return the layer order
 	 */
 	@Input
@@ -183,6 +196,7 @@ public class LayeredSpec {
 
 	/**
 	 * Sets the order of the layers in the archive from least to most frequently changing.
+	 *
 	 * @param layerOrder the layer order
 	 */
 	public void setLayerOrder(String... layerOrder) {
@@ -191,6 +205,7 @@ public class LayeredSpec {
 
 	/**
 	 * Sets the order of the layers in the archive from least to most frequently changing.
+	 *
 	 * @param layerOrder the layer order
 	 */
 	public void setLayerOrder(List<String> layerOrder) {
@@ -200,6 +215,7 @@ public class LayeredSpec {
 	/**
 	 * Return this configuration as a {@link Layers} instance. This method should only be
 	 * called when the configuration is complete and will no longer be changed.
+	 *
 	 * @return the layers
 	 */
 	Layers asLayers() {
@@ -274,6 +290,7 @@ public class LayeredSpec {
 		/**
 		 * Creates a new {@code IntoLayerSpec} that will control the content of the given
 		 * layer.
+		 *
 		 * @param intoLayer the layer
 		 */
 		public IntoLayerSpec(String intoLayer) {
@@ -285,6 +302,7 @@ public class LayeredSpec {
 		 * includes are specified then all content is included. If includes are specified
 		 * then content must match an inclusion and not match any exclusions to be
 		 * included.
+		 *
 		 * @param patterns the patterns to be included
 		 */
 		public void include(String... patterns) {
@@ -296,6 +314,7 @@ public class LayeredSpec {
 		 * excludes a specified no content is excluded. If exclusions are specified then
 		 * any content that matches an exclusion will be excluded irrespective of whether
 		 * it matches an include.
+		 *
 		 * @param patterns the patterns to be excluded
 		 */
 		public void exclude(String... patterns) {
@@ -335,6 +354,7 @@ public class LayeredSpec {
 		/**
 		 * Creates a new {@code IntoLayerSpec} that will control the content of the given
 		 * layer.
+		 *
 		 * @param intoLayer the layer
 		 */
 		public DependenciesIntoLayerSpec(String intoLayer) {
@@ -387,8 +407,9 @@ public class LayeredSpec {
 
 		/**
 		 * Creates a new {@code ApplicationSpec} with the given {@code contents}.
+		 *
 		 * @param contents specs for the layers in which application content should be
-		 * included
+		 *                 included
 		 */
 		public ApplicationSpec(IntoLayerSpec... contents) {
 			super(new IntoLayerSpecFactory(), contents);
@@ -416,6 +437,7 @@ public class LayeredSpec {
 
 		/**
 		 * Creates a new {@code DependenciesSpec} with the given {@code contents}.
+		 *
 		 * @param contents specs for the layers in which dependencies should be included
 		 */
 		public DependenciesSpec(DependenciesIntoLayerSpec... contents) {

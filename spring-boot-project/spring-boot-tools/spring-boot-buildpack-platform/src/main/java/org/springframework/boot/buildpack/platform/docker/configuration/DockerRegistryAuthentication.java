@@ -26,6 +26,7 @@ public interface DockerRegistryAuthentication {
 
 	/**
 	 * Returns the auth header that should be used for docker authentication.
+	 *
 	 * @return the auth header
 	 */
 	String getAuthHeader();

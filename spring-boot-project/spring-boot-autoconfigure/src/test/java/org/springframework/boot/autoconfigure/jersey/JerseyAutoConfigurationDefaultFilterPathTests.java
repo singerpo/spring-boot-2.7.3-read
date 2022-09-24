@@ -50,7 +50,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Dave Syer
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		properties = { "spring.jersey.type=filter", "server.servlet.register-default-servlet=true" })
+		properties = {"spring.jersey.type=filter", "server.servlet.register-default-servlet=true"})
 @DirtiesContext
 class JerseyAutoConfigurationDefaultFilterPathTests {
 
@@ -89,8 +89,8 @@ class JerseyAutoConfigurationDefaultFilterPathTests {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Configuration
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
-			PropertyPlaceholderAutoConfiguration.class })
+	@Import({ServletWebServerFactoryAutoConfiguration.class, JerseyAutoConfiguration.class,
+			PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

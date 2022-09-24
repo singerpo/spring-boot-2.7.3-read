@@ -88,8 +88,7 @@ final class SystemEnvironmentPropertyMapper implements PropertyMapper {
 	private ConfigurationPropertyName convertName(String propertySourceName) {
 		try {
 			return ConfigurationPropertyName.adapt(propertySourceName, '_', this::processElementValue);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return ConfigurationPropertyName.EMPTY;
 		}
 	}

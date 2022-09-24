@@ -58,12 +58,12 @@ abstract class RemoteApplicationLauncher extends AbstractApplicationLauncher {
 
 	@Override
 	public LaunchedApplication launchApplication(JvmLauncher javaLauncher, File serverPortFile,
-			String... additionalArgs) throws Exception {
+												 String... additionalArgs) throws Exception {
 		List<String> args = new ArrayList<>(Arrays.asList("com.example.DevToolsTestApplication",
 				serverPortFile.getAbsolutePath(), "--server.port=0", "--spring.devtools.remote.secret=secret"));
 		args.addAll(Arrays.asList(additionalArgs));
 		LaunchedJvm applicationJvm = javaLauncher.launch("app", createApplicationClassPath(),
-				args.toArray(new String[] {}));
+				args.toArray(new String[]{}));
 		int port = awaitServerPort(applicationJvm, serverPortFile);
 		BiFunction<Integer, File, Process> remoteRestarter = getRemoteRestarter(javaLauncher);
 		return new LaunchedApplication(getDirectories().getRemoteAppDirectory(), applicationJvm.getStandardOut(),
@@ -80,8 +80,7 @@ abstract class RemoteApplicationLauncher extends AbstractApplicationLauncher {
 						"http://localhost:" + port);
 				awaitRemoteSpringApplication(remoteSpringApplicationJvm);
 				return remoteSpringApplicationJvm.getProcess();
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				throw new IllegalStateException(ex);
 			}
 		};
@@ -111,8 +110,7 @@ abstract class RemoteApplicationLauncher extends AbstractApplicationLauncher {
 		try {
 			Awaitility.waitAtMost(Duration.ofMinutes(3)).until(contents::get,
 					containsString("Started RemoteSpringApplication"));
-		}
-		catch (ConditionTimeoutException ex) {
+		} catch (ConditionTimeoutException ex) {
 			if (!launchedJvm.getProcess().isAlive()) {
 				throw new IllegalStateException(
 						"Process exited with status " + launchedJvm.getProcess().exitValue()

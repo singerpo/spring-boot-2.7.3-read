@@ -41,15 +41,12 @@ class DisabledIfDockerUnavailableCondition implements ExecutionCondition {
 		try {
 			DockerClientFactory.instance().client();
 			return ENABLED;
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			return DISABLED;
-		}
-		finally {
+		} finally {
 			if (originalSilenceValue != null) {
 				System.setProperty(SILENCE_PROPERTY, originalSilenceValue);
-			}
-			else {
+			} else {
 				System.clearProperty(SILENCE_PROPERTY);
 			}
 		}

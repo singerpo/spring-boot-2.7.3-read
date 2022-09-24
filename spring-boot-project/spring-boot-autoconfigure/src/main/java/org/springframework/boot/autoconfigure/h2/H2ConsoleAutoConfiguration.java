@@ -59,7 +59,7 @@ public class H2ConsoleAutoConfiguration {
 
 	@Bean
 	public ServletRegistrationBean<WebServlet> h2Console(H2ConsoleProperties properties,
-			ObjectProvider<DataSource> dataSource) {
+														 ObjectProvider<DataSource> dataSource) {
 		String path = properties.getPath();
 		String urlMapping = path + (path.endsWith("/") ? "*" : "/*");
 		ServletRegistrationBean<WebServlet> registration = new ServletRegistrationBean<>(new WebServlet(), urlMapping);
@@ -74,8 +74,7 @@ public class H2ConsoleAutoConfiguration {
 		List<String> urls = dataSource.orderedStream().map((available) -> {
 			try (Connection connection = available.getConnection()) {
 				return "'" + connection.getMetaData().getURL() + "'";
-			}
-			catch (Exception ex) {
+			} catch (Exception ex) {
 				return null;
 			}
 		}).filter(Objects::nonNull).collect(Collectors.toList());

@@ -83,8 +83,7 @@ class GroovyGrabDependencyResolver implements DependencyResolver {
 	private File toFile(URL url) {
 		try {
 			return new File(url.toURI());
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			return new File(url.getPath());
 		}
 	}

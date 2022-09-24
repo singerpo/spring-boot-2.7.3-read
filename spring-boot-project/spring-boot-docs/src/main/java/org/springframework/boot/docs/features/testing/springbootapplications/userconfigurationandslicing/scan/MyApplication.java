@@ -20,7 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({ "com.example.app", "com.example.another" })
+@ComponentScan({"com.example.app", "com.example.another"})
 public class MyApplication {
 
 	// ...

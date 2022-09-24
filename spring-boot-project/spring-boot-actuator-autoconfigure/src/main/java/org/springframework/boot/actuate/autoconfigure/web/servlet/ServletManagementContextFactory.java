@@ -43,7 +43,7 @@ class ServletManagementContextFactory implements ManagementContextFactory {
 
 	@Override
 	public ConfigurableWebServerApplicationContext createManagementContext(ApplicationContext parent,
-			Class<?>... configClasses) {
+																		   Class<?>... configClasses) {
 		AnnotationConfigServletWebServerApplicationContext child = new AnnotationConfigServletWebServerApplicationContext();
 		child.setParent(parent);
 		List<Class<?>> combinedClasses = new ArrayList<>(Arrays.asList(configClasses));
@@ -54,7 +54,7 @@ class ServletManagementContextFactory implements ManagementContextFactory {
 	}
 
 	private void registerServletWebServerFactory(ApplicationContext parent,
-			AnnotationConfigServletWebServerApplicationContext childContext) {
+												 AnnotationConfigServletWebServerApplicationContext childContext) {
 		try {
 			ConfigurableListableBeanFactory beanFactory = childContext.getBeanFactory();
 			if (beanFactory instanceof BeanDefinitionRegistry) {
@@ -62,8 +62,7 @@ class ServletManagementContextFactory implements ManagementContextFactory {
 				registry.registerBeanDefinition("ServletWebServerFactory",
 						new RootBeanDefinition(determineServletWebServerFactoryClass(parent)));
 			}
-		}
-		catch (NoSuchBeanDefinitionException ex) {
+		} catch (NoSuchBeanDefinitionException ex) {
 			// Ignore and assume auto-configuration
 		}
 	}

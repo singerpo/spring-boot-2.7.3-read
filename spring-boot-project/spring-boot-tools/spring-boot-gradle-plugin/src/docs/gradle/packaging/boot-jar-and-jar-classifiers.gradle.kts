@@ -1,20 +1,20 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
-	java
-	id("org.springframework.boot") version "{gradle-project-version}"
+    java
+    id("org.springframework.boot") version "{gradle-project-version}"
 }
 
 // tag::classifiers[]
 tasks.named<BootJar>("bootJar") {
-	archiveClassifier.set("boot")
+    archiveClassifier.set("boot")
 }
 
 tasks.named<Jar>("jar") {
-	archiveClassifier.set("")
+    archiveClassifier.set("")
 }
 // end::classifiers[]
 
 tasks.named<BootJar>("bootJar") {
-	mainClass.set("com.example.Application")
+    mainClass.set("com.example.Application")
 }

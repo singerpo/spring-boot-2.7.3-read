@@ -52,7 +52,7 @@ class DevToolPropertiesIntegrationTests {
 
 	@BeforeEach
 	void setup() {
-		Restarter.initialize(new String[] {}, false, new MockInitializer(), false);
+		Restarter.initialize(new String[]{}, false, new MockInitializer(), false);
 	}
 
 	@AfterEach
@@ -157,7 +157,7 @@ class DevToolPropertiesIntegrationTests {
 
 		@Override
 		public URL[] getInitialUrls(Thread thread) {
-			return new URL[] {};
+			return new URL[]{};
 		}
 
 	}

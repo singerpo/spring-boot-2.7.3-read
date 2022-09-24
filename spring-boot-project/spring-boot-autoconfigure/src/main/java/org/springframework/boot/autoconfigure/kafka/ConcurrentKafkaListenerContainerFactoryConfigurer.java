@@ -67,6 +67,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link KafkaProperties} to use.
+	 *
 	 * @param properties the properties
 	 */
 	void setKafkaProperties(KafkaProperties properties) {
@@ -75,6 +76,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link MessageConverter} to use.
+	 *
 	 * @param messageConverter the message converter
 	 */
 	void setMessageConverter(MessageConverter messageConverter) {
@@ -83,6 +85,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link RecordFilterStrategy} to use to filter incoming records.
+	 *
 	 * @param recordFilterStrategy the record filter strategy
 	 */
 	void setRecordFilterStrategy(RecordFilterStrategy<Object, Object> recordFilterStrategy) {
@@ -91,6 +94,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link KafkaTemplate} to use to send replies.
+	 *
 	 * @param replyTemplate the reply template
 	 */
 	void setReplyTemplate(KafkaTemplate<Object, Object> replyTemplate) {
@@ -99,6 +103,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link KafkaAwareTransactionManager} to use.
+	 *
 	 * @param transactionManager the transaction manager
 	 */
 	void setTransactionManager(KafkaAwareTransactionManager<Object, Object> transactionManager) {
@@ -107,6 +112,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link ConsumerAwareRebalanceListener} to use.
+	 *
 	 * @param rebalanceListener the rebalance listener.
 	 * @since 2.2
 	 */
@@ -116,6 +122,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link ErrorHandler} to use.
+	 *
 	 * @param errorHandler the error handler
 	 */
 	void setErrorHandler(ErrorHandler errorHandler) {
@@ -124,6 +131,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link BatchErrorHandler} to use.
+	 *
 	 * @param batchErrorHandler the error handler
 	 */
 	void setBatchErrorHandler(BatchErrorHandler batchErrorHandler) {
@@ -132,6 +140,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link CommonErrorHandler} to use.
+	 *
 	 * @param commonErrorHandler the error handler.
 	 * @since 2.6.0
 	 */
@@ -141,6 +150,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link AfterRollbackProcessor} to use.
+	 *
 	 * @param afterRollbackProcessor the after rollback processor
 	 */
 	void setAfterRollbackProcessor(AfterRollbackProcessor<Object, Object> afterRollbackProcessor) {
@@ -149,6 +159,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 
 	/**
 	 * Set the {@link RecordInterceptor} to use.
+	 *
 	 * @param recordInterceptor the record interceptor.
 	 */
 	void setRecordInterceptor(RecordInterceptor<Object, Object> recordInterceptor) {
@@ -158,12 +169,13 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 	/**
 	 * Configure the specified Kafka listener container factory. The factory can be
 	 * further tuned and default settings can be overridden.
+	 *
 	 * @param listenerFactory the {@link ConcurrentKafkaListenerContainerFactory} instance
-	 * to configure
+	 *                        to configure
 	 * @param consumerFactory the {@link ConsumerFactory} to use
 	 */
 	public void configure(ConcurrentKafkaListenerContainerFactory<Object, Object> listenerFactory,
-			ConsumerFactory<Object, Object> consumerFactory) {
+						  ConsumerFactory<Object, Object> consumerFactory) {
 		listenerFactory.setConsumerFactory(consumerFactory);
 		configureListenerFactory(listenerFactory);
 		configureContainer(listenerFactory.getContainerProperties());
@@ -180,8 +192,7 @@ public class ConcurrentKafkaListenerContainerFactoryConfigurer {
 		if (properties.getType().equals(Listener.Type.BATCH)) {
 			factory.setBatchListener(true);
 			factory.setBatchErrorHandler(this.batchErrorHandler);
-		}
-		else {
+		} else {
 			factory.setErrorHandler(this.errorHandler);
 		}
 		map.from(this.commonErrorHandler).to(factory::setCommonErrorHandler);

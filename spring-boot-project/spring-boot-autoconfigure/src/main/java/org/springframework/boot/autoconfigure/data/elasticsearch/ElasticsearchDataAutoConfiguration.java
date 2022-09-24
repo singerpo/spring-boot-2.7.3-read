@@ -32,16 +32,16 @@ import org.springframework.data.elasticsearch.repository.config.EnableReactiveEl
  * @author Brian Clozel
  * @author Artur Konczak
  * @author Mohsin Husen
- * @since 1.1.0
  * @see EnableElasticsearchRepositories
  * @see EnableReactiveElasticsearchRepositories
+ * @since 1.1.0
  */
-@AutoConfiguration(after = { ElasticsearchRestClientAutoConfiguration.class,
-		ReactiveElasticsearchRestClientAutoConfiguration.class })
-@ConditionalOnClass({ ElasticsearchRestTemplate.class })
-@Import({ ElasticsearchDataConfiguration.BaseConfiguration.class,
+@AutoConfiguration(after = {ElasticsearchRestClientAutoConfiguration.class,
+		ReactiveElasticsearchRestClientAutoConfiguration.class})
+@ConditionalOnClass({ElasticsearchRestTemplate.class})
+@Import({ElasticsearchDataConfiguration.BaseConfiguration.class,
 		ElasticsearchDataConfiguration.RestClientConfiguration.class,
-		ElasticsearchDataConfiguration.ReactiveRestClientConfiguration.class })
+		ElasticsearchDataConfiguration.ReactiveRestClientConfiguration.class})
 public class ElasticsearchDataAutoConfiguration {
 
 }

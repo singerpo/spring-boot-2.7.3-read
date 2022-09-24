@@ -32,6 +32,7 @@ public interface CouchbaseCacheManagerBuilderCustomizer {
 
 	/**
 	 * Customize the {@link CouchbaseCacheManagerBuilder}.
+	 *
 	 * @param builder the builder to customize
 	 */
 	void customize(CouchbaseCacheManagerBuilder builder);

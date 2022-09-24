@@ -75,8 +75,7 @@ public class ElasticsearchRestClientHealthIndicator extends AbstractHealthIndica
 		String status = (String) response.get("status");
 		if (RED_STATUS.equals(status)) {
 			builder.outOfService();
-		}
-		else {
+		} else {
 			builder.up();
 		}
 		builder.withDetails(response);

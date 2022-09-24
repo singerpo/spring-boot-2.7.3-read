@@ -81,9 +81,9 @@ class MongoReactiveAndBlockingRepositoriesAutoConfigurationTests {
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
 			List<String> names = new ArrayList<>();
-			for (Class<?> type : new Class<?>[] { MongoAutoConfiguration.class, MongoReactiveAutoConfiguration.class,
+			for (Class<?> type : new Class<?>[]{MongoAutoConfiguration.class, MongoReactiveAutoConfiguration.class,
 					MongoDataAutoConfiguration.class, MongoRepositoriesAutoConfiguration.class,
-					MongoReactiveDataAutoConfiguration.class, MongoReactiveRepositoriesAutoConfiguration.class }) {
+					MongoReactiveDataAutoConfiguration.class, MongoReactiveRepositoriesAutoConfiguration.class}) {
 				names.add(type.getName());
 			}
 			return StringUtils.toStringArray(names);

@@ -47,13 +47,13 @@ class Hazelcast4HazelcastHealthIndicatorTests {
 	void hazelcastUp() {
 		new ApplicationContextRunner().withConfiguration(AutoConfigurations.of(HazelcastAutoConfiguration.class))
 				.withPropertyValues("spring.hazelcast.config=hazelcast-4.xml").run((context) -> {
-					HazelcastInstance hazelcast = context.getBean(HazelcastInstance.class);
-					Health health = new HazelcastHealthIndicator(hazelcast).health();
-					assertThat(health.getStatus()).isEqualTo(Status.UP);
-					assertThat(health.getDetails()).containsOnlyKeys("name", "uuid").containsEntry("name",
-							"actuator-hazelcast-4");
-					assertThat(health.getDetails().get("uuid")).asString().isNotEmpty();
-				});
+			HazelcastInstance hazelcast = context.getBean(HazelcastInstance.class);
+			Health health = new HazelcastHealthIndicator(hazelcast).health();
+			assertThat(health.getStatus()).isEqualTo(Status.UP);
+			assertThat(health.getDetails()).containsOnlyKeys("name", "uuid").containsEntry("name",
+					"actuator-hazelcast-4");
+			assertThat(health.getDetails().get("uuid")).asString().isNotEmpty();
+		});
 	}
 
 	@Test

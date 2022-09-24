@@ -59,7 +59,7 @@ class DiscovererEndpointFilterTests {
 		assertThat(filter.match(endpoint)).isFalse();
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	private DiscoveredEndpoint<?> mockDiscoveredEndpoint(Class<?> discoverer) {
 		DiscoveredEndpoint endpoint = mock(DiscoveredEndpoint.class);
 		given(endpoint.wasDiscoveredBy(discoverer)).willReturn(true);
@@ -77,8 +77,8 @@ class DiscovererEndpointFilterTests {
 	abstract static class TestDiscovererA extends EndpointDiscoverer<ExposableEndpoint<Operation>, Operation> {
 
 		TestDiscovererA(ApplicationContext applicationContext, ParameterValueMapper parameterValueMapper,
-				Collection<OperationInvokerAdvisor> invokerAdvisors,
-				Collection<EndpointFilter<ExposableEndpoint<Operation>>> filters) {
+						Collection<OperationInvokerAdvisor> invokerAdvisors,
+						Collection<EndpointFilter<ExposableEndpoint<Operation>>> filters) {
 			super(applicationContext, parameterValueMapper, invokerAdvisors, filters);
 		}
 
@@ -87,8 +87,8 @@ class DiscovererEndpointFilterTests {
 	abstract static class TestDiscovererB extends EndpointDiscoverer<ExposableEndpoint<Operation>, Operation> {
 
 		TestDiscovererB(ApplicationContext applicationContext, ParameterValueMapper parameterValueMapper,
-				Collection<OperationInvokerAdvisor> invokerAdvisors,
-				Collection<EndpointFilter<ExposableEndpoint<Operation>>> filters) {
+						Collection<OperationInvokerAdvisor> invokerAdvisors,
+						Collection<EndpointFilter<ExposableEndpoint<Operation>>> filters) {
 			super(applicationContext, parameterValueMapper, invokerAdvisors, filters);
 		}
 

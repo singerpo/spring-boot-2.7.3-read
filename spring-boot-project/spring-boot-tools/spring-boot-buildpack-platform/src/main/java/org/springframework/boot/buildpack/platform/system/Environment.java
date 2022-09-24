@@ -34,6 +34,7 @@ public interface Environment {
 
 	/**
 	 * Gets the value of the specified environment variable.
+	 *
 	 * @param name the name of the environment variable
 	 * @return the string value of the variable, or {@code null} if the variable is not
 	 * defined in the environment

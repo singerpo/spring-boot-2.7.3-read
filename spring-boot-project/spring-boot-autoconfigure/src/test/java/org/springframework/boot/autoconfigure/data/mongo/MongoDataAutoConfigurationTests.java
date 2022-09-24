@@ -106,8 +106,7 @@ class MongoDataAutoConfigurationTests {
 		try {
 			context.refresh();
 			assertDomainTypesDiscovered(context.getBean(MongoMappingContext.class), City.class);
-		}
-		finally {
+		} finally {
 			context.close();
 		}
 	}
@@ -210,7 +209,7 @@ class MongoDataAutoConfigurationTests {
 				.run((context) -> assertThat(context).hasSingleBean(MongoTemplate.class));
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	private static void assertDomainTypesDiscovered(MongoMappingContext mappingContext, Class<?>... types) {
 		Set<Class> initialEntitySet = (Set<Class>) ReflectionTestUtils.getField(mappingContext, "initialEntitySet");
 		assertThat(initialEntitySet).containsOnly(types);

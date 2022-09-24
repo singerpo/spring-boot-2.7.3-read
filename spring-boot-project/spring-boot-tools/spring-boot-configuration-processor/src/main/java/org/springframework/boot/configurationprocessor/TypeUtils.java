@@ -98,8 +98,7 @@ class TypeUtils {
 		TypeElement typeElement = this.env.getElementUtils().getTypeElement(typeClass.getName());
 		try {
 			return types.getDeclaredType(typeElement, typeArgs);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			// Try again without generics for older Java versions
 			return types.getDeclaredType(typeElement);
 		}
@@ -115,6 +114,7 @@ class TypeUtils {
 
 	/**
 	 * Return the qualified name of the specified element.
+	 *
 	 * @param element the element to handle
 	 * @return the fully qualified name of the element, suitable for a call to
 	 * {@link Class#forName(String)}
@@ -126,8 +126,9 @@ class TypeUtils {
 	/**
 	 * Return the type of the specified {@link TypeMirror} including all its generic
 	 * information.
+	 *
 	 * @param element the {@link TypeElement} in which this {@code type} is declared
-	 * @param type the type to handle
+	 * @param type    the type to handle
 	 * @return a representation of the type including all its generic information
 	 */
 	String getType(TypeElement element, TypeMirror type) {
@@ -140,6 +141,7 @@ class TypeUtils {
 	/**
 	 * Extract the target element type from the specified container type or {@code null}
 	 * if no element type was found.
+	 *
 	 * @param type a type, potentially wrapping an element type
 	 * @return the element type or {@code null} if no specific type was found
 	 */
@@ -186,6 +188,7 @@ class TypeUtils {
 	/**
 	 * Return the {@link PrimitiveType} of the specified type or {@code null} if the type
 	 * does not represent a valid wrapper type.
+	 *
 	 * @param typeMirror a type
 	 * @return the primitive type or {@code null} if the type is not a wrapper type
 	 */
@@ -291,8 +294,7 @@ class TypeUtils {
 					if (!hasCycle(typeVariable)) {
 						return visit(typeVariable.getUpperBound(), descriptor);
 					}
-				}
-				else {
+				} else {
 					return visit(typeMirror, descriptor);
 				}
 			}

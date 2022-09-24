@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
  * A component that contributes data to results returned from the {@link HealthEndpoint}.
  *
  * @author Phillip Webb
- * @since 2.2.0
  * @see Health
  * @see CompositeHealth
+ * @since 2.2.0
  */
 public abstract class HealthComponent {
 
@@ -33,6 +33,7 @@ public abstract class HealthComponent {
 
 	/**
 	 * Return the status of the component.
+	 *
 	 * @return the component status
 	 */
 	@JsonUnwrapped

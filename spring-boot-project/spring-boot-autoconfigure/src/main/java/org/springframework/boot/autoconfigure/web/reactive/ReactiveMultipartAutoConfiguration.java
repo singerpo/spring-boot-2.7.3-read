@@ -43,7 +43,7 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
  * @since 2.6.0
  */
 @AutoConfiguration
-@ConditionalOnClass({ DefaultPartHttpMessageReader.class, WebFluxConfigurer.class })
+@ConditionalOnClass({DefaultPartHttpMessageReader.class, WebFluxConfigurer.class})
 @ConditionalOnWebApplication(type = Type.REACTIVE)
 @EnableConfigurationProperties(ReactiveMultipartProperties.class)
 public class ReactiveMultipartAutoConfiguration {
@@ -71,11 +71,10 @@ public class ReactiveMultipartAutoConfiguration {
 	}
 
 	private void configureFileStorageDirectory(DefaultPartHttpMessageReader defaultPartHttpMessageReader,
-			Path fileStorageDirectory) {
+											   Path fileStorageDirectory) {
 		try {
 			defaultPartHttpMessageReader.setFileStorageDirectory(fileStorageDirectory);
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalStateException("Failed to configure multipart file storage directory", ex);
 		}
 	}

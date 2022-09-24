@@ -231,7 +231,7 @@ class AutoConfigurationSorterTests {
 	}
 
 	private void addAutoConfigureBefore(Properties properties, String className,
-			AnnotationMetadata annotationMetadata) {
+										AnnotationMetadata annotationMetadata) {
 		Map<String, Object> autoConfigureBefore = annotationMetadata
 				.getAnnotationAttributes(AutoConfigureBefore.class.getName(), true);
 		if (autoConfigureBefore != null) {
@@ -291,12 +291,12 @@ class AutoConfigurationSorterTests {
 
 	}
 
-	@AutoConfigureAfter({ AutoConfigureC.class, AutoConfigureD.class, AutoConfigureE.class })
+	@AutoConfigureAfter({AutoConfigureC.class, AutoConfigureD.class, AutoConfigureE.class})
 	static class AutoConfigureB {
 
 	}
 
-	@AutoConfiguration(after = { AutoConfigureC.class })
+	@AutoConfiguration(after = {AutoConfigureC.class})
 	static class AutoConfigureB2 {
 
 	}

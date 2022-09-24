@@ -71,6 +71,7 @@ abstract class AbstractPackagerTests<P extends Packager> {
 	};
 
 	private static final long JAN_1_1980;
+
 	static {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(1980, 0, 1, 0, 0, 0);
@@ -79,6 +80,7 @@ abstract class AbstractPackagerTests<P extends Packager> {
 	}
 
 	private static final long JAN_1_1985;
+
 	static {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(1985, 0, 1, 0, 0, 0);
@@ -191,7 +193,7 @@ abstract class AbstractPackagerTests<P extends Packager> {
 		File libJarFile = libJar.getFile();
 		File libJarFileToUnpack = libJar.getFile();
 		File libNonJarFile = new File(this.tempDir, "non-lib.jar");
-		FileCopyUtils.copy(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, libNonJarFile);
+		FileCopyUtils.copy(new byte[]{0, 1, 2, 3, 4, 5, 6, 7, 8}, libNonJarFile);
 		this.testJarFile.addClass("a/b/C.class", ClassWithMainMethod.class);
 		this.testJarFile.addFile("BOOT-INF/lib/" + libJarFileToUnpack.getName(), libJarFileToUnpack);
 		libJarFile.setLastModified(JAN_1_1980);

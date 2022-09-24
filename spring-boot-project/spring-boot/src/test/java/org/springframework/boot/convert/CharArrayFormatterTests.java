@@ -33,7 +33,7 @@ class CharArrayFormatterTests {
 
 	@ConversionServiceTest
 	void convertFromCharArrayToStringShouldConvert(ConversionService conversionService) {
-		char[] source = { 'b', 'o', 'o', 't' };
+		char[] source = {'b', 'o', 'o', 't'};
 		String converted = conversionService.convert(source, String.class);
 		assertThat(converted).isEqualTo("boot");
 	}

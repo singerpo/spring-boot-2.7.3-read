@@ -107,7 +107,7 @@ class Saml2RelyingPartyRegistrationConfiguration {
 	}
 
 	private Consumer<AssertingPartyDetails.Builder> mapAssertingParty(Registration registration, String id,
-			boolean usingMetadata) {
+																	  boolean usingMetadata) {
 		return (details) -> {
 			AssertingPartyProperties assertingParty = new AssertingPartyProperties(registration, id);
 			PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
@@ -152,8 +152,7 @@ class Saml2RelyingPartyRegistrationConfiguration {
 		Assert.state(location.exists(), () -> "Private key location '" + location + "' does not exist");
 		try (InputStream inputStream = location.getInputStream()) {
 			return RsaKeyConverters.pkcs8().convert(inputStream);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalArgumentException(ex);
 		}
 	}
@@ -163,8 +162,7 @@ class Saml2RelyingPartyRegistrationConfiguration {
 		Assert.state(location.exists(), () -> "Certificate  location '" + location + "' does not exist");
 		try (InputStream inputStream = location.getInputStream()) {
 			return (X509Certificate) CertificateFactory.getInstance("X.509").generateCertificate(inputStream);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new IllegalArgumentException(ex);
 		}
 	}

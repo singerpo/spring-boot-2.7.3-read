@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
 final class Regex implements CharSequence {
 
 	static final Pattern DOMAIN;
+
 	static {
 		Regex component = Regex.oneOf("[a-zA-Z0-9]", "[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]");
 		Regex dotComponent = Regex.group("[.]", component);
@@ -48,6 +49,7 @@ final class Regex implements CharSequence {
 	}
 
 	private static final Regex PATH_COMPONENT;
+
 	static {
 		Regex segment = Regex.of("[a-z0-9]+");
 		Regex separator = Regex.group("[._]|__|[-]*");
@@ -56,6 +58,7 @@ final class Regex implements CharSequence {
 	}
 
 	static final Pattern PATH;
+
 	static {
 		Regex component = PATH_COMPONENT;
 		Regex slashComponent = Regex.group("[/]", component);

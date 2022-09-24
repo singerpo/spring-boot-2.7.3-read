@@ -40,6 +40,7 @@ public class Repackager extends Packager {
 
 	/**
 	 * Create a new {@link Repackager} instance.
+	 *
 	 * @param source the source archive file to package
 	 */
 	public Repackager(File source) {
@@ -48,7 +49,8 @@ public class Repackager extends Packager {
 
 	/**
 	 * Create a new {@link Repackager} instance.
-	 * @param source the source archive file to package
+	 *
+	 * @param source        the source archive file to package
 	 * @param layoutFactory the layout factory to use or {@code null}
 	 * @deprecated since 2.3.10 for removal in 2.5 in favor of {@link #Repackager(File)}
 	 * and {@link #setLayoutFactory(LayoutFactory)}
@@ -60,6 +62,7 @@ public class Repackager extends Packager {
 
 	/**
 	 * Sets if source files should be backed up when they would be overwritten.
+	 *
 	 * @param backupSource if source files should be backed up
 	 */
 	public void setBackupSource(boolean backupSource) {
@@ -68,6 +71,7 @@ public class Repackager extends Packager {
 
 	/**
 	 * Repackage the source file so that it can be run using '{@literal java -jar}'.
+	 *
 	 * @param libraries the libraries required to run the archive
 	 * @throws IOException if the file cannot be repackaged
 	 */
@@ -78,8 +82,9 @@ public class Repackager extends Packager {
 	/**
 	 * Repackage to the given destination so that it can be launched using '
 	 * {@literal java -jar}'.
+	 *
 	 * @param destination the destination file (may be the same as the source)
-	 * @param libraries the libraries required to run the archive
+	 * @param libraries   the libraries required to run the archive
 	 * @throws IOException if the file cannot be repackaged
 	 */
 	public void repackage(File destination, Libraries libraries) throws IOException {
@@ -89,8 +94,9 @@ public class Repackager extends Packager {
 	/**
 	 * Repackage to the given destination so that it can be launched using '
 	 * {@literal java -jar}'.
-	 * @param destination the destination file (may be the same as the source)
-	 * @param libraries the libraries required to run the archive
+	 *
+	 * @param destination  the destination file (may be the same as the source)
+	 * @param libraries    the libraries required to run the archive
 	 * @param launchScript an optional launch script prepended to the front of the jar
 	 * @throws IOException if the file cannot be repackaged
 	 * @since 1.3.0
@@ -102,11 +108,12 @@ public class Repackager extends Packager {
 	/**
 	 * Repackage to the given destination so that it can be launched using '
 	 * {@literal java -jar}'.
-	 * @param destination the destination file (may be the same as the source)
-	 * @param libraries the libraries required to run the archive
-	 * @param launchScript an optional launch script prepended to the front of the jar
+	 *
+	 * @param destination      the destination file (may be the same as the source)
+	 * @param libraries        the libraries required to run the archive
+	 * @param launchScript     an optional launch script prepended to the front of the jar
 	 * @param lastModifiedTime an optional last modified time to apply to the archive and
-	 * its contents
+	 *                         its contents
 	 * @throws IOException if the file cannot be repackaged
 	 * @since 2.3.0
 	 */
@@ -130,8 +137,7 @@ public class Repackager extends Packager {
 			try (JarFile sourceJar = new JarFile(workingSource)) {
 				repackage(sourceJar, destination, libraries, launchScript, lastModifiedTime);
 			}
-		}
-		finally {
+		} finally {
 			if (!this.backupSource && !source.equals(workingSource)) {
 				deleteFile(workingSource);
 			}
@@ -139,7 +145,7 @@ public class Repackager extends Packager {
 	}
 
 	private void repackage(JarFile sourceJar, File destination, Libraries libraries, LaunchScript launchScript,
-			FileTime lastModifiedTime) throws IOException {
+						   FileTime lastModifiedTime) throws IOException {
 		try (JarWriter writer = new JarWriter(destination, launchScript, lastModifiedTime)) {
 			write(sourceJar, libraries, writer, lastModifiedTime != null);
 		}

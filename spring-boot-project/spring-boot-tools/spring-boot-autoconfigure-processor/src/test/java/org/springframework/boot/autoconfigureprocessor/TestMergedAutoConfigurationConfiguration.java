@@ -27,10 +27,10 @@ import java.io.OutputStream;
  *
  * @author Moritz Halbritter
  */
-@TestAutoConfigureBefore(value = InputStream.class, name = { "test.before1", "test.before2" })
-@TestAutoConfigureAfter(value = OutputStream.class, name = { "test.after1", "test.after2" })
-@TestAutoConfiguration(before = ObjectInputStream.class, beforeName = { "test.before3", "test.before4" },
-		after = ObjectOutputStream.class, afterName = { "test.after3", "test.after4" })
+@TestAutoConfigureBefore(value = InputStream.class, name = {"test.before1", "test.before2"})
+@TestAutoConfigureAfter(value = OutputStream.class, name = {"test.after1", "test.after2"})
+@TestAutoConfiguration(before = ObjectInputStream.class, beforeName = {"test.before3", "test.before4"},
+		after = ObjectOutputStream.class, afterName = {"test.after3", "test.after4"})
 class TestMergedAutoConfigurationConfiguration {
 
 }

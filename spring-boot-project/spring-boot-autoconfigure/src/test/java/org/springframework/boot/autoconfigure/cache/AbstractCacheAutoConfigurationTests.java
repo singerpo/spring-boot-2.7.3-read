@@ -68,8 +68,7 @@ abstract class AbstractCacheAutoConfigurationTests {
 				if (expected.contains(key)) {
 					expected.remove(key);
 					assertThat(value.cacheManager).isSameAs(cacheManager);
-				}
-				else {
+				} else {
 					assertThat(value.cacheManager).isNull();
 				}
 			});

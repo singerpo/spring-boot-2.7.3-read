@@ -35,7 +35,7 @@ class MongoClientFactoryTests extends MongoClientFactorySupportTests<MongoClient
 
 	@Override
 	protected MongoClient createMongoClient(List<MongoClientSettingsBuilderCustomizer> customizers,
-			MongoClientSettings settings) {
+											MongoClientSettings settings) {
 		return new MongoClientFactory(customizers).createMongoClient(settings);
 	}
 

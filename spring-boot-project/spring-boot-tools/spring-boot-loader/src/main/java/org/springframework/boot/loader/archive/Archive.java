@@ -33,13 +33,14 @@ import org.springframework.boot.loader.Launcher;
  * An archive that can be launched by the {@link Launcher}.
  *
  * @author Phillip Webb
- * @since 1.0.0
  * @see JarFileArchive
+ * @since 1.0.0
  */
 public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Returns a URL that can be used to load the archive.
+	 *
 	 * @return the archive URL
 	 * @throws MalformedURLException if the URL is malformed
 	 */
@@ -47,6 +48,7 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Returns the manifest of the archive.
+	 *
 	 * @return the manifest
 	 * @throws IOException if the manifest cannot be read
 	 */
@@ -54,10 +56,11 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Returns nested {@link Archive}s for entries that match the specified filters.
-	 * @param searchFilter filter used to limit when additional sub-entry searching is
-	 * required or {@code null} if all entries should be considered.
+	 *
+	 * @param searchFilter  filter used to limit when additional sub-entry searching is
+	 *                      required or {@code null} if all entries should be considered.
 	 * @param includeFilter filter used to determine which entries should be included in
-	 * the result or {@code null} if all entries should be included
+	 *                      the result or {@code null} if all entries should be included
 	 * @return the nested archives
 	 * @throws IOException on IO error
 	 * @since 2.3.0
@@ -72,6 +75,7 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Returns nested {@link Archive}s for entries that match the specified filter.
+	 *
 	 * @param filter the filter used to limit entries
 	 * @return nested archives
 	 * @throws IOException if nested archives cannot be read
@@ -85,10 +89,11 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Return a new iterator for the archive entries.
+	 *
+	 * @see java.lang.Iterable#iterator()
 	 * @deprecated since 2.3.0 for removal in 2.5.0 in favor of using
 	 * {@link org.springframework.boot.loader.jar.JarFile} to access entries and
 	 * {@link #getNestedArchives(EntryFilter, EntryFilter)} for accessing nested archives.
-	 * @see java.lang.Iterable#iterator()
 	 */
 	@Deprecated
 	@Override
@@ -97,10 +102,11 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 	/**
 	 * Performs the given action for each element of the {@code Iterable} until all
 	 * elements have been processed or the action throws an exception.
+	 *
+	 * @see Iterable#forEach
 	 * @deprecated since 2.3.0 for removal in 2.5.0 in favor of using
 	 * {@link org.springframework.boot.loader.jar.JarFile} to access entries and
 	 * {@link #getNestedArchives(EntryFilter, EntryFilter)} for accessing nested archives.
-	 * @see Iterable#forEach
 	 */
 	@Deprecated
 	@Override
@@ -113,10 +119,11 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Creates a {@link Spliterator} over the elements described by this {@code Iterable}.
+	 *
+	 * @see Iterable#spliterator
 	 * @deprecated since 2.3.0 for removal in 2.5.0 in favor of using
 	 * {@link org.springframework.boot.loader.jar.JarFile} to access entries and
 	 * {@link #getNestedArchives(EntryFilter, EntryFilter)} for accessing nested archives.
-	 * @see Iterable#spliterator
 	 */
 	@Deprecated
 	@Override
@@ -126,6 +133,7 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Return if the archive is exploded (already unpacked).
+	 *
 	 * @return if the archive is exploded
 	 * @since 2.3.0
 	 */
@@ -135,6 +143,7 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 	/**
 	 * Closes the {@code Archive}, releasing any open resources.
+	 *
 	 * @throws Exception if an error occurs during close processing
 	 * @since 2.2.0
 	 */
@@ -150,12 +159,14 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 		/**
 		 * Returns {@code true} if the entry represents a directory.
+		 *
 		 * @return if the entry is a directory
 		 */
 		boolean isDirectory();
 
 		/**
 		 * Returns the name of the entry.
+		 *
 		 * @return the name of the entry
 		 */
 		String getName();
@@ -170,6 +181,7 @@ public interface Archive extends Iterable<Archive.Entry>, AutoCloseable {
 
 		/**
 		 * Apply the jar entry filter.
+		 *
 		 * @param entry the entry to filter
 		 * @return {@code true} if the filter matches
 		 */

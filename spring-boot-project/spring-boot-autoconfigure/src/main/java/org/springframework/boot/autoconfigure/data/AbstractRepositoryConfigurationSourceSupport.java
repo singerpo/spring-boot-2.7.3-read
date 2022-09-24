@@ -56,7 +56,7 @@ public abstract class AbstractRepositoryConfigurationSourceSupport
 
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry,
-			BeanNameGenerator importBeanNameGenerator) {
+										BeanNameGenerator importBeanNameGenerator) {
 		RepositoryConfigurationDelegate delegate = new RepositoryConfigurationDelegate(
 				getConfigurationSource(registry, importBeanNameGenerator), this.resourceLoader, this.environment);
 		delegate.registerRepositoriesIn(registry, getRepositoryConfigurationExtension());
@@ -68,7 +68,7 @@ public abstract class AbstractRepositoryConfigurationSourceSupport
 	}
 
 	private AnnotationRepositoryConfigurationSource getConfigurationSource(BeanDefinitionRegistry registry,
-			BeanNameGenerator importBeanNameGenerator) {
+																		   BeanNameGenerator importBeanNameGenerator) {
 		AnnotationMetadata metadata = AnnotationMetadata.introspect(getConfiguration());
 		return new AutoConfiguredAnnotationRepositoryConfigurationSource(metadata, getAnnotation(), this.resourceLoader,
 				this.environment, registry, importBeanNameGenerator) {
@@ -81,18 +81,21 @@ public abstract class AbstractRepositoryConfigurationSourceSupport
 
 	/**
 	 * The Spring Data annotation used to enable the particular repository support.
+	 *
 	 * @return the annotation class
 	 */
 	protected abstract Class<? extends Annotation> getAnnotation();
 
 	/**
 	 * The configuration class that will be used by Spring Boot as a template.
+	 *
 	 * @return the configuration class
 	 */
 	protected abstract Class<?> getConfiguration();
 
 	/**
 	 * The {@link RepositoryConfigurationExtension} for the particular repository support.
+	 *
 	 * @return the repository configuration extension
 	 */
 	protected abstract RepositoryConfigurationExtension getRepositoryConfigurationExtension();
@@ -100,6 +103,7 @@ public abstract class AbstractRepositoryConfigurationSourceSupport
 	/**
 	 * The {@link BootstrapMode} for the particular repository support. Defaults to
 	 * {@link BootstrapMode#DEFAULT}.
+	 *
 	 * @return the bootstrap mode
 	 */
 	protected BootstrapMode getBootstrapMode() {
@@ -128,8 +132,8 @@ public abstract class AbstractRepositoryConfigurationSourceSupport
 			extends AnnotationRepositoryConfigurationSource {
 
 		AutoConfiguredAnnotationRepositoryConfigurationSource(AnnotationMetadata metadata,
-				Class<? extends Annotation> annotation, ResourceLoader resourceLoader, Environment environment,
-				BeanDefinitionRegistry registry, BeanNameGenerator generator) {
+															  Class<? extends Annotation> annotation, ResourceLoader resourceLoader, Environment environment,
+															  BeanDefinitionRegistry registry, BeanNameGenerator generator) {
 			super(metadata, annotation, resourceLoader, environment, registry, generator);
 		}
 

@@ -41,7 +41,7 @@ class TypeExcludeFiltersContextCustomizerFactory implements ContextCustomizerFac
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configurationAttributes) {
+													 List<ContextConfigurationAttributes> configurationAttributes) {
 		AnnotationDescriptor<TypeExcludeFilters> descriptor = TestContextAnnotationUtils
 				.findAnnotationDescriptor(testClass, TypeExcludeFilters.class);
 		Class<?>[] filterClasses = (descriptor != null) ? descriptor.getAnnotation().value() : NO_FILTERS;

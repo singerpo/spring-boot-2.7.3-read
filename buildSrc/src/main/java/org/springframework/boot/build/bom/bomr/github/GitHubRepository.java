@@ -28,9 +28,10 @@ public interface GitHubRepository {
 	/**
 	 * Opens a new issue with the given title. The given {@code labels} will be applied to
 	 * the issue and it will be assigned to the given {@code milestone}.
-	 * @param title the title of the issue
-	 * @param body the body of the issue
-	 * @param labels the labels to apply to the issue
+	 *
+	 * @param title     the title of the issue
+	 * @param body      the body of the issue
+	 * @param labels    the labels to apply to the issue
 	 * @param milestone the milestone to assign the issue to
 	 * @return the number of the new issue
 	 */
@@ -38,12 +39,14 @@ public interface GitHubRepository {
 
 	/**
 	 * Returns the labels in the repository.
+	 *
 	 * @return the labels
 	 */
 	List<String> getLabels();
 
 	/**
 	 * Returns the milestones in the repository.
+	 *
 	 * @return the milestones
 	 */
 	List<Milestone> getMilestones();
@@ -51,7 +54,8 @@ public interface GitHubRepository {
 	/**
 	 * Finds issues that have the given {@code labels} and are assigned to the given
 	 * {@code milestone}.
-	 * @param labels issue labels
+	 *
+	 * @param labels    issue labels
 	 * @param milestone assigned milestone
 	 * @return the matching issues
 	 */

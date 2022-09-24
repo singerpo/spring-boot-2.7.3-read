@@ -30,7 +30,7 @@ class CompositeReactiveHealthContributorMapAdapter<V> extends NamedContributorsM
 		implements CompositeReactiveHealthContributor {
 
 	CompositeReactiveHealthContributorMapAdapter(Map<String, V> map,
-			Function<V, ? extends ReactiveHealthContributor> valueAdapter) {
+												 Function<V, ? extends ReactiveHealthContributor> valueAdapter) {
 		super(map, valueAdapter);
 	}
 

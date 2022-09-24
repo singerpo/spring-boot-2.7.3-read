@@ -91,12 +91,12 @@ class TypeExcludeFiltersContextCustomizerFactoryTests {
 
 	}
 
-	@TypeExcludeFilters({ SimpleExclude.class, TestClassAwareExclude.class })
+	@TypeExcludeFilters({SimpleExclude.class, TestClassAwareExclude.class})
 	static class WithExcludeFilters {
 
 	}
 
-	@TypeExcludeFilters({ SimpleExclude.class, TestClassAwareExclude.class })
+	@TypeExcludeFilters({SimpleExclude.class, TestClassAwareExclude.class})
 	static class EnclosingClass {
 
 		class WithEnclosingClassExcludeFilters {
@@ -105,7 +105,7 @@ class TypeExcludeFiltersContextCustomizerFactoryTests {
 
 	}
 
-	@TypeExcludeFilters({ TestClassAwareExclude.class, SimpleExclude.class })
+	@TypeExcludeFilters({TestClassAwareExclude.class, SimpleExclude.class})
 	static class WithSameExcludeFilters {
 
 	}

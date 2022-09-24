@@ -1,10 +1,10 @@
 plugins {
-	java
-	id("org.springframework.boot") version "{gradle-project-version}"
+    java
+    id("org.springframework.boot") version "{gradle-project-version}"
 }
 
 // tag::build-info[]
 springBoot {
-	buildInfo()
+    buildInfo()
 }
 // end::build-info[]

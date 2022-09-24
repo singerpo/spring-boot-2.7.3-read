@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Andy Wilkinson
  */
-@ClassPathExclusions({ "jakarta.servlet-api-*.jar", "tomcat-embed-core-*.jar" })
+@ClassPathExclusions({"jakarta.servlet-api-*.jar", "tomcat-embed-core-*.jar"})
 class SpringBootPropertySourceTests {
 
 	@Test

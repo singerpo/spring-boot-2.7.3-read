@@ -117,7 +117,7 @@ class ConfigDataPropertiesTests {
 	@Test
 	void isActiveWhenSpecificProfilesAgainstNullProfiles() {
 		ConfigDataProperties properties = new ConfigDataProperties(NO_IMPORTS,
-				new Activate(null, new String[] { "a" }));
+				new Activate(null, new String[]{"a"}));
 		ConfigDataActivationContext context = new ConfigDataActivationContext(NULL_CLOUD_PLATFORM, null);
 		assertThat(properties.isActive(context)).isFalse();
 	}
@@ -125,7 +125,7 @@ class ConfigDataPropertiesTests {
 	@Test
 	void isActiveWhenSpecificProfilesAgainstMatchingSpecificProfiles() {
 		ConfigDataProperties properties = new ConfigDataProperties(NO_IMPORTS,
-				new Activate(null, new String[] { "a" }));
+				new Activate(null, new String[]{"a"}));
 		ConfigDataActivationContext context = new ConfigDataActivationContext(NULL_CLOUD_PLATFORM,
 				createTestProfiles());
 		assertThat(properties.isActive(context)).isTrue();
@@ -134,7 +134,7 @@ class ConfigDataPropertiesTests {
 	@Test
 	void isActiveWhenSpecificProfilesAgainstMissingSpecificProfiles() {
 		ConfigDataProperties properties = new ConfigDataProperties(NO_IMPORTS,
-				new Activate(null, new String[] { "x" }));
+				new Activate(null, new String[]{"x"}));
 		ConfigDataActivationContext context = new ConfigDataActivationContext(NULL_CLOUD_PLATFORM,
 				createTestProfiles());
 		assertThat(properties.isActive(context)).isFalse();
@@ -143,7 +143,7 @@ class ConfigDataPropertiesTests {
 	@Test
 	void isActiveWhenProfileExpressionAgainstSpecificProfiles() {
 		ConfigDataProperties properties = new ConfigDataProperties(NO_IMPORTS,
-				new Activate(null, new String[] { "a | b" }));
+				new Activate(null, new String[]{"a | b"}));
 		ConfigDataActivationContext context = new ConfigDataActivationContext(NULL_CLOUD_PLATFORM,
 				createTestProfiles());
 		assertThat(properties.isActive(context)).isTrue();

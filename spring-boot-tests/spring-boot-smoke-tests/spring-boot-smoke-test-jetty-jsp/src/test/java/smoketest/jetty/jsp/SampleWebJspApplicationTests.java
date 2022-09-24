@@ -37,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author Phillip Webb
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT,
-		classes = { SampleWebJspApplicationTests.JettyCustomizerConfig.class, SampleJettyJspApplication.class })
+		classes = {SampleWebJspApplicationTests.JettyCustomizerConfig.class, SampleJettyJspApplication.class})
 class SampleWebJspApplicationTests {
 
 	@Autowired

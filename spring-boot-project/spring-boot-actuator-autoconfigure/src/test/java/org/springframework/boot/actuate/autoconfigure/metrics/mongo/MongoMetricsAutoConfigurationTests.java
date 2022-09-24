@@ -58,25 +58,25 @@ class MongoMetricsAutoConfigurationTests {
 	void whenThereIsAMeterRegistryThenMetricsCommandListenerIsAdded() {
 		this.contextRunner.with(MetricsRun.simple())
 				.withConfiguration(AutoConfigurations.of(MongoAutoConfiguration.class)).run((context) -> {
-					assertThat(context).hasSingleBean(MongoMetricsCommandListener.class);
-					assertThat(getActualMongoClientSettingsUsedToConstructClient(context)).isNotNull()
-							.extracting(MongoClientSettings::getCommandListeners).asList()
-							.containsExactly(context.getBean(MongoMetricsCommandListener.class));
-					assertThat(getMongoCommandTagsProviderUsedToConstructListener(context))
-							.isInstanceOf(DefaultMongoCommandTagsProvider.class);
-				});
+			assertThat(context).hasSingleBean(MongoMetricsCommandListener.class);
+			assertThat(getActualMongoClientSettingsUsedToConstructClient(context)).isNotNull()
+					.extracting(MongoClientSettings::getCommandListeners).asList()
+					.containsExactly(context.getBean(MongoMetricsCommandListener.class));
+			assertThat(getMongoCommandTagsProviderUsedToConstructListener(context))
+					.isInstanceOf(DefaultMongoCommandTagsProvider.class);
+		});
 	}
 
 	@Test
 	void whenThereIsAMeterRegistryThenMetricsConnectionPoolListenerIsAdded() {
 		this.contextRunner.with(MetricsRun.simple())
 				.withConfiguration(AutoConfigurations.of(MongoAutoConfiguration.class)).run((context) -> {
-					assertThat(context).hasSingleBean(MongoMetricsConnectionPoolListener.class);
-					assertThat(getConnectionPoolListenersFromClient(context))
-							.containsExactly(context.getBean(MongoMetricsConnectionPoolListener.class));
-					assertThat(getMongoConnectionPoolTagsProviderUsedToConstructListener(context))
-							.isInstanceOf(DefaultMongoConnectionPoolTagsProvider.class);
-				});
+			assertThat(context).hasSingleBean(MongoMetricsConnectionPoolListener.class);
+			assertThat(getConnectionPoolListenersFromClient(context))
+					.containsExactly(context.getBean(MongoMetricsConnectionPoolListener.class));
+			assertThat(getMongoConnectionPoolTagsProviderUsedToConstructListener(context))
+					.isInstanceOf(DefaultMongoConnectionPoolTagsProvider.class);
+		});
 	}
 
 	@Test

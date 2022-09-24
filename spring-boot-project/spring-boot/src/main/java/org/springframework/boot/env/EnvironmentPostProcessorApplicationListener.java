@@ -62,6 +62,7 @@ public class EnvironmentPostProcessorApplicationListener implements SmartApplica
 	/**
 	 * Create a new {@link EnvironmentPostProcessorApplicationListener} with post
 	 * processors created by the given factory.
+	 *
 	 * @param postProcessorsFactory the post processors factory
 	 */
 	public EnvironmentPostProcessorApplicationListener(EnvironmentPostProcessorsFactory postProcessorsFactory) {
@@ -116,7 +117,7 @@ public class EnvironmentPostProcessorApplicationListener implements SmartApplica
 	}
 
 	List<EnvironmentPostProcessor> getEnvironmentPostProcessors(ResourceLoader resourceLoader,
-			ConfigurableBootstrapContext bootstrapContext) {
+																ConfigurableBootstrapContext bootstrapContext) {
 		ClassLoader classLoader = (resourceLoader != null) ? resourceLoader.getClassLoader() : null;
 		EnvironmentPostProcessorsFactory postProcessorsFactory = this.postProcessorsFactory.apply(classLoader);
 		return postProcessorsFactory.getEnvironmentPostProcessors(this.deferredLogs, bootstrapContext);

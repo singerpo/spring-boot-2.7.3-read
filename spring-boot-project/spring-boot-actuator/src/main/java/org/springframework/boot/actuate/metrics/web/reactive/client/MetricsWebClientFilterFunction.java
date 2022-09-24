@@ -60,14 +60,15 @@ public class MetricsWebClientFilterFunction implements ExchangeFilterFunction {
 
 	/**
 	 * Create a new {@code MetricsWebClientFilterFunction}.
+	 *
 	 * @param meterRegistry the registry to which metrics are recorded
-	 * @param tagProvider provider for metrics tags
-	 * @param metricName name of the metric to record
-	 * @param autoTimer the auto-timer configuration or {@code null} to disable
+	 * @param tagProvider   provider for metrics tags
+	 * @param metricName    name of the metric to record
+	 * @param autoTimer     the auto-timer configuration or {@code null} to disable
 	 * @since 2.2.0
 	 */
 	public MetricsWebClientFilterFunction(MeterRegistry meterRegistry, WebClientExchangeTagsProvider tagProvider,
-			String metricName, AutoTimer autoTimer) {
+										  String metricName, AutoTimer autoTimer) {
 		this.meterRegistry = meterRegistry;
 		this.tagProvider = tagProvider;
 		this.metricName = metricName;
@@ -102,8 +103,7 @@ public class MetricsWebClientFilterFunction implements ExchangeFilterFunction {
 			Iterable<Tag> tags = this.tagProvider.tags(request, response, error);
 			this.autoTimer.builder(this.metricName).tags(tags).description("Timer of WebClient operation")
 					.register(this.meterRegistry).record(System.nanoTime() - startTime, TimeUnit.NANOSECONDS);
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			logger.warn("Failed to record timer metrics", ex);
 			// Allow request-response exchange to continue, unaffected by metrics problem
 		}

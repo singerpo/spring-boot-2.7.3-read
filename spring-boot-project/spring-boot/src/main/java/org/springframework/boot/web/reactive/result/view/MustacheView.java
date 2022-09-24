@@ -55,6 +55,7 @@ public class MustacheView extends AbstractUrlBasedView {
 	 * Set the JMustache compiler to be used by this view. Typically this property is not
 	 * set directly. Instead a single {@link Compiler} is expected in the Spring
 	 * application context which is used to compile Mustache templates.
+	 *
 	 * @param compiler the Mustache compiler
 	 */
 	public void setCompiler(Compiler compiler) {
@@ -63,6 +64,7 @@ public class MustacheView extends AbstractUrlBasedView {
 
 	/**
 	 * Set the charset used for reading Mustache template files.
+	 *
 	 * @param charset the charset to use for reading template files
 	 */
 	public void setCharset(String charset) {
@@ -89,8 +91,7 @@ public class MustacheView extends AbstractUrlBasedView {
 				template.execute(model, writer);
 				writer.flush();
 			}
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			DataBufferUtils.release(dataBuffer);
 			return Mono.error(ex);
 		}

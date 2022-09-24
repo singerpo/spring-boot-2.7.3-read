@@ -55,8 +55,9 @@ public class HttpTunnelPayload {
 
 	/**
 	 * Create a new {@link HttpTunnelPayload} instance.
+	 *
 	 * @param sequence the sequence number of the payload
-	 * @param data the payload data
+	 * @param data     the payload data
 	 */
 	public HttpTunnelPayload(long sequence, ByteBuffer data) {
 		Assert.isTrue(sequence > 0, "Sequence must be positive");
@@ -67,6 +68,7 @@ public class HttpTunnelPayload {
 
 	/**
 	 * Return the sequence number of the payload.
+	 *
 	 * @return the sequence
 	 */
 	public long getSequence() {
@@ -75,6 +77,7 @@ public class HttpTunnelPayload {
 
 	/**
 	 * Assign this payload to the given {@link HttpOutputMessage}.
+	 *
 	 * @param message the message to assign this payload to
 	 * @throws IOException in case of I/O errors
 	 */
@@ -93,6 +96,7 @@ public class HttpTunnelPayload {
 
 	/**
 	 * Write the content of this payload to the given target channel.
+	 *
 	 * @param channel the channel to write to
 	 * @throws IOException in case of I/O errors
 	 */
@@ -106,6 +110,7 @@ public class HttpTunnelPayload {
 	/**
 	 * Return the {@link HttpTunnelPayload} for the given message or {@code null} if there
 	 * is no payload.
+	 *
 	 * @param message the HTTP message
 	 * @return the payload or {@code null}
 	 * @throws IOException in case of I/O errors
@@ -130,6 +135,7 @@ public class HttpTunnelPayload {
 	/**
 	 * Return the payload data for the given source {@link ReadableByteChannel} or null if
 	 * the channel timed out whilst reading.
+	 *
 	 * @param channel the source channel
 	 * @return payload data or {@code null}
 	 * @throws IOException in case of I/O errors
@@ -141,8 +147,7 @@ public class HttpTunnelPayload {
 			Assert.state(amountRead != -1, "Target server connection closed");
 			buffer.flip();
 			return buffer;
-		}
-		catch (InterruptedIOException ex) {
+		} catch (InterruptedIOException ex) {
 			return null;
 		}
 	}
@@ -169,6 +174,7 @@ public class HttpTunnelPayload {
 
 	/**
 	 * Return the payload as a hexadecimal string.
+	 *
 	 * @return the payload as a hex string
 	 */
 	public String toHexString() {

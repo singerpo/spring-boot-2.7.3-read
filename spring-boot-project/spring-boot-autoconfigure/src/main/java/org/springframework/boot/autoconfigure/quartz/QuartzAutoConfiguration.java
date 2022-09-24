@@ -57,17 +57,17 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @author Stephane Nicoll
  * @since 2.0.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
-		LiquibaseAutoConfiguration.class, FlywayAutoConfiguration.class })
-@ConditionalOnClass({ Scheduler.class, SchedulerFactoryBean.class, PlatformTransactionManager.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class,
+		LiquibaseAutoConfiguration.class, FlywayAutoConfiguration.class})
+@ConditionalOnClass({Scheduler.class, SchedulerFactoryBean.class, PlatformTransactionManager.class})
 @EnableConfigurationProperties(QuartzProperties.class)
 public class QuartzAutoConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean
 	public SchedulerFactoryBean quartzScheduler(QuartzProperties properties,
-			ObjectProvider<SchedulerFactoryBeanCustomizer> customizers, ObjectProvider<JobDetail> jobDetails,
-			Map<String, Calendar> calendars, ObjectProvider<Trigger> triggers, ApplicationContext applicationContext) {
+												ObjectProvider<SchedulerFactoryBeanCustomizer> customizers, ObjectProvider<JobDetail> jobDetails,
+												Map<String, Calendar> calendars, ObjectProvider<Trigger> triggers, ApplicationContext applicationContext) {
 		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
 		SpringBeanJobFactory jobFactory = new SpringBeanJobFactory();
 		jobFactory.setApplicationContext(applicationContext);
@@ -104,9 +104,9 @@ public class QuartzAutoConfiguration {
 		@Bean
 		@Order(0)
 		public SchedulerFactoryBeanCustomizer dataSourceCustomizer(QuartzProperties properties, DataSource dataSource,
-				@QuartzDataSource ObjectProvider<DataSource> quartzDataSource,
-				ObjectProvider<PlatformTransactionManager> transactionManager,
-				@QuartzTransactionManager ObjectProvider<PlatformTransactionManager> quartzTransactionManager) {
+																   @QuartzDataSource ObjectProvider<DataSource> quartzDataSource,
+																   ObjectProvider<PlatformTransactionManager> transactionManager,
+																   @QuartzTransactionManager ObjectProvider<PlatformTransactionManager> quartzTransactionManager) {
 			return (schedulerFactoryBean) -> {
 				DataSource dataSourceToUse = getDataSource(dataSource, quartzDataSource);
 				schedulerFactoryBean.setDataSource(dataSourceToUse);
@@ -133,8 +133,8 @@ public class QuartzAutoConfiguration {
 
 		@Bean
 		@SuppressWarnings("deprecation")
-		@ConditionalOnMissingBean({ QuartzDataSourceScriptDatabaseInitializer.class,
-				QuartzDataSourceInitializer.class })
+		@ConditionalOnMissingBean({QuartzDataSourceScriptDatabaseInitializer.class,
+				QuartzDataSourceInitializer.class})
 		@Conditional(OnQuartzDatasourceInitializationCondition.class)
 		public QuartzDataSourceScriptDatabaseInitializer quartzDataSourceScriptDatabaseInitializer(
 				DataSource dataSource, @QuartzDataSource ObjectProvider<DataSource> quartzDataSource,

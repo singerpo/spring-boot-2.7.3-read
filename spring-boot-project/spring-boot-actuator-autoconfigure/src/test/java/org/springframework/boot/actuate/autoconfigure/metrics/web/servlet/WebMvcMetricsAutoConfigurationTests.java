@@ -155,10 +155,10 @@ class WebMvcMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestController.class)
 				.withConfiguration(AutoConfigurations.of(MetricsAutoConfiguration.class, WebMvcAutoConfiguration.class))
 				.withPropertyValues("management.metrics.web.server.max-uri-tags=2").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					assertThat(registry.get("http.server.requests").meters()).hasSize(2);
-					assertThat(output).contains("Reached the maximum number of URI tags for 'http.server.requests'");
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			assertThat(registry.get("http.server.requests").meters()).hasSize(2);
+			assertThat(output).contains("Reached the maximum number of URI tags for 'http.server.requests'");
+		});
 	}
 
 	@Test
@@ -166,11 +166,11 @@ class WebMvcMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestController.class)
 				.withConfiguration(AutoConfigurations.of(MetricsAutoConfiguration.class, WebMvcAutoConfiguration.class))
 				.withPropertyValues("management.metrics.web.server.max-uri-tags=5").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context);
-					assertThat(registry.get("http.server.requests").meters()).hasSize(3);
-					assertThat(output)
-							.doesNotContain("Reached the maximum number of URI tags for 'http.server.requests'");
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context);
+			assertThat(registry.get("http.server.requests").meters()).hasSize(3);
+			assertThat(output)
+					.doesNotContain("Reached the maximum number of URI tags for 'http.server.requests'");
+		});
 	}
 
 	@Test
@@ -195,12 +195,12 @@ class WebMvcMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestController.class)
 				.withConfiguration(AutoConfigurations.of(MetricsAutoConfiguration.class, WebMvcAutoConfiguration.class))
 				.withPropertyValues("management.metrics.web.server.request.autotime.enabled=false").run((context) -> {
-					MeterRegistry registry = getInitializedMeterRegistry(context, "/test3");
-					Collection<Meter> meters = registry.get("http.server.requests").meters();
-					assertThat(meters).hasSize(1);
-					Meter meter = meters.iterator().next();
-					assertThat(meter.getId().getTag("uri")).isEqualTo("/test3");
-				});
+			MeterRegistry registry = getInitializedMeterRegistry(context, "/test3");
+			Collection<Meter> meters = registry.get("http.server.requests").meters();
+			assertThat(meters).hasSize(1);
+			Meter meter = meters.iterator().next();
+			assertThat(meter.getId().getTag("uri")).isEqualTo("/test3");
+		});
 	}
 
 	@Test
@@ -266,7 +266,7 @@ class WebMvcMetricsAutoConfigurationTests {
 
 		@Override
 		public Iterable<Tag> getTags(HttpServletRequest request, HttpServletResponse response, Object handler,
-				Throwable exception) {
+									 Throwable exception) {
 			return Collections.emptyList();
 		}
 

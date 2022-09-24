@@ -58,7 +58,7 @@ import org.springframework.util.Assert;
  */
 @AutoConfiguration
 @AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)
-@EnableConfigurationProperties({ WebEndpointProperties.class, ManagementServerProperties.class })
+@EnableConfigurationProperties({WebEndpointProperties.class, ManagementServerProperties.class})
 public class ManagementContextAutoConfiguration {
 
 	@Configuration(proxyBeanMethods = false)
@@ -95,6 +95,7 @@ public class ManagementContextAutoConfiguration {
 		/**
 		 * Add an alias for 'local.management.port' that actually resolves using
 		 * 'local.server.port'.
+		 *
 		 * @param environment the environment
 		 */
 		private void addLocalManagementPortPropertyAlias(ConfigurableEnvironment environment) {
@@ -128,7 +129,7 @@ public class ManagementContextAutoConfiguration {
 		private final ManagementContextFactory managementContextFactory;
 
 		DifferentManagementContextConfiguration(ApplicationContext applicationContext,
-				ManagementContextFactory managementContextFactory) {
+												ManagementContextFactory managementContextFactory) {
 			this.applicationContext = applicationContext;
 			this.managementContextFactory = managementContextFactory;
 		}
@@ -211,7 +212,7 @@ public class ManagementContextAutoConfiguration {
 		}
 
 		private static void add(ConfigurableApplicationContext parentContext,
-				ConfigurableApplicationContext childContext) {
+								ConfigurableApplicationContext childContext) {
 			parentContext.addApplicationListener(new CloseManagementContextListener(parentContext, childContext));
 		}
 

@@ -66,7 +66,7 @@ class MongoDatabaseFactoryDependentConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(MongoConverter.class)
 	MappingMongoConverter mappingMongoConverter(MongoDatabaseFactory factory, MongoMappingContext context,
-			MongoCustomConversions conversions) {
+												MongoCustomConversions conversions) {
 		DbRefResolver dbRefResolver = new DefaultDbRefResolver(factory);
 		MappingMongoConverter mappingConverter = new MappingMongoConverter(dbRefResolver, context);
 		mappingConverter.setCustomConversions(conversions);

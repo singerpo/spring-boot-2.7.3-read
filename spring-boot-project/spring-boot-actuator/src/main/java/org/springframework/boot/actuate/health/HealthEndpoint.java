@@ -50,8 +50,9 @@ public class HealthEndpoint extends HealthEndpointSupport<HealthContributor, Hea
 
 	/**
 	 * Create a new {@link HealthEndpoint} instance.
+	 *
 	 * @param registry the health contributor registry
-	 * @param groups the health endpoint groups
+	 * @param groups   the health endpoint groups
 	 * @deprecated since 2.6.9 for removal in 3.0.0 in favor of
 	 * {@link #HealthEndpoint(HealthContributorRegistry, HealthEndpointGroups, Duration)}
 	 */
@@ -62,14 +63,15 @@ public class HealthEndpoint extends HealthEndpointSupport<HealthContributor, Hea
 
 	/**
 	 * Create a new {@link HealthEndpoint} instance.
-	 * @param registry the health contributor registry
-	 * @param groups the health endpoint groups
+	 *
+	 * @param registry                      the health contributor registry
+	 * @param groups                        the health endpoint groups
 	 * @param slowIndicatorLoggingThreshold duration after which slow health indicator
-	 * logging should occur
+	 *                                      logging should occur
 	 * @since 2.6.9
 	 */
 	public HealthEndpoint(HealthContributorRegistry registry, HealthEndpointGroups groups,
-			Duration slowIndicatorLoggingThreshold) {
+						  Duration slowIndicatorLoggingThreshold) {
 		super(registry, groups, slowIndicatorLoggingThreshold);
 	}
 
@@ -96,7 +98,7 @@ public class HealthEndpoint extends HealthEndpointSupport<HealthContributor, Hea
 
 	@Override
 	protected HealthComponent aggregateContributions(ApiVersion apiVersion, Map<String, HealthComponent> contributions,
-			StatusAggregator statusAggregator, boolean showComponents, Set<String> groupNames) {
+													 StatusAggregator statusAggregator, boolean showComponents, Set<String> groupNames) {
 		return getCompositeHealth(apiVersion, contributions, statusAggregator, showComponents, groupNames);
 	}
 

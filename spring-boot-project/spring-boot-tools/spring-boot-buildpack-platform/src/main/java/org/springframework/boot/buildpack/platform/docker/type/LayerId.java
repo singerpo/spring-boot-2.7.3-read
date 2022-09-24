@@ -42,6 +42,7 @@ public final class LayerId {
 
 	/**
 	 * Return the algorithm of layer.
+	 *
 	 * @return the algorithm
 	 */
 	public String getAlgorithm() {
@@ -50,6 +51,7 @@ public final class LayerId {
 
 	/**
 	 * Return the hash of the layer.
+	 *
 	 * @return the layer hash
 	 */
 	public String getHash() {
@@ -79,6 +81,7 @@ public final class LayerId {
 
 	/**
 	 * Create a new {@link LayerId} with the specified value.
+	 *
 	 * @param value the layer ID value of the form {@code algorithm: hash}
 	 * @return a new layer ID instance
 	 */
@@ -91,6 +94,7 @@ public final class LayerId {
 
 	/**
 	 * Create a new {@link LayerId} from a SHA-256 digest.
+	 *
 	 * @param digest the digest
 	 * @return a new layer ID instance
 	 */

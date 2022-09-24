@@ -60,7 +60,7 @@ public class ServletEndpointManagementContextConfiguration {
 
 		@Bean
 		public ServletEndpointRegistrar servletEndpointRegistrar(WebEndpointProperties properties,
-				ServletEndpointsSupplier servletEndpointsSupplier, DispatcherServletPath dispatcherServletPath) {
+																 ServletEndpointsSupplier servletEndpointsSupplier, DispatcherServletPath dispatcherServletPath) {
 			return new ServletEndpointRegistrar(dispatcherServletPath.getRelativePath(properties.getBasePath()),
 					servletEndpointsSupplier.getEndpoints());
 		}
@@ -74,7 +74,7 @@ public class ServletEndpointManagementContextConfiguration {
 
 		@Bean
 		public ServletEndpointRegistrar servletEndpointRegistrar(WebEndpointProperties properties,
-				ServletEndpointsSupplier servletEndpointsSupplier, JerseyApplicationPath jerseyApplicationPath) {
+																 ServletEndpointsSupplier servletEndpointsSupplier, JerseyApplicationPath jerseyApplicationPath) {
 			return new ServletEndpointRegistrar(jerseyApplicationPath.getRelativePath(properties.getBasePath()),
 					servletEndpointsSupplier.getEndpoints());
 		}

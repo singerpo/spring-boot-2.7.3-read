@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Andy Wilkinson
  */
 @WebMvcTest
-@TestPropertySource(properties = { "debug=true" })
+@TestPropertySource(properties = {"debug=true"})
 class MockMvcSecurityIntegrationTests {
 
 	@Autowired

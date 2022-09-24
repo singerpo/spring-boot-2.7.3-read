@@ -90,7 +90,7 @@ class DiscoveredJmxOperation extends AbstractDiscoveredOperation implements JmxO
 	}
 
 	private List<JmxOperationParameter> mergeParameters(OperationParameters operationParameters,
-			ManagedOperationParameter[] managedParameters) {
+														ManagedOperationParameter[] managedParameters) {
 		List<JmxOperationParameter> merged = new ArrayList<>(managedParameters.length);
 		for (int i = 0; i < managedParameters.length; i++) {
 			merged.add(new DiscoveredJmxOperationParameter(managedParameters[i], operationParameters.get(i)));
@@ -146,7 +146,7 @@ class DiscoveredJmxOperation extends AbstractDiscoveredOperation implements JmxO
 		}
 
 		DiscoveredJmxOperationParameter(ManagedOperationParameter managedParameter,
-				OperationParameter operationParameter) {
+										OperationParameter operationParameter) {
 			this.name = managedParameter.getName();
 			this.type = JmxType.get(operationParameter.getType());
 			this.description = managedParameter.getDescription();

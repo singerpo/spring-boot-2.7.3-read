@@ -47,7 +47,7 @@ class PropertyMappingContextCustomizer implements ContextCustomizer {
 
 	@Override
 	public void customizeContext(ConfigurableApplicationContext context,
-			MergedContextConfiguration mergedContextConfiguration) {
+								 MergedContextConfiguration mergedContextConfiguration) {
 		if (!this.propertySource.isEmpty()) {
 			context.getEnvironment().getPropertySources().addFirst(this.propertySource);
 		}

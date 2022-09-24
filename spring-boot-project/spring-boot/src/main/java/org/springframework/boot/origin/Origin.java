@@ -33,18 +33,19 @@ import java.util.Set;
  *
  * @author Madhura Bhave
  * @author Phillip Webb
- * @since 2.0.0
  * @see OriginProvider
  * @see TextResourceOrigin
+ * @since 2.0.0
  */
 public interface Origin {
 
 	/**
 	 * Return the parent origin for this instance if there is one. The parent origin
 	 * provides the origin of the item that created this one.
+	 *
 	 * @return the parent origin or {@code null}
-	 * @since 2.4.0
 	 * @see Origin#parentsFrom(Object)
+	 * @since 2.4.0
 	 */
 	default Origin getParent() {
 		return null;
@@ -53,6 +54,7 @@ public interface Origin {
 	/**
 	 * Find the {@link Origin} that an object originated from. Checks if the source object
 	 * is an {@link Origin} or {@link OriginProvider} and also searches exception stacks.
+	 *
 	 * @param source the source object or {@code null}
 	 * @return an optional {@link Origin}
 	 */
@@ -75,6 +77,7 @@ public interface Origin {
 	 * the source object is an {@link Origin} or {@link OriginProvider} and also searches
 	 * exception stacks. Provides a list of all parents up to root {@link Origin},
 	 * starting with the most immediate parent.
+	 *
 	 * @param source the source object or {@code null}
 	 * @return a list of parents or an empty list if the source is {@code null}, has no
 	 * origin, or no parent

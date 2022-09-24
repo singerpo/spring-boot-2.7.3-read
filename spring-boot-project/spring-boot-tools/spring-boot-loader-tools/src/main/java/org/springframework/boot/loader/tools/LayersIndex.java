@@ -57,6 +57,7 @@ public class LayersIndex {
 
 	/**
 	 * Create a new {@link LayersIndex} backed by the given layers.
+	 *
 	 * @param layers the layers in the index
 	 */
 	public LayersIndex(Layer... layers) {
@@ -65,6 +66,7 @@ public class LayersIndex {
 
 	/**
 	 * Create a new {@link LayersIndex} backed by the given layers.
+	 *
 	 * @param layers the layers in the index
 	 */
 	public LayersIndex(Iterable<Layer> layers) {
@@ -73,8 +75,9 @@ public class LayersIndex {
 
 	/**
 	 * Add an item to the index.
+	 *
 	 * @param layer the layer of the item
-	 * @param name the name of the item
+	 * @param name  the name of the item
 	 */
 	public void add(Layer layer, String name) {
 		String[] segments = name.split("/");
@@ -87,6 +90,7 @@ public class LayersIndex {
 
 	/**
 	 * Write the layer index to an output stream.
+	 *
 	 * @param out the destination stream
 	 * @throws IOException on IO error
 	 */
@@ -145,8 +149,7 @@ public class LayersIndex {
 			String name = path + this.name;
 			if (this.layers.size() == 1) {
 				index.add(this.layers.iterator().next(), name);
-			}
-			else {
+			} else {
 				for (Node child : this.children) {
 					child.buildIndex(name, index);
 				}

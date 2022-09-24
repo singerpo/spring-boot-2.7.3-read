@@ -95,7 +95,7 @@ class GitPropertiesTests {
 	}
 
 	private static Properties createProperties(String branch, String commitId, String commitIdAbbrev,
-			String commitTime) {
+											   String commitTime) {
 		Properties properties = new Properties();
 		properties.put("branch", branch);
 		properties.put("commit.id", commitId);

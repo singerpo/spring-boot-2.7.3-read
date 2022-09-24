@@ -76,8 +76,7 @@ class HealthEndpointTests extends
 		HealthIndicator indicator = () -> {
 			try {
 				Thread.sleep(100);
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 			}
 			return this.up;
 		};
@@ -90,7 +89,7 @@ class HealthEndpointTests extends
 
 	@Override
 	protected HealthEndpoint create(HealthContributorRegistry registry, HealthEndpointGroups groups,
-			Duration slowIndicatorLoggingThreshold) {
+									Duration slowIndicatorLoggingThreshold) {
 		return new HealthEndpoint(registry, groups, slowIndicatorLoggingThreshold);
 	}
 

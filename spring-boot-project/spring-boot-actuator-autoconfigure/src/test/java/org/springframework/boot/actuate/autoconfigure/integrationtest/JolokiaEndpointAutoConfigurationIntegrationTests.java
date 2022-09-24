@@ -97,10 +97,10 @@ class JolokiaEndpointAutoConfigurationIntegrationTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@MinimalWebConfiguration
-	@Import({ JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
+	@Import({JacksonAutoConfiguration.class, HttpMessageConvertersAutoConfiguration.class,
 			JolokiaEndpointAutoConfiguration.class, EndpointAutoConfiguration.class, WebEndpointAutoConfiguration.class,
 			ServletManagementContextAutoConfiguration.class, ManagementContextAutoConfiguration.class,
-			ServletEndpointManagementContextConfiguration.class })
+			ServletEndpointManagementContextConfiguration.class})
 	static class Application {
 
 	}
@@ -108,9 +108,9 @@ class JolokiaEndpointAutoConfigurationIntegrationTests {
 	@Target(ElementType.TYPE)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
-	@Import({ ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
+	@Import({ServletWebServerFactoryAutoConfiguration.class, DispatcherServletAutoConfiguration.class,
 			ValidationAutoConfiguration.class, WebMvcAutoConfiguration.class, JacksonAutoConfiguration.class,
-			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class })
+			ErrorMvcAutoConfiguration.class, PropertyPlaceholderAutoConfiguration.class})
 	protected @interface MinimalWebConfiguration {
 
 	}

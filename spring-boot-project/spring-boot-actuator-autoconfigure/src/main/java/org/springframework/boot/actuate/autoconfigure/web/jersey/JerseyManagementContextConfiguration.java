@@ -34,7 +34,7 @@ class JerseyManagementContextConfiguration {
 
 	@Bean
 	ServletRegistrationBean<ServletContainer> jerseyServletRegistration(JerseyApplicationPath jerseyApplicationPath,
-			ResourceConfig resourceConfig) {
+																		ResourceConfig resourceConfig) {
 		return new ServletRegistrationBean<>(new ServletContainer(resourceConfig),
 				jerseyApplicationPath.getUrlMapping());
 	}

@@ -81,35 +81,35 @@ class DatabaseInitializationDependencyConfigurerTests {
 	void beanFactoryPostProcessorHasOrderAllowingSubsequentPostProcessorsToFineTuneDependencies() {
 		performDetection(Arrays.asList(MockDatabaseInitializerDetector.class,
 				MockedDependsOnDatabaseInitializationDetector.class), (context) -> {
-					BeanDefinition alpha = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
-					BeanDefinition bravo = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
-					context.register(DependsOnCaptor.class);
-					context.register(DependencyConfigurerConfiguration.class);
-					context.registerBeanDefinition("alpha", alpha);
-					context.registerBeanDefinition("bravo", bravo);
-					given(MockDatabaseInitializerDetector.instance.detect(context.getBeanFactory()))
-							.willReturn(Collections.singleton("alpha"));
-					given(MockedDependsOnDatabaseInitializationDetector.instance.detect(context.getBeanFactory()))
-							.willReturn(Collections.singleton("bravo"));
-					context.refresh();
-					assertThat(DependsOnCaptor.dependsOn).hasEntrySatisfying("bravo",
-							(dependencies) -> assertThat(dependencies).containsExactly("alpha"));
-					assertThat(DependsOnCaptor.dependsOn).doesNotContainKey("alpha");
-				});
+			BeanDefinition alpha = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
+			BeanDefinition bravo = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
+			context.register(DependsOnCaptor.class);
+			context.register(DependencyConfigurerConfiguration.class);
+			context.registerBeanDefinition("alpha", alpha);
+			context.registerBeanDefinition("bravo", bravo);
+			given(MockDatabaseInitializerDetector.instance.detect(context.getBeanFactory()))
+					.willReturn(Collections.singleton("alpha"));
+			given(MockedDependsOnDatabaseInitializationDetector.instance.detect(context.getBeanFactory()))
+					.willReturn(Collections.singleton("bravo"));
+			context.refresh();
+			assertThat(DependsOnCaptor.dependsOn).hasEntrySatisfying("bravo",
+					(dependencies) -> assertThat(dependencies).containsExactly("alpha"));
+			assertThat(DependsOnCaptor.dependsOn).doesNotContainKey("alpha");
+		});
 	}
 
 	@Test
 	void whenDetectorsAreCreatedThenTheEnvironmentCanBeInjected() {
 		performDetection(Arrays.asList(ConstructorInjectionDatabaseInitializerDetector.class,
 				ConstructorInjectionDependsOnDatabaseInitializationDetector.class), (context) -> {
-					BeanDefinition alpha = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
-					context.registerBeanDefinition("alpha", alpha);
-					context.register(DependencyConfigurerConfiguration.class);
-					context.refresh();
-					assertThat(ConstructorInjectionDatabaseInitializerDetector.environment).isEqualTo(this.environment);
-					assertThat(ConstructorInjectionDependsOnDatabaseInitializationDetector.environment)
-							.isEqualTo(this.environment);
-				});
+			BeanDefinition alpha = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
+			context.registerBeanDefinition("alpha", alpha);
+			context.register(DependencyConfigurerConfiguration.class);
+			context.refresh();
+			assertThat(ConstructorInjectionDatabaseInitializerDetector.environment).isEqualTo(this.environment);
+			assertThat(ConstructorInjectionDependsOnDatabaseInitializationDetector.environment)
+					.isEqualTo(this.environment);
+		});
 	}
 
 	@Test
@@ -118,21 +118,21 @@ class DatabaseInitializationDependencyConfigurerTests {
 		BeanDefinition bravo = BeanDefinitionBuilder.rootBeanDefinition(String.class).getBeanDefinition();
 		performDetection(Arrays.asList(MockDatabaseInitializerDetector.class,
 				MockedDependsOnDatabaseInitializationDetector.class), (context) -> {
-					context.registerBeanDefinition("alpha", alpha);
-					context.registerBeanDefinition("bravo", bravo);
-					given(MockDatabaseInitializerDetector.instance.detect(context.getBeanFactory()))
-							.willReturn(Collections.singleton("alpha"));
-					given(MockedDependsOnDatabaseInitializationDetector.instance.detect(context.getBeanFactory()))
-							.willReturn(Collections.singleton("bravo"));
-					context.register(DependencyConfigurerConfiguration.class);
-					context.refresh();
-					assertThat(alpha.getAttribute(DatabaseInitializerDetector.class.getName()))
-							.isEqualTo(MockDatabaseInitializerDetector.class.getName());
-					assertThat(bravo.getAttribute(DatabaseInitializerDetector.class.getName())).isNull();
-					then(MockDatabaseInitializerDetector.instance).should().detectionComplete(context.getBeanFactory(),
-							Collections.singleton("alpha"));
-					assertThat(bravo.getDependsOn()).containsExactly("alpha");
-				});
+			context.registerBeanDefinition("alpha", alpha);
+			context.registerBeanDefinition("bravo", bravo);
+			given(MockDatabaseInitializerDetector.instance.detect(context.getBeanFactory()))
+					.willReturn(Collections.singleton("alpha"));
+			given(MockedDependsOnDatabaseInitializationDetector.instance.detect(context.getBeanFactory()))
+					.willReturn(Collections.singleton("bravo"));
+			context.register(DependencyConfigurerConfiguration.class);
+			context.refresh();
+			assertThat(alpha.getAttribute(DatabaseInitializerDetector.class.getName()))
+					.isEqualTo(MockDatabaseInitializerDetector.class.getName());
+			assertThat(bravo.getAttribute(DatabaseInitializerDetector.class.getName())).isNull();
+			then(MockDatabaseInitializerDetector.instance).should().detectionComplete(context.getBeanFactory(),
+					Collections.singleton("alpha"));
+			assertThat(bravo.getDependsOn()).containsExactly("alpha");
+		});
 	}
 
 	@Test
@@ -171,7 +171,7 @@ class DatabaseInitializationDependencyConfigurerTests {
 	}
 
 	private void performDetection(Collection<Class<?>> detectors,
-			Consumer<AnnotationConfigApplicationContext> contextCallback) {
+								  Consumer<AnnotationConfigApplicationContext> contextCallback) {
 		DetectorSpringFactoriesClassLoader detectorSpringFactories = new DetectorSpringFactoriesClassLoader(this.temp);
 		detectors.forEach(detectorSpringFactories::register);
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
@@ -229,7 +229,7 @@ class DatabaseInitializationDependencyConfigurerTests {
 
 		@Override
 		public void detectionComplete(ConfigurableListableBeanFactory beanFactory,
-				Set<String> databaseInitializerNames) {
+									  Set<String> databaseInitializerNames) {
 			instance.detectionComplete(beanFactory, databaseInitializerNames);
 		}
 
@@ -295,12 +295,10 @@ class DatabaseInitializationDependencyConfigurerTests {
 		void register(Class<?> detector) {
 			if (DatabaseInitializerDetector.class.isAssignableFrom(detector)) {
 				this.databaseInitializerDetectors.add((Class<DatabaseInitializerDetector>) detector);
-			}
-			else if (DependsOnDatabaseInitializationDetector.class.isAssignableFrom(detector)) {
+			} else if (DependsOnDatabaseInitializationDetector.class.isAssignableFrom(detector)) {
 				this.dependsOnDatabaseInitializationDetectors
 						.add((Class<DependsOnDatabaseInitializationDetector>) detector);
-			}
-			else {
+			} else {
 				throw new IllegalArgumentException("Unsupported detector type '" + detector.getName() + "'");
 			}
 		}

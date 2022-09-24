@@ -24,9 +24,9 @@ object MyApplication {
 	@JvmStatic
 	fun main(args: Array<String>) {
 		SpringApplicationBuilder()
-			.bannerMode(Banner.Mode.OFF)
-			.sources(MyApplication::class.java)
-			.run(*args)
+				.bannerMode(Banner.Mode.OFF)
+				.sources(MyApplication::class.java)
+				.run(*args)
 	}
 
 }

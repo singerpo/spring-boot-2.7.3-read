@@ -64,10 +64,10 @@ class CouchbaseAutoConfigurationTests {
 	void connectionStringCreateEnvironmentAndCluster() {
 		this.contextRunner.withUserConfiguration(CouchbaseTestConfiguration.class)
 				.withPropertyValues("spring.couchbase.connection-string=localhost").run((context) -> {
-					assertThat(context).hasSingleBean(ClusterEnvironment.class).hasSingleBean(Cluster.class);
-					assertThat(context.getBean(Cluster.class))
-							.isSameAs(context.getBean(CouchbaseTestConfiguration.class).couchbaseCluster());
-				});
+			assertThat(context).hasSingleBean(ClusterEnvironment.class).hasSingleBean(Cluster.class);
+			assertThat(context.getBean(Cluster.class))
+					.isSameAs(context.getBean(CouchbaseTestConfiguration.class).couchbaseCluster());
+		});
 	}
 
 	@Test
@@ -75,15 +75,15 @@ class CouchbaseAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(CouchbaseTestConfiguration.class)
 				.withConfiguration(AutoConfigurations.of(JacksonAutoConfiguration.class))
 				.withPropertyValues("spring.couchbase.connection-string=localhost").run((context) -> {
-					ClusterEnvironment env = context.getBean(ClusterEnvironment.class);
-					Set<Object> expectedModuleIds = new HashSet<>(
-							context.getBean(ObjectMapper.class).getRegisteredModuleIds());
-					expectedModuleIds.add(new JsonValueModule().getTypeId());
-					JsonSerializer serializer = env.jsonSerializer();
-					assertThat(serializer).extracting("wrapped").isInstanceOf(JacksonJsonSerializer.class)
-							.extracting("mapper", as(InstanceOfAssertFactories.type(ObjectMapper.class)))
-							.extracting(ObjectMapper::getRegisteredModuleIds).isEqualTo(expectedModuleIds);
-				});
+			ClusterEnvironment env = context.getBean(ClusterEnvironment.class);
+			Set<Object> expectedModuleIds = new HashSet<>(
+					context.getBean(ObjectMapper.class).getRegisteredModuleIds());
+			expectedModuleIds.add(new JsonValueModule().getTypeId());
+			JsonSerializer serializer = env.jsonSerializer();
+			assertThat(serializer).extracting("wrapped").isInstanceOf(JacksonJsonSerializer.class)
+					.extracting("mapper", as(InstanceOfAssertFactories.type(ObjectMapper.class)))
+					.extracting(ObjectMapper::getRegisteredModuleIds).isEqualTo(expectedModuleIds);
+		});
 	}
 
 	@Test
@@ -94,37 +94,37 @@ class CouchbaseAutoConfigurationTests {
 				.withBean(ClusterEnvironmentBuilderCustomizer.class,
 						() -> (builder) -> builder.jsonSerializer(customJsonSerializer))
 				.withPropertyValues("spring.couchbase.connection-string=localhost").run((context) -> {
-					ClusterEnvironment env = context.getBean(ClusterEnvironment.class);
-					JsonSerializer serializer = env.jsonSerializer();
-					assertThat(serializer).extracting("wrapped").isSameAs(customJsonSerializer);
-				});
+			ClusterEnvironment env = context.getBean(ClusterEnvironment.class);
+			JsonSerializer serializer = env.jsonSerializer();
+			assertThat(serializer).extracting("wrapped").isSameAs(customJsonSerializer);
+		});
 	}
 
 	@Test
 	void customizeEnvIo() {
 		testClusterEnvironment((env) -> {
-			IoConfig ioConfig = env.ioConfig();
-			assertThat(ioConfig.numKvConnections()).isEqualTo(2);
-			assertThat(ioConfig.maxHttpConnections()).isEqualTo(5);
-			assertThat(ioConfig.idleHttpConnectionTimeout()).isEqualTo(Duration.ofSeconds(3));
-		}, "spring.couchbase.env.io.min-endpoints=2", "spring.couchbase.env.io.max-endpoints=5",
+					IoConfig ioConfig = env.ioConfig();
+					assertThat(ioConfig.numKvConnections()).isEqualTo(2);
+					assertThat(ioConfig.maxHttpConnections()).isEqualTo(5);
+					assertThat(ioConfig.idleHttpConnectionTimeout()).isEqualTo(Duration.ofSeconds(3));
+				}, "spring.couchbase.env.io.min-endpoints=2", "spring.couchbase.env.io.max-endpoints=5",
 				"spring.couchbase.env.io.idle-http-connection-timeout=3s");
 	}
 
 	@Test
 	void customizeEnvTimeouts() {
 		testClusterEnvironment((env) -> {
-			TimeoutConfig timeoutConfig = env.timeoutConfig();
-			assertThat(timeoutConfig.connectTimeout()).isEqualTo(Duration.ofSeconds(1));
-			assertThat(timeoutConfig.disconnectTimeout()).isEqualTo(Duration.ofSeconds(2));
-			assertThat(timeoutConfig.kvTimeout()).isEqualTo(Duration.ofMillis(500));
-			assertThat(timeoutConfig.kvDurableTimeout()).isEqualTo(Duration.ofMillis(750));
-			assertThat(timeoutConfig.queryTimeout()).isEqualTo(Duration.ofSeconds(3));
-			assertThat(timeoutConfig.viewTimeout()).isEqualTo(Duration.ofSeconds(4));
-			assertThat(timeoutConfig.searchTimeout()).isEqualTo(Duration.ofSeconds(5));
-			assertThat(timeoutConfig.analyticsTimeout()).isEqualTo(Duration.ofSeconds(6));
-			assertThat(timeoutConfig.managementTimeout()).isEqualTo(Duration.ofSeconds(7));
-		}, "spring.couchbase.env.timeouts.connect=1s", "spring.couchbase.env.timeouts.disconnect=2s",
+					TimeoutConfig timeoutConfig = env.timeoutConfig();
+					assertThat(timeoutConfig.connectTimeout()).isEqualTo(Duration.ofSeconds(1));
+					assertThat(timeoutConfig.disconnectTimeout()).isEqualTo(Duration.ofSeconds(2));
+					assertThat(timeoutConfig.kvTimeout()).isEqualTo(Duration.ofMillis(500));
+					assertThat(timeoutConfig.kvDurableTimeout()).isEqualTo(Duration.ofMillis(750));
+					assertThat(timeoutConfig.queryTimeout()).isEqualTo(Duration.ofSeconds(3));
+					assertThat(timeoutConfig.viewTimeout()).isEqualTo(Duration.ofSeconds(4));
+					assertThat(timeoutConfig.searchTimeout()).isEqualTo(Duration.ofSeconds(5));
+					assertThat(timeoutConfig.analyticsTimeout()).isEqualTo(Duration.ofSeconds(6));
+					assertThat(timeoutConfig.managementTimeout()).isEqualTo(Duration.ofSeconds(7));
+				}, "spring.couchbase.env.timeouts.connect=1s", "spring.couchbase.env.timeouts.disconnect=2s",
 				"spring.couchbase.env.timeouts.key-value=500ms",
 				"spring.couchbase.env.timeouts.key-value-durable=750ms", "spring.couchbase.env.timeouts.query=3s",
 				"spring.couchbase.env.timeouts.view=4s", "spring.couchbase.env.timeouts.search=5s",
@@ -143,10 +143,10 @@ class CouchbaseAutoConfigurationTests {
 	@Test
 	void disableSslEvenWithKeyStore() {
 		testClusterEnvironment((env) -> {
-			SecurityConfig securityConfig = env.securityConfig();
-			assertThat(securityConfig.tlsEnabled()).isFalse();
-			assertThat(securityConfig.trustManagerFactory()).isNull();
-		}, "spring.couchbase.env.ssl.enabled=false", "spring.couchbase.env.ssl.keyStore=classpath:test.jks",
+					SecurityConfig securityConfig = env.securityConfig();
+					assertThat(securityConfig.tlsEnabled()).isFalse();
+					assertThat(securityConfig.trustManagerFactory()).isNull();
+				}, "spring.couchbase.env.ssl.enabled=false", "spring.couchbase.env.ssl.keyStore=classpath:test.jks",
 				"spring.couchbase.env.ssl.keyStorePassword=secret");
 	}
 

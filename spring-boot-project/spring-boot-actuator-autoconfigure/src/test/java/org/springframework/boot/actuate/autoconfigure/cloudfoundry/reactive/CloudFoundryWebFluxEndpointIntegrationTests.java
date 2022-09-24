@@ -78,9 +78,9 @@ class CloudFoundryWebFluxEndpointIntegrationTests {
 
 	private final ReactiveWebApplicationContextRunner contextRunner = new ReactiveWebApplicationContextRunner(
 			AnnotationConfigReactiveWebServerApplicationContext::new)
-					.withConfiguration(AutoConfigurations.of(WebFluxAutoConfiguration.class,
-							HttpHandlerAutoConfiguration.class, ReactiveWebServerFactoryAutoConfiguration.class))
-					.withUserConfiguration(TestEndpointConfiguration.class).withPropertyValues("server.port=0");
+			.withConfiguration(AutoConfigurations.of(WebFluxAutoConfiguration.class,
+					HttpHandlerAutoConfiguration.class, ReactiveWebServerFactoryAutoConfiguration.class))
+			.withUserConfiguration(TestEndpointConfiguration.class).withPropertyValues("server.port=0");
 
 	@Test
 	void operationWithSecurityInterceptorForbidden() {
@@ -191,7 +191,7 @@ class CloudFoundryWebFluxEndpointIntegrationTests {
 
 		@Bean
 		WebEndpointDiscoverer webEndpointDiscoverer(ApplicationContext applicationContext,
-				EndpointMediaTypes endpointMediaTypes) {
+													EndpointMediaTypes endpointMediaTypes) {
 			ParameterValueMapper parameterMapper = new ConversionServiceParameterValueMapper(
 					DefaultConversionService.getSharedInstance());
 			return new WebEndpointDiscoverer(applicationContext, parameterMapper, endpointMediaTypes, null,

@@ -218,8 +218,7 @@ class BuildInfoTests {
 		try (FileReader reader = new FileReader(file)) {
 			properties.load(reader);
 			return properties;
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

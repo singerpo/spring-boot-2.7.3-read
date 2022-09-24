@@ -141,8 +141,7 @@ class JarCommandIT {
 		try {
 			Class.forName(name);
 			return true;
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			return false;
 		}
 	}

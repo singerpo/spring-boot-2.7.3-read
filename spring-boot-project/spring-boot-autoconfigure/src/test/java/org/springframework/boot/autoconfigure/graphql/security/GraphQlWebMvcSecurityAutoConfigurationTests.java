@@ -92,7 +92,7 @@ class GraphQlWebMvcSecurityAutoConfigurationTests {
 			mockMvc.perform(asyncDispatch(result)).andExpect(status().isOk())
 					.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 					.andExpect(jsonPath("data.bookById.name").doesNotExist()).andExpect(
-							jsonPath("errors[0].extensions.classification").value(ErrorType.UNAUTHORIZED.toString()));
+					jsonPath("errors[0].extensions.classification").value(ErrorType.UNAUTHORIZED.toString()));
 		});
 	}
 

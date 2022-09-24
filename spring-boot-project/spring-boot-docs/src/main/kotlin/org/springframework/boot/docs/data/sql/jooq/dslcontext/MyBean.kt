@@ -26,8 +26,8 @@ class MyBean(private val create: DSLContext) {
 	// tag::method[]
 	fun authorsBornAfter1980(): List<GregorianCalendar> {
 		return create.selectFrom<Tables.TAuthorRecord>(Tables.AUTHOR)
-			.where(Tables.AUTHOR?.DATE_OF_BIRTH?.greaterThan(GregorianCalendar(1980, 0, 1)))
-			.fetch(Tables.AUTHOR?.DATE_OF_BIRTH)
+				.where(Tables.AUTHOR?.DATE_OF_BIRTH?.greaterThan(GregorianCalendar(1980, 0, 1)))
+				.fetch(Tables.AUTHOR?.DATE_OF_BIRTH)
 	}
 	// end::method[]
 

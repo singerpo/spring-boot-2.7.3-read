@@ -132,22 +132,22 @@ class WebServletHandlerTests {
 
 	}
 
-	@WebServlet(initParams = { @WebInitParam(name = "a", value = "alpha"), @WebInitParam(name = "b", value = "bravo") })
+	@WebServlet(initParams = {@WebInitParam(name = "a", value = "alpha"), @WebInitParam(name = "b", value = "bravo")})
 	class InitParametersServlet extends HttpServlet {
 
 	}
 
-	@WebServlet(urlPatterns = { "alpha", "bravo" })
+	@WebServlet(urlPatterns = {"alpha", "bravo"})
 	class UrlPatternsServlet extends HttpServlet {
 
 	}
 
-	@WebServlet({ "alpha", "bravo" })
+	@WebServlet({"alpha", "bravo"})
 	class UrlPatternsFromValueServlet extends HttpServlet {
 
 	}
 
-	@WebServlet(value = { "alpha", "bravo" }, urlPatterns = { "alpha", "bravo" })
+	@WebServlet(value = {"alpha", "bravo"}, urlPatterns = {"alpha", "bravo"})
 	class UrlPatternsDeclaredTwiceServlet extends HttpServlet {
 
 	}

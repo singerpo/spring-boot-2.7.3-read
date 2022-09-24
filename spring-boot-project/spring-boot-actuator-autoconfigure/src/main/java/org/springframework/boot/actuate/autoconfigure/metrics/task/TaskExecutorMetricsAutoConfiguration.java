@@ -45,10 +45,10 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
  * @author Scott Frederick
  * @since 2.6.0
  */
-@AutoConfiguration(after = { MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class,
-		TaskExecutionAutoConfiguration.class, TaskSchedulingAutoConfiguration.class })
+@AutoConfiguration(after = {MetricsAutoConfiguration.class, SimpleMetricsExportAutoConfiguration.class,
+		TaskExecutionAutoConfiguration.class, TaskSchedulingAutoConfiguration.class})
 @ConditionalOnClass(ExecutorServiceMetrics.class)
-@ConditionalOnBean({ Executor.class, MeterRegistry.class })
+@ConditionalOnBean({Executor.class, MeterRegistry.class})
 public class TaskExecutorMetricsAutoConfiguration {
 
 	@Autowired
@@ -56,8 +56,7 @@ public class TaskExecutorMetricsAutoConfiguration {
 		executors.forEach((beanName, executor) -> {
 			if (executor instanceof ThreadPoolTaskExecutor) {
 				monitor(registry, safeGetThreadPoolExecutor((ThreadPoolTaskExecutor) executor), beanName);
-			}
-			else if (executor instanceof ThreadPoolTaskScheduler) {
+			} else if (executor instanceof ThreadPoolTaskScheduler) {
 				monitor(registry, safeGetThreadPoolExecutor((ThreadPoolTaskScheduler) executor), beanName);
 			}
 		});
@@ -72,8 +71,7 @@ public class TaskExecutorMetricsAutoConfiguration {
 	private ThreadPoolExecutor safeGetThreadPoolExecutor(ThreadPoolTaskExecutor taskExecutor) {
 		try {
 			return taskExecutor.getThreadPoolExecutor();
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			return null;
 		}
 	}
@@ -81,8 +79,7 @@ public class TaskExecutorMetricsAutoConfiguration {
 	private ThreadPoolExecutor safeGetThreadPoolExecutor(ThreadPoolTaskScheduler taskScheduler) {
 		try {
 			return taskScheduler.getScheduledThreadPoolExecutor();
-		}
-		catch (IllegalStateException ex) {
+		} catch (IllegalStateException ex) {
 			return null;
 		}
 	}

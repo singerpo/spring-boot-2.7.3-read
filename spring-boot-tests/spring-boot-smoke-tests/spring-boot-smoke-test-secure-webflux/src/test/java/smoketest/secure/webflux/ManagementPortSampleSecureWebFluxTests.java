@@ -41,8 +41,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Madhura Bhave
  */
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = { "management.server.port=0" }, classes = {
-		ManagementPortSampleSecureWebFluxTests.SecurityConfiguration.class, SampleSecureWebFluxApplication.class })
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"management.server.port=0"}, classes = {
+		ManagementPortSampleSecureWebFluxTests.SecurityConfiguration.class, SampleSecureWebFluxApplication.class})
 class ManagementPortSampleSecureWebFluxTests {
 
 	@LocalServerPort

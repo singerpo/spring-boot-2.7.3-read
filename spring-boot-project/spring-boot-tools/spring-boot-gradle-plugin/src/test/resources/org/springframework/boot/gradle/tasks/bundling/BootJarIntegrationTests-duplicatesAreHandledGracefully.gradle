@@ -1,27 +1,27 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '{version}'
+    id 'java'
+    id 'org.springframework.boot' version '{version}'
 }
 
 bootJar {
-	mainClass = 'com.example.CustomMain'
-	duplicatesStrategy = "exclude"
+    mainClass = 'com.example.CustomMain'
+    duplicatesStrategy = "exclude"
 }
 
 configurations {
-	provided
+    provided
 }
 
 sourceSets.all {
-	compileClasspath += configurations.provided
-	runtimeClasspath += configurations.provided
+    compileClasspath += configurations.provided
+    runtimeClasspath += configurations.provided
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation("org.apache.commons:commons-lang3:3.6")
-	provided "org.apache.commons:commons-lang3:3.6"
+    implementation("org.apache.commons:commons-lang3:3.6")
+    provided "org.apache.commons:commons-lang3:3.6"
 }

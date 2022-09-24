@@ -39,6 +39,7 @@ public class FlywayMigrationInitializer implements InitializingBean, Ordered {
 
 	/**
 	 * Create a new {@link FlywayMigrationInitializer} instance.
+	 *
 	 * @param flyway the flyway instance
 	 */
 	public FlywayMigrationInitializer(Flyway flyway) {
@@ -47,7 +48,8 @@ public class FlywayMigrationInitializer implements InitializingBean, Ordered {
 
 	/**
 	 * Create a new {@link FlywayMigrationInitializer} instance.
-	 * @param flyway the flyway instance
+	 *
+	 * @param flyway            the flyway instance
 	 * @param migrationStrategy the migration strategy or {@code null}
 	 */
 	public FlywayMigrationInitializer(Flyway flyway, FlywayMigrationStrategy migrationStrategy) {
@@ -60,12 +62,10 @@ public class FlywayMigrationInitializer implements InitializingBean, Ordered {
 	public void afterPropertiesSet() throws Exception {
 		if (this.migrationStrategy != null) {
 			this.migrationStrategy.migrate(this.flyway);
-		}
-		else {
+		} else {
 			try {
 				this.flyway.migrate();
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Flyway < 7.0
 				this.flyway.getClass().getMethod("migrate").invoke(this.flyway);
 			}

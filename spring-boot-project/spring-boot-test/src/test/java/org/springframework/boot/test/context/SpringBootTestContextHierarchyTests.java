@@ -32,8 +32,8 @@ import org.springframework.test.context.ContextHierarchy;
  * @author Andy Wilkinson
  */
 @SpringBootTest
-@ContextHierarchy({ @ContextConfiguration(classes = ParentConfiguration.class),
-		@ContextConfiguration(classes = ChildConfiguration.class) })
+@ContextHierarchy({@ContextConfiguration(classes = ParentConfiguration.class),
+		@ContextConfiguration(classes = ChildConfiguration.class)})
 class SpringBootTestContextHierarchyTests {
 
 	@Test

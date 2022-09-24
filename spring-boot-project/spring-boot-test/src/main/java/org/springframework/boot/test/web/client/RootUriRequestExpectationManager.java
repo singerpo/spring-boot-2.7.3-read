@@ -49,10 +49,10 @@ import org.springframework.web.util.UriTemplateHandler;
  * </pre>
  *
  * @author Phillip Webb
- * @since 1.4.0
  * @see RootUriTemplateHandler
  * @see #bindTo(RestTemplate)
  * @see #forRestTemplate(RestTemplate, RequestExpectationManager)
+ * @since 1.4.0
  */
 public class RootUriRequestExpectationManager implements RequestExpectationManager {
 
@@ -80,8 +80,7 @@ public class RootUriRequestExpectationManager implements RequestExpectationManag
 		}
 		try {
 			return this.expectationManager.validateRequest(request);
-		}
-		catch (AssertionError ex) {
+		} catch (AssertionError ex) {
 			String message = ex.getMessage();
 			String prefix = "Request URI expected:</";
 			if (message != null && message.startsWith(prefix)) {
@@ -101,8 +100,7 @@ public class RootUriRequestExpectationManager implements RequestExpectationManag
 				return request;
 			}
 			return new ReplaceUriClientHttpRequest(uri, request);
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -125,6 +123,7 @@ public class RootUriRequestExpectationManager implements RequestExpectationManag
 	/**
 	 * Return a bound {@link MockRestServiceServer} for the given {@link RestTemplate},
 	 * configured with {@link RootUriRequestExpectationManager} when possible.
+	 *
 	 * @param restTemplate the source REST template
 	 * @return a configured {@link MockRestServiceServer}
 	 */
@@ -135,12 +134,13 @@ public class RootUriRequestExpectationManager implements RequestExpectationManag
 	/**
 	 * Return a bound {@link MockRestServiceServer} for the given {@link RestTemplate},
 	 * configured with {@link RootUriRequestExpectationManager} when possible.
-	 * @param restTemplate the source REST template
+	 *
+	 * @param restTemplate       the source REST template
 	 * @param expectationManager the source {@link RequestExpectationManager}
 	 * @return a configured {@link MockRestServiceServer}
 	 */
 	public static MockRestServiceServer bindTo(RestTemplate restTemplate,
-			RequestExpectationManager expectationManager) {
+											   RequestExpectationManager expectationManager) {
 		MockRestServiceServerBuilder builder = MockRestServiceServer.bindTo(restTemplate);
 		return builder.build(forRestTemplate(restTemplate, expectationManager));
 	}
@@ -150,12 +150,13 @@ public class RootUriRequestExpectationManager implements RequestExpectationManag
 	 * {@link RestTemplate}. If the {@link RestTemplate} is using a
 	 * {@link RootUriTemplateHandler} then a {@link RootUriRequestExpectationManager} is
 	 * returned, otherwise the source manager is returned unchanged.
-	 * @param restTemplate the source REST template
+	 *
+	 * @param restTemplate       the source REST template
 	 * @param expectationManager the source {@link RequestExpectationManager}
 	 * @return a {@link RequestExpectationManager} to be bound to the template
 	 */
 	public static RequestExpectationManager forRestTemplate(RestTemplate restTemplate,
-			RequestExpectationManager expectationManager) {
+															RequestExpectationManager expectationManager) {
 		Assert.notNull(restTemplate, "RestTemplate must not be null");
 		UriTemplateHandler templateHandler = restTemplate.getUriTemplateHandler();
 		if (templateHandler instanceof RootUriTemplateHandler) {

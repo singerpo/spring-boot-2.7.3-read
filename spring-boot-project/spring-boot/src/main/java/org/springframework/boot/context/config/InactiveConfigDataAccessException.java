@@ -43,14 +43,15 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 
 	/**
 	 * Create a new {@link InactiveConfigDataAccessException} instance.
+	 *
 	 * @param propertySource the inactive property source
-	 * @param location the {@link ConfigDataResource} of the property source or
-	 * {@code null} if the source was not loaded from {@link ConfigData}.
-	 * @param propertyName the name of the property
-	 * @param origin the origin or the property or {@code null}
+	 * @param location       the {@link ConfigDataResource} of the property source or
+	 *                       {@code null} if the source was not loaded from {@link ConfigData}.
+	 * @param propertyName   the name of the property
+	 * @param origin         the origin or the property or {@code null}
 	 */
 	InactiveConfigDataAccessException(PropertySource<?> propertySource, ConfigDataResource location,
-			String propertyName, Origin origin) {
+									  String propertyName, Origin origin) {
 		super(getMessage(propertySource, location, propertyName, origin), null);
 		this.propertySource = propertySource;
 		this.location = location;
@@ -59,7 +60,7 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 	}
 
 	private static String getMessage(PropertySource<?> propertySource, ConfigDataResource location, String propertyName,
-			Origin origin) {
+									 Origin origin) {
 		StringBuilder message = new StringBuilder("Inactive property source '");
 		message.append(propertySource.getName());
 		if (location != null) {
@@ -79,6 +80,7 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 
 	/**
 	 * Return the inactive property source that contained the property.
+	 *
 	 * @return the property source
 	 */
 	public PropertySource<?> getPropertySource() {
@@ -88,6 +90,7 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 	/**
 	 * Return the {@link ConfigDataResource} of the property source or {@code null} if the
 	 * source was not loaded from {@link ConfigData}.
+	 *
 	 * @return the config data location or {@code null}
 	 */
 	public ConfigDataResource getLocation() {
@@ -96,6 +99,7 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 
 	/**
 	 * Return the name of the property.
+	 *
 	 * @return the property name
 	 */
 	public String getPropertyName() {
@@ -104,6 +108,7 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 
 	/**
 	 * Return the origin or the property or {@code null}.
+	 *
 	 * @return the property origin
 	 */
 	public Origin getOrigin() {
@@ -113,8 +118,9 @@ public class InactiveConfigDataAccessException extends ConfigDataException {
 	/**
 	 * Throw an {@link InactiveConfigDataAccessException} if the given
 	 * {@link ConfigDataEnvironmentContributor} contains the property.
+	 *
 	 * @param contributor the contributor to check
-	 * @param name the name to check
+	 * @param name        the name to check
 	 */
 	static void throwIfPropertyFound(ConfigDataEnvironmentContributor contributor, ConfigurationPropertyName name) {
 		ConfigurationPropertySource source = contributor.getConfigurationPropertySource();

@@ -41,6 +41,7 @@ public class BootRun extends JavaExec {
 	/**
 	 * Returns {@code true} if the JVM's launch should be optimized, otherwise
 	 * {@code false}. Defaults to {@code true}.
+	 *
 	 * @return whether the JVM's launch should be optimized
 	 * @since 2.2.0
 	 */
@@ -51,8 +52,9 @@ public class BootRun extends JavaExec {
 
 	/**
 	 * Sets whether the JVM's launch should be optimized. Defaults to {@code true}.
+	 *
 	 * @param optimizedLaunch {@code true} if the JVM's launch should be optimised,
-	 * otherwise {@code false}
+	 *                        otherwise {@code false}
 	 * @since 2.2.0
 	 */
 	public void setOptimizedLaunch(boolean optimizedLaunch) {
@@ -64,6 +66,7 @@ public class BootRun extends JavaExec {
 	 * {@code sourceSet's} {@link SourceSet#getResources() resources} to the start of the
 	 * classpath in place of the {@link SourceSet#getOutput output's}
 	 * {@link SourceSetOutput#getResourcesDir() resources directory}.
+	 *
 	 * @param sourceSet the source set
 	 */
 	public void sourceResources(SourceSet sourceSet) {

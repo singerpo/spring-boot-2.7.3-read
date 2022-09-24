@@ -36,8 +36,8 @@ import org.springframework.util.StringUtils;
  *
  * @author Stephane Nicoll
  * @author Chris Bono
- * @since 2.1.0
  * @see JpaProperties
+ * @since 2.1.0
  */
 @ConfigurationProperties("spring.jpa.hibernate")
 public class HibernateProperties {
@@ -84,12 +84,13 @@ public class HibernateProperties {
 	 * Determine the configuration properties for the initialization of the main Hibernate
 	 * EntityManagerFactory based on standard JPA properties and
 	 * {@link HibernateSettings}.
+	 *
 	 * @param jpaProperties standard JPA properties
-	 * @param settings the settings to apply when determining the configuration properties
+	 * @param settings      the settings to apply when determining the configuration properties
 	 * @return the Hibernate properties to use
 	 */
 	public Map<String, Object> determineHibernateProperties(Map<String, String> jpaProperties,
-			HibernateSettings settings) {
+															HibernateSettings settings) {
 		Assert.notNull(jpaProperties, "JpaProperties must not be null");
 		Assert.notNull(settings, "Settings must not be null");
 		return getAdditionalProperties(jpaProperties, settings);
@@ -103,8 +104,7 @@ public class HibernateProperties {
 		String ddlAuto = determineDdlAuto(existing, settings::getDdlAuto);
 		if (StringUtils.hasText(ddlAuto) && !"none".equals(ddlAuto)) {
 			result.put(AvailableSettings.HBM2DDL_AUTO, ddlAuto);
-		}
-		else {
+		} else {
 			result.remove(AvailableSettings.HBM2DDL_AUTO);
 		}
 		Collection<HibernatePropertiesCustomizer> customizers = settings.getHibernatePropertiesCustomizers();
@@ -117,8 +117,7 @@ public class HibernateProperties {
 	private void applyNewIdGeneratorMappings(Map<String, Object> result) {
 		if (this.useNewIdGeneratorMappings != null) {
 			result.put(AvailableSettings.USE_NEW_ID_GENERATOR_MAPPINGS, this.useNewIdGeneratorMappings.toString());
-		}
-		else if (!result.containsKey(AvailableSettings.USE_NEW_ID_GENERATOR_MAPPINGS)) {
+		} else if (!result.containsKey(AvailableSettings.USE_NEW_ID_GENERATOR_MAPPINGS)) {
 			result.put(AvailableSettings.USE_NEW_ID_GENERATOR_MAPPINGS, "true");
 		}
 	}
@@ -179,11 +178,10 @@ public class HibernateProperties {
 		}
 
 		private void applyNamingStrategy(Map<String, Object> properties, String key, Object strategy,
-				Supplier<String> defaultStrategy) {
+										 Supplier<String> defaultStrategy) {
 			if (strategy != null) {
 				properties.put(key, strategy);
-			}
-			else {
+			} else {
 				properties.computeIfAbsent(key, (k) -> defaultStrategy.get());
 			}
 		}

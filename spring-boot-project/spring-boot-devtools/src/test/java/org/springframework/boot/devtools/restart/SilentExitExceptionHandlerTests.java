@@ -62,14 +62,12 @@ class SilentExitExceptionHandlerTests {
 	void preventsNonZeroExitCodeWhenAllOtherThreadsAreDaemonThreads() {
 		try {
 			SilentExitExceptionHandler.exitCurrentThread();
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			TestSilentExitExceptionHandler silentExitExceptionHandler = new TestSilentExitExceptionHandler();
 			silentExitExceptionHandler.uncaughtException(Thread.currentThread(), ex);
 			try {
 				assertThat(silentExitExceptionHandler.nonZeroExitCodePrevented).isTrue();
-			}
-			finally {
+			} finally {
 				silentExitExceptionHandler.cleanUp();
 			}
 		}
@@ -118,8 +116,7 @@ class SilentExitExceptionHandlerTests {
 					threadRunning.countDown();
 					try {
 						TestSilentExitExceptionHandler.this.monitor.wait();
-					}
-					catch (InterruptedException ex) {
+					} catch (InterruptedException ex) {
 						Thread.currentThread().interrupt();
 					}
 				}
@@ -128,11 +125,10 @@ class SilentExitExceptionHandlerTests {
 			daemonThread.start();
 			try {
 				threadRunning.await();
-			}
-			catch (InterruptedException ex) {
+			} catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
 			}
-			return new Thread[] { Thread.currentThread(), daemonThread };
+			return new Thread[]{Thread.currentThread(), daemonThread};
 		}
 
 		private void cleanUp() {

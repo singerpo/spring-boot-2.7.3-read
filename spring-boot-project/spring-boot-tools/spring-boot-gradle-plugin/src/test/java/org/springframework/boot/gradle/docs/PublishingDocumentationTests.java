@@ -42,7 +42,7 @@ class PublishingDocumentationTests {
 	void mavenUpload() {
 		assertThat(this.gradleBuild.expectDeprecationWarningsWithAtLeastVersion("5.6")
 				.script("src/docs/gradle/publishing/maven").build("deployerRepository").getOutput())
-						.contains("https://repo.example.com");
+				.contains("https://repo.example.com");
 	}
 
 	@TestTemplate

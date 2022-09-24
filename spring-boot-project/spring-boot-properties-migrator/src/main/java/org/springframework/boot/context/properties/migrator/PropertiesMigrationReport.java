@@ -37,6 +37,7 @@ class PropertiesMigrationReport {
 	/**
 	 * Return a report for all the properties that were automatically renamed. If no such
 	 * properties were found, return {@code null}.
+	 *
 	 * @return a report with the configurations keys that should be renamed
 	 */
 	String getWarningReport() {
@@ -59,6 +60,7 @@ class PropertiesMigrationReport {
 	/**
 	 * Return a report for all the properties that are no longer supported. If no such
 	 * properties were found, return {@code null}.
+	 *
 	 * @return a report with the configurations keys that are no longer supported
 	 */
 	String getErrorReport() {
@@ -100,7 +102,8 @@ class PropertiesMigrationReport {
 
 	/**
 	 * Register a new property source.
-	 * @param name the name of the property source
+	 *
+	 * @param name       the name of the property source
 	 * @param properties the {@link PropertyMigration} instances
 	 */
 	void add(String name, List<PropertyMigration> properties) {

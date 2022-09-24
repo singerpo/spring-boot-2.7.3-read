@@ -49,8 +49,7 @@ class AssertProviderApplicationContextInvocationHandler implements InvocationHan
 		if (contextOrStartupFailure instanceof RuntimeException) {
 			this.applicationContext = null;
 			this.startupFailure = (RuntimeException) contextOrStartupFailure;
-		}
-		else {
+		} else {
 			this.applicationContext = (ApplicationContext) contextOrStartupFailure;
 			this.startupFailure = null;
 		}
@@ -59,8 +58,7 @@ class AssertProviderApplicationContextInvocationHandler implements InvocationHan
 	private Object getContextOrStartupFailure(Supplier<?> contextSupplier) {
 		try {
 			return contextSupplier.get();
-		}
-		catch (RuntimeException ex) {
+		} catch (RuntimeException ex) {
 			return ex;
 		}
 	}
@@ -104,7 +102,7 @@ class AssertProviderApplicationContextInvocationHandler implements InvocationHan
 
 	private boolean isGetSourceContext(Method method) {
 		return "getSourceApplicationContext".equals(method.getName()) && ((method.getParameterCount() == 0)
-				|| Arrays.equals(new Class<?>[] { Class.class }, method.getParameterTypes()));
+				|| Arrays.equals(new Class<?>[]{Class.class}, method.getParameterTypes()));
 	}
 
 	private Object getSourceContext(Object[] args) {
@@ -145,8 +143,7 @@ class AssertProviderApplicationContextInvocationHandler implements InvocationHan
 	private Object invokeApplicationContextMethod(Method method, Object[] args) throws Throwable {
 		try {
 			return method.invoke(getStartedApplicationContext(), args);
-		}
-		catch (InvocationTargetException ex) {
+		} catch (InvocationTargetException ex) {
 			throw ex.getTargetException();
 		}
 	}

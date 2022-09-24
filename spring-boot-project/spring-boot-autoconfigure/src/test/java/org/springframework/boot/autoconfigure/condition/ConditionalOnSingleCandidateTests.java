@@ -104,9 +104,9 @@ class ConditionalOnSingleCandidateTests {
 	void singleCandidateMultipleCandidatesOnePrimary() {
 		this.contextRunner.withUserConfiguration(AlphaPrimaryConfiguration.class, BravoConfiguration.class,
 				OnBeanSingleCandidateConfiguration.class).run((context) -> {
-					assertThat(context).hasBean("consumer");
-					assertThat(context.getBean("consumer")).isEqualTo("alpha");
-				});
+			assertThat(context).hasBean("consumer");
+			assertThat(context.getBean("consumer")).isEqualTo("alpha");
+		});
 	}
 
 	@Test

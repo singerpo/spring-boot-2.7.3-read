@@ -69,7 +69,7 @@ import org.springframework.util.StringUtils;
  * @since 2.0.0
  */
 @AutoConfiguration(after = MongoReactiveAutoConfiguration.class)
-@ConditionalOnClass({ MongoClient.class, ReactiveMongoTemplate.class })
+@ConditionalOnClass({MongoClient.class, ReactiveMongoTemplate.class})
 @ConditionalOnBean(MongoClient.class)
 @EnableConfigurationProperties(MongoProperties.class)
 @Import(MongoDataConfiguration.class)
@@ -78,7 +78,7 @@ public class MongoReactiveDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(ReactiveMongoDatabaseFactory.class)
 	public SimpleReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory(MongoProperties properties,
-			MongoClient mongo) {
+																		   MongoClient mongo) {
 		String database = properties.getMongoClientDatabase();
 		return new SimpleReactiveMongoDatabaseFactory(mongo, database);
 	}
@@ -86,14 +86,14 @@ public class MongoReactiveDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(ReactiveMongoOperations.class)
 	public ReactiveMongoTemplate reactiveMongoTemplate(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory,
-			MongoConverter converter) {
+													   MongoConverter converter) {
 		return new ReactiveMongoTemplate(reactiveMongoDatabaseFactory, converter);
 	}
 
 	@Bean
 	@ConditionalOnMissingBean(MongoConverter.class)
 	public MappingMongoConverter mappingMongoConverter(MongoMappingContext context,
-			MongoCustomConversions conversions) {
+													   MongoCustomConversions conversions) {
 		MappingMongoConverter mappingConverter = new MappingMongoConverter(NoOpDbRefResolver.INSTANCE, context);
 		mappingConverter.setCustomConversions(conversions);
 		return mappingConverter;
@@ -108,8 +108,8 @@ public class MongoReactiveDataAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean(ReactiveGridFsOperations.class)
 	public ReactiveGridFsTemplate reactiveGridFsTemplate(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory,
-			MappingMongoConverter mappingMongoConverter, DataBufferFactory dataBufferFactory,
-			MongoProperties properties) {
+														 MappingMongoConverter mappingMongoConverter, DataBufferFactory dataBufferFactory,
+														 MongoProperties properties) {
 		return new ReactiveGridFsTemplate(dataBufferFactory,
 				new GridFsReactiveMongoDatabaseFactory(reactiveMongoDatabaseFactory, properties), mappingMongoConverter,
 				properties.getGridfs().getBucket());

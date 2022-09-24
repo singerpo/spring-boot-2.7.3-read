@@ -24,8 +24,8 @@ import java.io.OutputStream;
  *
  * @author Moritz Halbritter
  */
-@TestAutoConfiguration(before = InputStream.class, beforeName = { "test.before1", "test.before2" },
-		after = OutputStream.class, afterName = { "test.after1", "test.after2" })
+@TestAutoConfiguration(before = InputStream.class, beforeName = {"test.before1", "test.before2"},
+		after = OutputStream.class, afterName = {"test.after1", "test.after2"})
 class TestAutoConfigurationConfiguration {
 
 }

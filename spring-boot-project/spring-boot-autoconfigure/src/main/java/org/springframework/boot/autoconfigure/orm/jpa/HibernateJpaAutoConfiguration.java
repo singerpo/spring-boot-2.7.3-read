@@ -37,8 +37,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
  * @author Andy Wilkinson
  * @since 1.0.0
  */
-@AutoConfiguration(after = { DataSourceAutoConfiguration.class })
-@ConditionalOnClass({ LocalContainerEntityManagerFactoryBean.class, EntityManager.class, SessionImplementor.class })
+@AutoConfiguration(after = {DataSourceAutoConfiguration.class})
+@ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class, EntityManager.class, SessionImplementor.class})
 @EnableConfigurationProperties(JpaProperties.class)
 @Import(HibernateJpaConfiguration.class)
 public class HibernateJpaAutoConfiguration {

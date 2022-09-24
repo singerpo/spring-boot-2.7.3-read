@@ -45,8 +45,8 @@ import org.springframework.web.server.session.WebSessionManager;
  */
 @AutoConfiguration
 @ConditionalOnWebApplication(type = Type.REACTIVE)
-@ConditionalOnClass({ WebSessionManager.class, Mono.class })
-@EnableConfigurationProperties({ WebFluxProperties.class, ServerProperties.class })
+@ConditionalOnClass({WebSessionManager.class, Mono.class})
+@EnableConfigurationProperties({WebFluxProperties.class, ServerProperties.class})
 public class WebSessionIdResolverAutoConfiguration {
 
 	private final ServerProperties serverProperties;
@@ -54,7 +54,7 @@ public class WebSessionIdResolverAutoConfiguration {
 	private final WebFluxProperties webFluxProperties;
 
 	public WebSessionIdResolverAutoConfiguration(ServerProperties serverProperties,
-			WebFluxProperties webFluxProperties) {
+												 WebFluxProperties webFluxProperties) {
 		this.serverProperties = serverProperties;
 		this.webFluxProperties = webFluxProperties;
 		assertNoMutuallyExclusiveProperties(serverProperties, webFluxProperties);
@@ -62,7 +62,7 @@ public class WebSessionIdResolverAutoConfiguration {
 
 	@SuppressWarnings("deprecation")
 	private void assertNoMutuallyExclusiveProperties(ServerProperties serverProperties,
-			WebFluxProperties webFluxProperties) {
+													 WebFluxProperties webFluxProperties) {
 		MutuallyExclusiveConfigurationPropertiesException.throwIfMultipleNonNullValuesIn((entries) -> {
 			entries.put("spring.webflux.session.cookie.same-site",
 					webFluxProperties.getSession().getCookie().getSameSite());

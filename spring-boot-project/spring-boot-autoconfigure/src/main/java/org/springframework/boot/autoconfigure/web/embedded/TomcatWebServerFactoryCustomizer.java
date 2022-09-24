@@ -231,8 +231,7 @@ public class TomcatWebServerFactoryCustomizer
 			valve.setInternalProxies(remoteIpProperties.getInternalProxies());
 			try {
 				valve.setHostHeader(remoteIpProperties.getHostHeader());
-			}
-			catch (NoSuchMethodError ex) {
+			} catch (NoSuchMethodError ex) {
 				// Avoid failure with war deployments to Tomcat 8.5 before 8.5.44 and
 				// Tomcat 9 before 9.0.23
 			}

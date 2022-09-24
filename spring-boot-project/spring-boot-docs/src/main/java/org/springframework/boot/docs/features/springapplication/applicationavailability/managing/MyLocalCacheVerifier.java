@@ -33,8 +33,7 @@ public class MyLocalCacheVerifier {
 	public void checkLocalCache() {
 		try {
 			// ...
-		}
-		catch (CacheCompletelyBrokenException ex) {
+		} catch (CacheCompletelyBrokenException ex) {
 			AvailabilityChangeEvent.publish(this.eventPublisher, ex, LivenessState.BROKEN);
 		}
 	}

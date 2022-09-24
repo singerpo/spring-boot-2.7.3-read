@@ -43,8 +43,7 @@ public abstract class TestJarCreator {
 		try {
 			Object runtimeVersion = Runtime.class.getMethod("version").invoke(null);
 			version = (int) runtimeVersion.getClass().getMethod("major").invoke(runtimeVersion);
-		}
-		catch (Throwable ex) {
+		} catch (Throwable ex) {
 			version = BASE_VERSION;
 		}
 		RUNTIME_VERSION = version;
@@ -83,7 +82,7 @@ public abstract class TestJarCreator {
 	}
 
 	private static void writeNestedEntry(String name, boolean unpackNested, JarOutputStream jarOutputStream,
-			boolean multiRelease) throws Exception {
+										 boolean multiRelease) throws Exception {
 		JarEntry nestedEntry = new JarEntry(name);
 		byte[] nestedJarData = getNestedJarData(multiRelease);
 		nestedEntry.setSize(nestedJarData.length);
@@ -109,8 +108,7 @@ public abstract class TestJarCreator {
 			writeEntry(jarOutputStream, "multi-release.dat", BASE_VERSION);
 			writeEntry(jarOutputStream, String.format("META-INF/versions/%d/multi-release.dat", RUNTIME_VERSION),
 					RUNTIME_VERSION);
-		}
-		else {
+		} else {
 			writeEntry(jarOutputStream, "3.dat", 3);
 			writeEntry(jarOutputStream, "4.dat", 4);
 			writeEntry(jarOutputStream, "\u00E4.dat", '\u00E4');
@@ -144,7 +142,7 @@ public abstract class TestJarCreator {
 
 	private static void writeEntry(JarOutputStream jarOutputStream, String name, int data) throws IOException {
 		jarOutputStream.putNextEntry(new JarEntry(name));
-		jarOutputStream.write(new byte[] { (byte) data });
+		jarOutputStream.write(new byte[]{(byte) data});
 		jarOutputStream.closeEntry();
 	}
 

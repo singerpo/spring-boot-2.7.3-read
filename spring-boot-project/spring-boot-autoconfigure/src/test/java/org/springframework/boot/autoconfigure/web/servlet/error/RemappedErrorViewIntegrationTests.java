@@ -68,9 +68,9 @@ class RemappedErrorViewIntegrationTests {
 	}
 
 	@Configuration(proxyBeanMethods = false)
-	@Import({ PropertyPlaceholderAutoConfiguration.class, WebMvcAutoConfiguration.class,
+	@Import({PropertyPlaceholderAutoConfiguration.class, WebMvcAutoConfiguration.class,
 			HttpMessageConvertersAutoConfiguration.class, ServletWebServerFactoryAutoConfiguration.class,
-			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class })
+			DispatcherServletAutoConfiguration.class, ErrorMvcAutoConfiguration.class})
 	@Controller
 	static class TestConfiguration implements ErrorPageRegistrar {
 

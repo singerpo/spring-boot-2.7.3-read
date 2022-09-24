@@ -50,10 +50,10 @@ class HikariDataSourceConfigurationTests {
 	void testDataSourcePropertiesOverridden() {
 		this.contextRunner.withPropertyValues("spring.datasource.hikari.jdbc-url=jdbc:foo//bar/spam",
 				"spring.datasource.hikari.max-lifetime=1234").run((context) -> {
-					HikariDataSource ds = context.getBean(HikariDataSource.class);
-					assertThat(ds.getJdbcUrl()).isEqualTo("jdbc:foo//bar/spam");
-					assertThat(ds.getMaxLifetime()).isEqualTo(1234);
-				});
+			HikariDataSource ds = context.getBean(HikariDataSource.class);
+			assertThat(ds.getJdbcUrl()).isEqualTo("jdbc:foo//bar/spam");
+			assertThat(ds.getMaxLifetime()).isEqualTo(1234);
+		});
 	}
 
 	@Test

@@ -41,7 +41,7 @@ public class AdditionalHealthEndpointPathsWebMvcHandlerMapping extends AbstractW
 	private final Set<HealthEndpointGroup> groups;
 
 	public AdditionalHealthEndpointPathsWebMvcHandlerMapping(ExposableWebEndpoint endpoint,
-			Set<HealthEndpointGroup> groups) {
+															 Set<HealthEndpointGroup> groups) {
 		super(new EndpointMapping(""), Collections.singletonList(endpoint), null, false);
 		this.endpoint = endpoint;
 		this.groups = groups;

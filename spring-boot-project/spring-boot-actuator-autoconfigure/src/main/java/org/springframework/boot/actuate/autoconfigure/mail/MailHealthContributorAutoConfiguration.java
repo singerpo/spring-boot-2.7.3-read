@@ -45,7 +45,7 @@ public class MailHealthContributorAutoConfiguration
 		extends CompositeHealthContributorConfiguration<MailHealthIndicator, JavaMailSenderImpl> {
 
 	@Bean
-	@ConditionalOnMissingBean(name = { "mailHealthIndicator", "mailHealthContributor" })
+	@ConditionalOnMissingBean(name = {"mailHealthIndicator", "mailHealthContributor"})
 	public HealthContributor mailHealthContributor(Map<String, JavaMailSenderImpl> mailSenders) {
 		return createContributor(mailSenders);
 	}

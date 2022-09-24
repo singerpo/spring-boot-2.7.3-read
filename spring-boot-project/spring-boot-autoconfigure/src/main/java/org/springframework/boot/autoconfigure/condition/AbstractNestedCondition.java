@@ -115,7 +115,7 @@ public abstract class AbstractNestedCondition extends SpringBootCondition implem
 		}
 
 		private Map<AnnotationMetadata, List<Condition>> getMemberConditions(String[] members, ConfigurationPhase phase,
-				String className) {
+																			 String className) {
 			MultiValueMap<AnnotationMetadata, Condition> memberConditions = new LinkedMultiValueMap<>();
 			for (String member : members) {
 				AnnotationMetadata metadata = getMetadata(member);
@@ -131,7 +131,7 @@ public abstract class AbstractNestedCondition extends SpringBootCondition implem
 		}
 
 		private void validateMemberCondition(Condition condition, ConfigurationPhase nestedPhase,
-				String nestedClassName) {
+											 String nestedClassName) {
 			if (nestedPhase == ConfigurationPhase.PARSE_CONFIGURATION && condition instanceof ConfigurationCondition) {
 				ConfigurationPhase memberPhase = ((ConfigurationCondition) condition).getConfigurationPhase();
 				if (memberPhase == ConfigurationPhase.REGISTER_BEAN) {
@@ -144,8 +144,7 @@ public abstract class AbstractNestedCondition extends SpringBootCondition implem
 		private AnnotationMetadata getMetadata(String className) {
 			try {
 				return this.readerFactory.getMetadataReader(className).getAnnotationMetadata();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}

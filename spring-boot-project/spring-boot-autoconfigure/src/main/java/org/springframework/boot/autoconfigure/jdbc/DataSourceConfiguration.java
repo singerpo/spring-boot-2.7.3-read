@@ -118,7 +118,7 @@ abstract class DataSourceConfiguration {
 	 * Oracle UCP DataSource configuration.
 	 */
 	@Configuration(proxyBeanMethods = false)
-	@ConditionalOnClass({ PoolDataSourceImpl.class, OracleConnection.class })
+	@ConditionalOnClass({PoolDataSourceImpl.class, OracleConnection.class})
 	@ConditionalOnMissingBean(DataSource.class)
 	@ConditionalOnProperty(name = "spring.datasource.type", havingValue = "oracle.ucp.jdbc.PoolDataSource",
 			matchIfMissing = true)

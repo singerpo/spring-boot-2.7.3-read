@@ -62,7 +62,7 @@ public abstract class AbstractSessionAutoConfigurationTests {
 	}
 
 	protected <T extends SessionRepository<?>> T validateSessionRepository(AssertableWebApplicationContext context,
-			Class<T> type) {
+																		   Class<T> type) {
 		assertThat(context).hasSingleBean(SessionRepositoryFilter.class);
 		assertThat(context).hasSingleBean(SessionRepository.class);
 		SessionRepository<?> repository = context.getBean(SessionRepository.class);

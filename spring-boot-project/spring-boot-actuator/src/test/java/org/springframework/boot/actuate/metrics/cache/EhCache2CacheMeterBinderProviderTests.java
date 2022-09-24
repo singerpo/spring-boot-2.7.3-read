@@ -48,8 +48,7 @@ class EhCache2CacheMeterBinderProviderTests {
 			MeterBinder meterBinder = new EhCache2CacheMeterBinderProvider().getMeterBinder(cache,
 					Collections.emptyList());
 			assertThat(meterBinder).isInstanceOf(EhCache2Metrics.class);
-		}
-		finally {
+		} finally {
 			cacheManager.shutdown();
 		}
 	}

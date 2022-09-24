@@ -160,7 +160,7 @@ class SanitizerTests {
 		Sanitizer sanitizer = new Sanitizer();
 		assertThat(
 				sanitizer.sanitize(key, "http://user1:password1@localhost:8080,http://user2:password2@localhost:8082"))
-						.isEqualTo("http://user1:******@localhost:8080,http://user2:******@localhost:8082");
+				.isEqualTo("http://user1:******@localhost:8080,http://user2:******@localhost:8082");
 	}
 
 	@ParameterizedTest(name = "key = {0}")
@@ -177,7 +177,7 @@ class SanitizerTests {
 		Sanitizer sanitizer = new Sanitizer();
 		assertThat(sanitizer.sanitize(key,
 				"http://user1:password1@localhost:8080,http://user2@localhost:8082,http://localhost:8083")).isEqualTo(
-						"http://user1:******@localhost:8080,http://user2@localhost:8082,http://localhost:8083");
+				"http://user1:******@localhost:8080,http://user2@localhost:8082,http://localhost:8083");
 	}
 
 	@ParameterizedTest(name = "key = {0}")
@@ -196,10 +196,10 @@ class SanitizerTests {
 				.isEqualTo("[amqp://username:******@host/]");
 		assertThat(sanitizer.sanitize(key,
 				"[http://user1:password1@localhost:8080,http://user2@localhost:8082,http://localhost:8083]")).isEqualTo(
-						"[http://user1:******@localhost:8080,http://user2@localhost:8082,http://localhost:8083]");
+				"[http://user1:******@localhost:8080,http://user2@localhost:8082,http://localhost:8083]");
 		assertThat(sanitizer.sanitize(key,
 				"[http://user1:password1@localhost:8080,http://user2:password2@localhost:8082]"))
-						.isEqualTo("[http://user1:******@localhost:8080,http://user2:******@localhost:8082]");
+				.isEqualTo("[http://user1:******@localhost:8080,http://user2:******@localhost:8082]");
 		assertThat(sanitizer.sanitize(key, "[http://user1@localhost:8080,http://user2@localhost:8082]"))
 				.isEqualTo("[http://user1@localhost:8080,http://user2@localhost:8082]");
 	}

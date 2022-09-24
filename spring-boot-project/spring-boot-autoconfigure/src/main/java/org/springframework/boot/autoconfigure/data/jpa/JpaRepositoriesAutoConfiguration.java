@@ -67,13 +67,13 @@ import org.springframework.util.ClassUtils;
  * @author Josh Long
  * @author Scott Frederick
  * @author Stefano Cordio
- * @since 1.0.0
  * @see EnableJpaRepositories
+ * @since 1.0.0
  */
-@AutoConfiguration(after = { HibernateJpaAutoConfiguration.class, TaskExecutionAutoConfiguration.class })
+@AutoConfiguration(after = {HibernateJpaAutoConfiguration.class, TaskExecutionAutoConfiguration.class})
 @ConditionalOnBean(DataSource.class)
 @ConditionalOnClass(JpaRepository.class)
-@ConditionalOnMissingBean({ JpaRepositoryFactoryBean.class, JpaRepositoryConfigExtension.class })
+@ConditionalOnMissingBean({JpaRepositoryFactoryBean.class, JpaRepositoryConfigExtension.class})
 @ConditionalOnProperty(prefix = "spring.data.jpa.repositories", name = "enabled", havingValue = "true",
 		matchIfMissing = true)
 @Import(JpaRepositoriesImportSelector.class)
@@ -125,7 +125,7 @@ public class JpaRepositoriesAutoConfiguration {
 
 		@Override
 		public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-			return new String[] { determineImport() };
+			return new String[]{determineImport()};
 		}
 
 		private String determineImport() {

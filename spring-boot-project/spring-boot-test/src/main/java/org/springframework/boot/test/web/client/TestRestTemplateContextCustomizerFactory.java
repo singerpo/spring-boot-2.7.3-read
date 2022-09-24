@@ -34,7 +34,7 @@ class TestRestTemplateContextCustomizerFactory implements ContextCustomizerFacto
 
 	@Override
 	public ContextCustomizer createContextCustomizer(Class<?> testClass,
-			List<ContextConfigurationAttributes> configAttributes) {
+													 List<ContextConfigurationAttributes> configAttributes) {
 		SpringBootTest springBootTest = TestContextAnnotationUtils.findMergedAnnotation(testClass,
 				SpringBootTest.class);
 		return (springBootTest != null) ? new TestRestTemplateContextCustomizer() : null;

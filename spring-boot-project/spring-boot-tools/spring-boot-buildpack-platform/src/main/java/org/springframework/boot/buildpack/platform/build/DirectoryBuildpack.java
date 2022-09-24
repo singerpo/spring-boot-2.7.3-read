@@ -36,7 +36,7 @@ import org.springframework.util.Assert;
 /**
  * A {@link Buildpack} that references a buildpack in a directory on the local file
  * system.
- *
+ * <p>
  * The file system must contain a buildpack descriptor named {@code buildpack.toml} in the
  * root of the directory. The contents of the directory tree will be provided as a single
  * layer to be included in the builder image.
@@ -62,8 +62,7 @@ final class DirectoryBuildpack implements Buildpack {
 			try (InputStream inputStream = Files.newInputStream(buildpackToml)) {
 				return BuildpackCoordinates.fromToml(inputStream, path);
 			}
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			throw new IllegalArgumentException("Error parsing descriptor for buildpack '" + path + "'", ex);
 		}
 	}
@@ -95,7 +94,8 @@ final class DirectoryBuildpack implements Buildpack {
 
 	/**
 	 * A {@link BuildpackResolver} compatible method to resolve directory buildpacks.
-	 * @param context the resolver context
+	 *
+	 * @param context   the resolver context
 	 * @param reference the buildpack reference
 	 * @return the resolved {@link Buildpack} or {@code null}
 	 */
@@ -141,8 +141,7 @@ final class DirectoryBuildpack implements Buildpack {
 		private int getMode(Path path) throws IOException {
 			try {
 				return FilePermissions.umaskForPath(path);
-			}
-			catch (IllegalStateException ex) {
+			} catch (IllegalStateException ex) {
 				throw new IllegalStateException(
 						"Buildpack content in a directory is not supported on this operating system");
 			}

@@ -42,7 +42,7 @@ public class JerseyHealthEndpointAdditionalPathResourceFactory extends JerseyEnd
 	private final WebServerNamespace serverNamespace;
 
 	public JerseyHealthEndpointAdditionalPathResourceFactory(WebServerNamespace serverNamespace,
-			HealthEndpointGroups groups) {
+															 HealthEndpointGroups groups) {
 		this.serverNamespace = serverNamespace;
 		this.groups = groups.getAllWithAdditionalPath(serverNamespace);
 	}

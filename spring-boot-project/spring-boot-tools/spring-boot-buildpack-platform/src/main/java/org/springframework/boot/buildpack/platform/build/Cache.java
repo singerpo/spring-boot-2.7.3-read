@@ -49,6 +49,7 @@ public class Cache {
 
 	/**
 	 * Return the details of the cache if it is a volume cache.
+	 *
 	 * @return the cache, or {@code null} if it is not a volume cache
 	 */
 	public Volume getVolume() {
@@ -57,6 +58,7 @@ public class Cache {
 
 	/**
 	 * Create a new {@code Cache} that uses a volume with the provided name.
+	 *
 	 * @param name the cache volume name
 	 * @return a new cache instance
 	 */
